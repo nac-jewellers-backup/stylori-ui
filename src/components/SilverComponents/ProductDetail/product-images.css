@@ -458,7 +458,7 @@ body {
 
 .product-subhead {
     font-size: none !important;
-    margin-top: 3px !important;
+    /* margin-top: 3px !important; */
 }
 
 .product-subhead-list {
@@ -469,7 +469,7 @@ body {
 
 /* //:nth-child(2n) */
 .product-subhead-list span {
-    margin-top: 3px !important;
+    /* margin-top: 3px; */
     display: flex;
     flex: 1;
 }
@@ -947,7 +947,7 @@ body {
     align-items: center !important;
     position: relative;
     font-family: Roboto !important;
-    font-size: 14px !important;
+    font-size: 14px;
     transform: translatey(-100px);
     transition: all .2s ease-in-out;
     padding: 10px;

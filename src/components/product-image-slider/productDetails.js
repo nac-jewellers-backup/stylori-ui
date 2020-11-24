@@ -50,7 +50,7 @@ class ProductDetails extends React.Component {
               val.details[0] &&
               val.details[1] &&
               Number(val.details[0].replace("₹", "").replace(/,/g, "")) >
-                Number(val.details[1].replace("₹", "").replace(/,/g, ""))
+              Number(val.details[1].replace("₹", "").replace(/,/g, ""))
             )
               return true;
           })
@@ -92,37 +92,37 @@ class ProductDetails extends React.Component {
             return valueofproductdetail.namedetail.length === 0 ? (
               false
             ) : (
-              <>
-                {valueofproductdetail.header !== "Price Breakup" ||
-                (valueofproductdetail.header === "Price Breakup" &&
-                  valueofproductdetail.namedetail[5].name === "Total" &&
-                  Number(
-                    valueofproductdetail.namedetail[5].details[1]
-                      .replace(/,/g, "")
-                      .replace(/₹/g, "")
-                  ) > 15000) ? (
-                  <div
-                    className={`overall-boxz ${
-                      _isSilver ? classes.overallBoxz : ""
-                    }`}
-                    style={{
-                      boxShadow: _isSilver
-                        ? "unset"
-                        : "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
-                    }}
-                  >
-                    <div className={isSilver ? " " :"overall-bo"}>
-                      {isSilver ? (
-                        <>
-                          <div
-                            key={valueofproductdetail.name}
-                            className={`product-details ${classes.normalfontsSilver}`}
-                          >
-                            {" "}
-                            {valueofproductdetail.header}
-                          </div>
-                        {/* SEO TEXT FOR STYLORI SILTER - COMMENTED FOR SOME RESON DON'T REMOVE IT */}
-                          {/* <div
+                <>
+                  {valueofproductdetail.header !== "Price Breakup" ||
+                    (valueofproductdetail.header === "Price Breakup" &&
+                      valueofproductdetail.namedetail[5].name === "Total" &&
+                      Number(
+                        valueofproductdetail.namedetail[5].details[1]
+                          .replace(/,/g, "")
+                          .replace(/₹/g, "")
+                      ) > 15000) ? (
+                      <div
+                        className={`overall-boxz ${_isSilver ? classes.overallBoxz : ""
+                          }`}
+                        style={{
+                          boxShadow: _isSilver
+                            ? "unset"
+                            : "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
+                        }}
+                      >
+                        <div className={isSilver ? " " : "overall-bo"}>
+                          {isSilver ? (
+                            <>
+                              <div
+                                key={valueofproductdetail.name}
+                                className={`product-details ${classes.normalfontsSilver}`}
+                                style={{ marginBottom: 4 }}
+                              >
+                                {" "}
+                                <span className={_isSilver && "pd_details"}>{valueofproductdetail.header}</span>
+                              </div>
+                              {/* SEO TEXT FOR STYLORI SILTER - COMMENTED FOR SOME RESON DON'T REMOVE IT */}
+                              {/* <div
                             style={{
                               marginBottom: 15,
                               fontSize: "12px",
@@ -136,212 +136,216 @@ class ProductDetails extends React.Component {
                             industry's standard dummy text ever since the 1500s,
                           </div> */}
 
-                          {/* SEO TEXT FOR STYLORI SILTER */}
-                        </>
-                      ) : (
-                        <>
-                          <span
-                            key={valueofproductdetail.name}
-                            className={`product-details ${classes.normalfonts}`}
-                          >
-                            {" "}
-                            {valueofproductdetail.header}
-                          </span>
-                          <hr class="bottom-line"></hr>
-                        </>
-                      )}
-                      <>
-                        {valueofproductdetail.namedetail !== undefined &&
-                          valueofproductdetail.namedetail.map((res) => {
-                            return (
-                              <>
-                                {res.name && (
-                                  <span>
-                                    {res.details ?
-res.details.length === 0 ? (
-  false
-) : this.handleCheck(
-    valueofproductdetail.header,
-    res.details
-  ) ? (
-  <Grid container item xs={12}>
-    <Grid xs={4} lg={4}>
-      <ListItemText
-        variant=""
-        className={`product-subhead ${
-          classes.normalfonts
-        } ${
-          _isSilver
-            ? classes.normalFontsColor
-            : ""
-        }`}
-      >
-        <span style={{ fontSize: "12px" }}>
-          {" "}
-          {_isSilver ? (
-            <b>{res.name}</b>
-          ) : (
-            res.name
-          )}
-        </span>
-      </ListItemText>
-    </Grid>
-    <Grid
-      container
-      item
-      xs={8}
-      style={{ alignItems: "center" }}
-    >
-      {
-        // valueofproductdetail.header === 'Price Breakup' &&
-        isArray(res.details) ? (
-          <ListItemText
-            variant=""
-            className={`product-subhead-list ${
-              classes.fontgray
-            } ${
-              _isSilver
-                ? classes.normalFontsColor
-                : ""
-            }`}
-          >
-            {res.details.map(
-              (Item, Index) => {
-                if (_isSilver) {
-                  return (
-                    <b>
-                      <span
-                        style={{
-                          fontSize: "12px",
-                          textAlign: "left",
-                        }}
-                      >
-                        {" "}
-                        {valueofproductdetail.header ===
-                        "Price Breakup" ? (
-                          res.name !==
-                            "GST" &&
-                          Index === 0 &&
-                          res.details[
-                            Index
-                          ] !==
-                            res.details[
-                              Index + 1
-                            ] ? (
-                            <del>
-                              {Item}
-                            </del>
-                          ) : (Index ===
-                              0 &&
-                              res.name !==
-                                "GST") ||
-                            (Index === 0 &&
-                              !this.handleGst(
-                                res.name,
-                                valueofproductdetail.header,
-                                valueofproductdetail.namedetail
-                              )) ? (
-                            ""
+                              {/* SEO TEXT FOR STYLORI SILTER */}
+                            </>
                           ) : (
-                            Item
-                          )
-                        ) : (
-                          Item
-                        )}{" "}
-                      </span>
-                    </b>
-                  );
-                } else {
-                  return (
-                    <span
-                      style={{
-                        fontSize: "12px",
-                        textAlign: "left",
-                      }}
-                    >
-                      {" "}
-                      {valueofproductdetail.header ===
-                      "Price Breakup" ? (
-                        res.name !==
-                          "GST" &&
-                        Index === 0 &&
-                        res.details[
-                          Index
-                        ] !==
-                          res.details[
-                            Index + 1
-                          ] ? (
-                          <del>{Item}</del>
-                        ) : (Index === 0 &&
-                            res.name !==
-                              "GST") ||
-                          (Index === 0 &&
-                            !this.handleGst(
-                              res.name,
-                              valueofproductdetail.header,
-                              valueofproductdetail.namedetail
-                            )) ? (
-                          ""
-                        ) : (
-                          Item
-                        )
-                      ) : (
-                        Item
-                      )}{" "}
-                    </span>
-                  );
-                }
-              }
-            )}
-          </ListItemText>
-        ) : (
-          <ListItemText
-            variant=""
-            className={`product-subhead-list ${
-              classes.fontgray
-            } ${
-              _isSilver
-                ? classes.normalFontsColor
-                : ""
-            }`}
-          >
-            {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
-            {
-              <span
-                style={{
-                  fontSize: "12px",
-                  marginLeft: "10px",
-                }}
-              >
-                {" "}
-                {_isSilver ? (
-                  <b>{res.details}</b>
-                ) : (
-                  res.details
-                )}
-              </span>
-            }
-          </ListItemText>
-        )
-      }
-    </Grid>
-  </Grid>
-) : null
-                                    :
-                                    null
-                                    
-                                    }
-                                  </span>
-                                )}
+                              <>
+                                <span
+                                  key={valueofproductdetail.name}
+                                  className={`product-details ${classes.normalfonts}`}
+                                >
+                                  {" "}
+                                  {valueofproductdetail.header}
+                                </span>
+                                <hr class="bottom-line"></hr>
                               </>
-                            );
-                          })}
-                      </>
-                    </div>
-                  </div>
-                ) : null}
-              </>
-            );
+                            )}
+                          <>
+                            {valueofproductdetail.namedetail !== undefined &&
+                              valueofproductdetail.namedetail.map((res) => {
+                                return (
+                                  <>
+                                    {res.name && (
+                                      <span>
+                                        {res.details ?
+                                          res.details.length === 0 ? (
+                                            false
+                                          ) : this.handleCheck(
+                                            valueofproductdetail.header,
+                                            res.details
+                                          ) ? (
+                                                <Grid container item xs={12}>
+                                                  <Grid xs={4} lg={4} className={classes.margindek}>
+                                                    <ListItemText
+                                                      variant=""
+                                                      className={`product-subhead ${classes.normalfonts
+                                                        } ${_isSilver
+                                                          ? classes.normalFontsColor
+                                                          : ""
+                                                        }`}
+                                                      style={{ margin: _isSilver && 0 }}
+                                                    >
+                                                      <span style={{
+                                                        fontSize: "12px"
+                                                        , lineHeight: _isSilver && 0
+                                                      }}>
+                                                        {" "}
+                                                        {_isSilver ? (
+                                                          <span style={{ fontSize: _isSilver && 13 }}>{res.name}</span>
+                                                        ) : (
+                                                            res.name
+                                                          )}
+                                                      </span>
+                                                    </ListItemText>
+                                                  </Grid>
+                                                  <Grid
+                                                    container
+                                                    item
+                                                    xs={8}
+                                                    style={{ alignItems: "center" }}
+                                                  >
+                                                    {
+                                                      // valueofproductdetail.header === 'Price Breakup' &&
+                                                      isArray(res.details) ? (
+                                                        <ListItemText
+                                                          variant=""
+                                                          className={`product-subhead-list ${classes.fontgray
+                                                            } ${_isSilver
+                                                              ? classes.normalFontsColor
+                                                              : ""
+                                                            }`}
+                                                        >
+                                                          {res.details.map(
+                                                            (Item, Index) => {
+                                                              if (_isSilver) {
+                                                                return (
+                                                                  <b>
+                                                                    <span
+                                                                      style={{
+                                                                        fontSize: "12px",
+                                                                        textAlign: "left",
+                                                                      }}
+                                                                    >
+                                                                      {" "}
+                                                                      {valueofproductdetail.header ===
+                                                                        "Price Breakup" ? (
+                                                                          res.name !==
+                                                                            "GST" &&
+                                                                            Index === 0 &&
+                                                                            res.details[
+                                                                            Index
+                                                                            ] !==
+                                                                            res.details[
+                                                                            Index + 1
+                                                                            ] ? (
+                                                                              <del>
+                                                                                {Item}
+                                                                              </del>
+                                                                            ) : (Index ===
+                                                                              0 &&
+                                                                              res.name !==
+                                                                              "GST") ||
+                                                                              (Index === 0 &&
+                                                                                !this.handleGst(
+                                                                                  res.name,
+                                                                                  valueofproductdetail.header,
+                                                                                  valueofproductdetail.namedetail
+                                                                                )) ? (
+                                                                                ""
+                                                                              ) : (
+                                                                                Item
+                                                                              )
+                                                                        ) : (
+                                                                          Item
+                                                                        )}{" "}
+                                                                    </span>
+                                                                  </b>
+                                                                );
+                                                              } else {
+                                                                return (
+                                                                  <span
+                                                                    style={{
+                                                                      fontSize: "12px",
+                                                                      textAlign: "left",
+                                                                    }}
+                                                                  >
+                                                                    {" "}
+                                                                    {valueofproductdetail.header ===
+                                                                      "Price Breakup" ? (
+                                                                        res.name !==
+                                                                          "GST" &&
+                                                                          Index === 0 &&
+                                                                          res.details[
+                                                                          Index
+                                                                          ] !==
+                                                                          res.details[
+                                                                          Index + 1
+                                                                          ] ? (
+                                                                            <del>{Item}</del>
+                                                                          ) : (Index === 0 &&
+                                                                            res.name !==
+                                                                            "GST") ||
+                                                                            (Index === 0 &&
+                                                                              !this.handleGst(
+                                                                                res.name,
+                                                                                valueofproductdetail.header,
+                                                                                valueofproductdetail.namedetail
+                                                                              )) ? (
+                                                                              ""
+                                                                            ) : (
+                                                                              Item
+                                                                            )
+                                                                      ) : (
+                                                                        Item
+                                                                      )}{" "}
+                                                                  </span>
+                                                                );
+                                                              }
+                                                            }
+                                                          )}
+                                                        </ListItemText>
+                                                      ) : (
+                                                          <ListItemText
+                                                            variant=""
+                                                            className={`product-subhead-list ${classes.fontgray
+                                                              } ${_isSilver
+                                                                ? classes.normalFontsColor
+                                                                : ""
+                                                              }`}
+                                                          >
+                                                            {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
+                                                            {
+                                                              <span
+                                                                style={{
+                                                                  fontSize: !_isSilver && "12px",
+                                                                  marginLeft: "10px",
+                                                                  marginTop: 0,
+                                                                }}
+                                                              >
+                                                                {" "}
+                                                                {_isSilver ? (
+                                                                  <span style={{
+                                                                    marginTop: 0,
+                                                                    marginLeft: -8,
+                                                                    paddingLeft: -8,
+                                                                    fontSize: 13,
+                                                                  }}>{res.details}</span>
+                                                                ) : (
+                                                                    res.details
+                                                                  )}
+                                                              </span>
+                                                            }
+                                                          </ListItemText>
+                                                        )
+                                                    }
+                                                  </Grid>
+                                                </Grid>
+                                              ) : null
+                                          :
+                                          null
+
+                                        }
+                                      </span>
+                                    )}
+                                  </>
+                                );
+                              })}
+                          </>
+                        </div>
+                      </div>
+                    ) : null}
+                </>
+              );
           })}
         </Grid>
 
@@ -394,39 +398,39 @@ res.details.length === 0 ? (
     return (
       <>
         {val.header !== "Price Breakup" ||
-        (val.header === "Price Breakup" &&
-          val.namedetail[5].name === "Total" &&
-          Number(
-            val.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g, "")
-          ) > 15000) ? (
-          <ExpansionPanel
-            style={{
-              boxShadow:
-                // isSilver ? 'unset' :
-                "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
-              margin: "12px 0px",
-              padding: "0 5px 5px 5px",
-            }}
-            expanded={expanded === val.header}
-            onChange={this.handle(val.header)}
-            key={val.name}
-          >
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
+          (val.header === "Price Breakup" &&
+            val.namedetail[5].name === "Total" &&
+            Number(
+              val.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g, "")
+            ) > 15000) ? (
+            <ExpansionPanel
+              style={{
+                boxShadow:
+                  // isSilver ? 'unset' :
+                  "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
+                margin: "12px 0px",
+                padding: "0 5px 5px 5px",
+              }}
+              expanded={expanded === val.header}
+              onChange={this.handle(val.header)}
+              key={val.name}
             >
-              <div style={{ width: "100%" }}>
-                <Typography className={`subtabs-smrt ${classes.normalfonts}`}>
-                  {val.header}
-                </Typography>
-                {/* <hr class="bottom-line border-line-"></hr> */}
-              </div>
-          
-            </ExpansionPanelSummary>
-            <>
-          {/* silver product description - COMMENTED PURPOSEFULLY DON'T REMOVE IT */}
-            {/* <div
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <div style={{ width: "100%" }}>
+                  <Typography className={`subtabs-smrt ${classes.normalfonts}`}>
+                    {val.header}
+                  </Typography>
+                  {/* <hr class="bottom-line border-line-"></hr> */}
+                </div>
+
+              </ExpansionPanelSummary>
+              <>
+                {/* silver product description - COMMENTED PURPOSEFULLY DON'T REMOVE IT */}
+                {/* <div
                 style={{
                   marginBottom: 15,
                   fontSize: "12px",
@@ -440,108 +444,108 @@ res.details.length === 0 ? (
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s,
               </div> */}
-          
-            <div style={{ backgroundColor: "fafafa" }}>
-              {val.namedetail !== undefined &&
-                val.namedetail.map((res) =>
-                  res.details !== null && res.details.length === 0 ? (
-                    false
-                  ) : (
-                    <span>
-                      {
-                        <>
-                          {" "}
-                          {(res.details && res.name) && this.handleCheck(val.header, res.details) ? (
-                            <Grid
-                              container
-                              item
-                              xs={12}
-                              style={{ padding: "0px 10px 0px 10px " }}
-                            >
-                              <Grid xs={4} lg={4}>
-                                <ListItemText
-                                  variant=""
-                                  className={`product-subhead ${classes.normalfonts}`}
-                                >
-                                  <span style={{ fontSize: "12px" }}>
-                                    {" "}
-                                    {res.name}
-                                  </span>
-                                </ListItemText>
-                              </Grid>
-                              <Grid
-                                container
-                                item
-                                xs={8}
-                                style={{ alignItems: "center" }}
-                              >
-                                {isArray(res.details) ? (
-                                  <ListItemText
-                                    variant=""
-                                    className={`product-subhead-list ${classes.fontgray}`}
+
+                <div style={{ backgroundColor: "fafafa" }}>
+                  {val.namedetail !== undefined &&
+                    val.namedetail.map((res) =>
+                      res.details !== null && res.details.length === 0 ? (
+                        false
+                      ) : (
+                          <span>
+                            {
+                              <>
+                                {" "}
+                                {(res.details && res.name) && this.handleCheck(val.header, res.details) ? (
+                                  <Grid
+                                    container
+                                    item
+                                    xs={12}
+                                    style={{ padding: "0px 10px 0px 10px " }}
                                   >
-                                    {res.details.map((Item, Index) => {
-                                      return (
-                                        <span
-                                          style={{
-                                            fontSize: "12px",
-                                            textAlign: "left",
-                                          }}
-                                        >
+                                    <Grid xs={4} lg={4}>
+                                      <ListItemText
+                                        variant=""
+                                        className={`product-subhead ${classes.normalfonts}`}
+                                      >
+                                        <span style={{ fontSize: "12px" }}>
                                           {" "}
-                                          {val.header === "Price Breakup" ? (
-                                            res.name !== "GST" &&
-                                            Index === 0 &&
-                                            res.details[Index] !==
-                                              res.details[Index + 1] ? (
-                                              <del>{Item}</del>
-                                            ) : (Index === 0 &&
-                                                res.name !== "GST") ||
-                                              (Index === 0 &&
-                                                !this.handleGst(
-                                                  res.name,
-                                                  val.header,
-                                                  val.namedetail
-                                                )) ? (
-                                              ""
-                                            ) : (
-                                              Item
-                                            )
-                                          ) : (
-                                            Item
-                                          )}{" "}
+                                          {res.name}
                                         </span>
-                                      );
-                                    })}
-                                  </ListItemText>
-                                ) : (
-                                  <ListItemText
-                                    variant=""
-                                    className={`product-subhead-list ${classes.fontgray}`}
-                                  >
-                                    <span
-                                      style={{
-                                        fontSize: "12px",
-                                        marginLeft: "10px",
-                                      }}
+                                      </ListItemText>
+                                    </Grid>
+                                    <Grid
+                                      container
+                                      item
+                                      xs={8}
+                                      style={{ alignItems: "center" }}
                                     >
-                                      {" "}
-                                      {res.details}
-                                    </span>
-                                  </ListItemText>
-                                )}
-                              </Grid>
-                            </Grid>
-                          ) : null}
-                        </>
-                      }
-                    </span>
-                  )
-                )}
-            </div>
-       </>
-          </ExpansionPanel>
-        ) : null}
+                                      {isArray(res.details) ? (
+                                        <ListItemText
+                                          variant=""
+                                          className={`product-subhead-list ${classes.fontgray}`}
+                                        >
+                                          {res.details.map((Item, Index) => {
+                                            return (
+                                              <span
+                                                style={{
+                                                  fontSize: "12px",
+                                                  textAlign: "left",
+                                                }}
+                                              >
+                                                {" "}
+                                                {val.header === "Price Breakup" ? (
+                                                  res.name !== "GST" &&
+                                                    Index === 0 &&
+                                                    res.details[Index] !==
+                                                    res.details[Index + 1] ? (
+                                                      <del>{Item}</del>
+                                                    ) : (Index === 0 &&
+                                                      res.name !== "GST") ||
+                                                      (Index === 0 &&
+                                                        !this.handleGst(
+                                                          res.name,
+                                                          val.header,
+                                                          val.namedetail
+                                                        )) ? (
+                                                        ""
+                                                      ) : (
+                                                        Item
+                                                      )
+                                                ) : (
+                                                    Item
+                                                  )}{" "}
+                                              </span>
+                                            );
+                                          })}
+                                        </ListItemText>
+                                      ) : (
+                                          <ListItemText
+                                            variant=""
+                                            className={`product-subhead-list ${classes.fontgray}`}
+                                          >
+                                            <span
+                                              style={{
+                                                fontSize: "12px",
+                                                marginLeft: "10px",
+                                              }}
+                                            >
+                                              {" "}
+                                              {res.details}
+                                            </span>
+                                          </ListItemText>
+                                        )}
+                                    </Grid>
+                                  </Grid>
+                                ) : null}
+                              </>
+                            }
+                          </span>
+                        )
+                    )}
+                </div>
+              </>
+            </ExpansionPanel>
+          ) : null}
       </>
     );
   };
@@ -557,139 +561,139 @@ res.details.length === 0 ? (
     return (
       <>
         {val.header !== "Price Breakup" ||
-        (val.header === "Price Breakup" &&
-          val.namedetail[5].name === "Total" &&
-          Number(
-            val.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g, "")
-          ) > 15000) ? (
-          // <ExpansionPanel
-          //   style={{
-          //     boxShadow:
-          //     isSilver ? 'unset' :
-          //       "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
-          //     margin: "12px 0px",
-          //     padding: "0 5px 5px 5px"
-          //   }}
-          //   expanded={expanded === val.header}
-          //   onChange={this.handle(val.header)}
-          //   key={val.name}
-          // >
-          <>
-            <div style={{ width: "100%" }}>
-              <Typography
-                variant="h1"
-                component="h1"
-                className={`subtabs-smrt ${
-                  _isSilver
+          (val.header === "Price Breakup" &&
+            val.namedetail[5].name === "Total" &&
+            Number(
+              val.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g, "")
+            ) > 15000) ? (
+            // <ExpansionPanel
+            //   style={{
+            //     boxShadow:
+            //     isSilver ? 'unset' :
+            //       "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
+            //     margin: "12px 0px",
+            //     padding: "0 5px 5px 5px"
+            //   }}
+            //   expanded={expanded === val.header}
+            //   onChange={this.handle(val.header)}
+            //   key={val.name}
+            // >
+            <>
+              <div style={{ width: "100%" }}>
+
+                <Typography
+                  variant="h1"
+                  component="h1"
+                  className={`subtabs-smrt ${_isSilver
                     ? ` ${classes.fontsSmallScreen}`
                     : classes.normalfonts
-                }`}
-              >
-                {val.header}
-              </Typography>
-              {/* <hr class="bottom-line border-line-"></hr> */}
-            </div>
+                    }`}
+                >
+                  {val.header}
+                </Typography>
+                {/* <hr class="bottom-line border-line-"></hr> */}
+              </div>
 
-            <div style={{ backgroundColor: "fafafa" }}>
-              {val.namedetail !== undefined &&
-                val.namedetail.map((res) => {
-                  return !Boolean(res.name && res.details) ? null : (
-                    <span>
-                      {
-                        <>
-                          {" "}
-                          {this.handleCheck(val.header, res.details) ? (
-                            <Grid
-                              container
-                              item
-                              xs={12}
-                              style={{
-                                padding: _isSilver ? 0 : "0px 10px 0px 10px ",
-                              }}
-                            >
-                              <Grid xs={4} lg={4}>
-                                <ListItemText
-                                  variant=""
-                                  className={`product-subhead ${classes.normalfonts}`}
-                                >
-                                  <span style={{ fontSize: "12px" }}>
-                                    {" "}
-                                    {res.name}
-                                  </span>
-                                </ListItemText>
-                              </Grid>
+              <div style={{ backgroundColor: "fafafa" }}>
+                {val.namedetail !== undefined &&
+                  val.namedetail.map((res) => {
+                    return !Boolean(res.name && res.details) ? null : (
+                      <span>
+                        {
+                          <>
+                            {" "}
+                            {this.handleCheck(val.header, res.details) ? (
                               <Grid
                                 container
                                 item
-                                xs={8}
-                                style={{ alignItems: "center" }}
+                                xs={12}
+                                style={{
+                                  padding: _isSilver ? 0 : "0px 10px 0px 10px ",
+                                }}
                               >
-                                {isArray(res.details) ? (
+                                <Grid xs={4} lg={4}>
                                   <ListItemText
                                     variant=""
-                                    className={`product-subhead-list ${classes.fontgray}`}
+                                    className={`product-subhead ${classes.normalfonts}`}
                                   >
-                                    {res.details.map((Item, Index) => {
-                                      return (
+                                    <span style={{ fontSize: "12px" }}>
+                                      {" "}
+                                      {res.name}
+                                    </span>
+                                  </ListItemText>
+                                </Grid>
+                                <Grid
+                                  container
+                                  item
+                                  xs={8}
+                                  style={{ alignItems: "center" }}
+                                >
+                                  {isArray(res.details) ? (
+                                    <ListItemText
+                                      variant=""
+                                      className={`product-subhead-list ${classes.fontgray}`}
+                                    >
+                                      {res.details.map((Item, Index) => {
+                                        return (
+                                          <span
+                                            style={{
+                                              fontSize: "12px",
+                                              textAlign: "left",
+                                            }}
+                                          >
+                                            {" "}
+                                            {val.header === "Price Breakup" ? (
+                                              res.name !== "GST" &&
+                                                Index === 0 &&
+                                                res.details[Index] !==
+                                                res.details[Index + 1] ? (
+                                                  <del>{Item}</del>
+                                                ) : (Index === 0 &&
+                                                  res.name !== "GST") ||
+                                                  (Index === 0 &&
+                                                    !this.handleGst(
+                                                      res.name,
+                                                      val.header,
+                                                      val.namedetail
+                                                    )) ? (
+                                                    ""
+                                                  ) : (
+                                                    Item
+                                                  )
+                                            ) : (
+                                                Item
+                                              )}{" "}
+                                          </span>
+                                        );
+                                      })}
+                                    </ListItemText>
+                                  ) : (
+                                      <ListItemText
+                                        variant=""
+                                        className={`product-subhead-list `}
+                                      >
                                         <span
                                           style={{
                                             fontSize: "12px",
-                                            textAlign: "left",
+                                            marginLeft: "10px",
                                           }}
                                         >
                                           {" "}
-                                          {val.header === "Price Breakup" ? (
-                                            res.name !== "GST" &&
-                                            Index === 0 &&
-                                            res.details[Index] !==
-                                              res.details[Index + 1] ? (
-                                              <del>{Item}</del>
-                                            ) : (Index === 0 &&
-                                                res.name !== "GST") ||
-                                              (Index === 0 &&
-                                                !this.handleGst(
-                                                  res.name,
-                                                  val.header,
-                                                  val.namedetail
-                                                )) ? (
-                                              ""
-                                            ) : (
-                                              Item
-                                            )
-                                          ) : (
-                                            Item
-                                          )}{" "}
+                                          {res.details}
                                         </span>
-                                      );
-                                    })}
-                                  </ListItemText>
-                                ) : (
-                                  <ListItemText
-                                    variant=""
-                                    className={`product-subhead-list `}
-                                  >
-                                    <span
-                                      style={{
-                                        fontSize: "12px",
-                                        marginLeft: "10px",
-                                      }}
-                                    >
-                                      {" "}
-                                      {res.details}
-                                    </span>
-                                  </ListItemText>
-                                )}
+                                      </ListItemText>
+                                    )}
+                                </Grid>
                               </Grid>
-                            </Grid>
-                          ) : null}
-                        </>
-                      }
-                    </span>
-                  );
-                })}
-            </div>
-          </>
-        ) : null}
+                            ) : null}
+                          </>
+                        }
+                      </span>
+                    );
+                  })}
+              </div>
+            </>
+          ) : null}
       </>
     );
   };
@@ -714,8 +718,8 @@ res.details.length === 0 ? (
             return val.namedetail.length === 0
               ? false
               : _isSilver
-              ? this.withExpandCollapse(val)
-              : this.withExpandCollapse(val);
+                ? this.withExpandCollapse(val)
+                : this.withExpandCollapse(val);
           })}
 
           {!_isSilver &&

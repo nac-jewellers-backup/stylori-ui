@@ -30,7 +30,7 @@ const styles = (theme) => ({
   productIcons2: {
     // backgroundColor: theme.palette.primary.main,
     // boxShadow: "6px 7px 6px rgba(208, 210, 211, 1)",
-    
+
     [theme.breakpoints.down("sm")]: {
       backgroundColor: theme.palette.secondary.dark2,
       boxShadow: "3px 4px 5px rgba(109,110,112,1)",
@@ -294,7 +294,7 @@ const styles = (theme) => ({
     // [theme.breakpoints.down("sm")]: {
     //   marginTop: "0 !important",
     // },
-    textAlign:"center"
+    textAlign: "center"
   },
   sharesilver: {
     margin: "auto",
@@ -307,7 +307,7 @@ const styles = (theme) => ({
       boxShadow: `0 12px 10px -7px ${theme.palette.secondary.main}`,
     },
   },
-  buttonHeightAddToCart:{
+  buttonHeightAddToCart: {
     width: "100% !important",
     height: "36px !important",
     fontSize: "0.9rem",
@@ -332,8 +332,8 @@ const styles = (theme) => ({
     },
   },
   buynowButtonSilver: {
-    width: "90% !important",
-    height: "45px !important",
+    width: "86% !important",
+    height: "42px !important",
     fontSize: "1.5rem",
     borderRadius: "unset !important",
     boxShadow: "8px 8px 5px rgba(208, 210, 211, 1)",
@@ -362,7 +362,7 @@ const styles = (theme) => ({
     height: "36px !important",
     width: "100% !important",
     color: "#fff",
-    boxShadow:"8px 8px 5px rgba(208, 210, 211, 1)",
+    boxShadow: "8px 8px 5px rgba(208, 210, 211, 1)",
     backgroundColor: `${theme.palette.primary.main} !important`,
     fontWeight: "700 !important",
     lineHeight: "1.42857143",
@@ -372,10 +372,10 @@ const styles = (theme) => ({
   rings_tabs_silver: {
     color: `${theme.palette.primary.main} !important`,
   },
-  iconSilver:{
-"& i":{
-  fontSize:"28px !important"
-}
+  iconSilver: {
+    "& i": {
+      fontSize: "28px !important"
+    }
   },
   searchButtonSilver2: {
     border: 0,
@@ -384,7 +384,7 @@ const styles = (theme) => ({
     height: "36px !important",
     width: "100% !important",
     color: "#fff",
-    boxShadow:"8px 8px 5px rgba(208, 210, 211, 1)",
+    boxShadow: "8px 8px 5px rgba(208, 210, 211, 1)",
     backgroundColor: `${theme.palette.secondary.dark2} !important`,
     fontWeight: "700 !important",
     lineHeight: "1.42857143",
@@ -440,7 +440,7 @@ const styles = (theme) => ({
       textTransform: "uppercase",
       color: theme.palette.primary.main,
       letterSpacing: "6px",
-      fontSize:'24px !important',
+      fontSize: '24px !important',
       fontWeight: "bold",
       [theme.breakpoints.up("sm")]: {
         marginBottom: 10,
@@ -495,11 +495,16 @@ const styles = (theme) => ({
       fontSize: "12px",
     },
   },
-  robotoBoldFont:{
-    fontFamily:'Roboto-bold, serif !important'
+  robotoBoldFont: {
+    fontFamily: 'Roboto-bold, serif !important'
   },
-  robotoBlack:{
-    fontFamily:'Roboto-black , serif !important'
+  robotoBlack: {
+    fontFamily: 'Roboto-black , serif !important'
+  },
+  margindek: {
+    [theme.breakpoints.up("lg")]: {
+      marginRight: -20
+    }
   }
 });
 export default styles;

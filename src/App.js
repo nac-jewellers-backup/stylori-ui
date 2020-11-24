@@ -42,7 +42,7 @@ class App extends React.Component {
     return (
       // <ApolloProvider client={client}>
       <CacheBuster>
-        {({ loading, isLatestVersion, refreshCacheAndReload }) => {
+        {({ loading, isLatestVersion, refreshCacheAndReload }) => { 
           if (loading) return null;
           if (!loading && !isLatestVersion) {
             // You can decide how and when you want to force reload
@@ -50,7 +50,7 @@ class App extends React.Component {
           }
           return (
             <ErrorBoundary>
-              <GlobalProvider>
+              <GlobalProvider> 
                 <Theme>
                   <NetworkProvider>
                     {/*productId="SP1135" <ProductDetailProvider productId="SP1135">*/}

@@ -11,7 +11,8 @@ import Netbanking from '../../assets/mouse.png'
 import cartoonFooter from '../../assets/cartoonFooter.png'
 import './Footer.css'
 import { pointer } from 'popmotion';
-import styloriLogo from "../../assets/Stylorilogo.svg"
+import stylorisilverlogo from "../../assets/Stylori Silver logo.svg";
+
 import { API_URL } from 'config'
 import { SnackBar } from 'components/snackbarAlert/SnackBar'
 const useStyles = makeStyles(theme => ({
@@ -122,7 +123,7 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function Footer(props) {
-    const {silver} = props
+    const { silver } = props
     const [state, setState] = React.useState('')
     const [open, setOpen] = React.useState(false)
     const [message, setMessage] = React.useState('')
@@ -326,7 +327,7 @@ export default function Footer(props) {
                     </Grid>
                 </Grid></>}
 
-          {!silver &&  <Hidden only={['sm', 'xs']}>
+            {!silver && <Hidden only={['sm', 'xs']}>
                 <Grid container item className={classes.topConatinerfooter} xs={12} >
                     <Container>
                         <Grid container>
@@ -386,7 +387,7 @@ export default function Footer(props) {
 
             <Hidden only={['lg', 'xl', 'md']} >
                 <Grid container item className={classes.topConatinerfooter} xs={12} >
-                   {!silver && <Grid container className={classes.messageconatainer}>
+                    {!silver && <Grid container className={classes.messageconatainer}>
                         <Grid item style={{ textAlign: 'left' }}>
                             Join the Stylori mailing list to stay up to date on the <br />
                             most exciting offers on your favourite jewellery collections
@@ -426,7 +427,7 @@ export default function Footer(props) {
                     </Grid>
                 </Grid>
             </Hidden>
-           {!silver && <Hidden only={['lg', 'xl', 'md']}>
+            {!silver && <Hidden only={['lg', 'xl', 'md']}>
 
                 <Grid container item xs={12} className={`${classes.colorWhite} ${classes.colorMain} ${classes.colorWhiteBorder}`} style={{ display: 'flex', justifyContent: 'left', padding: '15px', lineHeight: "16px" }}>
                     <Grid item xs={12}  >
@@ -536,7 +537,7 @@ export default function Footer(props) {
                         <Grid container item xl={3} lg={3} md={2} xs={12} sm={6} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: "flex-start" }}>
                             <Grid item xs={12} sm={12} md={12} lg={6}>
                                 <div onClick={() => { window.location.href = window.location.origin }}>
-                                    <img src={styloriLogo} alt="" style={{ width: "100%", cursor: "pointer" }} />
+                                    <img src={stylorisilverlogo} alt="" style={{ width: "100%", cursor: "pointer" }} />
                                 </div>
                                 <div style={{ color: '#808080', fontSize: '11px', justifyContent: "center", display: "flex" }}>Copyright © 2020 stylori.com</div>
                             </Grid>
@@ -604,7 +605,7 @@ export default function Footer(props) {
                                 POPULAR SEARCH TERMS:
                             </Typography>
                             <Typography style={{ fontSize: '11px', color: '#808080' }}>
-                                Gold Jewellery , Gold Ring, Diamond Ring, Platinum Jewellery, Diamond Jewellery, Women’s Rings, Gold Earrings, Diamond Earrings, Platinum Earrings, Jhumkas Earrings, Studs Earrings, Drops Earrings, Huggies Earring, Diamond Pendants, Gold Pendants, Casual Pendants, Fashion Pendants, Traditional Pendants, Modern Pendants, Office Pendants, Diamond Nose Pins, Gold Nose Pins, Ear Cuff Earrings, Engagement Rings, Couple Bands, Gold Bangles, Diamond Bangles, Classic Bangles, Oval Bangles, Bracelets, Diamond Bracelets, Gold Bracelets
+                                Silver Jewellery , Silver Ring, Women’s Rings, Silver Earrings, Jhumkas, Studs, Drops, Pendants, Silver Pendants, Nose Pins, Silver Nose Pins, Ear Cuff, Silver Bangles, Silver Bangles, Classic Bangles, Bangles, Bracelets, Silver Necklace, Bridal Accessories, Men's collection, Everyday Jewellery, Long Necklace, Short Necklace, Hair Ornaments, Choker, Odiyanam, anklets, oxidised jewellery, oxidised ornaments, Contemporary wear
                             </Typography>
                         </Grid>
                     </Container>

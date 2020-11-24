@@ -298,10 +298,10 @@ class ProductDetail extends Component {
             <Grid container spacing={isSilver ? 5 : 12} justify={isSilver ? 'space-between' : 'space-evenly'}>
               <Grid item xs={6}>
                 {
-                  isSilver ? 
-                  <ProductImageZoom data={this.props.data} isSilver={isSilver} customLimit={3}/>
-                  :
-                  <ProductImageZoom data={this.props.data} isSilver={isSilver}/>
+                  isSilver ?
+                    <ProductImageZoom data={this.props.data} isSilver={isSilver} customLimit={3} />
+                    :
+                    <ProductImageZoom data={this.props.data} isSilver={isSilver} />
                 }
               </Grid>
               <Grid item xs={6}>
@@ -313,13 +313,13 @@ class ProductDetail extends Component {
                     />
                   </div>
                 ) : (
-                  <div className="overall-box priceecontainer">
-                    <ProductPrice
-                      data={this.props.data}
-                      wishlist={this.props.wishlistdata}
-                    />
-                  </div>
-                )}
+                    <div className="overall-box priceecontainer">
+                      <ProductPrice
+                        data={this.props.data}
+                        wishlist={this.props.wishlistdata}
+                      />
+                    </div>
+                  )}
                 {!isSilver && (
                   <div className="overall-box priceecontainer">
                     <PriceTabs data={this.props.data} isSilver={isSilver} />
@@ -330,10 +330,10 @@ class ProductDetail extends Component {
                     <PriceBuynow data={this.props.data} isSilver={isSilver} />
                   </div>
                 ) : (
-                  <div className="overall-box priceecontainer">
-                    <PriceBuynow data={this.props.data} isSilver={isSilver} />
-                  </div>
-                )}
+                    <div className="overall-box priceecontainer">
+                      <PriceBuynow data={this.props.data} isSilver={isSilver} />
+                    </div>
+                  )}
                 {isSilver && (
                   <Grid
                     item
@@ -411,17 +411,17 @@ class ProductDetail extends Component {
                 paddingRight: "5%",
                 paddingTop: "4%",
               }}
-            >
+            > 
               <Sublistcarousel
                 data={this.props.data}
                 isSilver={isSilver}
                 customLimit={4}
-                nextPreviousIconSize = {'3rem'}
+                nextPreviousIconSize={'3rem'}
               />
             </div>
           ) : (
-            <Sublistcarousel data={this.props.data} isSilver={isSilver} />
-          )}
+              <Sublistcarousel data={this.props.data} isSilver={isSilver} />
+            )}
           {isSilver && (
             <div
               style={{
@@ -454,14 +454,14 @@ class ProductDetail extends Component {
               />
             </div>
           ) : (
-            <RatingForm
-              // 0 0 0
-              data={this.props.data}
-              clear_rating={this.state.clear}
-              clear_rating_onchange={clear_rating}
-              isSilver={isSilver}
-            />
-          )}
+              <RatingForm
+                // 0 0 0
+                data={this.props.data}
+                clear_rating={this.state.clear}
+                clear_rating_onchange={clear_rating}
+                isSilver={isSilver}
+              />
+            )}
           {isSilver ? (
             <div
               style={{
@@ -469,14 +469,14 @@ class ProductDetail extends Component {
                 margin: "auto",
               }}
             >
-              <CustomerReviews rating={this.props.rating} isSilver={isSilver} />
+              {/* <CustomerReviews rating={this.props.rating} isSilver={isSilver} /> */}
             </div>
           ) : (
-            <CustomerReviews rating={this.props.rating} isSilver={isSilver} />
-          )}
+              <CustomerReviews rating={this.props.rating} isSilver={isSilver} />
+            )}
 
           <Grid item xs={12}>
-            <Footer silver={isSilver}/>
+            <Footer silver={isSilver} />
           </Grid>
         </Hidden>
 
@@ -528,7 +528,7 @@ class ProductDetail extends Component {
               customLimit={4}
             />
           </Grid>
-         {/* BUY TOGETHER - COMMENTED FOR SOME RESON DON'T REMOVE IT */}
+          {/* BUY TOGETHER - COMMENTED FOR SOME RESON DON'T REMOVE IT */}
           {/* <Grid item xs={12}>
             <Sublistcarousel
               data={this.props.data}
@@ -562,7 +562,7 @@ class ProductDetail extends Component {
           <Grid item xs={12}>
             {isSilver && (
               <Container>
-                <div style={{ marginTop: 20, marginBottom: 10, fontSize:20, color:"rgb(58,69,120)", fontWeight:"bold", letterSpacing:4, textAlign:"center" }}>
+                <div style={{ marginTop: 20, marginBottom: 10, fontSize: 20, color: "rgb(58,69,120)", fontWeight: "bold", letterSpacing: 4, textAlign: "center" }}>
                   {/* <ProductTitle
                     title={"SHOP BY TYPE"}
                     class={["silverPDPage", "silverPDPagehrline"]}
@@ -572,10 +572,12 @@ class ProductDetail extends Component {
                 </div>
 
                 <ProductModal
-                  shopByStyloriSilver={this.props.shopByStyloriSilver}
+                  shopByStyloriSilver={
+                    this.props?.shopByStyloriSilver?.length > 3 ? this.props?.shopByStyloriSilver?.slice(0, 4) : this.props?.shopByStyloriSilver}
                   allSeo={this.props.allSeo}
                   isShowDetails={true}
                   layout={6}
+                  homepagecollections={true}
                 />
               </Container>
             )}
@@ -592,7 +594,7 @@ class ProductDetail extends Component {
             <CustomerReviews data={this.props.data} />
           </Grid>
           <Grid item style={{ paddingBottom: "50px" }}>
-            <Footer silver={isSilver}/>
+            <Footer silver={isSilver} />
           </Grid>
         </Hidden>
         {/* </DocumentMeta> */}

@@ -16,6 +16,14 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: (props) => (props.width ? props.width : "auto"),
     borderRadius: "unset",
     boxShadow: "6px 7px 6px rgba(208, 210, 211, 1)",
+    [theme.breakpoints.up('sm')]: {
+      width: 450,
+    },
+  },
+  ls: {
+    [theme.breakpoints.up('sm')]: {
+      float: "right"
+    },
   },
   media: {
     // height:160,
@@ -50,12 +58,19 @@ const useStyles = makeStyles((theme) => ({
   container: {
     position: "relative",
     "&:hover": {
-      "& $image": {
-        filter:'blur(6px)'
-        // opacity: 0.3,
-      },
+      // "& $image": {
+      //   filter:'blur(6px)'
+      //   // opacity: 0.3,
+      // },
       "& $middle": {
         opacity: 1,
+        height: "100%",
+        width: "100%",
+        margin: "auto",
+        alignItems: "center",
+        justifyContent: "center",
+        display: "flex",
+        background: "rgb(126 124 124 / 68%)",
       },
     },
   },
@@ -63,9 +78,9 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: "#4CAF50",
     color: "white",
     fontSize: "1.7rem",
-    letterSpacing:3,
+    letterSpacing: 3,
     padding: "16px 32px",
-    textTransform:"uppercase"
+    textTransform: "uppercase"
   },
 }));
 
@@ -73,7 +88,7 @@ export default function MediaCard(props) {
   const classes = useStyles(props);
 
   return (
-    <Card className={classes.root}>
+    <Card className={`${(props.i % 2 === 0) && classes.ls} ${classes.root}`}>
       <CardActionArea>
         {/* <CardMedia
           className={classes.media}
@@ -95,7 +110,7 @@ export default function MediaCard(props) {
                   >
                     <img
                       src={injectUrl_url_construct(val)}
-                      style={{ width: "100%", height: "100%" }}
+                      // style={{ width: "100%", height: "100%" }}
                       className={classes.image}
                       onError={(e) => {
                         e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg`;

@@ -27,13 +27,13 @@ let settingSilver = {
 }
 
 // const _shopsProductss = (val) => {
-  
+
 //   // _shopsProducts = [
 //   //   {
 //   //     label: val.label,
 //   //     image:val.images[0].imageUrl,
 //   //   },
-  
+
 //   // ];
 //   _shopsProducts = Object.keys(val).map((data)=>{return {label:val[data].label, image:val[data].images}})
 // };
@@ -78,32 +78,33 @@ let settingSilver = {
 // };
 
 const ShopBy = (props) => {
-  
-//   React.useEffect(() => {
-//     _fetchProducts();
-//   }, []);
+
+  //   React.useEffect(() => {
+  //     _fetchProducts();
+  //   }, []);
   const { classes, isSilver } = props;
+  let v = isSilver ? (props?.shopByStyloriSilver?.length > 3 ? props?.shopByStyloriSilver?.slice(0, 4) : props?.shopByStyloriSilver) : props.shopByStyloriSilver
   return (
     // <Container style={{ padding: "0px 17px" }} maxWidth="lg">
-      <Grid container xs={12} justify="space-around">
-        <Grid container item xs={12} className={`${classes.shopByLabel} ${ isSilver ?  classes.silverLabel : ''}`} justify="center">
-          <Typography variant="body1" component="div">
-            Shop by
+    <Grid container xs={12} justify="space-around">
+      <Grid container item xs={12} className={`${classes.shopByLabel} ${isSilver ? classes.silverLabel : ''}`} justify="center">
+        <Typography variant="body1" component="div">
+          SHOP BY TYPE
           </Typography>
-        </Grid>
-        <Grid container item xs={12} className={classes.shopbyProductCardGrid}>
-          {props.shopByStyloriSilver.map((val) => {
-            return  val.image.length > 0 ?
-              <Grid item xs={6} className={classes.productCard}>
-                {/* showButton={true} height={400} */}
-                <ShopByCard label={val.label} image={val.image} settingSilver={settingSilver} height={400}  showtitle={true}/>
-              </Grid>
-              : 
-              null
-            
-          })}
-        </Grid>
       </Grid>
+      <Grid container item xs={12} className={classes.shopbyProductCardGrid}>
+        {v.map((val,i) => {
+          return val.image.length > 0 ?
+            <Grid item xs={6} className={classes.productCard}>
+              {/* showButton={true} height={400} */}
+              <ShopByCard label={val.label} image={val.image} i={i} settingSilver={settingSilver} height={450} showtitle={true} />
+            </Grid>
+            :
+            null
+
+        })}
+      </Grid>
+    </Grid>
   );
 };
 export default withStyles(styles)(ShopBy);

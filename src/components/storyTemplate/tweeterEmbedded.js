@@ -10,16 +10,9 @@ const TwitterContainer = () => {
     return (
         <section className="twitterContainer">
             <div className="twitter-embed">
-                <a
-                    className="twitter-timeline"
-                    data-theme="light"
-                    //   data-tweet-limit="1"
+                <a class="twitter-timeline"
                     data-height="420px"
-                    data-chrome="noheader nofooter noborders"
-                    href="https://twitter.com/StyloriLove"
-                >
-                    Tweets by StyloriLove
-        </a>
+                    href="https://twitter.com/StyloriSilver?ref_src=twsrc%5Etfw">Tweets by StyloriSilver</a>
             </div>
         </section>
     );

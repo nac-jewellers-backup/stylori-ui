@@ -116,9 +116,9 @@ class Component extends React.Component {
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
     return (
       <div className={`productLayoutRoot `} style={this.props.styles}>
-        {
+        { 
           <>
-            {this.props.loadingFilterCtx && <div className="overall-loaders"><div id="loadings"><img src="https://assets.stylori.com/images/static/loadingimg.gif" alt="loading..." /></div></div>}
+            {/* {this.props.loadingFilterCtx && <div className="overall-loaders"><div id="loadings"><img src="https://assets.stylori.com/images/static/loadingimg.gif" alt="loading..." /></div></div>} */}
             {this.props.loadingFilterCtx === false && <>
               <GridList cellHeight={"auto"} className={`productLayoutGridList ${classes.gridlistmain}`} cols={this.state.colSize} style={{ margin: '25px !important' }}>
                 {

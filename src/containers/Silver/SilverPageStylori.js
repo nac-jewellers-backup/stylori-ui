@@ -48,9 +48,10 @@ class HomeStylori extends React.Component {
         <Container maxWidth={"lg"}>
           <ProductModal data={this.props.data} allSeo={this.props.allSeo} />
           <MultipleSections
-            isHover={true}
+            isHover={true} 
             customerReviews={this.props.customerReviews}
             isGadgets={true}
+            {...this.props}
           />
           <Hidden smDown>
             <Feedes
@@ -91,7 +92,7 @@ class HomeStylori extends React.Component {
             <div
               style={{ position: "fixed", top: "50%", right: 0, zIndex: 20 }}
             >
-              <NeedHelp position="top" />
+              <NeedHelp position="top" /> 
             </div>
           </Hidden>
         </>
@@ -100,7 +101,7 @@ class HomeStylori extends React.Component {
   }
 }
 
-const Components = (props) => { 
+const Components = (props) => {
   const [state, setState] = React.useState({
     data: {},
     allSeo: {},

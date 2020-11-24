@@ -38,12 +38,12 @@ const RatingComponent = (props) => {
                     <Grid item xs={12} lg={12}>
                         <div className="rating-form ">
                           {!isSilver &&  <h5 className={`rating-form-head ${classes.normalfonts}`}>Rating</h5>}
-                          {isSilver &&  <h5 className={`rating-form-head ${classes.reviewandratingsmallScreen}`}>{'RATE & REVIEW'}</h5>}
-                            <Ratings ratings="starts-review" isSilver={isSilver} clear_rating={props.clear_rating} clear_rating_onchange={props.clear_rating_onchange} />
+                          {/* {isSilver &&  <h5 className={`rating-form-head ${classes.reviewandratingsmallScreen}`}>{'RATE & REVIEW'}</h5>} */}
+                            {/* <Ratings ratings="starts-review" isSilver={isSilver} clear_rating={props.clear_rating} clear_rating_onchange={props.clear_rating_onchange} /> */}
                             <label className='errtext'> {values.errortext.rateerr ? values.errortext.rateerr : ""}</label>
                         </div>
                     {!isSilver &&   <h6 className={`rating-form-head ${classes.normalfonts}`} style={{ marginBottom: "-3px" }}>Write your review</h6>}
-                        <Input
+                        {/* <Input
                             margin="normal"
                             variant="outlined"
                             type="text"
@@ -57,13 +57,13 @@ const RatingComponent = (props) => {
                             error={values.error && values.error.ratetitle ? true : false}
                         // required
                         InputProps={{ classes: {input: classes.rating__} }} 
-                        />
+                        /> */}
 
-                        <div style={{ width: "100%" }} className={`tool-tips ${classes.normalfonts}`} >Max 60 characters</div>
-                        <label className='errtext'> {values.errortext.ratetitle ? values.errortext.ratetitle : ""}</label>
+                        {/* <div style={{ width: "100%" }} className={`tool-tips ${classes.normalfonts}`} >Max 60 characters</div>
+                        <label className='errtext'> {values.errortext.ratetitle ? values.errortext.ratetitle : ""}</label> */}
 
 
-                        <div style={{ padding: "10px 0px" }} class={"bigText"}>
+                        {/* <div style={{ padding: "10px 0px" }} class={"bigText"}>
                             <TextField
                                 variant="outlined"
                                 type="text"
@@ -79,7 +79,7 @@ const RatingComponent = (props) => {
                                 error={values.error && values.error.ratemsg ? true : false}
                                 InputProps={{ classes: {input: classes.rating__} }} 
                             />
-                        </div>
+                        </div> */}
 
 
                         {/* <Input
@@ -97,13 +97,13 @@ const RatingComponent = (props) => {
                         onChange={e => handlers.handleChange('message', e.target.value)}
                         error={values.error && values.error.ratemsg ? true : false}
                     /> */}
-                        <div className={`tool-tips ${classes.normalfonts}`} >Max 250 characters</div>
-                        <label className='errtext'> {values.errortext.ratemsg ? values.errortext.ratemsg : ""}</label>
+                        {/* <div className={`tool-tips ${classes.normalfonts}`} >Max 250 characters</div>
+                        <label className='errtext'> {values.errortext.ratemsg ? values.errortext.ratemsg : ""}</label> */}
 
                         {/* <button type="submit" >rr</button> */}
                     </Grid>
 
-                    <Grid container spacing={12} style={{ marginTop: '20px' }}>
+                    {/* <Grid container spacing={12} style={{ marginTop: '20px' }}>
                         <Grid item xs={12} lg={12}>
                             <div style={{ float: "right" }}>
                                 <Button className={`form-reviews-mob ${classes.fontwhite} ${classes.normalcolorback} ${props.isSilver ? classes.normalcolorbackSilver : ''}`} type="submit">Submit</Button>
@@ -113,7 +113,7 @@ const RatingComponent = (props) => {
                                 }} className={`form-cancel-mob ${classes.normalfonts} ${classes.backgwhite} ${props.isSilver ? classes.normalcolorbackSilverCancel : ''}`} >Cancel</Button>
                             </div>
                         </Grid>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
             </form>
         </div>

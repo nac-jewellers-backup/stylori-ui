@@ -73,7 +73,7 @@ const styles = makeStyles(theme => ({
         // fontWeight:'bolder',
         fontSize:31,
         fontFamily:'Roboto-black , serif !important',
-        padding:'4px 0px 10px 0px',
+        // padding:'0px 0px 10px 0px',
         [theme.breakpoints.down('sm')]:{
             color: theme.palette.primary.main,
             padding:'0px',

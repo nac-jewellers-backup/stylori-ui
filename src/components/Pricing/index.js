@@ -7,9 +7,9 @@ import './pricing.css'
 export default function Pricing(props) {
     const classes = styles();
     let path = window.location.pathname.split('/').pop();
-    const {globalContext, quantity} = props
+    const { globalContext, quantity } = props
     const product_quantity = quantity ? quantity : 1
-    
+
     const isSilver = globalContext && globalContext.pathName ? true : false
     return (
         <div>
@@ -27,13 +27,22 @@ export default function Pricing(props) {
                     ""
             }
             {/*  */}
-            <Grid spacing={12} style={{ padding:isSilver ?  0  :   "0px 8px" }} container lg={12}>
+            <Grid spacing={12} style={{ padding: isSilver ? 0 : "0px 8px" }} container lg={12}>
 
                 {/* <Grid item xs={12}lg={12} >
                     <Grid spacing={12} container xs={12} lg={12} class="leftPadding"> */}
                 {window.location.pathname !== "/cart" && window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/checkout" ?
                     <Grid container>
-                        <Grid item >
+                        {isSilver && <Grid item xs={12} style={{ display: "flex", alignItems: "center" }} className={classes.alignval}>
+                            {props.price ?
+                                <Typography style={{ display: "flex", width: '100%', padding: 0 }} className={classes.resetpadd}>
+                                    <Typography style={{ fontSize: "22px" }} className={`${props.price != null & props.price !== '' ? '' : 'shine'} ${classes.colorMain} ${classes.h6FontSize} ${classes.offerPricePadding} ${isSilver ? classes.pricesilver : ''}`}
+                                    >
+                                        {props.offerPrice === props.price ? "" : <del>₹&nbsp;{Math.round(product_quantity * props.price)}</del>}
+                                    </Typography>
+                                </Typography> : ""}
+                        </Grid>}
+                        <Grid item xs={isSilver && 12}>
                             {props.offerPrice ?
                                 <Typography style={{ display: "flex", width: '100%' }}>
                                     <Typography
@@ -41,10 +50,19 @@ export default function Pricing(props) {
                                     >
                                         {/* ₹&nbsp;{props.offerPrice} */}
                                         {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(product_quantity * props.offerPrice)).replace(/^(\D+)/, '$1 ')}
+                                        &nbsp;
+                                        {((props?.offerDiscount) && (isSilver)) &&
+                                            <span style={{
+                                                color: "rgb(96, 97, 97)",
+                                                fontSize: "1.2rem",
+                                                marginTop: 8,
+                                                position: "absolute"
+                                            }}>
+                                                ({props?.offerDiscount})  </span>}
                                     </Typography>
                                 </Typography> : ""}
                         </Grid>
-                        <Grid item style={{ display: "flex", alignItems: "center" }} className={classes.alignval}>
+                        {!isSilver && <Grid item style={{ display: "flex", alignItems: "center" }} className={classes.alignval}>
                             {props.price ?
                                 <Typography style={{ display: "flex", width: '100%' }} className={classes.resetpadd}>
                                     <Typography style={{ fontSize: "0.9rem" }}
@@ -53,7 +71,8 @@ export default function Pricing(props) {
                                         {props.offerPrice === props.price ? "" : <del>₹&nbsp;{Math.round(product_quantity * props.price)}</del>}
                                     </Typography>
                                 </Typography> : ""}
-                        </Grid></Grid>
+                        </Grid>}
+                    </Grid>
                     :
                     <>
                         <Grid item
@@ -87,7 +106,7 @@ export default function Pricing(props) {
                         </Grid></>
                 }
 
-               {!props.withOffer && <Grid item xs={12}
+                {!props.withOffer && <Grid item xs={12}
                     lg={window.location.pathname.split("-")[0] !== "/account" && window.location.pathname !== "/cart" && window.location.pathname.split("-")[1] !== "allorders" ? 6 : 6} style={{ display: "flex", alignItems: "normal" }}>
                     <Hidden smDown>
                         {

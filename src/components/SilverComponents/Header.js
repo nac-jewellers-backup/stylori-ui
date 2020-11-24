@@ -63,13 +63,13 @@ class Header extends Component {
       selected1: "",
       Checked: false,
       load: false,
-      listHoverItem: "Jewellery", 
+      listHoverItem: "Jewellery",
       headerHeightprops: 0,
       anchorOne: null,
       targetopen: null,
       targetopenSubmenu: null,
       subTitleData: null,
-      subTitleAllData:null,
+      subTitleAllData: null,
       subMenuTarget: null,
       anchorEl: false,
       opened: false,
@@ -88,7 +88,7 @@ class Header extends Component {
     } else {
       window.addEventListener("scroll", this.scrolling);
       if (!this.state.Menuopen && !this.state.submenuOpen) {
-        return this.setState({ subTitleData: "", subMenuTarget: "", subTitleAllData:"" });
+        return this.setState({ subTitleData: "", subMenuTarget: "", subTitleAllData: "" });
       } else {
         return true;
       }
@@ -144,14 +144,15 @@ class Header extends Component {
   scrolling = () => {
     if (
       document.getElementsByTagName("body")[0].scrollHeight >
-        window.innerHeight &&
+      window.innerHeight &&
       window.scrollY > 0
     ) {
       if (document.getElementById("topNav")) {
         document.getElementById("topNav").style.marginTop = "-69px";
       }
       if (document.getElementById("logoImage")) {
-        document.getElementById("logoImage").style.width = "80%";
+        document.getElementById("logoImage").style.width = "100%";
+        document.getElementById("logoImage").style.height = "70px";
       }
     } else {
       if (document.getElementById("topNav")) {
@@ -159,6 +160,7 @@ class Header extends Component {
       }
       if (document.getElementById("logoImage")) {
         document.getElementById("logoImage").style.width = "100%";
+        document.getElementById("logoImage").style.height = "120px";
       }
     }
   };
@@ -167,7 +169,7 @@ class Header extends Component {
       subMenuTarget: target,
       subTitleData: data,
       submenuOpen: true,
-      subTitleAllData:alldata
+      subTitleAllData: alldata
     });
   };
   handleExpandClickClose = () => {
@@ -192,21 +194,21 @@ class Header extends Component {
 
     const isSilver =
       this.props.globalContext &&
-      this.props.globalContext.Globalctx &&
-      this.props.globalContext.Globalctx.pathName &&
-      this.props.globalContext.Globalctx.pathName
+        this.props.globalContext.Globalctx &&
+        this.props.globalContext.Globalctx.pathName &&
+        this.props.globalContext.Globalctx.pathName
         ? this.props.globalContext.Globalctx.pathName
         : false;
     // const id = open ? true : undefined;
-    console.log(subheader , selected1 ,subheader[selected1], subheader?.[selected1] &&  '&&&&&')
+    console.log(subheader, selected1, subheader[selected1], subheader?.[selected1] && '&&&&&')
     return (
       <div
         style={{ top: "0", zIndex: "1000", width: "100%" }}
         className={
           window.location.pathname === "/cart" ||
-          b[1] === "paymentsuccess" ||
-          b[1] === "paymentfail" ||
-          window.location.pathname === "/checkout"
+            b[1] === "paymentsuccess" ||
+            b[1] === "paymentfail" ||
+            window.location.pathname === "/checkout"
             ? "headerTopcard"
             : "headerTop"
         }
@@ -229,9 +231,9 @@ class Header extends Component {
                   spacing={12}
                   className={
                     window.location.pathname === "/cart" ||
-                    b[1] === "paymentsuccess" ||
-                    b[1] === "paymentfail" ||
-                    window.location.pathname === "/checkout"
+                      b[1] === "paymentsuccess" ||
+                      b[1] === "paymentfail" ||
+                      window.location.pathname === "/checkout"
                       ? "cartheader"
                       : "cartcardrelese"
                   }
@@ -244,37 +246,37 @@ class Header extends Component {
                     alignItems="center"
                   >
                     {this.props.paymentSucces ||
-                    window.location.pathname === "/cart" ||
-                    window.location.pathname === "/checkout" ? (
-                      <Grid item xs={3} className="logoImgHeader1">
-                        <div
-                          id="logoDiv1"
-                          className="logoDiv1"
-                          onClick={() => {
-                            window.location.href = isSilver
-                              ? "/styloriSilver"
-                              : "/";
-                          }}
-                          style={{ cursor: "pointer" }}
-                        >
-                          <img
-                            id="logoImage"
-                            className={`imges`}
-                            src={isSilver ? stylorisilverlogo : styloriLogo}
-                            onLoad={() => this.setState({ load: true })}
-                            onLoadedData={() => this.setState({ load: false })}
-                            alt=""
-                            style={{
-                              transition: "height 0.2s",
-                              height: isSilver ? 70 : 60,
-                              marginTop: "9px",
+                      window.location.pathname === "/cart" ||
+                      window.location.pathname === "/checkout" ? (
+                        <Grid item xs={3} className="logoImgHeader1">
+                          <div
+                            id="logoDiv1"
+                            className="logoDiv1"
+                            onClick={() => {
+                              window.location.href = isSilver
+                                ? "/styloriSilver"
+                                : "/";
                             }}
-                          />
-                        </div>
-                      </Grid>
-                    ) : (
-                      ""
-                    )}
+                            style={{ cursor: "pointer" }}
+                          >
+                            <img
+                              id="logoImage"
+                              className={`${isSilver && "silverlogo"} ${"imges"}`}
+                              src={isSilver ? stylorisilverlogo : styloriLogo}
+                              onLoad={() => this.setState({ load: true })}
+                              onLoadedData={() => this.setState({ load: false })}
+                              alt=""
+                              style={{
+                                // transition: "height 0.2s",
+                                height: isSilver ? 120 : 60,
+                                marginTop: "9px",
+                              }}
+                            />
+                          </div>
+                        </Grid>
+                      ) : (
+                        ""
+                      )}
                     <Grid
                       container
                       item
@@ -323,35 +325,35 @@ class Header extends Component {
                               ></i>
                               <span className="tooltip-slog">
                                 {Boolean(localStorage.getItem("user_id")) &&
-                                !Boolean(localStorage.getItem("gut_lg"))
+                                  !Boolean(localStorage.getItem("gut_lg"))
                                   ? "Account"
                                   : "Login"}
                               </span>
                             </span>
                           </div>
                         ) : (
-                          // <img className="icons-header-sizes" src={usershape}/>
+                            // <img className="icons-header-sizes" src={usershape}/>
 
-                          <div className="tooltip ">
-                            <span
-                              className={`MuiBadge-root ${classes.badgecolor}`}
-                              onClick={() =>
-                                (window.location.pathname = "/login")
-                              }
-                            >
-                              <i
-                                style={{ fontSize: "20px" }}
-                                class={`fa fa-user  ${classes.iconFafa}`}
-                              ></i>
-                              <span className="tooltip-slog">
-                                {Boolean(localStorage.getItem("user_id")) &&
-                                !Boolean(localStorage.getItem("gut_lg"))
-                                  ? "Account"
-                                  : "Login"}
+                            <div className="tooltip ">
+                              <span
+                                className={`MuiBadge-root ${classes.badgecolor}`}
+                                onClick={() =>
+                                  (window.location.pathname = "/login")
+                                }
+                              >
+                                <i
+                                  style={{ fontSize: "20px" }}
+                                  class={`fa fa-user  ${classes.iconFafa}`}
+                                ></i>
+                                <span className="tooltip-slog">
+                                  {Boolean(localStorage.getItem("user_id")) &&
+                                    !Boolean(localStorage.getItem("gut_lg"))
+                                    ? "Account"
+                                    : "Login"}
+                                </span>
                               </span>
-                            </span>
-                          </div>
-                        )}
+                            </div>
+                          )}
                         {/* <Popover
                                                     id="simple-popper"
                                                     open={openPopover}
@@ -388,20 +390,20 @@ class Header extends Component {
                                                 </Popover> */}
                         <div className="tooltip">
                           <Badge
-                            className={classes.badgeColor}
+                            className={`${isSilver && classes.badgeColorsilver} ${!isSilver && classes.badgeColor}`}
                             badgeContent={
-                              this.props.wishlist &&
-                              this.props.wishlist.wishlistdata &&
-                              this.props.wishlist.wishlistdata.nodes &&
-                              this.props.wishlist.wishlistdata.nodes.length > 0
+                              !isSilver && (this.props.wishlist &&
+                                this.props.wishlist.wishlistdata &&
+                                this.props.wishlist.wishlistdata.nodes &&
+                                this.props.wishlist.wishlistdata.nodes.length > 0
                                 ? this.props.wishlist &&
-                                  this.props.wishlist.wishlistdata &&
-                                  this.props.wishlist.wishlistdata.nodes &&
-                                  this.props.wishlist.wishlistdata.nodes.length
-                                : "0"
+                                this.props.wishlist.wishlistdata &&
+                                this.props.wishlist.wishlistdata.nodes &&
+                                this.props.wishlist.wishlistdata.nodes.length
+                                : "0")
                             }
-                            // wishlist_count
-                            // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
+                          // wishlist_count
+                          // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                           >
                             <i
                               style={{ fontSize: "18px" }}
@@ -420,19 +422,19 @@ class Header extends Component {
 
                         <div className="tooltip">
                           <Badge
-                            className={classes.badgeColor}
+                            className={`${isSilver && classes.badgeColorsilver} ${!isSilver && classes.badgeColor}`}
                             badgeContent={
                               this.props.cart_count &&
-                              this.props.cart_count.data &&
-                              this.props.cart_count.data.allTransSkuLists &&
-                              this.props.cart_count.data.allTransSkuLists.nodes
-                                .length > 0
+                                this.props.cart_count.data &&
+                                this.props.cart_count.data.allTransSkuLists &&
+                                this.props.cart_count.data.allTransSkuLists.nodes
+                                  .length > 0
                                 ? this.props.cart_count &&
-                                  this.props.cart_count.data &&
-                                  this.props.cart_count.data.allTransSkuLists &&
-                                  this.props.cart_count.data.allTransSkuLists
-                                    .nodes.length
-                                : "0"
+                                this.props.cart_count.data &&
+                                this.props.cart_count.data.allTransSkuLists &&
+                                this.props.cart_count.data.allTransSkuLists
+                                  .nodes.length
+                                : (!isSilver && "0")
                               // this.props && this.props.cart_count && this.props.cart_count.length
                             }
                           >
@@ -445,7 +447,7 @@ class Header extends Component {
                                 className="tooltip-s"
                                 style={{
                                   color: isSilver
-                                    ? "rgba(218, 185, 122, 1)"
+                                    ? "rgb(6, 171, 159)"
                                     : "#d51f63",
                                 }}
                               >
@@ -460,147 +462,147 @@ class Header extends Component {
                 </Grid>
               </Container>
               {window.location.pathname === "/cart" ||
-              window.location.pathname === "/checkout" ||
-              b[1] === "paymentsuccess" ||
-              b[1] === "paymentfail" ? (
-                ""
-              ) : (
-                <Grid container id="headerContainer">
-                  <Container maxWidth="lg">
-                    <Grid
-                      container
-                      spacing={12}
-                      id="fullcontainer"
-                      className="setHeight"
-                    >
-                      <Grid item xs={3} className="logoImgHeader1">
-                        <div
-                          id="logoDiv1"
-                          className="logoDiv1"
-                          onClick={() => {
-                            window.location.href = isSilver
-                              ? "/styloriSilver"
-                              : "/";
-                          }}
-                          style={{ cursor: "pointer" }}
-                        >
-                          <img
-                            id="logoImage"
-                            className={`imges`}
-                            src={isSilver ? stylorisilverlogo : styloriLogo}
-                            onLoad={() => this.setState({ load: true })}
-                            onLoadedData={() => this.setState({ load: false })}
-                            alt=""
-                            style={{
-                              transition: "height 0.2s",
-                              height: isSilver ? 70 : 60,
-                            }}
-                          />
-                        </div>
-                      </Grid>
+                window.location.pathname === "/checkout" ||
+                b[1] === "paymentsuccess" ||
+                b[1] === "paymentfail" ? (
+                  ""
+                ) : (
+                  <Grid container id="headerContainer">
+                    <Container maxWidth="lg">
                       <Grid
                         container
-                        item
-                        xs={9}
-                        id={"containerTitle"}
-                        justify="flex-end"
-                        alignItems="center"
-                        className={`header-navbar-list1 ${classes.headerNavbarList}`}
-                        onMouseLeave={() => {
-                          this.setState({
-                            Menuopen: false,
-                            Checked: false,
-                            targetopen: null,
-                          });
-                        }}
+                        spacing={12}
+                        id="fullcontainer"
+                        className="setHeight"
                       >
-                        <Grid item xs={12} className="titleTop" id={"titleTop"}>
-                          <nav>
-                            {menuListHeader.map((listName) => {
-                              let urlsmall = listName.title.toLowerCase();
-                              return (
-                                <a
-                                  href={listName.url}
-                                  className={
-                                    window.location.pathname === listName.url
-                                      ? classes.seletectedMenu
-                                      : classes.menuListCursor
+                        <Grid item xs={3} className="logoImgHeader1">
+                          <div
+                            id="logoDiv1"
+                            className="logoDiv1"
+                            onClick={() => {
+                              window.location.href = isSilver
+                                ? "/styloriSilver"
+                                : "/";
+                            }}
+                            style={{ cursor: "pointer" }}
+                          >
+                            <img
+                              id="logoImage"
+                              className={`${isSilver && "silverlogo"} ${"imges"}`}
+                              src={isSilver ? stylorisilverlogo : styloriLogo}
+                              onLoad={() => this.setState({ load: true })}
+                              onLoadedData={() => this.setState({ load: false })}
+                              alt=""
+                              style={{
+                                transition: "height 0.2s",
+                                height: isSilver ? 120 : 60,
+                              }}
+                            />
+                          </div>
+                        </Grid>
+                        <Grid
+                          container
+                          item
+                          xs={9}
+                          id={"containerTitle"}
+                          justify="flex-end"
+                          alignItems="center"
+                          className={`header-navbar-list1 ${classes.headerNavbarList}`}
+                          onMouseLeave={() => {
+                            this.setState({
+                              Menuopen: false,
+                              Checked: false,
+                              targetopen: null,
+                            });
+                          }}
+                        >
+                          <Grid item xs={12} className="titleTop" id={"titleTop"}>
+                            <nav>
+                              {menuListHeader.map((listName) => {
+                                let urlsmall = listName.title.toLowerCase();
+                                return (
+                                  <a
+                                    href={listName.url}
+                                    className={
+                                      window.location.pathname === listName.url
+                                        ? classes.seletectedMenu
+                                        : classes.menuListCursor
+                                    }
+                                    onMouseOver={(event) => {
+                                      this.setState({
+                                        Menuopen: true,
+                                        submenuOpen: false,
+                                        subTitleData: null,
+                                        subTitleAllData: null,
+                                        targetopen: event.currentTarget,
+                                        listHoverItem: listName.title.replace(
+                                          / +/g,
+                                          ""
+                                        ),
+                                      });
+                                    }}
+                                  >
+                                    {listName.title === "VISIT STYLORI.COM" ? <img src="https://assets.stylori.com/images/favicon.gif" width="25px" height="25px" alt="stylori" /> : listName.title}
+                                  </a>
+                                );
+                              })}
+                            </nav>
+                            {this.state.Menuopen &&
+                              menuLists[this.state.listHoverItem] ? (
+                                <HeaderHoverMenuItem
+                                  tabdata={this.props.data}
+                                  listHoverItem={
+                                    menuLists[this.state.listHoverItem]
                                   }
+                                  isSilver={isSilver}
                                   onMouseOver={(event) => {
                                     this.setState({
                                       Menuopen: true,
-                                      submenuOpen: false,
-                                      subTitleData: null,
-                                      subTitleAllData:null,
-                                      targetopen: event.currentTarget,
-                                      listHoverItem: listName.title.replace(
-                                        / +/g,
-                                        ""
-                                      ),
+                                      targetopenSubmenu: event.currentTarget,
                                     });
                                   }}
-                                >
-                                  {listName.title === "VISIT STYLORI.COM" ? <img src="https://assets.stylori.com/images/favicon.gif" width="25px" height="25px" alt="stylori"/> : listName.title}
-                                </a>
-                              );
-                            })}
-                          </nav>
-                          {this.state.Menuopen &&
-                          menuLists[this.state.listHoverItem] ? (
-                            <HeaderHoverMenuItem
-                              tabdata={this.props.data}
-                              listHoverItem={
-                                menuLists[this.state.listHoverItem] 
-                              }
-                              isSilver={isSilver}
-                              onMouseOver={(event) => {
-                                this.setState({
-                                  Menuopen: true,
-                                  targetopenSubmenu: event.currentTarget,
-                                });
-                              }}
-                              opened={this.state.Menuopen}
-                              targetopened={this.state.targetopen}
-                              submenuDetails={this.submenuDetails}
-                              onMouseLeave={() => {
-                                this.setState({ targetopen: null });
-                              }}
-                            />
-                          ) : (
-                            ""
-                          )}
-                          {this.state.Menuopen && this.state.submenuOpen ? (
-                            <HeaderHoversubMenu
-                              opened={this.state.submenuOpen}
-                              isSilver={isSilver}
-                              onMouseOver={(event) => {
-                                this.setState({ submenuOpen: true });
-                              }}
-                              listHoverItem={
-                                menuLists[this.state.listHoverItem]
-                              }
-                              data={this.state.subTitleData}
-                              allData={this.state.subTitleAllData}
-                              subMenuTarget={this.subMenuTarget}
-                              targetopened={this.state.subMenuTarget}
-                              onMouseLeave={() => {
-                                this.setState({
-                                  submenuOpen: false,
-                                  subTitleData: "",
-                                  subTitleAllData:"",
-                                  subMenuTarget: "",
-                                });
-                              }}
-                            />
-                          ) : (
-                            ""
-                          )}
+                                  opened={this.state.Menuopen}
+                                  targetopened={this.state.targetopen}
+                                  submenuDetails={this.submenuDetails}
+                                  onMouseLeave={() => {
+                                    this.setState({ targetopen: null });
+                                  }}
+                                />
+                              ) : (
+                                ""
+                              )}
+                            {this.state.Menuopen && this.state.submenuOpen ? (
+                              <HeaderHoversubMenu
+                                opened={this.state.submenuOpen}
+                                isSilver={isSilver}
+                                onMouseOver={(event) => {
+                                  this.setState({ submenuOpen: true });
+                                }}
+                                listHoverItem={
+                                  menuLists[this.state.listHoverItem]
+                                }
+                                data={this.state.subTitleData}
+                                allData={this.state.subTitleAllData}
+                                subMenuTarget={this.subMenuTarget}
+                                targetopened={this.state.subMenuTarget}
+                                onMouseLeave={() => {
+                                  this.setState({
+                                    submenuOpen: false,
+                                    subTitleData: "",
+                                    subTitleAllData: "",
+                                    subMenuTarget: "",
+                                  });
+                                }}
+                              />
+                            ) : (
+                                ""
+                              )}
+                          </Grid>
                         </Grid>
                       </Grid>
-                    </Grid>
-                  </Container>
-                </Grid>
-              )}
+                    </Container>
+                  </Grid>
+                )}
               <Grid container id="headerContainerTop"></Grid>
             </AppBar>
           </div>
@@ -711,21 +713,21 @@ class Header extends Component {
                                 ></i>
                               </span>
                             ) : (
-                              <span
-                                onClick={() =>
-                                  (window.location.pathname = "/login")
-                                }
-                              >
-                                <i
-                                  class={`fa fa-user  ${classes.iconFafa}`}
-                                  style={{
-                                    display: "flex",
-                                    alignItems: "flex-end",
-                                    justifyContent: "center",
-                                  }}
-                                ></i>
-                              </span>
-                            )}
+                                <span
+                                  onClick={() =>
+                                    (window.location.pathname = "/login")
+                                  }
+                                >
+                                  <i
+                                    class={`fa fa-user  ${classes.iconFafa}`}
+                                    style={{
+                                      display: "flex",
+                                      alignItems: "flex-end",
+                                      justifyContent: "center",
+                                    }}
+                                  ></i>
+                                </span>
+                              )}
                             {/* <Popover
                                                             id="simple-popper"
                                                             open={openPopover}
@@ -764,18 +766,19 @@ class Header extends Component {
                             {/* </div>
                                                         </Popover> */}
                             <Badge
+                              className={`${isSilver && classes.badgeColorsilver}`}
                               badgeContent={
-                                this.props.wishlist &&
-                                this.props.wishlist.wishlistdata &&
-                                this.props.wishlist.wishlistdata.nodes &&
-                                this.props.wishlist.wishlistdata.nodes.length >
+                                !isSilver && (this.props.wishlist &&
+                                  this.props.wishlist.wishlistdata &&
+                                  this.props.wishlist.wishlistdata.nodes &&
+                                  this.props.wishlist.wishlistdata.nodes.length >
                                   0
                                   ? this.props.wishlist &&
-                                    this.props.wishlist.wishlistdata &&
-                                    this.props.wishlist.wishlistdata.nodes &&
-                                    this.props.wishlist.wishlistdata.nodes
-                                      .length
-                                  : "0"
+                                  this.props.wishlist.wishlistdata &&
+                                  this.props.wishlist.wishlistdata.nodes &&
+                                  this.props.wishlist.wishlistdata.nodes
+                                    .length
+                                  : "0")
                               }
                               color="secondary"
                             >
@@ -791,20 +794,21 @@ class Header extends Component {
                               ></i>
                             </Badge>
                             <Badge
+                              className={`${isSilver && classes.badgeColorsilver}`}
                               style={{ fontSize: "9px" }}
                               badgeContent={
                                 this.props.cart_count &&
-                                this.props.cart_count.data &&
-                                this.props.cart_count.data.allTransSkuLists &&
-                                this.props.cart_count.data.allTransSkuLists
-                                  .nodes.length > 0
+                                  this.props.cart_count.data &&
+                                  this.props.cart_count.data.allTransSkuLists &&
+                                  this.props.cart_count.data.allTransSkuLists
+                                    .nodes.length > 0
                                   ? this.props.cart_count &&
-                                    this.props.cart_count.data &&
-                                    this.props.cart_count.data
-                                      .allTransSkuLists &&
-                                    this.props.cart_count.data.allTransSkuLists
-                                      .nodes.length
-                                  : "0"
+                                  this.props.cart_count.data &&
+                                  this.props.cart_count.data
+                                    .allTransSkuLists &&
+                                  this.props.cart_count.data.allTransSkuLists
+                                    .nodes.length
+                                  : (!isSilver && "0")
 
                                 // localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"
                                 // this.props.cart_count? this.props.cart_count.length:"0"
@@ -813,7 +817,7 @@ class Header extends Component {
                             >
                               <a href="/cart">
                                 <i
-                                  style={{ fontSize: "15px !important" }}
+                                  style={{ fontSize: "15px !important", zIndex: 1000 }}
                                   class={`fa fa-shopping-cart  ${classes.iconFafa}`}
                                 ></i>
                               </a>
@@ -893,9 +897,8 @@ class Header extends Component {
                       <ListItem
                         button
                         key={row.name}
-                        className={`${
-                          isSilver ? classes.drawerList1 : `drawer-list1`
-                        }`}
+                        className={`${isSilver ? classes.drawerList1 : `drawer-list1`
+                          }`}
                       >
                         <ListItemText
                           onClick={() => {
@@ -921,20 +924,18 @@ class Header extends Component {
                           {Jewellery[row.name] !== undefined ? (
                             row.name === selected ? (
                               <i
-                                class={`fa fa-caret-up drawer-arrow ${
-                                  isSilver ? classes.drawerArrowSilver : ""
-                                }`}
+                                class={`fa fa-caret-up drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""
+                                  }`}
                               ></i>
                             ) : (
-                              <i
-                                class={`fa fa-caret-down drawer-arrow ${
-                                  isSilver ? classes.drawerArrowSilver : ""
-                                }`}
-                              ></i>
-                            )
+                                <i
+                                  class={`fa fa-caret-down drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""
+                                    }`}
+                                ></i>
+                              )
                           ) : (
-                            ""
-                          )}
+                              ""
+                            )}
                         </div>
                       </ListItem>
                       {selected === row.name &&
@@ -974,19 +975,21 @@ class Header extends Component {
                                 }
                               >
                                 {selected1 ===
-                                Jewellery[selected][row2].name ? (
-                                  <i
-                                    class={`fa fa-caret-up drawer-arrow ${
-                                      isSilver ? classes.drawerArrowSilver : ""
-                                    }`}
-                                  ></i>
-                                ) : (
-                                  <i
-                                    class={`fa fa-caret-down drawer-arrow ${
-                                      isSilver ? classes.drawerArrowSilver : ""
-                                    }`}
-                                  ></i>
-                                )}
+                                  Jewellery[selected][row2].name ? (
+                                    <span>
+                                      {(Jewellery[selected][row2].name !== "NEW ARRIVALS" && Jewellery[selected][row2].name !== "RINGS" && Jewellery[selected][row2].name !== "BEST SELLERS" && Jewellery[selected][row2].name !== "BANGLE") && <i
+                                        class={`fa fa-caret-up drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""
+                                          }`}
+                                      ></i>}
+                                    </span>
+                                  ) : (
+                                    <span>
+                                      {(Jewellery[selected][row2].name !== "NEW ARRIVALS" && Jewellery[selected][row2].name !== "RINGS" && Jewellery[selected][row2].name !== "BEST SELLERS" && Jewellery[selected][row2].name !== "BANGLE") && <i
+                                        class={`fa fa-caret-down drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""
+                                          }`}
+                                      ></i>}
+                                    </span>
+                                  )}
                               </div>
                             </ListItem>
                             {selected1 === Jewellery[selected][row2].name && (
@@ -1002,29 +1005,28 @@ class Header extends Component {
                                 {Boolean(subheader && selected1 && subheader?.[selected1]) ?
                                   //   subheader[selected1].name
                                   isSilver ?
-                                  <Grid
-                                  container
-                                  style={{
-                                    // width: "450px",
-                                    // maxHeight: "450px",
-                                    overflowY: "auto",
-                                    background: "#fff",
-                                    padding: "10px",
-                                    zIndex: "10000",
-                                  }}
-                                >
-                                 {
-                                 
-                                 subheader[selected1]?.name.map((row, i) => {
-                                    
-                                      return (
-                                    row.img ?
-                                        <Grid item xs={6} 
-                                        style={{marginBottom:30}}
-                                          onClick={() => {
-                                          window.location.href = row.url
-                                        }}>
-                                        {/* <Grid
+                                    <Grid
+                                      container
+                                      style={{
+                                        // width: "450px",
+                                        // maxHeight: "450px",
+                                        overflowY: "auto",
+                                        background: "#fff",
+                                        padding: "10px",
+                                        zIndex: "10000",
+                                      }}
+                                    >
+                                      {
+
+                                        subheader[selected1]?.name.map((row, i) => {
+                                          return (
+                                            row.img ?
+                                              <Grid item xs={6}
+                                                style={{ marginBottom: 30 }}
+                                                onClick={() => {
+                                                  window.location.href = row.url
+                                                }}>
+                                                {/* <Grid
                                           container
                                           className={classes.imgcont}
                                           onClick={() => {
@@ -1036,181 +1038,178 @@ class Header extends Component {
                                           alignItems="center"
                                           style={{ cursor: "pointer" }}
                                         > */}
-                                          <Grid
-                                            item
-                                            style={{
-                                              justifyContent: "center",
-                                              alignContent: "center",
-                                              display: "flex",
-                                            }}
-                                          >
-                                              <img
-                                                style={{
-                                                  width: "55%",
-                                                  margin: "auto",
-                                                  height: "100%",
-                                                }}
-                                                src={
-                                                  row.img
-                                                }
-                                              />
-                                          </Grid>
-                                          <Grid
-                                            item
-                                            style={{ margin: "auto" }}
-                                          >
-                                            <Typography
-                                              style={{
-                                                margin: "auto",
-                                                textAlign: "center",
-                                                color:"rgb(96, 97, 97)",
-                                                fontWeight:"bold",
-                                                fontSize:'0.6rem'
-                                              }}
-                                              
-                                              // className={
-                                              //   classes.listedItemsvalue
-                                              // }
-                                            >
-                                              {row?.name?.toUpperCase()}
-                                            </Typography>
-                                          </Grid>
-                                        </Grid>
-                                          :
-                                          // <Grid container>
-                                          //       {["UNDER 1500","1500 - 3000", "3000 - 5000", "5000 - 7000", "Above 7000"].map(val=>{
-                                          //           return(
-                                                  <Grid item xs={6} onClick={() => {
-                                                    window.location.href = row.url
-                                                  }}>
-                                                            <ListItem>
+                                                <Grid
+                                                  item
+                                                  style={{
+                                                    justifyContent: "center",
+                                                    alignContent: "center",
+                                                    display: "flex",
+                                                  }}
+                                                >
+                                                  <img
+                                                    style={{
+                                                      width: "55%",
+                                                      margin: "auto",
+                                                      height: "100%",
+                                                    }}
+                                                    src={
+                                                      row.img
+                                                    }
+                                                  />
+                                                </Grid>
+                                                <Grid
+                                                  item
+                                                  style={{ margin: "auto" }}
+                                                >
+                                                  <Typography
+                                                    style={{
+                                                      margin: "auto",
+                                                      textAlign: "center",
+                                                      color: "rgb(96, 97, 97)",
+                                                      fontWeight: "bold",
+                                                      fontSize: '0.6rem'
+                                                    }}
+
+                                                  // className={
+                                                  //   classes.listedItemsvalue
+                                                  // }
+                                                  >
+                                                    {row?.name?.toUpperCase()}
+                                                  </Typography>
+
+                                                </Grid>
+
+                                              </Grid>
+                                              :
+
+                                              <>
+                                                {row?.name && <Grid item xs={6} onClick={() => {
+                                                  window.location.href = row.url
+                                                }}>
+                                                  <ListItem>
+                                                    <ListItemText>
+                                                      <Typography
+                                                        variant="body1"
+                                                        style={{
+                                                          boxShadow: "rgb(204, 204, 204) 3px 3px 2px",
+                                                          border: "1px solid rgb(204, 204, 204)",
+                                                          padding: 5,
+                                                          color: "rgb(96, 97, 97)",
+                                                          fontSize: '0.8rem',
+                                                          fontWeight: "bold",
+                                                          textAlign: "center",
+                                                        }}
+                                                      >
+
+                                                        {row?.name?.toUpperCase()}
+                                                      </Typography>
+                                                    </ListItemText>
+                                                  </ListItem>
+                                                </Grid>}
+                                                {row?.style &&
+                                                  <Grid >
+                                                    <Divider
+                                                      style={{
+                                                        width: "100%",
+                                                        backgroundColor:
+                                                          "rgb(6, 171, 159)",
+                                                        margin: '5px 0'
+                                                      }}
+                                                    />
+                                                    <List className={classes.root}>
+                                                      <ListItem>
                                                         <ListItemText>
-                                                        <Typography
-                                                          variant="body1"
-                                                          style={{
-                                                            boxShadow:"rgb(204, 204, 204) 3px 3px 2px",
-                                                            border:"1px solid rgb(204, 204, 204)",
-                                                            padding:5,
-                                                            color: "rgb(96, 97, 97)",
-                                                            fontSize:'0.8rem',
-                                                            fontWeight:"bold",
-                                                            textAlign:"center",
-                                                          }}
-                                                        >
-                                                          {row.name}
-                                                        </Typography>
-                                                      </ListItemText>
-                                                    </ListItem>
+                                                          <Typography
+                                                            variant="body1"
+                                                            style={{
+                                                              color: "rgb(6, 171, 159)",
+                                                              fontSize: '0.8rem'
+                                                            }}
+                                                          >
+                                                            SHOP BY STYLE </Typography>
+                                                        </ListItemText>
+                                                      </ListItem>
+                                                      <Grid container>
+                                                        {row?.style?.map(v => {
+                                                          return <Grid item xs={6}>
+                                                            <ListItem onClick={() => {
+                                                              window.location.href = v.url
+                                                            }}>
+                                                              <ListItemAvatar>
+                                                                <Avatar
+                                                                  alt="a"
+                                                                  src={v.img}
+                                                                />
+                                                              </ListItemAvatar>
+                                                              <ListItemText primary={v.name} style={{ color: "rgb(96, 97, 97)" }} />
+                                                            </ListItem>
+                                                          </Grid>
+                                                        })}
                                                       </Grid>
-                                                    // )
-                                                // })}
-                                                // {/* </Grid> */}
-                                          //   {/* <Divider
-                                          //     style={{
-                                          //       width: "100%",
-                                          //       backgroundColor:
-                                          //         "rgb(6, 171, 159)",
-                                          //         margin:'5px 0'
-                                          //     }}
-                                          //   />
-                                          // <List className={classes.root}>
-                                          //   <ListItem>
-                                          //     <ListItemText>
-                                          //       <Typography
-                                          //         variant="body1"
-                                          //         style={{
-                                          //           color: "rgb(6, 171, 159)",
-                                          //           fontSize:'0.8rem'
-                                          //         }}
-                                          //       >
-                                          //         SHOP BY STYLE
-                                          //       </Typography>
-                                          //     </ListItemText>
-                                          //   </ListItem>
-                                          //   <ListItem>
-                                          //     <ListItemAvatar>
-                                          //       <Avatar
-                                          //         alt="a"
-                                          //         src="https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SE0048/275X275/HOVER-SE0048-2W.webp"
-                                          //       />
-                                          //     </ListItemAvatar>
-                                          //     <ListItemText primary="Everyday" style={{color:"rgb(96, 97, 97)"}}/>
-                                          //   </ListItem>
-                                          //   <ListItem>
-                                          //     <ListItemAvatar>
-                                          //       <Avatar
-                                          //         alt="a"
-                                          //         src="https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SE0048/275X275/HOVER-SE0048-2W.webp"
-                                          //       />
-                                          //     </ListItemAvatar>
-                                          //     <ListItemText primary="Traditional" style={{color:"rgb(96, 97, 97)"}}/>
-                                          //   </ListItem>
-                                          //   <ListItem>
-                                          //     <ListItemAvatar>
-                                          //       <Avatar
-                                          //         alt="a"
-                                          //         src="https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SE0163/275X275/HOVER-SE0163-2Y.webp"
-                                          //       />
-                                          //     </ListItemAvatar>
-                                          //     <ListItemText primary="Folklore" style={{color:"rgb(96, 97, 97)"}}/>
-                                          //   </ListItem>
-                                          // </List>
-                                          // <Divider
-                                          //     style={{
-                                          //       width: "100%",
-                                          //       backgroundColor:
-                                          //         "rgb(6, 171, 159)",
-                                          //         margin:'5px 0'
-                                          //     }}
-                                          //   />
-                                          //     <List className={classes.root}>
-                                          //   <ListItem>
-                                          //     <ListItemText>
-                                          //       <Typography
-                                          //         variant="body1"
-                                          //         style={{
-                                          //           color: "rgb(6, 171, 159)",
-                                          //           fontSize:'0.8rem'
-                                          //         }}
-                                          //       >
-                                          //         SHOP BY PRICE
-                                          //       </Typography>
-                                          //     </ListItemText>
-                                          //   </ListItem>
-                                          //       <Grid container>
-                                          //       {["UNDER 1500","1500 - 3000", "3000 - 5000", "5000 - 7000", "Above 7000"].map(val=>{
-                                          //           return(
-                                          //         <Grid item xs={4}>
-                                          //                   <ListItem>
-                                          //               <ListItemText>
-                                          //               <Typography
-                                          //                 variant="body1"
-                                          //                 style={{
-                                          //                   boxShadow:"rgb(204, 204, 204) 3px 3px 2px",
-                                          //                   border:"1px solid rgb(204, 204, 204)",
-                                          //                   padding:5,
-                                          //                   color: "rgb(96, 97, 97)",
-                                          //                   fontSize:'0.8rem'
-                                          //                 }}
-                                          //               >
-                                          //                 {val}
-                                          //               </Typography>
-                                          //             </ListItemText>
-                                          //           </ListItem>
-                                          //             </Grid>
-                                          //           )
-                                          //       })}
-                                          //       </Grid>
-                                          //   </List>
-                                        //  */}
-                                        // {/* </Grid> */}
-                                      );
-                                    
-                                  })}
-                                </Grid>
-                                  :
-                                  subheader[selected1].name.map((row, i) => {
-                                
+                                                    </List>
+                                                  </Grid>
+                                                }
+                                                {row?.TextPrice &&
+                                                  <Grid >
+                                                    <Divider
+                                                      style={{
+                                                        width: "100%",
+                                                        backgroundColor:
+                                                          "rgb(6, 171, 159)",
+                                                        // margin: '5px 0'
+                                                      }}
+                                                    />
+                                                    <List className={classes.root}>
+                                                      <ListItem>
+                                                        <ListItemText>
+                                                          <Typography
+                                                            variant="body1"
+                                                            style={{
+                                                              color: "rgb(6, 171, 159)",
+                                                              fontSize: '0.8rem'
+                                                            }}
+                                                          >
+                                                            SHOP BY PRICE </Typography>
+                                                        </ListItemText>
+                                                      </ListItem>
+                                                      <Grid container>
+                                                        {row?.TextPrice?.map(v => {
+                                                          return <Grid item xs={6}>
+                                                            <ListItem onClick={() => {
+                                                              window.location.href = v.url
+                                                            }}>
+                                                              <ListItemText>
+                                                                <Typography
+                                                                  variant="body1"
+                                                                  style={{
+                                                                    boxShadow: "rgb(204, 204, 204) 3px 3px 2px",
+                                                                    border: "1px solid rgb(204, 204, 204)",
+                                                                    padding: 5,
+                                                                    color: "rgb(96, 97, 97)",
+                                                                    fontSize: '0.8rem',
+                                                                    textAlign: "center"
+                                                                  }}
+                                                                >
+                                                                  {v?.name}
+                                                                </Typography>
+                                                              </ListItemText>
+                                                            </ListItem>
+                                                          </Grid>
+                                                        })}
+                                                      </Grid>
+                                                    </List>
+                                                  </Grid>
+                                                }
+                                              </>
+                                          );
+
+                                        })}
+
+                                    </Grid>
+                                    :
+                                    subheader[selected1].name.map((row, i) => {
+                                      debugger
+
                                       return (
                                         <>
                                           <ListItem
@@ -1232,10 +1231,10 @@ class Header extends Component {
                                           </ListItem>
                                         </>
                                       );
-                                
-                                  })
-                                :
-                                null
+
+                                    })
+                                  :
+                                  null
                                 }
                               </>
                             )}
@@ -1265,63 +1264,63 @@ class Header extends Component {
                       </ListItem>
                     </>
                   ) : (
-                    <>
-                      <ListItem button className="drawer-list12">
-                        <ListItemText
-                          onClick={() =>
-                            (window.location.href = `/account${"-profile"}`)
-                          }
-                        >
-                          <Typography className="list-items1">
-                            VIEW PROFILE
+                      <>
+                        <ListItem button className="drawer-list12">
+                          <ListItemText
+                            onClick={() =>
+                              (window.location.href = `/ account${"-profile"}`)
+                            }
+                          >
+                            <Typography className="list-items1">
+                              VIEW PROFILE
                           </Typography>
-                        </ListItemText>
-                      </ListItem>
-                      <ListItem button className="drawer-list12">
-                        <ListItemText
-                          onClick={() =>
-                            (window.location.href = `/account${"-wishlist"}`)
-                          }
-                        >
-                          <Typography className="list-items1">
-                            MY WHISLIST
+                          </ListItemText>
+                        </ListItem>
+                        <ListItem button className="drawer-list12">
+                          <ListItemText
+                            onClick={() =>
+                              (window.location.href = `/account${"-wishlist"}`)
+                            }
+                          >
+                            <Typography className="list-items1">
+                              MY WHISLIST
                           </Typography>
-                        </ListItemText>
-                      </ListItem>
-                      <ListItem button className="drawer-list12">
-                        <ListItemText
-                          onClick={() =>
-                            (window.location.href = `/account${"-allorders"}`)
-                          }
-                        >
-                          <Typography className="list-items1">
-                            ALL ORDERS
+                          </ListItemText>
+                        </ListItem>
+                        <ListItem button className="drawer-list12">
+                          <ListItemText
+                            onClick={() =>
+                              (window.location.href = `/account${"-allorders"}`)
+                            }
+                          >
+                            <Typography className="list-items1">
+                              ALL ORDERS
                           </Typography>
-                        </ListItemText>
-                      </ListItem>
-                      <ListItem button className="drawer-list12">
-                        <ListItemText>
-                          <Typography className="list-items1">
-                            CONTACT US
+                          </ListItemText>
+                        </ListItem>
+                        <ListItem button className="drawer-list12">
+                          <ListItemText>
+                            <Typography className="list-items1">
+                              CONTACT US
                           </Typography>
-                        </ListItemText>
-                      </ListItem>
-                      <ListItem button className="drawer-list12">
-                        <ListItemText
-                          onClick={() => {
-                            localStorage.clear();
-                            sessionStorage.clear();
-                            window.location.reload();
-                            window.location.pathname = "/login";
-                          }}
-                        >
-                          <Typography className="list-items1">
-                            LOGOUT
+                          </ListItemText>
+                        </ListItem>
+                        <ListItem button className="drawer-list12">
+                          <ListItemText
+                            onClick={() => {
+                              localStorage.clear();
+                              sessionStorage.clear();
+                              window.location.reload();
+                              window.location.pathname = "/login";
+                            }}
+                          >
+                            <Typography className="list-items1">
+                              LOGOUT
                           </Typography>
-                        </ListItemText>
-                      </ListItem>
-                    </>
-                  )}
+                          </ListItemText>
+                        </ListItem>
+                      </>
+                    )}
                 </List>
               </div>
             </ClickAwayListener>
@@ -1347,12 +1346,12 @@ export default withStyles(styles)((props) => {
 
   let GLobalCtx = React.useContext(GlobalContext);
 
-    const isSilver =
+  const isSilver =
     GLobalCtx.Globalctx &&
-    GLobalCtx.Globalctx.pathName &&
-    GLobalCtx.Globalctx.pathName
-        ? GLobalCtx.Globalctx.pathName
-        : false;
+      GLobalCtx.Globalctx.pathName &&
+      GLobalCtx.Globalctx.pathName
+      ? GLobalCtx.Globalctx.pathName
+      : false;
 
   const { mapped } = useDummyRequest(isSilver ? headerDataStyloriSilver : headerDataSilver);
   if (Object.keys(mapped).length === 0) return "";

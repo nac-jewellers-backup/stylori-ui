@@ -24,11 +24,11 @@ export const useStyles = makeStyles(theme => ({
         textAlign: 'center',
         color: theme.palette.secondary.dark2,
         // fontFamily: 'Robot-black',
-        letterSpacing: '5px',
+        letterSpacing: '8px',
         fontSize: '18px',
-        fontWeight:"bold",
+        fontWeight: "bold",
         [theme.breakpoints.only('xs')]: {
-            letterSpacing: '1px',
+            letterSpacing: '6px',
             fontSize: '16px'
         },
 
@@ -45,10 +45,10 @@ export const useStyles = makeStyles(theme => ({
     hrlineright: {
         textAlign: 'left'
     },
-    silverPDPage:{
+    silverPDPage: {
         color: theme.palette.secondary.main,
     },
-    silverPDPagehrline:{
+    silverPDPagehrline: {
         border: `1px solid ${theme.palette.secondary.main}`,
     }
 }))

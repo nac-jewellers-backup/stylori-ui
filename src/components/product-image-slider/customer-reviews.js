@@ -123,7 +123,7 @@ class CustomerReviews extends React.Component {
                     </Grid>
                 </Hidden>
                   :
-                <Hidden smDown>
+                <Hidden smDown> 
                     <Container style={{ paddingLeft: "15px", paddingRight: "15px", paddingTop: "5px" }}>
                         <div style={{ padding: " 20px 0px 0px 0px !important" }}>
                             <div className="reviews-header">
