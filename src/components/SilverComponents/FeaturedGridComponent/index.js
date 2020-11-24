@@ -24,8 +24,11 @@ export const FeaturedGridComponent = (props) => {
                 <Hidden smDown>
                     <Slideshow dataCarousel={props.data[0].settings} >
                         {props.data[0].images.map((val, Index) => {
-                            return <a onClick={() => window.location.href = props.imgs && "/silver-jewellery-dmudra"} style={{ cursor: "pointer" }}>
-                                <img src={val.web} className={`${classes.img}`} />
+                            return <a onClick={() => window.location.href = props.imgs && "/silver-jewellery-dmudra"} 
+                            style={{ cursor: "pointer" }}>
+                                <img src={val.web} className={`${classes.img}`} 
+                            style={{ cursor: "pointer" }}
+                            />
                             </a>
                         }
 
