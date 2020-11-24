@@ -50,7 +50,7 @@ export default function Pricing(props) {
                                     >
                                         {/* ₹&nbsp;{props.offerPrice} */}
                                         {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(product_quantity * props.offerPrice)).replace(/^(\D+)/, '$1 ')}
-                                        {props.offerDiscount}&nbsp;
+                                        &nbsp;
                                         {((props?.offerDiscount) && (isSilver)) &&
                                             <span style={{
                                                 color: "rgb(96, 97, 97)",
@@ -58,7 +58,7 @@ export default function Pricing(props) {
                                                 marginTop: 8,
                                                 position: "absolute"
                                             }}>
-                                                ({props?.offerDiscount}% off)  </span>}
+                                                ({props?.offerDiscount})  </span>}
                                     </Typography>
                                 </Typography> : ""}
                         </Grid>

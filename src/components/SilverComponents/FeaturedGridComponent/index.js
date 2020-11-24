@@ -12,32 +12,39 @@ export const FeaturedGridComponent = (props) => {
         <Grid container xs={12} className={classes.containerset} style={{}} justify="center">
             <Grid item xs={12} style={{ boxShadow: '10px 10px 5px #ccc' }}>
                 <Hidden mdUp>
-                <Slideshow dataCarousel={props.data[0].settings} >
-                    {props.data[0].images.map((val, Index) =>
-                        <img src={val.mob} className={`${classes.img}`} />
-                    )}
-                </Slideshow>
+                    <Slideshow dataCarousel={props.data[0].settings} >
+                        {props.data[0].images.map((val, Index) => {
+                            return <img
+                                onClick={() => window.location.href = props.imgs && "/silver-jewellery-dmudra"} style={{ cursor: "pointer" }}
+                                src={val.mob} className={`${classes.img}`} />
+                        }
+                        )}
+                    </Slideshow>
                 </Hidden>
                 <Hidden smDown>
-                <Slideshow dataCarousel={props.data[0].settings} >
-                    {props.data[0].images.map((val, Index) =>
-                        <img src={val.web} className={`${classes.img}`} />
-                    )}
-                </Slideshow>
+                    <Slideshow dataCarousel={props.data[0].settings} >
+                        {props.data[0].images.map((val, Index) => {
+                            return <a onClick={() => window.location.href = props.imgs && "/silver-jewellery-dmudra"} style={{ cursor: "pointer" }}>
+                                <img src={val.web} className={`${classes.img}`} />
+                            </a>
+                        }
+
+                        )}
+                    </Slideshow>
                 </Hidden>
 
             </Grid>
             <Hidden smDown>
-            <Grid container >
-                <Grid container item xs={12} style={{marginTop:50}} justify={"center"}>
-                <Grid item xs={6}>
-                <Gadgets isSilver={true}/>
+                <Grid container >
+                    <Grid container item xs={12} style={{ marginTop: 50 }} justify={"center"}>
+                        <Grid item xs={6}>
+                            <Gadgets isSilver={true} />
+                        </Grid>
+                    </Grid>
                 </Grid>
-                </Grid>
-            </Grid>
             </Hidden>
-            
 
-        </Grid>
+
+        </Grid >
     );
 }

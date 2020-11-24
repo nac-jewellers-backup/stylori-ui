@@ -86,7 +86,8 @@ const MultipleSections = (props) => {
             )}
             {title == "FEATURED" && (
               <FeaturedGridComponent 
-              data={FeaturedCarousel} 
+              imgs={true}
+              data={FeaturedCarousel}  
               />
             )}
             {title == "TESTIMONIALS" && (

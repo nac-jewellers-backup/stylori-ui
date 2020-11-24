@@ -177,7 +177,7 @@ class ProductDetails extends React.Component {
                                                       <span style={{ fontSize: "12px" }}>
                                                         {" "}
                                                         {_isSilver ? (
-                                                          <span style={{ fontSize: _isSilver && 14 }}>{res.name}</span>
+                                                          <span style={{ fontSize: _isSilver && 13 }}>{res.name}</span>
                                                         ) : (
                                                             res.name
                                                           )}
@@ -311,9 +311,10 @@ class ProductDetails extends React.Component {
                                                                 {" "}
                                                                 {_isSilver ? (
                                                                   <span style={{
-                                                                    marginTop: 0, fontSize: _isSilver && 14,
+                                                                    marginTop: 0, 
                                                                     marginLeft:-8,
                                                                     paddingLeft:-8,
+                                                                    fontSize:13
                                                                   }}>{res.details}</span>
                                                                 ) : (
                                                                     res.details

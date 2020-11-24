@@ -502,8 +502,8 @@ const styles = (theme) => ({
     fontFamily: 'Roboto-black , serif !important'
   },
   margindek: {
-    [theme.breakpoints.up("md")]: {
-      marginRight: -20
+    [theme.breakpoints.up("lg")]: {
+      marginRight: -34
     }
   }
 });

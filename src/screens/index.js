@@ -1,5 +1,5 @@
 import Stylori from './Stylori';
 
-export * from './Loading';
+// export * from './Loading';
 
 export { Stylori }

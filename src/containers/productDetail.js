@@ -469,7 +469,7 @@ class ProductDetail extends Component {
                 margin: "auto",
               }}
             >
-              <CustomerReviews rating={this.props.rating} isSilver={isSilver} />
+              {/* <CustomerReviews rating={this.props.rating} isSilver={isSilver} /> */}
             </div>
           ) : (
               <CustomerReviews rating={this.props.rating} isSilver={isSilver} />
