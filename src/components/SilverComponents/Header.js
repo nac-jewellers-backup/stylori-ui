@@ -448,7 +448,7 @@ class Header extends Component {
                                 className="tooltip-s"
                                 style={{
                                   color: isSilver
-                                    ? "rgba(218, 185, 122, 1)"
+                                    ? "rgb(6, 171, 159)"
                                     : "#d51f63",
                                 }}
                               >

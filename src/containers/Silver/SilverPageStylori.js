@@ -48,7 +48,7 @@ class HomeStylori extends React.Component {
         <Container maxWidth={"lg"}>
           <ProductModal data={this.props.data} allSeo={this.props.allSeo} />
           <MultipleSections
-            isHover={true}
+            isHover={true} 
             customerReviews={this.props.customerReviews}
             isGadgets={true}
             {...this.props}

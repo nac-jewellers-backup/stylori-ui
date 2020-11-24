@@ -173,8 +173,12 @@ class ProductDetails extends React.Component {
                                                           ? classes.normalFontsColor
                                                           : ""
                                                         }`}
+                                                      style={{ margin: _isSilver && 0 }}
                                                     >
-                                                      <span style={{ fontSize: "12px" }}>
+                                                      <span style={{
+                                                        fontSize: "12px"
+                                                        , lineHeight: _isSilver && 0
+                                                      }}>
                                                         {" "}
                                                         {_isSilver ? (
                                                           <span style={{ fontSize: _isSilver && 13 }}>{res.name}</span>
@@ -303,7 +307,7 @@ class ProductDetails extends React.Component {
                                                             {
                                                               <span
                                                                 style={{
-                                                                  fontSize:!_isSilver&& "12px",
+                                                                  fontSize: !_isSilver && "12px",
                                                                   marginLeft: "10px",
                                                                   marginTop: 0,
                                                                 }}
@@ -311,10 +315,10 @@ class ProductDetails extends React.Component {
                                                                 {" "}
                                                                 {_isSilver ? (
                                                                   <span style={{
-                                                                    marginTop: 0, 
-                                                                    marginLeft:-8,
-                                                                    paddingLeft:-8,
-                                                                    fontSize:13
+                                                                    marginTop: 0,
+                                                                    marginLeft: -8,
+                                                                    paddingLeft: -8,
+                                                                    fontSize: 13,
                                                                   }}>{res.details}</span>
                                                                 ) : (
                                                                     res.details
