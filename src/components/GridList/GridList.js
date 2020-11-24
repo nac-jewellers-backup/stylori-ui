@@ -187,6 +187,7 @@ export default function ImageGridList(props) {
                 alt=""
                 src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.webp?_=1605092387781"
                 style={{ width: "100%", height: "100%" }}
+                onClick={() => window.location.href = "https://www.stylori.com/jewellery/short%20necklace/Charming-Kasu%20Silver%20Necklace?sku_id=1000965"}
               />
               <div className="overlay1">
                 <div className={"collectionDataSilverSEOflex"}>
@@ -309,7 +310,8 @@ export default function ImageGridList(props) {
                   <img
                     alt=""
                     src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.webp?_=1605092387781"
-                    style={{ width: "100%", height: "100%", cursor: "unset" }}
+                    style={{ width: "100%", height: "100%", cursor: "pointer" }}
+                    onClick={() => window.location.href = "https://www.stylori.com/jewellery/short%20necklace/Charming-Kasu%20Silver%20Necklace?sku_id=1000965"}
                   />
                 </div>
                 {/* <h2 className="next-price">
