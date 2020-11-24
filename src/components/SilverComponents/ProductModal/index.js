@@ -137,10 +137,22 @@ const ProductModal = (props) => {
 
 
   let ___data = [
-    { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Everyday.jpg", title: "Everyday", url: "silver-jewellery-everyday" },
-    { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Folklore.jpg", title: "Folklore", url: "silver-jewellery-folklore" },
-    { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Contemporary.jpg", title: 'Contemporary', url: "silver-jewellery-contemporary" },
-    { img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Traditional.jpg", title: "Traditional", url: "silver-jewellery-traditional" }
+    {
+      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Everyday.jpg",
+      title: "Everyday", url: "silver-jewellery-everyday"
+    },
+    {
+      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Folklore.jpg",
+      title: "Folklore", url: "silver-jewellery-folklore"
+    },
+    {
+      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Contemporary.jpg",
+      title: 'Contemporary', url: "silver-jewellery-contemporary"
+    },
+    {
+      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Traditional.jpg",
+      title: "Traditional", url: "silver-jewellery-traditional"
+    }
   ].map(val => {
     return ({
       "img": val.img,
@@ -170,7 +182,9 @@ const ProductModal = (props) => {
                   xl={5}
                   className={`${shopByStyloriSilver ? classes.shopBySilver : "ProductGrids"
                     } ${classes.ProductGrids}`}
-                // justify={"center"}
+                  // justify={"center"}
+                  // onClick={() => window.location.href = tile.url}
+                  style={{ cursor: "pointer" }}
                 >
                   {/* <Grid item xs={10} sm={10} md={8} lg={12} xl={12}> */}
                   <Hidden smDown>

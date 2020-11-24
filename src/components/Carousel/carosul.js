@@ -210,6 +210,7 @@ class Component extends React.Component {
             className={
               "subslider-carousel" + hovereffect ? "hovereffectSilver" : ""
             }
+            onClick={() => window.location.href = val?.url}
           >
             <img
               src={isInjectUrl ? injectUrl_url_construct(val.img) : val.img}
@@ -218,7 +219,9 @@ class Component extends React.Component {
               alt=""
               onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
             />
-            <div className="overlay1" >
+            <div className="overlay1"
+              style={{ cursor: val?.url && "pointer" }}
+            >
               {collectionDataSilverSEO ?
                 <div className={`collectionDataSilverSEOflex ${'fontSizebig'}`} >
                   <div style={{ margin: 'auto' }}>
@@ -387,17 +390,20 @@ class Component extends React.Component {
             )
           })
           :
-          <img
-            src={isInjectUrl ? injectUrl_url_construct(hoverlist.img) : hoverlist.img}
-            className="subslider-carousel-img-Silver img-responsive"
-            style={{
-              width: "auto !important",
-              height: "auto",
-              display: "block !important  ",
-            }}
-            alt=""
-            onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
-          />}
+          <a
+            href={hoverlist?.url}
+          >
+            <img
+              src={isInjectUrl ? injectUrl_url_construct(hoverlist.img) : hoverlist.img}
+              className="subslider-carousel-img-Silver img-responsive"
+              style={{
+                width: "auto !important",
+                height: "auto",
+                display: "block !important  ",
+              }}
+              alt=""
+              onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
+            /></a>}
         {/* <div class="overlay1">
           <div style={{paddingTop:'40%'}}>
         <h2 className='next-price'>{hoverlist.title}</h2><br />

@@ -151,7 +151,8 @@ class Header extends Component {
         document.getElementById("topNav").style.marginTop = "-69px";
       }
       if (document.getElementById("logoImage")) {
-        document.getElementById("logoImage").style.width = "80%";
+        document.getElementById("logoImage").style.width = "100%";
+        document.getElementById("logoImage").style.height = "70px";
       }
     } else {
       if (document.getElementById("topNav")) {
@@ -159,6 +160,7 @@ class Header extends Component {
       }
       if (document.getElementById("logoImage")) {
         document.getElementById("logoImage").style.width = "100%";
+        document.getElementById("logoImage").style.height = "120px";
       }
     }
   };
@@ -391,7 +393,7 @@ class Header extends Component {
                           <Badge
                             className={`${isSilver && classes.badgeColorsilver} ${!isSilver && classes.badgeColor}`}
                             badgeContent={
-                              this.props.wishlist &&
+                              !isSilver && (this.props.wishlist &&
                                 this.props.wishlist.wishlistdata &&
                                 this.props.wishlist.wishlistdata.nodes &&
                                 this.props.wishlist.wishlistdata.nodes.length > 0
@@ -399,7 +401,7 @@ class Header extends Component {
                                 this.props.wishlist.wishlistdata &&
                                 this.props.wishlist.wishlistdata.nodes &&
                                 this.props.wishlist.wishlistdata.nodes.length
-                                : "0"
+                                : "0")
                             }
                           // wishlist_count
                           // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
@@ -433,7 +435,7 @@ class Header extends Component {
                                 this.props.cart_count.data.allTransSkuLists &&
                                 this.props.cart_count.data.allTransSkuLists
                                   .nodes.length
-                                : "0"
+                                : (!isSilver && "0")
                               // this.props && this.props.cart_count && this.props.cart_count.length
                             }
                           >
@@ -494,7 +496,7 @@ class Header extends Component {
                               alt=""
                               style={{
                                 transition: "height 0.2s",
-                                height: isSilver ? 140 : 60,
+                                height: isSilver ? 120 : 60,
                               }}
                             />
                           </div>
@@ -765,9 +767,9 @@ class Header extends Component {
                             {/* </div>
                                                         </Popover> */}
                             <Badge
-                            className={`${isSilver && classes.badgeColorsilver}`}
-                            badgeContent={
-                                this.props.wishlist &&
+                              className={`${isSilver && classes.badgeColorsilver}`}
+                              badgeContent={
+                                !isSilver && (this.props.wishlist &&
                                   this.props.wishlist.wishlistdata &&
                                   this.props.wishlist.wishlistdata.nodes &&
                                   this.props.wishlist.wishlistdata.nodes.length >
@@ -777,7 +779,7 @@ class Header extends Component {
                                   this.props.wishlist.wishlistdata.nodes &&
                                   this.props.wishlist.wishlistdata.nodes
                                     .length
-                                  : "0"
+                                  : "0")
                               }
                               color="secondary"
                             >
@@ -793,7 +795,7 @@ class Header extends Component {
                               ></i>
                             </Badge>
                             <Badge
-                            className={`${isSilver && classes.badgeColorsilver}`}
+                              className={`${isSilver && classes.badgeColorsilver}`}
                               style={{ fontSize: "9px" }}
                               badgeContent={
                                 this.props.cart_count &&
@@ -807,7 +809,7 @@ class Header extends Component {
                                     .allTransSkuLists &&
                                   this.props.cart_count.data.allTransSkuLists
                                     .nodes.length
-                                  : "0"
+                                  : (!isSilver && "0")
 
                                 // localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"
                                 // this.props.cart_count? this.props.cart_count.length:"0"
@@ -816,7 +818,7 @@ class Header extends Component {
                             >
                               <a href="/cart">
                                 <i
-                                  style={{ fontSize: "15px !important",zIndex:1000 }}
+                                  style={{ fontSize: "15px !important", zIndex: 1000 }}
                                   class={`fa fa-shopping-cart  ${classes.iconFafa}`}
                                 ></i>
                               </a>
@@ -975,15 +977,19 @@ class Header extends Component {
                               >
                                 {selected1 ===
                                   Jewellery[selected][row2].name ? (
-                                    <i
-                                      class={`fa fa-caret-up drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""
-                                        }`}
-                                    ></i>
+                                    <span>
+                                      {(Jewellery[selected][row2].name !== "NEW ARRIVALS" && Jewellery[selected][row2].name !== "RINGS" && Jewellery[selected][row2].name !== "BEST SELLERS" && Jewellery[selected][row2].name !== "BANGLE") && <i
+                                        class={`fa fa-caret-up drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""
+                                          }`}
+                                      ></i>}
+                                    </span>
                                   ) : (
-                                    <i
-                                      class={`fa fa-caret-down drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""
-                                        }`}
-                                    ></i>
+                                    <span>
+                                      {(Jewellery[selected][row2].name !== "NEW ARRIVALS" && Jewellery[selected][row2].name !== "RINGS" && Jewellery[selected][row2].name !== "BEST SELLERS" && Jewellery[selected][row2].name !== "BANGLE") && <i
+                                        class={`fa fa-caret-down drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""
+                                          }`}
+                                      ></i>}
+                                    </span>
                                   )}
                               </div>
                             </ListItem>
@@ -1166,7 +1172,7 @@ class Header extends Component {
                                                           >
                                                             SHOP BY PRICE </Typography>
                                                         </ListItemText>
-                                                       </ListItem>
+                                                      </ListItem>
                                                       <Grid container>
                                                         {row?.TextPrice?.map(v => {
                                                           return <Grid item xs={6}>
@@ -1263,7 +1269,7 @@ class Header extends Component {
                         <ListItem button className="drawer-list12">
                           <ListItemText
                             onClick={() =>
-                              (window.location.href = `/account${"-profile"}`)
+                              (window.location.href = `/ account${"-profile"}`)
                             }
                           >
                             <Typography className="list-items1">

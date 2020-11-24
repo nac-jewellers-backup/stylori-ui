@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiSvgIcon-root": {
       fill: `${theme.palette.secondary.main} !important`,
     },
+    [theme.breakpoints.only("xs")]: {
+      marginBottom: 20
+    },
   },
   needHelpText: {
     transform: "rotate(-90deg)" /* Equal to rotateZ(45deg) */,
@@ -77,6 +80,11 @@ const useStyles = makeStyles((theme) => ({
       padding: 8,
     },
   },
+  close: {
+    [theme.breakpoints.only("xs")]: {
+      marginBottom: 20
+    },
+  }
 }));
 
 export function NeedHelp(props) {
@@ -129,7 +137,7 @@ export function NeedHelp(props) {
                 </a>
               </Grid>
 
-              <Grid item xs={12} sm={4} style={{ padding: "5px 0px", margin: 'auto' }}>
+              <Grid item xs={12} sm={4} style={{ padding: "5px 0px", margin: 'auto' }} >
                 <HighlightOffIcon onClick={handleClick(props.position)} />
               </Grid>
               {/* </Hidden> */}

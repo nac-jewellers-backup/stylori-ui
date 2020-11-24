@@ -165,7 +165,7 @@ class ProductDetails extends React.Component {
                                             res.details
                                           ) ? (
                                                 <Grid container item xs={12}>
-                                                  <Grid xs={4} lg={4}>
+                                                  <Grid xs={4} lg={4} className={classes.margindek}>
                                                     <ListItemText
                                                       variant=""
                                                       className={`product-subhead ${classes.normalfonts
@@ -303,16 +303,17 @@ class ProductDetails extends React.Component {
                                                             {
                                                               <span
                                                                 style={{
-                                                                  fontSize: "12px",
+                                                                  fontSize:!_isSilver&& "12px",
                                                                   marginLeft: "10px",
-                                                                  marginTop: 0
+                                                                  marginTop: 0,
                                                                 }}
                                                               >
                                                                 {" "}
                                                                 {_isSilver ? (
                                                                   <span style={{
                                                                     marginTop: 0, fontSize: _isSilver && 14,
-                                                                    marginLeft:-8
+                                                                    marginLeft:-8,
+                                                                    paddingLeft:-8,
                                                                   }}>{res.details}</span>
                                                                 ) : (
                                                                     res.details
