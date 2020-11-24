@@ -161,8 +161,7 @@ const ProductModal = (props) => {
       url: val.url
     })
   });
-  // let mapped_ = props.homepagecollections ? _data : ___data;
-  let mapped_ = ___data;
+  let mapped_ = props.homepagecollections ? _data : ___data;
   return (
     <>
       <Grid container className={classes.containerTop} justify="center">
@@ -290,12 +289,11 @@ const ProductModal = (props) => {
                                   : `${classes.productCardDescription}`
                               }
                             >
-                              {/* {collectionsData || allSeo
+                              {collectionsData || allSeo
                                 ? allSeo[tile.title]
                                   ? allSeo[tile.title].seoText
                                   : ""
-                                : tile.description} */}
-                              {tile?.description}
+                                : tile.description}
                             </Grid>
                             <Grid container item xs={12} justify="center">
                               <a
@@ -320,7 +318,6 @@ const ProductModal = (props) => {
                                   variant="contained"
                                   style={{ color: "white" }}
                                   color="primary"
-                                  onClick={() => window.location.href = tile?.url}
                                   className={
                                     shopByStyloriSilver
                                       ? `${classes.btnshop2}`
