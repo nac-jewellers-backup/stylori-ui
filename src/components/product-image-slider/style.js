@@ -502,9 +502,20 @@ const styles = (theme) => ({
     fontFamily: 'Roboto-black , serif !important'
   },
   margindek: {
-    [theme.breakpoints.up("lg")]: {
-      marginRight: -8
-    }
+    // [theme.breakpoints.up("lg")]: {
+    //   marginRight: -8
+    // }
+  },
+  pd: {
+    "&.MuiListItemText-root": {
+      // marginTop: 0,
+      // marginBottom: 0, 
+    }, 
+  },
+  pds: {
+    // [theme.breakpoints.up("lg")]: {
+    //   lineHeight: "0 !important"
+    // }
   }
 });
 export default styles;

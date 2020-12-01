@@ -165,23 +165,21 @@ class ProductDetails extends React.Component {
                                             res.details
                                           ) ? (
                                                 <Grid container item xs={12}>
-                                                  <Grid xs={4} lg={4} className={classes.margindek}>
+                                                  <Grid xs={4} lg={4} className={`${classes.margindek} ${classes.pds}`}>
                                                     <ListItemText
-                                                      variant=""
+
                                                       className={`product-subhead ${classes.normalfonts
                                                         } ${_isSilver
-                                                          ? classes.normalFontsColor
+                                                          ? ` ${classes.pd} ${classes.normalFontsColor}`
                                                           : ""
                                                         }`}
-                                                      style={{ margin: _isSilver && 0 }}
                                                     >
                                                       <span style={{
-                                                        fontSize: "12px"
-                                                        , lineHeight: _isSilver && 0
+                                                        fontSize: "12px",
                                                       }}>
-                                                        {" "}
                                                         {_isSilver ? (
-                                                          <span style={{ fontSize: _isSilver && 13 }}>{res.name}</span>
+                                                          <div style={{
+                                                          }} className={"product-subheadsss"}>{res.name}</div>
                                                         ) : (
                                                             res.name
                                                           )}
