@@ -505,7 +505,10 @@ body {
 
 .product-subhead {
     font-size: none !important;
-    /* margin-top: 3px !important; */
+}
+
+.product-subheadsss {
+    font-size: 13px !important;
 }
 
 .product-subhead-list {

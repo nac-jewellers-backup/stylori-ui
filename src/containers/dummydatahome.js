@@ -70,19 +70,34 @@ export const
 
         // 
         
-        
-        {
-          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/CSK_Stylori-web-banner.jpg",
-          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/CSK_Stylori-mob-Banner.jpg",
-          navigateUrl: "/jewellery/kada/csk_kada?skuId=1000001"
-        },
-        {
-          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg",
-          mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg",
-          navigateUrl: "https://www.stylori.com/jewellery"
-        },
-        
+        // REMOVED ON 01-12-2020
 
+        // {
+        //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/CSK_Stylori-web-banner.jpg",
+        //   mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/CSK_Stylori-mob-Banner.jpg",
+        //   navigateUrl: "/jewellery/kada/csk_kada?skuId=1000001"
+        // },
+        // {
+        //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg",
+        //   mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg",
+        //   navigateUrl: "https://www.stylori.com/jewellery"
+        // },
+        
+                {
+          img: " https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Stylori-silver-banner-web.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Stylori-silver-banner-mob.jpg",
+          navigateUrl: "https://www.stylori.com/stylorisilver"
+        },
+        {
+          img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-monsoon-collection-web-2020.jpg",
+          mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-monsoon-collection-mob-2020.jpg",
+          navigateUrl: "https://www.stylori.com/jewellery-from+monsoon+collection"
+        },
+        {
+          img: " https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-butterfly-collection-web-2020.jpg",
+          mobileImg: " https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-butterfly-collection-mob-2020.jpg",
+          navigateUrl: "https://www.stylori.com/jewellery-butterfly?sort=latest&startprice=0&endprice=0"
+        },
         // REMOVED ON 27-07-2020
 
         // {
@@ -171,10 +186,15 @@ export const
     },
     //-------------Grid 5 images ---------- 
     "collectionGrid": [
+      // {
+      //   img:
+      //     "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori-ring-tile.png",
+      //   navigateUrl: "/rings-jewellery?sort=latest"
+      // },
       {
         img:
-          "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori-ring-tile.png",
-        navigateUrl: "/rings-jewellery?sort=latest"
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Monsoon-tile.jpg",
+        navigateUrl: "https://www.stylori.com/jewellery-from+monsoon+collection"
       },
       {
         img:
@@ -183,8 +203,8 @@ export const
       },
       {
         img:
-          "https://assets.stylori.com/images/Static+Pages/Home+Page/Hallo+Collection_Website-01.png",
-        navigateUrl: "/jewellery-from+halo+collection"
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-tile-image.jpg",
+        navigateUrl: "https://www.stylori.com/jewellery-butterfly?sort=latest&startprice=0&endprice=0"
       },
       {
         img:

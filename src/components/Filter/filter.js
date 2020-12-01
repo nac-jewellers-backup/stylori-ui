@@ -18,20 +18,20 @@ import { filterParams } from 'mappers/index';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import styles from './styles';
-import { FilterOptionsContext,GlobalContext } from 'context'
+import { FilterOptionsContext, GlobalContext } from 'context'
 import { NetworkContext } from 'context/NetworkContext';
 import { PRODUCTLIST, conditions, seoUrlResult } from 'queries/productListing';
 import { withRouter } from 'react-router-dom';
-import {TopFilters} from './topFilters'
+import { TopFilters } from './topFilters'
 import ProductLayoutSilver from '../ProductCard/ProductLayoutSilver'
 import { TempTest } from './TempTest';
 const PersistentDrawerLeft = (props) => {
   const { setSort, setloadingfilters, setOffset, setPriceMax, setPriceMin, FilterOptionsCtx, setdelete_fil } = React.useContext(FilterOptionsContext);
-  
+
   const loc = window.location.search
   const { NetworkCtx } = React.useContext(NetworkContext);
-  const {Globalctx} = React.useContext(GlobalContext)
-  
+  const { Globalctx } = React.useContext(GlobalContext)
+
   return <Component setSort={setSort} setOffset={setOffset} offset={FilterOptionsCtx.offset} setFilters={FilterOptionsCtx.setFilters} setloadingfilters={setloadingfilters} setPriceMax={setPriceMax} setPriceMin={setPriceMin} loadingfilters={FilterOptionsCtx.loadingfilters} sort={FilterOptionsCtx.sort}
     uri={NetworkCtx.graphqlUrl} globalcontext={Globalctx} setdelete_fil={setdelete_fil}
     {...props} />
@@ -62,77 +62,76 @@ class Component extends React.Component {
       showMore: 4,
       Price_button_click: false,
       chipData: [],
-      errorPriceMessage:false
+      errorPriceMessage: false
     };
 
   }
   componentDidMount() {
     var { checked, chipData, numOne, numTwo, selected } = this.state
-if(this.props.data && this.props.data.length > 0 && this.props.data[0] && this.props.data[0].subFilter['Price Range'])
-   {
-    var price_min = Number(this.props.data[0].subFilter['Price Range'].min);
-    var price_max = Number(this.props.data[0].subFilter['Price Range'].max);
-    var _price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_min));
-    var _price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_max));
+    if (this.props.data && this.props.data.length > 0 && this.props.data[0] && this.props.data[0].subFilter['Price Range']) {
+      var price_min = Number(this.props.data[0].subFilter['Price Range'].min);
+      var price_max = Number(this.props.data[0].subFilter['Price Range'].max);
+      var _price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_min));
+      var _price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_max));
 
-    // checked['pricemax'] = _price_max
-    // checked['pricemin'] = _price_min
-    this.setState(checked)
-    this.setState({ numOne: _price_min, numTwo: _price_max })
-   }
+      // checked['pricemax'] = _price_max
+      // checked['pricemin'] = _price_min
+      this.setState(checked)
+      this.setState({ numOne: _price_min, numTwo: _price_max })
+    }
 
 
-//  ****STARTS****  setting state search parameters ....
+    //  ****STARTS****  setting state search parameters ....
 
-if (window.location.search) {
-  let price_one;
-  let price_two;
-  let splitSearchParamers = window.location.search.split("&");
-  if (splitSearchParamers.length > 0) {
-    // if (splitSearchParamers.length > 2) {
-      splitSearchParamers.map((val) => {
-        
-        let equalSplit = val.split("=");
-        if (splitSearchParamers.length > 2) {
-          if (equalSplit[0] === "startprice") {
-            price_one = Number(equalSplit[1])
-            numOne = Number(equalSplit[1])
-            
-          }
-          if (equalSplit[0] === "endprice") {
-            price_two = Number(equalSplit[1])
-            numTwo=Number(equalSplit[1])
-          }
-        }
-          else{
-            if (equalSplit[0] === "?startprice") {
+    if (window.location.search) {
+      let price_one;
+      let price_two;
+      let splitSearchParamers = window.location.search.split("&");
+      if (splitSearchParamers.length > 0) {
+        // if (splitSearchParamers.length > 2) {
+        splitSearchParamers.map((val) => {
+
+          let equalSplit = val.split("=");
+          if (splitSearchParamers.length > 2) {
+            if (equalSplit[0] === "startprice") {
               price_one = Number(equalSplit[1])
               numOne = Number(equalSplit[1])
-              
+
             }
             if (equalSplit[0] === "endprice") {
               price_two = Number(equalSplit[1])
-              numTwo=Number(equalSplit[1])
-            } 
+              numTwo = Number(equalSplit[1])
+            }
           }
-        
-        
-      });
-      
-  // if(numOne !== price_one && numTwo !== price_two){
-    const price_min = Number(price_one);
-    const price_max = Number(price_two);
-    const _price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_min));
-    const _price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_max));
-    this.setState({numOne:_price_min, numTwo:_price_max})
-  // }
-    // }
-  
-  }
-  
-}
+          else {
+            if (equalSplit[0] === "?startprice") {
+              price_one = Number(equalSplit[1])
+              numOne = Number(equalSplit[1])
 
-//    ****ENDS**** setting state search parameters ....
+            }
+            if (equalSplit[0] === "endprice") {
+              price_two = Number(equalSplit[1])
+              numTwo = Number(equalSplit[1])
+            }
+          }
+
+
+        });
+
+        // if(numOne !== price_one && numTwo !== price_two){
+        const price_min = Number(price_one);
+        const price_max = Number(price_two);
+        const _price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_min));
+        const _price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price_max));
+        this.setState({ numOne: _price_min, numTwo: _price_max })
+        // }
+        // }
+
+      }
+
+    }
+
+    //    ****ENDS**** setting state search parameters ....
 
     // This is used for checking the check boxes if we copy and pasted the url to new tab or new window
     // if (window.location.search) {
@@ -291,7 +290,7 @@ if (window.location.search) {
       this.state.Price_button_click === false && this.setState({ numOne: numOne, numTwo: numTwo })
       // if( this.props.data[0].subFilter['Price Range'].length > 0 && this.props.data[0].subFilter['Price Range'][0] !== undefined){ 
       //   this.props.setFilters({pricemax:numberTwo, pricemin:numberOne})}  
-      
+
     }
 
 
@@ -327,31 +326,30 @@ if (window.location.search) {
   })
   clearSortIfFiltersIsEmpty = () => {
     var showSortFilter = false
-    
+
     if (window.location.search) {
       Object.keys(this.state.checked).map((fk) => {
         const filter = this.state.checked[fk];
         const fv = Object.keys(filter);
-        if(fk !== "Category" && fk !== "category" && fk !== "filters"){
+        if (fk !== "Category" && fk !== "category" && fk !== "filters") {
           if (fv.length > 0) {
-            if(filter[fv[0]])
-            {
+            if (filter[fv[0]]) {
               showSortFilter = true
               return showSortFilter
             }
-            }
+          }
         }
-        
+
       });
       let loc = window.location.pathname.split('?')[0]
-      if (!showSortFilter) {this.props.setSort('');this.props.history.push(loc)} 
+      if (!showSortFilter) { this.props.setSort(''); this.props.history.push(loc) }
     }
 
   };
   handleChange = (value, BoolName, e, title, TargetName, topfilterstate, selectedfiltertop) => {
     // window.scrollTo(0,2)
     let mystate = this.state
-    let { chipData } =this.state ;
+    let { chipData } = this.state;
     let checked = { ...this.state.checked }
     var queries = [{}]
     let pathnameSplit = window.location.pathname.split('/')
@@ -369,7 +367,7 @@ if (window.location.search) {
     //   checked['category'] = _category_obj
     //   this.setState(checked)
     // }
-    
+
 
     if (TargetName === undefined) {
       this.clearSortIfFiltersIsEmpty()
@@ -383,14 +381,14 @@ if (window.location.search) {
       this.props.setloadingfilters(true)
       let checkedvalue = {};
       checkedvalue[value] = BoolName
-      
+
       checked[e && e.target.name ? e.target.name : selectedfiltertop] = checkedvalue
       this.setState({
         checked
       }, () => this.props.setFilters(checked))
     }
     else {
-      
+
       let arr1 = [];
       let paramsMapUrlSetState = () => TargetName.map(val => {
         var nameFilter = val[0]
@@ -441,7 +439,7 @@ if (window.location.search) {
   }
 
   handleDelete = (value) => {
-    
+
     this.handlebye()
     let { chipData, checked } = this.state
     Object.entries(checked).map(val => {
@@ -460,10 +458,10 @@ if (window.location.search) {
           arr = chipData.filter(val => val.label !== value);
           if (checked) {
             arr1 = this.delete_val_chips(value).filter(val => {
-              var dlt; 
+              var dlt;
               if (val !== undefined && val !== null) {
                 dlt = Object.values(val) === -1
-              } 
+              }
               return dlt;
             })
             chipData = arr1;
@@ -476,12 +474,12 @@ if (window.location.search) {
           this.forceUpdate()
           this.props.setFilters(checked)
           return false
-        }else{
+        } else {
           let arr = [], arr1 = [];
           arr = chipData.filter(val => val.label !== value);
           if (checked) {
             arr1 = this.delete_val_chips(value).filter(val => {
-              var dlt; 
+              var dlt;
               if (val !== undefined && val !== null) {
                 dlt = Object.values(val) === -1
               }
@@ -501,7 +499,7 @@ if (window.location.search) {
     })
 
 
- 
+
 
     // var bb = {}
     // bb["delete_fil"] = "12345"
@@ -519,7 +517,7 @@ if (window.location.search) {
   handlebye = () => {
   }
   check_goldCoins = (values_) => {
-    
+
     const Category = this.state.checked
     var valus;
     Object.entries(Category).map(val => {
@@ -596,66 +594,66 @@ if (window.location.search) {
 
 
   onCurrencyChange_click = (e, silverPrice) => {
-    
+
     const { checked } = this.state
-    
+
     var _price_min;
     var _price_max;
-    if(silverPrice){
+    if (silverPrice) {
       this.setState(checked)
       this.setState({ numOne: silverPrice.min, numTwo: silverPrice.max }, () => { this.props.setPriceMax(silverPrice.max); this.props.setPriceMin(silverPrice.min) })
     }
-    else{
+    else {
       this.setState({ Price_button_click: true })
       if (isNaN(Number((document.getElementById('num1').value).charAt(0)))) {
         _price_min = Number(((document.getElementById('num1').value).substr(1)).replace(/,/g, ''));
       }
       else {
-  
+
         _price_min = Number((document.getElementById('num1').value).replace(/,/g, ''));
       }
       if (isNaN(Number((document.getElementById('num2').value).charAt(0)))) {
         _price_max = Number(((document.getElementById('num2').value).substr(1)).replace(/,/g, ''));
       }
       else {
-  
+
         _price_max = Number((document.getElementById('num2').value).replace(/,/g, ''));
       }
       var price_min = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_min));
       var price_max = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(_price_max));
-      
+
       var pricemin = price_min.indexOf(',') > -1 ? price_min.indexOf(" ") > -1 ? Number(price_min.substr(2).replace(/\,/g, ''))
-      
-      :
-      Number(price_min.substr(1).replace(/\,/g, ''))
-      :
-      price_min.indexOf(" ") > -1 ?
-      Number(price_min.substr(2))
-      :
-      Number(price_min.substr(1))
-      var pricemax = price_max.indexOf(',') > -1 ? price_max.indexOf(" ") > -1 ? Number(price_max.substr(2).replace(/\,/g, '')) 
-      :
-      Number(price_max.substr(1).replace(/\,/g, ''))
-      :
-      price_max.indexOf(" ") > -1 ?
-      Number(price_max.substr(2))
-      :
-      Number(price_max.substr(1))
+
+        :
+        Number(price_min.substr(1).replace(/\,/g, ''))
+        :
+        price_min.indexOf(" ") > -1 ?
+          Number(price_min.substr(2))
+          :
+          Number(price_min.substr(1))
+      var pricemax = price_max.indexOf(',') > -1 ? price_max.indexOf(" ") > -1 ? Number(price_max.substr(2).replace(/\,/g, ''))
+        :
+        Number(price_max.substr(1).replace(/\,/g, ''))
+        :
+        price_max.indexOf(" ") > -1 ?
+          Number(price_max.substr(2))
+          :
+          Number(price_max.substr(1))
       // alert("came in ")
       // 
       // alert(pricemin)
       // alert(pricemax)
-      if(pricemin > pricemax){
-        this.setState({errorPriceMessage:true})
+      if (pricemin > pricemax) {
+        this.setState({ errorPriceMessage: true })
       }
-      else if(pricemin === 0 && pricemax === 0){
+      else if (pricemin === 0 && pricemax === 0) {
         return false
       }
-      else{
+      else {
         this.setState(checked)
         this.setState({ numOne: price_min, numTwo: price_max }, () => { this.props.setPriceMax(pricemax); this.props.setPriceMin(pricemin) })
       }
-      
+
     }
   }
   txtFieldChange(e) {
@@ -688,7 +686,7 @@ if (window.location.search) {
 
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
-    const isTopFilter = this.props.globalcontext.pathName  ? true : false 
+    const isTopFilter = this.props.globalcontext.pathName ? true : false
     //  const chck_res =  this.state.chipData.map(data => {
     //   return (
     //     data.label
@@ -697,252 +695,252 @@ if (window.location.search) {
     // alert(JSON.stringify(this.state.selected))
     return (
       <>
-   {isTopFilter &&
-       <Hidden smDown>
-    <TopFilters filter={filter} state={this.state} subFilter={subFilter} onchangefunc={this.handleChange} onpricechange = {this.onCurrencyChange_click} filtercheck={this.state.filtercheck} checked={this.state.checked} chips={this.state.chipData} check={this.state.check} click={this.handleDelete} {...this.props}/>
-      </Hidden>
-   }    
-   {/* <TempTest onchangefunc={this.handleChange}/> */}
-  
-       {
-         !isTopFilter &&
-        <Hidden smDown>
-          <FilterHeader click={this.handleDelete}
-            handleChangeDrawer={this.handleChangeDrawer}
-            chips={this.state.chipData} check={this.state.check}
-            checked={this.state.checked}
-          />{/*  handleDrawerOpen={this.handleDrawerOpen.bind(this)} */}
-        </Hidden>
+        {isTopFilter &&
+          <Hidden smDown>
+            <TopFilters filter={filter} state={this.state} subFilter={subFilter} onchangefunc={this.handleChange} onpricechange={this.onCurrencyChange_click} filtercheck={this.state.filtercheck} checked={this.state.checked} chips={this.state.chipData} check={this.state.check} click={this.handleDelete} {...this.props} />
+          </Hidden>
+        }
+        {/* <TempTest onchangefunc={this.handleChange}/> */}
+
+        {
+          !isTopFilter &&
+          <Hidden smDown>
+            <FilterHeader click={this.handleDelete}
+              handleChangeDrawer={this.handleChangeDrawer}
+              chips={this.state.chipData} check={this.state.check}
+              checked={this.state.checked}
+            />{/*  handleDrawerOpen={this.handleDrawerOpen.bind(this)} */}
+          </Hidden>
         }
         <div className={classes.root} >
-        {
-         !isTopFilter &&
-          <Hidden smDown >
+          {
+            !isTopFilter &&
+            <Hidden smDown >
 
-            {/* <CssBaseline /> */}
-            <div >
-              <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '119px', maxHeight: '80vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
-                <div >
+              {/* <CssBaseline /> */}
+              <div >
+                <Slide direction="right" in={check} mountOnEnter unmountOnExit style={{ position: 'sticky', top: '119px', maxHeight: '80vh', overflowY: 'scroll' }} className="SliderFilter scrollBarFilter" id="SliderFilter" >
+                  <div >
 
-                  <Paper
-                    className={`${classes.drawer} ${classes.drawerPaper}`}
-                    variant="persistent"
-                    anchor="left"
-                    open={open}
+                    <Paper
+                      className={`${classes.drawer} ${classes.drawerPaper}`}
+                      variant="persistent"
+                      anchor="left"
+                      open={open}
                     // classes={{
                     //   paper: classes.drawerPaper,
                     // }}
-                  >
-                    <Divider />
-                    <List className="fil-main-list">
-                      <div style={{ margin: "5px" }}>
-                        <Typography style={{ fontSize: "1.0rem !important", paddingTop: "10px !important", fontWeight: 600 }} className="fil-list-items">Price</Typography>
-                        <Grid container spacing={12} style={{ paddingLeft: "14px" }}  >
-                          <Grid item xs={4} >
-                            <TextField
-                            error={this.state.errorPriceMessage}
-                              onChange={(e) => { this.setState({ numOne: e.target.value, errorPriceMessage:false }) }}
-                              onKeyPress={(e) => { this.txtFieldChange(e) }}
-                              name="numOne"
-                              className="price-txt"
-                              id="num1"
-                              value={this.state.numOne}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                          </Grid>&nbsp;
+                    >
+                      <Divider />
+                      <List className="fil-main-list">
+                        <div style={{ margin: "5px" }}>
+                          <Typography style={{ fontSize: "1.0rem !important", paddingTop: "10px !important", fontWeight: 600 }} className="fil-list-items">Price</Typography>
+                          <Grid container spacing={12} style={{ paddingLeft: "14px" }}  >
+                            <Grid item xs={4} >
+                              <TextField
+                                error={this.state.errorPriceMessage}
+                                onChange={(e) => { this.setState({ numOne: e.target.value, errorPriceMessage: false }) }}
+                                onKeyPress={(e) => { this.txtFieldChange(e) }}
+                                name="numOne"
+                                className="price-txt"
+                                id="num1"
+                                value={this.state.numOne}
+                                margin="normal"
+                                variant="outlined"
+                              />
+                            </Grid>&nbsp;
              <Grid item xs={4}>
-                            <TextField
-                            error={this.state.errorPriceMessage}
-                              onChange={(e) => { this.setState({ numTwo: e.target.value, errorPriceMessage:false }) }}
-                              onKeyPress={(e) => { this.txtFieldChange(e) }}
-                              name="numTwo"
-                              className="price-txt"
-                              id="num2"
-                              value={this.state.numTwo}
-                              margin="normal"
-                              variant="outlined"
-                            />
-                          </Grid>&nbsp;
+                              <TextField
+                                error={this.state.errorPriceMessage}
+                                onChange={(e) => { this.setState({ numTwo: e.target.value, errorPriceMessage: false }) }}
+                                onKeyPress={(e) => { this.txtFieldChange(e) }}
+                                name="numTwo"
+                                className="price-txt"
+                                id="num2"
+                                value={this.state.numTwo}
+                                margin="normal"
+                                variant="outlined"
+                              />
+                            </Grid>&nbsp;
             <Grid item xs={3}>
-                            <Button variant="contained" className={`price-btn ${classes.colorMainBackground}`} onClick={() => this.onCurrencyChange_click()}>Go</Button>
+                              <Button variant="contained" className={`price-btn ${classes.colorMainBackground}`} onClick={() => this.onCurrencyChange_click()}>Go</Button>
+                            </Grid>
                           </Grid>
-                        </Grid>
-                        {this.state.errorPriceMessage ? <label className={`${classes.priceError}`}>Max price should be greater</label> : null}
-                      </div>
-                      {/* filter */}
-                      <div>
-                        {
-                          <>
-                            {
+                          {this.state.errorPriceMessage ? <label className={`${classes.priceError}`}>Max price should be greater</label> : null}
+                        </div>
+                        {/* filter */}
+                        <div>
+                          {
+                            <>
+                              {
 
-filter  && filter.length > 0 ?
+                                filter && filter.length > 0 ?
 
-filter.map((row, i) => {
-  
-                                return (
-                                  <>
-                                    {
-                                      subFilter && subFilter[row] && subFilter[row].length > 0 ?
-                                        <>{window.location.pathname === "/goldcoins" || found === "goldcoins" || found === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
-                                          onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
-                                          <ListItemText
-                                          >
-                                            <Typography className="fil-list-items" variant='h4' component="h4"
-                                            >{row}
-                                            </Typography>
-                                          </ListItemText>
-                                          {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
-                                            <ExpandMore className="fil-drawer-arrow" />}
-                                        </ListItem> : <ListItem key={row}
-                                          onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
-                                            <ListItemText
-                                            >
-                                              <Typography className="fil-list-items" variant='h4' component="h4"
-                                              >{row}
-                                              </Typography>
-                                            </ListItemText>
-                                            {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
-                                              <ExpandMore className="fil-drawer-arrow" />}
-                                          </ListItem>
+                                  filter.map((row, i) => {
+
+                                    return (
+                                      <>
+                                        {
+                                          subFilter && subFilter[row] && subFilter[row].length > 0 ?
+                                            <>{window.location.pathname === "/goldcoins" || found === "goldcoins" || found === "/goldcoins" ? row === "Offers" ? "" : <ListItem key={row}
+                                              onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
+                                              <ListItemText
+                                              >
+                                                <Typography className="fil-list-items" variant='h4' component="h4"
+                                                >{row}
+                                                </Typography>
+                                              </ListItemText>
+                                              {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
+                                                <ExpandMore className="fil-drawer-arrow" />}
+                                            </ListItem> : <ListItem key={row}
+                                              onClick={() => this.selectItem(row)} className={`${classes.li_item_filter}`}>
+                                                <ListItemText
+                                                >
+                                                  <Typography className="fil-list-items" variant='h4' component="h4"
+                                                  >{row}
+                                                  </Typography>
+                                                </ListItemText>
+                                                {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
+                                                  <ExpandMore className="fil-drawer-arrow" />}
+                                              </ListItem>
+                                            }
+                                            </>
+                                            :
+                                            <span></span>
                                         }
-                                        </>
-                                        :
-                                        <span></span>
-                                    }
-
-                                    <>
-                                      {/* {JSON.stringify()} */}
-                                      {(selected.indexOf(row) !== -1) &&
 
                                         <>
-                                          {
-
-                                            subFilter[row].filter((row12, i) =>
-                                              (i < (this.state[`li_${row}`] ? this.state[`li_${row}`] : 4))).map(row12 => {
-                                                return (<div style={{ padding: "0 20px" }}>
-                                                  <ListItem key={row12}  >   {/* button */}
-                                                    <FormGroup row>
-                                                      {
-                                                        row12.constructor === Object ?
-
-                                                          <FormControlLabel
-                                                            control={
-                                                              <Checkbox
-                                                                disabled={
-                                                                  this.check_goldCoins(row12) === true ? true : false}
-                                                                checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ?
-                                                                  this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] : false}
-                                                                onChange={(e) => this.handleChange(row12.value, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12.value] : true, e, row)}
-                                                                className="fil-submenu-icons"
-                                                                value="checked"
-                                                                color={"secondary"}
-
-                                                                name={row.replace(/\s/g, "")}
-                                                              />
-                                                            }
-                                                            label={<Typography variant=""
-                                                              className={`fil-submenu-list ${classes.colorMain}`}>{row12.title}
-                                                            </Typography>}
-                                                          />
-                                                          :
-                                                          <FormControlLabel
-                                                            control={
-                                                              <Checkbox
-                                                                disabled={
-                                                                  this.check_goldCoins(row12) === true ? true : false}
-                                                                // disabled = {handledisabled}
-                                                                checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ?
-                                                                  this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] : false}
-                                                                onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e, row)}
-                                                                className="fil-submenu-icons"
-                                                                value="checked"
-                                                                color={"secondary"}
-                                                                name={row.replace(/\s/g, "")}
-                                                              />
-                                                            }
-                                                            label={<Typography variant=""
-                                                              className={`fil-submenu-list ${classes.colorMain}`}>{row12}
-                                                            </Typography>}
-                                                          />
-                                                      }
-                                                    </FormGroup>
-                                                  </ListItem>
-                                                </div>);
-                                              }
-                                              )
-
-                                          }
-
-{
-                                            (subFilter[row].length) - 4 !== 0 && (subFilter[row].length) - 4 > 0 &&
+                                          {/* {JSON.stringify()} */}
+                                          {(selected.indexOf(row) !== -1) &&
 
                                             <>
-                                              {this.state[`li_${row}`] === undefined || this.state[`li_${row}`] === 4 ?
+                                              {
 
-                                                <div onClick={() => this.setState({ [`li_${row}`]: subFilter[row].length })}
-                                                  className="fil-submenu-icons"
+                                                subFilter[row].filter((row12, i) =>
+                                                  (i < (this.state[`li_${row}`] ? this.state[`li_${row}`] : 4))).map(row12 => {
+                                                    return (<div style={{ padding: "0 20px" }}>
+                                                      <ListItem key={row12}  >   {/* button */}
+                                                        <FormGroup row>
+                                                          {
+                                                            row12.constructor === Object ?
 
-                                                >
-                                                  <p style={{ fontSize: '14px', paddingLeft: '16px', paddingRight: '16px', color: 'rgba(241, 72, 128, 1)', cursor: 'pointer' }}>
-                                                    +&nbsp;{(subFilter[row].length) - 4} More
+                                                              <FormControlLabel
+                                                                control={
+                                                                  <Checkbox
+                                                                    disabled={
+                                                                      this.check_goldCoins(row12) === true ? true : false}
+                                                                    checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ?
+                                                                      this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] : false}
+                                                                    onChange={(e) => this.handleChange(row12.value, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12.value] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12.value] : true, e, row)}
+                                                                    className="fil-submenu-icons"
+                                                                    value="checked"
+                                                                    color={"secondary"}
+
+                                                                    name={row.replace(/\s/g, "")}
+                                                                  />
+                                                                }
+                                                                label={<Typography variant=""
+                                                                  className={`fil-submenu-list ${classes.colorMain}`}>{row12.title}
+                                                                </Typography>}
+                                                              />
+                                                              :
+                                                              <FormControlLabel
+                                                                control={
+                                                                  <Checkbox
+                                                                    disabled={
+                                                                      this.check_goldCoins(row12) === true ? true : false}
+                                                                    // disabled = {handledisabled}
+                                                                    checked={this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ?
+                                                                      this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] : false}
+                                                                    onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")] && this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e, row)}
+                                                                    className="fil-submenu-icons"
+                                                                    value="checked"
+                                                                    color={"secondary"}
+                                                                    name={row.replace(/\s/g, "")}
+                                                                  />
+                                                                }
+                                                                label={<Typography variant=""
+                                                                  className={`fil-submenu-list ${classes.colorMain}`}>{row12}
+                                                                </Typography>}
+                                                              />
+                                                          }
+                                                        </FormGroup>
+                                                      </ListItem>
+                                                    </div>);
+                                                  }
+                                                  )
+
+                                              }
+
+                                              {
+                                                (subFilter[row].length) - 4 !== 0 && (subFilter[row].length) - 4 > 0 &&
+
+                                                <>
+                                                  {this.state[`li_${row}`] === undefined || this.state[`li_${row}`] === 4 ?
+
+                                                    <div onClick={() => this.setState({ [`li_${row}`]: subFilter[row].length })}
+                                                      className="fil-submenu-icons"
+
+                                                    >
+                                                      <p style={{ fontSize: '14px', paddingLeft: '16px', paddingRight: '16px', color: 'rgba(241, 72, 128, 1)', cursor: 'pointer' }}>
+                                                        +&nbsp;{(subFilter[row].length) - 4} More
                                            </p>
-                                                </div>
-                                                :
-                                                <div className="fil-submenu-icons" onClick={() => this.setState({ [`li_${row}`]: 4 })}>
-                                                  <p style={{ fontSize: '14px', paddingLeft: '16px', paddingRight: '16px', color: 'rgba(241, 72, 128, 1)', cursor: 'pointer' }}>Show Less</p>
-                                                </div>}
+                                                    </div>
+                                                    :
+                                                    <div className="fil-submenu-icons" onClick={() => this.setState({ [`li_${row}`]: 4 })}>
+                                                      <p style={{ fontSize: '14px', paddingLeft: '16px', paddingRight: '16px', color: 'rgba(241, 72, 128, 1)', cursor: 'pointer' }}>Show Less</p>
+                                                    </div>}
+                                                </>
+                                              }
+
+
+
+
                                             </>
+
+
+
+
                                           }
- 
-
-
 
                                         </>
+                                      </>
 
-                                       
+                                    )
 
+                                  }
 
-                                      }
+                                  )
+                                  :
+                                  <div class={classes.filtersLoading}>
+                                    <div id="inTurnFadingTextG"><div id="inTurnFadingTextG_1" class="inTurnFadingTextG">L</div><div id="inTurnFadingTextG_2" class="inTurnFadingTextG">o</div><div id="inTurnFadingTextG_3" class="inTurnFadingTextG">a</div><div id="inTurnFadingTextG_4" class="inTurnFadingTextG">d</div><div id="inTurnFadingTextG_5" class="inTurnFadingTextG">i</div><div id="inTurnFadingTextG_6" class="inTurnFadingTextG">n</div><div id="inTurnFadingTextG_7" class="inTurnFadingTextG">g</div><div id="inTurnFadingTextG_8" class="inTurnFadingTextG"> </div><div id="inTurnFadingTextG_9" class="inTurnFadingTextG">.</div><div id="inTurnFadingTextG_10" class="inTurnFadingTextG">.</div><div id="inTurnFadingTextG_11" class="inTurnFadingTextG">.</div></div>
 
-                                    </>
-                                  </>
-
-                                )
-
+                                  </div>
                               }
 
-                              )
-                            :
-                            <div class ={classes.filtersLoading}>
-                              <div id="inTurnFadingTextG"><div id="inTurnFadingTextG_1" class="inTurnFadingTextG">L</div><div id="inTurnFadingTextG_2" class="inTurnFadingTextG">o</div><div id="inTurnFadingTextG_3" class="inTurnFadingTextG">a</div><div id="inTurnFadingTextG_4" class="inTurnFadingTextG">d</div><div id="inTurnFadingTextG_5" class="inTurnFadingTextG">i</div><div id="inTurnFadingTextG_6" class="inTurnFadingTextG">n</div><div id="inTurnFadingTextG_7" class="inTurnFadingTextG">g</div><div id="inTurnFadingTextG_8" class="inTurnFadingTextG"> </div><div id="inTurnFadingTextG_9" class="inTurnFadingTextG">.</div><div id="inTurnFadingTextG_10" class="inTurnFadingTextG">.</div><div id="inTurnFadingTextG_11" class="inTurnFadingTextG">.</div></div>
-                              
-                            </div>
-                            }
+                            </>
+                          }
+                        </div>
+                        {/* filter Ends */}
+                      </List>
+                    </Paper>
+                  </div>
+                </Slide>
+              </div>
 
-                          </>
-                        }
-                      </div>
-                      {/* filter Ends */}
-                    </List>
-                  </Paper>
-                </div>
-              </Slide>
-            </div>
-
-          </Hidden>
-  }
+            </Hidden>
+          }
           {
             this.state.productDisplay &&
             <div
               // className="filter_page_layout"
               className={`${check ? `filter_page_layout ${classes.productCardscheck}` : `filter_page_layout ${classes.productCardsuncheck}`} ${isTopFilter ? classes.widthFilter : ''}`}
-              
+
             >
               {isTopFilter ?
-              <ProductLayoutSilver wishlist={this.props.wishlist} data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
-              :
-              <ProductLayout wishlist={this.props.wishlist} data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />}
+                <ProductLayoutSilver wishlist={this.props.wishlist} data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />
+                :
+                <ProductLayout wishlist={this.props.wishlist} data={this.props.datas} loading={this.props.loading} style={{ backgroundColor: 'whitesmoke' }} ref={this.myRef} />}
             </div>}
         </div>
 
@@ -972,7 +970,7 @@ filter.map((row, i) => {
                   <List className="mbl-filter-list">
                     {filter && filter.map(row => {
                       return (subFilter && subFilter[row] && subFilter[row].length > 0 ?
-                        <>{window.location.pathname === "/goldcoins" || found === "/goldcoins" || found === "goldcoins" ? row === "Offers" ? "" : <ListItem key={row} className={`mbl-filter-list ${isTopFilter ? classes.colorBackgroundListSilver:classes.colorBackgroundList} ${classes.borderBottomList}`}
+                        <>{window.location.pathname === "/goldcoins" || found === "/goldcoins" || found === "goldcoins" ? row === "Offers" ? "" : <ListItem key={row} className={`mbl-filter-list ${isTopFilter ? classes.colorBackgroundListSilver : classes.colorBackgroundList} ${classes.borderBottomList}`}
                           onClick={() => this.filterValue(row)}
                         >
                           <ListItemText
@@ -982,7 +980,7 @@ filter.map((row, i) => {
 
                           </ListItemText>
                         </ListItem>
-                          : <ListItem key={row} className={`mbl-filter-list ${isTopFilter ? classes.colorBackgroundListSilver:classes.colorBackgroundList} ${classes.borderBottomList}`}
+                          : <ListItem key={row} className={`mbl-filter-list ${isTopFilter ? classes.colorBackgroundListSilver : classes.colorBackgroundList} ${classes.borderBottomList}`}
                             onClick={() => this.filterValue(row)}
                           >
                             <ListItemText
