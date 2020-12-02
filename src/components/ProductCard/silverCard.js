@@ -647,7 +647,7 @@ sizes="(max-width: 320px) 320w,
                             props.data.price) *
                             100
                         )}
-                    %)
+                    % off)
                   </span>
                 </span>
 
@@ -745,7 +745,7 @@ sizes="(max-width: 320px) 320w,
                               props.data.price) *
                               100
                           )}
-                      %)
+                      % off)
                     </span>
                   </span>
 
