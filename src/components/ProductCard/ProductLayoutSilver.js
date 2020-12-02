@@ -49,13 +49,13 @@ const styles = (theme) => ({
       opacity: "0.8",
     },
   },
-  viewmoreColorSilver:{
-    backgroundColor:theme.palette.primary.main,
+  viewmoreColorSilver: {
+    backgroundColor: theme.palette.primary.main,
     "&:hover": {
-      backgroundColor:theme.palette.primary.main,
-      opacity:'0.9'
+      backgroundColor: theme.palette.primary.main,
+      opacity: "0.9",
     },
-  }
+  },
 });
 const ProductLayoutSilver = (props) => {
   const { setOffset, setFirst, FilterOptionsCtx } = React.useContext(
@@ -127,12 +127,12 @@ class Component extends React.Component {
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
 
     return (
-        <Container maxWidth="lg" disableGutters>
+      <Container maxWidth="lg" disableGutters>
         {/* //   <Container maxWidth="lg"> */}
-            <div className={`productLayoutRoot `} style={this.props.styles}>
-              {
-                <>
-                  {/* {this.props.loadingFilterCtx && ( 
+        <div className={`productLayoutRoot `} style={this.props.styles}>
+          {
+            <>
+              {/* {this.props.loadingFilterCtx && ( 
                     <div className="overall-loaders">
                       <div id="loadings">
                         <img
@@ -142,158 +142,168 @@ class Component extends React.Component {
                       </div>
                     </div>
                   )} */}
-                  {this.props.loadingFilterCtx === false && (
-                    <>
-                      <GridList
-                        cellHeight={"auto"}
-                        className={`productLayoutGridList ${classes.gridlistmain}`}
-                        cols={this.state.colSize}
-                        style={{ margin: "25px !important" }}
-                      >
-                        {data.map((tile,i) => {
-                          console.log(i+1 % 8 === 0,"i+1 % 8 === 0i+1 % 8 === 0")
-                          
-                          return tile && Object.entries(tile).length > 0 ? (
-                             (i+1) % 8 === 0   ?
-                            
-                            [tile, homePageStylori].map(val=>{
+              {this.props.loadingFilterCtx === false && (
+                <>
+                  <GridList
+                    cellHeight={"auto"}
+                    className={`productLayoutGridList ${classes.gridlistmain}`}
+                    cols={this.state.colSize}
+                    style={{ margin: "25px !important" }}
+                  >
+                    {data.map((tile, i) => {
+                      console.log(
+                        i + (1 % 8) === 0,
+                        "i+1 % 8 === 0i+1 % 8 === 0"
+                      );
 
-                              return(
-                                val.carouselTop ?
-                             data.length !== i+1 ?
+                      return tile && Object.entries(tile).length > 0 ? (
+                        (i + 1) % 16 === 0 ? (
+                          [tile, homePageStylori].map((val) => {
+                            return val.carouselTop ? (
+                              data.length !== i + 1 ? (
                                 <GridListTile
+                                  key={val.title}
+                                  cols={this.state.colSize}
+                                  style={{ padding: "0 !important" }}
+                                  className={`${classes.liClass}`}
+                                >
+                                  {/* <ProductCard data={tile} /> */}
+                                  <Slideshow
+                                    sliderRef={this.slider}
+                                    dataCarousel={
+                                      homePageStylori.carouselTop.settingSilver
+                                    }
+                                  >
+                                    {homePageStylori.carouselTop.silverListingPageData.map(
+                                      (val, index) => (
+                                        <>
+                                          <Hidden smDown>
+                                            <Grid container key={index}>
+                                              <a
+                                                href={val.navigateUrl}
+                                                style={{ width: "100%" }}
+                                              >
+                                                <img
+                                                  src={val.img}
+                                                  style={{
+                                                    width: "100%",
+                                                    height: "100%",
+                                                  }}
+                                                />
+                                              </a>
+                                            </Grid>
+                                          </Hidden>
+                                          <Hidden mdUp>
+                                            <Grid container key={index}>
+                                              <a href={val.navigateUrl}>
+                                                <img
+                                                  src={val.mobileImg}
+                                                  style={{
+                                                    width: "100%",
+                                                    height: "100%",
+                                                  }}
+                                                />
+                                              </a>
+                                            </Grid>
+                                          </Hidden>
+                                        </>
+                                      )
+                                    )}
+                                  </Slideshow>
+                                </GridListTile>
+                              ) : null
+                            ) : (
+                              <GridListTile
                                 key={val.title}
-                                cols={this.state.colSize}
+                                cols={val.cols || 1}
                                 style={{ padding: "0 !important" }}
                                 className={`${classes.liClass}`}
                               >
                                 {/* <ProductCard data={tile} /> */}
-                                <Slideshow
-            sliderRef={this.slider}
-            dataCarousel={homePageStylori.carouselTop.settingSilver}
-          >
-            {homePageStylori.carouselTop.silverListingPageData.map((val, index) => (
-              <><Hidden smDown>
-                <Grid container key={index}>
-                  <a href={val.navigateUrl} style={{ width: "100%" }}>
-                    <img
-                      src={val.img}
-                      style={{ width: "100%", height: "100%" }}
-                    />
-                  </a>
-                </Grid>
-              </Hidden>
-                <Hidden mdUp>
-                  <Grid container key={index}>
-                    <a href={val.navigateUrl}>
-                      <img
-                        src={val.mobileImg}
-                        style={{ width: "100%", height: "100%" }}
-                      />
-                    </a>
-                  </Grid>
-                </Hidden></>
-            ))}
-          </Slideshow>
+                                <ProductCards
+                                  data={val}
+                                  wishlist={this.props.wishlist}
+                                />
                               </GridListTile>
-                              :
-                              null
-                                :
-                                 <GridListTile
-                                                            key={val.title}
-                                                            cols={val.cols || 1}
-                                                            style={{ padding: "0 !important" }}
-                                                            className={`${classes.liClass}`}
-                                                          >
-                                                            {/* <ProductCard data={tile} /> */}
-                                                            <ProductCards
-                                                              data={val}
-                                                              wishlist={this.props.wishlist}
-                                                            />
-                                                          </GridListTile>
-                              )
-                                                          })
-                                                          :
+                            );
+                          })
+                        ) : (
                           <GridListTile
-                              key={tile.title}
-                              cols={tile.cols || 1}
-                              style={{ padding: "0 !important" }}
-                              className={`${classes.liClass}`}
-                            >
-                              {/* <ProductCard data={tile} /> */}
-                              <ProductCards
-                                data={tile}
-                                wishlist={this.props.wishlist}
-                              />
-                            </GridListTile>
-                            
-                            // { 8 % i === 0 &&
-                            //   <div>hello</div>}
-                           
-                          ) : (
-                            ""
-                          );
-                         
-                            
-                        })}
-                      </GridList>
+                            key={tile.title}
+                            cols={tile.cols || 1}
+                            style={{ padding: "0 !important" }}
+                            className={`${classes.liClass}`}
+                          >
+                            {/* <ProductCard data={tile} /> */}
+                            <ProductCards
+                              data={tile}
+                              wishlist={this.props.wishlist}
+                            />
+                          </GridListTile>
+                        )
+                      ) : (
+                        // { 8 % i === 0 &&
+                        //   <div>hello</div>}
 
-                      <div className={`${classes.gridlistmainviewmore}`}>
-                        {this.state.loadingtext ? (
-                          <div style={{ textAlign: "center" }}>Loading...</div>
+                        ""
+                      );
+                    })}
+                  </GridList>
+
+                  <div className={`${classes.gridlistmainviewmore}`}>
+                    {this.state.loadingtext ? (
+                      <div style={{ textAlign: "center" }}>Loading...</div>
+                    ) : (
+                      <>
+                        {data && data.length !== 0 ? (
+                          data[0] &&
+                          data[0].totalCount &&
+                          (data[0].totalCount - data.length === 0 ||
+                            data[0].totalCount - data.length < 0) ? (
+                            ""
+                          ) : (
+                            <Button
+                              variant="contained"
+                              className={`${classes.button}  ${classes.viewmoreColor} ${classes.viewmoreColorSilver}`}
+                              onClick={() => {
+                                this.handleOffset();
+                              }}
+                              disabled={data && data.length < 24}
+                            >
+                              {data && data.length === 0 && `No products found`}
+                              {data &&
+                                data.length >= 24 &&
+                                ` View ${
+                                  data && data.length > 0 && data[0]
+                                    ? data[0].totalCount - data.length
+                                    : ""
+                                } More Products`}
+                              {data &&
+                                data.length > 0 &&
+                                data.length < 24 &&
+                                `Only ${
+                                  data && data.length > 0 && data[0]
+                                    ? data[0].totalCount - data.length
+                                    : ""
+                                } products avalilable`}
+                            </Button>
+                          )
                         ) : (
                           <>
-                            {data && data.length !== 0 ? (
-                              data[0] &&
-                              data[0].totalCount &&
-                              (data[0].totalCount - data.length === 0 ||
-                                data[0].totalCount - data.length < 0) ? (
-                                ""
-                              ) : (
-                                <Button
-                                  variant="contained"
-                                  className={`${classes.button}  ${classes.viewmoreColor} ${classes.viewmoreColorSilver}`}
-                                  onClick={() => {
-                                    this.handleOffset();
-                                  }}
-                                  disabled={data && data.length < 24}
-                                >
-                                  {data &&
-                                    data.length === 0 &&
-                                    `No products found`}
-                                  {data &&
-                                    data.length >= 24 &&
-                                    ` View ${
-                                      data && data.length > 0 && data[0]
-                                        ? data[0].totalCount - data.length
-                                        : ""
-                                    } More Products`}
-                                  {data &&
-                                    data.length > 0 &&
-                                    data.length < 24 &&
-                                    `Only ${
-                                      data && data.length > 0 && data[0]
-                                        ? data[0].totalCount - data.length
-                                        : ""
-                                    } products avalilable`}
-                                </Button>
-                              )
-                            ) : (
-                              <>
-                                <div>No Products Found.</div>
-                                {/* <div onClick={()=>{this.props.history.push('/jewellery')}}>Try Again.</div> */}
-                                <a href="/jewellery">Try Again.</a>
-                                {/* <Redirect to="/jewellery" >Try Again.</Redirect> */}
-                              </>
-                            )}
+                            <div>No Products Found.</div>
+                            {/* <div onClick={()=>{this.props.history.push('/jewellery')}}>Try Again.</div> */}
+                            <a href="/jewellery">Try Again.</a>
+                            {/* <Redirect to="/jewellery" >Try Again.</Redirect> */}
                           </>
                         )}
-                      </div>
-                    </>
-                  )}
+                      </>
+                    )}
+                  </div>
                 </>
-              }
-            </div>
+              )}
+            </>
+          }
+        </div>
         {/* //   </Container>{" "} */}
       </Container>
     );

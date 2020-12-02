@@ -11,6 +11,7 @@ import StyloriNews from "./StyloriNews";
 import Tweeterfeed from "../../components/storyTemplate/tweeterEmbedded";
 import { Helmet } from "react-helmet";
 import { InstagramFeed } from "./instagramfeed";
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   containItems: {
@@ -114,8 +115,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function StaticView(props) {
+  const location = useLocation();
   const classes = useStyles(props);
-  const { isShowInsideDiv } = props
+  const { isShowInsideDiv } = props;
   return (
     <>
       <Helmet>
@@ -123,19 +125,26 @@ export default function StaticView(props) {
       </Helmet>
       <Grid container justify="center">
         {isShowInsideDiv &&
-          ['Instagram', 'Facebook', 'Twitter'].map(val => {
+          ["Instagram", "Facebook", "Twitter"].map((val) => {
             return (
-              <Grid item xs={4} style={{ display: "flex", justifyContent: "center" }}>
-                <Typography className={classes.Title} style={{ fontWeight: 'bold' }}>{val}</Typography>
+              <Grid
+                item
+                xs={4}
+                style={{ display: "flex", justifyContent: "center" }}
+              >
+                <Typography
+                  className={classes.Title}
+                  style={{ fontWeight: "bold" }}
+                >
+                  {val}
+                </Typography>
               </Grid>
-            )
-          })
-        }
+            );
+          })}
       </Grid>
       <Grid container className={classes.containItems}>
         <Grid item className={classes.containerRoot}>
           <Grid container>
-
             <Grid
               item
               md={4}
@@ -144,9 +153,11 @@ export default function StaticView(props) {
               xs={4}
               className={classes.threeContain}
             >
-              {!isShowInsideDiv && <Grid item container>
-                <Typography className={classes.Title}>Instagram</Typography>
-              </Grid>}
+              {!isShowInsideDiv && (
+                <Grid item container>
+                  <Typography className={classes.Title}>Instagram</Typography>
+                </Grid>
+              )}
               <Grid
                 item
                 container
@@ -164,22 +175,44 @@ export default function StaticView(props) {
               xs={4}
               className={classes.threeContain}
             >
-              {!isShowInsideDiv && <Grid item container>
-                <Typography className={classes.Title}>Facebook</Typography>
-              </Grid>}
+              {!isShowInsideDiv && (
+                <Grid item container>
+                  <Typography className={classes.Title}>Facebook</Typography>
+                </Grid>
+              )}
               <Grid item container className={classes.photo}>
-                <iframe
-                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStyloriSilver%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=2175392015888999"
-                  style={{
-                    border: "none",
-                    overflow: "hidden",
-                    paddingTop: "-200px",
-                    paddingTop: "60px",
-                    marginTop: "-131px",
-                    height: "512px",
-                    width: "345px",
-                  }}
-                ></iframe>
+                {location.pathname === "/" ? (
+                  <>
+                    <iframe
+                      src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStylori%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=2175392015888999"
+                      style={{
+                        border: "none",
+                        overflow: "hidden",
+                        paddingTop: "-200px",
+                        paddingTop: "60px",
+                        marginTop: "-131px",
+                        height: "512px",
+                        width: "345px",
+                      }}
+                    ></iframe>{" "}
+                  </>
+                ) : (
+                  <>
+                    {" "}
+                    <iframe
+                      src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FStyloriSilver%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=2175392015888999"
+                      style={{
+                        border: "none",
+                        overflow: "hidden",
+                        paddingTop: "-200px",
+                        paddingTop: "60px",
+                        marginTop: "-131px",
+                        height: "512px",
+                        width: "345px",
+                      }}
+                    ></iframe>{" "}
+                  </>
+                )}
               </Grid>
             </Grid>
             <Grid
@@ -190,9 +223,11 @@ export default function StaticView(props) {
               xs={4}
               className={classes.threeContain}
             >
-              {!isShowInsideDiv && <Grid item container>
-                <Typography className={classes.Title}>Twitter</Typography>
-              </Grid>}
+              {!isShowInsideDiv && (
+                <Grid item container>
+                  <Typography className={classes.Title}>Twitter</Typography>
+                </Grid>
+              )}
               <Tweeterfeed />
             </Grid>
           </Grid>
