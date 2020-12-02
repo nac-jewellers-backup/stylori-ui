@@ -131,6 +131,7 @@ const injectUrl = (url, baseUi) => {
 
 
     var img_url = { img: `${baseUi}${url_construct}` }
+    // alert(img_url)
     return img_url
 }
 // const valuesinjectUrl = (imageUrl, cdnUrl) => injectUrl(imageUrl, cdnUrl);in

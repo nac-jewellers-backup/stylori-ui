@@ -4,11 +4,11 @@ import { NetworkProvider, GlobalProvider } from 'context';
 import './index.css'
 import Loading from 'screens/Loading';
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+import { ThemeProvider } from '@material-ui/styles'; 
 import { lambda_func_front_end } from './utils'
 import Theme from './Theme.js'
 import { withRouter } from 'react-router-dom';
-import CacheBuster from "./components/cacheBrust";
+import CacheBuster from "./components/cacheBrust"; 
 import ErrorBoundary from "components/errorcatching/ErrorCatching";
 let jewellery_theme = createMuiTheme(require('./jewellery_theme.json'));
 let silver_jewellery_theme = createMuiTheme(require('./silver_jewellery_theme.json'));
@@ -16,7 +16,7 @@ let jewelleryThemes = responsiveFontSizes(jewellery_theme);
 let silverThemes = responsiveFontSizes(silver_jewellery_theme);
 const RouterApp = React.lazy(() => import('router'));
 
-
+ 
 
 // const client = new ApolloClient({
 //   uri: ``,
