@@ -1670,7 +1670,7 @@ export const menuLists = {
                         "bigImage": {
                             "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---folklore.jpg",
                             "content": "CHOKERS",
-                            "url": "/silver-jewellery-Folklore",
+                            "url": "/silver-jewellery-folklore",
                         },
                         "imageContainer": [
 
@@ -1730,7 +1730,7 @@ export const menuLists = {
                         "bigImage": {
                             "img": "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---contemporary.jpg",
                             "content": "CHOKERS",
-                            "url": "/silver-jewellery-Contemporary",
+                            "url": "/silver-jewellery-contemporary",
                         },
                         "imageContainer": [
 

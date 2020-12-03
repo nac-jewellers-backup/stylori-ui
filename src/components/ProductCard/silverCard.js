@@ -300,7 +300,7 @@ const useStyles = makeStyles((theme) => ({
   priceClass: {
     // boxShadow: "0px 0px 5px #F699A3 inset",
     padding: "10px",
-    height: "56px",
+    height: "75px",
     display: "flex",
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
     borderRadius: "0 !important",
@@ -313,7 +313,7 @@ const useStyles = makeStyles((theme) => ({
       // opacity: "2"
     },
     [theme.breakpoints.down("sm")]: {
-      height: "46px",
+      height: "60px",
       padding: "0 !important",
       //   paddingLeft: '10px !important'
     },
@@ -424,11 +424,11 @@ const useStyles = makeStyles((theme) => ({
   },
   titles: {
     fontSize: "0.9rem",
-    whiteSpace: "nowrap",
+    // whiteSpace: "nowrap",
     // flex: 0.6,
     color: "rgb(109,110,112)",
     overflow: "hidden",
-    textOverflow: "ellipsis",
+    // textOverflow: "ellipsis",
     width: "90%",
   },
   iconColor: {
@@ -608,7 +608,7 @@ sizes="(max-width: 320px) 320w,
                     className={classes.offerMainPriceStrike}
                     style={{
                       // width: "100%",
-                      fontSize: "13px",
+                      fontSize: "12px",
                       paddingLeft: "5px",
                       display: "flex",
                       alignItems: "flex-end",
@@ -647,7 +647,7 @@ sizes="(max-width: 320px) 320w,
                             props.data.price) *
                             100
                         )}
-                    %)
+                    % off)
                   </span>
                 </span>
 
@@ -656,7 +656,7 @@ sizes="(max-width: 320px) 320w,
                   <Typography
                     variant="body1"
                     component="span"
-                    style={{ paddingLeft: "5px", textAlign: "center" }}
+                    style={{ paddingLeft: "5px", }}
                     className={`${classes.titles}`}
                   >
                     {props.data.title}
@@ -706,7 +706,7 @@ sizes="(max-width: 320px) 320w,
                       className={classes.offerMainPriceStrike}
                       style={{
                         // width: "100%",
-                        fontSize: "13px",
+                        fontSize: "12px",
                         paddingLeft: "5px",
                         display: "flex",
                         alignItems: "flex-end",
@@ -745,7 +745,7 @@ sizes="(max-width: 320px) 320w,
                               props.data.price) *
                               100
                           )}
-                      %)
+                      % off)
                     </span>
                   </span>
 
@@ -777,7 +777,7 @@ sizes="(max-width: 320px) 320w,
                   <Typography
                     variant="body1"
                     component="span"
-                    style={{ paddingLeft: "5px", textAlign: "center" }}
+                    style={{ paddingLeft: "5px" }}
                     className={`${classes.titles}`}
                   >
                     {props.data.title}

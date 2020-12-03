@@ -151,7 +151,7 @@ export const homePageStylori = {
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Contemporary+main.jpg",
         mobileImg:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Contemporary+main.jpg",
-        navigateUrl: "/silver-jewellery-Contemporary",
+        navigateUrl: "/silver-jewellery-contemporary",
       },
       {
         img:
@@ -165,7 +165,7 @@ export const homePageStylori = {
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Folklore+main.jpg",
         mobileImg:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Folklore+main.jpg",
-        navigateUrl: "/silver-jewellery-Folklore",
+        navigateUrl: "/silver-jewellery-folklore",
       },
       {
         img:
