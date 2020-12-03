@@ -13,6 +13,7 @@ import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import { Divider, Hidden } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import EmailIcon from "@material-ui/icons/Email";
+import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 
 const useStyles = makeStyles((theme) => ({
   //   root: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
       fill: `${theme.palette.secondary.main} !important`,
     },
     [theme.breakpoints.only("xs")]: {
-      marginBottom: 20
+      marginBottom: 20,
     },
   },
   needHelpText: {
@@ -82,9 +83,9 @@ const useStyles = makeStyles((theme) => ({
   },
   close: {
     [theme.breakpoints.only("xs")]: {
-      marginBottom: 20
+      marginBottom: 20,
     },
-  }
+  },
 }));
 
 export function NeedHelp(props) {
@@ -112,22 +113,34 @@ export function NeedHelp(props) {
           <Collapse {...TransitionProps} timeout={500}>
             <Paper className={classes.paper}>
               {/* <Hidden mdUp> */}
-              <Grid item xs={12} sm={4} style={{ padding: "5px 0px", margin: 'auto' }}>
+              <Grid
+                item
+                xs={12}
+                sm={4}
+                style={{ padding: "5px 0px", margin: "auto" }}
+              >
                 <a href="https://direct.lc.chat/5807571/" target="_blank">
                   <ChatIcon
                   // onClick={() =>  window.LC_API.open_chat_window() }
                   />
                 </a>
               </Grid>
-              <Grid item xs={12} sm={4} style={{ padding: "5px 0px", margin: 'auto' }}>
-                <a
-                  href="tel:1800-102-0330"
-                  style={{ textDecoration: "none" }}
-                >
+              <Grid
+                item
+                xs={12}
+                sm={4}
+                style={{ padding: "5px 0px", margin: "auto" }}
+              >
+                <a href="tel:1800-102-0330" style={{ textDecoration: "none" }}>
                   <CallIcon />
                 </a>
               </Grid>
-              <Grid item xs={12} sm={4} style={{ padding: "5px 0px", margin: 'auto' }}>
+              <Grid
+                item
+                xs={12}
+                sm={4}
+                style={{ padding: "5px 0px", margin: "auto" }}
+              >
                 <a
                   href="mailto:hello@stylori.com"
                   style={{ textDecoration: "none" }}
@@ -135,8 +148,26 @@ export function NeedHelp(props) {
                   <EmailIcon />
                 </a>
               </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={4}
+                style={{ padding: "5px 0px", margin: "auto" }}
+              >
+                <a
+                  href="https://wa.me/919952625252?text=Hi"
+                  style={{ textDecoration: "none" }}
+                >
+                  <WhatsAppIcon />
+                </a>
+              </Grid>
 
-              <Grid item xs={12} sm={4} style={{ padding: "5px 0px", margin: 'auto' }} >
+              <Grid
+                item
+                xs={12}
+                sm={4}
+                style={{ padding: "5px 0px", margin: "auto" }}
+              >
                 <HighlightOffIcon onClick={handleClick(props.position)} />
               </Grid>
               {/* </Hidden> */}
@@ -209,25 +240,26 @@ export function NeedHelp(props) {
         <Hidden smDown>
           <Grid
             item
-            className={`${classes.needHelpTextWithoutRotate} ${open ? classes.noWidth : ""
-              }`}
+            className={`${classes.needHelpTextWithoutRotate} ${
+              open ? classes.noWidth : ""
+            }`}
           >
             <Button onClick={handleClick(props.position)}>
               {open ? (
                 <CloseIcon className={classes.closeIcon} />
               ) : (
-                  <div>
-                    <div style={{ fontSize: "1rem" }}>
-                      Help
+                <div>
+                  <div style={{ fontSize: "1rem" }}>
+                    Help
                     <i
-                        style={{ fontSize: "1.2rem", paddingLeft: 3 }}
-                        class="fa"
-                      >
-                        &#xf128;
+                      style={{ fontSize: "1.2rem", paddingLeft: 3 }}
+                      class="fa"
+                    >
+                      &#xf128;
                     </i>
-                    </div>
                   </div>
-                )}
+                </div>
+              )}
             </Button>
           </Grid>
         </Hidden>
