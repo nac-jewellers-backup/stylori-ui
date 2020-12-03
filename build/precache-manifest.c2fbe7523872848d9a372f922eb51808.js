@@ -1,50 +1,34 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9096bea72c76633d3c4a6ffb377aec97",
+    "revision": "57158e51f0090ade02dd070292754f44",
     "url": "/index.html"
   },
   {
-    "revision": "81033e74d66e7dd9c739",
+    "revision": "d9b124c66040d7741b4e",
     "url": "/static/css/2.css"
   },
   {
-<<<<<<< HEAD:build/precache-manifest.93059ee6db64bbfbe79754e39bf7f673.js
-    "revision": "be60e69b03b0ec2ac675",
+    "revision": "c89797eb8fcb7acd427d",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "130681471d29b32d4007",
-=======
-    "revision": "8e7d63386e4600c886af",
-    "url": "/static/css/3.css"
-  },
-  {
-    "revision": "e3f99b655a077c089614",
->>>>>>> 458c1a65af7deb65fd9dc125f6de3245aa0a404e:build/precache-manifest.e6beefcbc8c7a3077be72f7ea8d27f61.js
+    "revision": "05b433f67b9b954bbaad",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "81033e74d66e7dd9c739",
+    "revision": "d9b124c66040d7741b4e",
     "url": "/static/js/2.js"
   },
   {
-<<<<<<< HEAD:build/precache-manifest.93059ee6db64bbfbe79754e39bf7f673.js
-    "revision": "be60e69b03b0ec2ac675",
-=======
-    "revision": "8e7d63386e4600c886af",
->>>>>>> 458c1a65af7deb65fd9dc125f6de3245aa0a404e:build/precache-manifest.e6beefcbc8c7a3077be72f7ea8d27f61.js
+    "revision": "c89797eb8fcb7acd427d",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "28b255f6313a81e3d691",
+    "revision": "894d918dd73a71a4dc84",
     "url": "/static/js/4.js"
   },
   {
-<<<<<<< HEAD:build/precache-manifest.93059ee6db64bbfbe79754e39bf7f673.js
-    "revision": "130681471d29b32d4007",
-=======
-    "revision": "e3f99b655a077c089614",
->>>>>>> 458c1a65af7deb65fd9dc125f6de3245aa0a404e:build/precache-manifest.e6beefcbc8c7a3077be72f7ea8d27f61.js
+    "revision": "05b433f67b9b954bbaad",
     "url": "/static/js/main.js"
   },
   {
