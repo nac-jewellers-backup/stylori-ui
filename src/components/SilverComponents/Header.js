@@ -562,6 +562,15 @@ class Header extends Component {
                                       ),
                                     });
                                   }}
+                                  target={
+                                    listName.title === "STYLORISILVER" ||
+                                    listName.title === "VISIT STYLORI.COM"
+                                      ? "_blank"
+                                      : ""
+                                  }
+                                  // {
+                                  //   listName.title === "STYLORISILVER" ? ""
+                                  // }
                                 >
                                   {listName.title === "VISIT STYLORI.COM" ? (
                                     <img
@@ -958,9 +967,13 @@ class Header extends Component {
                         }`}
                       >
                         <ListItemText
-                          onClick={() => {
-                            window.location.href = row.url;
-                          }}
+                          onClick={
+                            row.url === "/" || row.url === "/styloriSilver"
+                              ? () => window.open(row.url, "_blank")
+                              : () => {
+                                  window.location.href = row.url;
+                                }
+                          }
                         >
                           <Typography
                             className={

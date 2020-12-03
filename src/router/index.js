@@ -63,6 +63,7 @@ export const RouterApp = (props) => {
   const paths = [
     "/:params1/:params2",
     "/:params1/:params2/:params3",
+    
     "/:params1/:params2/:params3/:params4",
   ];
   var loc_PD = window.location.pathname.split("/").filter((val) => {
