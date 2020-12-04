@@ -77,10 +77,17 @@ export const homePageStylori = {
       },
       {
         img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-monsoon-collection-web-2020.jpg",
         mobileImg:
-          " https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+mobile+banner+805+X+430.jpg",
-        navigateUrl: "https://www.stylori.com/jewellery",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-monsoon-collection-mob-2020.jpg",
+        navigateUrl: "https://www.stylori.com/jewellery-from+monsoon+collection",
+      },
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-butterfly-collection-web-2020.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-butterfly-collection-mob-2020.jpg",
+        navigateUrl: "https://www.stylori.com/jewellery-butterfly?sort=latest&startprice=0&endprice=0",
       },
 
       // REMOVED ON 27-07-2020
