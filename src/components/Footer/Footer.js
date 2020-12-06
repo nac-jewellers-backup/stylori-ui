@@ -121,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Footer(props) {
   const location = useLocation();
- 
+
   const { silver } = props;
   const [state, setState] = React.useState("");
   const [open, setOpen] = React.useState(false);

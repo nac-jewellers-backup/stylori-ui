@@ -71,6 +71,98 @@ const ProductLayoutSilver = (props) => {
     />
   );
 };
+// let random_image_data = homePageStylori.carouselTop.silverListingPageData;
+// function shuffle() {
+//   var m = random_image_data.length,
+//     t,
+//     i;
+
+//   // While there remain elements to shuffle…
+//   while (m) {
+//     // Pick a remaining element…
+//     i = Math.floor(Math.random() * m--);
+
+//     // And swap it with the current element.
+//     t = random_image_data[m];
+//     random_image_data[m] = random_image_data[i];
+//     random_image_data[i] = t;
+//   }
+
+//   return (
+//     <>
+//       <Hidden smDown>
+//         <Grid container>
+//           <a href={random_image_data.navigateUrl} style={{ width: "100%" }}>
+//             <img
+//               src={random_image_data.img}
+//               style={{
+//                 width: "100%",
+//                 height: "100%",
+//               }}
+//             />
+//           </a>
+//         </Grid>
+//       </Hidden>
+//       <Hidden mdUp>
+//         <Grid container>
+//           <a href={random_image_data.navigateUrl}>
+//             <img
+//               src={random_image_data.mobileImg}
+//               style={{
+//                 width: "100%",
+//                 height: "100%",
+//               }}
+//             />
+//           </a>
+//         </Grid>
+//       </Hidden>
+//     </>
+//   );
+// }
+// const RandomSildeImage = () => {
+//   let random_image_data =
+//     homePageStylori.carouselTop.silverListingPageData[
+//       Math.floor(
+//         Math.random() * homePageStylori.carouselTop.silverListingPageData.length
+//       )
+//     ];
+//   console.log(random_image_data);
+//   return (
+//     <>
+//       <Slideshow
+//         sliderRef={this.slider}
+//         dataCarousel={homePageStylori.carouselTop.settingSilverListingPage}
+//       >
+//         <Hidden smDown>
+//           <Grid container>
+//             <a href={random_image_data.navigateUrl} style={{ width: "100%" }}>
+//               <img
+//                 src={random_image_data.img}
+//                 style={{
+//                   width: "100%",
+//                   height: "100%",
+//                 }}
+//               />
+//             </a>
+//           </Grid>
+//         </Hidden>
+//         <Hidden mdUp>
+//           <Grid container>
+//             <a href={random_image_data.navigateUrl}>
+//               <img
+//                 src={random_image_data.mobileImg}
+//                 style={{
+//                   width: "100%",
+//                   height: "100%",
+//                 }}
+//               />
+//             </a>
+//           </Grid>
+//         </Hidden>
+//       </Slideshow>
+//     </>
+//   );
+// };
 
 class Component extends React.Component {
   constructor(props) {
@@ -126,6 +218,7 @@ class Component extends React.Component {
     // console.log(dataCard)
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
 
+    // console.log(random_image_data);
     return (
       <Container maxWidth="lg" disableGutters>
         {/* //   <Container maxWidth="lg"> */}
@@ -151,10 +244,10 @@ class Component extends React.Component {
                     style={{ margin: "25px !important" }}
                   >
                     {data.map((tile, i) => {
-                      console.log(
-                        i + (1 % 8) === 0,
-                        "i+1 % 8 === 0i+1 % 8 === 0"
-                      );
+                      // console.log(
+                      //   i + (1 % 8) === 0,
+                      //   "i+1 % 8 === 0i+1 % 8 === 0"
+                      // );
 
                       return tile && Object.entries(tile).length > 0 ? (
                         (i + 1) % 16 === 0 ? (
@@ -171,10 +264,92 @@ class Component extends React.Component {
                                   <Slideshow
                                     sliderRef={this.slider}
                                     dataCarousel={
-                                      homePageStylori.carouselTop.settingSilver
+                                      homePageStylori.carouselTop
+                                        .settingSilverListingPage
                                     }
                                   >
-                                    {homePageStylori.carouselTop.silverListingPageData.map(
+                                    {/* {shuffle} */}
+                                    {
+                                      <>
+                                        <Hidden smDown>
+                                          <Grid container>
+                                            <a
+                                              href={
+                                                homePageStylori.carouselTop
+                                                  .silverListingPageData[
+                                                  Math.floor(
+                                                    Math.random() *
+                                                      homePageStylori
+                                                        .carouselTop
+                                                        .silverListingPageData
+                                                        .length
+                                                  )
+                                                ].navigateUrl
+                                              }
+                                              style={{ width: "100%" }}
+                                            >
+                                              <img
+                                                src={
+                                                  homePageStylori.carouselTop
+                                                    .silverListingPageData[
+                                                    Math.floor(
+                                                      Math.random() *
+                                                        homePageStylori
+                                                          .carouselTop
+                                                          .silverListingPageData
+                                                          .length
+                                                    )
+                                                  ].img
+                                                }
+                                                style={{
+                                                  width: "100%",
+                                                  height: "100%",
+                                                }}
+                                              />
+                                            </a>
+                                          </Grid>
+                                        </Hidden>
+                                        <Hidden mdUp>
+                                          <Grid container>
+                                            <a
+                                              href={
+                                                homePageStylori.carouselTop
+                                                  .silverListingPageData[
+                                                  Math.floor(
+                                                    Math.random() *
+                                                      homePageStylori
+                                                        .carouselTop
+                                                        .silverListingPageData
+                                                        .length
+                                                  )
+                                                ].navigateUrl
+                                              }
+                                            >
+                                              <img
+                                                src={
+                                                  homePageStylori.carouselTop
+                                                    .silverListingPageData[
+                                                    Math.floor(
+                                                      Math.random() *
+                                                        homePageStylori
+                                                          .carouselTop
+                                                          .silverListingPageData
+                                                          .length
+                                                    )
+                                                  ].mobileImg
+                                                }
+                                                style={{
+                                                  width: "100%",
+                                                  height: "100%",
+                                                }}
+                                              />
+                                            </a>
+                                          </Grid>
+                                        </Hidden>
+                                      </>
+                                    }
+
+                                    {/* {homePageStylori.carouselTop.silverListingPageData.map(
                                       (val, index) => (
                                         <>
                                           <Hidden smDown>
@@ -208,7 +383,7 @@ class Component extends React.Component {
                                           </Hidden>
                                         </>
                                       )
-                                    )}
+                                    )} */}
                                   </Slideshow>
                                 </GridListTile>
                               ) : null

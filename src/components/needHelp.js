@@ -95,7 +95,7 @@ export function NeedHelp(props) {
   const classes = useStyles();
 
   const handleClick = (newPlacement) => (event) => {
-    debugger;
+    // debugger;
     setAnchorEl(event.currentTarget);
     setOpen((prev) => placement !== newPlacement || !prev);
     setPlacement(newPlacement);
