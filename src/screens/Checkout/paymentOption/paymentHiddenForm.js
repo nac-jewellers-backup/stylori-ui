@@ -34,7 +34,8 @@ export default function PaymentHiddenForm(props) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                chargetotal: props.data
+                chargetotal: props.data,
+                cartId:JSON.parse(localStorage.getItem('cart_id')).cart_id
             })
         })
             .then(async (response) => await response.json())
