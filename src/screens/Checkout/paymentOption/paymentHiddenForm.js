@@ -8,7 +8,8 @@ export default function PaymentHiddenForm(props) {
     let { CartCtx: { setCartFilters, cartFilters, data, loading, error } } = React.useContext(CartContext);
     const [hash, sethash] = useState({
         hashvalue: "",
-        timedate: ""
+        timedate: "",
+        cartValue:""
     })
     const [orderId, setOrderId] = React.useState(null)
     const obj = {}
@@ -34,7 +35,7 @@ export default function PaymentHiddenForm(props) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                chargetotal: props.data,
+                // chargetotal: props.data,
                 cartId:JSON.parse(localStorage.getItem('cart_id')).cart_id
             })
         })
@@ -43,7 +44,8 @@ export default function PaymentHiddenForm(props) {
                 sethash({
                     ...hash,
                     hashvalue: data.hash,
-                    timedate: data.day
+                    timedate: data.day,
+                    cartValue:data.cartval
                 })
 
                 //  hash=data.hash
@@ -126,7 +128,7 @@ export default function PaymentHiddenForm(props) {
                     {/* <label>Chargetotal</label> */}
                     <input size="50" type= "hidden"  name="chargetotal"
                         // value="1"
-                    value={`${props.data}`}
+                    value={hash.cartValue}
                     />
                 </div>
                 <div>
