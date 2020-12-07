@@ -98,7 +98,7 @@ function HeaderHoverMenuItem(props) {
                           props.state, props.filtercheck ? props.filtercheck.replace(/\s/g, "") : ""
                           )
                         }}
-                    className={`${props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] ? classes.mouseOverPopoverfiltersselected :''} ${classes.mouseOverPopoverfilterslist}`}
+                        className={`${props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] ? classes.mouseOverPopoverfiltersselected :''} ${classes.mouseOverPopoverfilterslist}`}                    className={`${props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] ? classes.mouseOverPopoverfiltersselected :''} ${classes.mouseOverPopoverfilterslist}`}
                     >
 
                       <ListItemText variant className={`${props.filters ? classes.filtersListtopfilters : classes.filtersList}`} style={{fontSize:"0.9rem"}}>
