@@ -103,76 +103,80 @@ export function NeedHelp(props) {
 
   return (
     <div className={classes.root}>
-      <Popper
-        open={open}
-        anchorEl={anchorEl}
-        placement={placement}
-        transition
-        className={classes.popper}
-      >
-        {({ TransitionProps }) => (
-          <Collapse {...TransitionProps} timeout={500}>
-            <Paper className={classes.paper}>
-              {/* <Hidden mdUp> */}
-              <Grid
-                item
-                xs={12}
-                sm={4}
-                style={{ padding: "5px 0px", margin: "auto" }}
-              >
-                <a href="https://direct.lc.chat/5807571/" target="_blank">
-                  <ChatIcon
-                  // onClick={() =>  window.LC_API.open_chat_window() }
-                  />
-                </a>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={4}
-                style={{ padding: "5px 0px", margin: "auto" }}
-              >
-                <a href="tel:1800-102-0330" style={{ textDecoration: "none" }}>
-                  <CallIcon />
-                </a>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={4}
-                style={{ padding: "5px 0px", margin: "auto" }}
-              >
-                <a
-                  href="mailto:hello@stylori.com"
-                  style={{ textDecoration: "none" }}
+      <Hidden smDown>
+        <Popper
+          open={open}
+          anchorEl={anchorEl}
+          placement={placement}
+          transition
+          className={classes.popper}
+        >
+          {({ TransitionProps }) => (
+            <Collapse {...TransitionProps} timeout={500}>
+              <Paper className={classes.paper}>
+                {/* <Hidden mdUp> */}
+                <Grid
+                  item
+                  xs={12}
+                  sm={4}
+                  style={{ padding: "5px 0px", margin: "auto" }}
                 >
-                  <EmailIcon />
-                </a>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={4}
-                style={{ padding: "5px 0px", margin: "auto" }}
-              >
-                <a
-                  href="https://wa.me/919952625252?text=Hi"
-                  style={{ textDecoration: "none" }}
+                  <a href="https://direct.lc.chat/5807571/" target="_blank">
+                    <ChatIcon
+                    // onClick={() =>  window.LC_API.open_chat_window() }
+                    />
+                  </a>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={4}
+                  style={{ padding: "5px 0px", margin: "auto" }}
                 >
-                  <WhatsAppIcon />
-                </a>
-              </Grid>
+                  <a
+                    href="tel:1800-102-0330"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <CallIcon />
+                  </a>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={4}
+                  style={{ padding: "5px 0px", margin: "auto" }}
+                >
+                  <a
+                    href="mailto:hello@stylori.com"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <EmailIcon />
+                  </a>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={4}
+                  style={{ padding: "5px 0px", margin: "auto" }}
+                >
+                  <a
+                    href="https://wa.me/919952625252?text=Hi"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <WhatsAppIcon />
+                  </a>
+                </Grid>
 
-              <Grid
-                item
-                xs={12}
-                sm={4}
-                style={{ padding: "5px 0px", margin: "auto" }}
-              >
-                <HighlightOffIcon onClick={handleClick(props.position)} />
-              </Grid>
-              {/* </Hidden> */}
-              {/* 
+                {/* <Grid
+                  item
+                  xs={12}
+                  sm={4}
+                  style={{ padding: "5px 0px", margin: "auto" }}
+                >
+                  <HighlightOffIcon onClick={handleClick(props.position)} />
+                </Grid> */}
+                {/* </Hidden> */}
+                {/* 
             
               <Hidden smDown>
                 <Grid container style={{ padding: "10px 15px" }}>
@@ -233,10 +237,11 @@ export function NeedHelp(props) {
               </Hidden>
             
             */}
-            </Paper>
-          </Collapse>
-        )}
-      </Popper>
+              </Paper>
+            </Collapse>
+          )}
+        </Popper>
+      </Hidden>
       <Grid container justify="center">
         <Hidden smDown>
           <Grid
@@ -265,8 +270,25 @@ export function NeedHelp(props) {
           </Grid>
         </Hidden>
         <Hidden mdUp>
-          <Grid item className={classes.needHelpText}>
-            <Button onClick={handleClick(props.position)}>Help ?</Button>
+          <Grid item>
+            {/* <Button onClick={handleClick(props.position)}>Help ?</Button> */}
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              style={{ padding: "5px 0px", margin: "auto" }}
+            >
+              <a
+                href="https://wa.me/919952625252?text=Hi"
+                style={{ textDecoration: "none" }}
+              >
+                <i
+                  class="fa fa-whatsapp"
+                  aria-hidden="true"
+                  style={{ color: "#25D366", fontSize: "30px" }}
+                ></i>
+              </a>
+            </Grid>
           </Grid>
         </Hidden>
       </Grid>

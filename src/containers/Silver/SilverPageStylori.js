@@ -48,7 +48,7 @@ class HomeStylori extends React.Component {
         <Container maxWidth={"lg"}>
           <ProductModal data={this.props.data} allSeo={this.props.allSeo} />
           <MultipleSections
-            isHover={true} 
+            isHover={true}
             customerReviews={this.props.customerReviews}
             isGadgets={true}
             {...this.props}
@@ -67,7 +67,7 @@ class HomeStylori extends React.Component {
               <Typography variant="body1" className={classes.instagramTitle}>
                 INSTAGRAM
               </Typography>
-              <InstagramFeed />
+              <InstagramFeed  />
             </Grid>
           </Hidden>
         </Container>
@@ -90,9 +90,14 @@ class HomeStylori extends React.Component {
           </Hidden>
           <Hidden mdUp>
             <div
-              style={{ position: "fixed", top: "50%", right: 0, zIndex: 20 }}
+              style={{
+                position: "fixed",
+                top: "75%",
+                right: "5px",
+                zIndex: 20,
+              }}
             >
-              <NeedHelp position="top" /> 
+              <NeedHelp position="top" />
             </div>
           </Hidden>
         </>
