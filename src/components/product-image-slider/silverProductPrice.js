@@ -588,7 +588,9 @@ const Productprice = (
                               {/* <LocalMallIcon
                                 style={{ fill: "rgb(6, 171, 159)" }}
                               /> */}
+
                               <span className={classes.robotoBoldFont}>
+                                <i class="fa fa-shopping-bag buynow-icon"></i>
                                 Add to Cart
                               </span>
                             </Button>

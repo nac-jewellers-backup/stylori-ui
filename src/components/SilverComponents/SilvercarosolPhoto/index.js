@@ -7,6 +7,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import { useStyles } from "./style.js";
 import { GlobalContext } from "context";
 import Gadgets from "components/product-image-slider/Gagetstylori/Gagetstylori";
+import { Helmet } from "react-helmet";
 
 const SilverCarousel = (props) => {
   const dataCarousel = {
@@ -17,8 +18,16 @@ const SilverCarousel = (props) => {
   };
   const { carouselTop } = props.data;
   const classes = useStyles();
+ 
   return (
     <Grid container xs={12}>
+      {/* <Helmet>
+      <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Stylori Silver - Silver Jewellery" />
+        <meta property="og:url" content={window.location.href} />
+        <meta name="og:description" content={carouselTop[0].content} />
+        <meta property="og:image" content={carouselTop[0].images[0].img} />
+      </Helmet> */}
       <Grid
         item
         xs={12}
@@ -28,7 +37,7 @@ const SilverCarousel = (props) => {
             : ""
         }
       >
-        <Hidden smUp>
+        <Hidden mdUp>
           <Slideshow dataCarousel={carouselTop[0].settings}>
             {carouselTop[0].images.map((val, index) => (
               <a href={val.navigateUrl}>
@@ -36,7 +45,7 @@ const SilverCarousel = (props) => {
                   <img
                     src={val.mobileImg}
                     alt="Stylori"
-                    style={{ width: "100%", height: "auto" }}
+                    style={{ width: "100%", height: "100%" }}
                   />
                 </Grid>
               </a>

@@ -41,6 +41,24 @@ export const homePageStylori = {
       pauseOnFocus: true,
       swipe: true,
     },
+    settingSilverListingPage: {
+      dots: false,
+      infinite: true,
+      autoplay: false,
+      speed: 1000,
+      fade: false,
+      arrows: false,
+      arrowsImg: true,
+      dotsClass: "slickdev",
+      accessibility: true,
+      autoplaySpeed: 2000,
+      centerMode: false,
+      focusOnSelect: false,
+      pauseOnHover: true,
+      pauseOnDotsHover: false,
+      pauseOnFocus: true,
+      swipe: false,
+    },
     data: [
       // {
       //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/home/CV+Stylroi+banner+1920+X+656.jpg",
@@ -80,14 +98,16 @@ export const homePageStylori = {
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-monsoon-collection-web-2020.jpg",
         mobileImg:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-monsoon-collection-mob-2020.jpg",
-        navigateUrl: "https://www.stylori.com/jewellery-from+monsoon+collection",
+        navigateUrl:
+          "https://www.stylori.com/jewellery-from+monsoon+collection",
       },
       {
         img:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-butterfly-collection-web-2020.jpg",
         mobileImg:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-butterfly-collection-mob-2020.jpg",
-        navigateUrl: "https://www.stylori.com/jewellery-butterfly?sort=latest&startprice=0&endprice=0",
+        navigateUrl:
+          "https://www.stylori.com/jewellery-butterfly?sort=latest&startprice=0&endprice=0",
       },
 
       // REMOVED ON 27-07-2020
@@ -187,6 +207,90 @@ export const homePageStylori = {
         mobileImg:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Traditional+main.jpg",
         navigateUrl: "/silver-jewellery-traditional",
+      },
+    ],
+
+    silverListingContemperoryPage: [
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Contemporary+main.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Contemporary.jpg",
+        navigateUrl: "#",
+      },
+    ],
+    silverListingEverydayPage: [
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Everyday+main.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Everyday.jpg",
+        navigateUrl: "#",
+      },
+    ],
+    silverListingFolklorePage: [
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Folklore+main.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Foloklor.jpg",
+        navigateUrl: "#",
+      },
+    ],
+    silverListingMudraPage: [
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Mudra+main.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Mudra.jpg",
+        navigateUrl: "#",
+      },
+    ],
+    silverListingTraditionalPage: [
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Traditional+main.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Traditional.jpg",
+        navigateUrl: "#",
+      },
+    ],
+
+    silverListingPageBottomData: [
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Contemporary-Banner-web.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Contemporary-Banner-mob.jpg",
+        navigateUrl: "#",
+      },
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Everyday-Banner-web.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Everyday-Banner-mob.jpg",
+        navigateUrl: "#",
+      },
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Folklore-Banner-web.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Folklore-Banner-mob.jpg",
+        navigateUrl: "#",
+      },
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Mudra-Banner-web.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Mudra-Banner-mob.jpg",
+        navigateUrl: "#",
+      },
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Traditional-Banner-web.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Traditional-Banner-mob.jpg",
+        navigateUrl: "#",
       },
     ],
   },

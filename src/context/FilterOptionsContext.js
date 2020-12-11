@@ -541,6 +541,7 @@ const Provider = (props) => {
           if (val === "category") return val;
         }).length !== 0
       )
+      // debugger
       if(Object.keys(newObj).findIndex(val=>val==='material') > -1){
         // if(newObj.category === "Jewellery"){
           if(!(newObj.material === 'Silver')){
@@ -555,6 +556,7 @@ const Provider = (props) => {
       else{
         newObj['isJewellery']=true
       }
+      // debugger
       // data.data.allTransSkuLists.nodes.map(val=>{return val.productListByProductId.productMaterialsByProductSku.nodes}).flat().findIndex(val=> Boolean(val.materialName === "Silver")) > -1
         await fetchproducts(newObj);
     }

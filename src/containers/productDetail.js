@@ -137,7 +137,8 @@ class ProductDetail extends Component {
       // null
       /*:*/
       /*:*/
-     /*:*/);
+      /*:*/
+    );
   };
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.data !== prevState.data) {
@@ -295,14 +296,24 @@ class ProductDetail extends Component {
             className="pricing-imgzom-media"
             style={{ maxWidth: "1600px", margin: "auto" }}
           >
-            <Grid container spacing={isSilver ? 5 : 12} justify={isSilver ? 'space-between' : 'space-evenly'}>
+            <Grid
+              container
+              spacing={isSilver ? 5 : 12}
+              justify={isSilver ? "space-between" : "space-evenly"}
+            >
               <Grid item xs={6}>
-                {
-                  isSilver ?
-                    <ProductImageZoom data={this.props.data} isSilver={isSilver} customLimit={3} />
-                    :
-                    <ProductImageZoom data={this.props.data} isSilver={isSilver} />
-                }
+                {isSilver ? (
+                  <ProductImageZoom
+                    data={this.props.data}
+                    isSilver={isSilver}
+                    customLimit={3}
+                  />
+                ) : (
+                  <ProductImageZoom
+                    data={this.props.data}
+                    isSilver={isSilver}
+                  />
+                )}
               </Grid>
               <Grid item xs={6}>
                 {isSilver ? (
@@ -313,27 +324,27 @@ class ProductDetail extends Component {
                     />
                   </div>
                 ) : (
-                    <div className="overall-box priceecontainer">
-                      <ProductPrice
-                        data={this.props.data}
-                        wishlist={this.props.wishlistdata}
-                      />
-                    </div>
-                  )}
+                  <div className="overall-box priceecontainer">
+                    <ProductPrice
+                      data={this.props.data}
+                      wishlist={this.props.wishlistdata}
+                    />
+                  </div>
+                )}
                 {!isSilver && (
                   <div className="overall-box priceecontainer">
                     <PriceTabs data={this.props.data} isSilver={isSilver} />
                   </div>
                 )}
                 {isSilver ? (
-                  <div >
+                  <div>
                     <PriceBuynow data={this.props.data} isSilver={isSilver} />
                   </div>
                 ) : (
-                    <div className="overall-box priceecontainer">
-                      <PriceBuynow data={this.props.data} isSilver={isSilver} />
-                    </div>
-                  )}
+                  <div className="overall-box priceecontainer">
+                    <PriceBuynow data={this.props.data} isSilver={isSilver} />
+                  </div>
+                )}
                 {isSilver && (
                   <Grid
                     item
@@ -411,17 +422,17 @@ class ProductDetail extends Component {
                 paddingRight: "5%",
                 paddingTop: "4%",
               }}
-            > 
+            >
               <Sublistcarousel
                 data={this.props.data}
                 isSilver={isSilver}
                 customLimit={4}
-                nextPreviousIconSize={'3rem'}
+                nextPreviousIconSize={"3rem"}
               />
             </div>
           ) : (
-              <Sublistcarousel data={this.props.data} isSilver={isSilver} />
-            )}
+            <Sublistcarousel data={this.props.data} isSilver={isSilver} />
+          )}
           {isSilver && (
             <div
               style={{
@@ -454,14 +465,14 @@ class ProductDetail extends Component {
               />
             </div>
           ) : (
-              <RatingForm
-                // 0 0 0
-                data={this.props.data}
-                clear_rating={this.state.clear}
-                clear_rating_onchange={clear_rating}
-                isSilver={isSilver}
-              />
-            )}
+            <RatingForm
+              // 0 0 0
+              data={this.props.data}
+              clear_rating={this.state.clear}
+              clear_rating_onchange={clear_rating}
+              isSilver={isSilver}
+            />
+          )}
           {isSilver ? (
             <div
               style={{
@@ -472,8 +483,8 @@ class ProductDetail extends Component {
               {/* <CustomerReviews rating={this.props.rating} isSilver={isSilver} /> */}
             </div>
           ) : (
-              <CustomerReviews rating={this.props.rating} isSilver={isSilver} />
-            )}
+            <CustomerReviews rating={this.props.rating} isSilver={isSilver} />
+          )}
 
           <Grid item xs={12}>
             <Footer silver={isSilver} />
@@ -505,7 +516,12 @@ class ProductDetail extends Component {
           </Grid>
           {isSilver && (
             <div
-              style={{ position: "fixed", top: "50%", right: 0, zIndex: 20 }}
+              style={{
+                position: "fixed",
+                top: "75%",
+                right: "5px",
+                zIndex: 20,
+              }}
             >
               <NeedHelp position="top" />
             </div>
@@ -562,7 +578,17 @@ class ProductDetail extends Component {
           <Grid item xs={12}>
             {isSilver && (
               <Container>
-                <div style={{ marginTop: 20, marginBottom: 10, fontSize: 20, color: "rgb(58,69,120)", fontWeight: "bold", letterSpacing: 4, textAlign: "center" }}>
+                <div
+                  style={{
+                    marginTop: 20,
+                    marginBottom: 10,
+                    fontSize: 20,
+                    color: "rgb(58,69,120)",
+                    fontWeight: "bold",
+                    letterSpacing: 4,
+                    textAlign: "center",
+                  }}
+                >
                   {/* <ProductTitle
                     title={"SHOP BY TYPE"}
                     class={["silverPDPage", "silverPDPagehrline"]}
@@ -573,7 +599,10 @@ class ProductDetail extends Component {
 
                 <ProductModal
                   shopByStyloriSilver={
-                    this.props?.shopByStyloriSilver?.length > 3 ? this.props?.shopByStyloriSilver?.slice(0, 4) : this.props?.shopByStyloriSilver}
+                    this.props?.shopByStyloriSilver?.length > 3
+                      ? this.props?.shopByStyloriSilver?.slice(0, 4)
+                      : this.props?.shopByStyloriSilver
+                  }
                   allSeo={this.props.allSeo}
                   isShowDetails={true}
                   layout={6}

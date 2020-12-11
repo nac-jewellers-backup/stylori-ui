@@ -34,10 +34,10 @@ const ProductModal = (props) => {
     pauseOnHover: false,
     pauseOnDotsHover: false,
     pauseOnFocus: false,
-    swipe: false
+    swipe: false,
   };
 
-  const [state, setState] = React.useState({ pagination: 4, isShowMore: true })
+  const [state, setState] = React.useState({ pagination: 4, isShowMore: true });
   const {
     data: { fadeImagessublist },
     shopByStyloriSilver,
@@ -63,56 +63,55 @@ const ProductModal = (props) => {
     },
   }
   let _shopByData =
-    shopByStyloriSilver && shopByStyloriSilver.length > 0 &&
+    shopByStyloriSilver &&
+    shopByStyloriSilver.length > 0 &&
     shopByStyloriSilver.map((val) => {
-
-
       return {
         img: val.image,
         title: val.label,
         description:
-          allSeo && allSeo[val.label] ? allSeo[val.label].seoText : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ",
+          allSeo && allSeo[val.label]
+            ? allSeo[val.label].seoText
+            : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ",
         price: "98.89789",
       };
     });
 
   const handleCollectionDataMapper = (_collectiondata, fadeImagessublist) => {
-    let data = _collectiondata.data
+    let data = _collectiondata.data;
 
-    console.log(data, "fadeImagessublist data")
-    var _keysCollections = Object.keys(data).filter(val => {
-      let tempdata = data[val]
-      if (tempdata.nodes.length > 0) return val
-    })
+    console.log(data, "fadeImagessublist data");
+    var _keysCollections = Object.keys(data).filter((val) => {
+      let tempdata = data[val];
+      if (tempdata.nodes.length > 0) return val;
+    });
 
     let _fun = () => {
-      let _arr = []
-      _keysCollections.map(val => {
-        let tempdata = data ? data[val] : false
+      let _arr = [];
+      _keysCollections.map((val) => {
+        let tempdata = data ? data[val] : false;
         if (tempdata && tempdata.nodes.length > 0) {
+          let obj = {};
 
-          let obj = {}
-
-          obj["img"] = tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes[0]
-          obj["title"] = tempdata.nodes[0].collectionName
-          obj["description"] = "Lorem Ipsum is simply dummy text of the printing a…rem Ipsum has been the industry's standard dummy"
-          _arr.push(obj)
-
-
+          obj["img"] =
+            tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes[0];
+          obj["title"] = tempdata.nodes[0].collectionName;
+          obj["description"] =
+            "Lorem Ipsum is simply dummy text of the printing a…rem Ipsum has been the industry's standard dummy";
+          _arr.push(obj);
         }
+      });
+      return _arr;
+    };
 
-      })
-      return _arr
-    }
-
-    return _fun()
+    return _fun();
     // let _fun = () => {
     //   let _arr = []
     //   a.map(val=>{
     //   let tempdata = temp1.data[val]
     //   if(tempdata.nodes.length > 0 )
     //   {
-    //   tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes.map(val=>{ 
+    //   tempdata.nodes[0].productListByProductId.productImagesByProductId.nodes.map(val=>{
     //   let obj ={}
     //   if(val) {
     //   obj["img"]=val
@@ -125,119 +124,148 @@ const ProductModal = (props) => {
     //   })
     //   return _arr
     //   }
-  }
+  };
 
   // console.log(collectionsData, collectionsData.constructor === Array,"TTTTTT")
-  let collectionData = collectionsData ? collectionsData.constructor === Object && Object.keys(collectionsData).length > 0 ? handleCollectionDataMapper(collectionsData, fadeImagessublist) : [] : false
-  let pagination = collectionData ? collectionData.slice(0, state.pagination) : collectionData
-  console.log(collectionData, "collectionDatacollectionData")
-  let _mapper = collectionData ? pagination : shopByStyloriSilver ? _shopByData : fadeImagessublist;
-  let _data = _mapper ? _mapper : []
+  let collectionData = collectionsData
+    ? collectionsData.constructor === Object &&
+      Object.keys(collectionsData).length > 0
+      ? handleCollectionDataMapper(collectionsData, fadeImagessublist)
+      : []
+    : false;
+  let pagination = collectionData
+    ? collectionData.slice(0, state.pagination)
+    : collectionData;
+  console.log(collectionData, "collectionDatacollectionData");
+  let _mapper = collectionData
+    ? pagination
+    : shopByStyloriSilver
+    ? _shopByData
+    : fadeImagessublist;
+  let _data = _mapper ? _mapper : [];
   const classes = useStyles();
   // alert(JSON.stringify(props.collectionsData))
   // console.log(props.allSeo,"props.allSeoprops.allSeoprops.allSeoprops.allSeo")
 
   const paginationtoggle = () => {
-
     if (state.pagination < collectionData.length) {
-      setState({ ...state, pagination: (state.pagination) + 4, isShowMore: true })
+      setState({
+        ...state,
+        pagination: state.pagination + 4,
+        isShowMore: true,
+      });
+    } else {
+      setState({ ...state, isShowMore: false });
     }
-    else {
-      setState({ ...state, isShowMore: false })
-    }
-  }
+  };
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
-
   let ___data = [
     {
-      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Everyday.jpg",
-      title: "Everyday", url: "silver-jewellery-everyday", description: "Modern jewellery for the modern woman. Geometric shapes, minimal aesthetics and unique colours make these statement pieces a woman’s new best friend."
+      img:
+        "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Everyday.jpg",
+      title: "Everyday",
+      url: "silver-jewellery-everyday",
+      description:
+        "Modern jewellery for the modern woman. Geometric shapes, minimal aesthetics and unique colours make these statement pieces a woman’s new best friend.",
     },
     {
-      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Folklore.jpg",
-      title: "Folklore", url: "silver-jewellery-folklore", description: "Light-weight pieces. Happy designs. It's the perfect dainty jewellery to compliment your everyday outfits."
+      img:
+        "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Folklore.jpg",
+      title: "Folklore",
+      url: "silver-jewellery-folklore",
+      description:
+        "Light-weight pieces. Happy designs. It's the perfect dainty jewellery to compliment your everyday outfits.",
     },
     {
-      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Contemporary.jpg",
-      title: 'Contemporary', url: "silver-jewellery-contemporary", description: "Why blend in when you can stand out? Our line of Oxidised Silver Jewellery is as versatile as you are. Pair it up with a cocktail dress for a girls night out or with a plain kurta for a friend's Mehendi ceremony. These statement pieces will get you the attention you deserve."
+      img:
+        "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Contemporary.jpg",
+      title: "Contemporary",
+      url: "silver-jewellery-contemporary",
+      description:
+        "Why blend in when you can stand out? Our line of Oxidised Silver Jewellery is as versatile as you are. Pair it up with a cocktail dress for a girls night out or with a plain kurta for a friend's Mehendi ceremony. These statement pieces will get you the attention you deserve.",
     },
     {
-      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Traditional.jpg",
-      title: "Traditional", url: "silver-jewellery-traditional", description: "There's grace in everything we do. We portray the 'navarasas' every day. We are all dancers. Our Mudra style features traditional dance jewellery but is not made only for dancers. Pick a piece from the style or a whole set and move through the dance of life."
-    }
-  ].map(val => {
-    return ({
-      "img": val.img,
-      "title": val.title,
-      "description": val.description,
-      url: val.url
-    })
+      img:
+        "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-Style--tile-Traditional.jpg",
+      title: "Traditional",
+      url: "silver-jewellery-traditional",
+      description:
+        "There's grace in everything we do. We portray the 'navarasas' every day. We are all dancers. Our Mudra style features traditional dance jewellery but is not made only for dancers. Pick a piece from the style or a whole set and move through the dance of life.",
+    },
+  ].map((val) => {
+    return {
+      img: val.img,
+      title: val.title,
+      description: val.description,
+      url: val.url,
+    };
   });
   let mapped_ = props.homepagecollections ? _data : ___data;
   return (
     <>
       <Grid container className={classes.containerTop} justify="center">
         {mapped_.map((tile) => {
-          debugger
+          // debugger
           return (
             // tile.constructor === Array &&
             tile &&
               ((tile.constructor === Object && tile?.img?.imageUrl) ||
                 tile?.img?.length > 0) ? (
-                <Grid
-                  //  container
-                  item
-                  xs={props?.layout ? props.layout : 12}
-                  sm={5}
-                  md={5}
-                  lg={5}
-                  xl={5}
-                  className={`${shopByStyloriSilver ? classes.shopBySilver : "ProductGrids"
-                    } ${classes.ProductGrids}`}
-                  // justify={"center"}
-                  // onClick={() => window.location.href = tile.url}
-                  style={{ cursor: "pointer" }}
-                >
-                  {/* <Grid item xs={10} sm={10} md={8} lg={12} xl={12}> */}
-                  <Hidden smDown>
-                    <Slideshow
-                      class="subslider-carousel"
-                      dataCarousel={dataCarousel}
-                      hoverlist={[tile]}
-                      hover={false}
-                      Homepagefont={true}
-                      hovereffect={true}
-                      // isInjectUrl={true}
-                      type="hover"
+              <Grid
+                //  container
+                item
+                xs={props?.layout ? props.layout : 12}
+                sm={5}
+                md={5}
+                lg={5}
+                xl={5}
+                className={`${
+                  shopByStyloriSilver ? classes.shopBySilver : "ProductGrids"
+                } ${classes.ProductGrids}`}
+                // justify={"center"}
+                // onClick={() => window.location.href = tile.url}
+                style={{ cursor: "pointer" }}
+              >
+                {/* <Grid item xs={10} sm={10} md={8} lg={12} xl={12}> */}
+                <Hidden smDown>
+                  <Slideshow
+                    class="subslider-carousel"
+                    dataCarousel={dataCarousel}
+                    hoverlist={[tile]}
+                    hover={false}
+                    Homepagefont={true}
+                    hovereffect={true}
+                    // isInjectUrl={true}
+                    type="hover"
                     // collectionDataSilverSEO={allSeo}
-                    />
-                  </Hidden>
-                  <Hidden mdUp>
-                    {shopByStyloriSilver ? (
-                      <Slideshow dataCarousel={dataCarousel}>
-                        {tile.img.map((val, index) => (
-                          <>
-                            <Grid container key={index} className={classes.media}>
-                              <a
-                                href={`/silver-jewellery`}
-                                style={{ width: "100%" }}
-                              >
-                                <img
-                                  src={injectUrl_url_construct(val)}
-                                  style={{ width: "100%", height: "100%" }}
-                                  onError={(e) => {
-                                    e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg`;
-                                  }}
-                                  alt="Stylori"
-                                />
-                              </a>
-                            </Grid>
-                            {/* <Hidden mdUp>
+                  />
+                </Hidden>
+                <Hidden mdUp>
+                  {shopByStyloriSilver ? (
+                    <Slideshow dataCarousel={dataCarousel}>
+                      {tile.img.map((val, index) => (
+                        <>
+                          <Grid container key={index} className={classes.media}>
+                            <a
+                              href={`/silver-jewellery`}
+                              style={{ width: "100%" }}
+                            >
+                              <img
+                                src={injectUrl_url_construct(val)}
+                                style={{ width: "100%", height: "100%" }}
+                                onError={(e) => {
+                                  e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg`;
+                                }}
+                                alt="Stylori"
+                              />
+                            </a>
+                          </Grid>
+                          {/* <Hidden mdUp>
                   <Grid container key={index}   className={classes.media}>
                     <a href={val.navigateUrl}>
                       <img
@@ -247,113 +275,114 @@ const ProductModal = (props) => {
                     </a>
                   </Grid>
                 </Hidden> */}
-                          </>
-                        ))}
-                      </Slideshow>
-                    ) : (
-                        <Slideshow
-                          class="subslider-carousel"
-                          hoverlist={tile}
-                          dataCarousel={dataCarousel}
-                          WithoutHoverhover={true}
-                          type="hover"
-                        // isInjectUrl={true}
-                        />
-                      )}
+                        </>
+                      ))}
+                    </Slideshow>
+                  ) : (
+                    <Slideshow
+                      class="subslider-carousel"
+                      hoverlist={tile}
+                      dataCarousel={dataCarousel}
+                      WithoutHoverhover={true}
+                      type="hover"
+                      // isInjectUrl={true}
+                    />
+                  )}
 
-                    {!Boolean(props.isShowDetails) && (
-                      <ExpansionPanel
-                        className={classes.expandCollapse}
-                        expanded={expanded === tile.title}
-                        onChange={handleChange(tile.title)}
+                  {!Boolean(props.isShowDetails) && (
+                    <ExpansionPanel
+                      className={classes.expandCollapse}
+                      expanded={expanded === tile.title}
+                      onChange={handleChange(tile.title)}
+                    >
+                      <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1bh-content"
+                        id="panel1bh-header"
                       >
-                        <ExpansionPanelSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel1bh-content"
-                          id="panel1bh-header"
+                        <Grid
+                          container
+                          item
+                          xs={12}
+                          justify="center"
+                          className={
+                            shopByStyloriSilver
+                              ? classes.productCardTitle2
+                              : classes.productCardTitle
+                          }
+                          style={{ textAlign: "center", marginTop: 5 }}
+                        >
+                          {tile.title.toUpperCase()}
+                        </Grid>
+                      </ExpansionPanelSummary>
+                      <ExpansionPanelDetails>
+                        <Grid
+                          container
+                          item
+                          xs={12}
+                          alignContent="space-between"
+                          justify="center"
+                          className={classes.productCardDetail}
                         >
                           <Grid
                             container
                             item
                             xs={12}
-                            justify="center"
                             className={
                               shopByStyloriSilver
-                                ? classes.productCardTitle2
-                                : classes.productCardTitle
+                                ? `${classes.productCardDescription2}`
+                                : `${classes.productCardDescription}`
                             }
-                            style={{ textAlign: "center", marginTop: 5 }}
                           >
-                            {tile.title.toUpperCase()}
-                          </Grid>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
-                          <Grid
-                            container
-                            item
-                            xs={12}
-                            alignContent="space-between"
-                            justify="center"
-                            className={classes.productCardDetail}
-                          >
-                            <Grid
-                              container
-                              item
-                              xs={12}
-                              className={
-                                shopByStyloriSilver
-                                  ? `${classes.productCardDescription2}`
-                                  : `${classes.productCardDescription}`
-                              }
-                            >
-                              {collectionsData || allSeo
+                            {/* {collectionsData || allSeo
                                 ? allSeo[tile.title]
                                   ? allSeo[tile.title].seoText
                                   : ""
-                                : tile.description}
-                            </Grid>
-                            <Grid container item xs={12} justify="center">
-                              <a
-                                href={
-                                  // collectionsData
-                                  //   ? props.allSeo[tile.title]
-                                  //     ? `/jewellery-${
-                                  //         props.allSeo[tile.title].seoUrl
-                                  //       }`
-                                  //     : "#"
-                                  //   : `/silver-${tile.title.toLowerCase()}-jewellery`
-                                  collectionsData || allSeo
-                                    ? allSeo[tile.title]
-                                      ? `/${allSeo[tile.title].seoUrl
-                                      }`
-                                      : "#"
-                                    : `/silver-${tile.title.toLowerCase()}-jewellery`
-                                }
-                                style={{ textDecoration: "none" }}
-                              >
-                                <Button
-                                  variant="contained"
-                                  style={{ color: "white" }}
-                                  color="primary"
-                                  className={
-                                    shopByStyloriSilver
-                                      ? `${classes.btnshop2}`
-                                      : ''
-                                  }
-                                >
-                                  SHOP
-                              </Button>
-                              </a>
-                            </Grid>
+                                : tile.description} */}
+                            {tile.description}
                           </Grid>
-                        </ExpansionPanelDetails>
-                      </ExpansionPanel>
-                    )}
-                  </Hidden>
+                          <Grid container item xs={12} justify="center">
+                            <a
+                              href={
+                                // collectionsData
+                                //   ? props.allSeo[tile.title]
+                                //     ? `/jewellery-${
+                                //         props.allSeo[tile.title].seoUrl
+                                //       }`
+                                //     : "#"
+                                //   : `/silver-${tile.title.toLowerCase()}-jewellery`
+                                // collectionsData || allSeo
+                                //   ? allSeo[tile.title]
+                                //     ? `/${allSeo[tile.title].seoUrl}`
+                                //     : "#"
+                                //   : 
+                                  `/silver-${tile.title.toLowerCase()}-jewellery`
+                              }
+                              style={{ textDecoration: "none" }}
+                            >
+                              <Button
+                                variant="contained"
+                                style={{ color: "white" }}
+                                color="primary"
+                                className={
+                                  shopByStyloriSilver
+                                    ? `${classes.btnshop2}`
+                                    : ""
+                                }
+                              >
+                                SHOP
+                              </Button>
+                            </a>
+                          </Grid>
+                        </Grid>
+                      </ExpansionPanelDetails>
+                    </ExpansionPanel>
+                  )}
+                </Hidden>
 
-                  {/* </Grid> */}
-                </Grid>
-              ) : null
+                {/* </Grid> */}
+              </Grid>
+            ) : null
           );
         })}
       </Grid>
