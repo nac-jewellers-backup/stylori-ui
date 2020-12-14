@@ -181,7 +181,7 @@ export default function ImageGridList(props) {
     <Grid className={classes.root}>
       <Hidden mdUp>
         {props.isHover ? (
-          <Grid container style={{ height: 250, paddingTop: 30 }}>
+          <Grid container style={{  paddingTop: 30 }}>
             <Grid container item xs={5} className="hovereffectSilvertoppicks" style={{ height: "100%" }}>
               <img
                 alt=""

@@ -14,7 +14,7 @@ import { Divider, Hidden } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import EmailIcon from "@material-ui/icons/Email";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
-
+import WhatsappPNG from "../assets/Icons/whatsapp.png";
 const useStyles = makeStyles((theme) => ({
   //   root: {
   //     width: 500,
@@ -282,11 +282,17 @@ export function NeedHelp(props) {
                 href="https://wa.me/919952625252?text=Hi"
                 style={{ textDecoration: "none" }}
               >
-                <i
+                {/* <WhatsAppIcon /> */}
+                <img src={WhatsappPNG} style={{width : "35px", height : "auto"}}></img>
+                {/* <i
                   class="fa fa-whatsapp"
                   aria-hidden="true"
-                  style={{ color: "#25D366", fontSize: "30px" }}
-                ></i>
+                  style={{
+                    backgroundColor: "#25D366",
+                    color: "#ffffff",
+                    fontSize: "30px",
+                  }}
+                ></i> */}
               </a>
             </Grid>
           </Grid>

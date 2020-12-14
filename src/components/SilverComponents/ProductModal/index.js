@@ -338,8 +338,8 @@ const ProductModal = (props) => {
                                 //   ? allSeo[tile.title]
                                 //     ? `/${allSeo[tile.title].seoUrl}`
                                 //     : "#"
-                                //   : 
-                                  `/silver-${tile.title.toLowerCase()}-jewellery`
+                                //   :
+                                `/silver-${tile.title.toLowerCase()}-jewellery`
                               }
                               style={{ textDecoration: "none" }}
                             >

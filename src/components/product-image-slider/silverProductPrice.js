@@ -28,6 +28,9 @@ import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import { ProductDetailContext } from "context/ProductDetailContext";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
+import Snackbar from "@material-ui/core/Snackbar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 const dataCarousel = {
   dots: true,
   infinite: false,
@@ -120,7 +123,10 @@ const Productprice = (
   globalContext,
   handleLocalStorage,
   canceldeletechecklist,
-  deletechecklists
+  deletechecklists,
+  snacksBar,
+  handleSnackBarClick,
+  handleSnackBarClose
 ) => {
   const {
     data,
@@ -128,17 +134,20 @@ const Productprice = (
     allState,
     handleChanges,
     handleCodChange,
+
     pincode,
   } = props;
 
   const { classes } = props;
 
   const open = anchorEl;
+  const snackBarOpen = snacksBar;
   var wishlist = props.wishlist;
   const isSilver = globalContext.Globalctx.pathName ? true : false;
 
   // alert(JSON.stringify(props.wishlist.wishlistdata.nodes.skuId))
   // var wishlist = this.props && this.props.wishlist &&
+
   return (
     <div>
       {data.map((val) => (
@@ -581,6 +590,7 @@ const Productprice = (
                           <Grid item xs={3} sm={4} md={3} lg={3}>
                             {/* <div onClick={handleLocalStorage.bind(this)}> */}
                             <Button
+                              onClick={handleSnackBarClick}
                               variant="contained"
                               color="primary"
                               class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart}`}
@@ -594,8 +604,39 @@ const Productprice = (
                                 Add to Cart
                               </span>
                             </Button>
+                    
                             {/* </div> */}
                           </Grid>
+                          <Snackbar
+                              snacksBar={snacksBar}
+                              anchorOrigin={{
+                                vertical: "bottom",
+                                horizontal: "right",
+                              }}
+                              open={snackBarOpen}
+                              autoHideDuration={6000}
+                              onClose={handleSnackBarClose}
+                              message="Note archived"
+                              action={
+                                <React.Fragment>
+                                  <Button
+                                    color="secondary"
+                                    size="small"
+                                    onClick={handleSnackBarClose}
+                                  >
+                                    UNDO
+                                  </Button>
+                                  <IconButton
+                                    size="small"
+                                    aria-label="close"
+                                    color="inherit"
+                                    onClick={handleSnackBarClose}
+                                  >
+                                    <CloseIcon fontSize="small" />
+                                  </IconButton>
+                                </React.Fragment>
+                              }
+                            />
                         </Grid>
                       )}
                       <Grid container item xs={12}>
@@ -607,7 +648,10 @@ const Productprice = (
                               button="buynow-btn-cont"
                               id="silverButton"
                               withoutBag={true}
+                              // handleSuccess={deletechecklists}
+                              // onClick={deletechecklists}
                             />
+
                             <CommenDialog
                               isOpen={state.modelOpen}
                               content={`Verify selected product details before proceeding`}
@@ -733,6 +777,7 @@ const ProductPrice = (props) => {
     ProductDetailCtx: { filters },
     setFilters,
   } = React.useContext(ProductDetailContext);
+
   return (
     <Component
       setCartFilters={setCartFilters}
@@ -752,6 +797,7 @@ class Component extends React.Component {
       heart: false,
       anchorEl: false,
       modelOpen: false,
+      snacksBar: false,
     };
   }
 
@@ -767,7 +813,20 @@ class Component extends React.Component {
       anchorEl: false,
     });
   };
+  handleSnackBarClick = () => {
+    debugger;
 
+    this.setState({
+      snacksBar: true,
+    });
+  };
+  handleSnackBarClose = () => {
+    debugger;
+
+    this.setState({
+      snacksBar: false,
+    });
+  };
   valus = (valueId) => {
     var valus_locl = localStorage.getItem("cartDetails")
       ? JSON.parse(localStorage.getItem("cartDetails")).products
@@ -864,6 +923,7 @@ class Component extends React.Component {
   render() {
     const { anchorEl } = this.state;
     const context = this.context;
+    const { snacksBar } = this.state;
     // alert(JSON.stringify(this.props.wishlist))
     return (
       <div>
@@ -878,7 +938,10 @@ class Component extends React.Component {
             this.handleLocalStorage,
             this.canceldeletechecklistCancel,
             this.deletechecklists,
-            this.handletest
+            this.handletest,
+            snacksBar,
+            this.handleSnackBarClick,
+            this.handleSnackBarClose
           )}
         </Hidden>
 
@@ -894,7 +957,10 @@ class Component extends React.Component {
               this.handleLocalStorage,
               this.canceldeletechecklistCancel,
               this.deletechecklists,
-              this.handletest
+              this.handletest,
+              snacksBar,
+              this.handleSnackBarClick,
+              this.handleSnackBarClose
             )}
           </Container>
         </Hidden>
