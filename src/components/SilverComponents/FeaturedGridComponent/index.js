@@ -26,7 +26,7 @@ export const FeaturedGridComponent = (props) => {
                     (window.location.href =
                       props.imgs && "/silver-jewellery-dmudra")
                   }
-                  style={{ cursor: "pointer",  }}
+                  style={{ cursor: "pointer" }}
                   src={val.mob}
                   className={`${classes.img}`}
                 />
@@ -48,7 +48,7 @@ export const FeaturedGridComponent = (props) => {
                   <img
                     src={val.web}
                     className={`${classes.img}`}
-                    style={{ cursor: "pointer", }}
+                    style={{ cursor: "pointer", width: "100%" }}
                   />
                 </a>
               );

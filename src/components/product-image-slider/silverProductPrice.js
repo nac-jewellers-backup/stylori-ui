@@ -123,10 +123,10 @@ const Productprice = (
   globalContext,
   handleLocalStorage,
   canceldeletechecklist,
-  deletechecklists,
-  snacksBar,
-  handleSnackBarClick,
-  handleSnackBarClose
+  deletechecklists
+  // snacksBar,
+  // handleSnackBarClick,
+  // handleSnackBarClose
 ) => {
   const {
     data,
@@ -141,12 +141,25 @@ const Productprice = (
   const { classes } = props;
 
   const open = anchorEl;
-  const snackBarOpen = snacksBar;
+  // const snackBarOpen = snacksBar;
   var wishlist = props.wishlist;
   const isSilver = globalContext.Globalctx.pathName ? true : false;
 
   // alert(JSON.stringify(props.wishlist.wishlistdata.nodes.skuId))
   // var wishlist = this.props && this.props.wishlist &&
+  // const [openSnackBar, setOpenSnackBar] = React.useState(false);
+
+  // const handleClickSnackBar = () => {
+  //   setOpenSnackBar(true);
+  // };
+
+  // const handleCloseSnackBar = (event, reason) => {
+  //   if (reason === "clickaway") {
+  //     return;
+  //   }
+
+  //   setOpenSnackBar(false);
+  // };
 
   return (
     <div>
@@ -590,7 +603,9 @@ const Productprice = (
                           <Grid item xs={3} sm={4} md={3} lg={3}>
                             {/* <div onClick={handleLocalStorage.bind(this)}> */}
                             <Button
-                              onClick={handleSnackBarClick}
+                              // onClick={() => {
+                              //   alert("hello")(<SimpleSnackbar />);
+                              // }}
                               variant="contained"
                               color="primary"
                               class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart}`}
@@ -604,25 +619,23 @@ const Productprice = (
                                 Add to Cart
                               </span>
                             </Button>
-                    
+
                             {/* </div> */}
-                          </Grid>
-                          <Snackbar
-                              snacksBar={snacksBar}
+                            {/* <Snackbar
                               anchorOrigin={{
                                 vertical: "bottom",
-                                horizontal: "right",
+                                horizontal: "left",
                               }}
-                              open={snackBarOpen}
+                              open={openSnackBar}
                               autoHideDuration={6000}
-                              onClose={handleSnackBarClose}
+                              onClose={handleCloseSnackBar}
                               message="Note archived"
                               action={
                                 <React.Fragment>
                                   <Button
                                     color="secondary"
                                     size="small"
-                                    onClick={handleSnackBarClose}
+                                    onClick={handleCloseSnackBar}
                                   >
                                     UNDO
                                   </Button>
@@ -630,29 +643,31 @@ const Productprice = (
                                     size="small"
                                     aria-label="close"
                                     color="inherit"
-                                    onClick={handleSnackBarClose}
+                                    onClick={handleCloseSnackBar}
                                   >
                                     <CloseIcon fontSize="small" />
                                   </IconButton>
                                 </React.Fragment>
                               }
-                            />
+                            /> */}
+                          </Grid>
                         </Grid>
                       )}
                       <Grid container item xs={12}>
                         <Grid item xs={3} sm={4} md={5} lg={4}>
-                          <div onClick={handleLocalStorage.bind(this)}>
+                          <div onClick={deletechecklists}>
                             <Buynowbutton
                               sku={data[0].skuId}
                               class={`${classes.buynowButtonSilver} ${classes.buttonsilver} ${classes.robotoBoldFont}`}
                               button="buynow-btn-cont"
                               id="silverButton"
                               withoutBag={true}
+                              // onClick={}
                               // handleSuccess={deletechecklists}
-                              // onClick={deletechecklists}
+                              onClick={handleLocalStorage.bind(this)}
                             />
 
-                            <CommenDialog
+                            {/* <CommenDialog
                               isOpen={state.modelOpen}
                               content={`Verify selected product details before proceeding`}
                               handleClose={canceldeletechecklist}
@@ -660,7 +675,7 @@ const Productprice = (
                               negativeBtn="No"
                               positiveBtn="Yes"
                               title="Confirmation"
-                            />
+                            /> */}
                           </div>
                           {/* <Button variant="contained" color="primary" class={`${classes.buynowButtonSilver} ${classes.buttonsilver}`} onClick={()=>{document.getElementById('silverButton').click()}} >BUY NOW</Button> */}
                         </Grid>
@@ -797,7 +812,7 @@ class Component extends React.Component {
       heart: false,
       anchorEl: false,
       modelOpen: false,
-      snacksBar: false,
+      // snacksBar: false,
     };
   }
 
@@ -813,20 +828,21 @@ class Component extends React.Component {
       anchorEl: false,
     });
   };
-  handleSnackBarClick = () => {
-    debugger;
+  // handleSnackBarClick = () => {
+  //   debugger;
+  //   console.log("hello");
+  //   alert("hello");
+  //   this.setState({
+  //     snacksBar: true,
+  //   });
+  // };
+  // handleSnackBarClose = () => {
+  //   debugger;
 
-    this.setState({
-      snacksBar: true,
-    });
-  };
-  handleSnackBarClose = () => {
-    debugger;
-
-    this.setState({
-      snacksBar: false,
-    });
-  };
+  //   this.setState({
+  //     snacksBar: false,
+  //   });
+  // };
   valus = (valueId) => {
     var valus_locl = localStorage.getItem("cartDetails")
       ? JSON.parse(localStorage.getItem("cartDetails")).products
@@ -938,10 +954,10 @@ class Component extends React.Component {
             this.handleLocalStorage,
             this.canceldeletechecklistCancel,
             this.deletechecklists,
-            this.handletest,
-            snacksBar,
-            this.handleSnackBarClick,
-            this.handleSnackBarClose
+            this.handletest
+            // snacksBar,
+            // this.handleSnackBarClick,
+            // this.handleSnackBarClose
           )}
         </Hidden>
 
@@ -957,10 +973,10 @@ class Component extends React.Component {
               this.handleLocalStorage,
               this.canceldeletechecklistCancel,
               this.deletechecklists,
-              this.handletest,
-              snacksBar,
-              this.handleSnackBarClick,
-              this.handleSnackBarClose
+              this.handletest
+              // snacksBar,
+              // this.handleSnackBarClick,
+              // this.handleSnackBarClose
             )}
           </Container>
         </Hidden>
@@ -973,3 +989,50 @@ ProductPrice.propTypes = {
   Productprice: PropTypes.func,
 };
 export default withStyles(styles)(ProductPrice);
+
+export function SimpleSnackbar() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Button onClick={handleClick}>Open simple snackbar</Button>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Note archived"
+        action={
+          <React.Fragment>
+            <Button color="secondary" size="small" onClick={handleClose}>
+              UNDO
+            </Button>
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
+    </div>
+  );
+}
