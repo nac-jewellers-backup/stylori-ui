@@ -39,7 +39,7 @@ import { Hypoallergenic } from "../components/product-image-slider/Gagetstylori/
 import { Securepayments } from "../components/product-image-slider/Gagetstylori/Securepayments-pink";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
-import { NeedHelp } from "components/needHelp";
+import NeedHelp from "../components/needHelp";
 // import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
@@ -264,34 +264,34 @@ class ProductDetail extends Component {
               </div>
             </Grid>
           </Grid>
-          {isSilver && (
-            <>
-              <Hidden smDown>
-                <div
-                  style={{
-                    position: "fixed",
-                    bottom: "10%",
-                    right: 0,
-                    zIndex: 20,
-                  }}
-                >
-                  <NeedHelp position="top" />
-                </div>
-              </Hidden>
-              <Hidden mdUp>
-                <div
-                  style={{
-                    position: "fixed",
-                    top: "50%",
-                    right: 0,
-                    zIndex: 20,
-                  }}
-                >
-                  <NeedHelp position="top" />
-                </div>
-              </Hidden>
-            </>
-          )}
+          {/* {isSilver && ( */}
+          <>
+            <Hidden smDown>
+              <div
+                style={{
+                  position: "fixed",
+                  bottom: "10%",
+                  right: 0,
+                  zIndex: 20,
+                }}
+              >
+                <NeedHelp position="top" />
+              </div>
+            </Hidden>
+            <Hidden mdUp>
+              <div
+                style={{
+                  position: "fixed",
+                  top: "50%",
+                  right: 0,
+                  zIndex: 20,
+                }}
+              >
+                <NeedHelp position="top" />
+              </div>
+            </Hidden>
+          </>
+          {/* )} */}
           <div
             className="pricing-imgzom-media"
             style={{ maxWidth: "1600px", margin: "auto" }}
