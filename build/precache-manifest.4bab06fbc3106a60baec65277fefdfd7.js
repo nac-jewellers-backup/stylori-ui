@@ -4,23 +4,23 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "7272eb7b92186586f146",
+    "revision": "d06ecf34d24649338760",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "222cddfa47e3ae7d2228",
+    "revision": "616d2dac165578b7dcdd",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "987a9da9a92edd2b2f05",
+    "revision": "a57d1e8711442a8b1654",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "7272eb7b92186586f146",
+    "revision": "d06ecf34d24649338760",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "222cddfa47e3ae7d2228",
+    "revision": "616d2dac165578b7dcdd",
     "url": "/static/js/3.js"
   },
   {
@@ -28,7 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/4.js"
   },
   {
-    "revision": "987a9da9a92edd2b2f05",
+    "revision": "a57d1e8711442a8b1654",
     "url": "/static/js/main.js"
   },
   {
@@ -44,7 +44,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/FlowerDimon.jpg"
   },
   {
-    "revision": "1a38a224b9dfb66dda91904348a8e0a8",
+    "revision": "b8f611b34c68f5118fe8e0cce1c5de47",
     "url": "/static/media/Stylori Silver logo.svg"
   },
   {
