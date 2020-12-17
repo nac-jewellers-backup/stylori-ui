@@ -21,7 +21,7 @@ import {
 } from "queries/home";
 import Feedes from "components/Feedes/Index";
 import { InstagramFeed } from "components/Feedes/instagramfeed";
-import { NeedHelp } from "components/needHelp";
+import NeedHelp from "../../components/needHelp";
 import Tweeterfeed from "../../components/storyTemplate/tweeterEmbedded";
 const styles = (theme) => ({
   instagramTitle: {

@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function NeedHelp(props) {
+export default function NeedHelp(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const [placement, setPlacement] = React.useState();
@@ -140,7 +140,7 @@ export function NeedHelp(props) {
                     <CallIcon />
                   </a>
                 </Grid>
-                <Grid
+                {/* <Grid
                   item
                   xs={12}
                   sm={4}
@@ -152,7 +152,7 @@ export function NeedHelp(props) {
                   >
                     <EmailIcon />
                   </a>
-                </Grid>
+                </Grid> */}
                 <Grid
                   item
                   xs={12}
@@ -283,7 +283,10 @@ export function NeedHelp(props) {
                 style={{ textDecoration: "none" }}
               >
                 {/* <WhatsAppIcon /> */}
-                <img src={WhatsappPNG} style={{width : "35px", height : "auto"}}></img>
+                <img
+                  src={WhatsappPNG}
+                  style={{ width: "35px", height: "auto" }}
+                ></img>
                 {/* <i
                   class="fa fa-whatsapp"
                   aria-hidden="true"

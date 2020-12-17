@@ -16,7 +16,7 @@ import { async } from "q";
 import MetaTags from "react-meta-tags";
 import { CartContext, GlobalContext } from "context";
 import LiveChat from "react-livechat";
-import { NeedHelp } from "components/needHelp";
+import NeedHelp from "../components/needHelp";
 import { Helmet } from "react-helmet";
 class Stylori extends React.Component {
   constructor(props) {
@@ -164,34 +164,34 @@ class Stylori extends React.Component {
               <Footer silver={context.Globalctx.pathName} />
             </Hidden>
           </Grid>
-          {context.Globalctx.pathName && (
-            <>
-              <Hidden smDown>
-                <div
-                  style={{
-                    position: "fixed",
-                    bottom: "10%",
-                    right: 0,
-                    zIndex: 20,
-                  }}
-                >
-                  <NeedHelp position="top" />
-                </div>
-              </Hidden>
-              <Hidden mdUp>
-                <div
-                  style={{
-                    position: "fixed",
-                    top: "75%",
-                    right: "5px",
-                    zIndex: 20,
-                  }}
-                >
-                  <NeedHelp position="top" />
-                </div>
-              </Hidden>
-            </>
-          )}
+          {/* {context.Globalctx.pathName && ( */}
+          <>
+            <Hidden smDown>
+              <div
+                style={{
+                  position: "fixed",
+                  bottom: "10%",
+                  right: 0,
+                  zIndex: 20,
+                }}
+              >
+                <NeedHelp position="top" />
+              </div>
+            </Hidden>
+            <Hidden mdUp>
+              <div
+                style={{
+                  position: "fixed",
+                  top: "75%",
+                  right: "5px",
+                  zIndex: 20,
+                }}
+              >
+                <NeedHelp position="top" />
+              </div>
+            </Hidden>
+          </>
+          {/* )} */}
         </Grid>
       </>
     );
