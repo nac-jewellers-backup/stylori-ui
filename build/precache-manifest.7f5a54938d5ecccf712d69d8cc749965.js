@@ -4,23 +4,23 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "0e01ba44f5f299532219",
+    "revision": "f86a13d30580f05488b5",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "5f94433235de6f3d3fa9",
+    "revision": "3858d65a8b330a164826",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "d21d3e68aafc4b0ecf4e",
+    "revision": "6d65445ec97d475d9c53",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "0e01ba44f5f299532219",
+    "revision": "f86a13d30580f05488b5",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "5f94433235de6f3d3fa9",
+    "revision": "3858d65a8b330a164826",
     "url": "/static/js/3.js"
   },
   {
@@ -28,7 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/4.js"
   },
   {
-    "revision": "d21d3e68aafc4b0ecf4e",
+    "revision": "6d65445ec97d475d9c53",
     "url": "/static/js/main.js"
   },
   {
@@ -104,6 +104,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/shopping.svg"
   },
   {
+    "revision": "9f68d134cc7db1c64076983fcd3e8826",
+    "url": "/static/media/silverOpenLink.png"
+  },
+  {
     "revision": "ced611daf7709cc778da928fec876475",
     "url": "/static/media/slick.eot"
   },
@@ -122,6 +126,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "681db1b372ef45af725df7762fcb49ee",
     "url": "/static/media/styloriGagets.png"
+  },
+  {
+    "revision": "18d70bcc35a56cea676c4ced2fbb3d09",
+    "url": "/static/media/stylori_silver_logo.svg"
   },
   {
     "revision": "5a712650392a83e01a75498ebc83837b",
