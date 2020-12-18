@@ -16,6 +16,7 @@ import stylorisilverlogo from "../../assets/Stylori Silver logo.svg";
 import { API_URL } from "config";
 import { SnackBar } from "components/snackbarAlert/SnackBar";
 import { useLocation } from "react-router-dom";
+import { CartContext, GlobalContext } from "context";
 const useStyles = makeStyles((theme) => ({
   navTitle: {
     cursor: "pointer",
@@ -835,18 +836,18 @@ export default function Footer(props) {
             >
               <Grid item xs={12} sm={12} md={12} lg={6}>
                 <div
-                  onClick={() => {
-                    window.location.href = window.location.origin;
-                  }}
+                // onClick={() => {
+                //   window.location.href = window.location.origin;
+                // }}
                 >
-                  {location.pathname === "/styloriSilver" ? (
+                  {silver === true ? (
                     //
                     <>
                       {" "}
                       <img
                         src={stylorisilverlogo}
                         alt=""
-                        style={{ width: "100%", cursor: "pointer" }}
+                        style={{ width: "100%" }}
                       />
                     </>
                   ) : (
@@ -855,7 +856,7 @@ export default function Footer(props) {
                       <img
                         src="https://assets.stylori.com/images/static/stylori-logo.svg"
                         alt=""
-                        style={{ width: "100%", cursor: "pointer" }}
+                        style={{ width: "100%" }}
                       />{" "}
                     </>
                   )}

@@ -294,7 +294,7 @@ const styles = (theme) => ({
     // [theme.breakpoints.down("sm")]: {
     //   marginTop: "0 !important",
     // },
-    textAlign: "center"
+    textAlign: "center",
   },
   sharesilver: {
     margin: "auto",
@@ -374,8 +374,8 @@ const styles = (theme) => ({
   },
   iconSilver: {
     "& i": {
-      fontSize: "28px !important"
-    }
+      fontSize: "28px !important",
+    },
   },
   searchButtonSilver2: {
     border: 0,
@@ -440,7 +440,7 @@ const styles = (theme) => ({
       textTransform: "uppercase",
       color: theme.palette.primary.main,
       letterSpacing: "6px",
-      fontSize: '24px !important',
+      fontSize: "24px !important",
       fontWeight: "bold",
       [theme.breakpoints.up("sm")]: {
         marginBottom: 10,
@@ -496,10 +496,10 @@ const styles = (theme) => ({
     },
   },
   robotoBoldFont: {
-    fontFamily: 'Roboto-bold, serif !important'
+    fontFamily: "Roboto-bold, serif !important",
   },
   robotoBlack: {
-    fontFamily: 'Roboto-black , serif !important'
+    fontFamily: "Roboto-black , serif !important",
   },
   margindek: {
     // [theme.breakpoints.up("lg")]: {
@@ -509,13 +509,18 @@ const styles = (theme) => ({
   pd: {
     "&.MuiListItemText-root": {
       // marginTop: 0,
-      // marginBottom: 0, 
-    }, 
+      // marginBottom: 0,
+    },
   },
   pds: {
     // [theme.breakpoints.up("lg")]: {
     //   lineHeight: "0 !important"
     // }
-  }
+  },
+  add_to_cart_text: {
+    [theme.breakpoints.only("md")]: {
+      fontSize: "10px",
+    },
+  },
 });
 export default styles;

@@ -614,7 +614,10 @@ const Productprice = (
                                 style={{ fill: "rgb(6, 171, 159)" }}
                               /> */}
 
-                              <span className={classes.robotoBoldFont}>
+                              <span
+                                className={`${classes.robotoBoldFont} ${classes.add_to_cart_text}`}
+                                // style={{ fontSize: "10px" }}
+                              >
                                 <i class="fa fa-shopping-bag buynow-icon"></i>
                                 Add to Cart
                               </span>

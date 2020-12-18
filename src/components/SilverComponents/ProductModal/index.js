@@ -154,7 +154,7 @@ const ProductModal = (props) => {
       title: "Everyday",
       url: "silver-jewellery-everyday",
       description:
-        "Modern jewellery for the modern woman. Geometric shapes, minimal aesthetics and unique colours make these statement pieces a woman’s new best friend.",
+        "Light-weight pieces. Happy designs. It's the perfect dainty jewellery to compliment your everyday outfits. ",
     },
     {
       img:
@@ -162,7 +162,7 @@ const ProductModal = (props) => {
       title: "Folklore",
       url: "silver-jewellery-folklore",
       description:
-        "Light-weight pieces. Happy designs. It's the perfect dainty jewellery to compliment your everyday outfits.",
+        "Why blend in when you can stand out? Our line of Oxidised Silver Jewellery is as versatile as you are. Pair it up with a cocktail dress for a girl's night out or with a plain kurta for a friend's Mehendi ceremony. These statement pieces will get you the attention you deserve. ",
     },
     {
       img:
@@ -170,7 +170,7 @@ const ProductModal = (props) => {
       title: "Contemporary",
       url: "silver-jewellery-contemporary",
       description:
-        "Why blend in when you can stand out? Our line of Oxidised Silver Jewellery is as versatile as you are. Pair it up with a cocktail dress for a girls night out or with a plain kurta for a friend's Mehendi ceremony. These statement pieces will get you the attention you deserve.",
+        "Modern jewellery for the modern woman. Geometric shapes, minimal aesthetics and unique colours make these statement pieces a woman’s new best friend. ",
     },
     {
       img:
@@ -178,7 +178,7 @@ const ProductModal = (props) => {
       title: "Traditional",
       url: "silver-jewellery-traditional",
       description:
-        "There's grace in everything we do. We portray the 'navarasas' every day. We are all dancers. Our Mudra style features traditional dance jewellery but is not made only for dancers. Pick a piece from the style or a whole set and move through the dance of life.",
+        "Dress up without being weighed down. Whether you are a modern bride or the bride's best friend, these pieces will let you make the most of the event. The Traditional style retains classic Indian designs but re-imagines it with pure silver. ",
     },
   ].map((val) => {
     return {
