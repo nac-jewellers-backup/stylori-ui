@@ -1056,7 +1056,7 @@ export const menuListHeader =
         // },
         {
             title: "GIFTS",
-            url: "/silver-classic-jewellery",
+            url: "#",
         },
         {
             title: "READY TO SHIP",

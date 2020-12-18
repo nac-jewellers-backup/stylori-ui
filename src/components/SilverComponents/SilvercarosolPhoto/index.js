@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import Slideshow from "../../Carousel/carosul";
 import { useDummyRequest } from "../../../hooks";
 import { HomedataSilver } from "../../../mappers";
@@ -8,7 +8,7 @@ import { useStyles } from "./style.js";
 import { GlobalContext } from "context";
 import Gadgets from "components/product-image-slider/Gagetstylori/Gagetstylori";
 import { Helmet } from "react-helmet";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
 const SilverCarousel = (props) => {
   const dataCarousel = {
     arrows: true,
@@ -18,7 +18,7 @@ const SilverCarousel = (props) => {
   };
   const { carouselTop } = props.data;
   const classes = useStyles();
- 
+
   return (
     <Grid container xs={12}>
       {/* <Helmet>
@@ -42,11 +42,17 @@ const SilverCarousel = (props) => {
             {carouselTop[0].images.map((val, index) => (
               <a href={val.navigateUrl}>
                 <Grid container key={index}>
-                  <img
+                  <LazyLoadImage
                     src={val.mobileImg}
                     alt="Stylori"
                     style={{ width: "100%", height: "100%" }}
                   />
+                  {/* <img
+                    loading="lazy"
+                    src={val.mobileImg}
+                    alt="Stylori"
+                    style={{ width: "100%", height: "100%" }}
+                  /> */}
                 </Grid>
               </a>
             ))}
@@ -57,10 +63,17 @@ const SilverCarousel = (props) => {
             {carouselTop[0].images.map((val, index) => (
               <a href={val.navigateUrl}>
                 <Grid container key={index}>
-                  <img
+                  <LazyLoadImage
+                    loading="lazy"
                     src={val.img}
                     style={{ width: "100%", height: "100%" }}
                   />
+
+                  {/* <img
+                    loading="lazy"
+                    src={val.img}
+                    style={{ width: "100%", height: "100%" }}
+                  /> */}
                 </Grid>
               </a>
             ))}

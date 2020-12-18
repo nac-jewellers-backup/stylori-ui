@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     firstcolumn: {
       padding: "0px 8px 0px 0px !important",
     },
+    silver_first_column: {
+      padding: "0px 8px 0px 0px !important",
+    },
   },
   [theme.breakpoints.only("sm")]: {
     daisyday: {
@@ -40,11 +43,24 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: "2.66% !important",
       padding: "0px !important",
     },
+    silver_first_column: {
+      width: "50% !important",
+      float: "left",
+      // marginRight: "2.66% !important",
+      padding: "0px !important",
+      padding: "0px 8px 0px 0px !important",
+    },
     marginAuto: {
       padding: "0px 0px 0px 0px !important",
       width: "40.31% !important",
       marginLeft: "1.25% !important",
       marginRight: "2.66% !important",
+    },
+    silver_margin_auto: {
+      padding: "0px 6px 0px 0px !important",
+      width: "50% !important",
+      // marginRight: "1.25% !important",
+      // marginLeft: "2.66% !important",
     },
     root: {
       display: "flex",
@@ -64,8 +80,14 @@ const useStyles = makeStyles((theme) => ({
   marginAuto: {
     padding: "0px 0px 0px 6px",
   },
+  silver_margin_auto: {
+    padding: "0px 6px 0px 0px",
+  },
   firstcolumn: {
     padding: "0px 8px 0px 0px",
+  },
+  silver_first_column: {
+    padding: "0px 0px 0px 8px",
   },
   [theme.breakpoints.up("lg")]: {
     gridList: {
@@ -94,6 +116,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   img2container: {
+    marginTop: 0,
+  },
+  silver_image_2_container: {
     marginTop: 0,
   },
   isHoverGrid: {
@@ -185,57 +210,160 @@ export default function ImageGridList(props) {
     <Grid className={classes.root}>
       <Hidden mdUp>
         {props.isHover ? (
-          <Grid container style={{ paddingTop: 30 }}>
+          // <Grid container style={{ paddingTop: 30 }}>
+          //   <Grid
+          //     container
+          //     item
+          //     xs={6}
+          //     className="hovereffectSilvertoppicks"
+          //     style={{ height: "100%" }}
+          //   >
+          //     <img
+          //       alt=""
+          //       src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.webp?_=1605092387781"
+          //       style={{ width: "100%", height: "100%", objectFit: "revert" }}
+          //       onClick={() =>
+          //         (window.location.href =
+          //           "https://www.stylori.com/jewellery/short%20necklace/Charming-Kasu%20Silver%20Necklace?sku_id=1000965")
+          //       }
+          //     />
+          //     <div className="overlay1">
+          //       <div className={"collectionDataSilverSEOflex"}>
+          //         <div style={{ margin: "auto" }}>
+          //           <h2 className="next-price">{"Bracelets".toUpperCase()}</h2>
+          //         </div>
+          //       </div>
+          //     </div>
+          //   </Grid>
+          //   <Grid container item xs={6} style={{ height: "100%" }}>
+          //     <Grid
+          //       container
+          //       item
+          //       xs={12}
+          //       style={{ height: "50%", paddingBottom: 4 }}
+          //     >
+          //       <FormRow
+          //         imageOne="https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.webp?_=1605887194324"
+          //         imageTwo="https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.webp?_=1605093270200"
+          //         linkone="https://www.stylori.com/jewellery/earrings/Scintillating-Swan%20Silver%20Ear%20Stud?sku_id=1000118"
+          //         linktwo="https://www.stylori.com/jewellery/long%20necklace/Clinking-Dual%20Tone%20Long%20Silver%20Necklace?sku_id=1000890"
+          //       />
+          //     </Grid>
+          //     <Grid
+          //       container
+          //       item
+          //       xs={12}
+          //       style={{ height: "50%", paddingTop: 4 }}
+          //     >
+          //       <FormRow
+          //         imageOne="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.webp?_=1605093140435"
+          //         imageTwo="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.webp?_=1605093196279"
+          //         linkone="https://www.stylori.com/jewellery/bangles/Refined-Red%20and%20Green%20Silver%20Bangle?sku_id=1000838"
+          //         linktwo="https://www.stylori.com/jewellery/rings/Outward-Twin%20Finger%20Siver%20Ring?sku_id=1000701"
+          //       />
+          //     </Grid>
+          //   </Grid>
+          // </Grid>
+          <Grid
+            container
+            sm={10}
+            md={10}
+            lg={12}
+            xl={12}
+            style={{ paddingTop: 30 }}
+          >
             <Grid
               container
               item
-              xs={6}
-              className="hovereffectSilvertoppicks"
-              style={{ height: "100%" }}
+              className={classes.silver_margin_auto}
+              md={6}
+              lg={0}
+              xl={0}
             >
-              <img
-                alt=""
-                src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.webp?_=1605092387781"
-                style={{ width: "100%", height: "100%", objectFit: "revert" }}
-                onClick={() =>
-                  (window.location.href =
-                    "https://www.stylori.com/jewellery/short%20necklace/Charming-Kasu%20Silver%20Necklace?sku_id=1000965")
-                }
-              />
-              <div className="overlay1">
-                <div className={"collectionDataSilverSEOflex"}>
-                  <div style={{ margin: "auto" }}>
-                    <h2 className="next-price">{"Bracelets".toUpperCase()}</h2>
-                  </div>
-                </div>
-              </div>
+              <a
+                className={classes.imagefull}
+                href="https://www.stylori.com/jewellery/short%20necklace/Charming-Kasu%20Silver%20Necklace?sku_id=1000965"
+              >
+                <img
+                  className={classes.imagefulllong}
+                  src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.jpg"
+                />
+              </a>
             </Grid>
-            <Grid container item xs={6} style={{ height: "100%" }}>
-              <Grid
-                container
-                item
-                xs={12}
-                style={{ height: "50%", paddingBottom: 4 }}
-              >
-                <FormRow
-                  imageOne="https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.webp?_=1605887194324"
-                  imageTwo="https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.webp?_=1605093270200"
-                  linkone="https://www.stylori.com/jewellery/earrings/Scintillating-Swan%20Silver%20Ear%20Stud?sku_id=1000118"
-                  linktwo="https://www.stylori.com/jewellery/long%20necklace/Clinking-Dual%20Tone%20Long%20Silver%20Necklace?sku_id=1000890"
-                />
-              </Grid>
-              <Grid
-                container
-                item
-                xs={12}
-                style={{ height: "50%", paddingTop: 4 }}
-              >
-                <FormRow
-                  imageOne="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.webp?_=1605093140435"
-                  imageTwo="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.webp?_=1605093196279"
-                  linkone="https://www.stylori.com/jewellery/bangles/Refined-Red%20and%20Green%20Silver%20Bangle?sku_id=1000838"
-                  linktwo="https://www.stylori.com/jewellery/rings/Outward-Twin%20Finger%20Siver%20Ring?sku_id=1000701"
-                />
+            <Grid
+              item
+              className={classes.silver_first_column}
+              md={6}
+              lg={0}
+              xl={0}
+            >
+              <Grid container>
+                <Grid
+                  item
+                  container
+                  style={{ paddingTop: "2px" }}
+                  className={classes.silver_image_2_container}
+                >
+                  <Grid item md={6} sm={6} xs={6} className={classes.imgsmall}>
+                    <div style={{ paddingRight: "3px" }}>
+                      <a
+                        className={classes.imagefull}
+                        href="https://www.stylori.com/jewellery/earrings/Scintillating-Swan%20Silver%20Ear%20Stud?sku_id=1000118"
+                      >
+                        <img
+                          className={classes.imagefull}
+                          src="https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.jpg"
+                        />
+                      </a>
+                    </div>
+                  </Grid>
+                  <Grid item md={6} sm={6} xs={6}>
+                    <div style={{ paddingLeft: "3px" }}>
+                      <a
+                        className={classes.imagefull}
+                        href="https://www.stylori.com/jewellery/long%20necklace/Clinking-Dual%20Tone%20Long%20Silver%20Necklace?sku_id=1000890"
+                      >
+                        <img
+                          className={classes.imagefull}
+                          src="https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.jpg"
+                        />
+                      </a>
+                    </div>
+                  </Grid>
+                </Grid>
+                <Grid
+                  item
+                  container
+                  style={{ paddingTop: "2px" }}
+                  className={classes.silver_image_2_container}
+                >
+                  <Grid item md={6} sm={6} xs={6} className={classes.imgsmall}>
+                    <div style={{ paddingRight: "3px" }}>
+                      <a
+                        className={classes.imagefull}
+                        href="https://www.stylori.com/jewellery/bangles/Refined-Red%20and%20Green%20Silver%20Bangle?sku_id=1000838"
+                      >
+                        <img
+                          className={classes.imagefull}
+                          src="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.jpg"
+                        />
+                      </a>
+                    </div>
+                  </Grid>
+                  <Grid item md={6} sm={6} xs={6}>
+                    <div style={{ paddingLeft: "3px" }}>
+                      <a
+                        className={classes.imagefull}
+                        href="https://www.stylori.com/jewellery/rings/Outward-Twin%20Finger%20Siver%20Ring?sku_id=1000701"
+                      >
+                        <img
+                          className={classes.imagefull}
+                          src="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.jpg"
+                        />
+                      </a>
+                    </div>
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
@@ -322,77 +450,172 @@ export default function ImageGridList(props) {
       </Hidden>
       <Hidden smDown>
         {props.isHover ? (
-          <Grid container justify="center" style={{ paddingTop: 30 }}>
+          // <Grid container justify="center" style={{ paddingTop: 30 }} md={11}>
+          //   <Grid
+          //     item
+          //     xs={6}
+          //     lg={6}
+          //     style={{ height: "100%" }}
+          //     className={classes.side}
+          //   >
+          //     {/* <Grid container spacing={1} style={{height:500, paddingTop:30}}> */}
+          //     <Grid item xs={12} className="hovereffectSilvertoppicks">
+          //       <div
+          //         style={{
+          //           overflow: "hidden",
+          //           width: "400px",
+          //           height: "400px",
+          //         }}
+          //       >
+          //         <img
+          //           alt=""
+          //           src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.webp?_=1605092387781"
+          //           style={{
+          //             cursor: "pointer",
+          //             // objectFit: "cover",
+          //           }}
+          //           onClick={() =>
+          //             (window.location.href =
+          //               "https://www.stylori.com/jewellery/short%20necklace/Charming-Kasu%20Silver%20Necklace?sku_id=1000965")
+          //           }
+          //         />
+          //       </div>
+          //       {/* <h2 className="next-price">
+
+          //       </h2> */}
+          //       {/* <div className="overlay1">
+          //         <div className={"collectionDataSilverSEOflex"}>
+          //           <div style={{ margin: "auto" }}>
+
+          //             <div style={{ color: "white" }}>Charming Kasu Silver Necklace</div>
+          //             <h6 style={{ color: "white" }}>Rs 13,199</h6>
+          //             <div><Button variant="contained" color="secondary" style={{ padding: 10 }} >Add to cart</Button></div>
+          //             <div style={{ marginTop: 20 }}><Button variant="contained" color="secondary" style={{ padding: 10 }}>Save</Button></div>
+          //           </div>
+          //         </div>
+          //       </div> */}
+          //     </Grid>
+
+          //     {/* </Grid> */}
+          //   </Grid>
+          //   <Grid item xs={6} lg={6} style={{ height: "100%", padding: "2%" }}>
+          //     <Grid container item xs={12}>
+          //       <Grid
+          //         container
+          //         item
+          //         xs={12}
+          //         style={{ height: "50%", paddingBottom: 25 }}
+          //       >
+          //         <FormRow
+          //           imageOne="https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.webp?_=1605092766692"
+          //           imageTwo="https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.webp?_=1605093270200"
+          //           linkone="https://www.stylori.com/jewellery/earrings/Scintillating-Swan%20Silver%20Ear%20Stud?sku_id=1000118"
+          //           linktwo="https://www.stylori.com/jewellery/long%20necklace/Clinking-Dual%20Tone%20Long%20Silver%20Necklace?sku_id=1000890"
+          //         />
+          //       </Grid>
+          //       <Grid
+          //         container
+          //         item
+          //         xs={12}
+          //         style={{ height: "50%", paddingTop: 25 }}
+          //       >
+          //         <FormRow
+          //           imageOne="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.webp?_=1605093140435"
+          //           imageTwo="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.webp?_=1605093196279"
+          //           linkone="https://www.stylori.com/jewellery/bangles/Refined-Red%20and%20Green%20Silver%20Bangle?sku_id=1000838"
+          //           linktwo="https://www.stylori.com/jewellery/rings/Outward-Twin%20Finger%20Siver%20Ring?sku_id=1000701"
+          //         />
+          //       </Grid>
+          //     </Grid>
+          //   </Grid>
+          // </Grid>
+
+          <Grid
+            container
+            xs={10}
+            sm={10}
+            style={{ padding: "30px 15px 0px 15px" }}
+          >
+            <Grid
+              container
+              item
+              className={classes.silver_margin_auto}
+              md={6}
+              lg={6}
+              xl={6}
+            >
+              <a
+                className={classes.imagefull}
+                href="https://www.stylori.com/jewellery/short%20necklace/Charming-Kasu%20Silver%20Necklace?sku_id=1000965"
+              >
+                <img
+                  className={classes.imagefull}
+                  src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.jpg"
+                />
+              </a>
+            </Grid>
             <Grid
               item
-              xs={6}
+              className={classes.silver_first_column}
+              md={6}
               lg={6}
-              style={{ height: "100%", padding: "2%" }}
-              className={classes.side}
+              xl={6}
             >
-              {/* <Grid container spacing={1} style={{height:500, paddingTop:30}}> */}
-              <Grid item xs={12} className="hovereffectSilvertoppicks">
-                <div style={{ overflow: "hidden", height: "100%" }}>
-                  <img
-                    alt=""
-                    src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.webp?_=1605092387781"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      cursor: "pointer",
-                      // objectFit: "cover",
-                    }}
-                    onClick={() =>
-                      (window.location.href =
-                        "https://www.stylori.com/jewellery/short%20necklace/Charming-Kasu%20Silver%20Necklace?sku_id=1000965")
-                    }
-                  />
-                </div>
-                {/* <h2 className="next-price">
-                
-                </h2> */}
-                {/* <div className="overlay1">
-                  <div className={"collectionDataSilverSEOflex"}>
-                    <div style={{ margin: "auto" }}>
-                    
-                      <div style={{ color: "white" }}>Charming Kasu Silver Necklace</div>
-                      <h6 style={{ color: "white" }}>Rs 13,199</h6>
-                      <div><Button variant="contained" color="secondary" style={{ padding: 10 }} >Add to cart</Button></div>
-                      <div style={{ marginTop: 20 }}><Button variant="contained" color="secondary" style={{ padding: 10 }}>Save</Button></div>
-                    </div>
+              <Grid container>
+                <Grid item md={6} lg={6} xl={6}>
+                  <div style={{ padding: "0px 8px 0px 0px " }}>
+                    <a
+                      className={classes.imagefull}
+                      href="https://www.stylori.com/jewellery/earrings/Scintillating-Swan%20Silver%20Ear%20Stud?sku_id=1000118"
+                    >
+                      <img
+                        className={classes.imagefull}
+                        src="https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.jpg"
+                      />
+                    </a>
                   </div>
-                </div> */}
-              </Grid>
-
-              {/* </Grid> */}
-            </Grid>
-            <Grid item xs={6} lg={5} style={{ height: "100%", padding: "2%" }}>
-              <Grid container item xs={12}>
-                <Grid
-                  container
-                  item
-                  xs={12}
-                  style={{ height: "50%", paddingBottom: 25 }}
-                >
-                  <FormRow
-                    imageOne="https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.webp?_=1605092766692"
-                    imageTwo="https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.webp?_=1605093270200"
-                    linkone="https://www.stylori.com/jewellery/earrings/Scintillating-Swan%20Silver%20Ear%20Stud?sku_id=1000118"
-                    linktwo="https://www.stylori.com/jewellery/long%20necklace/Clinking-Dual%20Tone%20Long%20Silver%20Necklace?sku_id=1000890"
-                  />
                 </Grid>
-                <Grid
-                  container
-                  item
-                  xs={12}
-                  style={{ height: "50%", paddingTop: 25 }}
-                >
-                  <FormRow
-                    imageOne="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.webp?_=1605093140435"
-                    imageTwo="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.webp?_=1605093196279"
-                    linkone="https://www.stylori.com/jewellery/bangles/Refined-Red%20and%20Green%20Silver%20Bangle?sku_id=1000838"
-                    linktwo="https://www.stylori.com/jewellery/rings/Outward-Twin%20Finger%20Siver%20Ring?sku_id=1000701"
-                  />
+                <Grid item md={6} lg={6} xl={6}>
+                  <div style={{ padding: "0px 0px 0px 8px " }}>
+                    <a
+                      className={classes.imagefull}
+                      href="https://www.stylori.com/jewellery/long%20necklace/Clinking-Dual%20Tone%20Long%20Silver%20Necklace?sku_id=1000890"
+                    >
+                      <img
+                        className={classes.imagefull}
+                        src="https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.jpg"
+                        style={{ paddingTop: "2px" }}
+                      />
+                    </a>
+                  </div>
+                </Grid>
+                <Grid item container style={{ paddingTop: "10px" }}>
+                  <Grid item md={6} lg={6} xl={6} className={classes.imgsmall}>
+                    <div style={{ padding: "0px 8px 0px 0px " }}>
+                      <a
+                        className={classes.imagefull}
+                        href="https://www.stylori.com/jewellery/bangles/Refined-Red%20and%20Green%20Silver%20Bangle?sku_id=1000838"
+                      >
+                        <img
+                          className={classes.imagefull}
+                          src="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.jpg"
+                        />
+                      </a>
+                    </div>
+                  </Grid>
+                  <Grid item md={6} lg={6} xl={6}>
+                    <div style={{ padding: "0px 0px 0px 8px " }}>
+                      <a
+                        className={classes.imagefull}
+                        href="https://www.stylori.com/jewellery/rings/Outward-Twin%20Finger%20Siver%20Ring?sku_id=1000701"
+                      >
+                        <img
+                          className={classes.imagefull}
+                          src="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.jpg"
+                        />
+                      </a>
+                    </div>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
