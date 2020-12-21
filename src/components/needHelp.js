@@ -121,11 +121,11 @@ export default function NeedHelp(props) {
                   sm={4}
                   style={{ padding: "5px 0px", margin: "auto" }}
                 >
-                  <a href="https://direct.lc.chat/5807571/" target="_blank">
+                  {/* <a href="https://direct.lc.chat/5807571/" target="_blank"> */}
                     <ChatIcon
-                    // onClick={() =>  window.LC_API.open_chat_window() }
+                    onClick={() =>  window.LC_API.open_chat_window() }
                     />
-                  </a>
+                  {/* </a> */}
                 </Grid>
                 <Grid
                   item
