@@ -25,6 +25,7 @@ import { withRouter } from 'react-router-dom';
 import { TopFilters } from './topFilters'
 import ProductLayoutSilver from '../ProductCard/ProductLayoutSilver'
 import { TempTest } from './TempTest';
+import { filtersLabelMapperStylori } from 'utils';
 const PersistentDrawerLeft = (props) => {
   const { setSort, setloadingfilters, setOffset, setPriceMax, setPriceMin, FilterOptionsCtx, setdelete_fil } = React.useContext(FilterOptionsContext);
 
@@ -808,7 +809,7 @@ class Component extends React.Component {
                                                 >
                                                   <Typography className="fil-list-items" variant='h4' component="h4"
                                                   >
-                                                    {row}
+                                                    {filtersLabelMapperStylori(row)}
                                                     {/* {mapperLabelCustomizer(row)} */}
                                                   </Typography>
                                                 </ListItemText>
