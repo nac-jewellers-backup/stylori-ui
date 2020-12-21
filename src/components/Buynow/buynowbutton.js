@@ -8,12 +8,14 @@ import {
 // let path = window.location.pathname.split('/').pop();
 // const path = window.location.pathname !== "cart" || window.location.pathname!== "checkout"
 class Buynowbutton extends React.Component {
+
     constructor(props){
         super()
         this.state={
             vals: 0
         }
     }
+    
     valus = (props) => {
         
         var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : ""
@@ -46,7 +48,9 @@ class Buynowbutton extends React.Component {
         this.valus(this.props)
 
     }
+
     render() {
+        console.log(this.props.addtoCartToBuyNow)
         return (
             <div>
                 <Button  className={this.props.class} style={{ borderRadius: "5px",...this.props.style }}>
@@ -55,7 +59,7 @@ class Buynowbutton extends React.Component {
                         <span> In bag!</span>
                     </> : <>
                             {!this.props.withoutBag && !this.props.isSilver && !this.props.smallScreen && <i class="fa fa-shopping-bag buynow-icon"></i>}
-                            {this.props.isSilver && this.props.smallScreen ? 'ADD TO CART' : <span className={this.props.button}>Buy Now</span>}
+                            { this.props.addtoCartToBuyNow ? 'Add to Cart' : <span className={this.props.button}>Buy Now</span>}
                         </>
                     }
 
