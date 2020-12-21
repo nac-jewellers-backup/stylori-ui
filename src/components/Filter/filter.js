@@ -37,6 +37,15 @@ const PersistentDrawerLeft = (props) => {
     {...props} />
 }
 
+// const mapperLabelCustomizer = (val) =>{
+//   if(val === "Product Type"){
+//     return "Dinesh"
+//   }
+//   else {
+//     return val
+//   }
+// }
+
 class Component extends React.Component {
   constructor(props) {
     super(props)
@@ -778,7 +787,7 @@ class Component extends React.Component {
                                 filter && filter.length > 0 ?
 
                                   filter.map((row, i) => {
-
+                                    debugger
                                     return (
                                       <>
                                         {
@@ -798,7 +807,9 @@ class Component extends React.Component {
                                                 <ListItemText
                                                 >
                                                   <Typography className="fil-list-items" variant='h4' component="h4"
-                                                  >{row}
+                                                  >
+                                                    {row}
+                                                    {/* {mapperLabelCustomizer(row)} */}
                                                   </Typography>
                                                 </ListItemText>
                                                 {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :

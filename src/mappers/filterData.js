@@ -26,7 +26,6 @@ export default function (data) {
     const getSubFilters = (data) => {
       if (data && data.length > 0) {
         Object.keys(data[0]).map((val) => {
-            
           if (val !== "master_category" && val !== "seo_url" && val !== "seo_text" && val !== "seo_banner") {
             if(val === 'price_range' || val.toLocaleLowerCase() === 'price')
           {
