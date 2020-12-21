@@ -76,57 +76,115 @@ class Buynowfixed extends React.Component {
                         </Grid>
                     </Grid> */}
           <Grid container spacing={12}>
-            <Grid
-              item
-              xs={6}
-              className={`fixed-grid ${
-                isSilver ? classes.fixedGridsilver : ""
-              }`}
-              style={{ textAlign: "center", background: "#EBEAEA" }}
-            >
-              <div onClick={handleLocalStorage.bind(this)}>
-                <Buynowbutton
-                  sku={data[0].skuId}
-                  class={`product-footer-buynow ${
+            {isSilver ? (
+              <>
+                {" "}
+                <Grid
+                  item
+                  xs={6}
+                  className={`fixed-grid ${
                     isSilver ? classes.fixedGridsilver : ""
                   }`}
-                />
-              </div>
-            </Grid>
-            <CommenDialog
-              isOpen={this.state.modelOpen}
-              content={`Verify selected product details before proceeding`}
-              handleClose={canceldeletechecklist.bind(this)}
-              handleSuccess={() => this.props.deleteComment()}
-              negativeBtn="No"
-              positiveBtn="Yes"
-              title="Confirmation"
-            />
-            <Grid
-              className="talk-to-us"
-              item
-              xs={6}
-              style={{ justifyContent: "center", display: "flex" }}
-            >
-              <a
-                href={isSilver ? "#" : "tel:18001020330"}
-                style={{
-                  textDecoration: "none",
-                  color: "#394578",
-                  fontWeight: "600",
-                  fontSize: "14px",
-                  letterSpacing: "1.5px",
-                }}
-              >
-                {isSilver ? null : <i class="fa fa-comments"></i>}
-                &nbsp;
-                {isSilver ? (
-                  <span style={{ fontFamily: "Roboto-bold" }}>Add To Cart</span>
-                ) : (
-                  "Talk To Us"
-                )}
-              </a>
-            </Grid>
+                  style={{ textAlign: "center", background: "#EBEAEA" }}
+                >
+                  <div onClick={() => this.props.deleteComment()}>
+                    <Buynowbutton
+                      sku={data[0].skuId}
+                      class={`product-footer-buynow ${
+                        isSilver ? classes.fixedGridsilver : ""
+                      }`}
+                      onClick={handleLocalStorage.bind(this)}
+                    />
+                  </div>
+                </Grid>
+              </>
+            ) : (
+              <>
+                {" "}
+                <Grid
+                  item
+                  xs={6}
+                  className={`fixed-grid ${
+                    isSilver ? classes.fixedGridsilver : ""
+                  }`}
+                  style={{ textAlign: "center", background: "#EBEAEA" }}
+                >
+                  <div onClick={handleLocalStorage.bind(this)}>
+                    <Buynowbutton
+                      sku={data[0].skuId}
+                      class={`product-footer-buynow ${
+                        isSilver ? classes.fixedGridsilver : ""
+                      }`}
+                    />
+                  </div>
+                </Grid>
+                <CommenDialog
+                  isOpen={this.state.modelOpen}
+                  content={`Verify selected product details before proceeding`}
+                  handleClose={canceldeletechecklist.bind(this)}
+                  handleSuccess={() => this.props.deleteComment()}
+                  negativeBtn="No"
+                  positiveBtn="Yes"
+                  title="Confirmation"
+                />{" "}
+              </>
+            )}
+
+            {/* */}
+
+            {isSilver ? (
+              <>
+                {" "}
+                <Grid
+                  item
+                  xs={6}
+                  style={{ textAlign: "center", backgroundColor: "#ccc" }}
+                >
+                  <div onClick={() => this.props.deleteComment()}>
+                    <Buynowbutton
+                      sku={data[0].skuId}
+                      // class={`product-footer-buynow ${
+                      //   isSilver ? classes.fixedGridsilver : ""
+                      // }`}
+                      class={`product-footer-buynow ${classes.addtoCartToBuyNowStyle}`}
+                      addtoCartToBuyNow={true}
+                      onClick={handleLocalStorage.bind(this)}
+                    />
+                  </div>
+                </Grid>{" "}
+              </>
+            ) : (
+              <>
+                {" "}
+                <Grid
+                  className="talk-to-us"
+                  item
+                  xs={6}
+                  style={{ justifyContent: "center", display: "flex" }}
+                >
+                  <a
+                    href={isSilver ? "#" : "tel:18001020330"}
+                    style={{
+                      textDecoration: "none",
+                      color: "#394578",
+                      fontWeight: "600",
+                      fontSize: "14px",
+                      letterSpacing: "1.5px",
+                    }}
+                  >
+                    {isSilver ? null : <i class="fa fa-comments"></i>}
+                    &nbsp;
+                    {isSilver ? (
+                      <span style={{ fontFamily: "Roboto-bold" }}>
+                        Add To Cart
+                      </span>
+                    ) : (
+                      "Talk To Us"
+                    )}
+                  </a>
+                </Grid>
+              </>
+            )}
           </Grid>
         </AppBar>
       </div>
