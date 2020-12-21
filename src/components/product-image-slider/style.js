@@ -520,7 +520,9 @@ const styles = (theme) => ({
   add_to_cart_text: {
     [theme.breakpoints.only("md")]: {
       fontSize: "10px",
+      // fontWeight: "bold !important",
     },
   },
 });
+
 export default styles;

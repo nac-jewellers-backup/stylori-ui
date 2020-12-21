@@ -601,58 +601,45 @@ const Productprice = (
                           style={{ padding: "10px 0px 20px 0px" }}
                         >
                           <Grid item xs={3} sm={4} md={3} lg={3}>
-                            {/* <div onClick={handleLocalStorage.bind(this)}> */}
-                            <Button
-                              // onClick={() => {
-                              //   alert("hello")(<SimpleSnackbar />);
-                              // }}
+                            {/* <Button
+                             
                               variant="contained"
                               color="primary"
                               class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart}`}
                             >
-                              {/* <LocalMallIcon
-                                style={{ fill: "rgb(6, 171, 159)" }}
-                              /> */}
-
+                             
                               <span
                                 className={`${classes.robotoBoldFont} ${classes.add_to_cart_text}`}
-                                // style={{ fontSize: "10px" }}
+                               
                               >
                                 <i class="fa fa-shopping-bag buynow-icon"></i>
                                 Add to Cart
                               </span>
-                            </Button>
+                            </Button> */}
 
-                            {/* </div> */}
-                            {/* <Snackbar
-                              anchorOrigin={{
-                                vertical: "bottom",
-                                horizontal: "left",
-                              }}
-                              open={openSnackBar}
-                              autoHideDuration={6000}
-                              onClose={handleCloseSnackBar}
-                              message="Note archived"
-                              action={
-                                <React.Fragment>
-                                  <Button
-                                    color="secondary"
-                                    size="small"
-                                    onClick={handleCloseSnackBar}
-                                  >
-                                    UNDO
-                                  </Button>
-                                  <IconButton
-                                    size="small"
-                                    aria-label="close"
-                                    color="inherit"
-                                    onClick={handleCloseSnackBar}
-                                  >
-                                    <CloseIcon fontSize="small" />
-                                  </IconButton>
-                                </React.Fragment>
-                              }
+                            <div onClick={deletechecklists}>
+                              <Buynowbutton
+                                sku={data[0].skuId}
+                                class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart} ${classes.robotoBoldFont} ${classes.add_to_cart_text}`}
+                                button="buynow-btn-cont"
+                                id="silverButton"
+                                withoutBag={true}
+                                addtoCartToBuyNow={true}
+                                // onClick={}
+                                // handleSuccess={deletechecklists}
+                                onClick={handleLocalStorage.bind(this)}
+                              />
+
+                              {/* <CommenDialog
+                              isOpen={state.modelOpen}
+                              content={`Verify selected product details before proceeding`}
+                              handleClose={canceldeletechecklist}
+                              handleSuccess={deletechecklists}
+                              negativeBtn="No"
+                              positiveBtn="Yes"
+                              title="Confirmation"
                             /> */}
+                            </div>
                           </Grid>
                         </Grid>
                       )}
