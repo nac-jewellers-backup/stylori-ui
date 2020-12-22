@@ -192,9 +192,7 @@ class ProductImageZoom extends React.Component {
     let _notFound = `${CDN_URL}product/1000X1000/productnotfound.webp`;
     return (await this.check_image_exists_in_server(_url)) ? _url : _notFound;
   };
-  handledeii = () => {
-    alert("deii");
-  };
+
 
   productImageZoom = (_isSilver) => {
     // console.log(this.props.data)

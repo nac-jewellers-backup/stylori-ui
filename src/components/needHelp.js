@@ -121,10 +121,21 @@ export default function NeedHelp(props) {
                   sm={4}
                   style={{ padding: "5px 0px", margin: "auto" }}
                 >
-                  <a href="https://direct.lc.chat/5807571/" target="_blank">
-                    <ChatIcon
-                    // onClick={() =>  window.LC_API.open_chat_window() }
-                    />
+                  {/* <a href="https://direct.lc.chat/5807571/" target="_blank">
+                    <ChatIcon />
+                  </a> */}
+                  {/* <a href="https://www.livechatinc.com/chat-with/5807571/" rel="nofollow"> <ChatIcon /></a> */}
+                  {/* <div data-id="VP1yfQPXWvc" class="livechat_button">
+                    <a href="https://www.livechatinc.com/chat-with/5807571/">
+                    <ChatIcon />
+                    </a>
+                  </div> */}
+                  <a
+                    onClick="LC_API.open_chat_window();return false"
+                    href="https://www.livechatinc.com/chat-with/5807571/"
+                    rel="nofollow"
+                  >
+                    <ChatIcon />
                   </a>
                 </Grid>
                 <Grid
@@ -166,77 +177,6 @@ export default function NeedHelp(props) {
                     <WhatsAppIcon />
                   </a>
                 </Grid>
-
-                {/* <Grid
-                  item
-                  xs={12}
-                  sm={4}
-                  style={{ padding: "5px 0px", margin: "auto" }}
-                >
-                  <HighlightOffIcon onClick={handleClick(props.position)} />
-                </Grid> */}
-                {/* </Hidden> */}
-                {/* 
-            
-              <Hidden smDown>
-                <Grid container style={{ padding: "10px 15px" }}>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={4}
-                    style={{
-                      padding: "5px 0px",
-                      borderRight: "1px solid rgb(166, 168, 171)",
-                    }}
-                  >
-                    <Typography
-                      variant="body1"
-                      className={classes.chatNow}
-                      onClick={() => window.LC_API.open_chat_window()}
-                    >
-                      <ChatIcon />
-                    </Typography>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={4}
-                    style={{
-                      padding: "5px 0px 0px 15px ",
-                      borderRight: "1px solid rgb(166, 168, 171)",
-                    }}
-                  >
-                    <a
-                      href="tel:1800-102-0330"
-                      style={{ textDecoration: "none" }}
-                    >
-                      <Typography variant="body1" className={classes.number}>
-                        // 1800-102-0330 
-
-<CallIcon />
-                      </Typography>
-                    </a>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={4}
-                    style={{ padding: "5px 0px 0px 15px " }}
-                  >
-                    <a
-                      href="mailto:hello@stylori.com"
-                      style={{ textDecoration: "none" }}
-                    >
-                      <Typography variant="body1" className={classes.number}>
-                        <EmailIcon />
-                      </Typography>
-                    </a>
-                  </Grid>
-                  <Divider orientation="vertical" style={{ width: "1px" }} />
-                </Grid>
-              </Hidden>
-            
-            */}
               </Paper>
             </Collapse>
           )}
@@ -271,7 +211,6 @@ export default function NeedHelp(props) {
         </Hidden>
         <Hidden mdUp>
           <Grid item>
-            {/* <Button onClick={handleClick(props.position)}>Help ?</Button> */}
             <Grid
               item
               xs={12}
@@ -287,15 +226,6 @@ export default function NeedHelp(props) {
                   src={WhatsappPNG}
                   style={{ width: "35px", height: "auto" }}
                 ></img>
-                {/* <i
-                  class="fa fa-whatsapp"
-                  aria-hidden="true"
-                  style={{
-                    backgroundColor: "#25D366",
-                    color: "#ffffff",
-                    fontSize: "30px",
-                  }}
-                ></i> */}
               </a>
             </Grid>
           </Grid>
