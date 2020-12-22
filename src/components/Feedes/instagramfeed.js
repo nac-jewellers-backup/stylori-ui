@@ -1,6 +1,10 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 export const InstagramFeed = () => {
+  // componentDidMount() {
+  //   window.instgrm.Embeds.process();
+  // }
+
   const location = useLocation();
   return (
     <div>

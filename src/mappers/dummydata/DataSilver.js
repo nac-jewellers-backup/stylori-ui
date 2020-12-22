@@ -46,7 +46,7 @@ export const carouselTop = [
       },
       {
         img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/1920X656-Traditional-Banner_Stylori-Silver.jpg",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/1920X656-Traditional-Banner_Stylori-Silver.jpg	",
         mobileImg:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/805X430-Traditional-Banner_Stylori-Silver.jpg",
         navigateUrl: "https://www.stylori.com/silver-jewellery-traditional",

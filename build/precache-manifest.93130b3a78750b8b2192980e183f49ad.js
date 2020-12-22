@@ -1,34 +1,34 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d935b3a66f0b64eee55ea832c070cbb4",
+    "revision": "40632587b75750600827c3d7a9c542f8",
     "url": "/index.html"
   },
   {
-    "revision": "cd0f4441a86f3d126db1",
+    "revision": "ecf4314d22ea32716f9f",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "f138f0f0c87cc150ce30",
+    "revision": "f845d584e665c272c4b9",
     "url": "/static/css/3.css"
   },
   {
-    "revision": "10913fc1817b780b71e3",
+    "revision": "5cda0f995ed26fe09e6a",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "cd0f4441a86f3d126db1",
+    "revision": "ecf4314d22ea32716f9f",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "f138f0f0c87cc150ce30",
+    "revision": "f845d584e665c272c4b9",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "d64201f459caaa5ec714",
+    "revision": "35c171ae83a1cda35f2c",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "10913fc1817b780b71e3",
+    "revision": "5cda0f995ed26fe09e6a",
     "url": "/static/js/main.js"
   },
   {
@@ -44,7 +44,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/FlowerDimon.jpg"
   },
   {
-    "revision": "1a38a224b9dfb66dda91904348a8e0a8",
+    "revision": "b8f611b34c68f5118fe8e0cce1c5de47",
     "url": "/static/media/Stylori Silver logo.svg"
   },
   {
@@ -104,6 +104,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/shopping.svg"
   },
   {
+    "revision": "9f68d134cc7db1c64076983fcd3e8826",
+    "url": "/static/media/silverOpenLink.png"
+  },
+  {
     "revision": "ced611daf7709cc778da928fec876475",
     "url": "/static/media/slick.eot"
   },
@@ -122,6 +126,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "681db1b372ef45af725df7762fcb49ee",
     "url": "/static/media/styloriGagets.png"
+  },
+  {
+    "revision": "18d70bcc35a56cea676c4ced2fbb3d09",
+    "url": "/static/media/stylori_silver_logo.svg"
   },
   {
     "revision": "5a712650392a83e01a75498ebc83837b",

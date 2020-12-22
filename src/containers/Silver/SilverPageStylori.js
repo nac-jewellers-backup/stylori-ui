@@ -21,8 +21,8 @@ import {
 } from "queries/home";
 import Feedes from "components/Feedes/Index";
 import { InstagramFeed } from "components/Feedes/instagramfeed";
-import { NeedHelp } from "components/needHelp";
-
+import NeedHelp from "../../components/needHelp";
+import Tweeterfeed from "../../components/storyTemplate/tweeterEmbedded";
 const styles = (theme) => ({
   instagramTitle: {
     color: "rgb(58,69,120)",
@@ -67,7 +67,7 @@ class HomeStylori extends React.Component {
               <Typography variant="body1" className={classes.instagramTitle}>
                 INSTAGRAM
               </Typography>
-              <InstagramFeed  />
+              <InstagramFeed />
             </Grid>
           </Hidden>
         </Container>

@@ -14,7 +14,7 @@ import { Divider, Hidden } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import EmailIcon from "@material-ui/icons/Email";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
-
+import WhatsappPNG from "../assets/Icons/whatsapp.png";
 const useStyles = makeStyles((theme) => ({
   //   root: {
   //     width: 500,
@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function NeedHelp(props) {
+export default function NeedHelp(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const [placement, setPlacement] = React.useState();
@@ -121,11 +121,9 @@ export function NeedHelp(props) {
                   sm={4}
                   style={{ padding: "5px 0px", margin: "auto" }}
                 >
-                  <a href="https://direct.lc.chat/5807571/" target="_blank">
-                    <ChatIcon
-                    // onClick={() =>  window.LC_API.open_chat_window() }
-                    />
-                  </a>
+                  {/* <a href="https://direct.lc.chat/5807571/" target="_blank"> */}
+                  <ChatIcon onClick={() => window.LC_API.open_chat_window()} />
+                  {/* </a> */}
                 </Grid>
                 <Grid
                   item
@@ -140,7 +138,7 @@ export function NeedHelp(props) {
                     <CallIcon />
                   </a>
                 </Grid>
-                <Grid
+                {/* <Grid
                   item
                   xs={12}
                   sm={4}
@@ -152,7 +150,7 @@ export function NeedHelp(props) {
                   >
                     <EmailIcon />
                   </a>
-                </Grid>
+                </Grid> */}
                 <Grid
                   item
                   xs={12}
@@ -166,77 +164,6 @@ export function NeedHelp(props) {
                     <WhatsAppIcon />
                   </a>
                 </Grid>
-
-                {/* <Grid
-                  item
-                  xs={12}
-                  sm={4}
-                  style={{ padding: "5px 0px", margin: "auto" }}
-                >
-                  <HighlightOffIcon onClick={handleClick(props.position)} />
-                </Grid> */}
-                {/* </Hidden> */}
-                {/* 
-            
-              <Hidden smDown>
-                <Grid container style={{ padding: "10px 15px" }}>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={4}
-                    style={{
-                      padding: "5px 0px",
-                      borderRight: "1px solid rgb(166, 168, 171)",
-                    }}
-                  >
-                    <Typography
-                      variant="body1"
-                      className={classes.chatNow}
-                      onClick={() => window.LC_API.open_chat_window()}
-                    >
-                      <ChatIcon />
-                    </Typography>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={4}
-                    style={{
-                      padding: "5px 0px 0px 15px ",
-                      borderRight: "1px solid rgb(166, 168, 171)",
-                    }}
-                  >
-                    <a
-                      href="tel:1800-102-0330"
-                      style={{ textDecoration: "none" }}
-                    >
-                      <Typography variant="body1" className={classes.number}>
-                        // 1800-102-0330 
-
-<CallIcon />
-                      </Typography>
-                    </a>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={4}
-                    style={{ padding: "5px 0px 0px 15px " }}
-                  >
-                    <a
-                      href="mailto:hello@stylori.com"
-                      style={{ textDecoration: "none" }}
-                    >
-                      <Typography variant="body1" className={classes.number}>
-                        <EmailIcon />
-                      </Typography>
-                    </a>
-                  </Grid>
-                  <Divider orientation="vertical" style={{ width: "1px" }} />
-                </Grid>
-              </Hidden>
-            
-            */}
               </Paper>
             </Collapse>
           )}
@@ -271,7 +198,6 @@ export function NeedHelp(props) {
         </Hidden>
         <Hidden mdUp>
           <Grid item>
-            {/* <Button onClick={handleClick(props.position)}>Help ?</Button> */}
             <Grid
               item
               xs={12}
@@ -281,12 +207,14 @@ export function NeedHelp(props) {
               <a
                 href="https://wa.me/919952625252?text=Hi"
                 style={{ textDecoration: "none" }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <i
-                  class="fa fa-whatsapp"
-                  aria-hidden="true"
-                  style={{ color: "#25D366", fontSize: "30px" }}
-                ></i>
+                {/* <WhatsAppIcon /> */}
+                <img
+                  src="https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Whatsapp-silver+jewellery.png"
+                  style={{ width: "63px", height: "auto" }}
+                ></img>
               </a>
             </Grid>
           </Grid>

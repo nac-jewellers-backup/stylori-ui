@@ -35,7 +35,7 @@ import { headerDataStyloriSilver } from "../../mappers";
 import { styles } from "./styles";
 import LogoSmallScreen from "../../assets/Stylori Silver logo.svg";
 import Seach from "../../assets/search";
-import stylorisilverlogo from "../../assets/Stylori Silver logo.svg";
+import stylorisilverlogo from "../../assets/stylori_silver_logo.svg";
 import Popover from "@material-ui/core/Popover";
 // import LogoSmallScreen from '../../assets/stylori-silver-logo-small-screen.png';
 // import Seach from '../../assets/search'
@@ -45,7 +45,7 @@ import logout from "../../assets/Icons/logout.svg";
 import styloriLogo from "../../assets/Stylorilogo.svg";
 import ElasticSearch from "components/ElasticSearch/ElasticSearch";
 import { CartContext, GlobalContext } from "context";
-
+import silverOpenLinkImage from "../../assets/silverOpenLink.png";
 let user_id = localStorage.getItem("user_id")
   ? localStorage.getItem("user_id")
   : {};
@@ -581,10 +581,11 @@ class Header extends Component {
                                     />
                                   ) : listName.title === "STYLORISILVER" ? (
                                     <img
-                                      src="https://assets.stylori.com/images/favicon.gif"
-                                      width="25px"
-                                      height="25px"
+                                      src={silverOpenLinkImage}
+                                      // width="25px"
+                                      // height="25px"
                                       alt="stylori"
+                                      style={{ width: "25px", height: "25px" }}
                                     />
                                   ) : (
                                     listName.title
@@ -707,7 +708,7 @@ class Header extends Component {
                         <img
                           className={`imgsilver`}
                           src={isSilver ? stylorisilverlogo : styloriLogo}
-                          style={{ width: "100%", height: "auto" }}
+                          style={{ width: "100%", height: "100%" }}
                           onLoad={() => this.setState({ load: true })}
                           onLoadedData={() => this.setState({ load: false })}
                           alt=""
