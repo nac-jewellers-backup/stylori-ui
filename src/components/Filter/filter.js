@@ -25,6 +25,7 @@ import { withRouter } from 'react-router-dom';
 import { TopFilters } from './topFilters'
 import ProductLayoutSilver from '../ProductCard/ProductLayoutSilver'
 import { TempTest } from './TempTest';
+import { filtersLabelMapperStylori } from 'utils';
 const PersistentDrawerLeft = (props) => {
   const { setSort, setloadingfilters, setOffset, setPriceMax, setPriceMin, FilterOptionsCtx, setdelete_fil } = React.useContext(FilterOptionsContext);
 
@@ -36,6 +37,15 @@ const PersistentDrawerLeft = (props) => {
     uri={NetworkCtx.graphqlUrl} globalcontext={Globalctx} setdelete_fil={setdelete_fil}
     {...props} />
 }
+
+// const mapperLabelCustomizer = (val) =>{
+//   if(val === "Product Type"){
+//     return "Dinesh"
+//   }
+//   else {
+//     return val
+//   }
+// }
 
 class Component extends React.Component {
   constructor(props) {
@@ -778,7 +788,7 @@ class Component extends React.Component {
                                 filter && filter.length > 0 ?
 
                                   filter.map((row, i) => {
-
+                                    debugger
                                     return (
                                       <>
                                         {
@@ -798,7 +808,9 @@ class Component extends React.Component {
                                                 <ListItemText
                                                 >
                                                   <Typography className="fil-list-items" variant='h4' component="h4"
-                                                  >{row}
+                                                  >
+                                                    {filtersLabelMapperStylori(row)}
+                                                    {/* {mapperLabelCustomizer(row)} */}
                                                   </Typography>
                                                 </ListItemText>
                                                 {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :

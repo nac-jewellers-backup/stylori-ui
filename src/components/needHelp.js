@@ -121,22 +121,9 @@ export default function NeedHelp(props) {
                   sm={4}
                   style={{ padding: "5px 0px", margin: "auto" }}
                 >
-                  {/* <a href="https://direct.lc.chat/5807571/" target="_blank">
-                    <ChatIcon />
-                  </a> */}
-                  {/* <a href="https://www.livechatinc.com/chat-with/5807571/" rel="nofollow"> <ChatIcon /></a> */}
-                  {/* <div data-id="VP1yfQPXWvc" class="livechat_button">
-                    <a href="https://www.livechatinc.com/chat-with/5807571/">
-                    <ChatIcon />
-                    </a>
-                  </div> */}
-                  <a
-                    onClick="LC_API.open_chat_window();return false"
-                    href="https://www.livechatinc.com/chat-with/5807571/"
-                    rel="nofollow"
-                  >
-                    <ChatIcon />
-                  </a>
+                  {/* <a href="https://direct.lc.chat/5807571/" target="_blank"> */}
+                  <ChatIcon onClick={() => window.LC_API.open_chat_window()} />
+                  {/* </a> */}
                 </Grid>
                 <Grid
                   item
@@ -220,11 +207,13 @@ export default function NeedHelp(props) {
               <a
                 href="https://wa.me/919952625252?text=Hi"
                 style={{ textDecoration: "none" }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {/* <WhatsAppIcon /> */}
                 <img
-                  src={WhatsappPNG}
-                  style={{ width: "35px", height: "auto" }}
+                  src="https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Whatsapp-silver+jewellery.png"
+                  style={{ width: "63px", height: "auto" }}
                 ></img>
               </a>
             </Grid>
