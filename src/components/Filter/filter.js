@@ -798,7 +798,8 @@ class Component extends React.Component {
                                               <ListItemText
                                               >
                                                 <Typography className="fil-list-items" variant='h4' component="h4"
-                                                >{row}
+                                                >
+                                                  {row}
                                                 </Typography>
                                               </ListItemText>
                                               {(selected.indexOf(row) !== -1) ? <ExpandLess className="fil-drawer-arrow" /> :
@@ -1058,7 +1059,7 @@ class Component extends React.Component {
                                     <div
                                       // onClick={this.handleDrawerCloseMobile}
                                       onClick={(e) => this.handleChange(row.value, this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row.value] !== undefined ? !this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row.value] : true, e)}
-                                    > {row.title}</div>
+                                    >{row.title}</div>
                                   </Typography>
                                 </ListItemText>
                               </>

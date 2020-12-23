@@ -98,7 +98,7 @@ export const styles = makeStyles(theme => ({
     cursor: 'pointer',
     fontFamily: 'Roboto',
     fontWeight: 600,
-    padding:"5px 4px 5px 15px",
+    padding:"5px 4px 5px 10px",
     display:"flex",
     margin:'auto',
     alignItems:'center',
