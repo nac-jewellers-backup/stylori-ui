@@ -195,7 +195,12 @@ export const TopFilters = (props) => {
                           className={classes.spacingfilterdiv}
                         >
                           <Grid item xs={6} className={classes.filtersLabel}>
-                            <a href={listName.url}>{listName}</a>
+                            <a href={listName.url}>
+                              {/* {alert(listName)} */}
+                              {listName === "Style"
+                                ? "PRODUCT STYLE"
+                                : listName}
+                            </a>
                           </Grid>
                           <Grid
                             item
@@ -374,34 +379,32 @@ export const TopFilters = (props) => {
         />
         <Grid container item xs={12} style={{ margin: "0px 17px" }}>
           {/* <div className="header-chips Chip"> */}
-          {
-            
-            props?.chips.length>0 ? 
-          props?.chips.map((data) => {
-            
-            return (
-              data.label === 'Silver' ?
-              null
-              :
-              <Chip
-              size="small"
-              variant="outlined"
-              label={data.label}
-              style={{padding:"5px", marginRight:5}}
-              onDelete={() => props.click(data.label)}
-              deleteIcon={
-                 data.label ? (
-                <i className="search-choice-close" class="fa fa-times"></i>
-              ) : (
-                "")}
-              color="secondary"
-            />
-
-            );
-          })
-          :
-          <div>No filters applied</div>
-          }
+          {props?.chips.length > 0 ? (
+            props?.chips.map((data) => {
+              return data.label === "Silver" ? null : (
+                <Chip
+                  size="small"
+                  variant="outlined"
+                  label={data.label}
+                  style={{ padding: "5px", marginRight: 5 }}
+                  onDelete={() => props.click(data.label)}
+                  deleteIcon={
+                    data.label ? (
+                      <i
+                        className="search-choice-close"
+                        class="fa fa-times"
+                      ></i>
+                    ) : (
+                      ""
+                    )
+                  }
+                  color="secondary"
+                />
+              );
+            })
+          ) : (
+            <div>No filters applied</div>
+          )}
           {/* </div> */}
         </Grid>
       </Container>

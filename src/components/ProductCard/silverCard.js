@@ -449,7 +449,7 @@ const renderImages = (props, cardstate) => {
     // console.info('props.data.image[filterType]',props.data.image[filterType]);
     // return props.data.image['hoverImage'].length === 0 ?"https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg" : props.data.image[filterType].map(imgs => `${imgs.img} ${imgs.size}`).toString()
     return props.data.image["hoverImage"].length === 0
-      ? "https://alpha-assets.stylori.com/1000x1000/images/static/Image_Not_Available.jpg"
+      ? "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/StyloriSilver+nemonic.png"
       : props.data.image[filterType].img;
   }
 };
@@ -656,7 +656,7 @@ sizes="(max-width: 320px) 320w,
                   <Typography
                     variant="body1"
                     component="span"
-                    style={{ paddingLeft: "5px", }}
+                    style={{ paddingLeft: "5px" }}
                     className={`${classes.titles}`}
                   >
                     {props.data.title}
