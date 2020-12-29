@@ -50,8 +50,8 @@ export const TopFilters = (props) => {
   const { setSort, setOffset, FilterOptionsCtx } = React.useContext(
     FilterOptionsContext
   );
-  console.clear();
-  console.log(props.chips, "checkeditems");
+  // console.clear();
+  // console.log(props.chips, "checkeditems");
   const submenuDetails = (data, target) => {
     setState({
       ...state,
@@ -94,6 +94,8 @@ export const TopFilters = (props) => {
   //   // }
   //     }
   // }
+  // debugger;
+  console.log("samir = ", props);
   return Object.keys(mapped).length === 0 ? (
     <div>loading...</div>
   ) : (
@@ -171,7 +173,12 @@ export const TopFilters = (props) => {
                 {props.filter.map((listName, i) => {
                   // let urlsmall = listName.title.toLowerCase()
 
-                  if (i < 3 && listName !== "Material")
+                  if (
+                    i < 6 &&
+                    listName !== "Material" &&
+                    listName !== "Style" &&
+                    listName !== "Occasion"
+                  )
                     return (
                       <Grid
                         item
@@ -197,9 +204,10 @@ export const TopFilters = (props) => {
                           <Grid item xs={6} className={classes.filtersLabel}>
                             <a href={listName.url}>
                               {/* {alert(listName)} */}
-                              {listName === "Style"
+                              {/* {listName === "Style"
                                 ? "PRODUCT STYLE"
-                                : listName}
+                                : listName} */}
+                              {listName}
                             </a>
                           </Grid>
                           <Grid
