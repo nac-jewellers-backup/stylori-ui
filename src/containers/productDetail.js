@@ -49,14 +49,15 @@ class ProductDetail extends Component {
       clear: "",
       data: null,
     };
-    console.log(
-      "----------this.props.data--------- CONSTRUCTOR",
-      this.props.data
-    );
+    // console.log(
+    //   "----------this.props.data--------- CONSTRUCTOR",
+    //   this.props.data
+    // );
   }
   UNSAFE_componentWillMount() {
     // this.handleOGTag()
   }
+
   handleOGTag = () => {
     if (this.props.data && this.props.data.length > 0) {
       var arr = [
@@ -207,8 +208,55 @@ class ProductDetail extends Component {
         />
       ),
     };
+    // alert(this.props.data[0].dis);
+    // debugger;
+    // console.log("samir =", this.props.data);
     return (
       <div>
+        <Helmet>
+          {/* <link rel="canonical" href="http://mysite.com/example" /> */}
+          <link
+            rel="icon"
+            type="image/gif"
+            sizes="16x16"
+            href="http://static.nfl.com/static/content/public/static/img/logos/react-helmet.jpg"
+          />
+          {/* <link rel="shortcut icon" href="http://static.nfl.com/static/content/public/static/img/logos/react-helmet.jpg"></link> */}
+          {/* <title>{this.props.data[0].title}</title> */}
+          <meta
+            name="Description"
+            property="og:description"
+            content={this.props.data[0].dis}
+          />
+          {/* <meta name="keywords" content={this.props.data[0].productsPendants[0].name} /> */}
+          <meta
+            name="og_site_name"
+            property="og:site:name"
+            content="Stylori.com"
+          ></meta>
+          <meta
+            name="og_title"
+            property="og:title"
+            content={this.props.data[0].title}
+          />
+          {/* <meta property="og:description" content={'this.props.data[0].dis'} /> */}
+          <meta property="og:type" content="website" />
+          {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
+          <meta
+            name="og_url"
+            property="og:url"
+            content={window.location.href}
+          ></meta>
+          {/* <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} /> */}
+          {/* <meta name="twitter_card" content="summary" />
+  //       <meta name="twitter_site" content="@StyloriLove" />
+  //       <meta name="twitter_title" id="twitter-title" content={this.props.data[0].title} />
+  //       <meta name="twitter_description" content={this.props.data[0].dis} />
+  //       <meta name="twitter_image" id="twitter_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} /> */}
+          {/* <meta charSet="utf-8" /> */}
+          <title>My Title</title>
+          <link rel="canonical" href="https://staging.stylori.com" />
+        </Helmet>
         {/* <div>
 
           <MetaTags>
@@ -351,6 +399,14 @@ class ProductDetail extends Component {
                     xs={12}
                     style={{ marginBottom: "20px", marginTop: "20px" }}
                   >
+                    <p
+                      style={{
+                        color: "rgb(58, 69, 120)",
+                        fontSize: "14px",
+                      }}
+                    >
+                      {this.props.data[0].dis}
+                    </p>
                     <ProductDetails
                       data={this.props.data}
                       isSilver={isSilver}
@@ -507,6 +563,23 @@ class ProductDetail extends Component {
           {/* {isSilver && <Grid item xs={12} style={{marginBottom:'15px'}}>
                <Container > <Quantity data={this.props.data}/></Container>
                 </Grid>} */}
+          {isSilver ? (
+            <>
+              <Grid item xs={11} style={{ margin: "auto" }}>
+                <p
+                  style={{
+                    color: "rgb(58, 69, 120)",
+                    fontSize: "15px",
+                    marginBottom: "20px",
+                  }}
+                >
+                  {this.props.data[0].dis}
+                </p>
+              </Grid>
+            </>
+          ) : (
+            ""
+          )}
           <Grid item xs={12}>
             <ProductDetails
               data={this.props.data}
