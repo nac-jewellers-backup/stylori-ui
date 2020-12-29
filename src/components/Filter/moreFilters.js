@@ -98,7 +98,7 @@ export default function MoreFilters(props) {
                   val !== "price" &&
                   val !== "Product Type" &&
                   val !== "Collection" &&
-                  val !== "Theme" 
+                  val !== "Style" 
                 ) {
                   return (
                     <Grid item xs={3} style={{ marginBottom: "3%" }}>

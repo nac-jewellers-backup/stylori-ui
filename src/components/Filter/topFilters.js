@@ -176,7 +176,7 @@ export const TopFilters = (props) => {
                   if (
                     i < 6 &&
                     listName !== "Material" &&
-                    listName !== "Style" &&
+                    listName !== "Theme" &&
                     listName !== "Occasion"
                   )
                     return (
@@ -204,10 +204,10 @@ export const TopFilters = (props) => {
                           <Grid item xs={6} className={classes.filtersLabel}>
                             <a href={listName.url}>
                               {/* {alert(listName)} */}
-                              {/* {listName === "Style"
+                              {listName === "Style"
                                 ? "PRODUCT STYLE"
-                                : listName} */}
-                              {listName}
+                                : listName}
+                              {/* {listName} */}
                             </a>
                           </Grid>
                           <Grid
