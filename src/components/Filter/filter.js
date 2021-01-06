@@ -788,7 +788,7 @@ class Component extends React.Component {
                                 filter && filter.length > 0 ?
 
                                   filter.map((row, i) => {
-                                    debugger
+                                    
                                     return (
                                       <>
                                         {

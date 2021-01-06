@@ -1376,24 +1376,98 @@ class Header extends Component {
                         ))}
                     </>
                   ))}
+                  {isSilver ? (
+                    <Grid
+                      container
+                      xs={12}
+                      className="follow_us_container"
+                      style={{ boxShadow: "0 5px 5px -5px #aaa" }}
+                    >
+                      <Grid item xs={8}>
+                        <p
+                          style={{
+                            fontSize: "13px",
+                            margin: "0px",
+                            color: "#6e6d72",
+                          }}
+                        >
+                          Follow us
+                        </p>
+                        <p style={{ fontSize: "20px", margin: "0px" }}>
+                          @stylorisilver
+                        </p>
+                      </Grid>
+                      <Grid item className="icon_container" xs={4}>
+                        {/* <i class="fab fa-facebook"></i><i class="fab fa-instagram"></i> */}
+                        <a
+                          href="https://www.facebook.com/StyloriSilver/"
+                          className="follow_us_a_tag"
+                        >
+                          <i
+                            class="fa fa-facebook"
+                            aria-hidden="true"
+                            style={{ fontSize: "18px" }}
+                          ></i>
+                        </a>
+                        &nbsp;&nbsp;
+                        <a
+                          href="https://www.instagram.com/stylorisilver/"
+                          className="follow_us_a_tag"
+                        >
+                          {" "}
+                          <i
+                            class="fa fa-instagram"
+                            aria-hidden="true"
+                            style={{ fontSize: "18px" }}
+                          ></i>
+                        </a>
+                      </Grid>
+                    </Grid>
+                  ) : (
+                    ""
+                  )}
                   {!localStorage.getItem("true") ? (
                     <>
                       <ListItem button className="drawer-list12">
                         <ListItemText
                           onClick={() => (window.location.pathname = "/login")}
                         >
-                          <Typography className="list-items1">LOGIN</Typography>
+                          {isSilver ? (
+                            <Typography style={{ fontSize: "11px" }}>
+                              LOGIN
+                            </Typography>
+                          ) : (
+                            <Typography className="list-items1">
+                              LOGIN
+                            </Typography>
+                          )}
                         </ListItemText>
                       </ListItem>
-                      <ListItem button className="drawer-list12">
+                      <ListItem
+                        button
+                        className="drawer-list12"
+                        style={{
+                          boxShadow: isSilver ? "0 5px 5px -5px #ccc" : "",
+                        }}
+                      >
                         <ListItemText
                           onClick={() =>
                             (window.location.pathname = "/registers")
                           }
                         >
-                          <Typography className="list-items1">
-                            REGISTER
-                          </Typography>
+                          {isSilver ? (
+                            <Typography
+                              style={{
+                                fontSize: "11px",
+                              }}
+                            >
+                              REGISTER
+                            </Typography>
+                          ) : (
+                            <Typography className="list-items1">
+                              REGISTER
+                            </Typography>
+                          )}
                         </ListItemText>
                       </ListItem>
                     </>
@@ -1405,9 +1479,15 @@ class Header extends Component {
                             (window.location.href = `/ account${"-profile"}`)
                           }
                         >
-                          <Typography className="list-items1">
-                            VIEW PROFILE
-                          </Typography>
+                          {isSilver ? (
+                            <Typography style={{ fontSize: "11px" }}>
+                              VIEW PROFILE
+                            </Typography>
+                          ) : (
+                            <Typography className="list-items1">
+                              VIEW PROFILE
+                            </Typography>
+                          )}
                         </ListItemText>
                       </ListItem>
                       <ListItem button className="drawer-list12">
@@ -1416,9 +1496,15 @@ class Header extends Component {
                             (window.location.href = `/account${"-wishlist"}`)
                           }
                         >
-                          <Typography className="list-items1">
-                            MY WHISLIST
-                          </Typography>
+                          {isSilver ? (
+                            <Typography style={{ fontSize: "11px" }}>
+                              MY WHISLIST
+                            </Typography>
+                          ) : (
+                            <Typography className="list-items1">
+                              MY WHISLIST
+                            </Typography>
+                          )}
                         </ListItemText>
                       </ListItem>
                       <ListItem button className="drawer-list12">
@@ -1427,19 +1513,37 @@ class Header extends Component {
                             (window.location.href = `/account${"-allorders"}`)
                           }
                         >
-                          <Typography className="list-items1">
-                            ALL ORDERS
-                          </Typography>
+                          {isSilver ? (
+                            <Typography style={{ fontSize: "11px" }}>
+                              ALL ORDERS
+                            </Typography>
+                          ) : (
+                            <Typography className="list-items1">
+                              ALL ORDERS
+                            </Typography>
+                          )}
                         </ListItemText>
                       </ListItem>
                       <ListItem button className="drawer-list12">
                         <ListItemText>
-                          <Typography className="list-items1">
-                            CONTACT US
-                          </Typography>
+                          {isSilver ? (
+                            <Typography style={{ fontSize: "11px" }}>
+                              CONTACT US
+                            </Typography>
+                          ) : (
+                            <Typography className="list-items1">
+                              CONTACT US
+                            </Typography>
+                          )}
                         </ListItemText>
                       </ListItem>
-                      <ListItem button className="drawer-list12">
+                      <ListItem
+                        button
+                        className="drawer-list12"
+                        style={{
+                          boxShadow: isSilver ? "0 5px 5px -5px #ccc" : "",
+                        }}
+                      >
                         <ListItemText
                           onClick={() => {
                             localStorage.clear();
@@ -1448,14 +1552,31 @@ class Header extends Component {
                             window.location.pathname = "/login";
                           }}
                         >
-                          <Typography className="list-items1">
-                            LOGOUT
-                          </Typography>
+                          {isSilver ? (
+                            <Typography style={{ fontSize: "11px" }}>
+                              LOGOUT
+                            </Typography>
+                          ) : (
+                            <Typography className="list-items1">
+                              LOGOUT
+                            </Typography>
+                          )}
                         </ListItemText>
                       </ListItem>
                     </>
                   )}
                 </List>
+                {isSilver ? (
+                  <Grid container xs={12} className="follow_us_container">
+                    <Grid item xs={12}>
+                      <p style={{ fontSize: "13px", margin: "0px" }}>
+                        HELP & INFORMATION
+                      </p>
+                    </Grid>
+                  </Grid>
+                ) : (
+                  ""
+                )}
               </div>
             </ClickAwayListener>
           </Drawer>

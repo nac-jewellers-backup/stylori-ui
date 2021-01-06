@@ -60,7 +60,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MoreFilters(props) {
-  console.log(props.subFilter);
+  // debugger;
+  // console.log(props.filter);
+  // console.log(props.subFilter);
+
   const classes = useStyles();
   return (
     <div>
@@ -90,7 +93,13 @@ export default function MoreFilters(props) {
                 <CancelIcon />
               </div>
               {props.filter.map((val, i) => {
-                if (i > 3 && val !== "price" && val !== "Material") {
+                if (
+                  i >= 0 &&
+                  val !== "price" &&
+                  val !== "Product Type" &&
+                  val !== "Collection" &&
+                  val !== "Style" 
+                ) {
                   return (
                     <Grid item xs={3} style={{ marginBottom: "3%" }}>
                       <div style={{ marginBottom: "10px" }}>
