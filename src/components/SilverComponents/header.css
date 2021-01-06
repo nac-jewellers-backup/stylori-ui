@@ -10,7 +10,6 @@
   }
 }
 
-
 .shine {
   animation-duration: 1s;
   animation-fill-mode: forwards;
@@ -19,11 +18,13 @@
   animation-timing-function: linear;
   background: #f6f7f8;
 
-  background-image: -webkit-linear-gradient(left,
-      #f6f7f8 0%,
-      #edeef1 20%,
-      #f6f7f8 40%,
-      #f6f7f8 100%);
+  background-image: -webkit-linear-gradient(
+    left,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
   background-size: 980px 898px;
   /* height: 898px; */
   position: relative;
@@ -109,7 +110,6 @@
   margin-top: -63px;
   position: inherit;
   margin-bottom: -63px;
-
 }
 
 .icons-header-sizes {
@@ -140,7 +140,7 @@
   }
 }
 
-@media screen and (min-width:426px) and (max-width:959px) {
+@media screen and (min-width: 426px) and (max-width: 959px) {
   .MuiBadge-colorSecondary {
     /* background: #d51f63 !important; */
     top: -6px !important;
@@ -149,7 +149,7 @@
   }
 }
 
-@media screen and (min-width:960px) and (max-width:2560px) {
+@media screen and (min-width: 960px) and (max-width: 2560px) {
   .MuiBadge-colorSecondary {
     /* background: #d51f63 !important; */
     top: -6px !important;
@@ -167,7 +167,7 @@
   font-family: inherit !important;
   cursor: pointer;
   text-align: left !important;
-  color: #90868a
+  color: #90868a;
 }
 
 .searchsvg {
@@ -185,7 +185,6 @@
   padding: 13px 10px 10px 10px;
   /* background: #d51f63 */
 }
-
 
 .header-appbar-moblie1 {
   background-color: #fff !important;
@@ -223,7 +222,7 @@
   }
 }
 
-@media screen and (min-width:426px) and (max-width:959px) {
+@media screen and (min-width: 426px) and (max-width: 959px) {
   .mobli-icon1 i {
     margin-top: 5px;
     font-size: 17px;
@@ -303,9 +302,7 @@
 }
 
 .logoImgHeader1 {
-
   -webkit-tap-highlight-color: transparent;
-
 }
 
 i {
@@ -322,7 +319,6 @@ i {
   top: 15px;
   left: 18px;
   font-size: 14px;
-
 }
 
 .tooltip-slog {
@@ -331,7 +327,6 @@ i {
   top: 20px;
   left: 18px;
   font-size: 14px;
-
 }
 
 .tooltip:hover .tooltip-s {
@@ -451,11 +446,12 @@ i {
   float: right !important;
 }
 
-.header-appbar-sticky1 header {}
+.header-appbar-sticky1 header {
+}
 
 .appbarsilver1 {
   position: sticky;
-  top: 0px
+  top: 0px;
 }
 
 .logoImgHeader1 {
@@ -496,7 +492,7 @@ i {
   }
 }
 
-@media screen and (min-width:426px) and (max-width:959px) {
+@media screen and (min-width: 426px) and (max-width: 959px) {
   .menuRight {
     padding-bottom: 17px;
   }
@@ -512,7 +508,7 @@ i {
 
 @media only screen and (max-width: 428px) {
   .logoDiv1 {
-    padding-top: 3px
+    padding-top: 3px;
   }
 }
 
@@ -620,43 +616,60 @@ i {
 }
 
 .headerTop {
-  height: 58px
+  height: 58px;
 }
 
 @media only screen and (max-width: 958px) and (min-width: 599px) {
   .headerTop {
-    height: 64px
+    height: 64px;
   }
 }
 
 @media only screen and (max-width: 2560px) and (min-width: 959px) {
   .headerTop {
-    height: 135px
+    height: 135px;
   }
 }
 
 .cartheader {
   margin-bottom: 20px;
-  margin-top: 0px
+  margin-top: 0px;
 }
 
 .cartcardrelese {
   /* margin-bottom: 20px; */
-  margin-top: 20px
+  margin-top: 20px;
 }
 
 .headerTopcard {
-  height: 58px
+  height: 58px;
 }
 
 @media only screen and (max-width: 958px) and (min-width: 599px) {
   .headerTopcard {
-    height: 64px
+    height: 64px;
   }
 }
 
 @media only screen and (min-width: 959px) {
   .headerTopcard {
-    height: 89px
+    height: 89px;
   }
+}
+.follow_us_container {
+  padding: 14px 16px !important;
+  background-color: rgb(230, 231, 232);
+}
+.icon_container {
+  display: flex;
+  justify-content: flex-end;
+}
+.follow_us_a_tag {
+  padding: 5px 13px;
+  border-radius: 25px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: rgb(6, 171, 159);
 }

@@ -207,8 +207,6 @@ export default function NeedHelp(props) {
               <a
                 href="https://wa.me/919952625252?text=Hi"
                 style={{ textDecoration: "none" }}
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 {/* <WhatsAppIcon /> */}
                 <img
