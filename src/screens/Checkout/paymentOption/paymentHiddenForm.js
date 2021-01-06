@@ -28,7 +28,7 @@ export default function PaymentHiddenForm(props) {
 
     const generateOrderdId = async () => {
 
-        await fetch(`${API_URL}/generatepaymenturl`, {
+        await fetch(`${API_URL}/sendtoairpay`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,6 +39,7 @@ export default function PaymentHiddenForm(props) {
         })
             .then(async (response) => await response.json())
             .then((data) => {
+               
                 sethash({
                     ...hash,
                     hashvalue: data.hash,
