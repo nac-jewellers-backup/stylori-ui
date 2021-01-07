@@ -1473,6 +1473,41 @@ class Header extends Component {
                     </>
                   ) : (
                     <>
+                         <ListItem button className="drawer-list12">
+                        <ListItemText
+                          onClick={() =>
+                            (window.location.href = `/account${"-allorders"}`)
+                          }
+                        >
+                          {isSilver ? (
+                            <Typography style={{ fontSize: "11px" }}>
+                              MY ORDERS
+                            </Typography>
+                          ) : (
+                            <Typography className="list-items1">
+                              ALL ORDERS
+                            </Typography>
+                          )}
+                        </ListItemText>
+                      </ListItem>
+                   
+                      <ListItem button className="drawer-list12">
+                        <ListItemText
+                          onClick={() =>
+                            (window.location.href = `/account${"-wishlist"}`)
+                          }
+                        >
+                          {isSilver ? (
+                            <Typography style={{ fontSize: "11px" }}>
+                              RETURN INFORMATION
+                            </Typography>
+                          ) : (
+                            <Typography className="list-items1">
+                              MY WHISLIST
+                            </Typography>
+                          )}
+                        </ListItemText>
+                      </ListItem>
                       <ListItem button className="drawer-list12">
                         <ListItemText
                           onClick={() =>
@@ -1486,40 +1521,6 @@ class Header extends Component {
                           ) : (
                             <Typography className="list-items1">
                               VIEW PROFILE
-                            </Typography>
-                          )}
-                        </ListItemText>
-                      </ListItem>
-                      <ListItem button className="drawer-list12">
-                        <ListItemText
-                          onClick={() =>
-                            (window.location.href = `/account${"-wishlist"}`)
-                          }
-                        >
-                          {isSilver ? (
-                            <Typography style={{ fontSize: "11px" }}>
-                              MY WHISLIST
-                            </Typography>
-                          ) : (
-                            <Typography className="list-items1">
-                              MY WHISLIST
-                            </Typography>
-                          )}
-                        </ListItemText>
-                      </ListItem>
-                      <ListItem button className="drawer-list12">
-                        <ListItemText
-                          onClick={() =>
-                            (window.location.href = `/account${"-allorders"}`)
-                          }
-                        >
-                          {isSilver ? (
-                            <Typography style={{ fontSize: "11px" }}>
-                              ALL ORDERS
-                            </Typography>
-                          ) : (
-                            <Typography className="list-items1">
-                              ALL ORDERS
                             </Typography>
                           )}
                         </ListItemText>

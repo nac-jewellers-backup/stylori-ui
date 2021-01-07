@@ -210,7 +210,7 @@ class ProductDetail extends Component {
     };
     // alert(this.props.data[0].dis);
     // debugger;
-    // console.log("samir =", this.props.data);
+    console.log("samir =", this.props.data);
     return (
       <div>
         <Helmet>
@@ -397,16 +397,16 @@ class ProductDetail extends Component {
                   <Grid
                     item
                     xs={12}
-                    style={{ marginBottom: "20px", marginTop: "20px" }}
+                    style={{ marginBottom: "10px", marginTop: "10px" }}
                   >
-                    <p
+                    {/* <p
                       style={{
                         color: "rgb(58, 69, 120)",
                         fontSize: "14px",
                       }}
                     >
                       {this.props.data[0].dis}
-                    </p>
+                    </p> */}
                     <ProductDetails
                       data={this.props.data}
                       isSilver={isSilver}
@@ -563,7 +563,7 @@ class ProductDetail extends Component {
           {/* {isSilver && <Grid item xs={12} style={{marginBottom:'15px'}}>
                <Container > <Quantity data={this.props.data}/></Container>
                 </Grid>} */}
-          {isSilver ? (
+          {/* {isSilver ? (
             <>
               <Grid item xs={11} style={{ margin: "auto" }}>
                 <p
@@ -579,7 +579,7 @@ class ProductDetail extends Component {
             </>
           ) : (
             ""
-          )}
+          )} */}
           <Grid item xs={12}>
             <ProductDetails
               data={this.props.data}
