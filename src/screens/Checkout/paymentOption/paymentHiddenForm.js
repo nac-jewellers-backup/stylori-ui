@@ -130,7 +130,7 @@ export default function PaymentHiddenForm(props) {
         sessionStorage.removeItem("updatedProduct");
         if (data !== null && data !== undefined) {
           localStorage.setItem("order_id", JSON.stringify(data.order.id));
-          hitPaymentGateWayAPI("1");
+          hitPaymentGateWayAPI('1');
         }
         debugger;
 
