@@ -86,6 +86,7 @@ class ProductDetails extends React.Component {
         ? [_mapper[0]]
         : _mapper
       : _mapper;
+ 
     return (
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
@@ -165,9 +166,7 @@ class ProductDetails extends React.Component {
                             marginTop: "0px",
                           }}
                         >
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the 1500s,
+                          {this.props.data[0].dis}
                         </p>
                       ) : (
                         ""
@@ -489,16 +488,7 @@ class ProductDetails extends React.Component {
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s,
               </div> */}
-              {isSilver ? (
-                <p>
-                  {" "}
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s,
-                </p>
-              ) : (
-                ""
-              )}
+              {isSilver ? <p> {this.props.data[0].dis}</p> : ""}
 
               <div style={{ backgroundColor: "fafafa" }}>
                 {val.namedetail !== undefined &&

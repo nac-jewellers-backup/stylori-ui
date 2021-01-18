@@ -1443,13 +1443,7 @@ class Header extends Component {
                           )}
                         </ListItemText>
                       </ListItem>
-                      <ListItem
-                        button
-                        className="drawer-list12"
-                        style={{
-                          boxShadow: isSilver ? "0 5px 5px -5px #ccc" : "",
-                        }}
-                      >
+                      <ListItem button className="drawer-list12">
                         <ListItemText
                           onClick={() =>
                             (window.location.pathname = "/registers")
@@ -1470,10 +1464,33 @@ class Header extends Component {
                           )}
                         </ListItemText>
                       </ListItem>
+                      <ListItem
+                        button
+                        style={{
+                          boxShadow: isSilver ? "0 5px 5px -5px #ccc" : "",
+                        }}
+                        className="drawer-list12"
+                      >
+                        <ListItemText
+                          onClick={() => {
+                            window.open("tel:18001020330");
+                          }}
+                        >
+                          {isSilver ? (
+                            <Typography style={{ fontSize: "11px" }}>
+                              CONTACT US
+                            </Typography>
+                          ) : (
+                            <Typography className="list-items1">
+                              CONTACT US
+                            </Typography>
+                          )}
+                        </ListItemText>
+                      </ListItem>
                     </>
                   ) : (
                     <>
-                         <ListItem button className="drawer-list12">
+                      <ListItem button className="drawer-list12">
                         <ListItemText
                           onClick={() =>
                             (window.location.href = `/account${"-allorders"}`)
@@ -1490,7 +1507,7 @@ class Header extends Component {
                           )}
                         </ListItemText>
                       </ListItem>
-                   
+
                       <ListItem button className="drawer-list12">
                         <ListItemText
                           onClick={() =>
@@ -1525,8 +1542,12 @@ class Header extends Component {
                           )}
                         </ListItemText>
                       </ListItem>
-                      <ListItem button className="drawer-list12">
-                        <ListItemText>
+                      <ListItem>
+                        <ListItemText
+                          onClick={() => {
+                            window.open("tel:18001020330");
+                          }}
+                        >
                           {isSilver ? (
                             <Typography style={{ fontSize: "11px" }}>
                               CONTACT US
