@@ -71,7 +71,7 @@ export default function PaymentHiddenForm(props) {
           buyerCountry: hash.buyerCountry,
           buyerPinCode: hash.buyerPinCode,
           orderid: orderId,
-        amount: 1,
+        amount: props.data,
         //props.data
         customvar:'',
         subtype:''
@@ -90,6 +90,7 @@ export default function PaymentHiddenForm(props) {
           isocurrency: data.isocurrency,
           chmod: data.chmod,
           checksum: data.checksum,
+          amount:data.amount
         });
 
         //  hash=data.hash
@@ -131,11 +132,11 @@ export default function PaymentHiddenForm(props) {
         sessionStorage.removeItem("updatedProduct");
         if (data !== null && data !== undefined) {
           localStorage.setItem("order_id", JSON.stringify(data.order.id));
-          hitPaymentGateWayAPI('1');
+          hitPaymentGateWayAPI(data.order.id);
         }
         debugger;
 
-        setOrderId("1");
+        setOrderId(data.order.payment_id);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -146,6 +147,7 @@ export default function PaymentHiddenForm(props) {
     // document.getElementById("sendtoairpay").submit();
   };
   useEffect(()=>{if(hash.checksum) document.getElementById("sendtoairpay").submit()},[hash])
+  // useEffect(()=>{if(hash.checksum) console.log(hash,orderId,"hashandorderid")},[hash])
   return (
     <div container>
   <form method="POST" action="https://payments.airpay.co.in/pay/index.php" id="sendtoairpay">
@@ -182,7 +184,7 @@ export default function PaymentHiddenForm(props) {
                         class="form-control"/></div>
                 <div class="form-group"><input id="orderid"  name="orderid" value={orderId} class="form-control"/>
                 </div>
-                <div class="form-group"><input id="amount"  name="amount" value={1}
+                <div class="form-group"><input id="amount"  name="amount" value={hash.amount}
                         class="form-control"/></div>
                 <div class="form-group"><input id="checksum"  name="checksum"
                         value={hash.checksum} class="form-control"/></div>
