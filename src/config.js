@@ -1,4 +1,4 @@
-export const API_URL = "https://api-staging.stylori.com" 
+export const API_URL = "https://api.stylori.com" 
 // https://api-alpha.stylori.net
 
 //http://192.168.0.106:8000

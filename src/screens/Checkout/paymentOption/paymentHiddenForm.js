@@ -55,7 +55,8 @@ export default function PaymentHiddenForm(props) {
   obj["cart_id"] = cart_ids;
   obj["voucher_code"] = cartFilters.vouchercode;
   const hitPaymentGateWayAPI = async (orderId) => {
-    await fetch(`${API_URL}/sendtoairpay`, {
+    await fetch(`https://api.stylori.com/sendtoairpay`, {
+      
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +72,7 @@ export default function PaymentHiddenForm(props) {
           buyerCountry: hash.buyerCountry,
           buyerPinCode: hash.buyerPinCode,
           orderid: orderId,
-        amount: props.data,
+        amount: 1,
         //props.data
         customvar:'',
         subtype:''
@@ -90,7 +91,7 @@ export default function PaymentHiddenForm(props) {
           isocurrency: data.isocurrency,
           chmod: data.chmod,
           checksum: data.checksum,
-          amount:data.amount
+          amount:1
         });
 
         //  hash=data.hash
@@ -115,7 +116,7 @@ export default function PaymentHiddenForm(props) {
       return response.json();
     };
 
-    await fetch(`${API_URL}/createorder`, {
+    await fetch(`https://api.stylori.com/createorder`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
