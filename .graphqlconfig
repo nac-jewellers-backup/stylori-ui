@@ -1,7 +1,7 @@
 {
   "extensions": {
     "endpoints": {
-      "dev": "http://auth-dev.ap-south-1.elasticbeanstalk.com/graphql"
+      "dev": "http://nac-staging-api.ap-south-1.elasticbeanstalk.com/graphql"
     }
   }
 }

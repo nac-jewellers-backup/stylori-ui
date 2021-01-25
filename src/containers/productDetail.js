@@ -153,10 +153,11 @@ class ProductDetail extends Component {
         />
       ),
     };
-    
+
     return (
       <div>
         <Helmet>
+          <title>{this.props.data[0].title +" - "+ this.props.data[0].dis}</title>
           <meta property="og:title" content={this.props.data[0].title} />
           <meta
             name="description"
