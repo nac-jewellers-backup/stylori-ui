@@ -91,7 +91,7 @@ export default function PaymentHiddenForm(props) {
           isocurrency: data.isocurrency,
           chmod: data.chmod,
           checksum: data.checksum,
-          amount:props.data
+          amount:data.amount
         });
 
         //  hash=data.hash
