@@ -30,12 +30,19 @@ export const carouselTop = [
       swipe: false,
     },
     images: [
+      // {
+      //   img:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-web-banner.jpg	",
+      //   mobileImg:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-mob-banner.jpg	",
+      //   navigateUrl: "https://www.stylori.com/silver-jewellery",
+      // },
       {
         img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-web-banner.jpg	",
+          " https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+Silver+-+Starstruck+collection+Banner+W.jpg",
         mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-mob-banner.jpg	",
-        navigateUrl: "https://www.stylori.com/silver-jewellery",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+Silver+-+Starstruck+collection+Banner+M.jpg",
+        navigateUrl: "https://www.stylori.com/silver-jewellery-starstruck+collection",
       },
       {
         img:
