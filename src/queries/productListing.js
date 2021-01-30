@@ -9,6 +9,7 @@ export const PRODUCTLIST = `query fetchProductDetails($filter: ProductListFilter
       defaultSize
       sizeVarient
       productType
+     
       productDiamondsByProductSku {
         nodes {
           diamondClarity

@@ -32,6 +32,13 @@ export const carouselTop = [
     images: [
       {
         img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+silver+Valentinesday+web.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+silver+Valentinesday+mob.jpg",
+        navigateUrl: "https://www.stylori.com/silver-jewellery-inlovecollection",
+      },
+      {
+        img:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+Silver+-+Starstruck+collection+Banner+W.jpg	",
         mobileImg:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+Silver+-+Starstruck+collection+Banner+M.jpg	",
