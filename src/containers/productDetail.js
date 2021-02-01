@@ -44,7 +44,7 @@ import NeedHelp from "../components/needHelp";
 class ProductDetail extends Component {
   constructor(props) {
     super(props);
-    // this.handleMeta()
+
     this.state = {
       clear: "",
       data: null,
@@ -85,62 +85,7 @@ class ProductDetail extends Component {
     if (path[2] === "Bangles") return "/bangles-jewellery";
     if (path[2] === "Rings") return "/rings-jewellery";
   };
-  handleMeta = () => {
-    //    console.log("camein..", "handleMeta")
 
-    return (
-      // this.props.data && this.props.data[0] && this.props.data[0].length > 0 ?
-      <Helmet>
-        {/* <link rel="canonical" href="http://mysite.com/example" /> */}
-        <link
-          rel="icon"
-          type="image/gif"
-          sizes="16x16"
-          href="http://static.nfl.com/static/content/public/static/img/logos/react-helmet.jpg"
-        />
-        {/* <link rel="shortcut icon" href="http://static.nfl.com/static/content/public/static/img/logos/react-helmet.jpg"></link> */}
-        {/* <title>{this.props.data[0].title}</title> */}
-        <meta
-          name="Description"
-          property="og:description"
-          content={this.props.data[0].dis}
-        />
-        {/* <meta name="keywords" content={this.props.data[0].productsPendants[0].name} /> */}
-        <meta
-          name="og_site_name"
-          property="og:site:name"
-          content="Stylori.com"
-        ></meta>
-        <meta
-          name="og_title"
-          property="og:title"
-          content={this.props.data[0].title}
-        />
-        {/* <meta property="og:description" content={'this.props.data[0].dis'} /> */}
-        <meta property="og:type" content="website" />
-        {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
-        <meta
-          name="og_url"
-          property="og:url"
-          content={window.location.href}
-        ></meta>
-        {/* <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} /> */}
-        {/* <meta name="twitter_card" content="summary" />
-  //       <meta name="twitter_site" content="@StyloriLove" />
-  //       <meta name="twitter_title" id="twitter-title" content={this.props.data[0].title} />
-  //       <meta name="twitter_description" content={this.props.data[0].dis} />
-  //       <meta name="twitter_image" id="twitter_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} /> */}
-        {/* <meta charSet="utf-8" /> */}
-        <title>My Title</title>
-        <link rel="canonical" href="https://staging.stylori.com" />
-      </Helmet>
-      // :
-      // null
-      /*:*/
-      /*:*/
-      /*:*/
-    );
-  };
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.data !== prevState.data) {
       console.log("camein", prevProps.data);
@@ -208,69 +153,46 @@ class ProductDetail extends Component {
         />
       ),
     };
-    // alert(this.props.data[0].dis);
-    // debugger;
-    // console.log("samir =", this.props.data);
+   debugger
+   console.log(this.props)
     return (
       <div>
         <Helmet>
-          {/* <link rel="canonical" href="http://mysite.com/example" /> */}
-          <link
-            rel="icon"
-            type="image/gif"
-            sizes="16x16"
-            href="http://static.nfl.com/static/content/public/static/img/logos/react-helmet.jpg"
-          />
-          {/* <link rel="shortcut icon" href="http://static.nfl.com/static/content/public/static/img/logos/react-helmet.jpg"></link> */}
-          {/* <title>{this.props.data[0].title}</title> */}
+          <title>
+            {this.props.data[0].title + " - " + this.props.data[0].dis}
+          </title>
+          <meta property="og:title" content={this.props.data[0].title} />
           <meta
-            name="Description"
+            name="description"
             property="og:description"
             content={this.props.data[0].dis}
-          />
-          {/* <meta name="keywords" content={this.props.data[0].productsPendants[0].name} /> */}
+          />{" "}
+          <meta property="og:type" content="Stylori Website" />
           <meta
-            name="og_site_name"
-            property="og:site:name"
-            content="Stylori.com"
+            property="og:image"
+            content={this.props.data[0].fadeImages.arrOfurls[0]}
+          />
+          <meta property="og:url" content={window.location.href} />
+          <meta property="og:site_name" content="Stylori" />
+          <meta name="twitter:title" content={this.props.data[0].title}></meta>
+          <meta
+            name="twitter:description"
+            content={this.props.data[0].dis}
           ></meta>
           <meta
-            name="og_title"
-            property="og:title"
-            content={this.props.data[0].title}
-          />
-          {/* <meta property="og:description" content={'this.props.data[0].dis'} /> */}
-          <meta property="og:type" content="website" />
-          {/* <meta property="og:url" id="fb-product-url" content={window.location.href} /> */}
-          <meta
-            name="og_url"
-            property="og:url"
-            content={window.location.href}
+            name="twitter:image"
+            content={this.props.data[0].fadeImages.arrOfurls[0]}
           ></meta>
-          {/* <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} /> */}
-          {/* <meta name="twitter_card" content="summary" />
-  //       <meta name="twitter_site" content="@StyloriLove" />
-  //       <meta name="twitter_title" id="twitter-title" content={this.props.data[0].title} />
-  //       <meta name="twitter_description" content={this.props.data[0].dis} />
-  //       <meta name="twitter_image" id="twitter_imageUrl" content={this.props.data[0].fadeImages.arrOfurls[0]} /> */}
-          {/* <meta charSet="utf-8" /> */}
-          <title>My Title</title>
-          <link rel="canonical" href="https://staging.stylori.com" />
+          <meta name="twitter:site" content="@StyloriSilver"></meta>
+          <meta name="twitter:creator" content="@StyloriSilver"></meta>
+          <link rel="canonical" href="https://stylori.com" />
+          <meta name="robots" content="index, follow" />
+          <meta property="og:locale" content="en_US" />
+          <meta
+            name="keywords"
+            content={this.props.data[0].productsPendants[0].name}
+          />
         </Helmet>
-        {/* <div>
-
-          <MetaTags>
-            {
-              this.state.data && this.state.data.length > 0 ?
-       
-         this.handleMeta()
-         :
-         null
-            }
-
-          </MetaTags>
-        </div> */}
-        {/* <DocumentMeta {...meta}> */}
 
         <Hidden smDown>
           <Header wishlist={this.props.wishlistdata} />
@@ -397,16 +319,16 @@ class ProductDetail extends Component {
                   <Grid
                     item
                     xs={12}
-                    style={{ marginBottom: "20px", marginTop: "20px" }}
+                    style={{ marginBottom: "10px", marginTop: "10px" }}
                   >
-                    <p
+                    {/* <p
                       style={{
                         color: "rgb(58, 69, 120)",
                         fontSize: "14px",
                       }}
                     >
                       {this.props.data[0].dis}
-                    </p>
+                    </p> */}
                     <ProductDetails
                       data={this.props.data}
                       isSilver={isSilver}
@@ -563,7 +485,7 @@ class ProductDetail extends Component {
           {/* {isSilver && <Grid item xs={12} style={{marginBottom:'15px'}}>
                <Container > <Quantity data={this.props.data}/></Container>
                 </Grid>} */}
-          {isSilver ? (
+          {/* {isSilver ? (
             <>
               <Grid item xs={11} style={{ margin: "auto" }}>
                 <p
@@ -579,7 +501,7 @@ class ProductDetail extends Component {
             </>
           ) : (
             ""
-          )}
+          )} */}
           <Grid item xs={12}>
             <ProductDetails
               data={this.props.data}
