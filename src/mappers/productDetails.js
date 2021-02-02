@@ -425,6 +425,8 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
           PD.productListByProductId.productName
             ? PD.productListByProductId.productName
             : "",
+
+        productDescription: PD.productListByProductId.prodDescription,
         skuId: PD && PD === undefined ? "" : PD.generatedSku,
         price: PD && PD.discountPrice ? PD.discountPrice : "",
         offerPrice: PD && PD.markupPrice ? PD.markupPrice : "",
@@ -573,7 +575,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
               },
               {
                 name: "Metal Type / Finish",
-                details: PD && PD.purity + " " + PD.metalColor  ,
+                details: PD && PD.purity + " " + PD.metalColor,
               },
               {
                 name: "Approx Metal Weight (in gm)",

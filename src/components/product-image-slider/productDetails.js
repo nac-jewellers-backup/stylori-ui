@@ -75,7 +75,7 @@ class ProductDetails extends React.Component {
   productsDetails = (data) => {
     const { classes, isSilver } = this.props;
     // debugger
-    console.log(data[0].productsDetails, "data[0].productsDetails");
+   
     const _mapper =
       data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
         ? data[0].productsDetails
@@ -166,7 +166,7 @@ class ProductDetails extends React.Component {
                             marginTop: "0px",
                           }}
                         >
-                          {this.props.data[0].dis}
+                          {this.props.data[0].productDescription}
                         </p>
                       ) : (
                         ""
@@ -488,7 +488,7 @@ class ProductDetails extends React.Component {
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s,
               </div> */}
-              {isSilver ? <p> {this.props.data[0].dis}</p> : ""}
+              {isSilver ? <p> {this.props.data[0].productDescription}</p> : ""}
 
               <div style={{ backgroundColor: "fafafa" }}>
                 {val.namedetail !== undefined &&
