@@ -23,6 +23,7 @@ import Feedes from "components/Feedes/Index";
 import { InstagramFeed } from "components/Feedes/instagramfeed";
 import NeedHelp from "../../components/needHelp";
 import Tweeterfeed from "../../components/storyTemplate/tweeterEmbedded";
+import { Helmet } from "react-helmet";
 const styles = (theme) => ({
   instagramTitle: {
     color: "rgb(58,69,120)",
@@ -41,8 +42,10 @@ class HomeStylori extends React.Component {
 
   render() {
     const { classes } = this.props;
+    
     return (
       <Grid container>
+       
         <Header />
         <CarosolTop />
         <Container maxWidth={"lg"}>

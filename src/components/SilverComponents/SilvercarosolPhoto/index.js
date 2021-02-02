@@ -18,16 +18,44 @@ const SilverCarousel = (props) => {
   };
   const { carouselTop } = props.data;
   const classes = useStyles();
-
+  // debugger;
+  // console.log(props);
   return (
     <Grid container xs={12}>
-      {/* <Helmet>
-      <meta property="og:type" content="website"/>
+      <Helmet>
         <meta property="og:title" content="Stylori Silver - Silver Jewellery" />
-        <meta property="og:url" content={window.location.href} />
-        <meta name="og:description" content={carouselTop[0].content} />
+        <meta
+          name="description"
+          property="og:description"
+          content={carouselTop[0].content}
+        />{" "}
+        <meta property="og:type" content="Stylori Website" />
         <meta property="og:image" content={carouselTop[0].images[0].img} />
-      </Helmet> */}
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:site_name" content="Stylori" />
+        <meta
+          name="twitter:title"
+          content="Stylori Silver - Silver Jewellery"
+        ></meta>
+        <meta
+          name="twitter:description"
+          content={carouselTop[0].content}
+        ></meta>
+        <meta
+          name="twitter:image"
+          content={carouselTop[0].images[0].img}
+        ></meta>
+        <meta name="twitter:site" content="@StyloriSilver"></meta>
+        <meta name="twitter:creator" content="@StyloriSilver"></meta>
+        <link rel="canonical" href="https://stylori.com" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:locale" content="en_US" />
+        {/* <meta
+            name="keywords"
+            content={this.props.data[0].titleContiner}
+          /> */}
+      </Helmet>
+     
       <Grid
         item
         xs={12}

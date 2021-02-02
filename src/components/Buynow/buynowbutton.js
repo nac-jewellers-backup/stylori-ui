@@ -59,7 +59,7 @@ class Buynowbutton extends React.Component {
                      { this.props.addtoCartToBuyNow ?  <span style={{fontWeight : "bolder"}}> In Cart!</span> :  <span> In bag!</span>}  
                     </> : <>
                             {/* {!this.props.withoutBag && !this.props.isSilver && !this.props.smallScreen && <i class="fa fa-shopping-bag buynow-icon"></i>} */}
-                            { this.props.addtoCartToBuyNow ?  <span style={{fontWeight : "bolder"}}><i class="fa fa-shopping-bag buynow-icon"></i> Add to Cart</span>: <span className={this.props.button}>Buy Now</span>}
+                            { this.props.addtoCartToBuyNow ?  <span style={{fontWeight : "bolder", fontSize : "9px !important"}}><i class="fa fa-shopping-bag buynow-icon"></i> Add to Cart</span>: <span className={this.props.button}>Buy Now</span>}
                         </>
                     }
 

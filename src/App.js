@@ -16,7 +16,7 @@ let silver_jewellery_theme = createMuiTheme(
 );
 let jewelleryThemes = responsiveFontSizes(jewellery_theme);
 let silverThemes = responsiveFontSizes(silver_jewellery_theme);
-const RouterApp = React.lazy(() => import("router"));
+const RouterApp = React.lazy(() => import("router")); 
 
 // const client = new ApolloClient({
 //   uri: ``,
