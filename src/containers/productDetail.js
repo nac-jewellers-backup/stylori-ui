@@ -153,8 +153,8 @@ class ProductDetail extends Component {
         />
       ),
     };
-   debugger
-   console.log(this.props)
+    //  debugger
+  
     return (
       <div>
         <Helmet>

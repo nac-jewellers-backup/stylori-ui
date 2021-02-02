@@ -38,6 +38,7 @@ export const TabsProvider = (props) => {
     }, [filters])
     let variables;
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTDETAILS, () => { }, {});
+  
     const { loading: likeloading, error: likeerror, data: likedata, makeRequest: likemakeRequest } = useGraphql(YouMayAlsoLike, () => { }, {}, false);
     // youRecentlyViewed
     // "filtersku": {"skuId": {"in": ["SB0013-18110000","SB0013-18210000"]}}
@@ -265,6 +266,7 @@ if(data && Object.entries(data).length > 0 && data.constructor === Object && dat
                 filters['defaultVariants']['skuSize'] = data.data.allTransSkuLists.nodes[0].skuSize
                 // filters['skuId'] = data.data.allTransSkuLists.nodes[0].skuId
                 filters['skuId'] = data.data.allTransSkuLists.nodes[0].skuId
+
                 // window.location.search=`${`skuId=${filters['skuId']}`}`
                 if (window.location.search.length === 0) {
                     filters['productId'] = data.data.allTransSkuLists.nodes[0].productListByProductId.productId

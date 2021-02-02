@@ -95,20 +95,41 @@ export const homePageStylori = {
       },
       {
         img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-monsoon-collection-web-2020.jpg",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Valentinesday-jewellery-W.jpg	",
         mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-monsoon-collection-mob-2020.jpg",
-        navigateUrl:
-          "https://www.stylori.com/jewellery-from+monsoon+collection",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Valentinesday-jewellery-M.jpg	",
+        navigateUrl: "https://www.stylori.com/hearts-jewellery",
       },
       {
         img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-butterfly-collection-web-2020.jpg",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-one-day-shipping-jewellery-W.jpg	",
         mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-butterfly-collection-mob-2020.jpg",
-        navigateUrl:
-          "https://www.stylori.com/jewellery-butterfly?sort=latest&startprice=0&endprice=0",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-one-day-shipping-jewellery-m.jpg	",
+        navigateUrl: "https://www.stylori.com/jewellery-shipping+in+1+day",
       },
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-collection-jewellery-W.jpg	",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-collection-jewellery-M.jpg	",
+        navigateUrl: "https://www.stylori.com/jewellery-butterfly",
+      },
+      // {
+      //   img:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-monsoon-collection-web-2020.jpg",
+      //   mobileImg:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-monsoon-collection-mob-2020.jpg",
+      //   navigateUrl:
+      //     "https://www.stylori.com/jewellery-from+monsoon+collection",
+      // },
+      // {
+      //   img:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-butterfly-collection-web-2020.jpg",
+      //   mobileImg:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-butterfly-collection-mob-2020.jpg",
+      //   navigateUrl:
+      //     "https://www.stylori.com/jewellery-butterfly?sort=latest&startprice=0&endprice=0",
+      // },
 
       // REMOVED ON 27-07-2020
 
@@ -124,21 +145,21 @@ export const homePageStylori = {
       //   mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori+CSK-banner-mobile-805X430-px.jpg",
       //   navigateUrl: "/jewellery/kada/csk_kada?skuId=1000001"
       // },
-      {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Earring-Stylori-2020.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Earring-Stylori--mob-2020.jpg",
-        navigateUrl:
-          "/earrings-jewellery?sort=Featured&startprice=0&endprice=0",
-      },
-      {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Carve+web+banner+2020.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Carve+mob+banner+2020.jpg",
-        navigateUrl: "/jewellery-from+the+carve+collection",
-      },
+      // {
+      //   img:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Earring-Stylori-2020.jpg",
+      //   mobileImg:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Earring-Stylori--mob-2020.jpg",
+      //   navigateUrl:
+      //     "/earrings-jewellery?sort=Featured&startprice=0&endprice=0",
+      // },
+      // {
+      //   img:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Carve+web+banner+2020.jpg",
+      //   mobileImg:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Carve+mob+banner+2020.jpg",
+      //   navigateUrl: "/jewellery-from+the+carve+collection",
+      // },
       // {
       //   img: "https://assets.stylori.com/images/Static+Pages/Home+Page/banner1.jpg",
       //   mobileImg: "https://assets.stylori.com/images/Static+Pages/Home+Page/gemstone-mob",

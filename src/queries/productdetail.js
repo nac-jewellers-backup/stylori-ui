@@ -1,7 +1,11 @@
 import { filterGenerator } from "utils";
 // SR3261
 export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondition, $conditionImage: ProductImageCondition, $productnamefilter: TransSkuListFilter, $number: Int) {
-  allTransSkuLists(condition: $conditionfilter, filter: $productnamefilter, first: $number) {
+  allTransSkuLists(
+    condition: $conditionfilter
+    filter: $productnamefilter
+    first: $number
+  ) {
     nodes {
       skuSize
       markupPrice
@@ -19,7 +23,7 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       skuId
       isReadyToShip
       vendorDeliveryTime
-      discountPriceTax 
+      discountPriceTax
       markupPriceTax
       transSkuDescriptionsBySkuId {
         nodes {
@@ -30,6 +34,7 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
       }
       diamondType
       productListByProductId {
+        prodDescription
         productName
         productId
         defaultSize
@@ -62,7 +67,10 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
             stoneWeight
           }
         }
-        productImagesByProductId(condition: $conditionImage, orderBy: IMAGE_POSITION_ASC) {
+        productImagesByProductId(
+          condition: $conditionImage
+          orderBy: IMAGE_POSITION_ASC
+        ) {
           nodes {
             ishover
             imageUrl
@@ -93,12 +101,13 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
           markup
         }
       }
+      
     }
   }
 }
 
 
-`
+`;
 export const CheckForCod = `query CheckForCod($pincode:String) {
   allPincodeMasters(first: 1, condition: {pincode:$pincode}) {
     nodes {
@@ -113,7 +122,7 @@ export const CheckForCod = `query CheckForCod($pincode:String) {
      }
   }
 }
-`
+`;
 
 export const CUSTOMERREVIEWS = `query MyQuery($productSku: String) {
   allCustomerReviews(condition: {productSku: $productSku, isPublish: true}, last: 5) {
@@ -125,7 +134,7 @@ export const CUSTOMERREVIEWS = `query MyQuery($productSku: String) {
     }
   }
 }
-`
+`;
 export const USERPROFILES = `query MyQuery($userId: UUID) {
   allUserProfiles(condition: {id: $userId}) {
     nodes {
@@ -135,7 +144,7 @@ export const USERPROFILES = `query MyQuery($userId: UUID) {
     }
   }
 }
-`
+`;
 
 export const GIFTWRAPS = `query MyQuery($cardId: UUID) {
   allGiftwraps(condition: {cartId: $cardId}, orderBy: CREATED_AT_DESC) {
@@ -147,7 +156,7 @@ export const GIFTWRAPS = `query MyQuery($cardId: UUID) {
   }
 }
 
-`
+`;
 
 export const ADDRESSDETAILS = `query MyQuery($userprofileId: String) {
   allUserAddresses(condition: {userprofileId: $userprofileId, isActive: true}, orderBy: UPDATED_AT_ASC) {
@@ -172,7 +181,7 @@ export const ADDRESSDETAILS = `query MyQuery($userprofileId: String) {
     }
   }
 }
-`
+`;
 export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$filterdatatranssku:  TransSkuListFilter,$filterdatatranssku2:  TransSkuListFilter,$filterdata2:ProductListFilter,, $imgcondition:ProductImageCondition,$Conditiondatatranssku:TransSkuListCondition,$Conditiondatatranssku2:TransSkuListCondition ) {
   youMayalsolike1:  allProductLists(filter: $filterdata, orderBy: CREATED_AT_DESC, first:16) {
       nodes {
@@ -233,7 +242,7 @@ export const YouMayAlsoLike = `query MyQuery($filterdata: ProductListFilter,$fil
       }
       totalCount
     }
-  }`
+  }`;
 export const youRecentlyViewed = `query youRecentlyViewed($filtersku:  TransSkuListFilter, $imgcondition:ProductImageCondition) {
     allTransSkuLists(filter: $filtersku) {
       nodes {
@@ -258,11 +267,11 @@ export const youRecentlyViewed = `query youRecentlyViewed($filtersku:  TransSkuL
       }
     }
   }
-  `
-export const shopByStyloriSilver = (data) =>{ return `query MyQuery {
- ${data.map(val=>{
-   return(
-     `${val}: allProductMaterials(filter: {and: {materialName: {includes: "Silver"}, productListByProductSku: {isactive: {equalTo: true}, productType: {equalTo: "${val}"}}}}) {
+  `;
+export const shopByStyloriSilver = (data) => {
+  return `query MyQuery {
+ ${data.map((val) => {
+   return `${val}: allProductMaterials(filter: {and: {materialName: {includes: "Silver"}, productListByProductSku: {isactive: {equalTo: true}, productType: {equalTo: "${val}"}}}}) {
       nodes {
         materialName
         productListByProductSku {
@@ -276,13 +285,13 @@ export const shopByStyloriSilver = (data) =>{ return `query MyQuery {
         }
       }
       totalCount
-    }`
-   )
+    }`;
  })}
 }
 
-  `}
-  export const allSeoPriorities = (arrayOfProductTypes) =>`
+  `;
+};
+export const allSeoPriorities = (arrayOfProductTypes) => `
   query seoCollections{
     allSeoUrlPriorities(filter: {attributeName: {equalTo: "Product Type"}, attributeValue: {in: [${arrayOfProductTypes}]}}) {
       nodes {
@@ -293,45 +302,45 @@ export const shopByStyloriSilver = (data) =>{ return `query MyQuery {
       }
     }
   }
-  `
-export const checkProductAlreadyExistInCart = (data) =>` {
+  `;
+export const checkProductAlreadyExistInCart = (data) => ` {
     allShoppingCartItems(condition: {productSku: "${data.skuId}", shoppingCartId: "${data.cartId}"}) {
       nodes {
         productSku
       }
     }
-  }`
+  }`;
+
 export const filterProductMatrix = (type, value) => {
-  let fc = { table: "", type: "" }
+  let fc = { table: "", type: "" };
   switch (type) {
     case "productId": {
       fc = {
         table: "",
-        type: "productId"
-      }
+        type: "productId",
+      };
       break;
     }
     case "sizeVarient": {
       fc = {
         table: "",
-        type: "sizeVarient"
-      }
+        type: "sizeVarient",
+      };
       break;
     }
     case "metalColor": {
       fc = {
         table: "transSkuListsByProductId",
-        type: "metalColor"
-      }
+        type: "metalColor",
+      };
       break;
     }
     case "diamondType": {
       fc = {
         table: "productDiamondsByProductSku",
-        type: "diamondType"
-      }
+        type: "diamondType",
+      };
       break;
-
     }
     default: {
       break;
@@ -339,31 +348,30 @@ export const filterProductMatrix = (type, value) => {
   }
 
   return filterGenerator(fc.type, value, fc.table);
-}
+};
 
 export const conditions = {
   productId: (id) => ({
-    "condition": {
-      "productId": id
-    }
+    condition: {
+      productId: id,
+    },
   }),
-
 
   generateFilters: (filters) => {
     let filter = {};
-    const filterKeys = filters.map(val => val);
+    const filterKeys = filters.map((val) => val);
 
-    filterKeys.map(k => {
+    filterKeys.map((k) => {
       const fk = String(Object.keys(k));
       const fval = String(Object.values(k));
       const fquery = filterProductMatrix(fk, fval);
       filter = { ...filter, ...fquery };
-    })
+    });
 
     if (Object.keys(filter).length > 0) {
       return { filter };
     } else {
       return {};
     }
-  }
-}
+  },
+};
