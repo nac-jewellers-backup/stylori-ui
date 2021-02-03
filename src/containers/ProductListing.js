@@ -42,13 +42,20 @@ class Stylori extends React.Component {
     const context = this.context;
 
     const { data, dataFilter, loading } = this.props;
+    let locs = window.location.pathname.slice(1);
+    let replaceValue = locs.replace(/[-\+]/gi, " ");
+    replaceValue = replaceValue
+      .toLowerCase()
+      .split(" ")
+      .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+      .join(" ");
 
     return (
       <>
         {/* <LiveChat license={5807571} /> */}
         <Grid container>
           <Helmet>
-            <title>{this.props.mappedFilters.seo_url}</title>
+            <title>{replaceValue}</title>
             <meta
               property="og:title"
               id="fb-title"

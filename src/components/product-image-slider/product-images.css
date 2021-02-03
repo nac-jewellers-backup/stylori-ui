@@ -975,7 +975,7 @@ body {
     background-repeat: no-repeat !important;
     margin-left: 0px;
     cursor: pointer !important;
-    margin-left: -36.1px !important;
+    /* margin-left: -36.1px !important; */
 }
 
 .overly-img {
