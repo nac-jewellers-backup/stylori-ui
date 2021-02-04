@@ -86,13 +86,7 @@ export const homePageStylori = {
 
       //
 
-      {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-web-banner.jpg	",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-mob-banner.jpg	",
-        navigateUrl: "https://www.stylori.com/styloriSilver",
-      },
+ 
       {
         img:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Valentinesday-jewellery-W.jpg	",
@@ -113,6 +107,13 @@ export const homePageStylori = {
         mobileImg:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-collection-jewellery-M.jpg	",
         navigateUrl: "https://www.stylori.com/jewellery-butterfly",
+      },
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-web-banner.jpg	",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-mob-banner.jpg	",
+        navigateUrl: "https://www.stylori.com/styloriSilver",
       },
       // {
       //   img:
