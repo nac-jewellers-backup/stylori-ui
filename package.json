@@ -91,7 +91,7 @@
     "generate-build-version": "node generate-build-version",
     "start": "node scripts/start",
     "build": "npm run generate-build-version &&  node scripts/build",
-    "postbuild": "cd /home/samir/Desktop/nac-ecom-ui/build/static/css &&  gzip *.css",
+    "postbuild": "cd D:\\Crayond-workspace\\nac-ecom-ui\\build\\static\\js && gzip *.js && cd D:\\Crayond-workspace\\nac-ecom-ui\\build\\static\\css &&  gzip *.css",
     "test": "node scripts/test",
     "serve": "npm run build && serve -S build",
     "deploy_staging": "npm run build && git add . && git commit -m `Updated to the latest version` && git push origin stagingnew && git push aws stagingnew",
