@@ -94,8 +94,7 @@ export const TopFilters = (props) => {
   //   // }
   //     }
   // }
-  // debugger;
-  console.log("samir = ", props);
+
   return Object.keys(mapped).length === 0 ? (
     <div>loading...</div>
   ) : (
@@ -172,12 +171,14 @@ export const TopFilters = (props) => {
                 </Grid>
                 {props.filter.map((listName, i) => {
                   // let urlsmall = listName.title.toLowerCase()
-
+                  // debugger
+                  // console.log(i)
                   if (
                     i < 6 &&
                     listName !== "Material" &&
                     listName !== "Theme" &&
                     listName !== "Occasion"
+                   
                   )
                     return (
                       <Grid
