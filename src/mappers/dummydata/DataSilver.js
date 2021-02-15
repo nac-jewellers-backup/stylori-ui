@@ -32,10 +32,10 @@ export const carouselTop = [
     images: [
       {
         img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+silver+Valentinesday+web.jpg",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/StyloriSilver-Jewellery-cz-w.jpg",
         mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+silver+Valentinesday+mob.jpg",
-        navigateUrl: "https://www.stylori.com/silver-jewellery-inlovecollection",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/StyloriSilver-Jewellery-cz-m.jpg",
+        navigateUrl: "https://www.stylori.com/swarovski+cz-silver-jewellery",
       },
       {
         img:

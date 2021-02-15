@@ -154,7 +154,7 @@ class ProductDetail extends Component {
       ),
     };
     //  debugger
-  
+
     return (
       <div>
         <Helmet>
@@ -279,11 +279,11 @@ class ProductDetail extends Component {
                     customLimit={3}
                   />
                 ) : (
-                  <ProductImageZoom
-                    data={this.props.data}
-                    isSilver={isSilver}
-                  />
-                )}
+                    <ProductImageZoom
+                      data={this.props.data}
+                      isSilver={isSilver}
+                    />
+                  )}
               </Grid>
               <Grid item xs={6}>
                 {isSilver ? (
@@ -294,13 +294,13 @@ class ProductDetail extends Component {
                     />
                   </div>
                 ) : (
-                  <div className="overall-box priceecontainer">
-                    <ProductPrice
-                      data={this.props.data}
-                      wishlist={this.props.wishlistdata}
-                    />
-                  </div>
-                )}
+                    <div className="overall-box priceecontainer">
+                      <ProductPrice
+                        data={this.props.data}
+                        wishlist={this.props.wishlistdata}
+                      />
+                    </div>
+                  )}
                 {!isSilver && (
                   <div className="overall-box priceecontainer">
                     <PriceTabs data={this.props.data} isSilver={isSilver} />
@@ -311,10 +311,10 @@ class ProductDetail extends Component {
                     <PriceBuynow data={this.props.data} isSilver={isSilver} />
                   </div>
                 ) : (
-                  <div className="overall-box priceecontainer">
-                    <PriceBuynow data={this.props.data} isSilver={isSilver} />
-                  </div>
-                )}
+                    <div className="overall-box priceecontainer">
+                      <PriceBuynow data={this.props.data} isSilver={isSilver} />
+                    </div>
+                  )}
                 {isSilver && (
                   <Grid
                     item
@@ -409,8 +409,8 @@ class ProductDetail extends Component {
               />
             </div>
           ) : (
-            <Sublistcarousel data={this.props.data} isSilver={isSilver} />
-          )}
+              <Sublistcarousel data={this.props.data} isSilver={isSilver} />
+            )}
           {isSilver && (
             <div
               style={{
@@ -443,14 +443,14 @@ class ProductDetail extends Component {
               />
             </div>
           ) : (
-            <RatingForm
-              // 0 0 0
-              data={this.props.data}
-              clear_rating={this.state.clear}
-              clear_rating_onchange={clear_rating}
-              isSilver={isSilver}
-            />
-          )}
+              <RatingForm
+                // 0 0 0
+                data={this.props.data}
+                clear_rating={this.state.clear}
+                clear_rating_onchange={clear_rating}
+                isSilver={isSilver}
+              />
+            )}
           {isSilver ? (
             <div
               style={{
@@ -461,8 +461,8 @@ class ProductDetail extends Component {
               {/* <CustomerReviews rating={this.props.rating} isSilver={isSilver} /> */}
             </div>
           ) : (
-            <CustomerReviews rating={this.props.rating} isSilver={isSilver} />
-          )}
+              <CustomerReviews rating={this.props.rating} isSilver={isSilver} />
+            )}
 
           <Grid item xs={12}>
             <Footer silver={isSilver} />

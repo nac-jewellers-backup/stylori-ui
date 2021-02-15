@@ -56,58 +56,30 @@ class Stylori extends React.Component {
         <Grid container>
           <Helmet>
             <title>{replaceValue}</title>
-            <meta
-              property="og:title"
-              id="fb-title"
-              content={this.props.mappedFilters.seo_url}
-            />
-            <meta
-              name="description"
-              content={this.props.mappedFilters.seo_text}
-            />
+            <meta property="og:title" id="fb-title" content={this.props.mappedFilters.seo_url} />
+            <meta name="description" content={this.props.mappedFilters.seo_text} />
             <meta name="keywords" content={this.props.dataFilter[0].filter} />
             <meta property="og:site_name" content="Stylori" />
-            <meta
-              property="og:description"
-              content={this.props.mappedFilters.seo_text}
-            />
+            <meta property="og:description" content={this.props.mappedFilters.seo_text} />
             <meta property="og:type" content="website" />
-            <meta
-              property="og:url"
-              id="fb-product-url"
-              content={window.location.href}
-            />
+            <meta property="og:url" id="fb-product-url" content={window.location.href} />
             <meta
               property="og:image"
               id="fb_imageUrl"
               content={
-                this.props.data &&
-                this.props.data[0] &&
-                this.props.data[0].image &&
-                this.props.data[0].image.placeImage.img
+                this.props.data && this.props.data[0] && this.props.data[0].image && this.props.data[0].image.placeImage.img
               }
             />
             <meta property="og:image:width" content="200" />
             <meta property="og:image:height" content="200" />
             <meta name="twitter:card" content="summary" />
-            <meta name="twitter:site" content="@StyloriLove" />{" "}
-            <meta name="twitter:creator" content="@StyloriSilver"></meta>
-            <meta
-              name="twitter:title"
-              id="twitter-title"
-              content={this.props.mappedFilters.seo_url}
-            />
-            <meta
-              name="twitter:description"
-              content={this.props.mappedFilters.seo_text}
-            />
+            <meta name="twitter:site" content="@StyloriLove" /> <meta name="twitter:creator" content="@StyloriSilver"></meta>
+            <meta name="twitter:title" id="twitter-title" content={this.props.mappedFilters.seo_url} />
+            <meta name="twitter:description" content={this.props.mappedFilters.seo_text} />
             <meta
               name="twitter:image"
               content={
-                this.props.data &&
-                this.props.data[0] &&
-                this.props.data[0].image &&
-                this.props.data[0].image.placeImage.img
+                this.props.data && this.props.data[0] && this.props.data[0].image && this.props.data[0].image.placeImage.img
               }
             ></meta>
             <link rel="canonical" href="https://stylori.com" />
@@ -131,27 +103,12 @@ class Stylori extends React.Component {
                   datalisting={data}
                   wishlist={this.props.wishlistdata}
                 />
-                <Filter
-                  datas={data}
-                  data={dataFilter}
-                  loading={loading}
-                  wishlist={this.props.wishlistdata}
-                />
+                <Filter datas={data} data={dataFilter} loading={loading} wishlist={this.props.wishlistdata} />
               </>
             ) : (
               <>
-                <ProductDescription
-                  title="Jewellery"
-                  data={dataFilter}
-                  datalisting={data}
-                  wishlist={this.props.wishlistdata}
-                />
-                <Filter
-                  datas={data}
-                  data={dataFilter}
-                  loading={loading}
-                  wishlist={this.props.wishlistdata}
-                />
+                <ProductDescription title="Jewellery" data={dataFilter} datalisting={data} wishlist={this.props.wishlistdata} />
+                <Filter datas={data} data={dataFilter} loading={loading} wishlist={this.props.wishlistdata} />
               </>
             )}
           </Grid>
@@ -162,6 +119,7 @@ class Stylori extends React.Component {
               <Footer silver={context.Globalctx.pathName} />
             </Hidden>
           </Grid>
+
           {/* {context.Globalctx.pathName && ( */}
           <>
             <Hidden smDown>
@@ -203,16 +161,7 @@ const Components = (props) => {
     CartCtx: { allorderdata, wishlistdata },
   } = React.useContext(CartContext);
   let {
-    FilterOptionsCtx: {
-      data,
-      loading,
-      error,
-      dataArr,
-      mappedFilters,
-      cartcount,
-      loadingfilters,
-      wishlist_count,
-    },
+    FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters, wishlist_count },
     setloadingfilters,
   } = React.useContext(FilterOptionsContext);
   let content,
