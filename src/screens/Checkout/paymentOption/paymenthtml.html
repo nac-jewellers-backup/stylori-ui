@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script>setTimeout(function () {
+            document.getElementById("sendtoairpay").submit();
+        }, 1000);
+    </script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body></body>
+<div class="main container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1 class="display-4 m-b-2">Do not refresh or go back</h1><!-- register form-->
+            <form method="POST" action="https://payments.airpay.co.in/pay/index.php" id="sendtoairpay">
+                <div class="form-group"><input id="privatekey" type="hidden" name="privatekey"
+                        value="c654678381bb399164bc6b53d1e26bdcc4e9730f6396cf34f818ced278da1692" class="form-control">
+                </div>
+                <div class="form-group"><input id="buyerPhone" type="hidden" name="mercid" value="19010"
+                        class="form-control"></div>
+                <div class="form-group"><input id="orderid" type="hidden" name="orderid" value="1" class="form-control">
+                </div>
+                <div class="form-group"><input id="currency" type="hidden" name="currency" value="356"
+                        class="form-control"></div>
+                <div class="form-group"><input id="isocurrency" type="hidden" name="isocurrency" value="INR"
+                        class="form-control"></div>
+                <div class="form-group"><input id="chmod" type="hidden" name="chmod" value="pg" class="form-control">
+                </div>
+                <div class="form-group"><input id="buyerEmail" type="hidden" name="buyerEmail" value="jay@gmail.com"
+                        class="form-control"></div>
+                <div class="form-group"><input id="buyerPhone" type="hidden" name="buyerPhone" value="9841348263"
+                        class="form-control"></div>
+                <div class="form-group"><input id="buyerFirstName" type="hidden" name="buyerFirstName" value="Jay"
+                        class="form-control"></div>
+                <div class="form-group"><input id="buyerLastName" type="hidden" name="buyerLastName" value="Soorya"
+                        class="form-control"></div>
+                <div class="form-group"><input id="buyerAddress" type="hidden" name="buyerAddress" value="Address"
+                        class="form-control"></div>
+                <div class="form-group"><input id="buyerCity" type="hidden" name="buyerCity" value="Chennai"
+                        class="form-control"></div>
+                <div class="form-group"><input id="buyerState" type="hidden" name="buyerState" value="state"
+                        class="form-control"></div>
+                <div class="form-group"><input id="buyerCountry" type="hidden" name="buyerCountry" value="country"
+                        class="form-control"></div>
+                <div class="form-group"><input id="buyerPinCode" type="hidden" name="buyerPinCode" value="600087"
+                        class="form-control"></div>
+                <div class="form-group"><input id="orderid" type="hidden" name="orderid" value="1" class="form-control">
+                </div>
+                <div class="form-group"><input id="amount" type="hidden" name="amount" value="5000"
+                        class="form-control"></div>
+                <div class="form-group"><input id="checksum" type="hidden" name="checksum"
+                        value="bf8400a6a98d52ca885342291a7f3b0f" class="form-control"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</html>
