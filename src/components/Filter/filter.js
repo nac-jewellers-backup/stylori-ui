@@ -778,8 +778,6 @@ class Component extends React.Component {
     //   );
     // })
     // alert(JSON.stringify(this.state.selected))
-    debugger;
-    console.log(this.props.data[0]);
 
     return (
       <>
