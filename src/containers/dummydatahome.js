@@ -89,10 +89,10 @@ export const homePageStylori = {
  
       {
         img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Valentinesday-jewellery-W.jpg	",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-jewellery-w.jpg	",
         mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Valentinesday-jewellery-M.jpg	",
-        navigateUrl: "https://www.stylori.com/hearts-jewellery",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-jewellery-m.jpg	",
+        navigateUrl: "https://www.stylori.com/jewellery-butterfly?sort=New%20to%20Stylori&startprice=0&endprice=0",
       },
       {
         img:
@@ -101,13 +101,7 @@ export const homePageStylori = {
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-one-day-shipping-jewellery-m.jpg	",
         navigateUrl: "https://www.stylori.com/jewellery-shipping+in+1+day",
       },
-      {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-collection-jewellery-W.jpg	",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-collection-jewellery-M.jpg	",
-        navigateUrl: "https://www.stylori.com/jewellery-butterfly",
-      },
+ 
       {
         img:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-web-banner.jpg	",
