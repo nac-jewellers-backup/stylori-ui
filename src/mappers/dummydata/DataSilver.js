@@ -32,6 +32,13 @@ export const carouselTop = [
     images: [
       {
         img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/SIlver-Pearl-Collection-Banner-w.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/SIlver-Pearl-Collection-Banner-m.jpg",
+        navigateUrl: "https://www.stylori.com/silver-jewellery-baroque+whites+collection",
+      },
+      {
+        img:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/StyloriSilver-Jewellery-cz-w.jpg",
         mobileImg:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/StyloriSilver-Jewellery-cz-m.jpg",
