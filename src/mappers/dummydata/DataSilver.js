@@ -32,6 +32,13 @@ export const carouselTop = [
     images: [
       {
         img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/mudra-2021-web.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/mudra-2021-mob.jpg",
+        navigateUrl: "https://www.stylori.com/silver-jewellery-dmudra?sort=New%20to%20Stylori&startprice=0&endprice=0",
+      },
+      {
+        img:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/SIlver-Pearl-Collection-Banner-w.jpg",
         mobileImg:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/SIlver-Pearl-Collection-Banner-m.jpg",
@@ -51,20 +58,20 @@ export const carouselTop = [
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+Silver+-+Starstruck+collection+Banner+M.jpg	",
         navigateUrl: "https://www.stylori.com/silver-jewellery-starstruck+collection",
       },
-      {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-free+ship+web.jpg	",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-free+ship+mob.jpg",
-        navigateUrl: "https://www.stylori.com/silver-jewellery",
-      },
-      {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/1920X656-Traditional-Banner_Stylori-Silver.jpg	",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/805X430-Traditional-Banner_Stylori-Silver.jpg",
-        navigateUrl: "https://www.stylori.com/silver-jewellery-traditional",
-      },
+      // {
+      //   img:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-free+ship+web.jpg	",
+      //   mobileImg:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-free+ship+mob.jpg",
+      //   navigateUrl: "https://www.stylori.com/silver-jewellery",
+      // },
+      // {
+      //   img:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/1920X656-Traditional-Banner_Stylori-Silver.jpg	",
+      //   mobileImg:
+      //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/805X430-Traditional-Banner_Stylori-Silver.jpg",
+      //   navigateUrl: "https://www.stylori.com/silver-jewellery-traditional",
+      // },
     ],
     content:
       "Stylori Silver, from NAC Jewellers, is a brand of exclusive silver Jewellery for the modern woman. From dainty Everyday styles to dressy Folklore pieces, Stylori Silver Offers you hypo allergenic and stylish designs to match your versatile taste.",

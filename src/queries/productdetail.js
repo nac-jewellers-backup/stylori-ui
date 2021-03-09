@@ -40,6 +40,7 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
         defaultSize
         width
         height
+        isactive
         sizeVarient
         colourVarient
         earringBacking
@@ -101,7 +102,6 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
           markup
         }
       }
-      
     }
   }
 }
