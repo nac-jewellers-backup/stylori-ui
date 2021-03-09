@@ -1,14 +1,4 @@
-import {
-  Grid,
-  Hidden,
-  ExpansionPanel,
-  Container,
-  Popover,
-  paper,
-  Paper,
-  Button,
-  Typography,
-} from "@material-ui/core";
+import { Grid, Hidden, ExpansionPanel, Container, Popover, paper, Paper, Button, Typography } from "@material-ui/core";
 import Slideshow from "../Carousel/carosul";
 import React from "react";
 import PropTypes from "prop-types";
@@ -61,19 +51,8 @@ const mobilecarousel = (props, val, wishlist, isSilver) => {
         ? data.map((data_map) => (
             <Grid container spacing={12} xs={12}>
               <Grid container item xs={6}>
-                <div
-                  className={
-                    val && val.offerDiscount ? "css-ts7n45 e5toz5w4" : ""
-                  }
-                >
-                  <span
-                    style={{ color: "#fff" }}
-                    className={
-                      val && val.offerDiscount
-                        ? "e195g4sk5 css-5pjie5 ekntgft2"
-                        : ""
-                    }
-                  >
+                <div className={val && val.offerDiscount ? "css-ts7n45 e5toz5w4" : ""}>
+                  <span style={{ color: "#fff" }} className={val && val.offerDiscount ? "e195g4sk5 css-5pjie5 ekntgft2" : ""}>
                     {val ? val.offerDiscount : null}
                   </span>
                   <br />
@@ -86,11 +65,7 @@ const mobilecarousel = (props, val, wishlist, isSilver) => {
               </Grid>
               <Grid container item xs={4} />
               <Grid container item xs={2} className="css-ts7n45_wishlist">
-                <Wishlist
-                  sku={data_map.skuId}
-                  productId={data_map.productId}
-                  wishlist={wishlist}
-                />
+                <Wishlist sku={data_map.skuId} productId={data_map.productId} wishlist={wishlist} />
               </Grid>
             </Grid>
           ))
@@ -160,28 +135,18 @@ const Productprice = (
 
   //   setOpenSnackBar(false);
   // };
+  console.clear();
 
+  console.log(props);
+  const isactive = props.data[0].isactive ?? "";
   return (
     <div>
       {data.map((val) => (
         <>
-          <Grid
-            container
-            spacing={12}
-            sm={12}
-            className={
-              isSilver ? classes.silverpricedetails : classes.pricedetails
-            }
-          >
+          <Grid container spacing={12} sm={12} className={isSilver ? classes.silverpricedetails : classes.pricedetails}>
             <Hidden mdUp>
               <Container>
-                <div
-                  className={`resp ${
-                    isSilver
-                      ? `${`respSilver ${classes.carouselCustomArrow}`}`
-                      : ""
-                  }`}
-                >
+                <div className={`resp ${isSilver ? `${`respSilver ${classes.carouselCustomArrow}`}` : ""}`}>
                   {/* <div className="respc"> */}
                   {/* <h1 className={`pdp-title ${classes.title}`}>
                                         {val.title}
@@ -269,10 +234,7 @@ const Productprice = (
                     <Grid container spacing={12} xs={12}>
                       <Grid container item xs={12} alignItems="center">
                         <Grid item xs={10}>
-                          <h1
-                            className={`pdp-title ${classes.title} ${classes.titlesmScreen}`}
-                            style={{ width: "90%" }}
-                          >
+                          <h1 className={`pdp-title ${classes.title} ${classes.titlesmScreen}`} style={{ width: "90%" }}>
                             {val.title}
                             {/* <i style={{ padding: "2px", fontSize: "12px" }} class="fa fa-info-circle" aria-hidden="true"></i> */}
                           </h1>
@@ -311,13 +273,7 @@ const Productprice = (
                           />
                         </Grid>
                       </Grid>
-                      <Grid
-                        container
-                        item
-                        xs={12}
-                        alignContent="center"
-                        alignItems="center"
-                      >
+                      <Grid container item xs={12} alignContent="center" alignItems="center">
                         <Hidden mdUp>
                           <div className={`${isSilver ? "" : classes.width}`}>
                             <Pricing
@@ -329,13 +285,7 @@ const Productprice = (
                           </div>
                         </Hidden>
                       </Grid>
-                      <Grid
-                        container
-                        item
-                        xs={12}
-                        alignContent="center"
-                        alignItems="center"
-                      >
+                      <Grid container item xs={12} alignContent="center" alignItems="center">
                         {/* commented because silver product doesn't have COD */}
                         {/* <Grid item xs={10}>
                           {pincode &&
@@ -524,9 +474,7 @@ const Productprice = (
                   <Hidden smDown>
                     <div style={{ marginTop: 8 }}>
                       {isSilver ? (
-                        <div className={`pdp-title  ${classes.titleSilver}`}>
-                          {val.title}
-                        </div>
+                        <div className={`pdp-title  ${classes.titleSilver}`}>{val.title}</div>
                       ) : (
                         <h5 className={`pdp-title`}>{val.title}</h5>
                       )}
@@ -547,9 +495,7 @@ const Productprice = (
                   md={9}
                   className={classes.width}
                   style={{
-                    padding: globalContext.Globalctx.pathName
-                      ? 0
-                      : "0px 10px  0px 10px ",
+                    padding: globalContext.Globalctx.pathName ? 0 : "0px 10px  0px 10px ",
                     paddingTop: 12,
                     paddingBottom: -4,
                   }}
@@ -580,9 +526,7 @@ const Productprice = (
                 <Hidden smDown>
                   <Grid container>
                     <Grid container item xs={12}>
-                      {Boolean(
-                        isSilver && data[0].productTabs[0].tab1.Children
-                      ) || !isSilver ? (
+                      {Boolean(isSilver && data[0].productTabs[0].tab1.Children) || !isSilver ? (
                         <Grid item xs={12}>
                           <div className="overall-box ">
                             <PriceTabs data={props.data} isSilver={isSilver} />
@@ -595,11 +539,7 @@ const Productprice = (
                         </div>
                       </Grid> */}
                       {isSilver && (
-                        <Grid
-                          item
-                          xs={12}
-                          style={{ padding: "10px 0px 20px 0px" }}
-                        >
+                        <Grid item xs={12} style={{ padding: "10px 0px 20px 0px" }}>
                           <Grid item xs={3} sm={4} md={3} lg={3}>
                             {/* <Button
                              
@@ -617,7 +557,7 @@ const Productprice = (
                               </span>
                             </Button> */}
 
-                            <div onClick={deletechecklists}>
+                            <div onClick={isactive ? deletechecklists : ""}>
                               <Buynowbutton
                                 sku={data[0].skuId}
                                 class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart} ${classes.robotoBoldFont} ${classes.add_to_cart_text}`}
@@ -625,9 +565,10 @@ const Productprice = (
                                 id="silverButton"
                                 withoutBag={true}
                                 addtoCartToBuyNow={true}
+                                productIsActive={isactive ?? ""}
                                 // onClick={}
                                 // handleSuccess={deletechecklists}
-                                onClick={handleLocalStorage.bind(this)}
+                                onClick={isactive ? handleLocalStorage.bind(this) : ""}
                               />
 
                               {/* <CommenDialog
@@ -645,16 +586,17 @@ const Productprice = (
                       )}
                       <Grid container item xs={12}>
                         <Grid item xs={3} sm={4} md={5} lg={4}>
-                          <div onClick={deletechecklists}>
+                          <div onClick={isactive ? deletechecklists : ""}>
                             <Buynowbutton
                               sku={data[0].skuId}
                               class={`${classes.buynowButtonSilver} ${classes.buttonsilver} ${classes.robotoBoldFont}`}
                               button="buynow-btn-cont"
                               id="silverButton"
                               withoutBag={true}
+                              productIsActive={isactive ?? ""}
                               // onClick={}
                               // handleSuccess={deletechecklists}
-                              onClick={handleLocalStorage.bind(this)}
+                              onClick={isactive ? handleLocalStorage.bind(this) : ""}
                             />
 
                             {/* <CommenDialog
@@ -669,19 +611,8 @@ const Productprice = (
                           </div>
                           {/* <Button variant="contained" color="primary" class={`${classes.buynowButtonSilver} ${classes.buttonsilver}`} onClick={()=>{document.getElementById('silverButton').click()}} >BUY NOW</Button> */}
                         </Grid>
-                        <Grid
-                          container
-                          item
-                          xs={4}
-                          className={classes.saveButtonsilverGrid}
-                        >
-                          <Grid
-                            container
-                            item
-                            alignItems="center"
-                            justify="center"
-                            xs={4}
-                          >
+                        <Grid container item xs={4} className={classes.saveButtonsilverGrid}>
+                          <Grid container item alignItems="center" justify="center" xs={4}>
                             <Wishlist
                               sku={val.skuId}
                               productId={val.productId}
@@ -694,14 +625,10 @@ const Productprice = (
 
                           <Grid item xs={6} className={classes.sharesilver}>
                             <div
-                              className={`starts product-icons2 ${
-                                isSilver ? classes.iconSilver : ""
-                              }`}
+                              className={`starts product-icons2 ${isSilver ? classes.iconSilver : ""}`}
                               style={{ fontFamily: "fontawesome" }}
                             >
-                              <div
-                                className={`row  ${classes.icon2} ${classes.productIcons2}`}
-                              >
+                              <div className={`row  ${classes.icon2} ${classes.productIcons2}`}>
                                 <i
                                   class={`fa fa-share-alt overall-icons `}
                                   aria-owns={open ? "simple-popper" : ""}
@@ -784,13 +711,7 @@ const ProductPrice = (props) => {
   } = React.useContext(ProductDetailContext);
 
   return (
-    <Component
-      setCartFilters={setCartFilters}
-      {...props}
-      quantity={filters.quantity}
-      filters={filters}
-      setFilters={setFilters}
-    />
+    <Component setCartFilters={setCartFilters} {...props} quantity={filters.quantity} filters={filters} setFilters={setFilters} />
   );
 };
 
@@ -834,9 +755,7 @@ class Component extends React.Component {
   //   });
   // };
   valus = (valueId) => {
-    var valus_locl = localStorage.getItem("cartDetails")
-      ? JSON.parse(localStorage.getItem("cartDetails")).products
-      : "";
+    var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : "";
 
     var vals;
 
@@ -869,31 +788,22 @@ class Component extends React.Component {
   deletechecklists = () => {
     this.props.setCartFilters({
       skuId: this.props.data[0].skuId,
-      qty: this.props.quantity[this.props.data[0].skuId]
-        ? this.props.quantity[this.props.data[0].skuId]
-        : 1,
+      qty: this.props.quantity[this.props.data[0].skuId] ? this.props.quantity[this.props.data[0].skuId] : 1,
       price: this.props.data[0].offerPrice,
     });
 
     const _qty =
-      this.props.quantity &&
-      this.props.data &&
-      this.props.quantity[this.props.data[0].skuId]
+      this.props.quantity && this.props.data && this.props.quantity[this.props.data[0].skuId]
         ? this.props.quantity[this.props.data[0].skuId]
         : 1;
     this.props.setFilters({
       ...this.props.filters,
       quantity: _qty,
     });
-    let localStorageQuantity = localStorage.getItem("quantity")
-      ? JSON.parse(localStorage.getItem("quantity"))
-      : null;
+    let localStorageQuantity = localStorage.getItem("quantity") ? JSON.parse(localStorage.getItem("quantity")) : null;
 
     if (!localStorageQuantity) {
-      if (
-        localStorageQuantity &&
-        !localStorageQuantity[this.props.data[0].skuId]
-      ) {
+      if (localStorageQuantity && !localStorageQuantity[this.props.data[0].skuId]) {
         let _obj = {};
         localStorageQuantity[this.props.data[0].skuId] = _qty;
         localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
@@ -907,16 +817,13 @@ class Component extends React.Component {
     } else {
       localStorageQuantity[this.props.data[0].skuId] = _qty;
       localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
-      this.props.filters.quantity[this.props.data[0].skuId] =
-        localStorageQuantity[this.props.data[0].skuId];
+      this.props.filters.quantity[this.props.data[0].skuId] = localStorageQuantity[this.props.data[0].skuId];
     }
     sessionStorage.setItem(
       "updatedProduct",
       JSON.stringify({
         sku_id: this.props.data[0].skuId,
-        qty: this.props.quantity[this.props.data[0].skuId]
-          ? this.props.quantity[this.props.data[0].skuId]
-          : 1,
+        qty: this.props.quantity[this.props.data[0].skuId] ? this.props.quantity[this.props.data[0].skuId] : 1,
         price: this.props.data[0].offerPrice,
       })
     );
@@ -1012,12 +919,7 @@ export function SimpleSnackbar() {
             <Button color="secondary" size="small" onClick={handleClose}>
               UNDO
             </Button>
-            <IconButton
-              size="small"
-              aria-label="close"
-              color="inherit"
-              onClick={handleClose}
-            >
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
               <CloseIcon fontSize="small" />
             </IconButton>
           </React.Fragment>

@@ -94,7 +94,7 @@ const Provider = (props) => {
   let [pricemin, setPriceMin] = React.useState(0);
   let [pricemax, setPriceMax] = React.useState(0);
   const [loadingfilters, setloadingfilters] = React.useState(false);
-  const [sortFilterCombo, setSortFilterCombo] = React.useState(true)
+  const [sortFilterCombo, setSortFilterCombo] = React.useState(true);
   useEffect(() => {
     setFilterLogic({ filterLogic: (d, t) => t });
   }, [filters]);
@@ -104,22 +104,23 @@ const Provider = (props) => {
   const {
     NetworkCtx: { graphqlUrl: uri },
   } = React.useContext(NetworkContext);
+
   const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
 
   const client = createApolloFetch({ uri });
 
-  const {
-    loading: ntx,
-    error: ntxerr,
-    data: ntxdata,
-    makeFetch,
-  } = useNetworkRequest("/filterlist", {}, false, {});
-  var con_gust = localStorage.getItem("gut_lg")
-    ? JSON.parse(localStorage.getItem("gut_lg"))
-    : "";
+  const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest("/filterlist", {}, false, {});
+
+  // debugger;
+  // console.log({
+  //   loading: ntx,
+  //   error: ntxerr,
+  //   data: ntxdata,
+  //   makeFetch,
+  // });
+  var con_gust = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : "";
   const myStorage = sessionStorage.getItem("user_id");
-  const localvalues_check =
-    JSON.parse(localStorage.getItem("gut_lg")) === true ? true : false;
+  const localvalues_check = JSON.parse(localStorage.getItem("gut_lg")) === true ? true : false;
   React.useEffect(() => {
     if (localvalues_check === true) {
       if (con_gust === true) {
@@ -206,7 +207,7 @@ const Provider = (props) => {
               return a;
             });
 
-            //  ****STARTS****  setting state search parameters ....
+          //  ****STARTS****  setting state search parameters ....
 
           if (window.location.search) {
             let splitSearchParamers = window.location.search.split("&");
@@ -214,20 +215,16 @@ const Provider = (props) => {
               if (splitSearchParamers.length > 2) {
                 splitSearchParamers.map((val) => {
                   let equalSplit = val.split("=");
-                  ;
                   if (equalSplit[0] === "?sort") {
                     let obj = {};
                     obj["values"] = equalSplit[1].replace(/%20/g, " ");
                     sort = obj;
-                    
                   }
                   if (equalSplit[0] === "startprice") {
-                    pricemin = Number(equalSplit[1])
-                    
+                    pricemin = Number(equalSplit[1]);
                   }
                   if (equalSplit[0] === "endprice") {
-                    
-                    pricemax=Number(equalSplit[1])
+                    pricemax = Number(equalSplit[1]);
                   }
                 });
                 setSort(sort);
@@ -236,20 +233,16 @@ const Provider = (props) => {
               } else {
                 splitSearchParamers.map((val) => {
                   let equalSplit = val.split("=");
-                  ;
                   if (equalSplit[0] === "?sort") {
                     let obj = {};
                     obj["values"] = equalSplit[1].replace(/%20/g, " ");
                     sort = obj;
-                    
                   }
                   if (equalSplit[0] === "startprice") {
-                    pricemin = Number(equalSplit[1])
-                    
+                    pricemin = Number(equalSplit[1]);
                   }
                   if (equalSplit[0] === "endprice") {
-                    
-                    pricemax=Number(equalSplit[1])
+                    pricemax = Number(equalSplit[1]);
                   }
                 });
                 setSort(sort);
@@ -261,8 +254,6 @@ const Provider = (props) => {
 
           //    ****ENDS**** setting state search parameters ....
 
-
-          
           Object.entries(a).map((val) => {
             setFilters({ ...filters, a });
           });
@@ -307,7 +298,7 @@ const Provider = (props) => {
   };
   // const clearSortIfFiltersIsEmpty = () => {
   //   var showSortFilter = true
-  //   
+  //
   //   if (window.location.search) {
   //     Object.keys(filters).map((fk) => {
   //       const filter = filters[fk];
@@ -320,10 +311,10 @@ const Provider = (props) => {
   //             showSortFilter = false
   //           }
   //       }
-        
+
   //     });
   //     let loc = window.location.pathname.split('?')[0]
-  //     // if (!showSortFilter) window.location.pathname = loc 
+  //     // if (!showSortFilter) window.location.pathname = loc
   //   }
 
   // };
@@ -356,22 +347,16 @@ const Provider = (props) => {
 
   // {transSkuListsByProductId: {some: {discountPrice: {greaterThan: 1.5}}}}
   // const { loading, error, data, makeRequest } = useGraphql(PRODUCTLIST, () => { }, {})
-  const { loading, error, data, makeFetch: fetchproducts } = useNetworkRequest(
-    "/fetchproducts",
-    {},
-    false,
-    {}
-  );
+  const { loading, error, data, makeFetch: fetchproducts } = useNetworkRequest("/fetchproducts", {}, false, {});
   // fetchproducts
 
   // {filter:{transSkuListsByProductId:{every:{markupPrice:{  "greaterThanOrEqualTo":   20000,
   // "lessThanOrEqualTo":70000}}}}}
-  const {
-    loading: seoloading,
-    error: seoError,
-    data: seoData,
-    makeRequest: makeRequestSeo,
-  } = useGraphql(seoUrlResult, () => {}, {});
+  const { loading: seoloading, error: seoError, data: seoData, makeRequest: makeRequestSeo } = useGraphql(
+    seoUrlResult,
+    () => {},
+    {}
+  );
 
   useEffect(() => {
     if (offset === 0) {
@@ -381,9 +366,7 @@ const Provider = (props) => {
   }, [loading, error, data]);
   const seoUrlFetch = () => {
     var path_name =
-      mappedFilters.seo_url && mappedFilters.seo_url.length > 0
-        ? mappedFilters.seo_url
-        : window.location.pathname.split("/")[1];
+      mappedFilters.seo_url && mappedFilters.seo_url.length > 0 ? mappedFilters.seo_url : window.location.pathname.split("/")[1];
     const conditionfiltersSeo = {
       seofilter: { seoUrl: { in: paramObjects(path_name) } },
     };
@@ -434,12 +417,7 @@ const Provider = (props) => {
 
   useEffect(() => {}, [data, error, loading]);
   const updatefiltersSort = async () => {
-    if (
-      filters &&
-      filters.constructor === Object &&
-      Object.entries(filters).length !== 0 &&
-      filters.constructor === Object
-    ) {
+    if (filters && filters.constructor === Object && Object.entries(filters).length !== 0 && filters.constructor === Object) {
       var newObj = {};
       var len;
       if (filters.constructor !== Object) {
@@ -506,20 +484,13 @@ const Provider = (props) => {
 
       newObj["sortBy"] = sort.values;
       newObj["offset"] = offset;
-      newObj['isJewellery']=true
+      newObj["isJewellery"] = true;
 
       // alert(JSON.stringify('filters',filters))
       // alert(JSON.stringify(newObj))
       // if()
-      if (
-        Object.keys(filters.category).length === 0 &&
-        filters.category.constructor === Object
-      ) {
-        if (
-          filters.Category &&
-          Object.keys(filters.Category).length > 0 &&
-          filters.Category.constructor === Object
-        ) {
+      if (Object.keys(filters.category).length === 0 && filters.category.constructor === Object) {
+        if (filters.Category && Object.keys(filters.Category).length > 0 && filters.Category.constructor === Object) {
           var _replaceCategory = filters.Category;
           filters["category"] = _replaceCategory;
           sessionStorage.setItem("category", JSON.stringify(filters.category));
@@ -528,12 +499,7 @@ const Provider = (props) => {
         }
       }
 
-      if (
-        filters &&
-        filters.category &&
-        Object.keys(filters.category).length > 0 &&
-        filters.category.constructor === Object
-      ) {
+      if (filters && filters.category && Object.keys(filters.category).length > 0 && filters.category.constructor === Object) {
         sessionStorage.setItem("category", JSON.stringify(filters.category));
       }
       if (
@@ -541,24 +507,21 @@ const Provider = (props) => {
           if (val === "category") return val;
         }).length !== 0
       )
-      // debugger
-      if(Object.keys(newObj).findIndex(val=>val==='material') > -1){
-        // if(newObj.category === "Jewellery"){
-          if(!(newObj.material === 'Silver')){
-            newObj['isJewellery']=true
+        if (Object.keys(newObj).findIndex((val) => val === "material") > -1) {
+          // debugger
+          // if(newObj.category === "Jewellery"){
+          if (!(newObj.material === "Silver")) {
+            newObj["isJewellery"] = true;
+          } else {
+            newObj["isJewellery"] = false;
           }
-          else{
-            newObj['isJewellery']=false
-          }
-        // }
-        
-      }
-      else{
-        newObj['isJewellery']=true
-      }
+          // }
+        } else {
+          newObj["isJewellery"] = true;
+        }
       // debugger
       // data.data.allTransSkuLists.nodes.map(val=>{return val.productListByProductId.productMaterialsByProductSku.nodes}).flat().findIndex(val=> Boolean(val.materialName === "Silver")) > -1
-        await fetchproducts(newObj);
+      await fetchproducts(newObj);
     }
   };
 
@@ -566,11 +529,7 @@ const Provider = (props) => {
     // alert(JSON.stringify(filters.Offers))
     // clearSortIfFiltersIsEmpty()
     // if(!sortFilterCombo) setSort("")
-    if (
-      filters &&
-      Object.entries(filters).length !== 0 &&
-      filters.constructor === Object
-    ) {
+    if (filters && Object.entries(filters).length !== 0 && filters.constructor === Object) {
       if (
         Object.values(filters).filter((val) => {
           if (Object.entries(val).length > 0 && val.constructor === Object) {
@@ -697,11 +656,7 @@ const Provider = (props) => {
         newObj[toLowerCase] = k[len][0];
       }
     }
-    if (
-      filters &&
-      Object.entries(filters).length !== 0 &&
-      filters.constructor === Object
-    ) {
+    if (filters && Object.entries(filters).length !== 0 && filters.constructor === Object) {
       if (
         Object.values(filters).filter((val) => {
           if (Object.entries(val).length > 0 && val.constructor === Object) {
@@ -732,20 +687,15 @@ const Provider = (props) => {
   useEffect(() => {
     // clearSortIfFiltersIsEmpty()
     // if(!sortFilterCombo) setSort("")
-    if (
-      Object.entries(ntxdata).length !== 0 &&
-      ntxdata.constructor === Object
-    ) {
+    if (Object.entries(ntxdata).length !== 0 && ntxdata.constructor === Object) {
       // if(ntxdata.seo_url !=="jewellery" ){
       if (window.location.pathname !== "jewellery") {
         props.history.push({
-          pathname: `${
-            mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ""
-          }`,
+          pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ""}`,
           search: window.location.search,
         });
       }
-      // setSort(""); 
+      // setSort("");
       paramObjects(mappedFilters.seo_url);
 
       seoUrlFetch();
@@ -764,39 +714,18 @@ const Provider = (props) => {
 
   useEffect(() => {
     const filters_seo_condition = () => {
-      if (
-sort &&       Object.entries(sort).length > 0 &&
-        sort.constructor === Object &&
-        pricemin !== null &&
-        pricemax !== null
-      ) {
-        return (
-          sort &&
-          `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`
-        );
-      } else if (
-        pricemin !== null &&
-        pricemax !== null &&
-        pricemin !== 0 &&
-        pricemax !== 0
-      ) {
+      if (sort && Object.entries(sort).length > 0 && sort.constructor === Object && pricemin !== null && pricemax !== null) {
+        return sort && `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`;
+      } else if (pricemin !== null && pricemax !== null && pricemin !== 0 && pricemax !== 0) {
         return `startprice=${pricemin}&endprice=${pricemax}`;
-      } else if (
-     sort &&   Object.entries(sort).length > 0 &&
-        sort.constructor === Object
-      ) {
+      } else if (sort && Object.entries(sort).length > 0 && sort.constructor === Object) {
         return sort && `sort=${sort.values}`;
       }
     };
-    if (
-      (sort && Object.entries(sort).length > 0 && sort.constructor === Object) ||
-      (pricemin !== null && pricemax !== null)
-    ) {
+    if ((sort && Object.entries(sort).length > 0 && sort.constructor === Object) || (pricemin !== null && pricemax !== null)) {
       props.history.push({
         pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ""}`,
-        search: filters_seo_condition()
-          ? filters_seo_condition()
-          : window.location.search,
+        search: filters_seo_condition() ? filters_seo_condition() : window.location.search,
       });
 
       updatefiltersSort();
@@ -836,6 +765,7 @@ sort &&       Object.entries(sort).length > 0 &&
     pricemax,
     pricemin,
   };
+
   return (
     <FilterOptionsContext.Provider
       value={{

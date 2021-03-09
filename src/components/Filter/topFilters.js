@@ -1,14 +1,6 @@
 import React from "react";
 
-import {
-  Grid,
-  Container,
-  Popper,
-  ClickAwayListener,
-  Grow,
-  Paper,
-  Chip,
-} from "@material-ui/core";
+import { Grid, Container, Popper, ClickAwayListener, Grow, Paper, Chip } from "@material-ui/core";
 import HeaderHoverMenuItem from "../SilverComponents/HoverNavBarListing/HeaderHoverMenuItem";
 import HeaderHoversubMenu from "../SilverComponents/HoverNavBarListing/HeaderHoverMenuItem";
 import { filterParams } from "../../mappers";
@@ -47,9 +39,7 @@ export const TopFilters = (props) => {
     sortOpen: null,
   });
   const { mapped } = useDummyRequest(filterParams);
-  const { setSort, setOffset, FilterOptionsCtx } = React.useContext(
-    FilterOptionsContext
-  );
+  const { setSort, setOffset, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
   // console.clear();
   // console.log(props.chips, "checkeditems");
   const submenuDetails = (data, target) => {
@@ -120,13 +110,7 @@ export const TopFilters = (props) => {
             }}
           >
             <Grid container item xs={12} className="titleTop" id={"titleTop"}>
-              <Grid
-                container
-                item
-                xs={12}
-                justify="space-between"
-                style={{ paddingBottom: 20 }}
-              >
+              <Grid container item xs={12} justify="space-between" style={{ paddingBottom: 20 }}>
                 {/* <nav
             // style={{height:"35px", display:"flex"}}
             > */}
@@ -145,22 +129,13 @@ export const TopFilters = (props) => {
                     });
                   }}
                 >
-                  <Grid
-                    container
-                    item
-                    xs={12}
-                    className={classes.spacingfilterdiv}
-                  >
+                  <Grid container item xs={12} className={classes.spacingfilterdiv}>
                     <Grid item xs={6} className={classes.filtersLabel}>
                       <a>
                         {"Price"} (<i class="fa">&#xf156;</i>)
                       </a>
                     </Grid>
-                    <Grid
-                      item
-                      xs={6}
-                      style={{ display: "flex", justifyContent: "flex-end" }}
-                    >
+                    <Grid item xs={6} style={{ display: "flex", justifyContent: "flex-end" }}>
                       {state.listHoverItem === "price" ? (
                         <ArrowDropUpIcon color="primary" />
                       ) : (
@@ -173,13 +148,7 @@ export const TopFilters = (props) => {
                   // let urlsmall = listName.title.toLowerCase()
                   // debugger
                   // console.log(i)
-                  if (
-                    i < 6 &&
-                    listName !== "Material" &&
-                    listName !== "Theme" &&
-                    listName !== "Occasion"
-                   
-                  )
+                  if (i < 6 && listName !== "Material" && listName !== "Theme" && listName !== "Occasion")
                     return (
                       <Grid
                         item
@@ -196,18 +165,11 @@ export const TopFilters = (props) => {
                           });
                         }}
                       >
-                        <Grid
-                          container
-                          item
-                          xs={12}
-                          className={classes.spacingfilterdiv}
-                        >
+                        <Grid container item xs={12} className={classes.spacingfilterdiv}>
                           <Grid item xs={6} className={classes.filtersLabel}>
                             <a href={listName.url}>
                               {/* {alert(listName)} */}
-                              {listName === "Style"
-                                ? "PRODUCT STYLE"
-                                : listName}
+                              {listName === "Style" ? "PRODUCT STYLE" : listName}
                               {/* {listName} */}
                             </a>
                           </Grid>
@@ -242,20 +204,11 @@ export const TopFilters = (props) => {
                     handleMoreFilters();
                   }}
                 >
-                  <Grid
-                    container
-                    item
-                    xs={12}
-                    className={classes.spacingfilterdiv}
-                  >
+                  <Grid container item xs={12} className={classes.spacingfilterdiv}>
                     <Grid item xs={6}>
                       More
                     </Grid>
-                    <Grid
-                      item
-                      xs={6}
-                      style={{ display: "flex", justifyContent: "flex-end" }}
-                    >
+                    <Grid item xs={6} style={{ display: "flex", justifyContent: "flex-end" }}>
                       <AddBoxIcon color="primary" />
                     </Grid>
                   </Grid>
@@ -293,13 +246,7 @@ export const TopFilters = (props) => {
               setState({ ...state, expanded: false, targetopen: null });
             }}
           >
-            <Grid
-              container
-              item
-              xs={12}
-              justify="flex-end"
-              style={{ paddingBottom: 20 }}
-            >
+            <Grid container item xs={12} justify="flex-end" style={{ paddingBottom: 20 }}>
               <Grid
                 container
                 item
@@ -313,26 +260,13 @@ export const TopFilters = (props) => {
                   });
                 }}
               >
-                <Grid
-                  container
-                  item
-                  xs={12}
-                  className={classes.spacingfilterdiv}
-                >
+                <Grid container item xs={12} className={classes.spacingfilterdiv}>
                   <Grid container item xs={12} justify="space-between">
                     <Grid item xs={6} style={{ margin: "auto" }}>
                       Sort by
                     </Grid>
-                    <Grid
-                      item
-                      xs={6}
-                      style={{ display: "flex", justifyContent: "flex-end" }}
-                    >
-                      {state.expanded ? (
-                        <ArrowDropUpIcon color="primary" />
-                      ) : (
-                        <ArrowDropDownIcon color="primary" />
-                      )}
+                    <Grid item xs={6} style={{ display: "flex", justifyContent: "flex-end" }}>
+                      {state.expanded ? <ArrowDropUpIcon color="primary" /> : <ArrowDropDownIcon color="primary" />}
                     </Grid>
                   </Grid>
                 </Grid>
@@ -397,16 +331,7 @@ export const TopFilters = (props) => {
                   label={data.label}
                   style={{ padding: "5px", marginRight: 5 }}
                   onDelete={() => props.click(data.label)}
-                  deleteIcon={
-                    data.label ? (
-                      <i
-                        className="search-choice-close"
-                        class="fa fa-times"
-                      ></i>
-                    ) : (
-                      ""
-                    )
-                  }
+                  deleteIcon={data.label ? <i className="search-choice-close" class="fa fa-times"></i> : ""}
                   color="secondary"
                 />
               );

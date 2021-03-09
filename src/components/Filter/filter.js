@@ -48,7 +48,9 @@ const PersistentDrawerLeft = (props) => {
   const loc = window.location.search;
   const { NetworkCtx } = React.useContext(NetworkContext);
   const { Globalctx } = React.useContext(GlobalContext);
-
+ 
+  console.log(NetworkCtx);
+  console.log(Globalctx);
   return (
     <Component
       setSort={setSort}
@@ -778,7 +780,7 @@ class Component extends React.Component {
     //   );
     // })
     // alert(JSON.stringify(this.state.selected))
-
+   
     return (
       <>
         {isTopFilter && (
