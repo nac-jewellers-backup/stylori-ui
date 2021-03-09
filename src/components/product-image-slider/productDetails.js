@@ -1,12 +1,4 @@
-import {
-  Grid,
-  ListItemText,
-  Container,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  Hidden,
-  Typography,
-} from "@material-ui/core";
+import { Grid, ListItemText, Container, ExpansionPanel, ExpansionPanelSummary, Hidden, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 import "./product-images.css";
@@ -23,12 +15,7 @@ class ProductDetails extends React.Component {
     var check = true;
     if (name === "Price Breakup") {
       //  val.map(val=>{
-      if (
-        val &&
-        val.length > 0 &&
-        val[1] &&
-        Number(val[1].replace("₹", "").replace(/,/g, "")) !== 0
-      ) {
+      if (val && val.length > 0 && val[1] && Number(val[1].replace("₹", "").replace(/,/g, "")) !== 0) {
         check = true;
       } else check = false;
     } else {
@@ -75,18 +62,11 @@ class ProductDetails extends React.Component {
   productsDetails = (data) => {
     const { classes, isSilver } = this.props;
     // debugger
-   
-    const _mapper =
-      data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
-        ? data[0].productsDetails
-        : [];
+
+    const _mapper = data && data.length > 0 && data[0] && data[0].productsDetails.length > 0 ? data[0].productsDetails : [];
     const _isSilver = isSilver ? true : false;
-    const _mapperChooser = _isSilver
-      ? _mapper.length > 0
-        ? [_mapper[0]]
-        : _mapper
-      : _mapper;
- 
+    const _mapperChooser = _isSilver ? (_mapper.length > 0 ? [_mapper[0]] : _mapper) : _mapper;
+
     return (
       <div>
         <Grid container spacing={12} style={{ paddingRight: "20px" }}>
@@ -98,15 +78,9 @@ class ProductDetails extends React.Component {
                 {valueofproductdetail.header !== "Price Breakup" ||
                 (valueofproductdetail.header === "Price Breakup" &&
                   valueofproductdetail.namedetail[5].name === "Total" &&
-                  Number(
-                    valueofproductdetail.namedetail[5].details[1]
-                      .replace(/,/g, "")
-                      .replace(/₹/g, "")
-                  ) > 15000) ? (
+                  Number(valueofproductdetail.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g, "")) > 15000) ? (
                   <div
-                    className={`overall-boxz ${
-                      _isSilver ? classes.overallBoxz : ""
-                    }`}
+                    className={`overall-boxz ${_isSilver ? classes.overallBoxz : ""}`}
                     style={{
                       boxShadow: _isSilver
                         ? "unset"
@@ -122,9 +96,7 @@ class ProductDetails extends React.Component {
                             style={{ marginBottom: 4 }}
                           >
                             {" "}
-                            <span className={_isSilver && "pd_details"}>
-                              {valueofproductdetail.header}
-                            </span>
+                            <span className={_isSilver && "pd_details"}>{valueofproductdetail.header}</span>
                           </div>
                           {/* SEO TEXT FOR STYLORI SILTER - COMMENTED FOR SOME RESON DON'T REMOVE IT */}
                           {/* <div
@@ -145,10 +117,7 @@ class ProductDetails extends React.Component {
                         </>
                       ) : (
                         <>
-                          <span
-                            key={valueofproductdetail.name}
-                            className={`product-details ${classes.normalfonts}`}
-                          >
+                          <span key={valueofproductdetail.name} className={`product-details ${classes.normalfonts}`}>
                             {" "}
                             {valueofproductdetail.header}
                           </span>
@@ -182,23 +151,12 @@ class ProductDetails extends React.Component {
                                     {res.details ? (
                                       res.details.length === 0 ? (
                                         false
-                                      ) : this.handleCheck(
-                                          valueofproductdetail.header,
-                                          res.details
-                                        ) ? (
+                                      ) : this.handleCheck(valueofproductdetail.header, res.details) ? (
                                         <Grid container item xs={12}>
-                                          <Grid
-                                            xs={4}
-                                            lg={4}
-                                            className={`${classes.margindek} ${classes.pds}`}
-                                          >
+                                          <Grid xs={4} lg={4} className={`${classes.margindek} ${classes.pds}`}>
                                             <ListItemText
-                                              className={`product-subhead ${
-                                                classes.normalfonts
-                                              } ${
-                                                _isSilver
-                                                  ? ` ${classes.pd} ${classes.normalFontsColor}`
-                                                  : ""
+                                              className={`product-subhead ${classes.normalfonts} ${
+                                                _isSilver ? ` ${classes.pd} ${classes.normalFontsColor}` : ""
                                               }`}
                                             >
                                               <span
@@ -207,12 +165,7 @@ class ProductDetails extends React.Component {
                                                 }}
                                               >
                                                 {_isSilver ? (
-                                                  <div
-                                                    style={{}}
-                                                    className={
-                                                      "product-subheadsss"
-                                                    }
-                                                  >
+                                                  <div style={{}} className={"product-subheadsss"}>
                                                     {res.name}
                                                   </div>
                                                 ) : (
@@ -221,76 +174,20 @@ class ProductDetails extends React.Component {
                                               </span>
                                             </ListItemText>
                                           </Grid>
-                                          <Grid
-                                            container
-                                            item
-                                            xs={8}
-                                            style={{ alignItems: "center" }}
-                                          >
+                                          <Grid container item xs={8} style={{ alignItems: "center" }}>
                                             {
                                               // valueofproductdetail.header === 'Price Breakup' &&
                                               isArray(res.details) ? (
                                                 <ListItemText
                                                   variant=""
-                                                  className={`product-subhead-list ${
-                                                    classes.fontgray
-                                                  } ${
-                                                    _isSilver
-                                                      ? classes.normalFontsColor
-                                                      : ""
+                                                  className={`product-subhead-list ${classes.fontgray} ${
+                                                    _isSilver ? classes.normalFontsColor : ""
                                                   }`}
                                                 >
-                                                  {res.details.map(
-                                                    (Item, Index) => {
-                                                      if (_isSilver) {
-                                                        return (
-                                                          <b>
-                                                            <span
-                                                              style={{
-                                                                fontSize:
-                                                                  "12px",
-                                                                textAlign:
-                                                                  "left",
-                                                              }}
-                                                            >
-                                                              {" "}
-                                                              {valueofproductdetail.header ===
-                                                              "Price Breakup" ? (
-                                                                res.name !==
-                                                                  "GST" &&
-                                                                Index === 0 &&
-                                                                res.details[
-                                                                  Index
-                                                                ] !==
-                                                                  res.details[
-                                                                    Index + 1
-                                                                  ] ? (
-                                                                  <del>
-                                                                    {Item}
-                                                                  </del>
-                                                                ) : (Index ===
-                                                                    0 &&
-                                                                    res.name !==
-                                                                      "GST") ||
-                                                                  (Index ===
-                                                                    0 &&
-                                                                    !this.handleGst(
-                                                                      res.name,
-                                                                      valueofproductdetail.header,
-                                                                      valueofproductdetail.namedetail
-                                                                    )) ? (
-                                                                  ""
-                                                                ) : (
-                                                                  Item
-                                                                )
-                                                              ) : (
-                                                                Item
-                                                              )}{" "}
-                                                            </span>
-                                                          </b>
-                                                        );
-                                                      } else {
-                                                        return (
+                                                  {res.details.map((Item, Index) => {
+                                                    if (_isSilver) {
+                                                      return (
+                                                        <b>
                                                           <span
                                                             style={{
                                                               fontSize: "12px",
@@ -298,24 +195,12 @@ class ProductDetails extends React.Component {
                                                             }}
                                                           >
                                                             {" "}
-                                                            {valueofproductdetail.header ===
-                                                            "Price Breakup" ? (
-                                                              res.name !==
-                                                                "GST" &&
+                                                            {valueofproductdetail.header === "Price Breakup" ? (
+                                                              res.name !== "GST" &&
                                                               Index === 0 &&
-                                                              res.details[
-                                                                Index
-                                                              ] !==
-                                                                res.details[
-                                                                  Index + 1
-                                                                ] ? (
-                                                                <del>
-                                                                  {Item}
-                                                                </del>
-                                                              ) : (Index ===
-                                                                  0 &&
-                                                                  res.name !==
-                                                                    "GST") ||
+                                                              res.details[Index] !== res.details[Index + 1] ? (
+                                                                <del>{Item}</del>
+                                                              ) : (Index === 0 && res.name !== "GST") ||
                                                                 (Index === 0 &&
                                                                   !this.handleGst(
                                                                     res.name,
@@ -330,28 +215,53 @@ class ProductDetails extends React.Component {
                                                               Item
                                                             )}{" "}
                                                           </span>
-                                                        );
-                                                      }
+                                                        </b>
+                                                      );
+                                                    } else {
+                                                      return (
+                                                        <span
+                                                          style={{
+                                                            fontSize: "12px",
+                                                            textAlign: "left",
+                                                          }}
+                                                        >
+                                                          {" "}
+                                                          {valueofproductdetail.header === "Price Breakup" ? (
+                                                            res.name !== "GST" &&
+                                                            Index === 0 &&
+                                                            res.details[Index] !== res.details[Index + 1] ? (
+                                                              <del>{Item}</del>
+                                                            ) : (Index === 0 && res.name !== "GST") ||
+                                                              (Index === 0 &&
+                                                                !this.handleGst(
+                                                                  res.name,
+                                                                  valueofproductdetail.header,
+                                                                  valueofproductdetail.namedetail
+                                                                )) ? (
+                                                              ""
+                                                            ) : (
+                                                              Item
+                                                            )
+                                                          ) : (
+                                                            Item
+                                                          )}{" "}
+                                                        </span>
+                                                      );
                                                     }
-                                                  )}
+                                                  })}
                                                 </ListItemText>
                                               ) : (
                                                 <ListItemText
                                                   variant=""
-                                                  className={`product-subhead-list ${
-                                                    classes.fontgray
-                                                  } ${
-                                                    _isSilver
-                                                      ? classes.normalFontsColor
-                                                      : ""
+                                                  className={`product-subhead-list ${classes.fontgray} ${
+                                                    _isSilver ? classes.normalFontsColor : ""
                                                   }`}
                                                 >
                                                   {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
                                                   {
                                                     <span
                                                       style={{
-                                                        fontSize:
-                                                          !_isSilver && "12px",
+                                                        fontSize: !_isSilver && "12px",
                                                         marginLeft: "10px",
                                                         marginTop: 0,
                                                       }}
@@ -406,21 +316,12 @@ class ProductDetails extends React.Component {
                   }}
                 >
                   <div className="overall-bo">
-                    <span
-                      key={val.name}
-                      className={`product-details ${classes.normalfonts}`}
-                    >
+                    <span key={val.name} className={`product-details ${classes.normalfonts}`}>
                       {val.header}
                     </span>
                     {/* <hr class="bottom-line"></hr> */}
-                    <Grid
-                      item
-                      xs={12}
-                      className={`product-subhead ${classes.normalfonts}`}
-                    >
-                      <span style={{ fontSize: "12px" }}>
-                        {val.name.join(" ")}
-                      </span>
+                    <Grid item xs={12} className={`product-subhead ${classes.normalfonts}`}>
+                      <span style={{ fontSize: "12px" }}>{val.name.join(" ")}</span>
                     </Grid>
                   </div>
                 </div>
@@ -435,19 +336,14 @@ class ProductDetails extends React.Component {
     const { expanded } = this.state;
     const { data, isSilver } = this.props;
     const { classes } = this.props;
-    const _mapper =
-      data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
-        ? data[0].productsDetails
-        : [];
+    const _mapper = data && data.length > 0 && data[0] && data[0].productsDetails.length > 0 ? data[0].productsDetails : [];
     const _isSilver = isSilver ? true : false;
     return (
       <>
         {val.header !== "Price Breakup" ||
         (val.header === "Price Breakup" &&
           val.namedetail[5].name === "Total" &&
-          Number(
-            val.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g, "")
-          ) > 15000) ? (
+          Number(val.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g, "")) > 15000) ? (
           <ExpansionPanel
             style={{
               boxShadow:
@@ -460,15 +356,9 @@ class ProductDetails extends React.Component {
             onChange={this.handle(val.header)}
             key={val.name}
           >
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
+            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
               <div style={{ width: "100%" }}>
-                <Typography className={`subtabs-smrt ${classes.normalfonts}`}>
-                  {val.header}
-                </Typography>
+                <Typography className={`subtabs-smrt ${classes.normalfonts}`}>{val.header}</Typography>
                 {/* <hr class="bottom-line border-line-"></hr> */}
               </div>
             </ExpansionPanelSummary>
@@ -488,7 +378,23 @@ class ProductDetails extends React.Component {
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s,
               </div> */}
-              {isSilver ? <p> {this.props.data[0].productDescription}</p> : ""}
+              {isSilver ? (
+                <p
+                  style={{
+                    margin: "0px 0px 10px 0px",
+                    padding: "0px 10px",
+                    fontSize: "12px",
+                    opacity: "0.5",
+                    color: "#000",
+                    lineHeight: "1.5",
+                  }}
+                >
+                  {" "}
+                  {this.props.data[0].productDescription}
+                </p>
+              ) : (
+                ""
+              )}
 
               <div style={{ backgroundColor: "fafafa" }}>
                 {val.namedetail !== undefined &&
@@ -500,37 +406,16 @@ class ProductDetails extends React.Component {
                         {
                           <>
                             {" "}
-                            {res.details &&
-                            res.name &&
-                            this.handleCheck(val.header, res.details) ? (
-                              <Grid
-                                container
-                                item
-                                xs={12}
-                                style={{ padding: "0px 10px 0px 10px " }}
-                              >
+                            {res.details && res.name && this.handleCheck(val.header, res.details) ? (
+                              <Grid container item xs={12} style={{ padding: "0px 10px 0px 10px " }}>
                                 <Grid xs={4} lg={4}>
-                                  <ListItemText
-                                    variant=""
-                                    className={`product-subhead ${classes.normalfonts}`}
-                                  >
-                                    <span style={{ fontSize: "12px" }}>
-                                      {" "}
-                                      {res.name}
-                                    </span>
+                                  <ListItemText variant="" className={`product-subhead ${classes.normalfonts}`}>
+                                    <span style={{ fontSize: "12px" }}> {res.name}</span>
                                   </ListItemText>
                                 </Grid>
-                                <Grid
-                                  container
-                                  item
-                                  xs={8}
-                                  style={{ alignItems: "center" }}
-                                >
+                                <Grid container item xs={8} style={{ alignItems: "center" }}>
                                   {isArray(res.details) ? (
-                                    <ListItemText
-                                      variant=""
-                                      className={`product-subhead-list ${classes.fontgray}`}
-                                    >
+                                    <ListItemText variant="" className={`product-subhead-list ${classes.fontgray}`}>
                                       {res.details.map((Item, Index) => {
                                         return (
                                           <span
@@ -543,17 +428,10 @@ class ProductDetails extends React.Component {
                                             {val.header === "Price Breakup" ? (
                                               res.name !== "GST" &&
                                               Index === 0 &&
-                                              res.details[Index] !==
-                                                res.details[Index + 1] ? (
+                                              res.details[Index] !== res.details[Index + 1] ? (
                                                 <del>{Item}</del>
-                                              ) : (Index === 0 &&
-                                                  res.name !== "GST") ||
-                                                (Index === 0 &&
-                                                  !this.handleGst(
-                                                    res.name,
-                                                    val.header,
-                                                    val.namedetail
-                                                  )) ? (
+                                              ) : (Index === 0 && res.name !== "GST") ||
+                                                (Index === 0 && !this.handleGst(res.name, val.header, val.namedetail)) ? (
                                                 ""
                                               ) : (
                                                 Item
@@ -566,10 +444,7 @@ class ProductDetails extends React.Component {
                                       })}
                                     </ListItemText>
                                   ) : (
-                                    <ListItemText
-                                      variant=""
-                                      className={`product-subhead-list ${classes.fontgray}`}
-                                    >
+                                    <ListItemText variant="" className={`product-subhead-list ${classes.fontgray}`}>
                                       <span
                                         style={{
                                           fontSize: "12px",
@@ -600,19 +475,14 @@ class ProductDetails extends React.Component {
     const { expanded } = this.state;
     const { data, isSilver } = this.props;
     const { classes } = this.props;
-    const _mapper =
-      data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
-        ? data[0].productsDetails
-        : [];
+    const _mapper = data && data.length > 0 && data[0] && data[0].productsDetails.length > 0 ? data[0].productsDetails : [];
     const _isSilver = isSilver ? true : false;
     return (
       <>
         {val.header !== "Price Breakup" ||
         (val.header === "Price Breakup" &&
           val.namedetail[5].name === "Total" &&
-          Number(
-            val.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g, "")
-          ) > 15000) ? (
+          Number(val.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g, "")) > 15000) ? (
           // <ExpansionPanel
           //   style={{
           //     boxShadow:
@@ -630,11 +500,7 @@ class ProductDetails extends React.Component {
               <Typography
                 variant="h1"
                 component="h1"
-                className={`subtabs-smrt ${
-                  _isSilver
-                    ? ` ${classes.fontsSmallScreen}`
-                    : classes.normalfonts
-                }`}
+                className={`subtabs-smrt ${_isSilver ? ` ${classes.fontsSmallScreen}` : classes.normalfonts}`}
               >
                 {val.header}
               </Typography>
@@ -659,27 +525,13 @@ class ProductDetails extends React.Component {
                               }}
                             >
                               <Grid xs={4} lg={4}>
-                                <ListItemText
-                                  variant=""
-                                  className={`product-subhead ${classes.normalfonts}`}
-                                >
-                                  <span style={{ fontSize: "12px" }}>
-                                    {" "}
-                                    {res.name}
-                                  </span>
+                                <ListItemText variant="" className={`product-subhead ${classes.normalfonts}`}>
+                                  <span style={{ fontSize: "12px" }}> {res.name}</span>
                                 </ListItemText>
                               </Grid>
-                              <Grid
-                                container
-                                item
-                                xs={8}
-                                style={{ alignItems: "center" }}
-                              >
+                              <Grid container item xs={8} style={{ alignItems: "center" }}>
                                 {isArray(res.details) ? (
-                                  <ListItemText
-                                    variant=""
-                                    className={`product-subhead-list ${classes.fontgray}`}
-                                  >
+                                  <ListItemText variant="" className={`product-subhead-list ${classes.fontgray}`}>
                                     {res.details.map((Item, Index) => {
                                       return (
                                         <span
@@ -690,19 +542,10 @@ class ProductDetails extends React.Component {
                                         >
                                           {" "}
                                           {val.header === "Price Breakup" ? (
-                                            res.name !== "GST" &&
-                                            Index === 0 &&
-                                            res.details[Index] !==
-                                              res.details[Index + 1] ? (
+                                            res.name !== "GST" && Index === 0 && res.details[Index] !== res.details[Index + 1] ? (
                                               <del>{Item}</del>
-                                            ) : (Index === 0 &&
-                                                res.name !== "GST") ||
-                                              (Index === 0 &&
-                                                !this.handleGst(
-                                                  res.name,
-                                                  val.header,
-                                                  val.namedetail
-                                                )) ? (
+                                            ) : (Index === 0 && res.name !== "GST") ||
+                                              (Index === 0 && !this.handleGst(res.name, val.header, val.namedetail)) ? (
                                               ""
                                             ) : (
                                               Item
@@ -715,10 +558,7 @@ class ProductDetails extends React.Component {
                                     })}
                                   </ListItemText>
                                 ) : (
-                                  <ListItemText
-                                    variant=""
-                                    className={`product-subhead-list `}
-                                  >
+                                  <ListItemText variant="" className={`product-subhead-list `}>
                                     <span
                                       style={{
                                         fontSize: "12px",
@@ -748,25 +588,14 @@ class ProductDetails extends React.Component {
     const { expanded } = this.state;
     const { data, isSilver } = this.props;
     const { classes } = this.props;
-    const _mapper =
-      data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
-        ? data[0].productsDetails
-        : [];
+    const _mapper = data && data.length > 0 && data[0] && data[0].productsDetails.length > 0 ? data[0].productsDetails : [];
     const _isSilver = isSilver ? true : false;
-    const _mapperChooser = _isSilver
-      ? _mapper.length > 0
-        ? [_mapper[0]]
-        : _mapper
-      : _mapper;
+    const _mapperChooser = _isSilver ? (_mapper.length > 0 ? [_mapper[0]] : _mapper) : _mapper;
     return (
       <div>
         <Container>
           {_mapperChooser.map((val) => {
-            return val.namedetail.length === 0
-              ? false
-              : _isSilver
-              ? this.withExpandCollapse(val)
-              : this.withExpandCollapse(val);
+            return val.namedetail.length === 0 ? false : _isSilver ? this.withExpandCollapse(val) : this.withExpandCollapse(val);
           })}
 
           {!_isSilver &&
@@ -782,33 +611,17 @@ class ProductDetails extends React.Component {
                   expanded={expanded === "panel"}
                   onChange={this.handle("panel")}
                 >
-                  <ExpansionPanelSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
+                  <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
                     <div style={{ width: "100%" }}>
-                      <Typography
-                        className={`product-details-smrt ${classes.normalfonts}`}
-                      >
-                        {val.header}
-                      </Typography>
+                      <Typography className={`product-details-smrt ${classes.normalfonts}`}>{val.header}</Typography>
                       {/* <hr class="bottom-line border-line-"></hr> */}
                     </div>
                   </ExpansionPanelSummary>
 
-                  <div
-                    style={{ padding: "10px", backgroundColor: "antiquewhite" }}
-                  >
+                  <div style={{ padding: "10px", backgroundColor: "antiquewhite" }}>
                     <Grid container spacing={12}>
-                      <Grid
-                        item
-                        xs={12}
-                        className={`product-subhead ${classes.normalfonts}`}
-                      >
-                        <span style={{ fontSize: "12px" }}>
-                          {val.name.join(" ")}
-                        </span>
+                      <Grid item xs={12} className={`product-subhead ${classes.normalfonts}`}>
+                        <span style={{ fontSize: "12px" }}>{val.name.join(" ")}</span>
                       </Grid>
                     </Grid>
                   </div>
