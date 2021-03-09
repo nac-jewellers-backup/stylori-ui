@@ -6,8 +6,7 @@ import topPicksOne from "../../assets/topPicksOne.jpg";
 import topPicksTwo from "../../assets/topPicksTwo.jpg";
 import topPicksThree from "../../assets/topPicksThree.jpg";
 import topPicksFour from "../../assets/topPicksFour.jpg";
-const topPicksFive =
-  "https://assets-cdn.stylori.com/552x276/images/homepage/Stylori_ Daisy Days.jpg";
+const topPicksFive = "https://assets-cdn.stylori.com/552x276/images/homepage/Stylori_ Daisy Days.jpg";
 //first banner image
 export const carouselTop = [
   {
@@ -31,33 +30,29 @@ export const carouselTop = [
     },
     images: [
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/mudra-2021-web.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/mudra-2021-mob.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/mudra-2021-web.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/mudra-2021-mob.jpg",
         navigateUrl: "https://www.stylori.com/silver-jewellery-dmudra?sort=New%20to%20Stylori&startprice=0&endprice=0",
       },
       {
         img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/SIlver-Pearl-Collection-Banner-w.jpg",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylri+silver+traditional+jewellery+web.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylri+silver+traditional+jewellery+mob.jpg",
+        navigateUrl: "https://www.stylori.com/silver-jewellery-traditional?sort=New%20to%20Stylori&startprice=0&endprice=0",
+      },
+      {
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/SIlver-Pearl-Collection-Banner-w.jpg",
         mobileImg:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/SIlver-Pearl-Collection-Banner-m.jpg",
         navigateUrl: "https://www.stylori.com/silver-jewellery-baroque+whites+collection",
       },
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/StyloriSilver-Jewellery-cz-w.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/StyloriSilver-Jewellery-cz-m.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/StyloriSilver-Jewellery-cz-w.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/StyloriSilver-Jewellery-cz-m.jpg",
         navigateUrl: "https://www.stylori.com/swarovski+cz-silver-jewellery",
       },
-      {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+Silver+-+Starstruck+collection+Banner+W.jpg	",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori+Silver+-+Starstruck+collection+Banner+M.jpg	",
-        navigateUrl: "https://www.stylori.com/silver-jewellery-starstruck+collection",
-      },
+
       // {
       //   img:
       //     "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-free+ship+web.jpg	",
@@ -151,23 +146,19 @@ export const TopPicksimages = [
 ];
 export const collectionGrid = [
   {
-    img:
-      "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori-ring-tile.png",
+    img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori-ring-tile.png",
     navigateUrl: "/rings-jewellery?sort=latest",
   },
   {
-    img:
-      "https://assets.stylori.com/images/Static+Pages/Home+Page/mangocollection.png",
+    img: "https://assets.stylori.com/images/Static+Pages/Home+Page/mangocollection.png",
     navigateUrl: "/jewellery-from+the+summer+collection?sort=latest",
   },
   {
-    img:
-      "https://assets.stylori.com/images/Static+Pages/Home+Page/Hallo+Collection_Website-01.png",
+    img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Hallo+Collection_Website-01.png",
     navigateUrl: "/jewellery-from+halo+collection",
   },
   {
-    img:
-      "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori_+Daisy+Days.png",
+    img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori_+Daisy+Days.png",
     navigateUrl: "/jewellery-from+daisy+days+collection?sort=latest&page=4",
   },
   {
@@ -189,10 +180,8 @@ export const FeaturedCarousel = [
     },
     images: [
       {
-        web:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/SIlver-Home-page-Featured.jpg",
-        mob:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/featured-banner-mudra.jpg",
+        web: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/SIlver-Home-page-Featured.jpg",
+        mob: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/featured-banner-mudra.jpg",
         url: "/silver-jewellery-dmudra",
       },
       // "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",

@@ -50,7 +50,7 @@ class Buynowbutton extends React.Component {
         <Button
           className={this.props.class}
           style={{ borderRadius: "5px", ...this.props.style }}
-          disabled={productIsActive ? true : false}
+          disabled={productIsActive ? false : true}
         >
           {window.location.pathname.split("/").pop() !== "cart" &&
           window.location.pathname.split("/").pop() !== "checkout" &&

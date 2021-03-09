@@ -84,11 +84,11 @@ class Buynowfixed extends React.Component {
                   className={`fixed-grid ${isSilver ? classes.fixedGridsilver : ""}`}
                   style={{ textAlign: "center", background: "#EBEAEA" }}
                 >
-                  <div onClick={() => (productIsActive ? "" : this.props.deleteComment())}>
+                  <div onClick={() => (productIsActive ? this.props.deleteComment() : "")}>
                     <Buynowbutton
                       sku={data[0].skuId}
                       class={`product-footer-buynow ${isSilver ? classes.fixedGridsilver : ""}`}
-                      onClick={productIsActive ? "" : handleLocalStorage.bind(this)}
+                      onClick={productIsActive ? handleLocalStorage.bind(this) : ""}
                       productIsActive={productIsActive ?? ""}
                     />
                   </div>
@@ -103,7 +103,7 @@ class Buynowfixed extends React.Component {
                   className={`fixed-grid ${isSilver ? classes.fixedGridsilver : ""}`}
                   style={{ textAlign: "center", background: "#EBEAEA" }}
                 >
-                  <div onClick={productIsActive ? "" : handleLocalStorage.bind(this)}>
+                  <div onClick={productIsActive ? handleLocalStorage.bind(this) : ""}>
                     <Buynowbutton
                       sku={data[0].skuId}
                       class={`product-footer-buynow ${isSilver ? classes.fixedGridsilver : ""}`}
@@ -129,7 +129,7 @@ class Buynowfixed extends React.Component {
               <>
                 {" "}
                 <Grid item xs={6} style={{ textAlign: "center", backgroundColor: "#ccc" }}>
-                  <div onClick={() => (productIsActive ? "" : this.props.deleteComment())}>
+                  <div onClick={() => (productIsActive ? this.props.deleteComment() : "" )}>
                     <Buynowbutton
                       sku={data[0].skuId}
                       // class={`product-footer-buynow ${
@@ -137,7 +137,7 @@ class Buynowfixed extends React.Component {
                       // }`}
                       class={`product-footer-buynow ${classes.addtoCartToBuyNowStyle}`}
                       addtoCartToBuyNow={true}
-                      onClick={productIsActive ? "" : handleLocalStorage.bind(this)}
+                      onClick={productIsActive ? handleLocalStorage.bind(this) : ""}
                       productIsActive={productIsActive ?? ""}
                     />
                   </div>

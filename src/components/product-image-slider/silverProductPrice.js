@@ -557,7 +557,7 @@ const Productprice = (
                               </span>
                             </Button> */}
 
-                            <div onClick={isactive ? "" : deletechecklists}>
+                            <div onClick={isactive ? deletechecklists : ""}>
                               <Buynowbutton
                                 sku={data[0].skuId}
                                 class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart} ${classes.robotoBoldFont} ${classes.add_to_cart_text}`}
@@ -568,7 +568,7 @@ const Productprice = (
                                 productIsActive={isactive ?? ""}
                                 // onClick={}
                                 // handleSuccess={deletechecklists}
-                                onClick={isactive ? "" : handleLocalStorage.bind(this)}
+                                onClick={isactive ? handleLocalStorage.bind(this) : ""}
                               />
 
                               {/* <CommenDialog
@@ -586,7 +586,7 @@ const Productprice = (
                       )}
                       <Grid container item xs={12}>
                         <Grid item xs={3} sm={4} md={5} lg={4}>
-                          <div onClick={isactive ? " " : deletechecklists}>
+                          <div onClick={isactive ? deletechecklists : ""}>
                             <Buynowbutton
                               sku={data[0].skuId}
                               class={`${classes.buynowButtonSilver} ${classes.buttonsilver} ${classes.robotoBoldFont}`}
@@ -596,7 +596,7 @@ const Productprice = (
                               productIsActive={isactive ?? ""}
                               // onClick={}
                               // handleSuccess={deletechecklists}
-                              onClick={isactive ? "" : handleLocalStorage.bind(this)}
+                              onClick={isactive ? handleLocalStorage.bind(this) : ""}
                             />
 
                             {/* <CommenDialog

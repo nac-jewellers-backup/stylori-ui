@@ -144,7 +144,7 @@ const Buydetails = (
                 //
                 //   }
                 // }}
-                onClick={isactive ? "" : handleLocalStorage.bind(this)}
+                onClick={isactive ? handleLocalStorage.bind(this) : ""}
                 // onClick={handleLocalStorage.bind(this)}
               >
                 <Buynowbutton
@@ -630,7 +630,7 @@ class Component extends React.Component {
             <Buynowfixed
               deleteComment={this.deletechecklists}
               data={this.props.data}
-              onClick={isactive ? "" : this.handleLocalStorage.bind(this)}
+              onClick={isactive ? this.handleLocalStorage.bind(this) : ""}
               isSilver={isSilver}
               productIsActive={isactive ?? ""}
             />
