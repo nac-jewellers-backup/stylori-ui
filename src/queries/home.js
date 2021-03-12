@@ -21,9 +21,9 @@ export const testimonials = `query testimonials {
         }
       }
     }
-  }`
+  }`;
 
-  export const silverStyloriHomepage = `query styloriSilverTestimonials {
+export const silverStyloriHomepage = `query styloriSilverTestimonials {
     allCustomerReviews(condition: {isPublish: true}, orderBy: IS_PUBLISH_DESC) {
       nodes {
         customerName
@@ -31,20 +31,22 @@ export const testimonials = `query testimonials {
       }
     }
   }
-  `
+  `;
 
-  export const silverStyloriAllMasterCollections = `query MyQuery {
+export const silverStyloriAllMasterCollections = `query MyQuery {
     allMasterCollections {
       nodes {
         name
       }
     }
-  }`
-  
-  export const silverStyloriCollections = (data) =>`query MyQuery {
-    ${data.map(val=>{
-      return(
-        `query${val.replace(/ /g,'')}:allProductCollections(condition: {collectionName: "${val}"},filter: {productListByProductId: {isactive: {equalTo: true}}}, first: 1) {
+  }`;
+
+export const silverStyloriCollections = (data) => `query MyQuery {
+    ${data.map((val) => {
+      return `query${val.replace(
+        / /g,
+        ""
+      )}:allProductCollections(condition: {collectionName: "${val}"},filter: {productListByProductId: {isactive: {equalTo: true}}}, first: 1) {
           nodes {
             collectionName
             productListByProductId {
@@ -57,12 +59,11 @@ export const testimonials = `query testimonials {
             }
           }
           totalCount
-        }`
-      )
+        }`;
     })} 
-  }`
+  }`;
 
-  export const allSeoPriorities = (arrayOfCollections) =>`
+export const allSeoPriorities = (arrayOfCollections) => `
   query seoCollections{
     allSeoUrlPriorities(filter: {attributeName: {equalTo: "Collection"}, attributeValue: {in: [${arrayOfCollections}]}}) {
       nodes {
@@ -73,9 +74,9 @@ export const testimonials = `query testimonials {
       }
     }
   }
-  `
+  `;
 
-  export const customerReviews = `query customerReviews {
+export const customerReviews = `query customerReviews {
     allCustomerReviews(condition: {isPublish: true}, first: 10) {
       nodes {
         customerName
@@ -83,4 +84,32 @@ export const testimonials = `query testimonials {
         userprofileId
       }
     }
-  }`
+  }`;
+
+export const ALLSTYLORILANDINGBANNERS = `
+query MyQuery {
+  allStyloriBanners {
+    nodes {
+      id
+      mobile
+      position
+      url
+      web
+    }
+  }
+}
+`;
+export const ALLSTYLORISILVERLANDINGBANNERS = `
+query MyQuery {
+  allStyloriSilverBanners {
+    nodes {
+      id
+      mobile
+      position
+      url
+      web
+    }
+  }
+}
+
+`;
