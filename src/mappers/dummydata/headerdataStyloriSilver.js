@@ -28,6 +28,10 @@ export const mainlist = [
     url: "/silver-jewellery-shipping+in+1+day",
   },
   {
+    name: "CSK MERCHANDISE",
+    url: "/silver-jewellery-csk+collection",
+  },
+  {
     name: "VISIT STYLORI.COM",
     url: "/",
   },
@@ -979,15 +983,11 @@ export const subheader = {
     ],
   },
 
-
-
-
   StarStruck: {
     header: "StarStruck",
     name: [
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Star.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Star.jpg",
         content: "StarStruck",
         url: "/silver-jewellery-starstruck+collection",
       },
@@ -1000,13 +1000,11 @@ export const subheader = {
     }),
   },
 
-
   "Baroque Whites Collection": {
     header: "Baroque Whites Collection",
     name: [
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Pearl.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Pearl.jpg",
         content: "Baroque Whites Collection",
         url: "/silver-jewellery-baroque+whites+collection",
       },
@@ -1022,8 +1020,7 @@ export const subheader = {
     header: "In love Collection",
     name: [
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Inlove.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Inlove.jpg",
         content: "In love Collection",
         url: "/silver-jewellery-inlovecollection",
       },
@@ -1035,10 +1032,6 @@ export const subheader = {
       };
     }),
   },
-
-
-
-
 };
 
 //layer 2 named jewellery MOBILE
@@ -1227,6 +1220,10 @@ export const menuListHeader = [
   {
     title: "READY TO SHIP",
     url: "/silver-jewellery-shipping+in+1+day",
+  },
+  {
+    title: "CSK MERCHANDISE",
+    url: "/silver-jewellery-csk+collection",
   },
   {
     title: "VISIT STYLORI.COM",
