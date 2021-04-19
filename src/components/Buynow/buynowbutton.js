@@ -55,7 +55,6 @@ class Buynowbutton extends React.Component {
           className={this.props.class}
           style={{ borderRadius: "5px", color: !productIsActive ? "rgba(0, 0, 0, 0.26)" : "", ...this.props.style }}
           // disabled={productIsActive ? false : true}
-         
         >
           {window.location.pathname.split("/").pop() !== "cart" &&
           window.location.pathname.split("/").pop() !== "checkout" &&
@@ -90,11 +89,11 @@ class Buynowbutton extends React.Component {
                   <span
                     style={{
                       fontWeight: "bolder",
-                      fontSize: "9px !important",
+                      fontSize: "8px !important",
                       color: !productIsActive ? "rgba(0, 0, 0, 0.26)" : "",
                     }}
                   >
-                    <i class="fa fa-shopping-bag buynow-icon"></i> Add to Cart
+                    <i class="fa fa-shopping-bag buynow-icon" ></i> Add to Cart
                   </span>
                 ) : (
                   <>
