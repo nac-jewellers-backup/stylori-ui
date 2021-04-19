@@ -53,24 +53,24 @@ class Buynowbutton extends React.Component {
       <div>
         <Button
           className={this.props.class}
-          style={{ borderRadius: "5px", color: !productIsActive ? "rgba(0, 0, 0, 0.26)" : "", ...this.props.style }}
+          style={{ borderRadius: "5px", ...this.props.style }}
           // disabled={productIsActive ? false : true}
         >
           {window.location.pathname.split("/").pop() !== "cart" &&
           window.location.pathname.split("/").pop() !== "checkout" &&
           this.state.vals === 1 ? (
             <>
-              {!this.props.withoutBag && <i class="fa fa-shopping-bag buynow-icon"></i>}
+              {!this.props.withoutBag &&  productIsActive && <i class="fa fa-shopping-bag buynow-icon"></i>}
               {this.props.addtoCartToBuyNow ? (
-                <span style={{ fontWeight: "bolder", color: !productIsActive ? "rgba(0, 0, 0, 0.26)" : "" }}> In Cart!</span>
+                <span style={{ fontWeight: "bolder" }}> In Cart!</span>
               ) : (
                 <>
                   {productIsActive ? (
-                    <span style={{ color: !productIsActive ? "rgba(0, 0, 0, 0.26)" : "" }}> In bag!</span>
+                    <span> In bag!</span>
                   ) : (
                     <span
                       className={this.props.button}
-                      style={{ fontSize: "1rem", color: !productIsActive ? "rgba(0, 0, 0, 0.26)" : "" }}
+                      style={{ fontSize: "1rem" }}
                       // onClick={() => window.open("https://wa.me/919952625252?text=Hi")}
                       // href="https://wa.me/919952625252?text=Hi"
                       onClick={enquireLink}
@@ -90,10 +90,9 @@ class Buynowbutton extends React.Component {
                     style={{
                       fontWeight: "bolder",
                       fontSize: "8px !important",
-                      color: !productIsActive ? "rgba(0, 0, 0, 0.26)" : "",
                     }}
                   >
-                    <i class="fa fa-shopping-bag buynow-icon" ></i> Add to Cart
+                 <i class="fa fa-shopping-bag buynow-icon"></i> Add to Cart
                   </span>
                 ) : (
                   <>
@@ -102,7 +101,7 @@ class Buynowbutton extends React.Component {
                     ) : (
                       <span
                         className={this.props.button}
-                        style={{ fontSize: "1rem", color: !productIsActive ? "rgba(0, 0, 0, 0.26)" : "" }}
+                        style={{ fontSize: "1rem" }}
                         // onClick={() => window.open("https://wa.me/919952625252?text=Hi")}
                         // href="https://wa.me/919952625252?text=Hi"
                         onClick={enquireLink}

@@ -310,7 +310,7 @@ const styles = (theme) => ({
   buttonHeightAddToCart: {
     width: "100% !important",
     height: "36px !important",
-    fontSize: "0.9rem",
+    fontSize: "0.8rem",
     borderRadius: "unset !important",
     boxShadow: "8px 8px 5px rgba(208, 210, 211, 1)",
     textTransform: "uppercase",
