@@ -145,7 +145,7 @@ class ProductDetail extends Component {
       nextArrow: <ArrowRightIcon style={{ fill: "rgb(6, 171, 159)", fontSize: "1.7rem" }} />,
     };
     //  debugger
-    debugger;
+   
     console.log("---------", this.props);
     return (
       <div>
