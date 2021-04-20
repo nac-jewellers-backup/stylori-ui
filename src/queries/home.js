@@ -101,15 +101,17 @@ query MyQuery {
 `;
 export const ALLSTYLORISILVERLANDINGBANNERS = `
 query MyQuery {
-  allStyloriSilverBanners {
+  allStyloriSilverBanners(condition: {urlParam: null}) {
     nodes {
       id
       mobile
       position
       url
       web
+      urlParam
     }
   }
 }
+
 
 `;
