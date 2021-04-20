@@ -271,7 +271,15 @@ export const homePageStylori = {
         navigateUrl: "#",
       },
     ],
-
+    silverListingCskPage: [
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/NAC+CSK+Stylori+jewellery+bd.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/NAC+CSK+Stylori+jewellery+bm.jpg",
+        navigateUrl: "#",
+      },
+    ],
     silverListingPageBottomData: [
       {
         img:

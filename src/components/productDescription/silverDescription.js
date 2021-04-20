@@ -859,6 +859,37 @@ class ProductDescription extends Component {
                             </>
                           )
                         )
+                        : window.location.pathname ===
+                        "/silver-jewellery-csk+collection"
+                      ? homePageStylori.carouselTop.silverListingCskPage.map(
+                          (val, index) => (
+                            <>
+                              <Hidden smDown>
+                                <Grid container key={index}>
+                                  <a
+                                    href={val.navigateUrl}
+                                    style={{ width: "100%" }}
+                                  >
+                                    <img
+                                      src={val.img}
+                                      style={{ width: "100%", height: "100%" }}
+                                    />
+                                  </a>
+                                </Grid>
+                              </Hidden>
+                              <Hidden mdUp>
+                                <Grid container key={index}>
+                                  <a href={val.navigateUrl}>
+                                    <img
+                                      src={val.mobileImg}
+                                      style={{ width: "100%", height: "100%" }}
+                                    />
+                                  </a>
+                                </Grid>
+                              </Hidden>
+                            </>
+                          )
+                        )
                       : homePageStylori.carouselTop.silverListingPageData.map(
                           (val, index) => (
                             <>
@@ -1033,6 +1064,37 @@ class ProductDescription extends Component {
                       : window.location.pathname ===
                         "/silver-jewellery-traditional"
                       ? homePageStylori.carouselTop.silverListingTraditionalPage.map(
+                          (val, index) => (
+                            <>
+                              <Hidden smDown>
+                                <Grid container key={index}>
+                                  <a
+                                    href={val.navigateUrl}
+                                    style={{ width: "100%" }}
+                                  >
+                                    <img
+                                      src={val.img}
+                                      style={{ width: "100%", height: "100%" }}
+                                    />
+                                  </a>
+                                </Grid>
+                              </Hidden>
+                              <Hidden mdUp>
+                                <Grid container key={index}>
+                                  <a href={val.navigateUrl}>
+                                    <img
+                                      src={val.mobileImg}
+                                      style={{ width: "100%", height: "100%" }}
+                                    />
+                                  </a>
+                                </Grid>
+                              </Hidden>
+                            </>
+                          )
+                        )
+                        : window.location.pathname ===
+                        "/silver-jewellery-csk+collection"
+                      ? homePageStylori.carouselTop.silverListingCskPage.map(
                           (val, index) => (
                             <>
                               <Hidden smDown>
