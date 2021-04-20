@@ -540,7 +540,7 @@ const Productprice = (
                       </Grid> */}
                       {isSilver && (
                         <Grid item xs={12} style={{ padding: "10px 0px 20px 0px" }}>
-                          <Grid item xs={3} sm={4} md={3} lg={3}>
+                          <Grid item xs={3} sm={4} md={4} lg={3}>
                             {/* <Button
                              
                               variant="contained"

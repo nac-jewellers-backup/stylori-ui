@@ -354,6 +354,9 @@ const styles = (theme) => ({
       height: "36px !important",
       width: "99% !important",
     },
+    // [theme.breakpoints.only("md")]: {
+    //   width: "82% !important",
+    // },
   },
   searchButtonSilver: {
     border: 0,
@@ -519,7 +522,7 @@ const styles = (theme) => ({
   },
   add_to_cart_text: {
     [theme.breakpoints.only("md")]: {
-      fontSize: "8px",
+      fontSize: "12px",
       // fontWeight: "bold !important",
     },
   },

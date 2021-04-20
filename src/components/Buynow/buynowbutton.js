@@ -60,7 +60,7 @@ class Buynowbutton extends React.Component {
           window.location.pathname.split("/").pop() !== "checkout" &&
           this.state.vals === 1 ? (
             <>
-              {!this.props.withoutBag &&  productIsActive && <i class="fa fa-shopping-bag buynow-icon"></i>}
+              {!this.props.withoutBag && productIsActive && <i class="fa fa-shopping-bag buynow-icon"></i>}
               {this.props.addtoCartToBuyNow ? (
                 <span style={{ fontWeight: "bolder" }}> In Cart!</span>
               ) : (
@@ -92,7 +92,7 @@ class Buynowbutton extends React.Component {
                       fontSize: "8px !important",
                     }}
                   >
-                 <i class="fa fa-shopping-bag buynow-icon"></i> Add to Cart
+                    <i class="fa fa-shopping-bag buynow-icon"></i> Add to Cart
                   </span>
                 ) : (
                   <>
