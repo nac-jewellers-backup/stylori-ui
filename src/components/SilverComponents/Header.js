@@ -46,6 +46,7 @@ import styloriLogo from "../../assets/Stylorilogo.svg";
 import ElasticSearch from "components/ElasticSearch/ElasticSearch";
 import { CartContext, GlobalContext } from "context";
 import silverOpenLinkImage from "../../assets/silverOpenLink.png";
+import Collection from "screens/Stylori/Collection";
 let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
 // var path = window.location.pathname.split('/').pop();
 class Header extends Component {
@@ -858,7 +859,11 @@ class Header extends Component {
                                     {Jewellery[selected][row2].name !== "NEW ARRIVALS" &&
                                       Jewellery[selected][row2].name !== "RINGS" &&
                                       Jewellery[selected][row2].name !== "BEST SELLERS" &&
-                                      Jewellery[selected][row2].name !== "BANGLE" && (
+                                      Jewellery[selected][row2].name !== "BANGLE" &&
+                                      Jewellery[selected][row2].name !== "StarStruck" &&
+                                      Jewellery[selected][row2].name !== "Mural Collection" &&
+                                      Jewellery[selected][row2].name !== "In love Collection" &&
+                                      Jewellery[selected][row2].name !== "Baroque Whites Collection" && (
                                         <i class={`fa fa-caret-up drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""}`}></i>
                                       )}
                                   </span>
@@ -867,7 +872,11 @@ class Header extends Component {
                                     {Jewellery[selected][row2].name !== "NEW ARRIVALS" &&
                                       Jewellery[selected][row2].name !== "RINGS" &&
                                       Jewellery[selected][row2].name !== "BEST SELLERS" &&
-                                      Jewellery[selected][row2].name !== "BANGLE" && (
+                                      Jewellery[selected][row2].name !== "BANGLE" &&
+                                      Jewellery[selected][row2].name !== "StarStruck" &&
+                                      Jewellery[selected][row2].name !== "Mural Collection" &&
+                                      Jewellery[selected][row2].name !== "In love Collection" &&
+                                      Jewellery[selected][row2].name !== "Baroque Whites Collection" && (
                                         <i
                                           class={`fa fa-caret-down drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""}`}
                                         ></i>

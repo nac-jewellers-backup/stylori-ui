@@ -594,17 +594,23 @@ const Productprice = (
                       <Grid container item xs={12}>
                         <Grid item xs={3} sm={4} md={5} lg={4}>
                           <div onClick={isactive ? deletechecklists : ""}>
-                            <Buynowbutton
-                              sku={data[0].skuId}
-                              class={`${classes.buynowButtonSilver} ${classes.buttonsilver} ${classes.robotoBoldFont}`}
-                              button="buynow-btn-cont"
-                              id="silverButton"
-                              withoutBag={true}
-                              productIsActive={isactive ?? ""}
-                              // onClick={}
-                              // handleSuccess={deletechecklists}
-                              onClick={isactive ? handleLocalStorage.bind(this) : ""}
-                            />
+                            {isactive ? (
+                              <>
+                                <Buynowbutton
+                                  sku={data[0].skuId}
+                                  class={`${classes.buynowButtonSilver} ${classes.buttonsilver} ${classes.robotoBoldFont}`}
+                                  button="buynow-btn-cont"
+                                  id="silverButton"
+                                  withoutBag={true}
+                                  productIsActive={isactive ?? ""}
+                                  // onClick={}
+                                  // handleSuccess={deletechecklists}
+                                  onClick={isactive ? handleLocalStorage.bind(this) : ""}
+                                />
+                              </>
+                            ) : (
+                              ""
+                            )}
 
                             {/* <CommenDialog
                               isOpen={state.modelOpen}
