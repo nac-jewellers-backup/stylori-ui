@@ -983,55 +983,55 @@ export const subheader = {
     ],
   },
 
-  StarStruck: {
-    header: "StarStruck",
-    name: [
-      {
-        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Star.jpg",
-        content: "StarStruck",
-        url: "/silver-jewellery-starstruck+collection",
-      },
-    ].map((val) => {
-      return {
-        name: val.content,
-        url: val.url,
-        img: val.img,
-      };
-    }),
-  },
+  // StarStruck: {
+  //   header: "StarStruck",
+  //   name: [
+  //     {
+  //       img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Star.jpg",
+  //       content: "StarStruck",
+  //       url: "/silver-jewellery-starstruck+collection",
+  //     },
+  //   ].map((val) => {
+  //     return {
+  //       name: val.content,
+  //       url: val.url,
+  //       img: val.img,
+  //     };
+  //   }),
+  // },
 
-  "Baroque Whites Collection": {
-    header: "Baroque Whites Collection",
-    name: [
-      {
-        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Pearl.jpg",
-        content: "Baroque Whites Collection",
-        url: "/silver-jewellery-baroque+whites+collection",
-      },
-    ].map((val) => {
-      return {
-        name: val.content,
-        url: val.url,
-        img: val.img,
-      };
-    }),
-  },
-  "In love Collection": {
-    header: "In love Collection",
-    name: [
-      {
-        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Inlove.jpg",
-        content: "In love Collection",
-        url: "/silver-jewellery-inlovecollection",
-      },
-    ].map((val) => {
-      return {
-        name: val.content,
-        url: val.url,
-        img: val.img,
-      };
-    }),
-  },
+  // "Baroque Whites Collection": {
+  //   header: "Baroque Whites Collection",
+  //   name: [
+  //     {
+  //       img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Pearl.jpg",
+  //       content: "Baroque Whites Collection",
+  //       url: "/silver-jewellery-baroque+whites+collection",
+  //     },
+  //   ].map((val) => {
+  //     return {
+  //       name: val.content,
+  //       url: val.url,
+  //       img: val.img,
+  //     };
+  //   }),
+  // },
+  // "In love Collection": {
+  //   header: "In love Collection",
+  //   name: [
+  //     {
+  //       img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Inlove.jpg",
+  //       content: "In love Collection",
+  //       url: "/silver-jewellery-inlovecollection",
+  //     },
+  //   ].map((val) => {
+  //     return {
+  //       name: val.content,
+  //       url: val.url,
+  //       img: val.img,
+  //     };
+  //   }),
+  // },
 };
 
 //layer 2 named jewellery MOBILE
@@ -1107,19 +1107,24 @@ export const Jewellery = {
   },
 
   COLLECTIONS: {
+    "Mural Collection": {
+      name: "Mural Collection",
+      url: "https://www.stylori.com/silver-jewellery-mural+collection",
+      icon: "",
+    },
     "In love Collection": {
       name: "In love Collection",
-      url: "http://www.stylori.com/silver-jewellery-inlovecollection",
+      url: "https://www.stylori.com/silver-jewellery-inlovecollection",
       icon: "",
     },
     StarStruck: {
       name: "StarStruck",
-      url: "http://www.stylori.com/silver-jewellery-starstruck+collection",
+      url: "https://www.stylori.com/silver-jewellery-starstruck+collection",
       icon: "",
     },
     "Baroque Whites Collection": {
       name: "Baroque Whites Collection",
-      url: "http://www.stylori.com/silver-jewellery-baroque+whites+collection",
+      url: "https://www.stylori.com/silver-jewellery-baroque+whites+collection",
       icon: "",
     },
   },
@@ -2095,61 +2100,80 @@ export const menuLists = {
   COLLECTIONS: {
     menuOne: [
       {
+        value: "Mural Collection",
+        title: "Mural Collection",
+        url: "https://www.stylori.com/silver-jewellery-mural+collection",
+        // imgContainer: {
+        //   // bigImage: {
+        //   //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---traditional.jpg",
+        //   //   content: "CHOKERS",
+        //   //   url: "/silver-jewellery-Traditional",
+        //   // },
+        //   imageContainer: [
+        //     {
+        //       img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Inlove.jpg",
+        //       content: "Earings",
+        //       url: "http://stylori.com/silver-jewellery-inlovecollection",
+        //     },
+        //   ],
+        // },
+      },
+      {
         value: "In love Collection",
         title: "In love Collection",
-        url: "http://stylori.com/silver-jewellery-inlovecollection",
-        imgContainer: {
-          // bigImage: {
-          //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---traditional.jpg",
-          //   content: "CHOKERS",
-          //   url: "/silver-jewellery-Traditional",
-          // },
-          imageContainer: [
-            {
-              img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Inlove.jpg",
-              content: "Earings",
-              url: "http://stylori.com/silver-jewellery-inlovecollection",
-            },
-          ],
-        },
+        url: "https://stylori.com/silver-jewellery-inlovecollection",
+        // imgContainer: {
+        //   // bigImage: {
+        //   //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---traditional.jpg",
+        //   //   content: "CHOKERS",
+        //   //   url: "/silver-jewellery-Traditional",
+        //   // },
+        //   imageContainer: [
+        //     {
+        //       img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Inlove.jpg",
+        //       content: "Earings",
+        //       url: "http://stylori.com/silver-jewellery-inlovecollection",
+        //     },
+        //   ],
+        // },
       },
       {
         value: "StarStruck",
         title: "StarStruck",
-        url: "http://www.stylori.com/silver-jewellery-starstruck+collection",
-        imgContainer: {
-          // bigImage: {
-          //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---traditional.jpg",
-          //   content: "CHOKERS",
-          //   url: "/silver-jewellery-Traditional",
-          // },
-          imageContainer: [
-            {
-              img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Star.jpg",
-              content: "Earings",
-              url: "http://www.stylori.com/silver-jewellery-starstruck+collection",
-            },
-          ],
-        },
+        url: "https://www.stylori.com/silver-jewellery-starstruck+collection",
+        // imgContainer: {
+        //   // bigImage: {
+        //   //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---traditional.jpg",
+        //   //   content: "CHOKERS",
+        //   //   url: "/silver-jewellery-Traditional",
+        //   // },
+        //   imageContainer: [
+        //     {
+        //       img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Star.jpg",
+        //       content: "Earings",
+        //       url: "http://www.stylori.com/silver-jewellery-starstruck+collection",
+        //     },
+        //   ],
+        // },
       },
       {
         value: "Baroque Whites Collection",
         title: "Baroque Whites Collection",
-        url: "http://stylori.com/silver-jewellery-inlovecollection",
-        imgContainer: {
-          // bigImage: {
-          //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---traditional.jpg",
-          //   content: "CHOKERS",
-          //   url: "/silver-jewellery-Traditional",
-          // },
-          imageContainer: [
-            {
-              img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Pearl.jpg",
-              content: "Earings",
-              url: "http://stylori.com/silver-jewellery-inlovecollection",
-            },
-          ],
-        },
+        url: "https://www.stylori.com/silver-jewellery-baroque+whites+collection",
+        // imgContainer: {
+        //   // bigImage: {
+        //   //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---traditional.jpg",
+        //   //   content: "CHOKERS",
+        //   //   url: "/silver-jewellery-Traditional",
+        //   // },
+        //   imageContainer: [
+        //     {
+        //       img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Pearl.jpg",
+        //       content: "Earings",
+        //       url: "http://stylori.com/silver-jewellery-inlovecollection",
+        //     },
+        //   ],
+        // },
       },
     ],
   },

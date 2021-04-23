@@ -280,6 +280,15 @@ export const homePageStylori = {
         navigateUrl: "#",
       },
     ],
+    silverListingMuralCollection: [
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/Stylori-silver-mural-jewellery-D.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/Stylori-silver-mural-jewellery-D.jpg",
+        navigateUrl: "#",
+      },
+    ],
     silverListingPageBottomData: [
       {
         img:
