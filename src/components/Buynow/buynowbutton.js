@@ -44,31 +44,77 @@ class Buynowbutton extends React.Component {
 
   render() {
     let productIsActive = this.props.productIsActive ?? "";
-
+    const enquireLink = () => {
+      if (!productIsActive) {
+        window.open("https://wa.me/919952625252?text=Hi");
+      }
+    };
     return (
       <div>
         <Button
           className={this.props.class}
           style={{ borderRadius: "5px", ...this.props.style }}
-          disabled={productIsActive ? false : true}
+          // disabled={productIsActive ? false : true}
         >
           {window.location.pathname.split("/").pop() !== "cart" &&
           window.location.pathname.split("/").pop() !== "checkout" &&
           this.state.vals === 1 ? (
             <>
-              {!this.props.withoutBag && <i class="fa fa-shopping-bag buynow-icon"></i>}
-              {this.props.addtoCartToBuyNow ? <span style={{ fontWeight: "bolder" }}> In Cart!</span> : <span> In bag!</span>}
+              {!this.props.withoutBag && productIsActive && <i class="fa fa-shopping-bag buynow-icon"></i>}
+              {this.props.addtoCartToBuyNow ? (
+                <span style={{ fontWeight: "bolder" }}> In Cart!</span>
+              ) : (
+                <>
+                  {productIsActive ? (
+                    <span> In bag!</span>
+                  ) : (
+                    <span
+                      className={this.props.button}
+                      style={{ fontSize: "1rem" }}
+                      // onClick={() => window.open("https://wa.me/919952625252?text=Hi")}
+                      // href="https://wa.me/919952625252?text=Hi"
+                      onClick={enquireLink}
+                    >
+                      Enquire now
+                    </span>
+                  )}
+                </>
+              )}
             </>
           ) : (
             <>
               {/* {!this.props.withoutBag && !this.props.isSilver && !this.props.smallScreen && <i class="fa fa-shopping-bag buynow-icon"></i>} */}
-              {this.props.addtoCartToBuyNow ? (
-                <span style={{ fontWeight: "bolder", fontSize: "9px !important" }}>
-                  <i class="fa fa-shopping-bag buynow-icon"></i> Add to Cart
-                </span>
-              ) : (
-                <span className={this.props.button}>Buy Now</span>
-              )}
+              {
+                this.props.addtoCartToBuyNow ? (
+                  <span
+                    style={{
+                      fontWeight: "bolder",
+                      fontSize: "8px !important",
+                    }}
+                  >
+                    <i class="fa fa-shopping-bag buynow-icon"></i> Add to Cart
+                  </span>
+                ) : (
+                  <>
+                    {productIsActive ? (
+                      <span className={this.props.button}>Buy Now</span>
+                    ) : (
+                      <span
+                        className={this.props.button}
+                        style={{ fontSize: "1rem" }}
+                        // onClick={() => window.open("https://wa.me/919952625252?text=Hi")}
+                        // href="https://wa.me/919952625252?text=Hi"
+                        onClick={enquireLink}
+                      >
+                        Enquire now
+                      </span>
+                    )}
+                  </>
+                )
+                // (
+                //   <span className={this.props.button}>{productIsActive ? "Buy Now" : "Enquire now"}</span>
+                // )
+              }
             </>
           )}
         </Button>
