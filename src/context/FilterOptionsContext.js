@@ -75,7 +75,7 @@ const Provider = (props) => {
     NoOfStones: {},
     Gender: {},
     stoneColor: {},
-    stoneShape: {},
+    stoneShape: {}, 
     category: {},
   });
   let [sort, setSort] = React.useState(initialCtx.FilterOptionsCtx.sort);
@@ -417,6 +417,7 @@ const Provider = (props) => {
 
   useEffect(() => {}, [data, error, loading]);
   const updatefiltersSort = async () => {
+    debugger
     if (filters && filters.constructor === Object && Object.entries(filters).length !== 0 && filters.constructor === Object) {
       var newObj = {};
       var len;
@@ -489,6 +490,7 @@ const Provider = (props) => {
       // alert(JSON.stringify('filters',filters))
       // alert(JSON.stringify(newObj))
       // if()
+      debugger
       if (Object.keys(filters.category).length === 0 && filters.category.constructor === Object) {
         if (filters.Category && Object.keys(filters.Category).length > 0 && filters.Category.constructor === Object) {
           var _replaceCategory = filters.Category;

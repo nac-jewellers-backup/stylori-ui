@@ -276,7 +276,9 @@ class ProductDetails extends React.Component {
                                                             fontSize: 13,
                                                           }}
                                                         >
-                                                          {res.details}
+                                                          {/* {res.details.toString()} */}
+
+                                                          {res.details.toString().includes("-") ? res.details.toString().split("-")[0] : res.details}
                                                         </span>
                                                       ) : (
                                                         res.details
