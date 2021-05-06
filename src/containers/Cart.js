@@ -17,7 +17,7 @@ import { withStyles } from "@material-ui/core/styles";
 import "./index.css";
 import { NavLink } from "react-router-dom";
 import NeedHelp from "../components/needHelp";
-
+import { Helmet } from "react-helmet";
 // data.map(data=>{
 // return(
 //     <Grid item xs={12}>
@@ -35,23 +35,19 @@ const breadcrumsdata = [
 const cartsubdata = [
   {
     name: "100% Certified Jewellery",
-    icon:
-      "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-star.png",
+    icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-star.png",
   },
   {
     name: "Secure Payments",
-    icon:
-      "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-lock.png",
+    icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-lock.png",
   },
   {
     name: "Free Insured Shipping",
-    icon:
-      "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-van.png",
+    icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-van.png",
   },
   {
     name: "25-Day Returns",
-    icon:
-      "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-return.png",
+    icon: "https://styloriimages.s3.ap-south-1.amazonaws.com/images/static/icon-return.png",
   },
 ];
 class Cart extends React.Component {
@@ -61,6 +57,30 @@ class Cart extends React.Component {
     let path = window.location.pathname.split("/").pop();
     return (
       <Grid container>
+        <Helmet>
+          <script>
+            {`!function(f,b,e,v,n,t,s) 
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod? 
+n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; 
+n.queue=[];t=b.createElement(e);t.async=!0; 
+t.src=v;s=b.getElementsByTagName(e)[0]; 
+s.parentNode.insertBefore(t,s)}(window, document,'script', 
+'https://connect.facebook.net/en_US/fbevents.js'); 
+fbq('init', '1464338023867789'); 
+fbq('track', 'PageView'); 
+fbq('track', 'AddToCart'); `}
+          </script>
+          <noscript>
+            {`<img
+              height="1"
+              width="1"
+              style="display:none"
+              src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1"
+            />`}
+          </noscript>
+        </Helmet>
+
         <Hidden smDown>
           <Header wishlist={this.props.wishlistdata} />
           {path === "checkout" ? (
@@ -71,32 +91,19 @@ class Cart extends React.Component {
               className={`breadcrums-header ${classes.normalcolorback}`}
               classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
               list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
-              data={
-                this.props.data.length > 0
-                  ? this.props.data[0].breadcrumsdata
-                  : breadcrumsdata
-              }
-              subdata={
-                this.props.data.length > 0
-                  ? this.props.data[0].cartsubdata
-                  : cartsubdata
-              }
+              data={this.props.data.length > 0 ? this.props.data[0].breadcrumsdata : breadcrumsdata}
+              subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
             />
           )}
           <div className="cart-ovralldiv-media " style={{ marginTop: "3%" }}>
             <Grid Container spacing={12}>
               {this.props.data.length > 0 ? (
                 <Grid item xs={12}>
-                  <CartCard
-                    data={data}
-                    isStateFilterContextQty={isStateFilterContextQty}
-                  />
+                  <CartCard data={data} isStateFilterContextQty={isStateFilterContextQty} />
                 </Grid>
               ) : (
                 <>
-                  <div className="noproductsfound">
-                    There are no items in this cart.{" "}
-                  </div>
+                  <div className="noproductsfound">There are no items in this cart. </div>
                   <a href="/jewellery" className="highlighter">
                     <div className="continueshopping"> Continue shopping</div>
                   </a>
@@ -125,16 +132,11 @@ class Cart extends React.Component {
             <Grid Container spacing={12}>
               {this.props.data.length > 0 ? (
                 <Grid item xs={12}>
-                  <CartCard
-                    data={data}
-                    isStateFilterContextQty={isStateFilterContextQty}
-                  />
+                  <CartCard data={data} isStateFilterContextQty={isStateFilterContextQty} />
                 </Grid>
               ) : (
                 <>
-                  <div className="noproductsfound">
-                    There are no items in this cart.
-                  </div>
+                  <div className="noproductsfound">There are no items in this cart.</div>
                   <a href="/jewellery">
                     {" "}
                     <div className="continueshopping"> Continue shopping</div>
@@ -183,15 +185,7 @@ class Cart extends React.Component {
 
 const Components = (props) => {
   let {
-    CartCtx: {
-      cartFilters,
-      data,
-      loading,
-      error,
-      allorderdata,
-      wishlistdata,
-      NewUser,
-    },
+    CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata, NewUser },
   } = React.useContext(CartContext);
   const {
     ProductDetailCtx: { filters },
