@@ -93,12 +93,12 @@ class HomeStylori extends React.Component {
       },
     ];
 
-
     return (
       <Grid container>
         <div>
           <MetaTags>
             <title>Online Jewellery Shopping in India | Gold and Diamond Jewellery Online</title>
+            <meta name="facebook-domain-verification" content="t3yrba182xfqp79aqld63vtoaong46" />;
             <meta
               name="description"
               content="Buy Gold and Diamond Jewellery Shopping Online from Stylori.com with variety of products like Pendants, Gold Rings, Bangles, Earrings"
@@ -107,7 +107,6 @@ class HomeStylori extends React.Component {
               name="keywords"
               content="Jewellery Online, Online Jewellery India, buy gold jewellery online, Online Jewellery Shopping, gold jewellery online, gold jewellery, fashion jewellery, jewellery designs, indian jewellery, designer jewellery,  fashion Jewellery, online jewellery, diamond Jewellery, online jewellery shopping india, jewellery websites, diamond jewellery india,"
             />
-
             <meta
               property="og:title"
               id="fb-title"
@@ -119,7 +118,6 @@ class HomeStylori extends React.Component {
             />
             <meta property="og:url" id="fb-product-url" content={window.location.href} />
             <meta property="og:image" id="fb_imageUrl" content="https://assets.stylori.com/stylori-logo.svg" />
-
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@StyloriLove" />
             <meta name="twitter:title" id="twitter-title" content="Online Jewellery Shopping" />

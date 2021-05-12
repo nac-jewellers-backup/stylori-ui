@@ -417,7 +417,7 @@ const Provider = (props) => {
 
   useEffect(() => {}, [data, error, loading]);
   const updatefiltersSort = async () => {
-    debugger
+   
     if (filters && filters.constructor === Object && Object.entries(filters).length !== 0 && filters.constructor === Object) {
       var newObj = {};
       var len;
@@ -490,7 +490,7 @@ const Provider = (props) => {
       // alert(JSON.stringify('filters',filters))
       // alert(JSON.stringify(newObj))
       // if()
-      debugger
+   
       if (Object.keys(filters.category).length === 0 && filters.category.constructor === Object) {
         if (filters.Category && Object.keys(filters.Category).length > 0 && filters.Category.constructor === Object) {
           var _replaceCategory = filters.Category;
@@ -658,23 +658,23 @@ const Provider = (props) => {
         newObj[toLowerCase] = k[len][0];
       }
     }
-    if (filters && Object.entries(filters).length !== 0 && filters.constructor === Object) {
-      if (
-        Object.values(filters).filter((val) => {
-          if (Object.entries(val).length > 0 && val.constructor === Object) {
-            return val;
-          }
-        }).length > 0
-      ) {
+      if (filters && Object.entries(filters).length !== 0 && filters.constructor === Object) {
         if (
-          Object.keys(filters).filter((val) => {
-            if (val === "a") return val;
-          }).length === 0
-        )
-          updatefiltersSort();
-        //    makeFetch(newObj)
+          Object.values(filters).filter((val) => {
+            if (Object.entries(val).length > 0 && val.constructor === Object) {
+              return val;
+            }
+          }).length > 0
+        ) {
+          if (
+            Object.keys(filters).filter((val) => {
+              if (val === "a") return val;
+            }).length === 0
+          )
+            updatefiltersSort();
+          //    makeFetch(newObj)
+        }
       }
-    }
     await makeFetch(newObj);
     try {
       if (ntxdata.seo_url === "jewellery") {
