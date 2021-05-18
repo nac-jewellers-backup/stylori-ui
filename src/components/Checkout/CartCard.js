@@ -359,7 +359,9 @@ class Checkoutcard extends React.Component {
   };
   checkoutbutton = () => {
     const { classes } = this.props;
+    let productIsActive = this.props.data[0].isActive ?? "";
     let path = window.location.pathname.split("/").pop();
+
     return (
       <div>
         {path == "checkout" ? (
@@ -370,15 +372,21 @@ class Checkoutcard extends React.Component {
               style={{ textDecoration: "none" }}
               onClick={() => {
                 // window.location.reload()
-                localStorage.removeItem("bil_isactive");
-                localStorage.removeItem("ship_isactive");
-                localStorage.setItem("panel", 1);
-                localStorage.removeItem("select_addres");
-                window.location.href = "/checkout";
+                if (productIsActive) {
+                  localStorage.removeItem("bil_isactive");
+                  localStorage.removeItem("ship_isactive");
+                  localStorage.setItem("panel", 1);
+                  localStorage.removeItem("select_addres");
+                  window.location.href = "/checkout";
+                }
               }}
             >
               {/* {window.location.reload()} */}
-              <Buynowbutton class={`chckout-page-buynow ${classes.buttons}`} />
+              <Buynowbutton
+                productURL={this.props?.data[0]?.skuUrl}
+                productIsActive={productIsActive ?? ""}
+                class={`chckout-page-buynow ${classes.buttons}`}
+              />
             </div>
           </div>
         )}
@@ -524,6 +532,7 @@ class Checkoutcard extends React.Component {
   }
 }
 const Components = (props) => {
+  console.log(props);
   const [ShippingCharge, setShippingCharge] = React.useState(0);
   React.useEffect(() => {
     fetch(`${API_URL}/getshippingcharge`, {
@@ -547,6 +556,7 @@ const Components = (props) => {
   } = React.useContext(CartContext);
   let content;
 
+  console.log(cartFilters);
   content = (
     <Checkoutcard
       {...props}

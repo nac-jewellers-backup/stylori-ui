@@ -171,6 +171,8 @@ class Component extends React.Component {
   };
 
   render() {
+    debugger;
+    console.log(this.props);
     const { expanded, mailId, expandedlimit } = this.state;
     const { classes, data } = this.props;
     const { breadcrumsdata, cartsubdata } = this.props.data;
@@ -216,6 +218,10 @@ class Component extends React.Component {
     // if (!localStorage.getItem("cartDetails")&&Object.keys(adres.value).length <= 0) {
     //     localStorage.setItem("panel", 1);
     // }
+    const enquireLink = () => {
+      window.open(`https://wa.me/919952625252?text=Hi - ${window.location.hostname + "/" + this.props?.data[0]?.skuUrl ?? ""}`);
+    };
+
     return (
       <Grid>
         <Helmet>
@@ -354,9 +360,15 @@ class Component extends React.Component {
                       <Grid xs={12} lg={7} />
                       <Grid xs={12} lg={4}>
                         <div style={{ float: "right" }}>
-                          <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
-                            Continue to Pay
-                          </Button>
+                          {this.props?.data[0]?.isActive ? (
+                            <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
+                              Continue to Pay
+                            </Button>
+                          ) : (
+                            <Button className="summaryOrder-pay-btn" onClick={enquireLink}>
+                              Enquire Now
+                            </Button>
+                          )}
                         </div>
                       </Grid>
                     </Grid>
@@ -373,9 +385,15 @@ class Component extends React.Component {
                         <Grid xs={12} lg={7} />
                         <Grid xs={12} lg={4}>
                           <div style={{ float: "right", marginBottom: "5px" }}>
-                            <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
-                              Continue to Pay
-                            </Button>
+                            {this.props?.data[0]?.isActive ? (
+                              <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
+                                Continue to Pay
+                              </Button>
+                            ) : (
+                              <Button className="summaryOrder-pay-btn" onClick={enquireLink}>
+                                Enquire Now
+                              </Button>
+                            )}
                           </div>
                         </Grid>
                       </Grid>
@@ -390,9 +408,15 @@ class Component extends React.Component {
                       <Grid xs={12} lg={7} />
                       <Grid xs={12} lg={4}>
                         <div style={{ float: "right", marginBottom: "5px" }}>
-                          <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
-                            Continue to Pay
-                          </Button>
+                          {this.props?.data[0]?.isActive ? (
+                            <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
+                              Continue to Pay
+                            </Button>
+                          ) : (
+                            <Button className="summaryOrder-pay-btn" onClick={enquireLink}>
+                              Enquire Now
+                            </Button>
+                          )}
                         </div>
                       </Grid>
                     </Grid>

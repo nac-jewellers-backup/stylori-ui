@@ -43,10 +43,15 @@ class Buynowbutton extends React.Component {
   }
 
   render() {
+    console.log(this.props, "yaaaaaah");
     let productIsActive = this.props.productIsActive ?? "";
     const enquireLink = () => {
       if (!productIsActive) {
-        window.open("https://wa.me/919952625252?text=Hi");
+        if (this.props?.productURL) {
+          window.open(`https://wa.me/919952625252?text=Hi - ${window.location.hostname + "/" + this.props.productURL ?? ""}`);
+        } else {
+          window.open(`https://wa.me/919952625252?text=Hi - ${window.location.href}`);
+        }
       }
     };
     return (
