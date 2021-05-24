@@ -393,7 +393,7 @@ const Provider = (props) => {
   //         newObj['sortBy'] = sort.values
   //         // newObj['price'] = {'min_price':pricemin,'max_price':pricemax}
 
-  //       await fetchproducts(newObj)
+  //       await  (newObj)
   //       //variables
 
   //     }
