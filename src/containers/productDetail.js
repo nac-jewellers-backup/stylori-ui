@@ -40,7 +40,7 @@ import { Securepayments } from "../components/product-image-slider/Gagetstylori/
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import NeedHelp from "../components/needHelp";
-import ReactPixel from "react-facebook-pixel";
+
 // import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
@@ -146,11 +146,7 @@ class ProductDetail extends Component {
       nextArrow: <ArrowRightIcon style={{ fill: "rgb(6, 171, 159)", fontSize: "1.7rem" }} />,
     };
     //  debugger
-    const options = {
-      autoConfig: true,
-    };
-    ReactPixel.init("1464338023867789", options);
-    ReactPixel.pageView();
+
     console.log("---------", this.props);
     return (
       <div>
