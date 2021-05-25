@@ -5,4 +5,4 @@ WORKDIR /usr/src/app
 WORKDIR /usr/src/app
 COPY . .
 EXPOSE 80
-CMD ["npm","serve"]
+CMD ["npm","run","serve"]
