@@ -18,24 +18,23 @@ const networkcall = (path = "") => {
   return request(API_URL + "/graphql", seoUrlResult, variables).then((data) => {
     var filters = {};
     data.allSeoUrlPriorities.nodes.map((val) => {
-    
       var attrName = val.attributeName.replace(/\s/g, "").toLowerCase();
       var attrVal = val.attributeValue;
-     
+
       filters[attrName] = attrVal;
     });
-   
+
     return axios.post(API_URL + "/filterlist", filters).then((response) => {
       var data = response.data;
       var replaceValue = "";
-    
+
       var Page_title = data.seo_url.replace(/[-\+]/gi, " ");
 
       replaceValue = Page_title.toLowerCase()
         .split("-")
         .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
         .join(" ");
-
+      console.log(replaceValue, data.seo_text);
       return { title: replaceValue, description: data.seo_text };
     });
   });

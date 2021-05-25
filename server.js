@@ -32,12 +32,16 @@ app.get("/*", async (req, res) => {
     }
     try {
       const seoData = await networkcall(req.path);
+      console.log(req.path);
+      console.log(seoData);
+      data = data.replace(/(?<=\<meta __meta1\/>)(.*?)(?=\<meta __meta2\/>)/g, seo(seoData.title, seoData.description));
+      console.log(data);
 
-      data = data.replace("<meta __MetaTag__ />", seo(seoData.title, seoData.description));
       res.send(data);
     } catch (error) {
       console.log(error);
-      data = data.replace("<meta __MetaTag__ />", seo());
+
+      data = data.replace(/(?<=\<meta __meta1\/>)(.*?)(?=\<meta __meta2\/>)/g, seo());
       res.send(data);
     }
   });
