@@ -4,5 +4,5 @@ WORKDIR /usr/src/app
 RUN npm install -g nodemon
 WORKDIR /usr/src/app
 COPY . .
-EXPOSE 80
+EXPOSE 8080
 CMD ["npm","run","serve"]
