@@ -127,6 +127,7 @@
     "@craco/craco": "5.2.4",
     "@storybook/addon-actions": "^5.3.21",
     "@storybook/react": "5.1.10",
+    "axios": "^0.21.1",
     "hint": "^5.2.0",
     "nodemon": "^1.19.1",
     "pm2": "3.5.1",
