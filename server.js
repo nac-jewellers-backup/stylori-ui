@@ -3,7 +3,7 @@ const path = require("path");
 const favicon = require("serve-favicon");
 const fs = require("fs");
 const PORT = process.env.PORT || 5000;
-//const { gql, request } = require("graphql-request");
+const { gql, request } = require("graphql-request");
 const dotenv = require("dotenv");
 const { seo } = require("./seo");
 
