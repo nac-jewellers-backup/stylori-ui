@@ -98,7 +98,7 @@ class HomeStylori extends React.Component {
         <div>
           <MetaTags>
             <title>Online Jewellery Shopping in India | Gold and Diamond Jewellery Online</title>
-            {/* <meta name="facebook-domain-verification" content="t3yrba182xfqp79aqld63vtoaong46" />; */}
+            <meta name="facebook-domain-verification" content="t3yrba182xfqp79aqld63vtoaong46" />
             <meta
               name="description"
               content="Buy Gold and Diamond Jewellery Shopping Online from Stylori.com with variety of products like Pendants, Gold Rings, Bangles, Earrings"
