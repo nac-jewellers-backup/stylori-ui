@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import Aos from "aos";
+import "aos/dist/aos.css";
 import './Testimony.css';
 import { Grid } from '@material-ui/core';
 import Testimonycarosol from './Testimonycarosol';
@@ -38,7 +40,7 @@ export default function Testimony(props) {
                     setState(data)
                 )
             })
-
+            Aos.init({duration:2000});
     }, [])
 
 
@@ -52,8 +54,10 @@ export default function Testimony(props) {
                 </Grid>
                 <em className="rightImage"></em>
             </Grid>
+            <div data-aos="fade-right">
             <Testimonycarosol carosolData={state} dataCarousel={props.dataCarousel} />
             <TestimonyImage GridImage={props.GridImage} />
+            </div>
         </Grid >
     )
 }
