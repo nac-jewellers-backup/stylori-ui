@@ -19,6 +19,7 @@ import NeedHelp from "../components/needHelp";
 import { CDN_URL, API_URL } from "../config";
 import { ALLSTYLORILANDINGBANNERS } from "queries/home";
 import "aos/dist/aos.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 class HomeStylori extends React.Component {
   constructor(props) {
     super(props);
@@ -31,6 +32,7 @@ class HomeStylori extends React.Component {
       count: "",
       datas: [],
       starting: false,
+      imageLoading: false
     };
   }
   next = () => {
@@ -39,6 +41,10 @@ class HomeStylori extends React.Component {
   previous = () => {
     this.slider.current.slickPrev();
   };
+  imageLoader = () => {
+    this.setState({imageLoading:true})
+    console.log("is image loading currently", this.state.imageLoading)
+  }
   componentDidMount() {
     fetch(`${API_URL}/graphql`, {
       method: "post",
@@ -59,11 +65,12 @@ class HomeStylori extends React.Component {
         if(data.data.allStyloriBanners.nodes.length > 0){
             return this.setState({starting: true})
         }
-        console.log("what data", data.data.allStyloriBanners.nodes.length);
-        console.log("is true", this.state.starting);
       });
-      Aos.init({duration:2000});
+      Aos.init({duration:2000});  
   }
+
+
+
   render() {
     const dataCarousel = {
       slidesToShow: 1,
@@ -141,7 +148,7 @@ class HomeStylori extends React.Component {
         </div>
         <Header />
         {this.state.starting ? 
-          <Grid item xs={12}>
+          <Grid item xs={12} >
           <Hidden smDown>
             {homePageStylori.carouselTop.setting.arrowsImg && (
               <Grid container>
@@ -166,14 +173,20 @@ class HomeStylori extends React.Component {
                 <Hidden smDown>
                   <Grid container key={index}>
                     <a href={val.url} style={{ width: "100%" }}>
-                      <img src={val.web} loading="auto" alt="…" style={{ width: "100%", height: "100%" }} />
+                        <img src={val.web} loading="auto" alt="…" style={{ width: "100%", height: "100%" }} 
+                        className={`smooth-image image-${this.state.imageLoading ? 'visible' :  'hidden'}`} 
+                        onLoad={this.imageLoader} 
+                        />
                     </a>
                   </Grid>
                 </Hidden>
                 <Hidden mdUp>
                   <Grid container key={index}>
                     <a href={val.url}>
-                      <img src={val.mobile} style={{ width: "100%", height: "100%" }} />
+                      <img src={val.mobile} style={{ width: "100%", height: "100%" }}
+                         className={`smooth-image image-${this.state.imageLoading ? 'visible' :  'hidden'}`} 
+                        onLoad={this.imageLoader} 
+                       />
                     </a>
                   </Grid>
                 </Hidden>
