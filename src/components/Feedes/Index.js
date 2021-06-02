@@ -148,7 +148,7 @@ export default function StaticView(props) {
             );
           })}
       </Grid>
-      <Grid container className={classes.containItems} data-aos="fade-left">
+      <Grid container className={classes.containItems} data-aos="fade-right">
         <Grid item className={classes.containerRoot}>
           <Grid container>
             <Grid

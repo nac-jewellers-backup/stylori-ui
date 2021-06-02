@@ -170,32 +170,52 @@ class HomeStylori extends React.Component {
           <Slideshow sliderRef={this.slider} dataCarousel={homePageStylori.carouselTop.setting}>
             {this.state.datas.map((val, index) => (
               <>
-                <Hidden smDown>
-                  <Grid container key={index}>
-                    <a href={val.url} style={{ width: "100%" }}>
-                        <img src={val.web} loading="auto" alt="…" style={{ width: "100%", height: "100%" }} 
-                        className={`smooth-image image-${this.state.imageLoading ? 'visible' :  'hidden'}`} 
-                        onLoad={this.imageLoader} 
+              <Hidden smDown>
+                    <Grid
+                      container
+                      key={index}
+                      data-aos="fade-zoom-in"
+                      data-aos-easing="ease-in-back"
+                      data-aos-delay="200"
+                      data-aos-offset="0"
+                    >
+                      <a href={val.url} style={{ width: "100%" }}>
+                        <img
+                          src={val.web}
+                          loading="auto"
+                          alt="…"
+                          style={{ width: "100%", height: "100%" }}
+                          className={`smooth-image image-${this.state.imageLoading ? "visible" : "hidden"}`}
+                          onLoad={this.imageLoader}
                         />
-                    </a>
-                  </Grid>
-                </Hidden>
-                <Hidden mdUp>
-                  <Grid container key={index}>
-                    <a href={val.url}>
-                      <img src={val.mobile} style={{ width: "100%", height: "100%" }}
-                         className={`smooth-image image-${this.state.imageLoading ? 'visible' :  'hidden'}`} 
-                        onLoad={this.imageLoader} 
-                       />
-                    </a>
-                  </Grid>
-                </Hidden>
+                      </a>
+                    </Grid>
+                  </Hidden>
+                  <Hidden mdUp>
+                    <Grid
+                      container
+                      key={index}
+                      data-aos="fade-zoom-in"
+                      data-aos-easing="ease-in-back"
+                      data-aos-delay="200"
+                      data-aos-offset="0"
+                    >
+                      <a href={val.url}>
+                        <img
+                          src={val.mobile}
+                          style={{ width: "100%", height: "100%" }}
+                          className={`smooth-image image-${this.state.imageLoading ? "visible" : "hidden"}`}
+                          onLoad={this.imageLoader}
+                        />
+                      </a>
+                    </Grid>
+                  </Hidden>
               </>
             ))}
           </Slideshow>
         </Grid> 
         :
-        <Skeleton variant="rect" style={{width:"100%"}} className="skeletonHeight" animation="wave" />
+        <Skeleton variant="rect" style={{width:"100%", backgroundColor: "#fff"}} className="skeletonHeight" animation="wave" />
         }
 
         <Hidden mdUp>

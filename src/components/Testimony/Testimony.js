@@ -56,6 +56,8 @@ export default function Testimony(props) {
             </Grid>
             <div data-aos="fade-right">
             <Testimonycarosol carosolData={state} dataCarousel={props.dataCarousel} />
+            </div>
+            <div data-aos="fade-left">
             <TestimonyImage GridImage={props.GridImage} />
             </div>
         </Grid >
