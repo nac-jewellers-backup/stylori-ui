@@ -289,6 +289,15 @@ export const homePageStylori = {
         navigateUrl: "#",
       },
     ],
+    silverListingElementalCollection : [
+      {
+        img:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/StyloriSilver+Elemental+connection+banner.jpg",
+        mobileImg:
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/StyloriSilver+Elemental+connection+banner.jpg",
+        navigateUrl: "#",
+      },
+    ],
     silverListingPageBottomData: [
       {
         img:
