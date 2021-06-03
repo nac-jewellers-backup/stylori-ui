@@ -63,7 +63,8 @@ class HomeStylori extends React.Component {
 
         this.setState({ datas: datas });
         if(data.data.allStyloriBanners.nodes.length > 0){
-            return this.setState({starting: true})
+            this.setState({starting: true});
+            console.log("initial", this.state.starting)
         }
       });
       Aos.init({duration:2000});  
@@ -111,7 +112,7 @@ class HomeStylori extends React.Component {
     ];
 
     return (
-      <Grid container>
+      <Grid container style={{overflowX:"auto"}}>
         <div>
           <MetaTags>
             <title>Online Jewellery Shopping in India | Gold and Diamond Jewellery Online</title>
@@ -148,10 +149,10 @@ class HomeStylori extends React.Component {
         </div>
         <Header />
         {this.state.starting ? 
-          <Grid item xs={12} >
+          <Grid item xs={12} style={{backgroundColor:"#ebebeb"}}>
           <Hidden smDown>
             {homePageStylori.carouselTop.setting.arrowsImg && (
-              <Grid container>
+              <Grid container >
                 <Grid item onClick={this.previous} className={"imagePrevios"}>
                   {/* <i
                 class="fa fa-angle-left"
@@ -185,7 +186,7 @@ class HomeStylori extends React.Component {
                           loading="auto"
                           alt="…"
                           style={{ width: "100%", height: "100%" }}
-                          className={`smooth-image image-${this.state.imageLoading ? "visible" : "hidden"}`}
+                          className={`image-${this.state.imageLoading ? "visible" : "hidden"}`}
                           onLoad={this.imageLoader}
                         />
                       </a>
@@ -215,8 +216,8 @@ class HomeStylori extends React.Component {
           </Slideshow>
         </Grid> 
         :
-        <Skeleton variant="rect" style={{width:"100%", backgroundColor: "#fff"}} className="skeletonHeight" animation="wave" />
-        }
+        <Skeleton variant="rect" style={{width:"100%"}} className="skeletonHeight" animation="wave" />
+        }        
 
         <Hidden mdUp>
           <Grid container >
@@ -268,7 +269,7 @@ class HomeStylori extends React.Component {
             <StaticView />
           </Grid>
         </Hidden>
-
+        
         <Grid Container className="GridConatiner">
           <Grid item className="GridListImg" data-aos="fade-left">
             <GridList GridImage={homePageStylori.collectionGrid} />
