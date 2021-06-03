@@ -213,7 +213,7 @@ class Allorders extends React.Component {
     return (
       <>
         <Helmet>
-          <script>
+          {/* <script>
             {` !function(f,b,e,v,n,t,s) 
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod? 
 n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
@@ -230,7 +230,7 @@ fbq('track', 'Purchase', {value:0.00 , currency: 'INR'});  `}
             {`<img height="1" width="1" style="display:none" 
 src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1" 
 />`}
-          </noscript>
+          </noscript> */}
         </Helmet>
         {/* allorderdata.nodes */}
         {this.props.location.pathname.split("-")[0] === "/account" ? (
