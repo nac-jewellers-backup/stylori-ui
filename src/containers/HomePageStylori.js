@@ -20,7 +20,7 @@ import { CDN_URL, API_URL } from "../config";
 import { ALLSTYLORILANDINGBANNERS } from "queries/home";
 import "aos/dist/aos.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import ReactPixel from "react-facebook-pixel";
+
 class HomeStylori extends React.Component {
   constructor(props) {
     super(props);
@@ -46,8 +46,6 @@ class HomeStylori extends React.Component {
     this.setState({ imageLoading: true });
   };
   componentDidMount() {
-    ReactPixel.init("1464338023867789");
-    ReactPixel.pageView();
     fetch(`${API_URL}/graphql`, {
       method: "post",
       headers: {
