@@ -46,6 +46,9 @@ class HomeStylori extends React.Component {
     this.setState({ imageLoading: true });
   };
   componentDidMount() {
+    ReactPixel.init("1464338023867789");
+
+    ReactPixel.pageView();
     fetch(`${API_URL}/graphql`, {
       method: "post",
       headers: {
@@ -108,7 +111,7 @@ class HomeStylori extends React.Component {
         class: "image5",
       },
     ];
-   
+
     return (
       <Grid container style={{ overflowX: "auto" }}>
         <div>
