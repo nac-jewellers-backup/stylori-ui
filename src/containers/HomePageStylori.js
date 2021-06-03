@@ -108,8 +108,7 @@ class HomeStylori extends React.Component {
         class: "image5",
       },
     ];
-    ReactPixel.init("1464338023867789");
-    ReactPixel.pageView();
+   
     return (
       <Grid container style={{ overflowX: "auto" }}>
         <div>
