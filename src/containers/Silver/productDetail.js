@@ -180,7 +180,6 @@ const Components = props => {
   const datas = data;
   let mapped = datas;
 
-  console.log(mapped)
   if (!loading && !error) {
     mapped = productDetails(datas, likedatas, viewedddatas, rating);
   }

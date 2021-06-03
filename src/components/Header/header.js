@@ -122,7 +122,6 @@ class Header extends Component {
     const { anchorEl } = this.state;
     const openPopover = anchorEl;
   
-    console.log(Collection);
     return (
       <div>
         <Hidden smDown>

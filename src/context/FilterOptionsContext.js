@@ -561,7 +561,6 @@ const Provider = (props) => {
   useEffect(() => {
     // alert("sort")
     if (sort) {
-      console.log(sort, "{}");
       updatefiltersSort();
     }
   }, [sort]);

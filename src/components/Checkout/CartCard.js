@@ -430,7 +430,6 @@ class Checkoutcard extends React.Component {
     // const yousave = Math.round(Number(dataCard1.price) - Number(dataCard1.offerPrice))
     let path = window.location.pathname.split("/").pop();
     const { classes } = this.props;
-    console.log(props.cartFilters.tax_price, "you saved.");
     return (
       <div style={{ marginTop: "10px" }}>
         <Grid container spacing={12}>
@@ -507,7 +506,6 @@ class Checkoutcard extends React.Component {
     const { classes } = this.props;
     // alert(discounted_price)
     let path = window.location.pathname.split("/").pop();
-    console.log(this.props.isdatafromstate);
 
     return (
       <Grid>
@@ -532,7 +530,6 @@ class Checkoutcard extends React.Component {
   }
 }
 const Components = (props) => {
-  console.log(props);
   const [ShippingCharge, setShippingCharge] = React.useState(0);
   React.useEffect(() => {
     fetch(`${API_URL}/getshippingcharge`, {
@@ -547,7 +544,6 @@ const Components = (props) => {
         if (val) setShippingCharge(val.shipping_charge);
       })
       .catch((err) => {
-        console.log(err, ": in shipping charge API");
       });
   }, []);
 
@@ -556,7 +552,6 @@ const Components = (props) => {
   } = React.useContext(CartContext);
   let content;
 
-  console.log(cartFilters);
   content = (
     <Checkoutcard
       {...props}

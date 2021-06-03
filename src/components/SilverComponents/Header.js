@@ -200,7 +200,6 @@ class Header extends Component {
         ? this.props.globalContext.Globalctx.pathName
         : false;
     // const id = open ? true : undefined;
-    console.log(subheader, selected1, subheader[selected1], subheader?.[selected1] && "&&&&&");
 
     return (
       <div

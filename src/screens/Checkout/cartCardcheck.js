@@ -171,8 +171,8 @@ class Component extends React.Component {
   };
 
   render() {
-    debugger;
-    console.log(this.props);
+   
+  
     const { expanded, mailId, expandedlimit } = this.state;
     const { classes, data } = this.props;
     const { breadcrumsdata, cartsubdata } = this.props.data;

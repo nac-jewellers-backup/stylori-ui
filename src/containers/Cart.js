@@ -202,7 +202,6 @@ const Components = (props) => {
   //     }
   //  }, [])
   // alert(JSON.stringify(filters))
-  console.log(filters, "filters+filters-filters");
   let content, mapped;
   let _data = {};
 

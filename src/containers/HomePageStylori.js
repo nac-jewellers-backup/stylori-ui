@@ -43,7 +43,6 @@ class HomeStylori extends React.Component {
   };
   imageLoader = () => {
     this.setState({imageLoading:true})
-    console.log("is image loading currently", this.state.imageLoading)
   }
   componentDidMount() {
     fetch(`${API_URL}/graphql`, {
@@ -66,7 +65,7 @@ class HomeStylori extends React.Component {
             return this.setState({starting: true})
         }
       });
-      Aos.init({duration:2000});  
+      Aos.init({duration:1500});  
   }
 
 

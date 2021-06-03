@@ -61,8 +61,7 @@ class Buynowfixed extends React.Component {
         modelOpen: false,
       });
     };
-    debugger;
-    console.log(this.props);
+  
     let productIsActive = this.props.productIsActive ?? "";
 
     return (

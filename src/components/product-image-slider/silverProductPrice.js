@@ -137,7 +137,6 @@ const Productprice = (
   // };
   console.clear();
 
-  console.log(props);
   const isactive = props.data[0].isactive ?? "";
   return (
     <div>

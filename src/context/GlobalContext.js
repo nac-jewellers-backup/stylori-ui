@@ -28,7 +28,6 @@ export const GlobalProvider = (props) => {
         if (val === "silver") return val;
       });
     var locsilverStaticPage = window.location.pathname.split("/")[1];
-    console.log("locsilverStaticPage", routes.Silver, `/${locsilverStaticPage}`);
     var loc_PD = window.location.pathname.split("/").filter((val) => {
       if (val === "silverjewellery") return val;
     });

@@ -135,8 +135,7 @@ export default function PaymentHiddenForm(props) {
           localStorage.setItem("order_id", JSON.stringify(data.order.id));
           hitPaymentGateWayAPI(data.order.id);
         }
-        debugger;
-
+       
         setOrderId(data.order.payment_id);
       })
       .catch((error) => {

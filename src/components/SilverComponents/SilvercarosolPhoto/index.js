@@ -122,9 +122,7 @@ export default (props) => {
   const { mapped } = useDummyRequest(HomedataSilver);
   const { Globalctx } = React.useContext(GlobalContext);
 
-  console.log(Globalctx);
   const _isSilver = Globalctx.pathName ? true : false;
-  console.log(Globalctx.pathName);
   if (Object.keys(mapped).length === 0) return "";
   return <SilverCarousel {...props} data={mapped} isSilver={_isSilver} />;
 };

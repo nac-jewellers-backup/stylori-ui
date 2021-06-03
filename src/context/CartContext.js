@@ -334,7 +334,6 @@ const Provider = (props) => {
       //     addtocart(addcart)
       // }
       // alert("1")
-      console.log(")");
       if (skuId) localStorage.setItem("cartDetails", JSON.stringify(skuObj));
 
       // window.location.reload()

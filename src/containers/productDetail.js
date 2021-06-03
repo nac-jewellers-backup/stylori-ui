@@ -89,10 +89,7 @@ class ProductDetail extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.data !== prevState.data) {
-      console.log("camein", prevProps.data);
-      console.log("camein..", this.props.data);
       this.setState({ data: this.props.data });
-      console.log("camein.....", this.state.data);
       // this.handleOGTag()
     }
   }
@@ -147,7 +144,6 @@ class ProductDetail extends Component {
     };
     //  debugger
 
-    console.log("---------", this.props);
     return (
       <div>
         <Helmet>
@@ -560,7 +556,6 @@ const Components = (props) => {
   };
 
   const _queryResultsValidator = (_result) => {
-    console.log(_result, "_result");
     let _keys = Object.keys(_result);
     var _obj = {};
     _keys.map((val) => {
@@ -576,7 +571,6 @@ const Components = (props) => {
       });
       _obj[val] = { label: val, images: _arr };
     });
-    console.log(_obj, "aaa");
     _shopsProductss(_obj);
   };
 
@@ -630,7 +624,6 @@ const Components = (props) => {
 
   //
 
-  console.log(state.shopByData, "-------------+*/-");
 
   const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
   const {
@@ -644,7 +637,6 @@ const Components = (props) => {
       filters: { quantity },
     },
   } = React.useContext(ProductDetailContext);
-  console.log(quantity, "product detail quantity");
   const _silverArr = [];
   React.useEffect(() => {
     if (data && !loading) {
@@ -659,7 +651,6 @@ const Components = (props) => {
           data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku.nodes.map((val) => {
             _silverArr.push(val.materialName.toLowerCase());
           });
-          console.log(_silverArr, "_silverArr");
           if (_silverArr.indexOf("silver") > -1) setGlobalCtx({ ...Globalctx, pathName: true });
         }
       }

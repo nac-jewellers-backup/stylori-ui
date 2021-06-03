@@ -1,7 +1,6 @@
 import React from "react"
 import MetaTags from 'react-meta-tags';
 export const TwitterShare = (props) =>{
-    console.log("props------- TWITTER", props)
     return (
         <MetaTags>
        <meta name="twitter:card" content="summary" />

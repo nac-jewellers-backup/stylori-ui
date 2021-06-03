@@ -49,8 +49,7 @@ const PersistentDrawerLeft = (props) => {
   const { NetworkCtx } = React.useContext(NetworkContext);
   const { Globalctx } = React.useContext(GlobalContext);
 
-  console.log(NetworkCtx);
-  console.log(Globalctx);
+ 
   return (
     <Component
       setSort={setSort}
