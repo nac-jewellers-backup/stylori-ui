@@ -20,6 +20,7 @@ import { CDN_URL, API_URL } from "../config";
 import { ALLSTYLORILANDINGBANNERS } from "queries/home";
 import "aos/dist/aos.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import ReactPixel from "react-facebook-pixel";
 class HomeStylori extends React.Component {
   constructor(props) {
     super(props);
@@ -62,7 +63,8 @@ class HomeStylori extends React.Component {
 
         this.setState({ datas: datas });
         if (data.data.allStyloriBanners.nodes.length > 0) {
-          return this.setState({ starting: true });
+          this.setState({ starting: true });
+          console.log("initial", this.state.starting);
         }
       });
     Aos.init({ duration: 1500 });
@@ -106,9 +108,10 @@ class HomeStylori extends React.Component {
         class: "image5",
       },
     ];
-
+    ReactPixel.init("1464338023867789");
+    ReactPixel.pageView();
     return (
-      <Grid container>
+      <Grid container style={{ overflowX: "auto" }}>
         <div>
           <MetaTags>
             <title>Online Jewellery Shopping in India | Gold and Diamond Jewellery Online</title>
@@ -145,7 +148,7 @@ class HomeStylori extends React.Component {
         </div>
         <Header />
         {this.state.starting ? (
-          <Grid item xs={12}>
+          <Grid item xs={12} style={{ backgroundColor: "#ebebeb" }}>
             <Hidden smDown>
               {homePageStylori.carouselTop.setting.arrowsImg && (
                 <Grid container>
@@ -182,7 +185,7 @@ class HomeStylori extends React.Component {
                           loading="auto"
                           alt="…"
                           style={{ width: "100%", height: "100%" }}
-                          className={`smooth-image image-${this.state.imageLoading ? "visible" : "hidden"}`}
+                          className={`image-${this.state.imageLoading ? "visible" : "hidden"}`}
                           onLoad={this.imageLoader}
                         />
                       </a>

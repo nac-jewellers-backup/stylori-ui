@@ -11,14 +11,13 @@
 }
 
 .image-visible {
-  opacity: 1;
+  background-color: #796f6f !important;
+  height:"500px"
 }
-/* 
+
 .image-hidden {
-  opacity: 0.5;
   width:100%;
-  height:533px !important;
-} */
+}
 
 .continueshopping {
   display: flex;
@@ -463,7 +462,6 @@
   }  
 
   .image-hidden {
-    opacity: 0.5;
     width:100%;
     height:878px !important;
   }
@@ -475,7 +473,6 @@
   }
 
   .image-hidden {
-    opacity: 0.5;
     height:496px !important;
   }
 }
@@ -486,7 +483,6 @@
   }
 
   .image-hidden {
-    opacity: 0.5;
     width:100%;
     height:353px !important;
   }
@@ -498,7 +494,6 @@
   }
 
   .image-hidden {
-    opacity: 0.5;
     width:100%;
     height:414px !important;
   }
@@ -510,7 +505,6 @@
   }
 
   .image-hidden {
-    opacity: 0.5;
     width:100%;
     height:272px !important;
   }
@@ -522,7 +516,6 @@
   }
 
   .image-hidden {
-    opacity: 0.5;
     width:100%;
     height:231px !important;
   }
@@ -534,7 +527,6 @@
   }
 
   .image-hidden {
-    opacity: 0.5;
     width:100%;
     height:204px !important;
   }
@@ -546,7 +538,6 @@
   }
 
   .image-hidden {
-    opacity: 0.5;
     width:100%;
     height:175px !important;
   }
