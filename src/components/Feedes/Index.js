@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Grid, Typography } from "@material-ui/core";
 import Slideshow from "../../components/Carousel/carosul";
@@ -118,6 +120,10 @@ export default function StaticView(props) {
   const location = useLocation();
   const classes = useStyles(props);
   const { isShowInsideDiv } = props;
+
+  useEffect(()=>{
+    Aos.init({duration:2000});
+  },[])
   return (
     <>
       <Helmet>
@@ -142,7 +148,7 @@ export default function StaticView(props) {
             );
           })}
       </Grid>
-      <Grid container className={classes.containItems}>
+      <Grid container className={classes.containItems} data-aos="fade-right">
         <Grid item className={classes.containerRoot}>
           <Grid container>
             <Grid

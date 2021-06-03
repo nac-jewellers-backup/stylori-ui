@@ -1,4 +1,6 @@
-import React from 'react';
+import React,{useEffect} from 'react';
+import Aos from "aos";
+import "aos/dist/aos.css";
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Hidden, Typography, Button } from '@material-ui/core';
 import Slideshow from '../../components/Carousel/carosul'
@@ -200,10 +202,14 @@ export default function ImageGridList(props) {
     const previous = () => {
         slider.current.slickPrev();
     }
+    
+    useEffect(()=>{
+    Aos.init({duration:2000});
+     },[])
     return (
         <Grid container className={classes.root}>
             <Hidden smDown>
-                <Grid item className={classes.containerRoot}>
+                <Grid item className={classes.containerRoot} data-aos="fade-left">
                     <Grid container className={classes.container}>
                         <Grid item style={{ width: "3%" }} className={classes.imgleftGrid}>
                             <img onClick={() => previous()} className={classes.imgleft} />
@@ -238,14 +244,14 @@ export default function ImageGridList(props) {
                                 </>)}
                             </Slideshow>
                         </Grid>
-                        <Grid item style={{ width: "3%" }} className={classes.imgRightGrid}>
+                        <Grid item style={{ width: "3%" }} className={classes.imgRightGrid} >
                             <img onClick={() => next()} className={classes.imgRight} />
                         </Grid>
                     </Grid>
                 </Grid>
             </Hidden>
             <Hidden mdUp>
-                <Grid item className={classes.containerRoot}>
+                <Grid item className={classes.containerRoot} data-aos="fade-right">
                     <Grid container className={classes.container}>
                         <Grid item className={classes.smleftGrid}>
                             <img onClick={() => previous()} className={classes.leftIc} />
