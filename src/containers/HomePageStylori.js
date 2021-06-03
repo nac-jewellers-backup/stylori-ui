@@ -2,7 +2,7 @@ import React from "react";
 import Header from "components/SilverComponents/Header";
 import Aos from "aos";
 import { Grid, Hidden, Typography } from "@material-ui/core";
-import Skeleton from '@material-ui/lab/Skeleton';
+import Skeleton from "@material-ui/lab/Skeleton";
 import Footer from "components/Footer/Footer";
 import { withRouter } from "react-router";
 import "index.css";
@@ -32,7 +32,7 @@ class HomeStylori extends React.Component {
       count: "",
       datas: [],
       starting: false,
-      imageLoading: false
+      imageLoading: false,
     };
   }
   next = () => {
@@ -42,8 +42,8 @@ class HomeStylori extends React.Component {
     this.slider.current.slickPrev();
   };
   imageLoader = () => {
-    this.setState({imageLoading:true})
-  }
+    this.setState({ imageLoading: true });
+  };
   componentDidMount() {
     fetch(`${API_URL}/graphql`, {
       method: "post",
@@ -61,14 +61,12 @@ class HomeStylori extends React.Component {
         datas.sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
 
         this.setState({ datas: datas });
-        if(data.data.allStyloriBanners.nodes.length > 0){
-            return this.setState({starting: true})
+        if (data.data.allStyloriBanners.nodes.length > 0) {
+          return this.setState({ starting: true });
         }
       });
-      Aos.init({duration:1500});  
+    Aos.init({ duration: 1500 });
   }
-
-
 
   render() {
     const dataCarousel = {
@@ -146,30 +144,30 @@ class HomeStylori extends React.Component {
           </MetaTags>
         </div>
         <Header />
-        {this.state.starting ? 
-          <Grid item xs={12} >
-          <Hidden smDown>
-            {homePageStylori.carouselTop.setting.arrowsImg && (
-              <Grid container>
-                <Grid item onClick={this.previous} className={"imagePrevios"}>
-                  {/* <i
+        {this.state.starting ? (
+          <Grid item xs={12}>
+            <Hidden smDown>
+              {homePageStylori.carouselTop.setting.arrowsImg && (
+                <Grid container>
+                  <Grid item onClick={this.previous} className={"imagePrevios"}>
+                    {/* <i
                 class="fa fa-angle-left"
                 style={{ fontSize: "42px", color: "#F699A3" }}
               ></i> */}
-                </Grid>
-                <Grid item onClick={this.next} className={"imagenext"}>
-                  {/* <i
+                  </Grid>
+                  <Grid item onClick={this.next} className={"imagenext"}>
+                    {/* <i
                 class="fa fa-angle-right"
                 style={{ fontSize: "42px", color: "#F699A3" }}
               ></i> */}
+                  </Grid>
                 </Grid>
-              </Grid>
-            )}
-          </Hidden>
-          <Slideshow sliderRef={this.slider} dataCarousel={homePageStylori.carouselTop.setting}>
-            {this.state.datas.map((val, index) => (
-              <>
-              <Hidden smDown>
+              )}
+            </Hidden>
+            <Slideshow sliderRef={this.slider} dataCarousel={homePageStylori.carouselTop.setting}>
+              {this.state.datas.map((val, index) => (
+                <>
+                  <Hidden smDown>
                     <Grid
                       container
                       key={index}
@@ -209,16 +207,16 @@ class HomeStylori extends React.Component {
                       </a>
                     </Grid>
                   </Hidden>
-              </>
-            ))}
-          </Slideshow>
-        </Grid> 
-        :
-        <Skeleton variant="rect" style={{width:"100%", backgroundColor: "#fff"}} className="skeletonHeight" animation="wave" />
-        }
+                </>
+              ))}
+            </Slideshow>
+          </Grid>
+        ) : (
+          <Skeleton variant="rect" style={{ width: "100%" }} className="skeletonHeight" animation="wave" />
+        )}
 
         <Hidden mdUp>
-          <Grid container >
+          <Grid container>
             <Grid item xs={12} alignItems="center" style={{ paddingTop: "6px" }}>
               <Typography style={{ width: "100%", textAlign: "center" }}>
                 <Slideshow dataCarousel={dataCarousel}>
@@ -274,12 +272,12 @@ class HomeStylori extends React.Component {
           </Grid>
         </Grid>
 
-        <Testimony 
+        <Testimony
           dataCarousel={homePageStylori.Testimony.carousel.setting}
           GridImage={homePageStylori.Testimony.bangleGrid}
           carosolData={homePageStylori.Testimony.carousel.data}
         />
-      
+
         <Hidden smDown>
           <Feedes
             fadeImages={homePageStylori.NewsFeeds.carousel.data}
