@@ -47,6 +47,7 @@ import ElasticSearch from "components/ElasticSearch/ElasticSearch";
 import { CartContext, GlobalContext } from "context";
 import silverOpenLinkImage from "../../assets/silverOpenLink.png";
 import Collection from "screens/Stylori/Collection";
+import { Helmet } from "react-helmet";
 let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
 // var path = window.location.pathname.split('/').pop();
 class Header extends Component {
@@ -213,8 +214,39 @@ class Header extends Component {
             : "headerTop"
         }
       >
+        <Helmet>
+          <script>
+            {`    !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      fbq("init", "1464338023867789");
+      fbq("track", "PageView");`}
+          </script>
+          <noscript>
+            {` <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1"
+    />`}
+          </noscript>
+        </Helmet>
         <Hidden smDown>
           {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
+
           <div className="header-appbar-sticky1" id="headerDiv" style={{ position: "fixed", zIndex: "1000" }}>
             <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: "height 0.2s" }}>
               <Container maxWidth="lg" id="searchcontainer">
