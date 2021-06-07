@@ -31,8 +31,9 @@ app.get("/*", async (req, res) => {
       return console.log(err);
     }
     try {
+      
       const seoData = await networkcall(req.path);
-
+     
       data = data.replace(/(?<=\<meta __meta1\/>)(.*?)(?=\<meta __meta2\/>)/g, seo(seoData.title, seoData.description));
 
       res.send(data);

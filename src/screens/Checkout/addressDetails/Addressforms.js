@@ -5,7 +5,7 @@ import { CheckForCod } from 'queries/productdetail';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { CartContext } from '../../../context/CartContext';
 
-// window.cache = {}
+// window.cache = {}    
 var obj = {}
 var delet = {}
 var addObjall = {}

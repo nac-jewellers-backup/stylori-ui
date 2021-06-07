@@ -22,10 +22,12 @@ const networkcall = (path = "") => {
       var attrVal = val.attributeValue;
 
       filters[attrName] = attrVal;
+      console.log(filters);
     });
 
     return axios.post(API_URL + "/filterlist", filters).then((response) => {
       var data = response.data;
+      console.log(data);
       var replaceValue = "";
 
       var Page_title = data.seo_url.replace(/[-\+]/gi, " ");

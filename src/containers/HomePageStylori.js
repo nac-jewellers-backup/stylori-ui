@@ -19,8 +19,6 @@ import NeedHelp from "../components/needHelp";
 import { CDN_URL, API_URL } from "../config";
 import { ALLSTYLORILANDINGBANNERS } from "queries/home";
 import "aos/dist/aos.css";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-
 class HomeStylori extends React.Component {
   constructor(props) {
     super(props);

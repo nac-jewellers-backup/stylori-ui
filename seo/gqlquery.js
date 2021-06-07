@@ -117,4 +117,6 @@ var seoUrlResult = gql`
   }
 `;
 
+
+
 module.exports = { PRODUCTDETAILS, seoUrlResult };

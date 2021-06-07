@@ -38,6 +38,7 @@ const SilverCarousel = (props) => {
         .then((res) => res.json())
         .then((data) => {
           let datas = data.data.allStyloriSilverBanners.nodes;
+
           datas.sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
           return setState(datas);
         });
