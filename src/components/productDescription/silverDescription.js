@@ -14,8 +14,8 @@ import image1mobile from "../../assets/web_banner_and_mobile-02_720.jpg";
 import image2mobile from "../../assets/web_banner_and_mobile-03_720.jpg";
 import image3mobile from "../../assets/web_banner_and_mobile-05.jpg";
 import { homePageStylori } from "../../containers/dummydatahome";
-import {API_URL} from "../../config";
-import {ALLSTYLORISILVERLISTINGPAGE, ALLSPECIFICLISTINGPAGE} from "../../queries/home";
+import { API_URL } from "../../config";
+import { ALLSTYLORISILVERLISTINGPAGE } from "../../queries/home";
 
 const styles = (theme) => ({
   colorLight: {
@@ -49,32 +49,37 @@ class ProductDescription extends Component {
     super(props);
     this.state = {
       showLess: true,
-      bannerData:[],
+      bannerData: [],
     };
   }
   handleReadMore = () => {
     this.setState({ showLess: !this.state.showLess });
   };
 
-  componentDidMount(){
-    fetch(`${API_URL}/graphql`,{
-      method:"post",
+  componentDidMount() {
+    fetch(`${API_URL}/graphql`, {
+      method: "post",
       headers: {
-        "Content-Type" : "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        query: ALLSTYLORISILVERLISTINGPAGE
+        query: ALLSTYLORISILVERLISTINGPAGE,
         // query: ALLSPECIFICLISTINGPAGE
       }),
     })
-    .then((res) => res.json())
-    .then((data) => {
-      let bannerFullData = data.data.allStyloriSilverBanners.nodes;
-      bannerFullData.sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
-       this.setState({bannerData: bannerFullData});
-      console.log("the data recieved", data)
-    })
-    
+      .then((res) => res.json())
+      .then((data) => {
+        let bannerFullData = data.data.allStyloriSilverBanners.nodes;
+        // bannerFullData.sort((a, b) => {
+        //   parseFloat(a.position) - parseFloat(b.position);
+        // });
+        bannerFullData.sort((a, b) => (a.position > b.position ? 1 : b.position > a.position ? -1 : 0));
+//         bannerFullData.map((data) => {
+// data.val
+//         })
+        this.setState({ bannerData: bannerFullData });
+        console.log("the data recieved", data);
+      });
   }
 
   render() {
@@ -270,25 +275,25 @@ class ProductDescription extends Component {
                             </Hidden>
                           </>
                         ))
-                        : window.location.pathname === "/silver-jewellery-mural+collection"
-                        ? homePageStylori.carouselTop.silverListingMuralCollection.map((val, index) => (
-                            <>
-                              <Hidden smDown>
-                                <Grid container key={index}>
-                                  <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                    <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                  </a>
-                                </Grid>
-                              </Hidden>
-                              <Hidden mdUp>
-                                <Grid container key={index}>
-                                  <a href={val.navigateUrl}>
-                                    <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                  </a>
-                                </Grid>
-                              </Hidden>
-                            </>
-                          ))
+                      : window.location.pathname === "/silver-jewellery-mural+collection"
+                      ? homePageStylori.carouselTop.silverListingMuralCollection.map((val, index) => (
+                          <>
+                            <Hidden smDown>
+                              <Grid container key={index}>
+                                <a href={val.navigateUrl} style={{ width: "100%" }}>
+                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
+                                </a>
+                              </Grid>
+                            </Hidden>
+                            <Hidden mdUp>
+                              <Grid container key={index}>
+                                <a href={val.navigateUrl}>
+                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
+                                </a>
+                              </Grid>
+                            </Hidden>
+                          </>
+                        ))
                       : this.state.bannerData.map((val, index) => (
                           <>
                             <Hidden smDown>
@@ -417,7 +422,7 @@ class ProductDescription extends Component {
                             </Hidden>
                           </>
                         ))
-                       : window.location.pathname === "/silver-jewellery-csk+collection"
+                      : window.location.pathname === "/silver-jewellery-csk+collection"
                       ? homePageStylori.carouselTop.silverListingCsk.map((val, index) => (
                           <>
                             <Hidden smDown>
@@ -436,25 +441,25 @@ class ProductDescription extends Component {
                             </Hidden>
                           </>
                         ))
-                        : window.location.pathname === "/silver-jewellery-mural+collection"
-                        ? homePageStylori.carouselTop.silverListingMuralCollection.map((val, index) => (
-                            <>
-                              <Hidden smDown>
-                                <Grid container key={index}>
-                                  <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                    <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                  </a>
-                                </Grid>
-                              </Hidden>
-                              <Hidden mdUp>
-                                <Grid container key={index}>
-                                  <a href={val.navigateUrl}>
-                                    <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                  </a>
-                                </Grid>
-                              </Hidden>
-                            </>
-                          ))
+                      : window.location.pathname === "/silver-jewellery-mural+collection"
+                      ? homePageStylori.carouselTop.silverListingMuralCollection.map((val, index) => (
+                          <>
+                            <Hidden smDown>
+                              <Grid container key={index}>
+                                <a href={val.navigateUrl} style={{ width: "100%" }}>
+                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
+                                </a>
+                              </Grid>
+                            </Hidden>
+                            <Hidden mdUp>
+                              <Grid container key={index}>
+                                <a href={val.navigateUrl}>
+                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
+                                </a>
+                              </Grid>
+                            </Hidden>
+                          </>
+                        ))
                       : homePageStylori.carouselTop.silverListingPageData.map((val, index) => (
                           <>
                             <Hidden smDown>
