@@ -64,17 +64,27 @@ class ProductDescription extends Component {
       },
       body: JSON.stringify({
         query: ALLSTYLORISILVERLISTINGPAGE
-        // query: ALLSPECIFICLISTINGPAGE
       }),
     })
     .then((res) => res.json())
     .then((data) => {
       let bannerFullData = data.data.allStyloriSilverBanners.nodes;
-      bannerFullData.sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
-       this.setState({bannerData: bannerFullData});
-      console.log("the data recieved", data)
+      const specificPageData =  bannerFullData.filter((item) => item.url === "specificListingPage");
+      const listedPageData =bannerFullData.filter((item) => item.urlParam === "listingPage");    
+
+      bannerFullData.map((val) => {
+        if  (val.urlParam !== window.location.pathname && val.url !== "specificListingPage" && val.urlParam == "listingPage" ){
+          return (
+            this.setState({bannerData:listedPageData})
+          );
+        }
+        else if (val.urlParam == window.location.pathname && val.url === "specificListingPage" && val.urlParam !== "listingPage" ){
+          return (
+            this.setState({bannerData:specificPageData})
+          );
+        }
+      }); 
     })
-    
   }
 
   render() {
