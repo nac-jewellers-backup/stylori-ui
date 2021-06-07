@@ -99,9 +99,11 @@ query MyQuery {
   }
 }
 `;
-export const ALLSTYLORISILVERLANDINGBANNERS = `
+
+export const ALLSTYLORISILVERLISTINGPAGE = `
 query MyQuery {
-  allStyloriSilverBanners(condition: {urlParam: null}) {
+  allStyloriSilverBanners 
+ {
     nodes {
       id
       mobile
@@ -112,6 +114,36 @@ query MyQuery {
     }
   }
 }
+`;
 
+export const ALLSTYLORISILVERLANDINGBANNERS = `
+query MyQuery {
+  allStyloriSilverBanners(condition: {urlParam: "landing"}) {
+    nodes {
+      id
+      mobile
+      position
+      url
+      web
+      urlParam
+    }
+  }
+}
+`;
 
+export const ALLSPECIFICLISTINGPAGE = `
+query MyQuery {
+  allStyloriSilverBanners
+  (condition: {url: "specificListingPage"}) 
+ {
+    nodes {
+      id
+      mobile
+      position
+      url
+      web
+      urlParam
+    }
+  }
+}
 `;
