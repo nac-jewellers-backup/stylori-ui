@@ -64,21 +64,19 @@ class ProductDescription extends Component {
       },
       body: JSON.stringify({
         query: ALLSTYLORISILVERLISTINGPAGE,
-        // query: ALLSPECIFICLISTINGPAGE
       }),
     })
       .then((res) => res.json())
       .then((data) => {
         let bannerFullData = data.data.allStyloriSilverBanners.nodes;
-        // bannerFullData.sort((a, b) => {
-        //   parseFloat(a.position) - parseFloat(b.position);
-        // });
-        bannerFullData.sort((a, b) => (a.position > b.position ? 1 : b.position > a.position ? -1 : 0));
-//         bannerFullData.map((data) => {
-// data.val
-//         })
-        this.setState({ bannerData: bannerFullData });
-        console.log("the data recieved", data);
+        const specificPageData = bannerFullData.filter((item) => item.urlParam === window.location.pathname);
+        const listedPageData = bannerFullData.filter((item) => item.urlParam === "listingPage");
+
+        if (specificPageData.length > 0) {
+          this.setState({ bannerData: specificPageData });
+        } else {
+          this.setState({ bannerData: listedPageData });
+        }
       });
   }
 
@@ -149,335 +147,47 @@ class ProductDescription extends Component {
             <Grid item container alignItems="center">
               <Grid item xs={12} style={{ textAlign: "center" }}>
                 <Hidden smDown>
-                  <Slideshow
-                    sliderRef={this.slider}
-                    dataCarousel={
-                      window.location.pathname === "/silver-jewellery-contemporary" ||
-                      window.location.pathname === "/silver-jewellery-everyday" ||
-                      window.location.pathname === "/silver-jewellery-folklore" ||
-                      window.location.pathname === "/silver-jewellery-dmudra" ||
-                      window.location.pathname === "/silver-jewellery-traditional"
-                        ? homePageStylori.carouselTop.settingSilverListingPage
-                        : homePageStylori.carouselTop.settingSilver
-                    }
-                  >
-                    {window.location.pathname === "/silver-jewellery-contemporary"
-                      ? homePageStylori.carouselTop.silverListingContemperoryPage.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : window.location.pathname === "/silver-jewellery-everyday"
-                      ? homePageStylori.carouselTop.silverListingEverydayPage.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : window.location.pathname === "/silver-jewellery-folklore"
-                      ? homePageStylori.carouselTop.silverListingFolklorePage.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : window.location.pathname === "/silver-jewellery-dmudra"
-                      ? homePageStylori.carouselTop.silverListingMudraPage.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : window.location.pathname === "/silver-jewellery-traditional"
-                      ? homePageStylori.carouselTop.silverListingTraditionalPage.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : window.location.pathname === "/silver-jewellery-csk+collection"
-                      ? homePageStylori.carouselTop.silverListingCsk.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : window.location.pathname === "/silver-jewellery-mural+collection"
-                      ? homePageStylori.carouselTop.silverListingMuralCollection.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : this.state.bannerData.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.url} style={{ width: "100%" }}>
-                                  <img src={val.web} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))}
+                  <Slideshow sliderRef={this.slider} dataCarousel={homePageStylori.carouselTop.settingSilver}>
+                    {this.state.bannerData.map((val, index) => (
+                      <>
+                        <Hidden smDown>
+                          <Grid container key={index}>
+                            <a href={val.url ?? ""} style={{ width: "100%" }}>
+                              <img src={val.web} style={{ width: "100%", height: "100%" }} />
+                            </a>
+                          </Grid>
+                        </Hidden>
+                        <Hidden mdUp>
+                          <Grid container key={index}>
+                            <a href={val.url ?? ""}>
+                              <img src={val.mobile} style={{ width: "100%", height: "100%" }} />
+                            </a>
+                          </Grid>
+                        </Hidden>
+                      </>
+                    ))}
                   </Slideshow>
                 </Hidden>
                 <Hidden smUp>
-                  <Slideshow
-                    sliderRef={this.slider}
-                    dataCarousel={
-                      window.location.pathname === "/silver-jewellery-contemporary" ||
-                      window.location.pathname === "/silver-jewellery-everyday" ||
-                      window.location.pathname === "/silver-jewellery-folklore" ||
-                      window.location.pathname === "/silver-jewellery-dmudra" ||
-                      window.location.pathname === "/silver-jewellery-traditional"
-                        ? homePageStylori.carouselTop.settingSilverListingPage
-                        : homePageStylori.carouselTop.settingSilver
-                    }
-                  >
-                    {window.location.pathname === "/silver-jewellery-contemporary"
-                      ? homePageStylori.carouselTop.silverListingContemperoryPage.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : window.location.pathname === "/silver-jewellery-everyday"
-                      ? homePageStylori.carouselTop.silverListingEverydayPage.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : window.location.pathname === "/silver-jewellery-folklore"
-                      ? homePageStylori.carouselTop.silverListingFolklorePage.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : window.location.pathname === "/silver-jewellery-dmudra"
-                      ? homePageStylori.carouselTop.silverListingMudraPage.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : window.location.pathname === "/silver-jewellery-traditional"
-                      ? homePageStylori.carouselTop.silverListingTraditionalPage.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : window.location.pathname === "/silver-jewellery-csk+collection"
-                      ? homePageStylori.carouselTop.silverListingCsk.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : window.location.pathname === "/silver-jewellery-mural+collection"
-                      ? homePageStylori.carouselTop.silverListingMuralCollection.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))
-                      : homePageStylori.carouselTop.silverListingPageData.map((val, index) => (
-                          <>
-                            <Hidden smDown>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl} style={{ width: "100%" }}>
-                                  <img src={val.img} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Grid container key={index}>
-                                <a href={val.navigateUrl}>
-                                  <img src={val.mobileImg} style={{ width: "100%", height: "100%" }} />
-                                </a>
-                              </Grid>
-                            </Hidden>
-                          </>
-                        ))}
+                  <Slideshow sliderRef={this.slider} dataCarousel={homePageStylori.carouselTop.settingSilver}>
+                    {this.state.bannerData.map((val, index) => (
+                      <>
+                        <Hidden smDown>
+                          <Grid container key={index}>
+                            <a href={val.url ?? ""} style={{ width: "100%" }}>
+                              <img src={val.web} style={{ width: "100%", height: "100%" }} />
+                            </a>
+                          </Grid>
+                        </Hidden>
+                        <Hidden mdUp>
+                          <Grid container key={index}>
+                            <a href={val.url ?? ""}>
+                              <img src={val.mobile} style={{ width: "100%", height: "100%" }} />
+                            </a>
+                          </Grid>
+                        </Hidden>
+                      </>
+                    ))}
                   </Slideshow>
                 </Hidden>
               </Grid>
