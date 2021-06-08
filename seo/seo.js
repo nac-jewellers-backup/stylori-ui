@@ -1,14 +1,14 @@
 var seo = (title, description, imgURL) => {
   if (!title) {
-    title = "Online Jewellery Shopping in India | Gold and Diamond Jewellery Online";
+    return (title = "Online Jewellery Shopping in India | Gold and Diamond Jewellery Online");
   }
   if (!description) {
-    description =
-      "Buy Gold and Diamond Jewellery Shopping Online from Stylori.com with variety of products like Pendants, Gold Rings, Bangles, Earrings";
+    return (description =
+      "Buy Gold and Diamond Jewellery Shopping Online from Stylori.com with variety of products like Pendants, Gold Rings, Bangles, Earrings");
   }
   if (!imgURL) {
-    imgURL =
-      "https://s3-ap-southeast-1.amazonaws.com/media.nacjewellers.com/resources/static+page+images/home_web_collection/Stylorilogo.png";
+    return (imgURL =
+      "https://s3-ap-southeast-1.amazonaws.com/media.nacjewellers.com/resources/static+page+images/home_web_collection/Stylorilogo.png");
   }
 
   return `
