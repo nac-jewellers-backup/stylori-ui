@@ -7,7 +7,8 @@ var seo = (title, description, imgURL) => {
       "Buy Gold and Diamond Jewellery Shopping Online from Stylori.com with variety of products like Pendants, Gold Rings, Bangles, Earrings";
   }
   if (!imgURL) {
-    imgURL = "https://assets.stylori.com/stylori-logo.svg";
+    imgURL =
+      "https://s3-ap-southeast-1.amazonaws.com/media.nacjewellers.com/resources/static+page+images/home_web_collection/Stylorilogo.png";
   }
 
   return `
