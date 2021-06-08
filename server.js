@@ -31,10 +31,12 @@ app.get("/*", async (req, res) => {
       return console.log(err);
     }
     try {
-      
-      const seoData = await networkcall(req.path);
-     
-      data = data.replace(/(?<=\<meta __meta1\/>)(.*?)(?=\<meta __meta2\/>)/g, seo(seoData.title, seoData.description));
+      const seoData = await networkcall(req.path, req.query.skuid);
+      console.log(seoData.title, seoData.description, seoData.imgURL);
+      data = data.replace(
+        /(?<=\<meta __meta1\/>)(.*?)(?=\<meta __meta2\/>)/g,
+        seo(seoData.title, seoData.description, seoData.imgURL)
+      );
 
       res.send(data);
     } catch (error) {
