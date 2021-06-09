@@ -25,8 +25,7 @@ const networkcall = (path, skuID) => {
       }
 
       return {
-        title: `${ResultData[0].productListByProductId.productName} 
-        
+        title: `${ResultData[0].productListByProductId.productName}  
         `,
         description: ResultData[0].transSkuDescriptionsBySkuId.nodes[0].skuDescription,
         imgURL: `https://styloriimages-staging.s3.ap-south-1.amazonaws.com/${imgData}`,
@@ -68,7 +67,7 @@ const networkcall = (path, skuID) => {
         return {
           title: replaceValue,
           description: " ",
-          imgURL: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-jewellery-15K-21-mar-W.jpg",
+          imgURL: " ",
         };
       });
     });
