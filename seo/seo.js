@@ -6,8 +6,7 @@ var seo = (title, description, imgURL) => {
     return (description = " ");
   }
   if (!imgURL) {
-    return (imgURL =
-      "https://s3-ap-southeast-1.amazonaws.com/media.nacjewellers.com/resources/static+page+images/home_web_collection/Stylorilogo.png");
+    return (imgURL = " ");
   }
 
   return `
