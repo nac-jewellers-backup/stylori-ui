@@ -3,8 +3,8 @@ const { seoUrlResult, PRODUCTDETAILS } = require("./gqlquery");
 const { API_URL } = require("./config");
 const { default: axios } = require("axios");
 const networkcall = (path, skuID) => {
-  console.log(path)
-  console.log(skuID)
+  console.log(path);
+  console.log(skuID);
   if (skuID !== undefined) {
     var variables = { conditionfilter: { skuId: skuID } };
     return request(API_URL + "/graphql", PRODUCTDETAILS, variables).then((data) => {
@@ -67,7 +67,7 @@ const networkcall = (path, skuID) => {
           .join(" ");
         return {
           title: replaceValue,
-          description: data.seo_text,
+          description: "",
           imgURL: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-jewellery-15K-21-mar-W.jpg",
         };
       });

@@ -3,8 +3,7 @@ var seo = (title, description, imgURL) => {
     return (title = "Online Jewellery Shopping in India | Gold and Diamond Jewellery Online");
   }
   if (!description) {
-    return (description =
-      "Buy Gold and Diamond Jewellery Shopping Online from Stylori.com with variety of products like Pendants, Gold Rings, Bangles, Earrings");
+    return (description = "");
   }
   if (!imgURL) {
     return (imgURL =
