@@ -3,7 +3,7 @@ var seo = (title, description, imgURL) => {
     return (title = "Online Jewellery Shopping in India | Gold and Diamond Jewellery Online");
   }
   if (!description) {
-    return (description = "");
+    return (description = " ");
   }
   if (!imgURL) {
     return (imgURL =

@@ -67,7 +67,7 @@ const networkcall = (path, skuID) => {
           .join(" ");
         return {
           title: replaceValue,
-          description: "",
+          description: " ",
           imgURL: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-jewellery-15K-21-mar-W.jpg",
         };
       });
