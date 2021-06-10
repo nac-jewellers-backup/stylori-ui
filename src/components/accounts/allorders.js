@@ -35,8 +35,10 @@ class Allorders extends React.Component {
   };
   componentDidMount() {
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
-    ReactPixel.fbq("track", "PageView");
-    ReactPixel.fbq("track", "Purchase");
+    ReactPixel.track("PageView");
+    ReactPixel.track("Purchase");
+    // ReactPixel.fbq("track", "PageView");
+    // ReactPixel.fbq("track", "Purchase");
   }
 
   handleChange = (panel) => (event) => {

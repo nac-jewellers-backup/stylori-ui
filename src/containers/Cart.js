@@ -55,9 +55,11 @@ const cartsubdata = [
 class Cart extends React.Component {
   componentDidMount() {
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
-
-    ReactPixel.fbq("track", "PageView");
-    ReactPixel.fbq("track", "AddToCart");
+    ReactPixel.track("PageView");
+    ReactPixel.track("AddToCart");
+    
+    // ReactPixel.fbq("track", "PageView");
+    // ReactPixel.fbq("track", "AddToCart");
   }
   render() {
     const { data, classes, isStateFilterContextQty } = this.props;
