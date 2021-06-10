@@ -34,6 +34,9 @@ import { withRouter } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import ReactPixel from "react-facebook-pixel";
 
+
+ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
+ReactPixel.track("InitiateCheckout");
 var adres = {};
 var variab = {};
 const CartCardCheck = (props) => {
@@ -63,9 +66,7 @@ class Component extends React.Component {
     adres_details: null,
   };
   componentDidMount() {
-    ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
-    ReactPixel.track("PageView");
-    ReactPixel.track("InitiateCheckout");
+ 
     // ReactPixel.fbq("track", "PageView");
     // ReactPixel.fbq("track", "InitiateCheckout");
   }
