@@ -5,9 +5,6 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import ReactPixel from "react-facebook-pixel";
 
-ReactPixel.init("1464338023867789", {}, { debug: false, autoConfig: true });
-ReactPixel.pageView();
-ReactPixel.track("PageView");
 // import TagManager from 'react-gtm-module'
 
 // const tagManagerArgs = {

@@ -18,9 +18,6 @@ let jewelleryThemes = responsiveFontSizes(jewellery_theme);
 let silverThemes = responsiveFontSizes(silver_jewellery_theme);
 const RouterApp = React.lazy(() => import("router"));
 
-ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
-ReactPixel.pageView();
-ReactPixel.track("PageView");
 // ReactPixel.fbq("track", "PageView");
 // const client = new ApolloClient({
 //   uri: ``,
@@ -40,6 +37,8 @@ class App extends React.Component {
   }
   async componentDidMount() {
     lambda_func_front_end();
+    ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
+    ReactPixel.pageView();
   }
   render() {
     return (
