@@ -64,7 +64,6 @@ class Component extends React.Component {
   };
   componentDidMount() {
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
-    ReactPixel.pageView();
     ReactPixel.fbq("track", "PageView");
     ReactPixel.fbq("track", "InitiateCheckout");
   }

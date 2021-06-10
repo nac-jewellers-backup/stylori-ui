@@ -3,7 +3,11 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import ReactPixel from "react-facebook-pixel";
 
+ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
+ReactPixel.pageView();
+ReactPixel.fbq("track", "PageView");
 // import TagManager from 'react-gtm-module'
 
 // const tagManagerArgs = {
