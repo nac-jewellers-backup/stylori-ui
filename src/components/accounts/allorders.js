@@ -21,8 +21,6 @@ import { Helmet } from "react-helmet";
 
 import ReactPixel from "react-facebook-pixel";
 
-ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
-ReactPixel.track("Purchase");
 const order_id = localStorage.getItem("order_id") ? JSON.parse(localStorage.getItem("order_id")) : "";
 var img_res;
 var img_res_X_2 = null;
@@ -36,6 +34,8 @@ class Allorders extends React.Component {
     check_img: null,
   };
   componentDidMount() {
+    ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
+    ReactPixel.track("Purchase");
     // ReactPixel.fbq("track", "PageView");
     // ReactPixel.fbq("track", "Purchase");
   }

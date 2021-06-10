@@ -20,8 +20,6 @@ import NeedHelp from "../components/needHelp";
 import { Helmet } from "react-helmet";
 import ReactPixel from "react-facebook-pixel";
 
-ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
-ReactPixel.track("AddToCart");
 // data.map(data=>{
 // return(
 //     <Grid item xs={12}>
@@ -56,6 +54,9 @@ const cartsubdata = [
 ];
 class Cart extends React.Component {
   componentDidMount() {
+    ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
+    ReactPixel.track("AddToCart");
+
     // ReactPixel.fbq("track", "PageView");
     // ReactPixel.fbq("track", "AddToCart");
   }
