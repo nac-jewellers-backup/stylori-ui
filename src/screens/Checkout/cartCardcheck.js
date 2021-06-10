@@ -32,6 +32,8 @@ import { useCheckForCod } from "hooks/CheckForCodHook";
 import Header from "components/SilverComponents/Header";
 import { withRouter } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import ReactPixel from "react-facebook-pixel";
+
 var adres = {};
 var variab = {};
 const CartCardCheck = (props) => {
@@ -60,6 +62,9 @@ class Component extends React.Component {
     mailId: null,
     adres_details: null,
   };
+  componentDidMount() {
+    ReactPixel.fbq("track", "InitiateCheckout");
+  }
 
   handleChange = (panel) => (event) => {
     // alert(JSON.stringify(panel))
@@ -171,8 +176,6 @@ class Component extends React.Component {
   };
 
   render() {
-   
-  
     const { expanded, mailId, expandedlimit } = this.state;
     const { classes, data } = this.props;
     const { breadcrumsdata, cartsubdata } = this.props.data;
@@ -225,7 +228,7 @@ class Component extends React.Component {
     return (
       <Grid>
         <Helmet>
-          <script>
+          {/* <script>
             {` !function(f,b,e,v,n,t,s) 
  {if(f.fbq)return;n=f.fbq=function(){n.callMethod? 
  n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
@@ -242,7 +245,7 @@ class Component extends React.Component {
             {`<img height="1" width="1" style="display:none" 
  src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1" 
  />`}
-          </noscript>
+          </noscript> */}
         </Helmet>
         <Header wishlist={this.props.wishlistdata} />
 

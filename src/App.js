@@ -10,12 +10,17 @@ import Theme from "./Theme.js";
 import { withRouter } from "react-router-dom";
 import CacheBuster from "./components/cacheBrust";
 import ErrorBoundary from "components/errorcatching/ErrorCatching";
+import ReactPixel from "react-facebook-pixel";
+
 let jewellery_theme = createMuiTheme(require("./jewellery_theme.json"));
 let silver_jewellery_theme = createMuiTheme(require("./silver_jewellery_theme.json"));
 let jewelleryThemes = responsiveFontSizes(jewellery_theme);
 let silverThemes = responsiveFontSizes(silver_jewellery_theme);
 const RouterApp = React.lazy(() => import("router"));
 
+ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
+ReactPixel.pageView();
+ReactPixel.fbq("track", "PageView");
 // const client = new ApolloClient({
 //   uri: ``,
 // });

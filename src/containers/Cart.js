@@ -18,6 +18,9 @@ import "./index.css";
 import { NavLink } from "react-router-dom";
 import NeedHelp from "../components/needHelp";
 import { Helmet } from "react-helmet";
+import ReactPixel from "react-facebook-pixel";
+
+
 // data.map(data=>{
 // return(
 //     <Grid item xs={12}>
@@ -51,6 +54,10 @@ const cartsubdata = [
   },
 ];
 class Cart extends React.Component {
+
+  componentDidMount() {
+    ReactPixel.fbq("track", "AddToCart");
+  }
   render() {
     const { data, classes, isStateFilterContextQty } = this.props;
 
@@ -58,7 +65,7 @@ class Cart extends React.Component {
     return (
       <Grid container>
         <Helmet>
-          <script>
+          {/* <script>
             {`!function(f,b,e,v,n,t,s) 
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod? 
 n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
@@ -70,6 +77,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1464338023867789'); 
 fbq('track', 'PageView'); 
 fbq('track', 'AddToCart'); `}
+
           </script>
           <noscript>
             {`<img
@@ -78,7 +86,7 @@ fbq('track', 'AddToCart'); `}
               style="display:none"
               src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1"
             />`}
-          </noscript>
+          </noscript> */}
         </Helmet>
 
         <Hidden smDown>

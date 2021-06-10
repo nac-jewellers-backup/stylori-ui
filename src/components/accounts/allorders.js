@@ -18,6 +18,10 @@ import Pricing from "../Pricing/index";
 import { CDN_URL } from "config";
 import { withRouter } from "react-router-dom";
 import { Helmet } from "react-helmet";
+
+import ReactPixel from "react-facebook-pixel";
+
+
 const order_id = localStorage.getItem("order_id") ? JSON.parse(localStorage.getItem("order_id")) : "";
 var img_res;
 var img_res_X_2 = null;
@@ -30,6 +34,9 @@ class Allorders extends React.Component {
     expanded: [],
     check_img: null,
   };
+  componentDidMount() {
+    ReactPixel.fbq("track", "Purchase");
+  }
 
   handleChange = (panel) => (event) => {
     const { expanded } = this.state;
@@ -212,7 +219,7 @@ class Allorders extends React.Component {
     return (
       <>
         <Helmet>
-          <script>
+          {/* <script>
             {` !function(f,b,e,v,n,t,s) 
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod? 
 n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
@@ -229,7 +236,7 @@ fbq('track', 'Purchase', {value:0.00 , currency: 'INR'});  `}
             {`<img height="1" width="1" style="display:none" 
 src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1" 
 />`}
-          </noscript>
+          </noscript> */}
         </Helmet>
         {/* allorderdata.nodes */}
         {this.props.location.pathname.split("-")[0] === "/account" ? (
