@@ -176,7 +176,7 @@ class HomeStylori extends React.Component {
                       data-aos-delay="200"
                       data-aos-offset="0"
                     >
-                      <a href={val.url} style={{ width: "100%" }}>
+                      <a href={`${window.location.hostname + val.url} `} style={{ width: "100%" }}>
                         <img
                           src={val.web}
                           loading="auto"
@@ -197,7 +197,7 @@ class HomeStylori extends React.Component {
                       data-aos-delay="200"
                       data-aos-offset="0"
                     >
-                      <a href={val.url}>
+                      <a href={`${window.location.hostname + val.url} `}>
                         <img
                           src={val.mobile}
                           style={{ width: "100%", height: "100%" }}

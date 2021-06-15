@@ -72,7 +72,7 @@ const SilverCarousel = (props) => {
         <Hidden mdUp>
           <Slideshow dataCarousel={carouselTop[0].settings}>
             {state.map((val, index) => (
-              <a href={val.url}>
+              <a href={`${window.location.hostname + val.url} `}>
                 <Grid container>
                   <LazyLoadImage src={val.mobile} alt="Stylori" style={{ width: "100%", height: "100%" }} />
                   {/* <img
@@ -89,7 +89,7 @@ const SilverCarousel = (props) => {
         <Hidden smDown>
           <Slideshow dataCarousel={carouselTop[0].settings}>
             {state.map((val, index) => (
-              <a href={val.url}>
+              <a href={`${window.location.hostname + val.url} `}>
                 <Grid container>
                   <LazyLoadImage loading="lazy" src={val.web} style={{ width: "100%", height: "100%" }} />
 
