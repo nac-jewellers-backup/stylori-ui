@@ -26,7 +26,7 @@ import Fail from "../screens/Stylori/fail";
 import Contactus from "../screens/Stylori/contactUs";
 import Careers from "../screens/Stylori/careers";
 import { Helmet } from "react-helmet";
-
+import ReactPixel from "react-facebook-pixel";
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
 
@@ -39,27 +39,16 @@ import ChangePassword from "screens/Checkout/loginRegister/ChangePassword";
 import SilverCollection from "screens/SilverStylori/silverCollections";
 
 // SILVER SCREENS ENDS
-
+ReactPixel.init('facebook_pixel_id', {}, { debug: true, autoConfig: false });
 const browserHistory = createBrowserHistory();
 let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
 
-browserHistory.listen((location, action) => {
+browserHistory.listen(() => {
+  ReactPixel.pageView(); // For tracking page view
+  console.log("called here :( ");
   window.scrollTo(0, 0);
 });
 export const RouterApp = (props) => {
-  React.useEffect(() => {
-    // import("react-facebook-pixel")
-    //   .then((module) => module.default)
-    //   .then((ReactPixel) => {
-    //     alert("router")
-    //     ReactPixel.init("1464338023867789");
-    //     ReactPixel.pageView();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-  }, []);
-
   const { Globalctx } = React.useContext(GlobalContext);
   const func_location_silver = () => {
     var loc = window.location.pathname
