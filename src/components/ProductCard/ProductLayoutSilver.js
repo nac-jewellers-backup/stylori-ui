@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  GridList,
-  GridListTile,
-  Button,
-  Grid,
-  Container,
-  Hidden,
-} from "@material-ui/core";
+import { GridList, GridListTile, Button, Grid, Container, Hidden } from "@material-ui/core";
 import ProductCards from "./index";
 import { withStyles } from "@material-ui/core/styles";
 import { useDummyRequest } from "hooks";
@@ -19,6 +12,8 @@ import { FilterOptionsContext } from "context";
 import { withRouter } from "react-router";
 import { homePageStylori } from "../../containers/dummydatahome";
 import Slideshow from "../Carousel/carosul";
+import { ALLSTYLORISILVERLISTINGBOTTOMBANNERS } from "../../queries/home";
+import { API_URL } from "../../config";
 // ../components/Carousel/carosul
 
 const styles = (theme) => ({
@@ -58,9 +53,7 @@ const styles = (theme) => ({
   },
 });
 const ProductLayoutSilver = (props) => {
-  const { setOffset, setFirst, FilterOptionsCtx } = React.useContext(
-    FilterOptionsContext
-  );
+  const { setOffset, setFirst, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
   return (
     <Component
       offset={FilterOptionsCtx.offset}
@@ -79,6 +72,7 @@ class Component extends React.Component {
       colSize: window.innerWidth,
       loading: false,
       loadingtext: false,
+      bannerData: [],
     };
   }
   componentDidMount() {
@@ -86,6 +80,20 @@ class Component extends React.Component {
     // Additionally I could have just used an arrow function for the binding `this` to the component...
     window.addEventListener("resize", this.screenWidth);
     // setTimeout(function () { this.setState({ loading: false }); }.bind(this), 2000);
+    fetch(`${API_URL}/graphql`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: ALLSTYLORISILVERLISTINGBOTTOMBANNERS,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        let bannerFullData = data.data.allStyloriSilverBanners.nodes;
+        this.setState({ bannerData: bannerFullData });
+      });
   }
   screenWidth = () => {
     const width = window.innerWidth;
@@ -171,10 +179,7 @@ class Component extends React.Component {
                                   {/* <ProductCard data={tile} /> */}
                                   <Slideshow
                                     sliderRef={this.slider}
-                                    dataCarousel={
-                                      homePageStylori.carouselTop
-                                        .settingSilverListingPage
-                                    }
+                                    dataCarousel={homePageStylori.carouselTop.settingSilverListingPage}
                                   >
                                     {/* {shuffle} */}
                                     {
@@ -198,17 +203,11 @@ class Component extends React.Component {
                                             >
                                               <img
                                                 src={
-                                                  homePageStylori.carouselTop
-                                                    .silverListingPageBottomData[
-                                                    Math.floor(
-                                                      Math.random() *
-                                                        homePageStylori
-                                                          .carouselTop
-                                                          .silverListingPageBottomData
-                                                          .length
-                                                    )
-                                                  ].img
+                                                  this.state?.bannerData[
+                                                    Math.floor(Math.random() * this.state?.bannerData.length)
+                                                  ]?.web ?? ""
                                                 }
+                                                alt="silver banner"
                                                 style={{
                                                   width: "100%",
                                                   height: "100%",
@@ -235,17 +234,11 @@ class Component extends React.Component {
                                             >
                                               <img
                                                 src={
-                                                  homePageStylori.carouselTop
-                                                    .silverListingPageBottomData[
-                                                    Math.floor(
-                                                      Math.random() *
-                                                        homePageStylori
-                                                          .carouselTop
-                                                          .silverListingPageBottomData
-                                                          .length
-                                                    )
-                                                  ].mobileImg
+                                                  this.state?.bannerData[
+                                                    Math.floor(Math.random() * this.state?.bannerData.length)
+                                                  ]?.mobile ?? ""
                                                 }
+                                                alt="silver banner"
                                                 style={{
                                                   width: "100%",
                                                   height: "100%",
@@ -267,10 +260,7 @@ class Component extends React.Component {
                                 className={`${classes.liClass}`}
                               >
                                 {/* <ProductCard data={tile} /> */}
-                                <ProductCards
-                                  data={val}
-                                  wishlist={this.props.wishlist}
-                                />
+                                <ProductCards data={val} wishlist={this.props.wishlist} />
                               </GridListTile>
                             );
                           })
@@ -282,10 +272,7 @@ class Component extends React.Component {
                             className={`${classes.liClass}`}
                           >
                             {/* <ProductCard data={tile} /> */}
-                            <ProductCards
-                              data={tile}
-                              wishlist={this.props.wishlist}
-                            />
+                            <ProductCards data={tile} wishlist={this.props.wishlist} />
                           </GridListTile>
                         )
                       ) : (
@@ -305,8 +292,7 @@ class Component extends React.Component {
                         {data && data.length !== 0 ? (
                           data[0] &&
                           data[0].totalCount &&
-                          (data[0].totalCount - data.length === 0 ||
-                            data[0].totalCount - data.length < 0) ? (
+                          (data[0].totalCount - data.length === 0 || data[0].totalCount - data.length < 0) ? (
                             ""
                           ) : (
                             <Button
@@ -321,17 +307,13 @@ class Component extends React.Component {
                               {data &&
                                 data.length >= 24 &&
                                 ` View ${
-                                  data && data.length > 0 && data[0]
-                                    ? data[0].totalCount - data.length
-                                    : ""
+                                  data && data.length > 0 && data[0] ? data[0].totalCount - data.length : ""
                                 } More Products`}
                               {data &&
                                 data.length > 0 &&
                                 data.length < 24 &&
                                 `Only ${
-                                  data && data.length > 0 && data[0]
-                                    ? data[0].totalCount - data.length
-                                    : ""
+                                  data && data.length > 0 && data[0] ? data[0].totalCount - data.length : ""
                                 } products avalilable`}
                             </Button>
                           )
@@ -357,6 +339,4 @@ class Component extends React.Component {
   }
 }
 
-export default withRouter(
-  withStyles(styles, { withTheme: true })(ProductLayoutSilver)
-);
+export default withRouter(withStyles(styles, { withTheme: true })(ProductLayoutSilver));

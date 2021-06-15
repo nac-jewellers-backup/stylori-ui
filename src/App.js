@@ -12,8 +12,6 @@ import CacheBuster from "./components/cacheBrust";
 import ErrorBoundary from "components/errorcatching/ErrorCatching";
 import ReactPixel from "react-facebook-pixel";
 
-ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
-ReactPixel.pageView();
 
 let jewellery_theme = createMuiTheme(require("./jewellery_theme.json"));
 let silver_jewellery_theme = createMuiTheme(require("./silver_jewellery_theme.json"));

@@ -147,3 +147,18 @@ query MyQuery {
   }
 }
 `;
+
+export const ALLSTYLORISILVERLISTINGBOTTOMBANNERS = `
+query MyQuery {
+  allStyloriSilverBanners(condition: {urlParam: "bottom"}) {
+    nodes {
+      id
+      mobile
+      position
+      url
+      web
+      urlParam
+    }
+  }
+}
+`;

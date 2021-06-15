@@ -24,7 +24,7 @@ const SilverCarousel = (props) => {
   // debugger;
   // console.log(props);
   useEffect(async () => {
-    function fetchBanner() {
+     function fetchBanner() {
       fetch(`${API_URL}/graphql`, {
         method: "post",
         headers: {
@@ -42,7 +42,7 @@ const SilverCarousel = (props) => {
           datas.sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
           return setState(datas);
         });
-    }
+    };
     fetchBanner();
   }, []);
   return (

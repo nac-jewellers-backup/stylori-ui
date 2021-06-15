@@ -34,8 +34,8 @@ class Allorders extends React.Component {
     check_img: null,
   };
   componentDidMount() {
-    ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
-    ReactPixel.track("Purchase");
+    // ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
+    // ReactPixel.track("Purchase");
     // ReactPixel.fbq("track", "PageView");
     // ReactPixel.fbq("track", "Purchase");
   }
