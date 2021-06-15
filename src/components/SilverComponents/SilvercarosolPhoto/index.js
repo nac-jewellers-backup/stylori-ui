@@ -24,7 +24,7 @@ const SilverCarousel = (props) => {
   // debugger;
   // console.log(props);
   useEffect(async () => {
-     function fetchBanner() {
+    function fetchBanner() {
       fetch(`${API_URL}/graphql`, {
         method: "post",
         headers: {
@@ -42,7 +42,7 @@ const SilverCarousel = (props) => {
           datas.sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
           return setState(datas);
         });
-    };
+    }
     fetchBanner();
   }, []);
   return (
@@ -72,7 +72,7 @@ const SilverCarousel = (props) => {
         <Hidden mdUp>
           <Slideshow dataCarousel={carouselTop[0].settings}>
             {state.map((val, index) => (
-              <a href={`${window.location.hostname + val.url} `}>
+              <a href={`${val.url} `}>
                 <Grid container>
                   <LazyLoadImage src={val.mobile} alt="Stylori" style={{ width: "100%", height: "100%" }} />
                   {/* <img
@@ -89,7 +89,7 @@ const SilverCarousel = (props) => {
         <Hidden smDown>
           <Slideshow dataCarousel={carouselTop[0].settings}>
             {state.map((val, index) => (
-              <a href={`${window.location.hostname + val.url} `}>
+              <a href={`${val.url} `}>
                 <Grid container>
                   <LazyLoadImage loading="lazy" src={val.web} style={{ width: "100%", height: "100%" }} />
 
