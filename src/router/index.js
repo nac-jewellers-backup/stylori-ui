@@ -39,9 +39,9 @@ import ChangePassword from "screens/Checkout/loginRegister/ChangePassword";
 import SilverCollection from "screens/SilverStylori/silverCollections";
 
 // SILVER SCREENS ENDS
-ReactPixel.init('facebook_pixel_id', {}, { debug: true, autoConfig: false });
+ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: true });
 const browserHistory = createBrowserHistory();
-let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
+// let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
 
 browserHistory.listen(() => {
   ReactPixel.pageView(); // For tracking page view
