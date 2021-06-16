@@ -63,9 +63,9 @@ class Component extends React.Component {
     adres_details: null,
   };
   componentDidMount() {
-    // ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
-    // ReactPixel.track("InitiateCheckout");
-    // ReactPixel.fbq("track", "PageView");
+    ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
+    ReactPixel.track("InitiateCheckout");
+    ReactPixel.fbq("track", "PageView");
     // ReactPixel.fbq("track", "InitiateCheckout");
   }
 
