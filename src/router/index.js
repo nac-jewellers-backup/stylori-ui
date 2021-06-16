@@ -47,7 +47,7 @@ browserHistory.listen(() => {
   ReactPixel.pageView(); // For tracking page view
   console.log("called here :( ");
   window.scrollTo(0, 0);
-});
+}); 
 export const RouterApp = (props) => {
   const { Globalctx } = React.useContext(GlobalContext);
   const func_location_silver = () => {
