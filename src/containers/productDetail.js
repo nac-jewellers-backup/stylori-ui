@@ -62,10 +62,9 @@ class ProductDetail extends Component {
     //     ReactPixel.init("1464338023867789");
     //     ReactPixel.pageView();
     //   });
-    // ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
-    // ReactPixel.track("PageView");
+    ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
+    ReactPixel.track("PageView");
 
-    // ReactPixel.fbq("track", "PageView");
     // ReactPixel.fbq("track", "AddToCart");
   }
   UNSAFE_componentWillMount() {

@@ -27,8 +27,8 @@ class Stylori extends React.Component {
   }
   static contextType = GlobalContext;
   componentDidMount() {
-    // ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: true });
-    // ReactPixel.pageView();
+    ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: true });
+    ReactPixel.pageView();
   }
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):

@@ -45,8 +45,8 @@ class HomeStylori extends React.Component {
     this.setState({ imageLoading: true });
   };
   componentDidMount() {
-    // ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: true });
-    // ReactPixel.pageView();
+    ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: true });
+    ReactPixel.pageView();
 
     fetch(`${API_URL}/graphql`, {
       method: "post",

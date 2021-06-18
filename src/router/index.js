@@ -39,15 +39,15 @@ import ChangePassword from "screens/Checkout/loginRegister/ChangePassword";
 import SilverCollection from "screens/SilverStylori/silverCollections";
 
 // SILVER SCREENS ENDS
-// ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: true });
-// ReactPixel.pageView();
+
 const browserHistory = createBrowserHistory();
 // let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
 
 browserHistory.listen(() => {
-  // ReactPixel.pageView(); // For tracking page view
-  // console.log("called here :( ");
   window.scrollTo(0, 0);
+  ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: true });
+  ReactPixel.pageView();
+  console.log("called here :( ");
 });
 export const RouterApp = (props) => {
   const { Globalctx } = React.useContext(GlobalContext);
