@@ -34,9 +34,15 @@ class Allorders extends React.Component {
     check_img: null,
   };
   componentDidMount() {
+    // debugger;
+    // console.log(this.props);
+    // console.log(this.props.allorderdata.data.allOrders.nodes[0].shoppingCartByCartId.discountedPrice);
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
     ReactPixel.fbq("track", "PageView");
-    ReactPixel.track("Purchase");
+    ReactPixel.track("Purchase", {
+      value: this.props?.allorderdata?.data?.allOrders?.nodes[0]?.shoppingCartByCartId?.discountedPrice,
+      currency: "INR",
+    });
 
     // ReactPixel.fbq("track", "Purchase");
   }
