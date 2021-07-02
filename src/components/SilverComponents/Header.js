@@ -46,6 +46,8 @@ import styloriLogo from "../../assets/Stylorilogo.svg";
 import ElasticSearch from "components/ElasticSearch/ElasticSearch";
 import { CartContext, GlobalContext } from "context";
 import silverOpenLinkImage from "../../assets/silverOpenLink.png";
+import Collection from "screens/Stylori/Collection";
+
 let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
 // var path = window.location.pathname.split('/').pop();
 class Header extends Component {
@@ -199,7 +201,6 @@ class Header extends Component {
         ? this.props.globalContext.Globalctx.pathName
         : false;
     // const id = open ? true : undefined;
-    console.log(subheader, selected1, subheader[selected1], subheader?.[selected1] && "&&&&&");
 
     return (
       <div
@@ -213,8 +214,10 @@ class Header extends Component {
             : "headerTop"
         }
       >
+   
         <Hidden smDown>
           {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
+
           <div className="header-appbar-sticky1" id="headerDiv" style={{ position: "fixed", zIndex: "1000" }}>
             <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: "height 0.2s" }}>
               <Container maxWidth="lg" id="searchcontainer">
@@ -859,11 +862,10 @@ class Header extends Component {
                                       Jewellery[selected][row2].name !== "RINGS" &&
                                       Jewellery[selected][row2].name !== "BEST SELLERS" &&
                                       Jewellery[selected][row2].name !== "BANGLE" &&
+                                      Jewellery[selected][row2].name !== "StarStruck" &&
                                       Jewellery[selected][row2].name !== "Mural Collection" &&
                                       Jewellery[selected][row2].name !== "In love Collection" &&
-                                      Jewellery[selected][row2].name !== "StarStruck" &&
-                                      Jewellery[selected][row2].name !== "Baroque Whites Collection" &&
-                                      Jewellery[selected][row2].name !== "Elemental Collection" && (
+                                      Jewellery[selected][row2].name !== "Baroque Whites Collection" && (
                                         <i class={`fa fa-caret-up drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""}`}></i>
                                       )}
                                   </span>
@@ -873,11 +875,10 @@ class Header extends Component {
                                       Jewellery[selected][row2].name !== "RINGS" &&
                                       Jewellery[selected][row2].name !== "BEST SELLERS" &&
                                       Jewellery[selected][row2].name !== "BANGLE" &&
+                                      Jewellery[selected][row2].name !== "StarStruck" &&
                                       Jewellery[selected][row2].name !== "Mural Collection" &&
                                       Jewellery[selected][row2].name !== "In love Collection" &&
-                                      Jewellery[selected][row2].name !== "StarStruck" &&
-                                      Jewellery[selected][row2].name !== "Baroque Whites Collection" &&
-                                      Jewellery[selected][row2].name !== "Elemental Collection" && (
+                                      Jewellery[selected][row2].name !== "Baroque Whites Collection" && (
                                         <i
                                           class={`fa fa-caret-down drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""}`}
                                         ></i>

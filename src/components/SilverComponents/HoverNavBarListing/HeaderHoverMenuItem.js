@@ -15,7 +15,6 @@ function HeaderHoverMenuItem(props) {
   const mapperSort = props.sort ? props.tabdata : "";
   // const mapper_menu2 = props.filters ? props.listHoverItem : props.listHoverItem['menuOne']
   const classHover = props.filters ? classes.mouseOverPopoverfilters : classes.mouseOverPopoverHeader;
-  console.log(props.filtercheck, props.checked, "props.listHoverItem");
   // onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}
   // listHoverItem
   useEffect(() => {

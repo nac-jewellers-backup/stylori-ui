@@ -136,7 +136,6 @@ const Components = (props) => {
           });
       });
   }, []);
-  console.log(props.match.path === "/styloriSilver");
   let content = <HomeStylori data={state.data} allSeo={state.allSeo} />;
   return content;
 };

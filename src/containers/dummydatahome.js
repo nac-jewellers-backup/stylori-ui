@@ -27,13 +27,13 @@ export const homePageStylori = {
       dots: false,
       infinite: true,
       autoplay: true,
-      speed: 1000,
+      speed: 2000,
       fade: false,
       arrows: false,
       arrowsImg: true,
       dotsClass: "slickdev",
       accessibility: true,
-      autoplaySpeed: 2000,
+      autoplaySpeed: 3000,
       centerMode: false,
       focusOnSelect: false,
       pauseOnHover: true,
@@ -45,13 +45,13 @@ export const homePageStylori = {
       dots: false,
       infinite: true,
       autoplay: false,
-      speed: 1000,
+      speed: 2000,
       fade: false,
       arrows: false,
       arrowsImg: true,
       dotsClass: "slickdev",
       accessibility: true,
-      autoplaySpeed: 2000,
+      autoplaySpeed: 3000,
       centerMode: false,
       focusOnSelect: false,
       pauseOnHover: true,
@@ -86,25 +86,19 @@ export const homePageStylori = {
 
       //
 
- 
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-jewellery-w.jpg	",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-jewellery-m.jpg	",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-jewellery-w.jpg	",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-jewellery-m.jpg	",
         navigateUrl: "https://www.stylori.com/jewellery-butterfly?sort=New%20to%20Stylori&startprice=0&endprice=0",
       },
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-one-day-shipping-jewellery-W.jpg	",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-one-day-shipping-jewellery-m.jpg	",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-one-day-shipping-jewellery-W.jpg	",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-one-day-shipping-jewellery-m.jpg	",
         navigateUrl: "https://www.stylori.com/jewellery-shipping+in+1+day",
       },
- 
+
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-web-banner.jpg	",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-web-banner.jpg	",
         mobileImg:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-mob-banner.jpg	",
         navigateUrl: "https://www.stylori.com/styloriSilver",
@@ -190,148 +184,106 @@ export const homePageStylori = {
     ],
     silverListingPageData: [
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Contemporary+main.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Contemporary+main.jpg",
         mobileImg:
           "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Contemporary+main.jpg",
         navigateUrl: "/silver-jewellery-contemporary",
       },
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Everyday+main.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Everyday+main.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Everyday+main.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Everyday+main.jpg",
         navigateUrl: "/silver-jewellery-everyday",
       },
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Folklore+main.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Folklore+main.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Folklore+main.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Folklore+main.jpg",
         navigateUrl: "/silver-jewellery-folklore",
       },
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Mudra+main.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Mudra+main.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Mudra+main.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Mudra+main.jpg",
         navigateUrl: "/silver-jewellery-dmudra",
       },
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Traditional+main.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Traditional+main.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Traditional+main.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Traditional+main.jpg",
         navigateUrl: "/silver-jewellery-traditional",
       },
     ],
 
     silverListingContemperoryPage: [
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Contemporary+main.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Contemporary.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Contemporary+main.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Contemporary.jpg",
         navigateUrl: "#",
       },
     ],
     silverListingEverydayPage: [
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Everyday+main.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Everyday.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Everyday+main.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Everyday.jpg",
         navigateUrl: "#",
       },
     ],
     silverListingFolklorePage: [
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Folklore+main.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Foloklor.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Folklore+main.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Foloklor.jpg",
         navigateUrl: "#",
       },
     ],
     silverListingMudraPage: [
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Mudra+main.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Mudra.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Mudra+main.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Mudra.jpg",
         navigateUrl: "#",
       },
     ],
     silverListingTraditionalPage: [
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Traditional+main.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Traditional.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/stylori-silver+Traditional+main.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver+mob+Traditional.jpg",
         navigateUrl: "#",
       },
     ],
-    silverListingCskPage: [
+    silverListingCsk: [
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/NAC+CSK+Stylori+jewellery+bd.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/NAC+CSK+Stylori+jewellery+bm.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/NAC+CSK+Stylori+jewellery+bd.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/NAC+CSK+Stylori+jewellery+bm.jpg",
         navigateUrl: "#",
       },
     ],
     silverListingMuralCollection: [
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/Stylori-silver-mural-jewellery-D.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/Stylori-silver-mural-jewellery-D.jpg",
-        navigateUrl: "#",
-      },
-    ],
-    silverListingElementalCollection : [
-      {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/StyloriSilver+Elemental+connection+banner.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/StyloriSilver+Elemental+connection+banner.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/Stylori-silver-mural-jewellery-D.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Banner/Stylori-silver-mural-jewellery-D.jpg",
         navigateUrl: "#",
       },
     ],
     silverListingPageBottomData: [
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Contemporary-Banner-web.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Contemporary-Banner-mob.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Contemporary-Banner-web.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Contemporary-Banner-mob.jpg",
         navigateUrl: "#",
       },
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Everyday-Banner-web.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Everyday-Banner-mob.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Everyday-Banner-web.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Everyday-Banner-mob.jpg",
         navigateUrl: "#",
       },
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Folklore-Banner-web.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Folklore-Banner-mob.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Folklore-Banner-web.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Folklore-Banner-mob.jpg",
         navigateUrl: "#",
       },
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Mudra-Banner-web.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Mudra-Banner-mob.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Mudra-Banner-web.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Mudra-Banner-mob.jpg",
         navigateUrl: "#",
       },
       {
-        img:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Traditional-Banner-web.jpg",
-        mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Traditional-Banner-mob.jpg",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Traditional-Banner-web.jpg",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-Traditional-Banner-mob.jpg",
         navigateUrl: "#",
       },
     ],
@@ -339,29 +291,23 @@ export const homePageStylori = {
   //-------------Grid 5 images ----------
   collectionGrid: [
     {
-      img:
-        "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Monsoon-tile.jpg",
+      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Monsoon-tile.jpg",
       navigateUrl: "/jewellery-from+monsoon+collection",
     },
     {
-      img:
-        "https://assets.stylori.com/images/Static+Pages/Home+Page/mangocollection.png",
+      img: "https://assets.stylori.com/images/Static+Pages/Home+Page/mangocollection.png",
       navigateUrl: "/jewellery-from+the+summer+collection?sort=latest",
     },
     {
-      img:
-        "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-tile-image.jpg",
-      navigateUrl:
-        "/jewellery-butterfly?sort=latest&amp;startprice=0&amp;endprice=0",
+      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-tile-image.jpg",
+      navigateUrl: "/jewellery-butterfly?sort=latest&amp;startprice=0&amp;endprice=0",
     },
     {
-      img:
-        "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori_+Daisy+Days.png",
+      img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori_+Daisy+Days.png",
       navigateUrl: "/jewellery-from+daisy+days+collection?sort=latest&page=4",
     },
     {
-      img:
-        "https://assets.stylori.com/images/Static+Pages/Home+Page/blush+3.png",
+      img: "https://assets.stylori.com/images/Static+Pages/Home+Page/blush+3.png",
       navigateUrl: "/jewellery-blush",
     },
   ],
@@ -387,8 +333,7 @@ export const homePageStylori = {
       data: [
         {
           imageTitle: "1 Gm Lakshmi Gold Coin - 24 K",
-          img:
-            "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
+          img: "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
           navigateUrl: "/goldcoins",
           content:
             "Wowwww it's a great experience with stylori. Specially thanks to Bushra from customer service who help me to find a best product with detail explanation on each and every point of product. ",
@@ -398,8 +343,7 @@ export const homePageStylori = {
         },
         {
           imageTitle: "1 Gm Lakshmi Gold Coin - 24 K",
-          img:
-            "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
+          img: "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
           navigateUrl: "/goldcoins",
           content:
             "Wowwww it's a great experience with stylori. Specially thanks to Bushra from customer service who help me to find a best product with detail explanation on each and every point of product. ",
@@ -409,8 +353,7 @@ export const homePageStylori = {
         },
         {
           imageTitle: "1 Gm Lakshmi Gold Coin - 24 K",
-          img:
-            "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
+          img: "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
           navigateUrl: "/goldcoins",
           content:
             "Wowwww it's a great experience with stylori. Specially thanks to Bushra from customer service who help me to find a best product with detail explanation on each and every point of product. ",
@@ -420,8 +363,7 @@ export const homePageStylori = {
         },
         {
           imageTitle: "1 Gm Lakshmi Gold Coin - 24 K",
-          img:
-            "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
+          img: "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
           navigateUrl: "/goldcoins",
           content:
             "Wowwww it's a great experience with stylori. Specially thanks to Bushra from customer service who help me to find a best product with detail explanation on each and every point of product. ",
@@ -430,8 +372,7 @@ export const homePageStylori = {
         },
         {
           imageTitle: "1 Gm Lakshmi Gold Coin - 24 K",
-          img:
-            "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
+          img: "https://assets-cdn.stylori.com/200x200/images/product/SGC020/SGC020-1Y.jpg",
           navigateUrl: "/goldcoins",
           content:
             "Wowwww it's a great experience with stylori. Specially thanks to Bushra from customer service who help me to find a best product with detail explanation on each and every point of product. ",
@@ -443,28 +384,23 @@ export const homePageStylori = {
     //------testimony images section --------------
     bangleGrid: [
       {
-        img:
-          "https://assets.stylori.com/images/Static+Pages/Home+Page/PendantVertical.png",
+        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/PendantVertical.png",
         navigateUrl: "/pendants-jewellery?sort=latest",
       },
       {
-        img:
-          "https://assets.stylori.com/images/Static+Pages/Home+Page/BangleSquare.png",
+        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/BangleSquare.png",
         navigateUrl: "/bangles-jewellery?sort=latest",
       },
       {
-        img:
-          "https://assets.stylori.com/images/Static+Pages/Home+Page/EarringRectangle.png",
+        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/EarringRectangle.png",
         navigateUrl: "/earrings-jewellery?sort=latest",
       },
       {
-        img:
-          "https://assets.stylori.com/images/Static+Pages/Home+Page/RingRectangle.png",
+        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/RingRectangle.png",
         navigateUrl: "/rings-jewellery?sort=latest",
       },
       {
-        img:
-          "https://assets.stylori.com/images/Static+Pages/Home+Page/nosepinSquare.png",
+        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/nosepinSquare.png",
         navigateUrl: "/nose+pin+online-jewellery?sort=featured",
       },
     ],
@@ -492,40 +428,33 @@ export const homePageStylori = {
       },
       data: [
         {
-          img:
-            "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
+          img: "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
           content:
             "The launch  on New Indian rnegj o9 ijrgerhje regb  ovrtfbviehr evoireuhvgrv phefgvor pvpoervr gherun8ijiExpress – Indulge",
         },
         {
-          img:
-            "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
+          img: "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
           content: "The launch of  Express – Indulge",
         },
 
         {
-          img:
-            "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
+          img: "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
           content: "The launch of Stylori on New Indian Express – Indulge",
         },
         {
-          img:
-            "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
+          img: "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
           content: "The launch of Stylori on New Indian Express – Indulge",
         },
         {
-          img:
-            "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
+          img: "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
           content: "The launch of Stylori on New Indian Express – Indulge",
         },
         {
-          img:
-            "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
+          img: "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
           content: "The launch of Stylori on New Indian Express – Indulge",
         },
         {
-          img:
-            "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
+          img: "https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg",
           content: "The launch of Stylori on New Indian Express – Indulge",
         },
       ],
@@ -552,32 +481,28 @@ export const homePageStylori = {
       data: [
         {
           Title: "Celebrity Wedding Season:  best",
-          img:
-            "https://alpha-assets.sdfsdfstylori.com/images/ssdftories/stylori_blog_cover_01_bollywood_buck.png",
+          img: "https://alpha-assets.sdfsdfstylori.com/images/ssdftories/stylori_blog_cover_01_bollywood_buck.png",
           navigateUrl: "/pendants-jewellery?sort=latest",
           content:
             "Thanks for your very good product. A real value for a beautiful workmanship.Thanks for your very good product. A real value for a beautiful workmanship.",
         },
         {
           Title: "Celebrity Wedding Season: Style lessons from the best",
-          img:
-            "https://alsdfpha-assetssdfsdf.stylori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png",
+          img: "https://alsdfpha-assetssdfsdf.stylori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png",
           navigateUrl: "/pendants-jewellery?sort=latest",
           content:
             "Thanks for your very good product. A real value for a beautiful workmanship.Thanks for your very good product. A real value for a beautiful workmanship.",
         },
         {
           Title: "Celebrity Wedding Season: Style lessons from the best",
-          img:
-            "htxcftps://alpha-assets.stylsdfsdori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png",
+          img: "htxcftps://alpha-assets.stylsdfsdori.com/images/stories/stylori_blog_cover_01_bollywood_buck.png",
           navigateUrl: "/pendants-jewellery?sort=latest",
           content:
             "Thanks for your very good product. A real value for a beautiful workmanship.Thanks for your very good product. A real value for a beautiful workmanship.",
         },
         {
           Title: "Celebrity Wedding Season: Style lessons from the best",
-          img:
-            "hgfdcom/images/stories/stylori_blog_cover_01_bollywood_buck.png",
+          img: "hgfdcom/images/stories/stylori_blog_cover_01_bollywood_buck.png",
           navigateUrl: "/pendants-jewellery?sort=latest",
           content:
             "Thanks for your very good product. A real value for a beautiful workmanship.Thanks for your very good product. A real value for a beautiful workmanship.",

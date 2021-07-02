@@ -11,9 +11,11 @@ export const CART = `query myquerycart($productList: [String!]) {
       skuId
       markupPrice
       skuUrl
+      
       productListByProductId {
         productId
         productName
+        isactive
         productImagesByProductId(filter: {imagePosition: {equalTo: 1}}) {
           nodes {
             imageUrl

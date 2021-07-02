@@ -165,7 +165,6 @@ export default function ImageGridList(props) {
     const previous = () => {
         slider.current.slickPrev();
     }
-    console.log(props.dataactual)
     
     return (
         <Grid container className={classes.root}>

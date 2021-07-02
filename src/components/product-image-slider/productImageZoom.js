@@ -222,7 +222,6 @@ class ProductImageZoom extends React.Component {
     };
 
     var a = showimage && showimage;
-    console.log(this.props.data[0], "this.props.data[0]");
     // alert(JSON.stringify(this.props.data[0]))
     var b = a.length > 0 && a.split("/");
     // var c = a.replace(b[5], data[0].image_resolution_two + 'X' + data[0].image_resolution_two)

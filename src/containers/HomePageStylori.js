@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "components/SilverComponents/Header";
+import Aos from "aos";
 import { Grid, Hidden, Typography } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 import Footer from "components/Footer/Footer";
 import { withRouter } from "react-router";
 import "index.css";
@@ -16,6 +18,8 @@ import { storyData } from "../components/storyTemplate/storyTemplateData";
 import NeedHelp from "../components/needHelp";
 import { CDN_URL, API_URL } from "../config";
 import { ALLSTYLORILANDINGBANNERS } from "queries/home";
+import "aos/dist/aos.css";
+import ReactPixel from "react-facebook-pixel";
 class HomeStylori extends React.Component {
   constructor(props) {
     super(props);
@@ -27,6 +31,8 @@ class HomeStylori extends React.Component {
       loading: false,
       count: "",
       datas: [],
+      starting: false,
+      imageLoading: false,
     };
   }
   next = () => {
@@ -35,7 +41,13 @@ class HomeStylori extends React.Component {
   previous = () => {
     this.slider.current.slickPrev();
   };
+  imageLoader = () => {
+    this.setState({ imageLoading: true });
+  };
   componentDidMount() {
+    ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: true });
+    ReactPixel.pageView();
+
     fetch(`${API_URL}/graphql`, {
       method: "post",
       headers: {
@@ -52,8 +64,14 @@ class HomeStylori extends React.Component {
         datas.sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
 
         this.setState({ datas: datas });
+        if (data.data.allStyloriBanners.nodes.length > 0) {
+          this.setState({ starting: true });
+          console.log("initial", this.state.starting);
+        }
       });
+    Aos.init({ duration: 1500 });
   }
+
   render() {
     const dataCarousel = {
       slidesToShow: 1,
@@ -94,11 +112,11 @@ class HomeStylori extends React.Component {
     ];
 
     return (
-      <Grid container>
+      <Grid container style={{ overflowX: "auto" }}>
         <div>
           <MetaTags>
             <title>Online Jewellery Shopping in India | Gold and Diamond Jewellery Online</title>
-            <meta name="facebook-domain-verification" content="t3yrba182xfqp79aqld63vtoaong46" />;
+            <meta name="facebook-domain-verification" content="t3yrba182xfqp79aqld63vtoaong46" />
             <meta
               name="description"
               content="Buy Gold and Diamond Jewellery Shopping Online from Stylori.com with variety of products like Pendants, Gold Rings, Bangles, Earrings"
@@ -130,46 +148,77 @@ class HomeStylori extends React.Component {
           </MetaTags>
         </div>
         <Header />
-        <Grid item xs={12}>
-          <Hidden smDown>
-            {homePageStylori.carouselTop.setting.arrowsImg && (
-              <Grid container>
-                <Grid item onClick={this.previous} className={"imagePrevios"}>
-                  {/* <i
+        {this.state.starting ? (
+          <Grid item xs={12} style={{ backgroundColor: "#ebebeb" }}>
+            <Hidden smDown>
+              {homePageStylori.carouselTop.setting.arrowsImg && (
+                <Grid container>
+                  <Grid item onClick={this.previous} className={"imagePrevios"}>
+                    {/* <i
                 class="fa fa-angle-left"
                 style={{ fontSize: "42px", color: "#F699A3" }}
               ></i> */}
-                </Grid>
-                <Grid item onClick={this.next} className={"imagenext"}>
-                  {/* <i
+                  </Grid>
+                  <Grid item onClick={this.next} className={"imagenext"}>
+                    {/* <i
                 class="fa fa-angle-right"
                 style={{ fontSize: "42px", color: "#F699A3" }}
               ></i> */}
+                  </Grid>
                 </Grid>
-              </Grid>
-            )}
-          </Hidden>
-          <Slideshow sliderRef={this.slider} dataCarousel={homePageStylori.carouselTop.setting}>
-            {this.state.datas.map((val, index) => (
-              <>
-                <Hidden smDown>
-                  <Grid container key={index}>
-                    <a href={val.url} style={{ width: "100%" }}>
-                      <img src={val.web} loading="auto" alt="…" style={{ width: "100%", height: "100%" }} />
-                    </a>
-                  </Grid>
-                </Hidden>
-                <Hidden mdUp>
-                  <Grid container key={index}>
-                    <a href={val.url}>
-                      <img src={val.mobile} style={{ width: "100%", height: "100%" }} />
-                    </a>
-                  </Grid>
-                </Hidden>
-              </>
-            ))}
-          </Slideshow>
-        </Grid>
+              )}
+            </Hidden>
+            <Slideshow sliderRef={this.slider} dataCarousel={homePageStylori.carouselTop.setting}>
+              {this.state.datas.map((val, index) => (
+                <>
+                  <Hidden smDown>
+                    <Grid
+                      container
+                      key={index}
+                      data-aos="fade-zoom-in"
+                      data-aos-easing="ease-in-back"
+                      data-aos-delay="200"
+                      data-aos-offset="0"
+                    >
+                      <a href={`${val.url} `} style={{ width: "100%" }}>
+                        <img
+                          src={val.web}
+                          loading="auto"
+                          alt="…"
+                          style={{ width: "100%", height: "100%" }}
+                          className={`image-${this.state.imageLoading ? "visible" : "hidden"}`}
+                          onLoad={this.imageLoader}
+                        />
+                      </a>
+                    </Grid>
+                  </Hidden>
+                  <Hidden mdUp>
+                    <Grid
+                      container
+                      key={index}
+                      data-aos="fade-zoom-in"
+                      data-aos-easing="ease-in-back"
+                      data-aos-delay="200"
+                      data-aos-offset="0"
+                    >
+                      <a href={`${val.url} `}>
+                        <img
+                          src={val.mobile}
+                          style={{ width: "100%", height: "100%" }}
+                          className={`smooth-image image-${this.state.imageLoading ? "visible" : "hidden"}`}
+                          onLoad={this.imageLoader}
+                        />
+                      </a>
+                    </Grid>
+                  </Hidden>
+                </>
+              ))}
+            </Slideshow>
+          </Grid>
+        ) : (
+          <Skeleton variant="rect" style={{ width: "100%" }} className="skeletonHeight" animation="wave" />
+        )}
+
         <Hidden mdUp>
           <Grid container>
             <Grid item xs={12} alignItems="center" style={{ paddingTop: "6px" }}>
@@ -222,15 +271,19 @@ class HomeStylori extends React.Component {
         </Hidden>
 
         <Grid Container className="GridConatiner">
-          <Grid item className="GridListImg">
+          <Grid item className="GridListImg" 
+          // data-aos="fade-left"
+          >
             <GridList GridImage={homePageStylori.collectionGrid} />
           </Grid>
         </Grid>
+
         <Testimony
           dataCarousel={homePageStylori.Testimony.carousel.setting}
           GridImage={homePageStylori.Testimony.bangleGrid}
           carosolData={homePageStylori.Testimony.carousel.data}
         />
+
         <Hidden smDown>
           <Feedes
             fadeImages={homePageStylori.NewsFeeds.carousel.data}

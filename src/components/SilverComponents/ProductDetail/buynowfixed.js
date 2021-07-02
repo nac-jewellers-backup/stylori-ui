@@ -61,7 +61,9 @@ class Buynowfixed extends React.Component {
         modelOpen: false,
       });
     };
+  
     let productIsActive = this.props.productIsActive ?? "";
+
     return (
       <div>
         <AppBar color="primary" className="product-page-fixed-footer">
@@ -129,7 +131,7 @@ class Buynowfixed extends React.Component {
               <>
                 {" "}
                 <Grid item xs={6} style={{ textAlign: "center", backgroundColor: "#ccc" }}>
-                  <div onClick={() => (productIsActive ? this.props.deleteComment() : "" )}>
+                  <div onClick={() => (productIsActive ? this.props.deleteComment() : "")}>
                     <Buynowbutton
                       sku={data[0].skuId}
                       // class={`product-footer-buynow ${

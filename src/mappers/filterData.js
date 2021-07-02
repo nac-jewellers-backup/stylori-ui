@@ -8,7 +8,7 @@ export default function (data) {
     mapperdata = [];
   }
   const _format = mapperdata.map((k) => {
-    console.log(data, data && data.length > 0, Object.keys(data[0]), "=>->=>");
+  
     const get = (data) => (data ? data : []);
     const getstring = (data) => (data ? data : "");
     const getSubFilterLength = (data) => {
@@ -41,7 +41,7 @@ export default function (data) {
       }
       return {..._obj}
     };
-    console.log(data, "datadatadata")
+    
     let _d;
     try {
       _d = {

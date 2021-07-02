@@ -18,6 +18,9 @@ import Pricing from "../Pricing/index";
 import { CDN_URL } from "config";
 import { withRouter } from "react-router-dom";
 import { Helmet } from "react-helmet";
+
+import ReactPixel from "react-facebook-pixel";
+
 const order_id = localStorage.getItem("order_id") ? JSON.parse(localStorage.getItem("order_id")) : "";
 var img_res;
 var img_res_X_2 = null;
@@ -30,6 +33,19 @@ class Allorders extends React.Component {
     expanded: [],
     check_img: null,
   };
+  componentDidMount() {
+    // debugger;
+    // console.log(this.props);
+    // console.log(this.props.allorderdata.data.allOrders.nodes[0].shoppingCartByCartId.discountedPrice);
+    ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
+    ReactPixel.fbq("track", "PageView");
+    ReactPixel.track("Purchase", {
+      value: this.props?.allorderdata?.data?.allOrders?.nodes[0]?.shoppingCartByCartId?.discountedPrice,
+      currency: "INR",
+    });
+
+    // ReactPixel.fbq("track", "Purchase");
+  }
 
   handleChange = (panel) => (event) => {
     const { expanded } = this.state;
@@ -208,14 +224,12 @@ class Allorders extends React.Component {
     // }
 
     const _localStorageQTY = localStorage.getItem("quantity") ? JSON.parse(localStorage.getItem("quantity")) : 1;
+
     return (
       <>
-        {/* allorderdata.nodes */}
-        {this.props.location.pathname.split("-")[0] === "/account" ? (
-          <div className="pt-sm checkout-ovralldiv-media">
-            <Helmet>
-              <script>
-                {` !function(f,b,e,v,n,t,s) 
+        <Helmet>
+          {/* <script>
+            {` !function(f,b,e,v,n,t,s) 
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod? 
 n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; 
@@ -226,13 +240,16 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1464338023867789'); 
 fbq('track', 'PageView'); 
 fbq('track', 'Purchase', {value:0.00 , currency: 'INR'});  `}
-              </script>
-              <noscript>
-                {`<img height="1" width="1" style="display:none" 
+          </script>
+          <noscript>
+            {`<img height="1" width="1" style="display:none" 
 src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1" 
 />`}
-              </noscript>
-            </Helmet>
+          </noscript> */}
+        </Helmet>
+        {/* allorderdata.nodes */}
+        {this.props.location.pathname.split("-")[0] === "/account" ? (
+          <div className="pt-sm checkout-ovralldiv-media">
             {allorderdata &&
             allorderdata.allorderdata &&
             allorderdata.allorderdata.nodes &&

@@ -80,7 +80,6 @@ const ProductModal = (props) => {
   const handleCollectionDataMapper = (_collectiondata, fadeImagessublist) => {
     let data = _collectiondata.data;
 
-    console.log(data, "fadeImagessublist data");
     var _keysCollections = Object.keys(data).filter((val) => {
       let tempdata = data[val];
       if (tempdata.nodes.length > 0) return val;
@@ -136,7 +135,6 @@ const ProductModal = (props) => {
   let pagination = collectionData
     ? collectionData.slice(0, state.pagination)
     : collectionData;
-  console.log(collectionData, "collectionDatacollectionData");
   let _mapper = collectionData
     ? pagination
     : shopByStyloriSilver

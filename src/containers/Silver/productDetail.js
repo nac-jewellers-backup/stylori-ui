@@ -179,8 +179,7 @@ const Components = props => {
   const { ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating } } = React.useContext(ProductDetailContext);
   const datas = data;
   let mapped = datas;
-  debugger
-  console.log(mapped)
+
   if (!loading && !error) {
     mapped = productDetails(datas, likedatas, viewedddatas, rating);
   }

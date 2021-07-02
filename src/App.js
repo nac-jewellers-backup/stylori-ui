@@ -10,17 +10,14 @@ import Theme from "./Theme.js";
 import { withRouter } from "react-router-dom";
 import CacheBuster from "./components/cacheBrust";
 import ErrorBoundary from "components/errorcatching/ErrorCatching";
+
+
 let jewellery_theme = createMuiTheme(require("./jewellery_theme.json"));
-let silver_jewellery_theme = createMuiTheme(
-  require("./silver_jewellery_theme.json")
-);
+let silver_jewellery_theme = createMuiTheme(require("./silver_jewellery_theme.json"));
 let jewelleryThemes = responsiveFontSizes(jewellery_theme);
 let silverThemes = responsiveFontSizes(silver_jewellery_theme);
-const RouterApp = React.lazy(() => import("router")); 
+const RouterApp = React.lazy(() => import("router"));
 
-// const client = new ApolloClient({
-//   uri: ``,
-// });
 
 const theme_func = () => {
   if (window.location.pathname === "/StyloriSilver") {
@@ -42,7 +39,7 @@ class App extends React.Component {
     return (
       // <ApolloProvider client={client}>
       <CacheBuster>
-        {({ loading, isLatestVersion, refreshCacheAndReload }) => { 
+        {({ loading, isLatestVersion, refreshCacheAndReload }) => {
           if (loading) return null;
           if (!loading && !isLatestVersion) {
             // You can decide how and when you want to force reload
@@ -50,7 +47,7 @@ class App extends React.Component {
           }
           return (
             <ErrorBoundary>
-              <GlobalProvider> 
+              <GlobalProvider>
                 <Theme>
                   <NetworkProvider>
                     {/*productId="SP1135" <ProductDetailProvider productId="SP1135">*/}

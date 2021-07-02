@@ -32,6 +32,8 @@ import { useCheckForCod } from "hooks/CheckForCodHook";
 import Header from "components/SilverComponents/Header";
 import { withRouter } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import ReactPixel from "react-facebook-pixel";
+
 var adres = {};
 var variab = {};
 const CartCardCheck = (props) => {
@@ -60,6 +62,11 @@ class Component extends React.Component {
     mailId: null,
     adres_details: null,
   };
+  componentDidMount() {
+    ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
+    ReactPixel.fbq("track", "PageView");
+    ReactPixel.track("InitiateCheckout");
+  }
 
   handleChange = (panel) => (event) => {
     // alert(JSON.stringify(panel))
@@ -216,10 +223,29 @@ class Component extends React.Component {
     // if (!localStorage.getItem("cartDetails")&&Object.keys(adres.value).length <= 0) {
     //     localStorage.setItem("panel", 1);
     // }
+    const enquireLink = () => {
+      let ProductIsActiveUrl;
+      this.props.data.map((val) => {
+        if (val.isActive == false) {
+          ProductIsActiveUrl = val.skuUrl;
+        }
+      });
+      window.open(`https://wa.me/919952625252?text=Hi - ${window.location.hostname + "/" + ProductIsActiveUrl ?? ""}`);
+    };
+
+    console.log(this.props.data, "final");
+
+    let ProductIsActive = true;
+    this.props.data.map((val) => {
+      if (val.isActive == false) {
+        ProductIsActive = false;
+      }
+    });
+    // alert(ProductIsActive);
     return (
       <Grid>
         <Helmet>
-          <script>
+          {/* <script>
             {` !function(f,b,e,v,n,t,s) 
  {if(f.fbq)return;n=f.fbq=function(){n.callMethod? 
  n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
@@ -236,9 +262,10 @@ class Component extends React.Component {
             {`<img height="1" width="1" style="display:none" 
  src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1" 
  />`}
-          </noscript>
+          </noscript> */}
         </Helmet>
         <Header wishlist={this.props.wishlistdata} />
+
         <CustomSeparator
           arrowicon="cart-head-arrows"
           className={`breadcrums-header ${classes.normalcolorback}`}
@@ -353,9 +380,15 @@ class Component extends React.Component {
                       <Grid xs={12} lg={7} />
                       <Grid xs={12} lg={4}>
                         <div style={{ float: "right" }}>
-                          <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
-                            Continue to Pay
-                          </Button>
+                          {ProductIsActive ? (
+                            <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
+                              Continue to Pay
+                            </Button>
+                          ) : (
+                            <Button className="summaryOrder-pay-btn" onClick={enquireLink}>
+                              Enquire Now
+                            </Button>
+                          )}
                         </div>
                       </Grid>
                     </Grid>
@@ -372,9 +405,15 @@ class Component extends React.Component {
                         <Grid xs={12} lg={7} />
                         <Grid xs={12} lg={4}>
                           <div style={{ float: "right", marginBottom: "5px" }}>
-                            <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
-                              Continue to Pay
-                            </Button>
+                            {ProductIsActive ? (
+                              <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
+                                Continue to Pay
+                              </Button>
+                            ) : (
+                              <Button className="summaryOrder-pay-btn" onClick={enquireLink}>
+                                Enquire Now
+                              </Button>
+                            )}
                           </div>
                         </Grid>
                       </Grid>
@@ -389,9 +428,15 @@ class Component extends React.Component {
                       <Grid xs={12} lg={7} />
                       <Grid xs={12} lg={4}>
                         <div style={{ float: "right", marginBottom: "5px" }}>
-                          <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
-                            Continue to Pay
-                          </Button>
+                          {ProductIsActive ? (
+                            <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
+                              Continue to Pay
+                            </Button>
+                          ) : (
+                            <Button className="summaryOrder-pay-btn" onClick={enquireLink}>
+                              Enquire Now
+                            </Button>
+                          )}
                         </div>
                       </Grid>
                     </Grid>

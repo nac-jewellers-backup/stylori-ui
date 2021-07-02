@@ -106,8 +106,7 @@ const styles = (theme) => ({
     background: theme.palette.secondary.main,
   },
   shadow: {
-    boxShadow:
-      "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
+    boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
   },
   [theme.breakpoints.up("md")]: {
     shadow: {
@@ -118,6 +117,7 @@ const styles = (theme) => ({
     color: "rgb(58,69,120) !important",
     fontFamily: "Roboto-bold !important",
     backgroundColor: "rgb(204, 204, 204) !important",
+    fontSize: "0.8rem",
   },
 });
 export default styles;

@@ -92,7 +92,6 @@ export const TabsProvider = (props) => {
         }
       }
     }
-    console.log("----filters----", filters);
   }, []);
   useEffect(() => {
     setlikedata(likedata);
@@ -281,7 +280,6 @@ export const TabsProvider = (props) => {
       //         "notEqualTo": data && data.allTransSkuLists && data.allTransSkuLists.nodes ? data.allTransSkuLists.nodes[0].skuId:''
       //     }
       // }
-      console.log(Globalctx.pathName, "");
       if (
         data &&
         Object.entries(data).length > 0 &&

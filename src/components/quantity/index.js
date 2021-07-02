@@ -201,11 +201,9 @@ const Quantity = (props) => {
 
     // _updateQuantityApi()
   }, []);
-  console.clear();
-  console.log("this.props.isdatafromstate", filters);
+ 
   const { classes, cart, pdpage } = props;
   const _cart = cart || pdpage ? true : false;
-  console.log(filters, "//////////QTY");
   return (
     <Grid container item xs={12}>
       {!_cart && (

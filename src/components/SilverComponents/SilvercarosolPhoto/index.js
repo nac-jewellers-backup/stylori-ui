@@ -38,6 +38,7 @@ const SilverCarousel = (props) => {
         .then((res) => res.json())
         .then((data) => {
           let datas = data.data.allStyloriSilverBanners.nodes;
+
           datas.sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
           return setState(datas);
         });
@@ -71,7 +72,7 @@ const SilverCarousel = (props) => {
         <Hidden mdUp>
           <Slideshow dataCarousel={carouselTop[0].settings}>
             {state.map((val, index) => (
-              <a href={val.url}>
+              <a href={`${val.url} `}>
                 <Grid container>
                   <LazyLoadImage src={val.mobile} alt="Stylori" style={{ width: "100%", height: "100%" }} />
                   {/* <img
@@ -88,7 +89,7 @@ const SilverCarousel = (props) => {
         <Hidden smDown>
           <Slideshow dataCarousel={carouselTop[0].settings}>
             {state.map((val, index) => (
-              <a href={val.url}>
+              <a href={`${val.url} `}>
                 <Grid container>
                   <LazyLoadImage loading="lazy" src={val.web} style={{ width: "100%", height: "100%" }} />
 
@@ -122,9 +123,7 @@ export default (props) => {
   const { mapped } = useDummyRequest(HomedataSilver);
   const { Globalctx } = React.useContext(GlobalContext);
 
-  console.log(Globalctx);
   const _isSilver = Globalctx.pathName ? true : false;
-  console.log(Globalctx.pathName);
   if (Object.keys(mapped).length === 0) return "";
   return <SilverCarousel {...props} data={mapped} isSilver={_isSilver} />;
 };

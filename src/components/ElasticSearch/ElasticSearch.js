@@ -103,7 +103,6 @@ export default function ElasticSearch(props) {
             .then(status)
             .then(json).then(async val => { 
                 setData(val)
-                console.log(val, "elastic search")
             })
     }
     return (

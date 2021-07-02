@@ -490,7 +490,6 @@ class Component extends React.Component {
     // const { dataCarousel: { settings }, sliderRef } = this.props;
     const { sliderRef, Globalctx } = this.props;
     var settings = this.props.dataCarousel;
-    console.log(this.props)
     return (
       <div>
         <Slider ref={sliderRef} {...settings} className={this.props.nextPreviousIconSize ? "customIconSize" : ''}>

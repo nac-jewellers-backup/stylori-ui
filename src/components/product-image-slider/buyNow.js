@@ -123,13 +123,10 @@ const Buydetails = (
   deletechecklists,
   handleLocalStorage
 ) => {
-  
   const { data } = props;
   const { classes } = props;
   // debugger;
   const isactive = props.data[0].isactive ?? "";
-
-
 
   return (
     <div>
@@ -230,108 +227,16 @@ const BuydetailsSilverdetailpage = (
 ) => {
   const { data, isSilver } = props;
   const { classes } = props;
-
+  const isactive = props.data[0].isactive ?? "";
   return (
     <div>
-      {data[0].ProductContactNum.map((val) => (
+      {isactive && data[0].ProductContactNum.map((val) => (
         <>
-          <Grid container>
-            <Grid item xs={12}>
-              {/* {inputsearch(props, state, handleChanges, handleCodChange)} */}
-            </Grid>
-          </Grid>
+       
           <Grid container>
             <Grid item xs={12} lg={4} style={{ fontSize: "0.8rem", color: "rgb(58,69,120)" }}>
               {val.shipby}
             </Grid>
-
-            {/* <Grid
-              item
-              container
-              alignContent="center"
-              alignItems="center"
-              xs={12}/cap2hccapx
-                <Grid
-                  item
-                  lg={12}
-                  xs={12}
-                  className={`buy-subheaders nd-hlp ${classes.normalfonts} ${classes.normalFontsColor2}`}
-                  style={{ paddingBottom: "5px", letterSpacing: "2px" }}
-                >
-                  <b>NEED HELP ?</b>
-                SR3262</Grid>
-              </Grid>
-              <Grid container>
-                <Grid
-                  item
-                  lg={3}
-                  xs={12}
-                  className={`buy-subheaders ${classes.normalfonts} ${isSilver ? classes.normalfontsSilvercontact : ''}`}
-                >
-                  <Typography>
-                    <i class="fa fa-phone overall-icons" aria-hidden="true"></i>
-                    &nbsp;
-                  </Typography>
-                  <Typography className={classes.TypoListed}>
-                    {val.telephone}
-                  </Typography>
-                </Grid>
-
-                <Grid
-                  container
-                  item
-                  lg={3}
-                  xs={12}
-                  justify="flex-start"
-                  className={`buy-subheaders ${classes.normalfonts} ${isSilver ? classes.normalfontsSilvercontact : ''}`}
-                >
-                  <Typography>
-                    <i
-                      class="fa fa-whatsapp overall-icons"
-                      aria-hidden="true"
-                    ></i>
-                    &nbsp;
-                  </Typography>
-                  <Typography className={classes.TypoListed}>
-                    {val.phonenum}
-                  </Typography>
-                </Grid>
-
-                <Grid
-                  item
-                  lg={12}
-                  xs={12}
-                  style={{ cursor: "pointer !important" }}
-                  className={`buy-subheaders ${classes.normalfonts} ${
-                    isSilver ? classes.chatNowSilverGrid : ""
-                  }`}
-                >
-                  {!isSilver && (
-                    <Typography>
-                      <i
-                        class="fa fa-comments-o overall-icons"
-                        aria-hidden="true"
-                      ></i>
-                      &nbsp;
-                    </Typography>
-                  )}
-                  <Typography
-                  onClick={()=>{
-                    
-                    window.LC_API.open_chat_window()
-                  
-                  }}
-                  style={{cursor:'pointer'}}
-                    className={`${classes.TypoListed} ${
-                      isSilver ? classes.chatNowSilver : ""
-                    }`}
-                  >
-                    {isSilver ? `${val.chat} NOW` : val.chat}
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Grid>
-          */}
           </Grid>
         </>
       ))}
@@ -576,7 +481,7 @@ class Component extends React.Component {
     let { showimage } = this.state;
     const { classes, data, isSilver } = this.props;
     const isactive = this.props.data[0].isactive ?? "";
-   
+
     return (
       <div>
         <Hidden smDown>
@@ -618,7 +523,7 @@ class Component extends React.Component {
             )}
             <PriceTabs data={this.props.data} wishlist={this.props.wishlist} isSilver={isSilver} />
             {!isSilver && inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)}
-            {isSilver && (
+            {isSilver && isactive && (
               <Container>
                 <Grid container style={{ padding: "0px 8px 0px 8px" }}>
                   <Grid item xs={12} lg={4} style={{ fontSize: "0.8rem", color: "rgb(58,69,120)" }}>

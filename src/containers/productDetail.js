@@ -40,6 +40,7 @@ import { Securepayments } from "../components/product-image-slider/Gagetstylori/
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import NeedHelp from "../components/needHelp";
+import ReactPixel from "react-facebook-pixel";
 // import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
@@ -53,6 +54,18 @@ class ProductDetail extends Component {
     //   "----------this.props.data--------- CONSTRUCTOR",
     //   this.props.data
     // );
+  }
+  componentDidMount() {
+    // import("react-facebook-pixel")
+    //   .then((module) => module.default)
+    //   .then((ReactPixel) => {
+    //     ReactPixel.init("1464338023867789");
+    //     ReactPixel.pageView();
+    //   });
+    ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
+    ReactPixel.track("PageView");
+
+    // ReactPixel.fbq("track", "AddToCart");
   }
   UNSAFE_componentWillMount() {
     // this.handleOGTag()
@@ -88,10 +101,7 @@ class ProductDetail extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.data !== prevState.data) {
-      console.log("camein", prevProps.data);
-      console.log("camein..", this.props.data);
       this.setState({ data: this.props.data });
-      console.log("camein.....", this.state.data);
       // this.handleOGTag()
     }
   }
@@ -558,7 +568,6 @@ const Components = (props) => {
   };
 
   const _queryResultsValidator = (_result) => {
-    console.log(_result, "_result");
     let _keys = Object.keys(_result);
     var _obj = {};
     _keys.map((val) => {
@@ -574,7 +583,6 @@ const Components = (props) => {
       });
       _obj[val] = { label: val, images: _arr };
     });
-    console.log(_obj, "aaa");
     _shopsProductss(_obj);
   };
 
@@ -628,8 +636,6 @@ const Components = (props) => {
 
   //
 
-  console.log(state.shopByData, "-------------+*/-");
-
   const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
   const {
     ProductDetailCtx: {
@@ -642,7 +648,6 @@ const Components = (props) => {
       filters: { quantity },
     },
   } = React.useContext(ProductDetailContext);
-  console.log(quantity, "product detail quantity");
   const _silverArr = [];
   React.useEffect(() => {
     if (data && !loading) {
@@ -657,7 +662,6 @@ const Components = (props) => {
           data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku.nodes.map((val) => {
             _silverArr.push(val.materialName.toLowerCase());
           });
-          console.log(_silverArr, "_silverArr");
           if (_silverArr.indexOf("silver") > -1) setGlobalCtx({ ...Globalctx, pathName: true });
         }
       }

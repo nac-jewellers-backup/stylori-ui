@@ -137,7 +137,6 @@ const Productprice = (
   // };
   console.clear();
 
-  console.log(props);
   const isactive = props.data[0].isactive ?? "";
   return (
     <div>
@@ -558,18 +557,25 @@ const Productprice = (
                             </Button> */}
 
                             <div onClick={isactive ? deletechecklists : ""}>
-                              <Buynowbutton
-                                sku={data[0].skuId}
-                                class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart} ${classes.robotoBoldFont} ${classes.add_to_cart_text}`}
-                                button="buynow-btn-cont"
-                                id="silverButton"
-                                withoutBag={true}
-                                addtoCartToBuyNow={true}
-                                productIsActive={isactive ?? ""}
-                                // onClick={}
-                                // handleSuccess={deletechecklists}
-                                onClick={isactive ? handleLocalStorage.bind(this) : ""}
-                              />
+                              {isactive ? (
+                                <>
+                                  {" "}
+                                  <Buynowbutton
+                                    sku={data[0].skuId}
+                                    class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart} ${classes.robotoBoldFont} ${classes.add_to_cart_text}`}
+                                    button="buynow-btn-cont"
+                                    id="silverButton"
+                                    withoutBag={true}
+                                    addtoCartToBuyNow={true}
+                                    productIsActive={isactive ?? ""}
+                                    // onClick={}
+                                    // handleSuccess={deletechecklists}
+                                    onClick={isactive ? handleLocalStorage.bind(this) : ""}
+                                  />{" "}
+                                </>
+                              ) : (
+                                ""
+                              )}
 
                               {/* <CommenDialog
                               isOpen={state.modelOpen}

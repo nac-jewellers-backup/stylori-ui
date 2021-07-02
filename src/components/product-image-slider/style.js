@@ -354,6 +354,9 @@ const styles = (theme) => ({
       height: "36px !important",
       width: "99% !important",
     },
+    // [theme.breakpoints.only("md")]: {
+    //   width: "82% !important",
+    // },
   },
   searchButtonSilver: {
     border: 0,
