@@ -16,11 +16,12 @@ import cart from "mappers/cart";
 import Wishlist from "components/wishlist/wishlist";
 import { API_URL, CDN_URL } from "config";
 import Quantity from "../quantity/index";
-
+// import createHistory from 'history/createBrowserHistory'
 // import { FilterOptionsContext } from 'context/FilterOptionsContext';
 //
 //
 
+// const history = createHistory();
 class Checkoutcard extends React.Component {
   constructor(props) {
     super(props);
@@ -99,6 +100,7 @@ class Checkoutcard extends React.Component {
           delete _localStorageQuantity[currentValue];
           localStorage.setItem("quantity", JSON.stringify(_localStorageQuantity));
           localStorage.setItem("cartDetails", localstorage);
+          // history.go(0)
           window.location.reload();
         });
     } else {
@@ -194,7 +196,8 @@ class Checkoutcard extends React.Component {
       if (_data.indexOf("silver") > -1) return false;
       else return true;
     };
-
+    // let productIsActive = this.props.data[0].isActive ?? "";
+    console.log(this.props.data);
     return (
       <div style={{ marginTop: "10px" }}>
         <Grid container>
@@ -315,14 +318,32 @@ class Checkoutcard extends React.Component {
                       {/* : ""} */}
 
                       {window.location.pathname !== "/checkout" ? (
-                        <div
-                          className="highlighter"
-                          className={`subhesder hov ${classes.normalfonts}`}
-                          id={dataval.generatedSku}
-                          onClick={(event) => this.handleDeleteLocalStorage(event)}
-                        >
-                          <i class="fa fa-trash"></i>
-                          &nbsp;Remove
+                        <div>
+                          <span
+                            className="highlighter"
+                            className={`subhesder hov ${classes.normalfonts}`}
+                            id={dataval.generatedSku}
+                            onClick={(event) => this.handleDeleteLocalStorage(event)}
+                          >
+                            <i class="fa fa-trash"></i>
+                            &nbsp;Remove
+                          </span>
+                          <span>&nbsp;</span>
+                          {!dataval.isActive ? (
+                            <span
+                              style={{
+                                backgroundColor: "red",
+                                fontSize: "10px",
+                                color: "white",
+                                padding: "2px 4px",
+                                borderRadius: "2px",
+                              }}
+                            >
+                              Sold Out
+                            </span>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       ) : (
                         ""
@@ -359,9 +380,19 @@ class Checkoutcard extends React.Component {
   };
   checkoutbutton = () => {
     const { classes } = this.props;
-    let productIsActive = this.props.data[0].isActive ?? "";
+    console.log(this.props, "insider");
+    let productIsActive = true;
+    let productURL;
+    this.props.data.map((val) => {
+      if (val.isActive == false) {
+        productIsActive = val.isActive;
+        productURL = val.skuUrl;
+      }
+    });
+    // productIsActive = this.props.data[0].isActive ?? "";
     let path = window.location.pathname.split("/").pop();
 
+    console.log(productIsActive);
     return (
       <div>
         {path == "checkout" ? (
@@ -383,7 +414,7 @@ class Checkoutcard extends React.Component {
             >
               {/* {window.location.reload()} */}
               <Buynowbutton
-                productURL={this.props?.data[0]?.skuUrl}
+                productURL={productURL}
                 productIsActive={productIsActive ?? ""}
                 class={`chckout-page-buynow ${classes.buttons}`}
               />
@@ -543,8 +574,7 @@ const Components = (props) => {
       .then((val) => {
         if (val) setShippingCharge(val.shipping_charge);
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
   }, []);
 
   let {

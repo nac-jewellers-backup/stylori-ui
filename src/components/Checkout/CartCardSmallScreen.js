@@ -22,8 +22,7 @@ function MediaControlCard(props) {
 
   const handleDeleteLocalStorage = (e, val) => {
     var local_storage = JSON.parse(localStorage.getItem("cartDetails"));
-    var currentValue =
-      e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id;
+    var currentValue = e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id;
     // console.clear()
     // console.log("e-clear",e.target.id)
     var a = local_storage.products.filter((val) => {
@@ -74,9 +73,7 @@ function MediaControlCard(props) {
           window.location.reload();
         });
     } else {
-      var _products = JSON.parse(
-        localStorage.getItem("cartDetails")
-      ).products.filter((val) => {
+      var _products = JSON.parse(localStorage.getItem("cartDetails")).products.filter((val) => {
         if (val.sku_id !== currentValue) return val;
       });
       var cartId = JSON.parse(localStorage.getItem("cartDetails")).cart_id;
@@ -113,17 +110,11 @@ function MediaControlCard(props) {
         if ((cnt_c && cnt_c[1]) === valu2) {
           var browser_type = JSON.parse(localStorage.getItem("browserDetails"));
           var resolution = 500;
-          var _resolutions =
-            width < 960
-              ? `${resolution * 2}X${resolution * 2}`
-              : `${resolution}X${resolution}`;
+          var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`;
           var url_split = imges__val && imges__val.imageUrl.split("/");
           var extension_split = url_split && url_split[url_split.length - 1];
           var browser_type_append =
-            extension_split &&
-            extension_split
-              .split(".")[0]
-              .concat(`${browser_type && browser_type.browser_type}`);
+            extension_split && extension_split.split(".")[0].concat(`${browser_type && browser_type.browser_type}`);
           url_split[url_split && url_split.length - 1] = browser_type_append;
           url_split.splice(2, 0, _resolutions);
           var url_construct = url_split.join().replace(/\,/g, "/");
@@ -157,11 +148,7 @@ function MediaControlCard(props) {
     <div style={{ paddingTop: "10px" }}>
       {/* <Grid container>
         <Grid xs={6} > */}
-      <span style={{ color: "#666", fontSize: "14px", margin: "0px 0px 10px" }}>
-        {" "}
-        Shopping cart{" "}
-      </span>{" "}
-      <br />
+      <span style={{ color: "#666", fontSize: "14px", margin: "0px 0px 10px" }}> Shopping cart </span> <br />
       {/* <div> <span style={{ color: "#394578", fontSize: "14px", fontWeight: "bold" }}>Item:</span> ({props.data.length})</div><br /> */}
       {/* </Grid>
         <Grid xs={6}  >
@@ -178,14 +165,10 @@ function MediaControlCard(props) {
               {dataval.productsDetails[0].namedetail.map((val) =>
                 dataval.fadeImages.map((val_imgUrl) => {
                   return filter_image(val_imgUrl, val.name, val.details) &&
-                    filter_image(val_imgUrl, val.name, val.details).length >
-                      0 ? (
+                    filter_image(val_imgUrl, val.name, val.details).length > 0 ? (
                     window.location.pathname !== "/checkout" ? (
                       <div style={{ width: "195px" }}>
-                        <NavLink
-                          to={dataval.skuUrl}
-                          style={{ textDecoration: "none" }}
-                        >
+                        <NavLink to={dataval.skuUrl} style={{ textDecoration: "none" }}>
                           {/* <img
                         src={filter_image(val_imgUrl,val.name, val.details)}
                         width="100%"
@@ -194,11 +177,7 @@ function MediaControlCard(props) {
                       /> */}
                           <Slideshow
                             className="image"
-                            fadeImages={filter_image(
-                              val_imgUrl,
-                              val.name,
-                              val.details
-                            )}
+                            fadeImages={filter_image(val_imgUrl, val.name, val.details)}
                             dataCarousel={dataCarousel}
                           />
                         </NavLink>
@@ -213,11 +192,7 @@ function MediaControlCard(props) {
                     /> */}
                         <Slideshow
                           className="image"
-                          fadeImages={filter_image(
-                            val_imgUrl,
-                            val.name,
-                            val.details
-                          )}
+                          fadeImages={filter_image(val_imgUrl, val.name, val.details)}
                           dataCarousel={dataCarousel}
                         />
                       </div>
@@ -228,35 +203,22 @@ function MediaControlCard(props) {
               <div className={classes.details}>
                 <CardContent className={classes.content}>
                   {window.location.pathname !== "/checkout" ? (
-                    <NavLink
-                      to={dataval.skuUrl}
-                      style={{ textDecoration: "none" }}
-                    >
-                      <Typography
-                        component="div"
-                        variant="subtitle1"
-                        className={`${classes.contents} ${classes.normalfonts}`}
-                      >
+                    <NavLink to={dataval.skuUrl} style={{ textDecoration: "none" }}>
+                      <Typography component="div" variant="subtitle1" className={`${classes.contents} ${classes.normalfonts}`}>
                         {val.pro_header}
                       </Typography>
                     </NavLink>
                   ) : (
-                    <Typography
-                      component="div"
-                      variant="subtitle1"
-                      className={`${classes.contents} ${classes.normalfonts}`}
-                    >
+                    <Typography component="div" variant="subtitle1" className={`${classes.contents} ${classes.normalfonts}`}>
                       {val.pro_header}
                     </Typography>
                   )}
                   <Typography className={`subhesder ${classes.normalfonts}`}>
                     {window.location.pathname === "/checkout" ||
-                    (checkMaterial(dataval.materialName) || (!Boolean(dataval?.[0]?.maxOrderQty) || dataval?.[0]?.maxOrderQty <2))  ? (
-                      `Quantity ${
-                        JSON.parse(localStorage.getItem("quantity"))[
-                          dataval.generatedSku
-                        ]
-                      }`
+                    checkMaterial(dataval.materialName) ||
+                    !Boolean(dataval?.[0]?.maxOrderQty) ||
+                    dataval?.[0]?.maxOrderQty < 2 ? (
+                      `Quantity ${JSON.parse(localStorage.getItem("quantity"))[dataval.generatedSku]}`
                     ) : (
                       <Quantity data={[dataval]} cart={true} />
                     )}
@@ -266,11 +228,7 @@ function MediaControlCard(props) {
                       price={val.price}
                       offerPrice={val.offerPrice}
                       offerDiscount={"25% - OFF"}
-                      quantity={
-                        JSON.parse(localStorage.getItem("quantity"))[
-                          dataval.generatedSku
-                        ]
-                      }
+                      quantity={JSON.parse(localStorage.getItem("quantity"))[dataval.generatedSku]}
                     >
                       {/* <label className={classes.labelPrice}>
                         <Typography
@@ -326,6 +284,22 @@ function MediaControlCard(props) {
                         productid={dataval}
                         onClick={(e) => handleDeleteLocalStorage(e, val)}
                       >
+                        {!dataval.isActive ? (
+                          <span
+                            style={{
+                              backgroundColor: "red",
+                              fontSize: "10px",
+                              color: "white",
+                              padding: "2px 4px",
+                              borderRadius: "2px",
+                            }}
+                          >
+                            Sold Out
+                          </span>
+                        ) : (
+                          ""
+                        )}
+                        <span> &nbsp;&nbsp;</span>
                         <i style={{ fontSize: "16px" }} class="fa">
                           {" "}
                           &#xf014;

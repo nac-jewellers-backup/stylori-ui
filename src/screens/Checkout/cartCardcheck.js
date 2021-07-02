@@ -66,7 +66,6 @@ class Component extends React.Component {
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
     ReactPixel.fbq("track", "PageView");
     ReactPixel.track("InitiateCheckout");
-
   }
 
   handleChange = (panel) => (event) => {
@@ -225,9 +224,24 @@ class Component extends React.Component {
     //     localStorage.setItem("panel", 1);
     // }
     const enquireLink = () => {
-      window.open(`https://wa.me/919952625252?text=Hi - ${window.location.hostname + "/" + this.props?.data[0]?.skuUrl ?? ""}`);
+      let ProductIsActiveUrl;
+      this.props.data.map((val) => {
+        if (val.isActive == false) {
+          ProductIsActiveUrl = val.skuUrl;
+        }
+      });
+      window.open(`https://wa.me/919952625252?text=Hi - ${window.location.hostname + "/" + ProductIsActiveUrl ?? ""}`);
     };
 
+    console.log(this.props.data, "final");
+
+    let ProductIsActive = true;
+    this.props.data.map((val) => {
+      if (val.isActive == false) {
+        ProductIsActive = false;
+      }
+    });
+    // alert(ProductIsActive);
     return (
       <Grid>
         <Helmet>
@@ -366,7 +380,7 @@ class Component extends React.Component {
                       <Grid xs={12} lg={7} />
                       <Grid xs={12} lg={4}>
                         <div style={{ float: "right" }}>
-                          {this.props?.data[0]?.isActive ? (
+                          {ProductIsActive ? (
                             <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
                               Continue to Pay
                             </Button>
@@ -391,7 +405,7 @@ class Component extends React.Component {
                         <Grid xs={12} lg={7} />
                         <Grid xs={12} lg={4}>
                           <div style={{ float: "right", marginBottom: "5px" }}>
-                            {this.props?.data[0]?.isActive ? (
+                            {ProductIsActive ? (
                               <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
                                 Continue to Pay
                               </Button>
@@ -414,7 +428,7 @@ class Component extends React.Component {
                       <Grid xs={12} lg={7} />
                       <Grid xs={12} lg={4}>
                         <div style={{ float: "right", marginBottom: "5px" }}>
-                          {this.props?.data[0]?.isActive ? (
+                          {ProductIsActive ? (
                             <Button onClick={() => this.pincodeapi()} className="summaryOrder-pay-btn">
                               Continue to Pay
                             </Button>
