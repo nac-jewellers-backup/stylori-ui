@@ -21,6 +21,7 @@ app.get("/*.(txt|map|json|svg|css|js|jpg|jpeg|png|gif)", (req, res) => {
     if (err) {
       return console.log(err);
     }
+   
     res.send(data);
   });
 });
@@ -32,7 +33,7 @@ app.get("/*", async (req, res) => {
     }
     try {
       const seoData = await networkcall(req.path, req.query.skuid);
-      console.log(seoData.title, seoData.description, seoData.imgURL);
+    
       data = data.replace(
         /(?<=\<meta __meta1\/>)(.*?)(?=\<meta __meta2\/>)/g,
         seo(seoData.title, seoData.description, seoData.imgURL)
