@@ -214,7 +214,6 @@ class Header extends Component {
             : "headerTop"
         }
       >
-   
         <Hidden smDown>
           {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
 
@@ -864,6 +863,7 @@ class Header extends Component {
                                       Jewellery[selected][row2].name !== "BANGLE" &&
                                       Jewellery[selected][row2].name !== "StarStruck" &&
                                       Jewellery[selected][row2].name !== "Mural Collection" &&
+                                      Jewellery[selected][row2].name !== "Elemental Collection" &&
                                       Jewellery[selected][row2].name !== "In love Collection" &&
                                       Jewellery[selected][row2].name !== "Baroque Whites Collection" && (
                                         <i class={`fa fa-caret-up drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""}`}></i>
@@ -877,6 +877,7 @@ class Header extends Component {
                                       Jewellery[selected][row2].name !== "BANGLE" &&
                                       Jewellery[selected][row2].name !== "StarStruck" &&
                                       Jewellery[selected][row2].name !== "Mural Collection" &&
+                                      Jewellery[selected][row2].name !== "Elemental Collection" &&
                                       Jewellery[selected][row2].name !== "In love Collection" &&
                                       Jewellery[selected][row2].name !== "Baroque Whites Collection" && (
                                         <i

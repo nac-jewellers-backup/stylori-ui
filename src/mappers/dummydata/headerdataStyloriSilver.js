@@ -1085,6 +1085,11 @@ export const Jewellery = {
   },
 
   COLLECTIONS: {
+    "Elemental Collection": {
+      name: "Elemental Collection",
+      url: "https://www.stylori.com/silver-jewellery-elemental+collection",
+      icon: "",
+    },
     "Mural Collection": {
       name: "Mural Collection",
       url: "https://www.stylori.com/silver-jewellery-mural+collection",
@@ -2056,6 +2061,25 @@ export const menuLists = {
 
   COLLECTIONS: {
     menuOne: [
+      {
+        value: "Elemental Collection",
+        title: "Elemental Collection",
+        url: "https://www.stylori.com/silver-jewellery-elemental+collection",
+        // imgContainer: {
+        // bigImage: {
+        //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---traditional.jpg",
+        //   content: "CHOKERS",
+        //   url: "/silver-jewellery-Traditional",
+        // },
+        // imageContainer: [
+        //   {
+        //     img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Inlove.jpg",
+        //     content: "Earings",
+        //     url: "http://stylori.com/silver-jewellery-inlovecollection",
+        //   },
+        // ],
+        // },
+      },
       {
         value: "Mural Collection",
         title: "Mural Collection",
