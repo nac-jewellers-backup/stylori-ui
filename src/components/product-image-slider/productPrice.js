@@ -9,7 +9,8 @@ import Pricing from "../Pricing/index";
 import styles from "./style";
 import Wishlist from "components/wishlist/wishlist";
 import { Button } from "semantic-ui-react";
-
+import axios from "axios";
+import { API_URL, CDN_URL } from "config";
 const dataCarousel = {
   dots: true,
   infinite: false,
@@ -61,9 +62,10 @@ const mobilecarousel = (props, val, wishlist) => {
   );
 };
 
-const Productprice = (props, anchorEl, handleClick, handleClose) => {
+const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
   const { data } = props;
   const { classes } = props;
+  const { shipby_arr } = state;
   const open = anchorEl;
   var wishlist = props.wishlist;
   // alert(JSON.stringify(props.wishlist.wishlistdata.nodes.skuId))
@@ -143,7 +145,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                                 >
                                   <span style={{ textAlign: "center", alignItems: "center", display: "flex" }}>
                                     {" "}
-                                    {val.shipby}
+                                    {shipby_arr}
                                   </span>
                                 </b>
                               </div>
@@ -291,6 +293,7 @@ class ProductPrice extends Component {
       share: false,
       heart: false,
       anchorEl: false,
+      shipby_arr: "",
     };
   }
 
@@ -305,17 +308,38 @@ class ProductPrice extends Component {
       anchorEl: false,
     });
   };
+  async componentDidMount() {
+    let skuId_arr = this.props?.data[0]?.ProductSkuID;
+    let params = {
+      sku_id: skuId_arr ?? "",
+      current_datetime: new Date(),
+    };
 
+    await axios.post(`${API_URL}/getshippingdate`, params).then((res) => {
+      let productShipBy = res?.data?.shipping_date;
+      let dateObj = "";
+      let shipByDate = "";
+      if (productShipBy) {
+        dateObj = new Date(productShipBy);
+        shipByDate = `Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString("default", {
+          month: "long",
+        })} ${dateObj.getUTCFullYear()}`;
+      }
+      this.setState({
+        shipby_arr: shipByDate ?? "",
+      });
+    });
+  }
   render() {
     const { anchorEl } = this.state;
     // alert(JSON.stringify(this.props.wishlist))
     return (
       <div>
-        <Hidden smDown>{Productprice(this.props, anchorEl, this.handleClick, this.handleClose)}</Hidden>
+        <Hidden smDown>{Productprice(this.props, anchorEl, this.handleClick, this.handleClose, this.state)}</Hidden>
 
         <Hidden mdUp>
           <Container style={{ paddingBottom: "6px" }}>
-            {Productprice(this.props, anchorEl, this.handleClick, this.handleClose)}
+            {Productprice(this.props, anchorEl, this.handleClick, this.handleClose, this.state)}
           </Container>
         </Hidden>
       </div>

@@ -252,7 +252,7 @@ const BuydetailsSilverdetailpage = (
         data[0].ProductContactNum.map((val) => (
           <>
             <Grid container>
-              <Grid item xs={12} lg={4} style={{ fontSize: "0.8rem", color: "rgb(58,69,120)" , fontWeight : "bold"}}>
+              <Grid item xs={12} lg={4} style={{ fontSize: "0.8rem", color: "rgb(58,69,120)", fontWeight: "bold" }}>
                 {shipByDate}
               </Grid>
             </Grid>
@@ -516,6 +516,14 @@ class Component extends React.Component {
     let { showimage } = this.state;
     const { classes, data, isSilver } = this.props;
     const isactive = this.props.data[0].isactive ?? "";
+    let dateObj = "";
+    let shipByDate = "";
+    if (this.state.productShipBy !== null && this.state.productShipBy !== "") {
+      dateObj = new Date(this.state.productShipBy ?? "");
+      shipByDate = `Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString("default", {
+        month: "long",
+      })} ${dateObj.getUTCFullYear()}`;
+    }
 
     return (
       <div>
@@ -562,7 +570,7 @@ class Component extends React.Component {
               <Container>
                 <Grid container style={{ padding: "0px 8px 0px 8px" }}>
                   <Grid item xs={12} lg={4} style={{ fontSize: "0.8rem", color: "rgb(58,69,120)" }}>
-                    {this.props.data[0].ProductContactNum[0].shipby}
+                    {shipByDate}
                   </Grid>
                 </Grid>
               </Container>
