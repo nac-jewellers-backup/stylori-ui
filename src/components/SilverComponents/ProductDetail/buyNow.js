@@ -14,12 +14,11 @@ import { CheckForCod } from "queries/productdetail";
 import { CartContext } from "context";
 import { withRouter } from "react-router";
 import CommenDialog from "../../Common/Dialogmodel";
-
+import { useNetworkRequest } from "hooks/index";
 const inputsearch = (props, state, handleChanges, handleCodChange) => {
   const { data } = props;
   const { classes } = props;
-
-  // const [] = React.useState()
+  debugger;
 
   return (
     <div
@@ -71,7 +70,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange) => {
             <Grid container item justify="center" xs={12} sm={12} lg={5} className="content" style={{ margin: "auto" }}>
               <b className={`ships-by ${classes.normalfonts}`}>
                 <span>
-                  <i style={{ fontSize: "20px" }} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby}
+                  {/* <i style={{ fontSize: "20px" }} class="fa fa-truck"></i>&nbsp;&nbsp;{val.shipby} */}
                 </span>
               </b>
             </Grid>

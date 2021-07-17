@@ -16,12 +16,21 @@ import { withRouter } from "react-router";
 import CommenDialog from "../Common/Dialogmodel";
 import Buynowfixed from "components/SilverComponents/ProductDetail/buynowfixed";
 import SilverProductPrice from "./silverProductPrice";
-
+import { useNetworkRequest } from "hooks/index";
+import axios from "axios";
+import { API_URL } from "../../config";
 const inputsearch = (props, state, handleChanges, handleCodChange, customstylingsmallscreen) => {
   const { data, isSilver } = props;
   const { classes } = props;
-
-  // const [] = React.useState()
+  let { productShipBy } = state;
+  let dateObj = "";
+  let shipByDate = "";
+  if (productShipBy) {
+    dateObj = new Date(state.productShipBy);
+    shipByDate = `Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString("default", {
+      month: "long",
+    })} ${dateObj.getUTCFullYear()}`;
+  }
 
   return (
     <div className={isSilver ? classes.searchCheckSilver : classes.searchCheck} style={{}}>
@@ -101,7 +110,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange, customstyling
                     }}
                   >
                     <i style={{ fontSize: "20px" }} class="fa fa-truck"></i>
-                    &nbsp;&nbsp;{val.shipby}
+                    &nbsp;&nbsp;{shipByDate}
                   </span>
                 </b>
               </Grid>
@@ -228,18 +237,27 @@ const BuydetailsSilverdetailpage = (
   const { data, isSilver } = props;
   const { classes } = props;
   const isactive = props.data[0].isactive ?? "";
+  let { productShipBy } = state;
+  let dateObj = "";
+  let shipByDate = "";
+  if (productShipBy) {
+    dateObj = new Date(state.productShipBy);
+    shipByDate = `Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString("default", {
+      month: "long",
+    })} ${dateObj.getUTCFullYear()}`;
+  }
   return (
     <div>
-      {isactive && data[0].ProductContactNum.map((val) => (
-        <>
-       
-          <Grid container>
-            <Grid item xs={12} lg={4} style={{ fontSize: "0.8rem", color: "rgb(58,69,120)" }}>
-              {val.shipby}
+      {isactive &&
+        data[0].ProductContactNum.map((val) => (
+          <>
+            <Grid container>
+              <Grid item xs={12} lg={4} style={{ fontSize: "0.8rem", color: "rgb(58,69,120)" , fontWeight : "bold"}}>
+                {shipByDate}
+              </Grid>
             </Grid>
-          </Grid>
-        </>
-      ))}
+          </>
+        ))}
     </div>
   );
 };
@@ -297,7 +315,24 @@ class Component extends React.Component {
         this.props.data[0].productsDetails[0].namedetail &&
         this.props.data[0].productsDetails[0].namedetail[3] &&
         this.props.data[0].productsDetails[0].namedetail[3].details,
+      productShipBy: "",
     };
+  }
+
+  async componentDidMount() {
+    let sku_id = this.props?.data[0]?.ProductSkuID;
+    let params = {
+      sku_id: sku_id,
+      current_datetime: new Date(),
+    };
+    await axios
+      .post(`${API_URL}/getshippingdate`, params)
+      .then((res) => {
+        this.setState({ productShipBy: res?.data?.shipping_date });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
   // valus = (valueId) => {
   //   var valus_locl = localStorage.getItem("cartDetails")

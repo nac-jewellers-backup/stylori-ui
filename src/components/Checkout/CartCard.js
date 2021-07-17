@@ -16,6 +16,7 @@ import cart from "mappers/cart";
 import Wishlist from "components/wishlist/wishlist";
 import { API_URL, CDN_URL } from "config";
 import Quantity from "../quantity/index";
+import axios from "axios";
 // import createHistory from 'history/createBrowserHistory'
 // import { FilterOptionsContext } from 'context/FilterOptionsContext';
 //
@@ -27,9 +28,39 @@ class Checkoutcard extends React.Component {
     super(props);
     this.state = {
       cart: true,
+      shipby_arr: [],
     };
   }
+  async componentDidMount() {
+    let skuId_arr = this.props?.data;
+    let shipby_arr_object = [];
+    for (var i = 0; i < skuId_arr.length; i++) {
+      let params = {
+        sku_id: skuId_arr[i]?.productSkuId,
+        current_datetime: new Date(),
+      };
+      await axios.post(`${API_URL}/getshippingdate`, params).then((res) => {
+        let productShipBy = res?.data?.shipping_date;
+        let dateObj = "";
+        let shipByDate = "";
+        if (productShipBy) {
+          dateObj = new Date(productShipBy);
+          shipByDate = `Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString("default", {
+            month: "long",
+          })} ${dateObj.getUTCFullYear()}`;
+        }
 
+        shipby_arr_object.push({
+          shipby: shipByDate,
+          skuId: skuId_arr[i]?.productSkuId,
+        });
+      });
+      this.setState({
+        ...this.state.shipby_arr,
+        shipby_arr: shipby_arr_object,
+      });
+    }
+  }
   handleCartQuantity = (skuId) => {
     const filters =
       this.props.filters && this.props.filters.quantity && Object.keys(this.props.filters.quantity).length > 0 ? true : false;
@@ -53,9 +84,6 @@ class Checkoutcard extends React.Component {
 
     // var currentValue = e.target.id
     var currentValue = e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id;
-
-    // console.clear()
-    // console.log("e-clear",e.target.id)
 
     var a = local_storage.products.filter((val) => {
       if (currentValue !== val.sku_id) {
@@ -197,7 +225,7 @@ class Checkoutcard extends React.Component {
       else return true;
     };
     // let productIsActive = this.props.data[0].isActive ?? "";
-    console.log(this.props.data);
+
     return (
       <div style={{ marginTop: "10px" }}>
         <Grid container>
@@ -314,7 +342,15 @@ class Checkoutcard extends React.Component {
                       </Typography>
                       {/* <Quantity data={[dataval]}/> */}
                       {/* {data[0].isReadyToShip === true ? */}
-                      <Typography className={`subhesder ${classes.normalfonts}`}>{data[0].shipby}</Typography>
+                      {this.state.shipby_arr.map((val) => (
+                        <>
+                          {val.skuId === dataval.productSkuId ? (
+                            <Typography className={`subhesder ${classes.normalfonts}`}>{val.shipby}</Typography>
+                          ) : (
+                            ""
+                          )}
+                        </>
+                      ))}
                       {/* : ""} */}
 
                       {window.location.pathname !== "/checkout" ? (
@@ -380,7 +416,7 @@ class Checkoutcard extends React.Component {
   };
   checkoutbutton = () => {
     const { classes } = this.props;
-    console.log(this.props, "insider");
+
     let productIsActive = true;
     let productURL;
     this.props.data.map((val) => {
@@ -392,7 +428,6 @@ class Checkoutcard extends React.Component {
     // productIsActive = this.props.data[0].isActive ?? "";
     let path = window.location.pathname.split("/").pop();
 
-    console.log(productIsActive);
     return (
       <div>
         {path == "checkout" ? (
