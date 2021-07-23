@@ -3,7 +3,13 @@ const { seoUrlResult, PRODUCTDETAILS } = require("./gqlquery");
 const { API_URL } = require("./config");
 const { default: axios } = require("axios");
 const networkcall = (path, skuID) => {
-  
+  if (path == "/styloriSilver") {
+    return {
+      title: "Online Jewellery Shopping in India | Gold and Diamond Jewellery Online",
+      description: " ",
+      imgURL: " ",
+    };
+  }
   if (skuID !== undefined) {
     var variables = { conditionfilter: { skuId: skuID } };
     return request(API_URL + "/graphql", PRODUCTDETAILS, variables).then((data) => {
@@ -46,7 +52,6 @@ const networkcall = (path, skuID) => {
 
     // Run GraphQL queries/mutations using a static function
     return request(API_URL + "/graphql", seoUrlResult, variables).then((data) => {
-     
       var filters = {};
       data.allSeoUrlPriorities.nodes.map((val) => {
         var attrName = val.attributeName.replace(/\s/g, "").toLowerCase();
@@ -56,7 +61,6 @@ const networkcall = (path, skuID) => {
       });
 
       return axios.post(API_URL + "/filterlist", filters).then((response) => {
-        
         var data = response.data;
         var replaceValue = "";
 
