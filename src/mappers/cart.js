@@ -1,4 +1,6 @@
 import moment from "moment";
+import axios from "axios";
+import { API_URL } from "../config";
 // export const productsDetails = [
 //     {
 //         header: "Product Details",
@@ -115,6 +117,25 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
     return "Ships by" + " " + moment().add(numberOfDays, "days").format("Do MMMM YYYY");
   }
 };
+
+// const getShipDate = async (skuId) => {
+//   let params = {
+//     sku_id: skuId,
+//     current_datetime: new Date(),
+//   };
+//   await axios.post(`${API_URL}/getshippingdate`, params).then((res) => {
+//     let productShipBy = res?.data?.shipping_date;
+//     let dateObj = "";
+//     let shipByDate = "";
+//     if (productShipBy) {
+//       dateObj = new Date(productShipBy);
+//       shipByDate = `Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString("default", {
+//         month: "long",
+//       })} ${dateObj.getUTCFullYear()}`;
+//     }
+//     return shipByDate ?? "";
+//   });
+// };
 export default function (data) {
   let mapperdata = [];
   try {
@@ -130,6 +151,8 @@ export default function (data) {
         generatedSku: k.generatedSku,
         skuId: k.generatedSku,
         skuUrl: k.skuUrl,
+        productSkuId: k.skuId,
+
         materialName:
           k.productListByProductId.productMaterialsByProductSku.nodes === undefined
             ? ""

@@ -1085,6 +1085,11 @@ export const Jewellery = {
   },
 
   COLLECTIONS: {
+    "Akruti Collection": {
+      name: "Akruti Collection",
+      url: "https://www.stylori.com/silver-jewellery-akruti+collection",
+      icon: "",
+    },
     "Elemental Collection": {
       name: "Elemental Collection",
       url: "https://www.stylori.com/silver-jewellery-elemental+collection",
@@ -2061,6 +2066,25 @@ export const menuLists = {
 
   COLLECTIONS: {
     menuOne: [
+      {
+        value: "Akruti Collection",
+        title: "Akruti Collection",
+        url: "https://www.stylori.com/silver-jewellery-akruti+collection",
+        // imgContainer: {
+        // bigImage: {
+        //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---traditional.jpg",
+        //   content: "CHOKERS",
+        //   url: "/silver-jewellery-Traditional",
+        // },
+        // imageContainer: [
+        //   {
+        //     img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Inlove.jpg",
+        //     content: "Earings",
+        //     url: "http://stylori.com/silver-jewellery-inlovecollection",
+        //   },
+        // ],
+        // },
+      },
       {
         value: "Elemental Collection",
         title: "Elemental Collection",
