@@ -18,15 +18,15 @@ export default function PaymentHiddenForm(props) {
     isocurrency: "",
     chmod: "",
     checksum: "",
-    buyerEmail: "jay@gmail.com",
-    buyerFirstName: "Jay",
-    buyerLastName: "Soorya",
-    buyerAddress: "Address",
-    buyerCity: "Chennai",
-    buyerState: "state",
-    buyerCountry: "country",
-    buyerPhone: 9841348263,
-    buyerPinCode: "600087",
+    buyerEmail: "",
+    buyerFirstName: "",
+    buyerLastName: "",
+    buyerAddress: "",
+    buyerCity: "",
+    buyerState: "",
+    buyerCountry: "",
+    buyerPhone: "",
+    buyerPinCode: "",
   });
   const [orderId, setOrderId] = React.useState(null);
   const obj = {};
@@ -82,8 +82,7 @@ export default function PaymentHiddenForm(props) {
           checksum: data.checksum,
           amount: data.amount,
         });
-        debugger;
-        console.log(data.amount);
+
         //  hash=data.hash
         //  day = data.day
         //  currentutc = data.currentutc
@@ -137,10 +136,10 @@ export default function PaymentHiddenForm(props) {
     // document.getElementById("sendtoairpay").submit();
   };
   useEffect(() => {
-    
     if (hash.checksum) document.getElementById("sendtoairpay").submit();
   }, [hash]);
   // useEffect(()=>{if(hash.checksum) console.log(hash,orderId,"hashandorderid")},[hash])
+
   return (
     <div container>
       <form method="POST" action="https://payments.airpay.co.in/pay/index.php" id="sendtoairpay">
