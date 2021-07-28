@@ -143,58 +143,58 @@ export default function PaymentHiddenForm(props) {
     <div container>
       <form method="POST" action="https://payments.airpay.co.in/pay/index.php" id="sendtoairpay">
         <div class="form-group">
-          <input id="privatekey" name="privatekey" value={hash.privatekey} class="form-control" />
+          <input id="privatekey" type="hidden" name="privatekey" value={hash.privatekey} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="buyerPhone" name="mercid" value={hash.mercid} class="form-control" />
+          <input id="buyerPhone" type="hidden" name="mercid" value={hash.mercid} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="orderid" name="orderid" value={orderId} class="form-control" />
+          <input id="orderid" type="hidden" name="orderid" value={orderId} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="currency" name="currency" value={hash.currency} class="form-control" />
+          <input id="currency" type="hidden" name="currency" value={hash.currency} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="isocurrency" name="isocurrency" value={hash.isocurrency} class="form-control" />
+          <input id="isocurrency" type="hidden" name="isocurrency" value={hash.isocurrency} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="chmod" name="chmod" value={hash.chmod} class="form-control" />
+          <input id="chmod" type="hidden" name="chmod" value={hash.chmod} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="buyerEmail" name="buyerEmail" value={hash.buyerEmail} class="form-control" />
+          <input id="buyerEmail" type="hidden" name="buyerEmail" value={hash.buyerEmail} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="buyerPhone" name="buyerPhone" value={hash.buyerPhone} class="form-control" />
+          <input id="buyerPhone" type="hidden" name="buyerPhone" value={hash.buyerPhone} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="buyerFirstName" name="buyerFirstName" value={hash.buyerFirstName} class="form-control" />
+          <input id="buyerFirstName" type="hidden" name="buyerFirstName" value={hash.buyerFirstName} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="buyerLastName" name="buyerLastName" value={hash.buyerLastName} class="form-control" />
+          <input id="buyerLastName" type="hidden" name="buyerLastName" value={hash.buyerLastName} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="buyerAddress" name="buyerAddress" value={hash.buyerAddress} class="form-control" />
+          <input id="buyerAddress" type="hidden" name="buyerAddress" value={hash.buyerAddress} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="buyerCity" name="buyerCity" value={hash.buyerCity} class="form-control" />
+          <input id="buyerCity" type="hidden" name="buyerCity" value={hash.buyerCity} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="buyerState" name="buyerState" value={hash.buyerState} class="form-control" />
+          <input id="buyerState" type="hidden" name="buyerState" value={hash.buyerState} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="buyerCountry" name="buyerCountry" value={hash.buyerCountry} class="form-control" />
+          <input id="buyerCountry" type="hidden" name="buyerCountry" value={hash.buyerCountry} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="buyerPinCode" name="buyerPinCode" value={hash.buyerPinCode} class="form-control" />
+          <input id="buyerPinCode" type="hidden" name="buyerPinCode" value={hash.buyerPinCode} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="orderid" name="orderid" value={orderId} class="form-control" />
+          <input id="orderid" type="hidden" name="orderid" value={orderId} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="amount" name="amount" value={hash.amount} class="form-control" />
+          <input id="amount" type="hidden" name="amount" value={hash.amount} class="form-control" />
         </div>
         <div class="form-group">
-          <input id="checksum" name="checksum" value={hash.checksum} class="form-control" />
+          <input id="checksum" type="hidden" name="checksum" value={hash.checksum} class="form-control" />
         </div>
       </form>
       <Grid item container>
