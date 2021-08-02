@@ -49,9 +49,10 @@ class Checkoutcard extends React.Component {
             month: "long",
           })} ${dateObj.getUTCFullYear()}`;
         }
-
+        debugger;
         shipby_arr_object.push({
-          shipby: shipByDate,
+          // shipby: shipByDate,
+          shipby: "",
           skuId: skuId_arr[i]?.productSkuId,
         });
       });

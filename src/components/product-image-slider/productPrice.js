@@ -325,8 +325,10 @@ class ProductPrice extends Component {
           month: "long",
         })} ${dateObj.getUTCFullYear()}`;
       }
+      debugger;
       this.setState({
-        shipby_arr: shipByDate ?? "",
+        // shipby_arr: shipByDate ?? "",
+        shipby_arr: "" ?? "",
       });
     });
   }

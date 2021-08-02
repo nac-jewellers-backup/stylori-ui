@@ -109,7 +109,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange, customstyling
                       alignContent: "center",
                     }}
                   >
-                    <i style={{ fontSize: "20px" }} class="fa fa-truck"></i>
+                    {/* <i style={{ fontSize: "20px" }} class="fa fa-truck"></i> */}
                     &nbsp;&nbsp;{shipByDate}
                   </span>
                 </b>
@@ -328,7 +328,11 @@ class Component extends React.Component {
     await axios
       .post(`${API_URL}/getshippingdate`, params)
       .then((res) => {
-        this.setState({ productShipBy: res?.data?.shipping_date });
+        debugger;
+        this.setState({
+          // productShipBy: res?.data?.shipping_date
+          productShipBy: "",
+        });
       })
       .catch((error) => {
         console.error(error);
