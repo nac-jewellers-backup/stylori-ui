@@ -1161,6 +1161,11 @@ export const Jewellery = {
       url: "#",
       icon: "",
     },
+    ByGiftVoucher: {
+      name: "Gift Voucher",
+      url: "/silver-voucher-jewellery",
+      icon: "",
+    },
   },
   Collections: {
     ByCollections: {
@@ -2259,6 +2264,11 @@ export const menuLists = {
             },
           ],
         },
+      },
+      {
+        value: "ByGiftVoucher",
+        title: "Gift Voucher",
+        url: "/silver-voucher-jewellery",
       },
     ],
   },
