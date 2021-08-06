@@ -56,8 +56,6 @@ class Cart extends React.Component {
     let path = window.location.pathname.split("/").pop();
     return (
       <Grid container>
-      
-
         <Hidden smDown>
           <Header wishlist={this.props.wishlistdata} />
           {path === "checkout" ? (
@@ -194,13 +192,17 @@ const Components = (props) => {
     }
   }
 
-  if (Object.keys(_data).length === 0)
-    content = (
+  if (Object.keys(_data).length === 0) {
+    content = window.location.href.toLowerCase().includes("silver") ? (
+      <div className="overall-loader">
+        <div id="loadingsilver"></div>
+      </div>
+    ) : (
       <div className="overall-loader">
         <div id="loading"></div>
       </div>
     );
-  else
+  } else
     content = (
       <Cart
         {...props}

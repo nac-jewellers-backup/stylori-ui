@@ -9,6 +9,7 @@ import { useNetworkRequest } from "hooks/NetworkHooks";
 import { FilterOptionsContext } from "context/FilterOptionsContext";
 import { matchPath } from "react-router";
 import { API_URL } from "config";
+import { axios } from "axios";
 // import { productsPendants } from 'mappers/dummydata';
 // import { object } from 'prop-types';
 var orderobj = {};
@@ -53,6 +54,7 @@ const initialCtx = {
 export const CartContext = React.createContext(initialCtx);
 export const CartConsumer = CartContext.Consumer;
 const Provider = (props) => {
+  console.log(props);
   const [cartFilters, setCartFilters] = React.useState(initialCtx.CartCtx);
   const [allorderdata, setallorderdata] = React.useState([]);
   const [wishlistdata, setwishlistdata] = React.useState([]);
@@ -61,6 +63,59 @@ const Provider = (props) => {
   const [NewUser, setNewUser] = React.useState({});
   const [loadingWishlist, setLoadingWishlist] = React.useState(false);
   // const [_cart_id, setCartId] = React.useState([])
+
+  // useEffect(() => {
+  //   const updateCart = () => {
+  //     // debugger;
+  //     console.log(API_URL);
+  //     let cartId = JSON.parse(localStorage.getItem("cart_id")) ?? "";
+
+  //     try {
+  //       const response = axios.post(`${API_URL}/updatecart_latestprice`, cartId);
+  //       console.log(response);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   // updateCart();
+  // }, []);
+  useEffect(() => {
+    let user_ids = localStorage.getItem("user_id") ?? "";
+    let user_ids_Obj = {
+      user_id: user_ids,
+    };
+    const updateCart = (user_ids_Obj) => {
+      let accessTokens = localStorage.getItem("accessToken") ? localStorage.getItem("accessToken") : "";
+
+      fetch(`${API_URL}/updatecart_latestprice`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": accessTokens,
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+
+        body: JSON.stringify(user_ids_Obj),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    };
+    user_ids.length > 0 && updateCart(user_ids_Obj);
+  }, []);
+
+  // let user_ids = localStorage.getItem("user_id") ?? "";
+  // let user_ids_Obj = {
+  //   user_id: user_ids,
+  // };
+
+  // const updatecartresponse = useNetworkRequest("/updatecart_latestprice", { user_ids_Obj });
+  // console.log(updatecartresponse);
+  // const {
+  //   loading: crtloading,
+  //   error: crterror,
+  //   data: crtdata,
+  //   makeFetch: addtocart,
+  // } = useNetworkRequest("/updatecart_latestprice", { user_id, products }, false);
   var products = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : [];
   const user_id = cartFilters.user_id ? cartFilters.user_id : "";
   const price = cartFilters.price ? cartFilters.price : "";
@@ -660,8 +715,6 @@ const Provider = (props) => {
   // }, [])
 
   const handleAddToCartDidMount = () => {
-      
-
     if (localStorage.getItem("cart_id") === null) {
       //
       // alert(JSON.stringify(guestlogId))
