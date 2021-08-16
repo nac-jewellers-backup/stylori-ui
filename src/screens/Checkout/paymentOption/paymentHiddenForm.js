@@ -60,7 +60,6 @@ export default function PaymentHiddenForm(props) {
     })
       .then(async (response) => await response.json())
       .then((data) => {
-        debugger;
         sethash({
           ...hash,
           // hashvalue: data.hash,
@@ -83,7 +82,7 @@ export default function PaymentHiddenForm(props) {
           checksum: data.checksum,
           amount: data.amount,
         });
-
+        debugger;
         //  hash=data.hash
         //  day = data.day
         //  currentutc = data.currentutc
@@ -105,7 +104,7 @@ export default function PaymentHiddenForm(props) {
     const json = (response) => {
       return response.json();
     };
-   
+
     await fetch(`${API_URL}/createorder`, {
       method: "post",
       headers: {
@@ -118,7 +117,7 @@ export default function PaymentHiddenForm(props) {
       .then(status)
       .then(json)
       .then((data) => {
-      
+        debugger;
         localStorage.removeItem("order_id");
         // if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
         sessionStorage.removeItem("updatedProduct");
