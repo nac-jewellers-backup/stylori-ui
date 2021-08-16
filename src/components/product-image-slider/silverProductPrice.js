@@ -135,7 +135,7 @@ const Productprice = (
 
   //   setOpenSnackBar(false);
   // };
-  console.clear();
+
 
   const isactive = props.data[0].isactive ?? "";
   return (

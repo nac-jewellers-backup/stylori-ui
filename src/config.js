@@ -1,4 +1,4 @@
-export const API_URL = "https://api.stylori.com";
+export const API_URL = "http://localhost:8000";
 // https://api-alpha.stylori.net
 
 //http://192.168.0.106:8000

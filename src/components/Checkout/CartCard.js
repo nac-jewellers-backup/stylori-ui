@@ -51,8 +51,8 @@ class Checkoutcard extends React.Component {
         }
         debugger;
         shipby_arr_object.push({
-          // shipby: shipByDate,
-          shipby: "",
+          shipby: shipByDate,
+          // shipby: "",
           skuId: skuId_arr[i]?.productSkuId,
         });
       });

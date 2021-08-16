@@ -109,7 +109,7 @@ const inputsearch = (props, state, handleChanges, handleCodChange, customstyling
                       alignContent: "center",
                     }}
                   >
-                    {/* <i style={{ fontSize: "20px" }} class="fa fa-truck"></i> */}
+                    <i style={{ fontSize: "20px" }} class="fa fa-truck"></i>
                     &nbsp;&nbsp;{shipByDate}
                   </span>
                 </b>
@@ -246,6 +246,9 @@ const BuydetailsSilverdetailpage = (
       month: "long",
     })} ${dateObj.getUTCFullYear()}`;
   }
+  console.log(data);
+  debugger;
+
   return (
     <div>
       {isactive &&
@@ -328,10 +331,9 @@ class Component extends React.Component {
     await axios
       .post(`${API_URL}/getshippingdate`, params)
       .then((res) => {
-        debugger;
         this.setState({
-          // productShipBy: res?.data?.shipping_date
-          productShipBy: "",
+          productShipBy: res?.data?.shipping_date,
+          // productShipBy: "",
         });
       })
       .catch((error) => {
