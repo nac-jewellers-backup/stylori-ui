@@ -55,23 +55,19 @@ const Components = (props) => {
     if (Object.keys(data).length !== 0) {
       mapped = cart(data);
     }
-  } 
+  }
 
-
-  
-  // else {
-  //   window.location.reload();
-  // }
-
-  // if (Object.keys(data).length === 0)
-  //   content = (
-  //     <div className="overall-loader">
-  //       <div id="loading"></div>
-  //     </div>
-  //   );
-  // else 
-  
-  content = <PaymentResponseFail {...props} data={mapped} allorderdata={allordersuccesful} wishlistdata={wishlistdata} />;
+  if (Object.keys(data).length === 0)
+    content = window.location.href.toLowerCase().includes("silver") ? (
+      <div className="overall-loader">
+        <div id="loadingsilver"></div>
+      </div>
+    ) : (
+      <div className="overall-loader">
+        <div id="loading"></div>
+      </div>
+    );
+  else content = <PaymentResponseFail {...props} data={mapped} allorderdata={allordersuccesful} wishlistdata={wishlistdata} />;
   // localStorage.setItem("a__w_l", wishlistdata && wishlistdata.length)
   return content;
 };

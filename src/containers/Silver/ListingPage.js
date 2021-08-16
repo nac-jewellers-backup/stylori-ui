@@ -55,12 +55,18 @@ const Components = (props) => {
       mapped = async () => await productList(data, CDN_URL);
     }
   }
-  if (Object.keys(data).length === 0)
-    content = (
+  if (Object.keys(data).length === 0) {
+  
+    content = window.location.href.toLowerCase().includes("silver") ? (
+      <div className="overall-loader">
+        <div id="loadingsilver"></div>
+      </div>
+    ) : (
       <div className="overall-loader">
         <div id="loading"></div>
       </div>
     );
+  }
   // content = <div>Loading...</div>;
   else content = <ListingPage data={dataArr} dataFilters={mappedFiltersList} />;
   return content;

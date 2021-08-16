@@ -285,13 +285,17 @@ const Components = (props) => {
 
   //  stopped
 
-  if (Object.keys(data).length === 0)
-    content = (
+  if (Object.keys(data).length === 0) {
+    content = window.location.href.toLowerCase().includes("silver") ? (
+      <div className="overall-loader">
+        <div id="loadingsilver"></div>
+      </div>
+    ) : (
       <div className="overall-loader">
         <div id="loading"></div>
       </div>
     );
-  else content = <PaymentIndex {...props} data={mapped} cartFilters={cartFilters} isCodAvailable={codAvailability} />;
+  } else content = <PaymentIndex {...props} data={mapped} cartFilters={cartFilters} isCodAvailable={codAvailability} />;
   return content;
 };
 export default Components;

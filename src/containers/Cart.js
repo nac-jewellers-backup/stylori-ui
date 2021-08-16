@@ -1,11 +1,10 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-// import Checkoutbreadcrum from '../../components/Checkout/checkoutbreadcrum';
-// import BreadCrumb from '../../components/BreadCrumb/index'
+
 import CartCard from "components/Checkout/CartCard";
 import Footer from "components/Footer/Footer";
 import { Grid, Container, Hidden } from "@material-ui/core";
-// import CustomSeparator from '../../components/BreadCrumb/index'
+
 import Header from "components/SilverComponents/Header";
 import "screens/Stylori/index.css";
 import { CartContext, ProductDetailContext } from "context";
@@ -15,18 +14,11 @@ import CustomSeparator from "../components/BreadCrumb/index";
 import styles from "../components/Checkout/style";
 import { withStyles } from "@material-ui/core/styles";
 import "./index.css";
-import { NavLink } from "react-router-dom";
+
 import NeedHelp from "../components/needHelp";
-import { Helmet } from "react-helmet";
+
 import ReactPixel from "react-facebook-pixel";
 
-// data.map(data=>{
-// return(
-//     <Grid item xs={12}>
-//     <CartCard data={data}/>
-//     </Grid>
-//         )
-//     })
 const breadcrumsdata = [
   { title: "Shopping Bag" },
   { title: "Login/ Register" },
@@ -64,30 +56,6 @@ class Cart extends React.Component {
     let path = window.location.pathname.split("/").pop();
     return (
       <Grid container>
-        <Helmet>
-          {/* <script>
-            {`!function(f,b,e,v,n,t,s) 
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod? 
-n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; 
-n.queue=[];t=b.createElement(e);t.async=!0; 
-t.src=v;s=b.getElementsByTagName(e)[0]; 
-s.parentNode.insertBefore(t,s)}(window, document,'script', 
-'https://connect.facebook.net/en_US/fbevents.js'); 
-fbq('init', '1464338023867789'); 
-fbq('track', 'PageView'); 
-fbq('track', 'AddToCart'); `}
-          </script>
-          <noscript>
-            {`<img
-              height="1"
-              width="1"
-              style="display:none"
-              src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1"
-            />`}
-          </noscript> */}
-        </Helmet>
-
         <Hidden smDown>
           <Header wishlist={this.props.wishlistdata} />
           {path === "checkout" ? (
@@ -224,13 +192,17 @@ const Components = (props) => {
     }
   }
 
-  if (Object.keys(_data).length === 0)
-    content = (
+  if (Object.keys(_data).length === 0) {
+    content = window.location.href.toLowerCase().includes("silver") ? (
+      <div className="overall-loader">
+        <div id="loadingsilver"></div>
+      </div>
+    ) : (
       <div className="overall-loader">
         <div id="loading"></div>
       </div>
     );
-  else
+  } else
     content = (
       <Cart
         {...props}

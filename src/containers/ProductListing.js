@@ -182,7 +182,11 @@ const Components = (props) => {
     }
   }
   if (Object.keys(data).length === 0)
-    content = (
+    content = window.location.href.toLowerCase().includes("silver") ? (
+      <div className="overall-loader">
+        <div id="loadingsilver"></div>
+      </div>
+    ) : (
       <div className="overall-loader">
         <div id="loading"></div>
       </div>

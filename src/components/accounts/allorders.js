@@ -9,7 +9,7 @@ import {
   Grid,
   Button,
 } from "@material-ui/core";
-// import "../../components/Checkout/Cart.css";
+
 import "./accounts.css";
 import "../Checkout/Cart.css";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -34,17 +34,12 @@ class Allorders extends React.Component {
     check_img: null,
   };
   componentDidMount() {
-    // debugger;
-    // console.log(this.props);
-    // console.log(this.props.allorderdata.data.allOrders.nodes[0].shoppingCartByCartId.discountedPrice);
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
     ReactPixel.fbq("track", "PageView");
     ReactPixel.track("Purchase", {
       value: this.props?.allorderdata?.data?.allOrders?.nodes[0]?.shoppingCartByCartId?.discountedPrice,
       currency: "INR",
     });
-
-    // ReactPixel.fbq("track", "Purchase");
   }
 
   handleChange = (panel) => (event) => {
@@ -56,13 +51,6 @@ class Allorders extends React.Component {
     });
   };
 
-  // changePanel = (panel, mailId) => {
-  //     this.setState({
-  //         expanded: panel,
-  //     })
-  // }
-  // const dataCard1 = this.props.data.map(val => { return val.dataCard1[0].offerPrice }).reduce(myFunc);
-
   calculatetotal = (arr) => {
     var a;
     var dis_price;
@@ -70,19 +58,17 @@ class Allorders extends React.Component {
       if (val.transSkuListByProductSku) return val;
     });
     if (_val.length > 0) {
-      a =
-        // arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes
-        _val
-          .filter((val) => {
-            if (val.transSkuListByProductSku) return val;
-          })
-          .map((cart) => {
-            if ((cart !== null || cart !== undefined) && cart.transSkuListByProductSku) {
-              dis_price = cart.transSkuListByProductSku.markupPrice;
-            }
-            return dis_price;
-          })
-          .reduce(myFunc);
+      a = _val
+        .filter((val) => {
+          if (val.transSkuListByProductSku) return val;
+        })
+        .map((cart) => {
+          if ((cart !== null || cart !== undefined) && cart.transSkuListByProductSku) {
+            dis_price = cart.transSkuListByProductSku.markupPrice;
+          }
+          return dis_price;
+        })
+        .reduce(myFunc);
     }
 
     return new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 0 }).format(Math.round(a));
@@ -101,7 +87,6 @@ class Allorders extends React.Component {
   };
 
   ImageUrl = (imgs, sku, metal, paymentsuccess) => {
-    // allorderdata.data.allOrders
     var check_img;
     var ppp;
     if (paymentsuccess) {
@@ -110,7 +95,6 @@ class Allorders extends React.Component {
       var cnt_b = cnt[2].split("-");
       var cnt_c = cnt_b[1];
 
-      // if (sku === cart.transSkuListByProductSku.generatedSku) {
       var browser_type = JSON.parse(localStorage.getItem("browserDetails"));
 
       if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
@@ -129,12 +113,7 @@ class Allorders extends React.Component {
         ppp = `${CDN_URL}${url_construct}`;
         // alert(this.state.check_img)
       }
-      // }
 
-      // return inside[0]
-
-      // var outside = ppp.filter(val => (val !== undefined && val !== null))
-      // alert(ppp)
       return ppp;
     } else {
       if (
@@ -143,7 +122,6 @@ class Allorders extends React.Component {
         this.props.allorderdata.allorderdata &&
         this.props.allorderdata.allorderdata.nodes.length > 0
       ) {
-        // allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes && allorderdata.allorderdata.nodes.length > 0
         var vera = this.props.allorderdata.allorderdata.nodes.map((val) => {
           if (val !== undefined && val !== null) {
             var inside = val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map((cart) => {
@@ -155,7 +133,6 @@ class Allorders extends React.Component {
                   var cnt_b = cnt[2].split("-");
                   var cnt_c = cnt_b[1];
 
-                  // if (sku === cart.transSkuListByProductSku.generatedSku) {
                   var browser_type = JSON.parse(localStorage.getItem("browserDetails"));
 
                   if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
@@ -185,8 +162,7 @@ class Allorders extends React.Component {
             // return inside[0]
           }
         });
-        // var outside = ppp.filter(val => (val !== undefined && val !== null))
-        // alert(ppp)
+
         return ppp;
       }
     }
@@ -212,41 +188,11 @@ class Allorders extends React.Component {
     };
     const paymentsuccess = true;
 
-    // const allDatas_filter = () => {
-    //     if (allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length > 0) {
-    //         allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.map(val => {
-    //             if (order_id === val.id) {
-    //                 alert(JSON.stringify(val))
-    //                 return val
-    //             }
-    //         })
-    //     }
-    // }
-
     const _localStorageQTY = localStorage.getItem("quantity") ? JSON.parse(localStorage.getItem("quantity")) : 1;
 
     return (
       <>
-        <Helmet>
-          {/* <script>
-            {` !function(f,b,e,v,n,t,s) 
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod? 
-n.callMethod.apply(n,arguments):n.queue.push(arguments)}; 
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; 
-n.queue=[];t=b.createElement(e);t.async=!0; 
-t.src=v;s=b.getElementsByTagName(e)[0]; 
-s.parentNode.insertBefore(t,s)}(window, document,'script', 
-'https://connect.facebook.net/en_US/fbevents.js'); 
-fbq('init', '1464338023867789'); 
-fbq('track', 'PageView'); 
-fbq('track', 'Purchase', {value:0.00 , currency: 'INR'});  `}
-          </script>
-          <noscript>
-            {`<img height="1" width="1" style="display:none" 
-src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1" 
-/>`}
-          </noscript> */}
-        </Helmet>
+        <Helmet></Helmet>
         {/* allorderdata.nodes */}
         {this.props.location.pathname.split("-")[0] === "/account" ? (
           <div className="pt-sm checkout-ovralldiv-media">
@@ -260,8 +206,6 @@ src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1"
                   return (
                     <ExpansionPanel
                       square
-                      // expanded={expanded.map(val=>val===index)}
-                      // onChange={this.handleChange(index)}
                       style={{ boxShadow: "none", boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px" }}
                       key={index}
                       style={{ marginBottom: "10px" }}
@@ -595,9 +539,6 @@ src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1"
                             </div>
                           </div>
                         </div>
-                        {/* {val.paymentStatus} */}
-                        {/* {JSON.stringify(this.props.allorderdata)} */}
-                        {/* changePanel */}
                       </ExpansionPanelDetails>
                     </ExpansionPanel>
                   );
@@ -617,12 +558,8 @@ src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1"
                     allorderdata.data.allOrders.nodes.map((val) => {
                       return (
                         <div>
-                          {/* {JSON.stringify(val)} */}
                           <div style={{ marginTop: "20px", boxShadow: "none" }}>
-                            {/* {localStorage.setItem("a__r_c", allorderdata && allorderdata.allorderdata && allorderdata.allorderdata.nodes.length)} */}
-                            {/* {val.map((val, index) => ( */}
                             <div className="address_details">
-                              {/* {val.shoppingCartByCartId.cartAddressesByCartId.nodes.map(addreses => ( */}
                               <div style={{ width: "100%", marginBottom: "10px", display: "flex" }}>
                                 <Grid container spacing={12} lg={12} xs={11} sm={11} style={{ justifyContent: "center" }}>
                                   <Grid item sm={6} lg={6} xs={12} className="order_addres" style={{ color: "#394578" }}>
@@ -645,7 +582,6 @@ src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1"
                                       <b>Shipping Address :</b>
                                     </div>
                                     <br />
-                                    {/* {alert(JSON.stringify(val.shoppingCartByCartId))} */}
                                     <div>
                                       {" "}
                                       {val.shoppingCartByCartId &&
@@ -927,20 +863,6 @@ src="https://www.facebook.com/tr?id=1464338023867789&ev=PageView&noscript=1"
                                       </>
                                     );
                                 })}
-
-                              {/* <div style={{ float: "right", fontSize: "13px", lineHeight: "1.5" }} >
-                                                            Sub Total&nbsp;{this.calculatetotal(val)}<br />
-                                                            {val.shoppingCartByCartId.discount !== null ? 
-                                                            <div className={`subhesder`}>DISCOUNT : &nbsp;{val.shoppingCartByCartId.discount}</div>
-                                                                : ""}
-                                                            Shipping&nbsp;FREE<br />
-                                                            Shipping Insurance&nbsp;FREE<br />
-                                                            <div style={{ float: "right", fontSize: "18px" }} >Grand Total&nbsp;<span style={{ color: '#ed1165', fontSize: "18px" }}>
-
-                                                                {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(val.shoppingCartByCartId.discountedPrice))}
-                                                            </span>
-                                                            </div>
-                                                        </div> */}
                             </div>
                           </div>
                         </div>

@@ -591,7 +591,7 @@ const Components = (props) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        query: `${shopByStyloriSilver(["Earrings", "Pendants", "Rings", "Bracelets", "Bangles"])}`,
+        query: `${shopByStyloriSilver(["Earrings",   "Rings", "Bracelets", "Bangles"])}`,
       }),
     })
       .then((res) => res.json())
@@ -673,13 +673,22 @@ const Components = (props) => {
   if (!loading && !error) {
     mapped = productDetails(datas, likedatas, viewedddatas, rating, Globalctx.tabsChange);
   }
-  if (Object.keys(mapped).length === 0)
-    return (
-      <div className="overall-loader">
-        <div id="loading"></div>
-      </div>
-    );
-  else {
+
+  if (Object.keys(mapped).length === 0) {
+    if (window.location.href.toLowerCase().includes("silver")) {
+      return (
+        <div className="overall-loader">
+          <div id="loadingsilver"></div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="overall-loader">
+          <div id="loading"></div>
+        </div>
+      );
+    }
+  } else {
     return (
       <ProductDetail
         {...props}

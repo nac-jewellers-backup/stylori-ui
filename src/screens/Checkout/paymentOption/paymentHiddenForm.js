@@ -45,7 +45,6 @@ export default function PaymentHiddenForm(props) {
   obj["cart_id"] = cart_ids;
   obj["voucher_code"] = cartFilters.vouchercode;
   const hitPaymentGateWayAPI = async (orderId) => {
-    debugger;
     await fetch(`${API_URL}/sendtoairpay`, {
       method: "POST",
       headers: {
@@ -106,7 +105,7 @@ export default function PaymentHiddenForm(props) {
     const json = (response) => {
       return response.json();
     };
-    debugger;
+   
     await fetch(`${API_URL}/createorder`, {
       method: "post",
       headers: {
@@ -119,7 +118,7 @@ export default function PaymentHiddenForm(props) {
       .then(status)
       .then(json)
       .then((data) => {
-        debugger;
+      
         localStorage.removeItem("order_id");
         // if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
         sessionStorage.removeItem("updatedProduct");

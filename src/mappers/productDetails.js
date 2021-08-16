@@ -408,7 +408,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
           PD.transSkuDescriptionsBySkuId.nodes[0].certificate
             ? handle_mapper(PD.transSkuDescriptionsBySkuId.nodes[0].certificate)
             : null,
-        maxOrderQty: PD && PD.maxOrderQty ? PD.maxOrderQty : 100000,
+        maxOrderQty: PD && PD.maxOrderQty ? PD.maxOrderQty :1,
         minOrderQty: PD && PD.minOrderQty ? PD.minOrderQty : 1,
         productsubHeaderlist: [
           {
