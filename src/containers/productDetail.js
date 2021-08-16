@@ -591,7 +591,7 @@ const Components = (props) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        query: `${shopByStyloriSilver(["Earrings", "Pendants", "Rings", "Bracelets", "Bangles"])}`,
+        query: `${shopByStyloriSilver(["Earrings",   "Rings", "Bracelets", "Bangles"])}`,
       }),
     })
       .then((res) => res.json())
