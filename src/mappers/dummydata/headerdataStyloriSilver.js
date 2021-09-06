@@ -1085,6 +1085,11 @@ export const Jewellery = {
   },
 
   COLLECTIONS: {
+    "Concentric Collection": {
+      name: "Concentric Collection",
+      url: "https://www.stylori.com/silver-jewellery-concentric+collection",
+      icon: "",
+    },
     "Akruti Collection": {
       name: "Akruti Collection",
       url: "https://www.stylori.com/silver-jewellery-akruti+collection",
@@ -2071,6 +2076,25 @@ export const menuLists = {
 
   COLLECTIONS: {
     menuOne: [
+      {
+        value: "Concentric Collection",
+        title: "Concentric Collection",
+        url: "https://www.stylori.com/silver-jewellery-concentric+collection",
+        // imgContainer: {
+        // bigImage: {
+        //   img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---traditional.jpg",
+        //   content: "CHOKERS",
+        //   url: "/silver-jewellery-Traditional",
+        // },
+        // imageContainer: [
+        //   {
+        //     img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-collection-Inlove.jpg",
+        //     content: "Earings",
+        //     url: "http://stylori.com/silver-jewellery-inlovecollection",
+        //   },
+        // ],
+        // },
+      },
       {
         value: "Akruti Collection",
         title: "Akruti Collection",

@@ -447,24 +447,24 @@ const Provider = (props) => {
         var toLowerCase = key[0].toLowerCase();
         if (toLowerCase === "offers") {
           switch (k[len][0]) {
+            case "Up to  5%": {
+              newObj["offer_min"] = 0;
+              newObj["offer_max"] = 5;
+              break;
+            }
+            case "Up to  10%": {
+              newObj["offer_min"] = 0;
+              newObj["offer_max"] = 10;
+              break;
+            }
+            case "Up to  15%": {
+              newObj["offer_min"] = 0;
+              newObj["offer_max"] = 15;
+              break;
+            }
             case "Up to  20%": {
               newObj["offer_min"] = 0;
               newObj["offer_max"] = 20;
-              break;
-            }
-            case "Up to  30%": {
-              newObj["offer_min"] = 0;
-              newObj["offer_max"] = 30;
-              break;
-            }
-            case "Up to  40%": {
-              newObj["offer_min"] = 0;
-              newObj["offer_max"] = 40;
-              break;
-            }
-            case "Up to  50%": {
-              newObj["offer_min"] = 0;
-              newObj["offer_max"] = 50;
               break;
             }
             default:
@@ -631,24 +631,24 @@ const Provider = (props) => {
 
       if (toLowerCase === "offers") {
         switch (k[len][0]) {
+          case "Up to  5%": {
+            newObj["offer_min"] = 0;
+            newObj["offer_max"] = 5;
+            break;
+          }
+          case "Up to  10%": {
+            newObj["offer_min"] = 0;
+            newObj["offer_max"] = 10;
+            break;
+          }
+          case "Up to  15%": {
+            newObj["offer_min"] = 0;
+            newObj["offer_max"] = 15;
+            break;
+          }
           case "Up to  20%": {
             newObj["offer_min"] = 0;
             newObj["offer_max"] = 20;
-            break;
-          }
-          case "Up to  30%": {
-            newObj["offer_min"] = 0;
-            newObj["offer_max"] = 30;
-            break;
-          }
-          case "Up to  40%": {
-            newObj["offer_min"] = 0;
-            newObj["offer_max"] = 40;
-            break;
-          }
-          case "Up to  50%": {
-            newObj["offer_min"] = 0;
-            newObj["offer_max"] = 50;
             break;
           }
           default:
