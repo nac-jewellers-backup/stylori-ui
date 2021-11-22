@@ -29,7 +29,7 @@ export const useVerifyOtp = (changePanel) => {
     }, [edata, mailerr])
 
     React.useEffect(() => {
-        const verifiedMail = Boolean(!otpload && Object.keys(edata).length > 0)
+        const verifiedMail = Boolean( Object.keys(edata).length > 0)
         if (verifiedMail) {
             var user_id = edata.user.id;
             // localStorage.setItem("true", false)
@@ -45,7 +45,7 @@ export const useVerifyOtp = (changePanel) => {
                 user_id,
             })
         }
-    }, [otpload])
+    }, [eload])
     const handleInvalid = (type, status) => {
         setInvalids({
             ...invalids,

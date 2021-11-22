@@ -11,10 +11,10 @@ export const LogRegData = [
         buttonval:"Login",
         button:"Login",
     },
-    // {
-    //     title: "Skip Password and continue as Guest ",
-    //     dis: '(You will need to be logged in to use Promo code)',
-    //     button:"Continue",
-    //     buttonval:"Continue as a Guest ",
-    // },
+    {
+        title: "Skip Password and continue as Guest ",
+        dis: '(You will need to be logged in to use Promo code)',
+        button:"Continue",
+        buttonval:"Continue as a Guest ",
+    },
 ]
