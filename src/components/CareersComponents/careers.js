@@ -1,8 +1,9 @@
-import React from 'react';
+import { Accordion, AccordionDetails, AccordionSummary, Grid, Typography } from '@material-ui/core';
 import {
-    makeStyles,
+    makeStyles
 } from '@material-ui/core/styles';
-import { TextField, Grid, Typography, Button, Collapse } from '@material-ui/core';
+import ExpandMoreIcon from "@material-ui/icons/ExpandMoreOutlined";
+import React from 'react';
 
 
 const useStyles = makeStyles(theme => ({
@@ -107,7 +108,52 @@ export default function CustomizedInputs() {
                         Open Positions
              </Typography>
                 </Grid>
-                <Grid container onClick={() => handleChanges()} >
+                <Grid container>
+                <Grid item xs={12}>
+        <Accordion  style={{backgroundColor:"rgb(250, 250, 250)",boxShadow:"none"}}>
+         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
+          <Typography variant="body1">Showroom Manager</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+            <div>
+                <Typography variant="body1"> Job Description</Typography>
+                <Typography variant="body1" style={{marginTop:"10px",marginBottom:"10px"}}>Years or Experience: 10+</Typography>
+              <Typography>
+               <b>Key Role:</b>&nbsp;Responsible for handling the daily operations and management of the store. To oversee the staffing requirements of the store/counter, deal with customer service issues; and handles promotions of the store.</Typography>
+                <ul>
+                    <li><Typography variant="body1">Assist and manage the daily operations and activities of the jewellery store, as well as supervising employees with their daily work requirements. </Typography></li>
+                    <li><Typography variant="body1">Plans and prepares work schedules for store personnel, assigns employeesto   specific   duty   requirements   of   the   store,   and   provide   performancereview.  </Typography></li>
+                    <li><Typography variant="body1">To generate sales/profit and minimizing losses. </Typography></li>
+                    <li><Typography variant="body1">Monthly target to be achieved. </Typography></li>
+                    <li><Typography variant="body1">Should maximize employee productivity, ensuring consistent compliance with   the   execution   of   all   the   company   policy   and   procedures   and maintains an environment that is results- driven . </Typography></li>
+                    <li><Typography variant="body1">He/she is also responsible for taking inventory, recollecting cash with sales receipts,   and   maintaining   operating   records   such   as   records   of   store transactions. </Typography></li>
+                    <li><Typography variant="body1">Plan strategy for increasing the sales.</Typography></li>
+                    <li><Typography variant="body1">Manage the Stock in the store. </Typography></li>
+                    <li><Typography variant="body1">Driving up sales and profitability by proactively and reactively following up on leads. </Typography></li>
+                    <li><Typography variant="body1">Exceptional   knowledge   of   and   adherence   to   all   company   policy   and procedure. </Typography></li>
+                    <li><Typography variant="body1">Organising in-store events and VIP customer experiences </Typography></li>
+                </ul>
+                <br />
+                    <Typography><b>Requirements:</b>&nbsp;</Typography>
+                <ul>
+                    <li><Typography variant="body1">Excellent communication.</Typography></li>
+                    <li><Typography variant="body1">Problem Solving and Negotiations skills.</Typography></li>
+                    <li><Typography variant="body1">Must possess Management, Administrative and organizational skills. </Typography></li>
+                    <li><Typography variant="body1">Thorough knowledge about jewellery industry. </Typography></li>
+                    <li><Typography variant="body1">Jewellery experience of minimum 8+ years. </Typography></li>
+                </ul>
+                <br />
+                <Typography variant="body1"><b>Note :</b> Accommodation will be provided</Typography>
+                <br />
+                <Typography variant="body1">Please email your application to <a href="mailto:career@nacjewellers.com">career@nacjewellers.com </a> For more details, please call +91 89394 66977</Typography>
+                </div>
+        </AccordionDetails>
+      </Accordion>
+                    </Grid>
+                </Grid>
+
+
+                {/* <Grid container onClick={() => handleChanges()} >
                     <Grid item style={{ backgroundColor: "#fafafa", width: "100%" }}>
                         <Typography variant="h4" className={classes.Subtitle}>
                             Contact us
@@ -119,6 +165,9 @@ export default function CustomizedInputs() {
                         </Typography>
                     </Collapse>
                 </Grid>
+            */}
+           
+           
             </Grid>
         </Grid>
     );
