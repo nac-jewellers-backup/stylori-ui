@@ -130,7 +130,6 @@ export default function CustomizedInputs() {
                     <li><Typography variant="body1">Plan strategy for increasing the sales.</Typography></li>
                     <li><Typography variant="body1">Manage the Stock in the store. </Typography></li>
                     <li><Typography variant="body1">Driving up sales and profitability by proactively and reactively following up on leads. </Typography></li>
-                    <li><Typography variant="body1">Exceptional   knowledge   of   and   adherence   to   all   company   policy   and procedure. </Typography></li>
                     <li><Typography variant="body1">Organising in-store events and VIP customer experiences </Typography></li>
                 </ul>
                 <br />
