@@ -116,7 +116,7 @@ export default function CustomizedInputs() {
         </AccordionSummary>
         <AccordionDetails>
             <div>
-                <Typography variant="body1"> Job Description</Typography>
+                <Typography variant="body1"><b>Job Description</b> </Typography>
                 <Typography variant="body1" style={{marginTop:"10px",marginBottom:"10px"}}>Years or Experience: 10+</Typography>
               <Typography>
                <b>Key Role:</b>&nbsp;Responsible for handling the daily operations and management of the store. To oversee the staffing requirements of the store/counter, deal with customer service issues; and handles promotions of the store.</Typography>
