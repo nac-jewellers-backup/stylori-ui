@@ -45,7 +45,7 @@ export const useVerifyOtp = (changePanel) => {
                 user_id,
             })
         }
-    }, [edata])
+    }, [eload])
     const handleInvalid = (type, status) => {
         setInvalids({
             ...invalids,

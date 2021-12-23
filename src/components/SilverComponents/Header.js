@@ -865,6 +865,7 @@ class Header extends Component {
                                       Jewellery[selected][row2].name !== "Mural Collection" &&
                                       Jewellery[selected][row2].name !== "Elemental Collection" &&
                                       Jewellery[selected][row2].name !== "Akruti Collection" &&
+                                      Jewellery[selected][row2].name !== "Concentric Collection" &&
                                       Jewellery[selected][row2].name !== "In love Collection" &&
                                       Jewellery[selected][row2].name !== "Baroque Whites Collection" && 
                                       Jewellery[selected][row2].name !== "Gift Voucher" && 
@@ -883,6 +884,7 @@ class Header extends Component {
                                       Jewellery[selected][row2].name !== "Mural Collection" &&
                                       Jewellery[selected][row2].name !== "Elemental Collection" &&
                                       Jewellery[selected][row2].name !== "Akruti Collection" &&
+                                      Jewellery[selected][row2].name !== "Concentric Collection" &&
                                       Jewellery[selected][row2].name !== "In love Collection" &&
                                       Jewellery[selected][row2].name !== "Baroque Whites Collection" &&
                                       Jewellery[selected][row2].name !== "Gift Voucher" &&

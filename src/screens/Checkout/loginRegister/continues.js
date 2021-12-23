@@ -9,7 +9,7 @@ import { useVerifyOtp } from './verifyOtp';
 const ContinuesComponent = (props) => {
     const { handlers, email, otp, status, otpdata, enterotp, setMail } = useVerifyOtp();
     const { classes } = props;
-    const values = { email: email.email, otp: otp.otp }
+    const values = { email: email.email, otp: handlers?.user?.otp ?? otp.otp }
     const [state, setState] = React.useState(null)
     const edata = status.data.edata.message ? status.data.edata.message : ""
     // const MailForm = () => (
@@ -17,35 +17,35 @@ const ContinuesComponent = (props) => {
     // const OtpForm = () => (
     // )
     const clear = () => {
-        if(email.email.length>0 && !enterotp){
+        if (email.email.length > 0 && !enterotp) {
             setMail({
                 email: "",
             })
             props.change()
-        } 
-        else if(email.email.length>0){
+        }
+        else if (email.email.length > 0) {
             handlers.setEnterOtp(false)
         }
-        else{
+        else {
             props.change()
         }
-        
-    
+
+
     }
-    React.useEffect(()=>{
-        if(Object.entries(otpdata).length>0 && otpdata.constructor === Object){
-            if(otpdata.message){
-            setState(otpdata.message)
-            localStorage.setItem("_mail_", "wrong")
-           
-        } 
-        else{
-             if(localStorage.getItem("_mail_")) localStorage.removeItem("_mail_")
-            // props.changePanel(2)
-            
+    React.useEffect(() => {
+        if (Object.entries(otpdata).length > 0 && otpdata.constructor === Object) {
+            if (otpdata.message) {
+                setState(otpdata.message)
+                localStorage.setItem("_mail_", "wrong")
+
+            }
+            else {
+                if (localStorage.getItem("_mail_")) localStorage.removeItem("_mail_")
+                // props.changePanel(2)
+
+            }
         }
-    }
-        
+
 
 
     }, [otpdata])
@@ -73,7 +73,7 @@ const ContinuesComponent = (props) => {
                                         // variant="outlined"
                                         type="text"
                                         name="otp"
-                                        value={otp.otp}
+                                        value={handlers?.user?.otp ?? otp.otp}
                                         isNumber
                                         maxLength={6}
                                         minLength={6}
