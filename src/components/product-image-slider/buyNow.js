@@ -246,8 +246,6 @@ const BuydetailsSilverdetailpage = (
       month: "long",
     })} ${dateObj.getUTCFullYear()}`;
   }
-  console.log(data);
-  debugger;
 
   return (
     <div>

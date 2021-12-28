@@ -66,7 +66,6 @@ class HomeStylori extends React.Component {
         this.setState({ datas: datas });
         if (data.data.allStyloriBanners.nodes.length > 0) {
           this.setState({ starting: true });
-          console.log("initial", this.state.starting);
         }
       });
     Aos.init({ duration: 1500 });

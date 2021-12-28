@@ -233,7 +233,6 @@ class Component extends React.Component {
       window.open(`https://wa.me/919952625252?text=Hi - ${window.location.hostname + "/" + ProductIsActiveUrl ?? ""}`);
     };
 
-    console.log(this.props.data, "final");
 
     let ProductIsActive = true;
     this.props.data.map((val) => {

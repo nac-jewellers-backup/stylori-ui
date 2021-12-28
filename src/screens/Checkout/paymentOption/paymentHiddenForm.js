@@ -82,7 +82,7 @@ export default function PaymentHiddenForm(props) {
           checksum: data.checksum,
           amount: data.amount,
         });
-        debugger;
+       
         //  hash=data.hash
         //  day = data.day
         //  currentutc = data.currentutc
@@ -117,7 +117,7 @@ export default function PaymentHiddenForm(props) {
       .then(status)
       .then(json)
       .then((data) => {
-        debugger;
+     
         localStorage.removeItem("order_id");
         // if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
         sessionStorage.removeItem("updatedProduct");

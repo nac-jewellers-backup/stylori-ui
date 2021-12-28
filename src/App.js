@@ -35,7 +35,6 @@ class App extends React.Component {
     lambda_func_front_end();
   }
   render() {
-    console.log('----working----')
     return (
       // <ApolloProvider client={client}>
       <CacheBuster>

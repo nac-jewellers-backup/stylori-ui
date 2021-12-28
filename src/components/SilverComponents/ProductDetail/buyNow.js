@@ -18,7 +18,7 @@ import { useNetworkRequest } from "hooks/index";
 const inputsearch = (props, state, handleChanges, handleCodChange) => {
   const { data } = props;
   const { classes } = props;
-  debugger;
+
 
   return (
     <div
