@@ -58,7 +58,11 @@ class Component extends React.Component {
     value: 1,
     values: "",
     expanded: "1",
-    skuSize: this.props && this.props.filters && this.props.filters.defaultVariants && this.props.filters.defaultVariants.skuSize,
+    skuSize:
+      this.props &&
+      this.props.filters &&
+      this.props.filters.defaultVariants &&
+      this.props.filters.defaultVariants.skuSize,
     purity:
       this.props &&
       this.props.data &&
@@ -74,7 +78,10 @@ class Component extends React.Component {
         ? this.props.data[0].productsDetails[0].namedetail[1].details
         : "",
     diamondType:
-      this.props && this.props.filters && this.props.filters.defaultVariants && this.props.filters.defaultVariants.diamondType,
+      this.props &&
+      this.props.filters &&
+      this.props.filters.defaultVariants &&
+      this.props.filters.defaultVariants.diamondType,
     open: false,
   };
   handleOpen = () => {
@@ -241,7 +248,9 @@ class Component extends React.Component {
     };
     const handle_extension = (_url) => {
       if (_url) {
-        var url_extension = _url.substring(_url.lastIndexOf(".") + 1, _url.length).toLowerCase();
+        var url_extension = _url
+          .substring(_url.lastIndexOf(".") + 1, _url.length)
+          .toLowerCase();
         var extensionVideoLists = [
           "m4v",
           "avi",
@@ -264,8 +273,10 @@ class Component extends React.Component {
         var extensionImageLists = ["jpg", "jpeg", "png", "gif"];
         var extensionDocumentsLists = ["doc", "docx", "pdf"];
         if (extensionVideoLists.indexOf(url_extension) !== -1) return "video";
-        else if (extensionImageLists.indexOf(url_extension) !== -1) return "image";
-        else if (extensionDocumentsLists.indexOf(url_extension) !== -1) return "document";
+        else if (extensionImageLists.indexOf(url_extension) !== -1)
+          return "image";
+        else if (extensionDocumentsLists.indexOf(url_extension) !== -1)
+          return "document";
       } else {
         return null;
       }
@@ -274,368 +285,505 @@ class Component extends React.Component {
     };
     // data[0].productTabs[0].tab2.Children
 
-    return Boolean(_isSilver && data[0].productTabs[0].tab1.Children) || !_isSilver ? (
+    return Boolean(_isSilver && data[0].productTabs[0].tab1.Children) ||
+      !_isSilver ? (
       <div className={_isSilver ? classes.silverMarginBottom : ""}>
-        {data[0].productTabs.map((val) => {
-          const arr = val.tab1.Children !== null && val.tab1.Children;
-          const arr2 = val.tab2.Children !== null && val.tab2.Children.split(",");
-          return (
-            <>
-              {arr.length > 0 ? (
-                <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
-                  <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}>
-                    <h1 className={`rings_tabs ${_isSilver ? classes.rings_tabs_silver : ""}`}>
-                      {data[0].productType === "Rings" ? val.tab1.header : val.tab1.headerBangle}
-                      &nbsp;
-                      {data[0].size_guide && (
-                        <a onClick={this.handleOpen} className="my-ringsize">
-                          Size Guide{" "}
-                        </a>
-                      )}
-                    </h1>
-                  </Grid>
-                  <Grid item lg={9} xs={12}>
-                    {arr.length > 0 ? (
-                      <>
-                        <Grid container style={{ width: "100%" }} className={classes.pagination} style={{ overflow: "hidden" }}>
-                          {arr.length > 8 && (
-                            <Hidden smDown>
-                              {" "}
-                              <Grid
-                                item
-                                style={{
-                                  width: "5%",
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                  display: "flex",
-                                }}
-                              >
-                                {/* <img onClick={() => previous()} className={"icon-leftcaro"} /> */}
-                                <ArrowLeftIcon onClick={() => previous()} className={`${classes.carouselCustomArrow}`} />
-                              </Grid>
-                            </Hidden>
-                          )}
-                          {arr.length > 5 && (
-                            <Hidden mdUp>
-                              {" "}
-                              <Grid
-                                item
-                                style={{
-                                  width: "5%",
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                  display: "flex",
-                                }}
-                              >
-                                {/* <img onClick={() => previous()} className={"icon-leftcaro"} /> */}
-                                <ArrowLeftIcon onClick={() => previous()} className={`${classes.carouselCustomArrow}`} />
-                              </Grid>
-                            </Hidden>
-                          )}
-                          <Grid item class="widthFix" style={{ textAlign: "center" }}>
-                            <Hidden smDown>
-                              <Slideshow dataCarousel={settings} sliderRef={slider}>
-                                {arr.map((val, i) => {
-                                  return (
-                                    <>
-                                      <div
-                                        style={{
-                                          justifyContent: "center",
-                                          display: "flex",
-                                        }}
-                                      >
-                                        <div
-                                          className={
-                                            JSON.stringify(val) === this.state.skuSize || kadasize === val
-                                              ? _isSilver
-                                                ? `${classes.sizeSelected}`
-                                                : `darkouter`
-                                              : "darkouterWhite"
-                                          }
-                                        >
-                                          <button
-                                            style={{ padding: "0px" }}
-                                            className={"page"}
-                                            id={val}
-                                            onClick={(event) => this.handleClick(event, "skuSize")}
-                                          >
-                                            {val}
-                                          </button>
-                                        </div>
-                                      </div>
-                                    </>
-                                  );
-                                })}
-                              </Slideshow>
-                            </Hidden>
-                            <Hidden mdUp>
-                              <Slideshow dataCarousel={settings_mob} sliderRef={slider}>
-                                {arr.map((val, i) => {
-                                  return (
-                                    <>
-                                      <div
-                                        style={{
-                                          justifyContent: "center",
-                                          display: "flex",
-                                        }}
-                                      >
-                                        <div
-                                          className={
-                                            JSON.stringify(val) === this.state.skuSize || kadasize === val
-                                              ? _isSilver
-                                                ? `${classes.sizeSelected}`
-                                                : `darkouter`
-                                              : "darkouterWhite"
-                                          }
-                                        >
-                                          <button
-                                            className={"page"}
-                                            id={val}
-                                            onClick={(event) => this.handleClick(event, "skuSize")}
-                                          >
-                                            {val}
-                                          </button>
-                                        </div>
-                                      </div>
-                                    </>
-                                  );
-                                })}
-                              </Slideshow>
-                            </Hidden>
-                          </Grid>
+        {data[0]?.productTabs &&
+          data[0]?.productTabs?.map((val) => {
+            const arr = val.tab1.Children !== null && val.tab1.Children;
+            const arr2 =
+              val.tab2.Children !== null && val.tab2.Children.split(",");
+            return (
+              <>
+                {arr.length > 0 ? (
+                  <Grid
+                    container
+                    spacing={12}
+                    lg={12}
+                    style={{ marginBottom: "10px" }}
+                  >
+                    <Grid
+                      item
+                      lg={3}
+                      xs={12}
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <h1
+                        className={`rings_tabs ${
+                          _isSilver ? classes.rings_tabs_silver : ""
+                        }`}
+                      >
+                        {data[0].productType === "Rings"
+                          ? val.tab1.header
+                          : val.tab1.headerBangle}
+                        &nbsp;
+                        {data[0].size_guide && (
+                          <a onClick={this.handleOpen} className="my-ringsize">
+                            Size Guide{" "}
+                          </a>
+                        )}
+                      </h1>
+                    </Grid>
+                    <Grid item lg={9} xs={12}>
+                      {arr.length > 0 ? (
+                        <>
                           <Grid
-                            item
-                            style={{
-                              width: "5%",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              display: "flex",
-                            }}
+                            container
+                            style={{ width: "100%" }}
+                            className={classes.pagination}
+                            style={{ overflow: "hidden" }}
                           >
-                            <Hidden smDown>
-                              {" "}
-                              {arr.length > 8 && (
-                                // <img onClick={() => next()} className={"icon-rightcaro"} />
-                                <ArrowRightIcon onClick={() => next()} className={`${classes.carouselCustomArrow}`} />
-                              )}
-                            </Hidden>
-                            <Hidden mdUp>
-                              {" "}
-                              {arr.length > 5 && (
-                                //  <img onClick={() => next()} className={"icon-rightcaro"} />
-                                <ArrowRightIcon onClick={() => next()} className={`${classes.carouselCustomArrow}`} />
-                              )}
-                            </Hidden>
-                          </Grid>
-                          <Modal
-                            aria-labelledby="simple-modal-title"
-                            aria-describedby="simple-modal-description"
-                            open={this.state.open}
-                            onClose={this.handleClose}
+                            {arr.length > 8 && (
+                              <Hidden smDown>
+                                {" "}
+                                <Grid
+                                  item
+                                  style={{
+                                    width: "5%",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    display: "flex",
+                                  }}
+                                >
+                                  {/* <img onClick={() => previous()} className={"icon-leftcaro"} /> */}
+                                  <ArrowLeftIcon
+                                    onClick={() => previous()}
+                                    className={`${classes.carouselCustomArrow}`}
+                                  />
+                                </Grid>
+                              </Hidden>
+                            )}
+                            {arr.length > 5 && (
+                              <Hidden mdUp>
+                                {" "}
+                                <Grid
+                                  item
+                                  style={{
+                                    width: "5%",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    display: "flex",
+                                  }}
+                                >
+                                  {/* <img onClick={() => previous()} className={"icon-leftcaro"} /> */}
+                                  <ArrowLeftIcon
+                                    onClick={() => previous()}
+                                    className={`${classes.carouselCustomArrow}`}
+                                  />
+                                </Grid>
+                              </Hidden>
+                            )}
+                            <Grid
+                              item
+                              class="widthFix"
+                              style={{ textAlign: "center" }}
+                            >
+                              <Hidden smDown>
+                                <Slideshow
+                                  dataCarousel={settings}
+                                  sliderRef={slider}
+                                >
+                                  {arr.map((val, i) => {
+                                    return (
+                                      <>
+                                        <div
+                                          style={{
+                                            justifyContent: "center",
+                                            display: "flex",
+                                          }}
+                                        >
+                                          <div
+                                            className={
+                                              JSON.stringify(val) ===
+                                                this.state.skuSize ||
+                                              kadasize === val
+                                                ? _isSilver
+                                                  ? `${classes.sizeSelected}`
+                                                  : `darkouter`
+                                                : "darkouterWhite"
+                                            }
+                                          >
+                                            <button
+                                              style={{ padding: "0px" }}
+                                              className={"page"}
+                                              id={val}
+                                              onClick={(event) =>
+                                                this.handleClick(
+                                                  event,
+                                                  "skuSize"
+                                                )
+                                              }
+                                            >
+                                              {val}
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </>
+                                    );
+                                  })}
+                                </Slideshow>
+                              </Hidden>
+                              <Hidden mdUp>
+                                <Slideshow
+                                  dataCarousel={settings_mob}
+                                  sliderRef={slider}
+                                >
+                                  {arr.map((val, i) => {
+                                    return (
+                                      <>
+                                        <div
+                                          style={{
+                                            justifyContent: "center",
+                                            display: "flex",
+                                          }}
+                                        >
+                                          <div
+                                            className={
+                                              JSON.stringify(val) ===
+                                                this.state.skuSize ||
+                                              kadasize === val
+                                                ? _isSilver
+                                                  ? `${classes.sizeSelected}`
+                                                  : `darkouter`
+                                                : "darkouterWhite"
+                                            }
+                                          >
+                                            <button
+                                              className={"page"}
+                                              id={val}
+                                              onClick={(event) =>
+                                                this.handleClick(
+                                                  event,
+                                                  "skuSize"
+                                                )
+                                              }
+                                            >
+                                              {val}
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </>
+                                    );
+                                  })}
+                                </Slideshow>
+                              </Hidden>
+                            </Grid>
+                            <Grid
+                              item
+                              style={{
+                                width: "5%",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                display: "flex",
+                              }}
+                            >
+                              <Hidden smDown>
+                                {" "}
+                                {arr.length > 8 && (
+                                  // <img onClick={() => next()} className={"icon-rightcaro"} />
+                                  <ArrowRightIcon
+                                    onClick={() => next()}
+                                    className={`${classes.carouselCustomArrow}`}
+                                  />
+                                )}
+                              </Hidden>
+                              <Hidden mdUp>
+                                {" "}
+                                {arr.length > 5 && (
+                                  //  <img onClick={() => next()} className={"icon-rightcaro"} />
+                                  <ArrowRightIcon
+                                    onClick={() => next()}
+                                    className={`${classes.carouselCustomArrow}`}
+                                  />
+                                )}
+                              </Hidden>
+                            </Grid>
+                            <Modal
+                              aria-labelledby="simple-modal-title"
+                              aria-describedby="simple-modal-description"
+                              open={this.state.open}
+                              onClose={this.handleClose}
 
-                            // className="modalElementSizeGuide"
-                          >
-                            {/* <div className={`${classes.modals}  "modalin-ring"`}> */}
-                            <>
-                              {handle_extension(data[0].size_guide) === "image" && (
-                                <div className={`${classes.modals}  "modalin-ring"`}>
-                                  <img height="auto" width="100%" src={data[0].size_guide} />
-                                </div>
-                              )}
-                              {handle_extension(data[0].size_guide) === "document" && (
-                                <div className={`${classes.modals_document}  "modalin-ring"`}>
-                                  {/* <object data={data[0].size_guide} type="application/pdf" className="document_iframe"  width="100%" height="100%">
+                              // className="modalElementSizeGuide"
+                            >
+                              {/* <div className={`${classes.modals}  "modalin-ring"`}> */}
+                              <>
+                                {handle_extension(data[0].size_guide) ===
+                                  "image" && (
+                                  <div
+                                    className={`${classes.modals}  "modalin-ring"`}
+                                  >
+                                    <img
+                                      height="auto"
+                                      width="100%"
+                                      src={data[0].size_guide}
+                                    />
+                                  </div>
+                                )}
+                                {handle_extension(data[0].size_guide) ===
+                                  "document" && (
+                                  <div
+                                    className={`${classes.modals_document}  "modalin-ring"`}
+                                  >
+                                    {/* <object data={data[0].size_guide} type="application/pdf" className="document_iframe"  width="100%" height="100%">
   <p>Your web browser doesn't have a PDF plugin.
   Instead you can <a href={data[0].size_guide}>click here to
   download the PDF file.</a></p>
 </object> */}
-                                  <iframe className="document_iframe" src={data[0].size_guide} width="100%" height="100%" />
-                                </div>
-                              )}
-                              {handle_extension(data[0].size_guide) === "video" && (
-                                <div className={`${classes.modals_video}  "modalin-ring"`}>
-                                  <video preload="auto" autoplay width="100%" controls>
-                                    <source src={data[0].size_guide} type="video/mp4" />
-                                  </video>
-                                </div>
-                              )}
-                            </>
-                            {/* </div> */}
-                          </Modal>
-                          {/* <div style={{ marginTop: "10px", textAlign: "center" }}>
+                                    <iframe
+                                      className="document_iframe"
+                                      src={data[0].size_guide}
+                                      width="100%"
+                                      height="100%"
+                                    />
+                                  </div>
+                                )}
+                                {handle_extension(data[0].size_guide) ===
+                                  "video" && (
+                                  <div
+                                    className={`${classes.modals_video}  "modalin-ring"`}
+                                  >
+                                    <video
+                                      preload="auto"
+                                      autoplay
+                                      width="100%"
+                                      controls
+                                    >
+                                      <source
+                                        src={data[0].size_guide}
+                                        type="video/mp4"
+                                      />
+                                    </video>
+                                  </div>
+                                )}
+                              </>
+                              {/* </div> */}
+                            </Modal>
+                            {/* <div style={{ marginTop: "10px", textAlign: "center" }}>
                                                     <span style={{ cursor: "pointer" }} className={`my-ringsize ${classes.normalfonts} `} >My Ring Size ?</span>
                                                  </div> */}
-                        </Grid>
-                      </>
-                    ) : (
-                      ""
-                    )}
+                          </Grid>
+                        </>
+                      ) : (
+                        ""
+                      )}
+                    </Grid>
                   </Grid>
-                </Grid>
-              ) : (
-                ""
-              )}
-              {_isSilver && this.props?.data?.[0]?.maxOrderQty > 1 && (
-                <Grid container spacing={12}>
+                ) : (
+                  ""
+                )}
+                {_isSilver && this.props?.data?.[0]?.maxOrderQty > 1 && (
+                  <Grid container spacing={12}>
+                    <Grid
+                      item
+                      xs={3}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        padding: "0px 0px 0px 10px",
+                        fontSize: "14px",
+                      }}
+                      className={classes.rings_tabs_silver}
+                    >
+                      <b>Quantity</b>
+                    </Grid>
+                    <Grid item xs={9}>
+                      <Grid
+                        item
+                        xs={10}
+                        sm={10}
+                        md={6}
+                        lg={6}
+                        xl={6}
+                        style={{ padding: "0px 10px" }}
+                      >
+                        <div>
+                          <Quantity data={this.props.data} pdpage={true} />
+                        </div>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                )}
+                {!_isSilver && arr2.length > 0 ? (
                   <Grid
-                    item
-                    xs={3}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      padding: "0px 0px 0px 10px",
-                      fontSize: "14px",
-                    }}
-                    className={classes.rings_tabs_silver}
+                    container
+                    spacing={12}
+                    lg={12}
+                    style={{ marginBottom: "10px" }}
                   >
-                    <b>Quantity</b>
-                  </Grid>
-                  <Grid item xs={9}>
-                    <Grid item xs={10} sm={10} md={6} lg={6} xl={6} style={{ padding: "0px 10px" }}>
-                      <div>
-                        <Quantity data={this.props.data} pdpage={true} />
-                      </div>
+                    <Grid
+                      item
+                      lg={3}
+                      xs={12}
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <h1 className="rings_tabs">{val.tab2.header}</h1>
                     </Grid>
-                  </Grid>
-                </Grid>
-              )}
-              {!_isSilver && arr2.length > 0 ? (
-                <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
-                  <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}>
-                    <h1 className="rings_tabs">{val.tab2.header}</h1>
-                  </Grid>
-                  <Grid item lg={9} xs={12}>
-                    <Grid container spacing={12} lg={12}>
-                      {arr2.map((val, i) => {
-                        var kv = val;
-                        var objVal = kv.split(" ");
+                    <Grid item lg={9} xs={12}>
+                      <Grid container spacing={12} lg={12}>
+                        {arr2.map((val, i) => {
+                          var kv = val;
+                          var objVal = kv.split(" ");
 
-                        var _multipleColor = objVal.filter((val) => {
-                          if (val === "And") return val;
-                        }); // example : 18k Yellow And White
-                        var arrPurity;
-                        var arrColor;
-                        // if (_multipleColor.length > 0) {
-                        //     arrPurity = objVal[0]
-                        //     arrColor = objVal[1].concat(' ').concat(objVal[3])
-                        // }
-                        // else {
-                        //     arrPurity = objVal[0]
-                        //     arrColor = objVal[1]
-                        // }
-                        arrPurity = kv.substr(0, kv.indexOf(" "));
-                        arrColor = kv.substr(kv.indexOf(" ") + 1);
-                        return (
-                          <Grid item lg={1} xs={2} className={classes.normalfonts_tabs}>
-                            <div
-                              style={{
-                                display: "flex",
-                                justifyContent: "center",
-                              }}
+                          var _multipleColor = objVal.filter((val) => {
+                            if (val === "And") return val;
+                          }); // example : 18k Yellow And White
+                          var arrPurity;
+                          var arrColor;
+                          // if (_multipleColor.length > 0) {
+                          //     arrPurity = objVal[0]
+                          //     arrColor = objVal[1].concat(' ').concat(objVal[3])
+                          // }
+                          // else {
+                          //     arrPurity = objVal[0]
+                          //     arrColor = objVal[1]
+                          // }
+                          arrPurity = kv.substr(0, kv.indexOf(" "));
+                          arrColor = kv.substr(kv.indexOf(" ") + 1);
+                          return (
+                            <Grid
+                              item
+                              lg={1}
+                              xs={2}
+                              className={classes.normalfonts_tabs}
                             >
                               <div
-                                style={
-                                  this.state.purity === val
-                                    ? {
-                                        border: "2px solid #d91965",
-                                        borderRadius: "100%",
-                                        padding: "1px",
-                                      }
-                                    : {
-                                        border: "2px solid #fff",
-                                        borderRadius: "100%",
-                                        padding: "1px",
-                                      }
-                                }
+                                style={{
+                                  display: "flex",
+                                  justifyContent: "center",
+                                }}
                               >
-                                <button
-                                  style={{
-                                    border: "2px solid" + this.imageRender(val),
-                                  }}
-                                  className={"pagetabs tabs-valus"}
-                                  id={val}
-                                  color={arrColor}
-                                  onClick={(event) => this.handleClick(event, "purity")}
+                                <div
+                                  style={
+                                    this.state.purity === val
+                                      ? {
+                                          border: "2px solid #d91965",
+                                          borderRadius: "100%",
+                                          padding: "1px",
+                                        }
+                                      : {
+                                          border: "2px solid #fff",
+                                          borderRadius: "100%",
+                                          padding: "1px",
+                                        }
+                                  }
                                 >
-                                  {/* {this.imageRender(val)} */}
-                                  <span id={val} className={`tabs-contants ${classes.normalfonts}`}>
-                                    {arrPurity}
-                                  </span>
-                                </button>
+                                  <button
+                                    style={{
+                                      border:
+                                        "2px solid" + this.imageRender(val),
+                                    }}
+                                    className={"pagetabs tabs-valus"}
+                                    id={val}
+                                    color={arrColor}
+                                    onClick={(event) =>
+                                      this.handleClick(event, "purity")
+                                    }
+                                  >
+                                    {/* {this.imageRender(val)} */}
+                                    <span
+                                      id={val}
+                                      className={`tabs-contants ${classes.normalfonts}`}
+                                    >
+                                      {arrPurity}
+                                    </span>
+                                  </button>
+                                </div>
                               </div>
-                            </div>
-                            <div
-                              id={val}
-                              style={{ fontSize: "10px" }}
-                              className={
-                                this.state.purity === val
-                                  ? `rings_tabsvls_active ${classes.tabs_values_font}`
-                                  : `rings_tabsvls ${classes.tabs_values_font}`
-                              }
-                            >
-                              {arrColor}
-                            </div>
-                          </Grid>
-                        );
-                      })}
-                    </Grid>
-                  </Grid>
-                </Grid>
-              ) : (
-                ""
-              )}
-
-              {!_isSilver && val.tab3.Children.length > 0 ? (
-                <Grid container spacing={12} lg={12} style={{ marginBottom: "10px" }}>
-                  <Grid item lg={3} xs={12} style={{ display: "flex", alignItems: "center" }}>
-                    <h1 className="rings_tabs">{val.tab3.header}</h1>
-                  </Grid>
-                  <Grid item lg={9} xs={12}>
-                    <Grid container spacing={12} lg={12}>
-                      {val.tab3.Children.map((val, i) => {
-                        return (
-                          <Grid item lg={1} xs={2} className={classes.normalfonts_tabs}>
-                            <div
-                              style={{
-                                justifyContent: "center",
-                                display: "flex",
-                              }}
-                            >
                               <div
+                                id={val}
+                                style={{ fontSize: "10px" }}
                                 className={
-                                  this.state.diamondType === val.name
-                                    ? _isSilver
-                                      ? `${classes.sizeSelected}`
-                                      : `darkouter`
-                                    : "darkouterWhite"
+                                  this.state.purity === val
+                                    ? `rings_tabsvls_active ${classes.tabs_values_font}`
+                                    : `rings_tabsvls ${classes.tabs_values_font}`
                                 }
                               >
-                                <button
-                                  style={{ background: this.imageRender(val) }}
-                                  className={"pagetabslst tabs-valus"}
-                                  id={val.name}
-                                  onClick={(event) => this.handleClick(event, "diamondType")}
-                                >
-                                  {/* {this.imageRender(val)} */}
-                                  <span id={val.name} className={`tabs-cont ${classes.normalfonts}`}>
-                                    {dimondclarity(val.name)}
-                                  </span>
-                                </button>
+                                {arrColor}
                               </div>
-                            </div>
-                            {/* <div className={this.state.diamondType == i ? "rings_tabsvls_active":"rings_tabsvls"}>{arrColor}</div> */}
-                          </Grid>
-                        );
-                      })}
+                            </Grid>
+                          );
+                        })}
+                      </Grid>
                     </Grid>
                   </Grid>
-                </Grid>
-              ) : (
-                ""
-              )}
-            </>
-          );
-        })}
+                ) : (
+                  ""
+                )}
+
+                {!_isSilver && val.tab3.Children.length > 0 ? (
+                  <Grid
+                    container
+                    spacing={12}
+                    lg={12}
+                    style={{ marginBottom: "10px" }}
+                  >
+                    <Grid
+                      item
+                      lg={3}
+                      xs={12}
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <h1 className="rings_tabs">{val.tab3.header}</h1>
+                    </Grid>
+                    <Grid item lg={9} xs={12}>
+                      <Grid container spacing={12} lg={12}>
+                        {val.tab3.Children.map((val, i) => {
+                          return (
+                            <Grid
+                              item
+                              lg={1}
+                              xs={2}
+                              className={classes.normalfonts_tabs}
+                            >
+                              <div
+                                style={{
+                                  justifyContent: "center",
+                                  display: "flex",
+                                }}
+                              >
+                                <div
+                                  className={
+                                    this.state.diamondType === val.name
+                                      ? _isSilver
+                                        ? `${classes.sizeSelected}`
+                                        : `darkouter`
+                                      : "darkouterWhite"
+                                  }
+                                >
+                                  <button
+                                    style={{
+                                      background: this.imageRender(val),
+                                    }}
+                                    className={"pagetabslst tabs-valus"}
+                                    id={val.name}
+                                    onClick={(event) =>
+                                      this.handleClick(event, "diamondType")
+                                    }
+                                  >
+                                    {/* {this.imageRender(val)} */}
+                                    <span
+                                      id={val.name}
+                                      className={`tabs-cont ${classes.normalfonts}`}
+                                    >
+                                      {dimondclarity(val.name)}
+                                    </span>
+                                  </button>
+                                </div>
+                              </div>
+                              {/* <div className={this.state.diamondType == i ? "rings_tabsvls_active":"rings_tabsvls"}>{arrColor}</div> */}
+                            </Grid>
+                          );
+                        })}
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                ) : (
+                  ""
+                )}
+              </>
+            );
+          })}
       </div>
     ) : null;
   };
@@ -671,7 +819,9 @@ class Component extends React.Component {
                     "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
                 }}
               >
-                <ExpansionPanel expanded={expanded === "1"}>{this.TabsComponent(_isSilver)}</ExpansionPanel>
+                <ExpansionPanel expanded={expanded === "1"}>
+                  {this.TabsComponent(_isSilver)}
+                </ExpansionPanel>
               </div>
             )}
           </Container>

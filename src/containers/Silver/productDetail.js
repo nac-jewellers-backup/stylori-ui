@@ -56,13 +56,13 @@ class ProductDetail extends Component {
             <meta property="og:description" content={this.props.data[0].dis} />
             <meta property="og:type" content="product" />
             <meta property="og:url" id="fb-product-url" content={window.location.href} />
-            <meta property="og:image" id="fb_imageUrl" content={this.props.data[0].fadeImages} />
+            <meta property="og:image" id="fb_imageUrl" content={this?.props?.data[0]?.fadeImages ?? ""} />
 
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@StyloriLove" />
             <meta name="twitter:title" id="twitter-title" content={this.props.data[0].title} />
             <meta name="twitter:description" content={this.props.data[0].dis} />
-            <meta name="twitter:image" id="twitter_imageUrl" content={this.props.data[0].fadeImages} />
+            <meta name="twitter:image" id="twitter_imageUrl" content={this?.props?.data[0]?.fadeImages ?? ""} />
           </MetaTags>
         </div>
 

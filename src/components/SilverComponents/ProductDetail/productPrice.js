@@ -47,7 +47,7 @@ const mobilecarousel = (props, val) => {
       <Slideshow
         class="responseve-carousel testingcur"
         imgClass="responseve-carousel-img"
-        fadeImages={data[0].fadeImages}
+        fadeImages={data[0]?.fadeImages ?? ""}
         dataCarousel={dataCarousel}
       />
     </div>

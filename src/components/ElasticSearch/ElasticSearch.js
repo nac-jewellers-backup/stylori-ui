@@ -82,23 +82,23 @@ export default function ElasticSearch(props) {
     const json = (response) => {
       return response.json();
     };
-    // fetch(`${API_URL}/auto_complete`, {
-    //   method: "post",
-    //   // body: {query:seoUrlResult,variables:splitHiphen()}
-    //   // body: JSON.stringify({query:seoUrlResult}),
+    fetch(`${API_URL}/auto_complete`, {
+      method: "post",
+      // body: {query:seoUrlResult,variables:splitHiphen()}
+      // body: JSON.stringify({query:seoUrlResult}),
 
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     search_text: `${e.target.value}`,
-    //   }),
-    // })
-    //   .then(status)
-    //   .then(json)
-    //   .then(async (val) => {
-    //     setData(val);
-    //   });
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        search_text: `${e.target.value}`,
+      }),
+    })
+      .then(status)
+      .then(json)
+      .then(async (val) => {
+        setData(val);
+      });
   };
   return (
     <Grid container className={classes.root}>
@@ -122,7 +122,7 @@ export default function ElasticSearch(props) {
               className={classes.withinput}
               placeholder="Search"
               value={value}
-            //   onChange={(e) => handleChange(e)}
+              onChange={(e) => handleChange(e)}
               endAdornment={
                 <InputAdornment position="end">
                   <div className={classes.searchcontainerplain}>

@@ -74,10 +74,10 @@ class ProductDetail extends Component {
   handleOGTag = () => {
     if (this.props.data && this.props.data.length > 0) {
       var arr = [
-        { key: "Description", value: this.props.data[0].dis },
-        { key: "keywords", value: this.props.data[0].productsPendants[0].name },
+        { key: "Description", value: this?.props.data[0]?.dis },
+        { key: "keywords", value: this?.props?.data[0]?.productsPendants[0]?.name },
         { key: "og_site_name", value: "Stylori.com" },
-        { key: "og_title", value: this.props.data[0].title },
+        { key: "og_title", value: this?.props?.data[0]?.title },
         { key: "og_type", value: "website_stylori" },
         { key: "og_url", value: window.location.href },
         //  {key:"title", value:this.props.data[0].title}
@@ -125,7 +125,8 @@ class ProductDetail extends Component {
       { title: "home", url: "/" },
       { title: path[2], url: this.renderUrl() },
       {
-        title: this.props.data && this.props.data[0] && this.props.data[0].title,
+        title:
+          this.props.data && this.props.data[0] && this.props.data[0].title,
       },
     ];
     // alert(JSON.stringify(this.props.wishlistdata))
@@ -151,34 +152,65 @@ class ProductDetail extends Component {
       slidesToScroll: 1,
       autoplay: false,
       autoplaySpeed: 2000,
-      prevArrow: <ArrowLeftIcon style={{ fill: "rgb(6, 171, 159)", fontSize: "1.7rem" }} />,
-      nextArrow: <ArrowRightIcon style={{ fill: "rgb(6, 171, 159)", fontSize: "1.7rem" }} />,
+      prevArrow: (
+        <ArrowLeftIcon
+          style={{ fill: "rgb(6, 171, 159)", fontSize: "1.7rem" }}
+        />
+      ),
+      nextArrow: (
+        <ArrowRightIcon
+          style={{ fill: "rgb(6, 171, 159)", fontSize: "1.7rem" }}
+        />
+      ),
     };
     //  debugger
 
     return (
       <div>
         <Helmet>
-          <title>{this.props.data[0].title + " - " + this.props.data[0].dis}</title>
-          <meta property="og:title" content={this.props.data[0].title} />
-          <meta name="description" property="og:description" content={this.props.data[0].dis} />{" "}
+          <title>
+            {(this?.props?.data[0]?.title ?? " ") +
+              " - " +
+              (this?.props?.data[0]?.dis ?? "")}
+          </title>
+          <meta
+            property="og:title"
+            content={this?.props?.data[0]?.title ?? ""}
+          />
+          <meta
+            name="description"
+            property="og:description"
+            content={this?.props?.data[0]?.dis ?? ""}
+          />{" "}
           <meta property="og:type" content="Stylori Website" />
-          <meta property="og:image" content={this.props.data[0].fadeImages.arrOfurls[0]} />
+          <meta
+            property="og:image"
+            content={this?.props?.data[0]?.fadeImages?.arrOfurls[0] ?? ""}
+          />
           <meta property="og:url" content={window.location.href} />
           <meta property="og:site_name" content="Stylori" />
-          <meta name="twitter:title" content={this.props.data[0].title}></meta>
-          <meta name="twitter:description" content={this.props.data[0].dis}></meta>
-          <meta name="twitter:image" content={this.props.data[0].fadeImages.arrOfurls[0]}></meta>
+          <meta name="twitter:title" content={this?.props?.data[0]?.title ?? ""}></meta>
+          <meta
+            name="twitter:description"
+            content={this?.props?.data[0]?.dis ?? ""}
+          ></meta>
+          <meta
+            name="twitter:image"
+            content={this?.props?.data[0]?.fadeImages?.arrOfurls[0] ?? ""}
+          ></meta>
           <meta name="twitter:site" content="@StyloriSilver"></meta>
           <meta name="twitter:creator" content="@StyloriSilver"></meta>
           <link rel="canonical" href="https://stylori.com" />
           <meta name="robots" content="index, follow" />
           <meta property="og:locale" content="en_US" />
-          <meta name="keywords" content={this.props.data[0].productsPendants[0].name} />
+          <meta
+            name="keywords"
+            content={this?.props?.data[0]?.productsPendants[0]?.name ?? ""}
+          />
         </Helmet>
 
         <Hidden smDown>
-          <Header wishlist={this.props.wishlistdata} />
+          <Header wishlist={this?.props?.wishlistdata ?? ""} />
 
           {/* {!isSilver ? (
             <Grid
@@ -200,7 +232,11 @@ class ProductDetail extends Component {
             <Grid container item xs={12} style={{ marginTop: "30px" }}></Grid>
           )} */}
 
-          <Grid Container spacing={12} style={{ maxWidth: "1600px", margin: "auto" }}>
+          <Grid
+            Container
+            spacing={12}
+            style={{ maxWidth: "1600px", margin: "auto" }}
+          >
             <Grid item xs={12}>
               <div className="pricing-breadcrums-media">
                 <CustomSeparator
@@ -241,23 +277,43 @@ class ProductDetail extends Component {
             </Hidden>
           </>
           {/* )} */}
-          <div className="pricing-imgzom-media" style={{ maxWidth: "1600px", margin: "auto" }}>
-            <Grid container spacing={isSilver ? 5 : 12} justify={isSilver ? "space-between" : "space-evenly"}>
+          <div
+            className="pricing-imgzom-media"
+            style={{ maxWidth: "1600px", margin: "auto" }}
+          >
+            <Grid
+              container
+              spacing={isSilver ? 5 : 12}
+              justify={isSilver ? "space-between" : "space-evenly"}
+            >
               <Grid item xs={6}>
                 {isSilver ? (
-                  <ProductImageZoom data={this.props.data} isSilver={isSilver} customLimit={3} />
+                  <ProductImageZoom
+                    data={this.props.data}
+                    isSilver={isSilver}
+                    customLimit={3}
+                  />
                 ) : (
-                  <ProductImageZoom data={this.props.data} isSilver={isSilver} />
+                  <ProductImageZoom
+                    data={this.props.data}
+                    isSilver={isSilver}
+                  />
                 )}
               </Grid>
               <Grid item xs={6}>
                 {isSilver ? (
                   <div className="overall-box-without-shadow-silver">
-                    <SilverProductPrice data={this.props.data} wishlist={this.props.wishlistdata} />
+                    <SilverProductPrice
+                      data={this.props.data}
+                      wishlist={this.props.wishlistdata}
+                    />
                   </div>
                 ) : (
                   <div className="overall-box priceecontainer">
-                    <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata} />
+                    <ProductPrice
+                      data={this.props.data}
+                      wishlist={this.props.wishlistdata}
+                    />
                   </div>
                 )}
                 {!isSilver && (
@@ -275,7 +331,11 @@ class ProductDetail extends Component {
                   </div>
                 )}
                 {isSilver && (
-                  <Grid item xs={12} style={{ marginBottom: "10px", marginTop: "10px" }}>
+                  <Grid
+                    item
+                    xs={12}
+                    style={{ marginBottom: "10px", marginTop: "10px" }}
+                  >
                     {/* <p
                       style={{
                         color: "rgb(58, 69, 120)",
@@ -284,7 +344,10 @@ class ProductDetail extends Component {
                     >
                       {this.props.data[0].dis}
                     </p> */}
-                    <ProductDetails data={this.props.data} isSilver={isSilver} />
+                    <ProductDetails
+                      data={this.props.data}
+                      isSilver={isSilver}
+                    />
                   </Grid>
                 )}
               </Grid>
@@ -301,11 +364,19 @@ class ProductDetail extends Component {
               className="pricing-product-media"
             >
               <Grid container spacing={12}>
-                <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
+                <Grid
+                  item
+                  xs={6}
+                  style={{ marginBottom: "20px", marginTop: "20px" }}
+                >
                   <ProductDetails data={this.props.data} isSilver={isSilver} />
                 </Grid>
                 {!isSilver && (
-                  <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
+                  <Grid
+                    item
+                    xs={6}
+                    style={{ marginBottom: "20px", marginTop: "20px" }}
+                  >
                     <PriceCertification data={this.props.data} />
                     <Request data={this.props.data} />
                   </Grid>
@@ -345,7 +416,12 @@ class ProductDetail extends Component {
                 paddingTop: "4%",
               }}
             >
-              <Sublistcarousel data={this.props.data} isSilver={isSilver} customLimit={4} nextPreviousIconSize={"3rem"} />
+              <Sublistcarousel
+                data={this.props.data}
+                isSilver={isSilver}
+                customLimit={4}
+                nextPreviousIconSize={"3rem"}
+              />
             </div>
           ) : (
             <Sublistcarousel data={this.props.data} isSilver={isSilver} />
@@ -360,7 +436,10 @@ class ProductDetail extends Component {
                 paddingTop: "4%",
               }}
             >
-              <ShopBy isSilver={isSilver} shopByStyloriSilver={this.props.shopByStyloriSilver} />
+              <ShopBy
+                isSilver={isSilver}
+                shopByStyloriSilver={this.props.shopByStyloriSilver}
+              />
             </div>
           )}
           {isSilver ? (
@@ -412,7 +491,11 @@ class ProductDetail extends Component {
           {/* </Grid> */}
 
           <Grid item xs={12}>
-            <PriceBuynow data={this.props.data} wishlist={this.props.wishlistdata} isSilver={isSilver} />
+            <PriceBuynow
+              data={this.props.data}
+              wishlist={this.props.wishlistdata}
+              isSilver={isSilver}
+            />
           </Grid>
           {/* {isSilver && <Grid item xs={12} style={{marginBottom:'15px'}}>
                <Container > <Quantity data={this.props.data}/></Container>
@@ -435,7 +518,11 @@ class ProductDetail extends Component {
             ""
           )} */}
           <Grid item xs={12}>
-            <ProductDetails data={this.props.data} wishlist={this.props.wishlistdata} isSilver={isSilver} />
+            <ProductDetails
+              data={this.props.data}
+              wishlist={this.props.wishlistdata}
+              isSilver={isSilver}
+            />
           </Grid>
           {isSilver && (
             <div
@@ -461,7 +548,11 @@ class ProductDetail extends Component {
           )}
 
           <Grid item xs={12}>
-            <Sublistcarousel data={this.props.data} isSilver={isSilver} customLimit={4} />
+            <Sublistcarousel
+              data={this.props.data}
+              isSilver={isSilver}
+              customLimit={4}
+            />
           </Grid>
           {/* BUY TOGETHER - COMMENTED FOR SOME RESON DON'T REMOVE IT */}
           {/* <Grid item xs={12}>
@@ -476,7 +567,12 @@ class ProductDetail extends Component {
             <Container>
               <Container>
                 <Grid container xs={12}>
-                  <Grid item xs={12} alignItems="center" style={{ paddingTop: "10%" }}>
+                  <Grid
+                    item
+                    xs={12}
+                    alignItems="center"
+                    style={{ paddingTop: "10%" }}
+                  >
                     <Slideshow dataCarousel={mobiledataCarousel}>
                       <Certified color="rgb(6, 171, 159)" />
                       <Diversestyles color="rgb(6, 171, 159)" />
@@ -591,7 +687,12 @@ const Components = (props) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        query: `${shopByStyloriSilver(["Earrings",   "Rings", "Bracelets", "Bangles"])}`,
+        query: `${shopByStyloriSilver([
+          "Earrings",
+          "Rings",
+          "Bracelets",
+          "Bangles",
+        ])}`,
       }),
     })
       .then((res) => res.json())
@@ -604,7 +705,13 @@ const Components = (props) => {
           },
 
           body: JSON.stringify({
-            query: allSeoPriorities([`"Earrings"`, `"Pendants"`, `"Rings"`, `"Bracelets"`, `"Bangles"`]),
+            query: allSeoPriorities([
+              `"Earrings"`,
+              `"Pendants"`,
+              `"Rings"`,
+              `"Bracelets"`,
+              `"Bangles"`,
+            ]),
           }),
         })
           .then((res) => res.json())
@@ -613,8 +720,12 @@ const Components = (props) => {
               var obj = {};
               res.data.allSeoUrlPriorities.nodes.map((val) => {
                 obj[val.attributeValue] = {};
-                obj[val.attributeValue]["seoText"] = val.seoText ? val.seoText : " ";
-                obj[val.attributeValue]["seoUrl"] = val.seoUrl ? val.seoUrl : " ";
+                obj[val.attributeValue]["seoText"] = val.seoText
+                  ? val.seoText
+                  : " ";
+                obj[val.attributeValue]["seoUrl"] = val.seoUrl
+                  ? val.seoUrl
+                  : " ";
               });
               return obj;
             };
@@ -656,13 +767,18 @@ const Components = (props) => {
           data.data.allTransSkuLists &&
           data.data.allTransSkuLists.nodes.length > 0 &&
           data.data.allTransSkuLists.nodes[0].productListByProductId &&
-          data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku &&
-          data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku.nodes.length > 0
+          data.data.allTransSkuLists.nodes[0].productListByProductId
+            .productMaterialsByProductSku &&
+          data.data.allTransSkuLists.nodes[0].productListByProductId
+            .productMaterialsByProductSku.nodes.length > 0
         ) {
-          data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku.nodes.map((val) => {
-            _silverArr.push(val.materialName.toLowerCase());
-          });
-          if (_silverArr.indexOf("silver") > -1) setGlobalCtx({ ...Globalctx, pathName: true });
+          data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku.nodes.map(
+            (val) => {
+              _silverArr.push(val.materialName.toLowerCase());
+            }
+          );
+          if (_silverArr.indexOf("silver") > -1)
+            setGlobalCtx({ ...Globalctx, pathName: true });
         }
       }
     }
@@ -671,7 +787,13 @@ const Components = (props) => {
   const datas = data;
   let mapped = datas;
   if (!loading && !error) {
-    mapped = productDetails(datas, likedatas, viewedddatas, rating, Globalctx.tabsChange);
+    mapped = productDetails(
+      datas,
+      likedatas,
+      viewedddatas,
+      rating,
+      Globalctx.tabsChange
+    );
   }
 
   if (Object.keys(mapped).length === 0) {
