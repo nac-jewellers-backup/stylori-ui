@@ -121,12 +121,11 @@ export default function PaymentHiddenForm(props) {
         localStorage.removeItem("order_id");
         // if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
         sessionStorage.removeItem("updatedProduct");
+        setOrderId(data.order.payment_id);
         if (data !== null && data !== undefined) {
           localStorage.setItem("order_id", JSON.stringify(data.order.id));
           hitPaymentGateWayAPI(data.order.id);
-        }
-
-        setOrderId(data.order.payment_id);
+        }        
       })
       .catch((error) => {
         console.error("Error:", error);
