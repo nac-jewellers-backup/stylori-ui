@@ -82,23 +82,20 @@ export default function ElasticSearch(props) {
     const json = (response) => {
       return response.json();
     };
-    fetch(`${API_URL}/auto_complete`, {
-      method: "post",
-      // body: {query:seoUrlResult,variables:splitHiphen()}
-      // body: JSON.stringify({query:seoUrlResult}),
-
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        search_text: `${e.target.value}`,
-      }),
-    })
-      .then(status)
-      .then(json)
-      .then(async (val) => {
-        setData(val);
-      });
+    // fetch(`${API_URL}/auto_complete`, {
+    //   method: "post",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     search_text: `${e.target.value}`,
+    //   }),
+    // })
+    //   .then(status)
+    //   .then(json)
+    //   .then(async (val) => {
+    //     setData(val);
+    //   });
   };
   return (
     <Grid container className={classes.root}>
@@ -117,12 +114,12 @@ export default function ElasticSearch(props) {
         <Grid container justify="center" style={{ paddingBottom: "16px" }}>
           <Grid item container className={classes.searchContainer}>
             <InputBase
-            //   disabled={true}
+              //   disabled={true}
               autoFocus
               className={classes.withinput}
               placeholder="Search"
               value={value}
-              onChange={(e) => handleChange(e)}
+              // onChange={(e) => handleChange(e)}
               endAdornment={
                 <InputAdornment position="end">
                   <div className={classes.searchcontainerplain}>
@@ -158,8 +155,8 @@ export default function ElasticSearch(props) {
             </Grid>
           ) : null}
           {(Object.entries(data).length > 0 && data.sku_results.length > 0) ||
-          (Object.entries(data).length > 0 &&
-            data.product_results.length > 0) ? (
+            (Object.entries(data).length > 0 &&
+              data.product_results.length > 0) ? (
             <Grid container item className={classes.searchContainer}>
               <Grid item className={classes.TitleContainer} xs={12}>
                 <Typography className={classes.productTitle}>
@@ -168,37 +165,37 @@ export default function ElasticSearch(props) {
               </Grid>
               {Object.entries(data).length > 0 && data.sku_results.length > 0
                 ? data.sku_results.map((val) => (
-                    <Grid item xs={12} style={{ margin: "5px" }}>
-                      {/* <a href={`/${val.sku_url}`} className={classes.productSublist}>
+                  <Grid item xs={12} style={{ margin: "5px" }}>
+                    {/* <a href={`/${val.sku_url}`} className={classes.productSublist}>
                 {val.sku_code}
             </a> */}
-                      <Link
-                        to={`/${val.sku_url}`}
-                        className={`${classes.productSublist} ${classes.link}`}
-                        replace
-                      >
-                        {" "}
-                        {val.sku_code}
-                      </Link>
-                    </Grid>
-                  ))
+                    <Link
+                      to={`/${val.sku_url}`}
+                      className={`${classes.productSublist} ${classes.link}`}
+                      replace
+                    >
+                      {" "}
+                      {val.sku_code}
+                    </Link>
+                  </Grid>
+                ))
                 : null}
               {Object.entries(data).length > 0 &&
-              data.product_results.length > 0
+                data.product_results.length > 0
                 ? data.product_results.map((val) => (
-                    <Grid item xs={12} style={{ margin: "5px" }}>
-                      {/* <a href={`/${val.sku_url}`} className={classes.productSublist}>
+                  <Grid item xs={12} style={{ margin: "5px" }}>
+                    {/* <a href={`/${val.sku_url}`} className={classes.productSublist}>
                 {val.product_name}
             </a> */}
-                      <Link
-                        to={`/${val.sku_url}`}
-                        className={`${classes.productSublist} ${classes.link}`}
-                        replace
-                      >
-                        {val.product_name}
-                      </Link>
-                    </Grid>
-                  ))
+                    <Link
+                      to={`/${val.sku_url}`}
+                      className={`${classes.productSublist} ${classes.link}`}
+                      replace
+                    >
+                      {val.product_name}
+                    </Link>
+                  </Grid>
+                ))
                 : null}
             </Grid>
           ) : null}
@@ -223,9 +220,9 @@ export default function ElasticSearch(props) {
     null
 }               */}
           {Object.entries(data).length > 0 &&
-          data.product_results.length === 0 &&
-          data.sku_results.length === 0 &&
-          data.seo_results.length === 0
+            data.product_results.length === 0 &&
+            data.sku_results.length === 0 &&
+            data.seo_results.length === 0
             ? "no results found"
             : null}
         </Grid>
