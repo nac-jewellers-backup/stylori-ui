@@ -17,7 +17,7 @@ import { withStyles } from "@material-ui/core/styles";
 import "../../../components/Checkout/Cart.css";
 import "../chckout.css";
 import Footer from "components/Footer/Footer";
-
+import ReactGA from 'react-ga';
 const order_id = localStorage.getItem("order_id") ? JSON.parse(localStorage.getItem("order_id")) : "";
 const breadcrumsdata = [
   { title: "Shopping Bag" },

@@ -673,42 +673,44 @@ const Provider = (props) => {
             );
             var _products = { products: [session_storage] };
             var _obj = { ..._user_id, ..._products };
-            fetch(`${API_URL}/addtocart`, {
-              method: "post",
-              // body: {query:seoUrlResult,variables:splitHiphen()}
-              // body: JSON.stringify({query:seoUrlResult}),
+            var _obj = { ..._user_id, ..._products };
+            _products &&
+              fetch(`${API_URL}/addtocart`, {
+                method: "post",
+                // body: {query:seoUrlResult,variables:splitHiphen()}
+                // body: JSON.stringify({query:seoUrlResult}),
 
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                ..._obj,
-              }),
-            })
-              .then(status)
-              .then(json)
-              .then(async function (data) {
-                if (
-                  data &&
-                  data.data &&
-                  data.data.allShoppingCartItems &&
-                  data.data.allShoppingCartItems.nodes &&
-                  data.data.allShoppingCartItems.nodes.length > 0
-                ) {
-                  var _data = data.data.allShoppingCartItems.nodes
-                    .filter((val) => {
-                      if (val.transSkuListByProductSku) return val;
-                    })
-                    .map((val) => {
-                      return val.transSkuListByProductSku.generatedSku;
-                    });
-                  variables = { productList: _data };
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  ..._obj,
+                }),
+              })
+                .then(status)
+                .then(json)
+                .then(async function (data) {
+                  if (
+                    data &&
+                    data.data &&
+                    data.data.allShoppingCartItems &&
+                    data.data.allShoppingCartItems.nodes &&
+                    data.data.allShoppingCartItems.nodes.length > 0
+                  ) {
+                    var _data = data.data.allShoppingCartItems.nodes
+                      .filter((val) => {
+                        if (val.transSkuListByProductSku) return val;
+                      })
+                      .map((val) => {
+                        return val.transSkuListByProductSku.generatedSku;
+                      });
+                    variables = { productList: _data };
 
-                  makeRequest(variables);
-                } else {
-                  return [];
-                }
-              });
+                    makeRequest(variables);
+                  } else {
+                    return [];
+                  }
+                });
           } else {
             // alert(JSON.stringify(val.data.allShoppingCarts.nodes.length>0))
             // if(val.data.allShoppingCarts.nodes.length>0){
