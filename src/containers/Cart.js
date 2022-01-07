@@ -16,7 +16,7 @@ import { withStyles } from "@material-ui/core/styles";
 import "./index.css";
 
 import NeedHelp from "../components/needHelp";
-
+import TagManager from "react-gtm-module";
 import ReactPixel from "react-facebook-pixel";
 
 const breadcrumsdata = [
@@ -49,6 +49,33 @@ class Cart extends React.Component {
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
     ReactPixel.fbq("track", "PageView");
     ReactPixel.fbq("track", "AddToCart");
+
+    let gData = [];
+    let TData = this?.props?.data;
+    TData.map((l) => {
+      let data = {
+        name: l?.prdheader,
+        id: l?.skuId,
+        price: l?.dataCard1[0].offerPrice,
+        category: l?.productType,
+        quantity: l?.qty ?? 1,
+      };
+      gData.push(data);
+    });
+    const tagManagerArgs = {
+      gtmId: "GTM-PW3ZXSF",
+      event: "addToCart",
+      dataLayer: {
+        ecommerce: {
+          currencyCode: "INR",
+          add: {
+            products: gData,
+          },
+        },
+      },
+    };
+
+    TagManager.initialize(tagManagerArgs);
   }
   render() {
     const { data, classes, isStateFilterContextQty } = this.props;
@@ -66,19 +93,32 @@ class Cart extends React.Component {
               className={`breadcrums-header ${classes.normalcolorback}`}
               classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
               list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
-              data={this.props.data.length > 0 ? this.props.data[0].breadcrumsdata : breadcrumsdata}
-              subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
+              data={
+                this.props.data.length > 0
+                  ? this.props.data[0].breadcrumsdata
+                  : breadcrumsdata
+              }
+              subdata={
+                this.props.data.length > 0
+                  ? this.props.data[0].cartsubdata
+                  : cartsubdata
+              }
             />
           )}
           <div className="cart-ovralldiv-media " style={{ marginTop: "3%" }}>
             <Grid Container spacing={12}>
               {this.props.data.length > 0 ? (
                 <Grid item xs={12}>
-                  <CartCard data={data} isStateFilterContextQty={isStateFilterContextQty} />
+                  <CartCard
+                    data={data}
+                    isStateFilterContextQty={isStateFilterContextQty}
+                  />
                 </Grid>
               ) : (
                 <>
-                  <div className="noproductsfound">There are no items in this cart. </div>
+                  <div className="noproductsfound">
+                    There are no items in this cart.{" "}
+                  </div>
                   <a href="/jewellery" className="highlighter">
                     <div className="continueshopping"> Continue shopping</div>
                   </a>
@@ -107,11 +147,16 @@ class Cart extends React.Component {
             <Grid Container spacing={12}>
               {this.props.data.length > 0 ? (
                 <Grid item xs={12}>
-                  <CartCard data={data} isStateFilterContextQty={isStateFilterContextQty} />
+                  <CartCard
+                    data={data}
+                    isStateFilterContextQty={isStateFilterContextQty}
+                  />
                 </Grid>
               ) : (
                 <>
-                  <div className="noproductsfound">There are no items in this cart.</div>
+                  <div className="noproductsfound">
+                    There are no items in this cart.
+                  </div>
                   <a href="/jewellery">
                     {" "}
                     <div className="continueshopping"> Continue shopping</div>
@@ -160,7 +205,15 @@ class Cart extends React.Component {
 
 const Components = (props) => {
   let {
-    CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata, NewUser },
+    CartCtx: {
+      cartFilters,
+      data,
+      loading,
+      error,
+      allorderdata,
+      wishlistdata,
+      NewUser,
+    },
   } = React.useContext(CartContext);
   const {
     ProductDetailCtx: { filters },

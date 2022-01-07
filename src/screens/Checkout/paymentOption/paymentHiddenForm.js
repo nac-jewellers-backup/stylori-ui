@@ -30,16 +30,26 @@ export default function PaymentHiddenForm(props) {
   });
   const [orderId, setOrderId] = React.useState(null);
   const obj = {};
-  const order_idx = localStorage.getItem("order_id") ? JSON.parse(localStorage.getItem("order_id")) : "yourorder";
-  let cart_id_lo = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : "";
+  const order_idx = localStorage.getItem("order_id")
+    ? JSON.parse(localStorage.getItem("order_id"))
+    : "yourorder";
+  let cart_id_lo = localStorage.getItem("cart_id")
+    ? JSON.parse(localStorage.getItem("cart_id")).cart_id
+    : "";
   let cart_id =
-    cartFilters && cartFilters._cart_id && Object.keys(cartFilters._cart_id).length > 0 ? cartFilters._cart_id.cart_id : "";
+    cartFilters &&
+    cartFilters._cart_id &&
+    Object.keys(cartFilters._cart_id).length > 0
+      ? cartFilters._cart_id.cart_id
+      : "";
   var cart_ids = cart_id.length > 0 ? cart_id : cart_id_lo;
   // var hash = null
   // var day = null
   // var currentutc = null
   // let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : "";
-  let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : "";
+  let user_id = localStorage.getItem("user_id")
+    ? localStorage.getItem("user_id")
+    : "";
   obj["payment_mode"] = "Prepaid";
   obj["user_id"] = user_id;
   obj["cart_id"] = cart_ids;
@@ -82,7 +92,7 @@ export default function PaymentHiddenForm(props) {
           checksum: data.checksum,
           amount: data.amount,
         });
-       
+
         //  hash=data.hash
         //  day = data.day
         //  currentutc = data.currentutc
@@ -117,7 +127,6 @@ export default function PaymentHiddenForm(props) {
       .then(status)
       .then(json)
       .then((data) => {
-     
         localStorage.removeItem("order_id");
         // if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
         sessionStorage.removeItem("updatedProduct");
@@ -125,7 +134,7 @@ export default function PaymentHiddenForm(props) {
         if (data !== null && data !== undefined) {
           localStorage.setItem("order_id", JSON.stringify(data.order.id));
           hitPaymentGateWayAPI(data.order.id);
-        }        
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -142,60 +151,172 @@ export default function PaymentHiddenForm(props) {
 
   return (
     <div container>
-      <form method="POST" action="https://payments.airpay.co.in/pay/index.php" id="sendtoairpay">
+      <form
+        method="POST"
+        action="https://payments.airpay.co.in/pay/index.php"
+        id="sendtoairpay"
+      >
         <div class="form-group">
-          <input id="privatekey" type="hidden" name="privatekey" value={hash.privatekey} class="form-control" />
+          <input
+            id="privatekey"
+            type="hidden"
+            name="privatekey"
+            value={hash.privatekey}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="buyerPhone" type="hidden" name="mercid" value={hash.mercid} class="form-control" />
+          <input
+            id="buyerPhone"
+            type="hidden"
+            name="mercid"
+            value={hash.mercid}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="orderid" type="hidden" name="orderid" value={orderId} class="form-control" />
+          <input
+            id="orderid"
+            type="hidden"
+            name="orderid"
+            value={orderId}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="currency" type="hidden" name="currency" value={hash.currency} class="form-control" />
+          <input
+            id="currency"
+            type="hidden"
+            name="currency"
+            value={hash.currency}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="isocurrency" type="hidden" name="isocurrency" value={hash.isocurrency} class="form-control" />
+          <input
+            id="isocurrency"
+            type="hidden"
+            name="isocurrency"
+            value={hash.isocurrency}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="chmod" type="hidden" name="chmod" value={hash.chmod} class="form-control" />
+          <input
+            id="chmod"
+            type="hidden"
+            name="chmod"
+            value={hash.chmod}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="buyerEmail" type="hidden" name="buyerEmail" value={hash.buyerEmail} class="form-control" />
+          <input
+            id="buyerEmail"
+            type="hidden"
+            name="buyerEmail"
+            value={hash.buyerEmail}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="buyerPhone" type="hidden" name="buyerPhone" value={hash.buyerPhone} class="form-control" />
+          <input
+            id="buyerPhone"
+            type="hidden"
+            name="buyerPhone"
+            value={hash.buyerPhone}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="buyerFirstName" type="hidden" name="buyerFirstName" value={hash.buyerFirstName} class="form-control" />
+          <input
+            id="buyerFirstName"
+            type="hidden"
+            name="buyerFirstName"
+            value={hash.buyerFirstName}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="buyerLastName" type="hidden" name="buyerLastName" value={hash.buyerLastName} class="form-control" />
+          <input
+            id="buyerLastName"
+            type="hidden"
+            name="buyerLastName"
+            value={hash.buyerLastName}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="buyerAddress" type="hidden" name="buyerAddress" value={hash.buyerAddress} class="form-control" />
+          <input
+            id="buyerAddress"
+            type="hidden"
+            name="buyerAddress"
+            value={hash.buyerAddress}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="buyerCity" type="hidden" name="buyerCity" value={hash.buyerCity} class="form-control" />
+          <input
+            id="buyerCity"
+            type="hidden"
+            name="buyerCity"
+            value={hash.buyerCity}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="buyerState" type="hidden" name="buyerState" value={hash.buyerState} class="form-control" />
+          <input
+            id="buyerState"
+            type="hidden"
+            name="buyerState"
+            value={hash.buyerState}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="buyerCountry" type="hidden" name="buyerCountry" value={hash.buyerCountry} class="form-control" />
+          <input
+            id="buyerCountry"
+            type="hidden"
+            name="buyerCountry"
+            value={hash.buyerCountry}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="buyerPinCode" type="hidden" name="buyerPinCode" value={hash.buyerPinCode} class="form-control" />
+          <input
+            id="buyerPinCode"
+            type="hidden"
+            name="buyerPinCode"
+            value={hash.buyerPinCode}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="orderid" type="hidden" name="orderid" value={orderId} class="form-control" />
+          <input
+            id="orderid"
+            type="hidden"
+            name="orderid"
+            value={orderId}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="amount" type="hidden" name="amount" value={hash.amount} class="form-control" />
+          <input
+            id="amount"
+            type="hidden"
+            name="amount"
+            value={hash.amount}
+            class="form-control"
+          />
         </div>
         <div class="form-group">
-          <input id="checksum" type="hidden" name="checksum" value={hash.checksum} class="form-control" />
+          <input
+            id="checksum"
+            type="hidden"
+            name="checksum"
+            value={hash.checksum}
+            class="form-control"
+          />
         </div>
       </form>
       <Grid item container>

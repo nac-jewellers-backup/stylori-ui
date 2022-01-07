@@ -672,7 +672,6 @@ const Provider = (props) => {
             );
             var _products = { products: [session_storage] };
             var _obj = { ..._user_id, ..._products };
-
             _products.products &&
               _products.products.length &&
               _products.products[0] !== null &&
@@ -857,7 +856,11 @@ const Provider = (props) => {
             }
           ).length > 0
         ) {
-          addtocart(addcart);
+        
+          products &&
+            products.length &&
+            products[0] !== null &&
+            addtocart(addcart);
         }
         orderobj["userProfileId"] = user_id;
         sessionStorage.setItem("user_id", user_id);

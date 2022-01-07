@@ -36,6 +36,7 @@ class PaymentIndex extends React.Component {
     } else this.setState({ isActive: [name] });
   };
   componentDidMount() {
+   
     if (!this.props.isCodAvailable) {
       this.setState({ isActive: "Netbanking", disabledCOD: true });
     }
@@ -69,7 +70,11 @@ class PaymentIndex extends React.Component {
                                 >
                                     <div className="dc-icon"></div> &nbsp; Debit card </p> */}
                 <p
-                  className={this.state.isActive == "Netbanking" ? "selectedcolor" : "unselected"}
+                  className={
+                    this.state.isActive == "Netbanking"
+                      ? "selectedcolor"
+                      : "unselected"
+                  }
                   onClick={() => this.toggleCollapsed("Netbanking")}
                   // style={{ background: "#dfdfdf" }}
                 >
@@ -77,8 +82,16 @@ class PaymentIndex extends React.Component {
                 </p>
 
                 <p
-                  className={`${this.state.isActive == "CashonDelivey" ? "selectedcolor" : "unselected"} 
-                            ${this.state.disabledCOD ? "paragraph_onclick" : null}`}
+                  className={`${
+                    this.state.isActive == "CashonDelivey"
+                      ? "selectedcolor"
+                      : "unselected"
+                  } 
+                            ${
+                              this.state.disabledCOD
+                                ? "paragraph_onclick"
+                                : null
+                            }`}
                   onClick={() => this.toggleCollapsed("CashonDelivey")}
                 >
                   <div className="code-icon"></div>&nbsp; Cash on Delivery (COD)
@@ -86,7 +99,10 @@ class PaymentIndex extends React.Component {
               </div>
             </Grid>
             <Grid item lg={7}>
-              <div style={{ marginTop: "20px" }} className="pay-index-subhed_datas ">
+              <div
+                style={{ marginTop: "20px" }}
+                className="pay-index-subhed_datas "
+              >
                 {this.state.isActive == "Creditform" && <Creditform />}
                 {this.state.isActive == "Debitform" && <Debitform />}
                 {this.state.isActive == "Netbanking" && <Netbanking />}
@@ -133,7 +149,10 @@ class PaymentIndex extends React.Component {
             </ExpansionPanelDetails>
           </ExpansionPanel>
 
-          <ExpansionPanel className="respone-div" disabled={this.state.disabledCOD ? true : false}>
+          <ExpansionPanel
+            className="respone-div"
+            disabled={this.state.disabledCOD ? true : false}
+          >
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className="py-head">
                 {" "}
@@ -232,7 +251,9 @@ const Components = (props) => {
                 if (mapped && mapped.length > 0 && val) {
                   // const min_cart_value = val.data ? val.data.allPincodeMasters.nodes[0].minCartvalue : null
                   const min_cart_value = 5000;
-                  const max_cart_value = val.data ? val.data.allPincodeMasters.nodes[0].maxCartvalue : null;
+                  const max_cart_value = val.data
+                    ? val.data.allPincodeMasters.nodes[0].maxCartvalue
+                    : null;
                   const data = mapped ? mapped : [];
                   var dataCard1;
                   var cart_price;
@@ -241,7 +262,9 @@ const Components = (props) => {
                     function myFunc(total, num, discounted_price) {
                       discounted_price =
                         this && this.props.cartFilters.discounted_price
-                          ? JSON.stringify(this.props.cartFilters.discounted_price)
+                          ? JSON.stringify(
+                              this.props.cartFilters.discounted_price
+                            )
                           : "";
                       if (discounted_price.length > 0) {
                         var a = Math.round(total + num);
@@ -261,7 +284,10 @@ const Components = (props) => {
                         .reduce(myFunc);
 
                     if (min_cart_value && max_cart_value) {
-                      if (dataCard1 >= min_cart_value && dataCard1 <= max_cart_value) {
+                      if (
+                        dataCard1 >= min_cart_value &&
+                        dataCard1 <= max_cart_value
+                      ) {
                         // var cart_prices = cart_price;
                         setCodAvailability(true);
                         return false;
@@ -295,7 +321,15 @@ const Components = (props) => {
         <div id="loading"></div>
       </div>
     );
-  } else content = <PaymentIndex {...props} data={mapped} cartFilters={cartFilters} isCodAvailable={codAvailability} />;
+  } else
+    content = (
+      <PaymentIndex
+        {...props}
+        data={mapped}
+        cartFilters={cartFilters}
+        isCodAvailable={codAvailability}
+      />
+    );
   return content;
 };
 export default Components;
