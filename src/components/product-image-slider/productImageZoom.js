@@ -59,58 +59,58 @@ class ProductImageZoom extends React.Component {
     // backgroundImage: `url(${src})`,
     backgroundPosition: "0% 0%",
     showimage:
-      this.props &&
-      this.props.data &&
-      this.props.data.length > 0 &&
-      this.props.data[0] &&
-      this.props.data[0].fadeImages &&
-      this.props.data[0].fadeImages.arrOfurls &&
-      this.props.data[0].fadeImages.arrOfurls.length > 0 &&
-      this.props.data[0].fadeImages.arrOfurls[0]
+      this?.props &&
+      this?.props?.data &&
+      this?.props?.data?.length > 0 &&
+      this?.props?.data[0] &&
+      this?.props?.data[0]?.fadeImages &&
+      this?.props?.data[0]?.fadeImages?.arrOfurls &&
+      this?.props?.data[0]?.fadeImages?.arrOfurls?.length > 0 &&
+      this?.props?.data[0]?.fadeImages?.arrOfurls[0]
         ? this.check_image_exists_in_server(
-            this.props.data[0].fadeImages.arrOfurls[0]
+            this?.props?.data[0]?.fadeImages?.arrOfurls[0]
           )
-          ? this.props.data[0].fadeImages.arrOfurls[0]
-          : this.props.data[0].fadeImages.arrOfurls[0].replace(
-              `${this.props.data[0].size}X${this.props.data[0].size}`,
+          ? this?.props?.data[0]?.fadeImages?.arrOfurls[0]
+          : this?.props?.data[0]?.fadeImages?.arrOfurls[0].replace(
+              `${this?.props?.data[0]?.size}X${this?.props?.data[0]?.size}`,
               "2400X2400"
             )
         : "",
     largeImage:
-      this.props &&
-      this.props.data &&
-      this.props.data.length > 0 &&
-      this.props.data[0] &&
-      this.props.data[0].fadeImages &&
-      this.props.data[0].fadeImages.arrOfurls_2X &&
-      this.props.data[0].fadeImages.arrOfurls_2X.length > 0 &&
-      this.props.data[0].fadeImages.arrOfurls_2X[0]
-        ? this.props.data[0].fadeImages.arrOfurls_2X[0]
+      this?.props &&
+      this?.props?.data &&
+      this?.props?.data?.length > 0 &&
+      this?.props?.data[0] &&
+      this?.props?.data[0]?.fadeImages &&
+      this?.props?.data[0]?.fadeImages?.arrOfurls_2X &&
+      this?.props?.data[0]?.fadeImages?.arrOfurls_2X.length > 0 &&
+      this?.props?.data[0]?.fadeImages?.arrOfurls_2X[0]
+        ? this?.props?.data[0]?.fadeImages?.arrOfurls_2X[0]
         : "",
     showimageBig:
-      this.props &&
-      this.props.data &&
-      this.props.data.length > 0 &&
-      this.props.data[0] &&
-      this.props.data[0].fadeImages &&
-      this.props.data[0].fadeImages.arrOfurls &&
-      this.props.data[0].fadeImages.arrOfurls.length > 0 &&
-      this.props.data[0].fadeImages.arrOfurls[0]
-        ? this.props.data[0].fadeImages.arrOfurls[0].replace(
-            `${this.props.data[0].size}X${this.props.data[0].size}`,
+      this?.props &&
+      this?.props?.data &&
+      this?.props?.data.length > 0 &&
+      this?.props?.data[0] &&
+      this?.props?.data[0]?.fadeImages &&
+      this?.props?.data[0]?.fadeImages?.arrOfurls &&
+      this?.props?.data[0]?.fadeImages?.arrOfurls.length > 0 &&
+      this?.props?.data[0]?.fadeImages?.arrOfurls[0]
+        ? this?.props?.data[0]?.fadeImages?.arrOfurls[0]?.replace(
+            `${this?.props?.data[0]?.size}X${this?.props?.data[0]?.size}`,
             "2400X2400"
           )
         : "",
     largeImageBig:
-      this.props &&
-      this.props.data &&
-      this.props.data.length > 0 &&
-      this.props.data[0] &&
-      this.props.data[0].fadeImages &&
-      this.props.data[0].fadeImages.arrOfurls_2X &&
-      this.props.data[0].fadeImages.arrOfurls_2X.length > 0 &&
-      this.props.data[0].fadeImages.arrOfurls_2X[0]
-        ? this.props.data[0].fadeImages.arrOfurls_2X[0].replace(
+      this?.props &&
+      this?.props?.data &&
+      this?.props?.data.length > 0 &&
+      this?.props?.data[0] &&
+      this?.props?.data[0]?.fadeImages &&
+      this?.props?.data[0]?.fadeImages?.arrOfurls_2X &&
+      this?.props?.data[0]?.fadeImages?.arrOfurls_2X.length > 0 &&
+      this?.props?.data[0]?.fadeImages?.arrOfurls_2X[0]
+        ? this?.props?.data[0]?.fadeImages?.arrOfurls_2X[0].replace(
             "1000X1000",
             "2400X2400"
           )
@@ -193,19 +193,19 @@ class ProductImageZoom extends React.Component {
     return (await this.check_image_exists_in_server(_url)) ? _url : _notFound;
   };
 
-
   productImageZoom = (_isSilver) => {
     // console.log(this.props.data)
     const { classes, data, customLimit } = this.props;
+    this.props.data[0] == null && window.location.reload();
     const limit = customLimit ? customLimit : 4;
     const { showimage, largeImage, showimageBig, largeImageBig } = this.state;
     const dataCarousel = {
       infinite: false,
       slidesToShow:
         data && data.length > 0
-          ? data[0] && data[0].fadeImages.arrOfurls.length > 3
+          ? data[0] && (data[0]?.fadeImages?.arrOfurls?.length ?? "") > 3
             ? limit
-            : data[0].fadeImages.arrOfurls.length
+            : data[0]?.fadeImages?.arrOfurls?.length ?? ""
           : 0,
       slidesToScroll: 1,
       vertical: true,
@@ -214,9 +214,9 @@ class ProductImageZoom extends React.Component {
     };
     // alert(JSON.stringify(data.image_resolution))
     const props = {
-      width: data[0].image_resolution,
-      height: data[0].image_resolution,
-      zoomWidth: data[0].image_resolution,
+      width: data[0]?.image_resolution ?? "",
+      height: data[0]?.image_resolution ?? "",
+      zoomWidth: data[0]?.image_resolution ?? "",
       img: `${showimage}`,
       zoomStyle: "z-index:2",
     };
@@ -289,7 +289,7 @@ class ProductImageZoom extends React.Component {
                       : `vertical-carousel`
                   }
                   imgClass="vertical-carousel-img"
-                  fadeImages={data[0].fadeImages.arrOfurls_2X}
+                  fadeImages={data[0]?.fadeImages?.arrOfurls_2X}
                   dataCarousel={dataCarousel}
                   currentImage={this.state.showimage}
                 />

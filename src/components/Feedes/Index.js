@@ -122,7 +122,7 @@ export default function StaticView(props) {
   const { isShowInsideDiv } = props;
 
   useEffect(()=>{
-    Aos.init({duration:2000});
+    // Aos.init({duration:2000});
   },[])
   return (
     <>
@@ -148,7 +148,9 @@ export default function StaticView(props) {
             );
           })}
       </Grid>
-      <Grid container className={classes.containItems} data-aos="fade-right">
+      <Grid container className={classes.containItems}
+      //  data-aos="fade-right"
+       >
         <Grid item className={classes.containerRoot}>
           <Grid container>
             <Grid

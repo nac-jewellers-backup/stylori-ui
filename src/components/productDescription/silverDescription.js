@@ -152,14 +152,14 @@ class ProductDescription extends Component {
                       <>
                         <Hidden smDown>
                           <Grid container key={index}>
-                            <a href={val.url ?? ""} style={{ width: "100%" }}>
+                            <a href={val.url == "specificListingPage" ? "" : val.url} style={{ width: "100%" }}>
                               <img src={val.web} style={{ width: "100%", height: "100%" }} />
                             </a>
                           </Grid>
                         </Hidden>
                         <Hidden mdUp>
                           <Grid container key={index}>
-                            <a href={val.url ?? ""}>
+                            <a href={val.url == "specificListingPage" ? "" : val.url}>
                               <img src={val.mobile} style={{ width: "100%", height: "100%" }} />
                             </a>
                           </Grid>
@@ -174,14 +174,14 @@ class ProductDescription extends Component {
                       <>
                         <Hidden smDown>
                           <Grid container key={index}>
-                            <a href={val.url ?? ""} style={{ width: "100%" }}>
+                            <a href={val.url == "specificListingPage" ? "" : val.url} style={{ width: "100%" }}>
                               <img src={val.web} style={{ width: "100%", height: "100%" }} />
                             </a>
                           </Grid>
                         </Hidden>
                         <Hidden mdUp>
                           <Grid container key={index}>
-                            <a href={val.url ?? ""}>
+                            <a href={val.url == "specificListingPage" ? "" : val.url}>
                               <img src={val.mobile} style={{ width: "100%", height: "100%" }} />
                             </a>
                           </Grid>

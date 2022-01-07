@@ -204,12 +204,14 @@ export default function ImageGridList(props) {
     }
     
     useEffect(()=>{
-    Aos.init({duration:2000});
+    // Aos.init({duration:2000});
      },[])
     return (
         <Grid container className={classes.root}>
             <Hidden smDown>
-                <Grid item className={classes.containerRoot} data-aos="fade-left">
+                <Grid item className={classes.containerRoot}
+                //  data-aos="fade-left"
+                 >
                     <Grid container className={classes.container}>
                         <Grid item style={{ width: "3%" }} className={classes.imgleftGrid}>
                             <img onClick={() => previous()} className={classes.imgleft} />
@@ -251,7 +253,9 @@ export default function ImageGridList(props) {
                 </Grid>
             </Hidden>
             <Hidden mdUp>
-                <Grid item className={classes.containerRoot} data-aos="fade-right">
+                <Grid item className={classes.containerRoot}
+                //  data-aos="fade-right"
+                 >
                     <Grid container className={classes.container}>
                         <Grid item className={classes.smleftGrid}>
                             <img onClick={() => previous()} className={classes.leftIc} />

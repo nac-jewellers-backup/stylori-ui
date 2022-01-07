@@ -1,4 +1,12 @@
-import { Grid, Hidden, ExpansionPanel, Container, Popover, paper, Paper } from "@material-ui/core";
+import {
+  Grid,
+  Hidden,
+  ExpansionPanel,
+  Container,
+  Popover,
+  paper,
+  Paper,
+} from "@material-ui/core";
 import Slideshow from "../Carousel/carosul";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
@@ -28,12 +36,22 @@ const mobilecarousel = (props, val, wishlist) => {
       {data.map((data_map) => (
         <Grid container spacing={12} xs={12}>
           <Grid container item xs={6}>
-            <div className={val && val.offerDiscount ? "css-ts7n45 e5toz5w4" : ""}>
-              <span style={{ color: "#fff" }} className={val && val.offerDiscount ? "e195g4sk5 css-5pjie5 ekntgft2" : ""}>
+            <div
+              className={val && val.offerDiscount ? "css-ts7n45 e5toz5w4" : ""}
+            >
+              <span
+                style={{ color: "#fff" }}
+                className={
+                  val && val.offerDiscount
+                    ? "e195g4sk5 css-5pjie5 ekntgft2"
+                    : ""
+                }
+              >
                 {val ? val.offerDiscount : null}
               </span>
               <br />
-              {data[0].ProductContactNum[0].isReadyToShip === true ? (
+              {data[0]?.ProductContactNum[0]?.isReadyToShip &&
+              data[0]?.ProductContactNum[0]?.isReadyToShip === true ? (
                 <div className="css-ts7n45-redy_toship one-day-ship-mb"></div>
               ) : (
                 ""
@@ -42,7 +60,11 @@ const mobilecarousel = (props, val, wishlist) => {
           </Grid>
           <Grid container item xs={4} />
           <Grid container item xs={2} className="css-ts7n45_wishlist">
-            <Wishlist sku={data_map.skuId} productId={data_map.productId} wishlist={wishlist} />
+            <Wishlist
+              sku={data_map?.skuId ?? ""}
+              productId={data_map?.productId ?? ""}
+              wishlist={wishlist}
+            />
           </Grid>
         </Grid>
       ))}
@@ -124,14 +146,20 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                 {/* <br /><br /> */}
               </div>
             </Hidden>
-            <Paper elevation={0} style={{ width: "100%", padding: "0px", margin: "0px " }}>
+            <Paper
+              elevation={0}
+              style={{ width: "100%", padding: "0px", margin: "0px " }}
+            >
               <Grid container className="containbev">
                 <Grid item xs={12} lg={9} md={9}>
                   <div className="price-div">
                     <Hidden mdUp>
                       <Grid container spacing={12} xs={12}>
                         <Grid container item xs={8}>
-                          <h1 className={`pdp-title ${classes.title}`} style={{ width: "90%" }}>
+                          <h1
+                            className={`pdp-title ${classes.title}`}
+                            style={{ width: "90%" }}
+                          >
                             {val.title}
                             {/* <i style={{ padding: "2px", fontSize: "12px" }} class="fa fa-info-circle" aria-hidden="true"></i> */}
                           </h1>
@@ -140,10 +168,19 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                             {data[0].ProductContactNum.map((val) => (
                               <div>
                                 <b
-                                  style={{ alignItems: "center", display: "flex" }}
+                                  style={{
+                                    alignItems: "center",
+                                    display: "flex",
+                                  }}
                                   className={`ships-by ${classes.normalfonts}`}
                                 >
-                                  <span style={{ textAlign: "center", alignItems: "center", display: "flex" }}>
+                                  <span
+                                    style={{
+                                      textAlign: "center",
+                                      alignItems: "center",
+                                      display: "flex",
+                                    }}
+                                  >
                                     {" "}
                                     {shipby_arr}
                                   </span>
@@ -152,9 +189,18 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                             ))}
                           </div>
                         </Grid>
-                        <Grid container item xs={4} alignContent="center" alignItems="center">
+                        <Grid
+                          container
+                          item
+                          xs={4}
+                          alignContent="center"
+                          alignItems="center"
+                        >
                           <Hidden mdUp>
-                            <div className={classes.width} style={{ padding: "0px 10px  0px 10px " }}>
+                            <div
+                              className={classes.width}
+                              style={{ padding: "0px 10px  0px 10px " }}
+                            >
                               <Pricing
                                 price={data[0].price}
                                 offerPrice={data[0].offerPrice}
@@ -166,7 +212,9 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                       </Grid>
                     </Hidden>
                     <Hidden smDown>
-                      <h1 className={`pdp-title ${classes.title}`}>{val.title}</h1>
+                      <h1 className={`pdp-title ${classes.title}`}>
+                        {val.title}
+                      </h1>
                     </Hidden>
                     <Hidden smDown>
                       <p className={`pdp-desc ${classes.dis}`}>{val.dis}</p>
@@ -186,8 +234,14 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                   }}
                 >
                   <Hidden smDown>
-                    <div className="starts product-icons" style={{ fontFamily: "fontawesome" }}>
-                      <div className="row social-shares" className={classes.icon}>
+                    <div
+                      className="starts product-icons"
+                      style={{ fontFamily: "fontawesome" }}
+                    >
+                      <div
+                        className="row social-shares"
+                        className={classes.icon}
+                      >
                         <i
                           class="fa fa-share-alt overall-icons"
                           aria-owns={open ? "simple-popper" : ""}
@@ -196,7 +250,11 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                         &nbsp;
                         {/* {JSON.stringify(val.productId)} */}
                         {/* <Wishlist sku={val.skuId} productId={val.productId} /> */}
-                        <Wishlist sku={val.skuId} productId={val.productId} wishlist={wishlist} />
+                        <Wishlist
+                          sku={val.skuId}
+                          productId={val.productId}
+                          wishlist={wishlist}
+                        />
                         <Popover
                           id="simple-popper"
                           open={open}
@@ -241,7 +299,10 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                           </div>
                         </Popover>
                         <div onClick={() => window.scrollTo(0, 1800)}>
-                          <Ratings ratings="starts-review" disable={"disable"} />
+                          <Ratings
+                            ratings="starts-review"
+                            disable={"disable"}
+                          />
                         </div>
                         {/* <div><Ratings ratings="starts-review" /></div> */}
                       </div>
@@ -256,7 +317,10 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
           </Grid>
 
           <Hidden smDown>
-            <div className={classes.width} style={{ padding: "0px 10px  0px 10px " }}>
+            <div
+              className={classes.width}
+              style={{ padding: "0px 10px  0px 10px " }}
+            >
               {data[0].price === data[0].offerPrice ? (
                 <Pricing offerPrice={data[0].offerPrice}>
                   {/* <Grid container spacing={12}>
@@ -321,12 +385,17 @@ class ProductPrice extends Component {
       let shipByDate = "";
       if (productShipBy) {
         dateObj = new Date(productShipBy);
-        shipByDate = `Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString("default", {
-          month: "long",
-        })} ${dateObj.getUTCFullYear()}`;
+        shipByDate = `Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString(
+          "default",
+          {
+            month: "long",
+          }
+        )} ${dateObj.getUTCFullYear()}`;
       }
+
       this.setState({
         shipby_arr: shipByDate ?? "",
+        // shipby_arr: "" ?? "",
       });
     });
   }
@@ -335,11 +404,25 @@ class ProductPrice extends Component {
     // alert(JSON.stringify(this.props.wishlist))
     return (
       <div>
-        <Hidden smDown>{Productprice(this.props, anchorEl, this.handleClick, this.handleClose, this.state)}</Hidden>
+        <Hidden smDown>
+          {Productprice(
+            this.props,
+            anchorEl,
+            this.handleClick,
+            this.handleClose,
+            this.state
+          )}
+        </Hidden>
 
         <Hidden mdUp>
           <Container style={{ paddingBottom: "6px" }}>
-            {Productprice(this.props, anchorEl, this.handleClick, this.handleClose, this.state)}
+            {Productprice(
+              this.props,
+              anchorEl,
+              this.handleClick,
+              this.handleClose,
+              this.state
+            )}
           </Container>
         </Hidden>
       </div>

@@ -135,7 +135,7 @@ const Productprice = (
 
   //   setOpenSnackBar(false);
   // };
-  console.clear();
+
 
   const isactive = props.data[0].isactive ?? "";
   return (
@@ -234,7 +234,7 @@ const Productprice = (
                       <Grid container item xs={12} alignItems="center">
                         <Grid item xs={10}>
                           <h1 className={`pdp-title ${classes.title} ${classes.titlesmScreen}`} style={{ width: "90%" }}>
-                            {val.title}
+                            {val?.title ?? ""}
                             {/* <i style={{ padding: "2px", fontSize: "12px" }} class="fa fa-info-circle" aria-hidden="true"></i> */}
                           </h1>
 
@@ -473,9 +473,9 @@ const Productprice = (
                   <Hidden smDown>
                     <div style={{ marginTop: 8 }}>
                       {isSilver ? (
-                        <div className={`pdp-title  ${classes.titleSilver}`}>{val.title}</div>
+                        <div className={`pdp-title  ${classes.titleSilver}`}>{val?.title ?? ""}</div>
                       ) : (
-                        <h5 className={`pdp-title`}>{val.title}</h5>
+                        <h5 className={`pdp-title`}>{val?.title ?? ""}</h5>
                       )}
                     </div>
                   </Hidden>

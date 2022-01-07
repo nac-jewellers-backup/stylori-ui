@@ -54,7 +54,6 @@ const initialCtx = {
 export const CartContext = React.createContext(initialCtx);
 export const CartConsumer = CartContext.Consumer;
 const Provider = (props) => {
-  console.log(props);
   const [cartFilters, setCartFilters] = React.useState(initialCtx.CartCtx);
   const [allorderdata, setallorderdata] = React.useState([]);
   const [wishlistdata, setwishlistdata] = React.useState([]);
@@ -98,7 +97,7 @@ const Provider = (props) => {
         body: JSON.stringify(user_ids_Obj),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data))
+        .then((data) => {})
         .catch((err) => console.log(err));
     };
     user_ids.length > 0 && updateCart(user_ids_Obj);
@@ -673,7 +672,6 @@ const Provider = (props) => {
             );
             var _products = { products: [session_storage] };
             var _obj = { ..._user_id, ..._products };
-            var _obj = { ..._user_id, ..._products };
             _products &&
               fetch(`${API_URL}/addtocart`, {
                 method: "post",
@@ -771,42 +769,45 @@ const Provider = (props) => {
                   ],
                 };
                 _obj = { ..._user_id, ..._products };
-                fetch(`${API_URL}/addtocart`, {
-                  method: "post",
-                  // body: {query:seoUrlResult,variables:splitHiphen()}
-                  // body: JSON.stringify({query:seoUrlResult}),
+                _products.products &&
+                  _products.products.length &&
+                  _products.products[0] !== null &&
+                  fetch(`${API_URL}/addtocart`, {
+                    method: "post",
+                    // body: {query:seoUrlResult,variables:splitHiphen()}
+                    // body: JSON.stringify({query:seoUrlResult}),
 
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    ..._obj,
-                  }),
-                })
-                  .then(status)
-                  .then(json)
-                  .then(async function (data) {
-                    if (
-                      data &&
-                      data.data &&
-                      data.data.allShoppingCartItems &&
-                      data.data.allShoppingCartItems.nodes &&
-                      data.data.allShoppingCartItems.nodes.length > 0
-                    ) {
-                      var _data = data.data.allShoppingCartItems.nodes
-                        .filter((val) => {
-                          if (val.transSkuListByProductSku) return val;
-                        })
-                        .map((val) => {
-                          return val.transSkuListByProductSku.generatedSku;
-                        });
-                      variables = { productList: _data };
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      ..._obj,
+                    }),
+                  })
+                    .then(status)
+                    .then(json)
+                    .then(async function (data) {
+                      if (
+                        data &&
+                        data.data &&
+                        data.data.allShoppingCartItems &&
+                        data.data.allShoppingCartItems.nodes &&
+                        data.data.allShoppingCartItems.nodes.length > 0
+                      ) {
+                        var _data = data.data.allShoppingCartItems.nodes
+                          .filter((val) => {
+                            if (val.transSkuListByProductSku) return val;
+                          })
+                          .map((val) => {
+                            return val.transSkuListByProductSku.generatedSku;
+                          });
+                        variables = { productList: _data };
 
-                      makeRequest(variables);
-                    } else {
-                      return val;
-                    }
-                  });
+                        makeRequest(variables);
+                      } else {
+                        return val;
+                      }
+                    });
               } else {
                 setNewUser(val);
                 return NewUser;

@@ -1100,7 +1100,6 @@ export const Jewellery = {
       url: "https://www.stylori.com/silver-jewellery-elemental+collection",
       icon: "",
     },
-
     "Mural Collection": {
       name: "Mural Collection",
       url: "https://www.stylori.com/silver-jewellery-mural+collection",
@@ -1108,17 +1107,17 @@ export const Jewellery = {
     },
     "In love Collection": {
       name: "In love Collection",
-      url: "http://www.stylori.com/silver-jewellery-inlovecollection",
+      url: "https://www.stylori.com/silver-jewellery-inlovecollection",
       icon: "",
     },
     StarStruck: {
       name: "StarStruck",
-      url: "http://www.stylori.com/silver-jewellery-starstruck+collection",
+      url: "https://www.stylori.com/silver-jewellery-starstruck+collection",
       icon: "",
     },
     "Baroque Whites Collection": {
       name: "Baroque Whites Collection",
-      url: "http://www.stylori.com/silver-jewellery-baroque+whites+collection",
+      url: "https://www.stylori.com/silver-jewellery-baroque+whites+collection",
       icon: "",
     },
   },
@@ -1221,6 +1220,7 @@ export const menuListHeader = [
     title: "GIFTS",
     url: "#",
   },
+
   {
     title: "READY TO SHIP",
     url: "/silver-jewellery-shipping+in+1+day",

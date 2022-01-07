@@ -47,6 +47,7 @@ browserHistory.listen(() => {
   window.scrollTo(0, 0);
   ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: true });
   ReactPixel.pageView();
+  
 });
 export const RouterApp = (props) => {
   const { Globalctx } = React.useContext(GlobalContext);

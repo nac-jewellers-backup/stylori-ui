@@ -27,7 +27,7 @@ export const mainlist = [
     },
     {
         name: "CSK MERCHANDISE",
-        url: "/jewellery/kada/csk_kada?sku_id=1000000",
+        url: "/silver-jewellery-csk+collection",
     },
     {
         name: "Visit Stylori Silver",
@@ -451,7 +451,7 @@ export const menuListHeader =
         { title: 'GOLD COINS', url: "/goldcoins" },
         { title: 'COLLECTIONS', url: "/collections" },
         { title: 'READY TO SHIP', url: "/jewellery-shipping+in+1+day" },
-        { title: 'CSK MERCHANDISE', url: "/jewellery/kada/csk_kada?sku_id=1000000" },
+        { title: 'CSK MERCHANDISE', url: "/silver-jewellery-csk+collection" },
         { title: 'STYLORISILVER', url: "/styloriSilver" }
     ];
 

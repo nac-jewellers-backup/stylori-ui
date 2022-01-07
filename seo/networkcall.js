@@ -3,11 +3,17 @@ const { seoUrlResult, PRODUCTDETAILS } = require("./gqlquery");
 const { API_URL } = require("./config");
 const { default: axios } = require("axios");
 const networkcall = (path, skuID) => {
-  console.log(path);
-  console.log(skuID);
+  if (path == "/styloriSilver") {
+    return {
+      title: "Online Jewellery Shopping in India | Gold and Diamond Jewellery Online",
+      description: " ",
+      imgURL: " ",
+    };
+  }
   if (skuID !== undefined) {
     var variables = { conditionfilter: { skuId: skuID } };
     return request(API_URL + "/graphql", PRODUCTDETAILS, variables).then((data) => {
+      var imgConstructURL;
       var ResultData = data.allTransSkuLists.nodes;
       imgConstructURL = ResultData[0].productListByProductId.productImagesByProductId.nodes[0].imageUrl;
 

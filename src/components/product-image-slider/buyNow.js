@@ -135,7 +135,7 @@ const Buydetails = (
   const { data } = props;
   const { classes } = props;
   // debugger;
-  const isactive = props.data[0].isactive ?? "";
+  const isactive = props?.data[0]?.isactive ?? "";
 
   return (
     <div>
@@ -246,6 +246,7 @@ const BuydetailsSilverdetailpage = (
       month: "long",
     })} ${dateObj.getUTCFullYear()}`;
   }
+
   return (
     <div>
       {isactive &&
@@ -328,7 +329,10 @@ class Component extends React.Component {
     await axios
       .post(`${API_URL}/getshippingdate`, params)
       .then((res) => {
-        this.setState({ productShipBy: res?.data?.shipping_date });
+        this.setState({
+          productShipBy: res?.data?.shipping_date,
+          // productShipBy: "",
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -515,7 +519,7 @@ class Component extends React.Component {
   render() {
     let { showimage } = this.state;
     const { classes, data, isSilver } = this.props;
-    const isactive = this.props.data[0].isactive ?? "";
+    const isactive = this?.props?.data[0]?.isactive ?? "";
     let dateObj = "";
     let shipByDate = "";
     if (this.state.productShipBy !== null && this.state.productShipBy !== "") {

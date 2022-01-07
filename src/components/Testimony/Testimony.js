@@ -40,7 +40,7 @@ export default function Testimony(props) {
                     setState(data)
                 )
             })
-            Aos.init({duration:2000});
+            // Aos.init({duration:2000});
     }, [])
 
 
@@ -54,10 +54,14 @@ export default function Testimony(props) {
                 </Grid>
                 <em className="rightImage"></em>
             </Grid>
-            <div data-aos="fade-right">
+            <div
+            //  data-aos="fade-right"
+             >
             <Testimonycarosol carosolData={state} dataCarousel={props.dataCarousel} />
             </div>
-            <div data-aos="fade-left">
+            <div 
+            // data-aos="fade-left"
+            >
             <TestimonyImage GridImage={props.GridImage} />
             </div>
         </Grid >

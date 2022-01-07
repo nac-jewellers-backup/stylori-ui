@@ -18,15 +18,15 @@ export default function PaymentHiddenForm(props) {
     isocurrency: "",
     chmod: "",
     checksum: "",
-    buyerEmail: "jay@gmail.com",
-    buyerFirstName: "Jay",
-    buyerLastName: "Soorya",
-    buyerAddress: "Address",
-    buyerCity: "Chennai",
-    buyerState: "state",
-    buyerCountry: "country",
-    buyerPhone: 9841348263,
-    buyerPinCode: "600087",
+    buyerEmail: "",
+    buyerFirstName: "",
+    buyerLastName: "",
+    buyerAddress: "",
+    buyerCity: "",
+    buyerState: "",
+    buyerCountry: "",
+    buyerPhone: "",
+    buyerPinCode: "",
   });
   const [orderId, setOrderId] = React.useState(null);
   const obj = {};
@@ -51,17 +51,8 @@ export default function PaymentHiddenForm(props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        buyerEmail: hash.buyerEmail,
-        buyerPhone: hash.buyerPhone,
-        buyerFirstName: hash.buyerFirstName,
-        buyerLastName: hash.buyerLastName,
-        buyerAddress: hash.buyerAddress,
-        buyerCity: hash.buyerCity,
-        buyerState: hash.buyerState,
-        buyerCountry: hash.buyerCountry,
-        buyerPinCode: hash.buyerPinCode,
         orderid: orderId,
-        amount: 1,
+        amount: props.data,
         //props.data
         customvar: "",
         subtype: "",
@@ -74,15 +65,24 @@ export default function PaymentHiddenForm(props) {
           // hashvalue: data.hash,
           // timedate: data.day
           ...data,
+          buyerEmail: data.buyerEmail,
+          buyerPhone: data.buyerPhone,
+          buyerFirstName: data.buyerFirstName,
+          buyerLastName: data.buyerLastName,
+          buyerAddress: data.buyerAddress,
+          buyerCity: data.buyerCity,
+          buyerState: data.buyerState,
+          buyerCountry: data.buyerCountry,
+          buyerPinCode: data.buyerPinCode,
           privatekey: data.privatekey,
           mercid: data.mercid,
           currency: data.currency,
           isocurrency: data.isocurrency,
           chmod: data.chmod,
           checksum: data.checksum,
-          amount: 1,
+          amount: data.amount,
         });
-
+       
         //  hash=data.hash
         //  day = data.day
         //  currentutc = data.currentutc
@@ -117,6 +117,7 @@ export default function PaymentHiddenForm(props) {
       .then(status)
       .then(json)
       .then((data) => {
+     
         localStorage.removeItem("order_id");
         // if (localStorage.getItem('gut_lg')) localStorage.removeItem("user_id")
         sessionStorage.removeItem("updatedProduct");
@@ -139,6 +140,7 @@ export default function PaymentHiddenForm(props) {
     if (hash.checksum) document.getElementById("sendtoairpay").submit();
   }, [hash]);
   // useEffect(()=>{if(hash.checksum) console.log(hash,orderId,"hashandorderid")},[hash])
+
   return (
     <div container>
       <form method="POST" action="https://payments.airpay.co.in/pay/index.php" id="sendtoairpay">

@@ -18,7 +18,6 @@ let jewelleryThemes = responsiveFontSizes(jewellery_theme);
 let silverThemes = responsiveFontSizes(silver_jewellery_theme);
 const RouterApp = React.lazy(() => import("router"));
 
-
 const theme_func = () => {
   if (window.location.pathname === "/StyloriSilver") {
     return silverThemes;

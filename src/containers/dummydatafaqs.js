@@ -30,7 +30,7 @@ export const faqs = {
       Title: "Frequently asked Questions",
       font: "h2",
       accordianIcon: "Arrows",
-
+      //{"Arrows","Plus","none"}
       accordian: [
         {
           Questions: "What is Stylori ?",
@@ -77,7 +77,7 @@ export const faqs = {
         },
       ],
     },
-
+    
     {
       Title: "Delivery Related Queries",
       font: "h4",
@@ -284,7 +284,8 @@ export const deliveryreturns = {
         },
         {
           Questions: "Customer Care",
-          Answers: "<ul style=\"list-style-type: disc !important \">hello@stylori.com<br/>9952625252<br/>Timings: 10 am – 7 pm <br/></ul>",
+          Answers:
+            '<ul style="list-style-type: disc !important ">hello@stylori.com<br/>9952625252<br/>Timings: 10 am – 7 pm <br/></ul>',
         },
       ],
     },

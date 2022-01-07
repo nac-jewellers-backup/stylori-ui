@@ -18,7 +18,7 @@ import { useNetworkRequest } from "hooks/index";
 const inputsearch = (props, state, handleChanges, handleCodChange) => {
   const { data } = props;
   const { classes } = props;
-  debugger;
+
 
   return (
     <div
@@ -173,7 +173,7 @@ class Component extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showimage: this.props.data[0].fadeImages[0],
+      showimage: this?.props?.data[0]?.fadeImages[0] ?? "",
       open: false,
       values: "",
       pincodeValues: {},

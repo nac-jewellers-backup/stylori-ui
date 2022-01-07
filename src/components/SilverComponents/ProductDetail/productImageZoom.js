@@ -32,13 +32,13 @@ class ProductImageZoom extends React.Component {
   state = {
     // backgroundImage: `url(${src})`,
     backgroundPosition: '0% 0%',
-    showimage: this.props.data[0].fadeImages[0]
+    showimage: this?.props?.data[0]?.fadeImages[0] ?? ""
   }
 
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
-    if (this.props.data[0].fadeImages[0] !== prevProps.data[0].fadeImages[0]) {
-      this.setState({ showimage: this.props.data[0].fadeImages[0] })
+    if (this?.props?.data[0]?.fadeImages[0] !== prevProps?.data[0]?.fadeImages[0]) {
+      this.setState({ showimage: this?.props?.data[0]?.fadeImages[0] })
     }
   }
 
@@ -49,7 +49,7 @@ class ProductImageZoom extends React.Component {
     const { showimage } = this.state;
     const dataCarousel = {
       infinite: false,
-      slidesToShow: data[0] && data[0].fadeImages.length > 3 ? limit : data[0].fadeImages.length,
+      slidesToShow: data[0] && data[0]?.fadeImages?.length > 3 ? limit : data[0]?.fadeImages?.length,
       slidesToScroll: 1,
       vertical: true,
       verticalSwiping: true,
@@ -68,7 +68,7 @@ class ProductImageZoom extends React.Component {
               </Button> */}
               <Slideshow sliderRef={this.slider}
                 getmsg={this.getimage} class="vertical-carousel" imgClass='vertical-carousel-img'
-                fadeImages={data[0].fadeImages} dataCarousel={dataCarousel} />
+                fadeImages={data[0]?.fadeImages ?? ""} dataCarousel={dataCarousel} />
               {/* <Button onClick={this.next}>
                 <i class="fa fa-angle-down" style={{ fontSize: "35px", color: "#F699A3" }}
                 // className={`${classes.colorMain}`}

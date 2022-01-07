@@ -17,8 +17,10 @@ import { withStyles } from "@material-ui/core/styles";
 import "../../../components/Checkout/Cart.css";
 import "../chckout.css";
 import Footer from "components/Footer/Footer";
-import ReactGA from 'react-ga';
-const order_id = localStorage.getItem("order_id") ? JSON.parse(localStorage.getItem("order_id")) : "";
+
+const order_id = localStorage.getItem("order_id")
+  ? JSON.parse(localStorage.getItem("order_id"))
+  : "";
 const breadcrumsdata = [
   { title: "Shopping Bag" },
   { title: "Login/ Register" },
@@ -77,11 +79,14 @@ class PaymentResponseSuccess extends React.Component {
   };
 
   componentDidMount() {
-    if (localStorage.getItem("gut_lg") && localStorage.getItem("user_id")) localStorage.removeItem("user_id");
+    if (localStorage.getItem("gut_lg") && localStorage.getItem("user_id"))
+      localStorage.removeItem("user_id");
   }
   render() {
     // alert(JSON.stringify(this.props.data))
-    let gut_lg = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : {};
+    let gut_lg = localStorage.getItem("gut_lg")
+      ? JSON.parse(localStorage.getItem("gut_lg"))
+      : {};
     const { data, classes } = this.props;
     return (
       <>
@@ -96,11 +101,26 @@ class PaymentResponseSuccess extends React.Component {
           /> */}
         <Grid container justify="center" style={{ paddingTop: "10px" }}>
           <Hidden smDown>
-            <Grid container justify="center" style={{ padding: "15px 5px 5px 15px" }}>
+            <Grid
+              container
+              justify="center"
+              style={{ padding: "15px 5px 5px 15px" }}
+            >
               <Grid container>
-                <Grid item style={{ display: "flex", marginRight: "auto", paddingRight: "2px" }}>
+                <Grid
+                  item
+                  style={{
+                    display: "flex",
+                    marginRight: "auto",
+                    paddingRight: "2px",
+                  }}
+                >
                   <Button
-                    style={{ background: "#ed1165", color: "#fff", padding: "5px 20px" }}
+                    style={{
+                      background: "#ed1165",
+                      color: "#fff",
+                      padding: "5px 20px",
+                    }}
                     onClick={() => {
                       localStorage.removeItem("a__c_t");
                       localStorage.removeItem("panel");
@@ -125,13 +145,20 @@ class PaymentResponseSuccess extends React.Component {
             <Grid item xs={10} sm={10} md={6} className="contant-center">
               <Grid item className="container-font-size">
                 {" "}
-                <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>&nbsp;&nbsp;Thank you!&nbsp;&nbsp;Your
-                order has been placed.
+                <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
+                &nbsp;&nbsp;Thank you!&nbsp;&nbsp;Your order has been placed.
               </Grid>
             </Grid>
           </Grid>
           <Grid container justify="center">
-            <Grid item xs={12} sm={12} md={6} className="contant-center" style={{ paddingLeft: "10px" }}>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={6}
+              className="contant-center"
+              style={{ paddingLeft: "10px" }}
+            >
               We've send you an email confirmation.&nbsp;
               <a
                 onClick={() => {
@@ -160,7 +187,15 @@ class PaymentResponseSuccess extends React.Component {
 }
 const Components = (props) => {
   let {
-    CartCtx: { cartFilters, data, loading, error, allorderdata, allordersuccesful, wishlistdata },
+    CartCtx: {
+      cartFilters,
+      data,
+      loading,
+      error,
+      allorderdata,
+      allordersuccesful,
+      wishlistdata,
+    },
   } = React.useContext(CartContext);
   let content, mapped;
   if (!loading && !error) {
@@ -179,7 +214,14 @@ const Components = (props) => {
       </div>
     );
   } else
-    content = <PaymentResponseSuccess {...props} data={mapped} allorderdata={allordersuccesful} wishlistdata={wishlistdata} />;
+    content = (
+      <PaymentResponseSuccess
+        {...props}
+        data={mapped}
+        allorderdata={allordersuccesful}
+        wishlistdata={wishlistdata}
+      />
+    );
   return content;
 };
 

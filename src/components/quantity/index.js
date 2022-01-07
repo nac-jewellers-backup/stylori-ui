@@ -45,8 +45,7 @@ const handleQty = (isMaxMin, _incrementQty, _maxOrderQty, setClass, state, skuId
 };
 
 const Quantity = (props) => {
-  debugger;
-  console.log(props);
+  
   const {
     ProductDetailCtx: { filters },
     setFilters,

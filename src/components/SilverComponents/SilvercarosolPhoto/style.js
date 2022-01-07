@@ -12,6 +12,7 @@ export const useStyles = makeStyles((theme) => ({
       padding: "20px 10px 22px 10px ",
       textAlign: "center",
       fontSize: "0.77rem",
+      color:"white"
     },
   },
   seoText: {
@@ -19,6 +20,9 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     color:'white',
     display: "flex",
+    [theme.breakpoints.down('sm')]:{
+      marginBottom:10
+    }
   },
   seoTextNobackground:{
     backgroundColor: 'unset !important',
@@ -27,7 +31,8 @@ export const useStyles = makeStyles((theme) => ({
   backgroundImageColor:{
     background:"rgb(6, 171, 159)",
     [theme.breakpoints.down('sm')]:{
-      background:'transparent'
+      // background:'transparent',
+      background:"rgb(6, 171, 159)",
     }
   }
 }));
