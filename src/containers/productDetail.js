@@ -41,6 +41,8 @@ import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import NeedHelp from "../components/needHelp";
 import ReactPixel from "react-facebook-pixel";
+import TagManager from "react-gtm-module";
+
 // import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
@@ -50,32 +52,43 @@ class ProductDetail extends Component {
       clear: "",
       data: null,
     };
-    // console.log(
-    //   "----------this.props.data--------- CONSTRUCTOR",
-    //   this.props.data
-    // );
   }
   componentDidMount() {
-    // import("react-facebook-pixel")
-    //   .then((module) => module.default)
-    //   .then((ReactPixel) => {
-    //     ReactPixel.init("1464338023867789");
-    //     ReactPixel.pageView();
-    //   });
+    // Facebook Pixel Code
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
     ReactPixel.track("PageView");
 
-    // ReactPixel.fbq("track", "AddToCart");
+    // Google Tag Manager
+    const tagManagerArgs = {
+      gtmId: "GTM-PW3ZXSF",
+      dataLayer: {
+        ecommerce: {
+          detail: {
+            actionField: { list: "Apparel Gallery" },
+            products: [
+              {
+                name: this?.props?.data[0]?.title,
+                id: this?.props?.data[0]?.skuId,
+                price: this?.props?.data[0]?.offerPrice,
+                category: this?.props?.data[0]?.productType,
+              },
+            ],
+          },
+        },
+      },
+    };
+    this.props.data && TagManager.initialize(tagManagerArgs);
   }
-  UNSAFE_componentWillMount() {
-    // this.handleOGTag()
-  }
+  UNSAFE_componentWillMount() {}
 
   handleOGTag = () => {
     if (this.props.data && this.props.data.length > 0) {
       var arr = [
         { key: "Description", value: this?.props.data[0]?.dis },
-        { key: "keywords", value: this?.props?.data[0]?.productsPendants[0]?.name },
+        {
+          key: "keywords",
+          value: this?.props?.data[0]?.productsPendants[0]?.name,
+        },
         { key: "og_site_name", value: "Stylori.com" },
         { key: "og_title", value: this?.props?.data[0]?.title },
         { key: "og_type", value: "website_stylori" },
@@ -189,7 +202,10 @@ class ProductDetail extends Component {
           />
           <meta property="og:url" content={window.location.href} />
           <meta property="og:site_name" content="Stylori" />
-          <meta name="twitter:title" content={this?.props?.data[0]?.title ?? ""}></meta>
+          <meta
+            name="twitter:title"
+            content={this?.props?.data[0]?.title ?? ""}
+          ></meta>
           <meta
             name="twitter:description"
             content={this?.props?.data[0]?.dis ?? ""}

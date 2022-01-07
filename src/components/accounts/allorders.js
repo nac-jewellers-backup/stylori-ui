@@ -72,8 +72,8 @@ class Allorders extends React.Component {
           this?.props?.allorderdata?.data?.allOrders?.nodes[0]
             .shoppingCartByCartId.discountedPrice,
         currency: "INR",
+        items: gData,
       },
-      items: gData,
     };
     TagManager.initialize(tagManagerArgs);
   }
