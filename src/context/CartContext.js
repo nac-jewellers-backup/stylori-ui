@@ -672,7 +672,9 @@ const Provider = (props) => {
             );
             var _products = { products: [session_storage] };
             var _obj = { ..._user_id, ..._products };
-            _products &&
+            _products.products &&
+              _products.products.length &&
+              _products.products[0] !== null &&
               fetch(`${API_URL}/addtocart`, {
                 method: "post",
                 // body: {query:seoUrlResult,variables:splitHiphen()}

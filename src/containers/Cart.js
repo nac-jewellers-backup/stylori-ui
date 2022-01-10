@@ -52,7 +52,7 @@ class Cart extends React.Component {
 
     let gData = [];
     let TData = this?.props?.data;
-    debugger;
+    
     TData.map((l) => {
       let data = {
         name: l?.prdheader,
