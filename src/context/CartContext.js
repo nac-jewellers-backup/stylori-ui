@@ -368,7 +368,11 @@ const Provider = (props) => {
             }
           ).length > 0
         ) {
-          user_id && products && products.length && addtocart(addcart);
+          user_id &&
+            products &&
+            products.length &&
+            products[0] != null &&
+            addtocart(addcart);
         }
         orderobj["userProfileId"] = user_id;
         sessionStorage.setItem("user_id", user_id);
@@ -673,7 +677,7 @@ const Provider = (props) => {
             var _products = { products: [session_storage] };
             var _obj = { ..._user_id, ..._products };
             _user_id &&
-            _products.products &&
+              _products.products &&
               _products.products.length &&
               _products.products[0] !== null &&
               fetch(`${API_URL}/addtocart`, {
@@ -858,7 +862,11 @@ const Provider = (props) => {
             }
           ).length > 0
         ) {
-          user_id && products && products.length && addtocart(addcart);
+          user_id &&
+            products &&
+            products.length &&
+            products[0] != null &&
+            addtocart(addcart);
         }
         orderobj["userProfileId"] = user_id;
         sessionStorage.setItem("user_id", user_id);
@@ -939,6 +947,7 @@ const Provider = (props) => {
         _user_id &&
           _products.products &&
           _products.products.length &&
+          _products.products[0] != null &&
           addtocart(_obj);
       }
 
