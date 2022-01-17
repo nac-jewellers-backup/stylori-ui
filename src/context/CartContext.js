@@ -65,7 +65,7 @@ const Provider = (props) => {
 
   // useEffect(() => {
   //   const updateCart = () => {
-  //     // debugger;
+  //     //
   //     console.log(API_URL);
   //     let cartId = JSON.parse(localStorage.getItem("cart_id")) ?? "";
 
@@ -247,6 +247,7 @@ const Provider = (props) => {
       localStorage.removeItem("bil_isactive");
       window.location.pathname = `/paymentsuccess/${order_idx}`;
     }
+
     if (
       crtdata &&
       Object.keys(crtdata).length > 0 &&
@@ -483,7 +484,7 @@ const Provider = (props) => {
     localStorage.setItem("quantity", JSON.stringify(obj));
   };
 
-  const updateProductList = () => {
+  const updateProductList = async () => {
     let variables;
     if (localStorage.getItem("user_id")) {
       const status = (response) => {
@@ -511,7 +512,7 @@ const Provider = (props) => {
 
       //  alert(JSON.stringify(this.state.checked))
 
-      axios
+      await axios
         .post(
           `${API_URL}/graphql`,
           JSON.stringify({
@@ -558,6 +559,7 @@ const Provider = (props) => {
             localStorageCartDetails && localStorageCartDetails.products
               ? localStorageCartDetails.products
               : [];
+
           if (localStorageCartDetails) {
             cartItems.map((valresult) => {
               localStorageCartDetails = JSON.parse(
@@ -716,6 +718,15 @@ const Provider = (props) => {
                     return [];
                   }
                 });
+
+            if (_products.products[0] == null) {
+              let _data = [];
+              val.data.allShoppingCarts.nodes[0].shoppingCartItemsByShoppingCartId.nodes.map(
+                (l) => _data.push(l.productSku)
+              );
+              variables = { productList: _data };
+              _data && makeRequest(variables);
+            }
           } else {
             // alert(JSON.stringify(val.data.allShoppingCarts.nodes.length>0))
             // if(val.data.allShoppingCarts.nodes.length>0){
@@ -739,6 +750,7 @@ const Provider = (props) => {
                   shoppingCartId: val.data.allShoppingCarts.nodes[0].id,
                 },
               };
+
               fetch(`${API_URL}/graphql`, {
                 method: "post",
                 // body: {query:seoUrlResult,variables:splitHiphen()}
@@ -763,6 +775,7 @@ const Provider = (props) => {
                       return val.transSkuListByProductSku.generatedSku;
                     });
                   variables = { productList: _data };
+
                   makeRequest(variables);
                 });
             } else {

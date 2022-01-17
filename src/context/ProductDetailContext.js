@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import { useGraphql } from "hooks/GraphqlHook";
-import { PRODUCTDETAILS, conditions, YouMayAlsoLike, youRecentlyViewed } from "queries/productdetail";
+import {
+  PRODUCTDETAILS,
+  conditions,
+  YouMayAlsoLike,
+  youRecentlyViewed,
+} from "queries/productdetail";
 import { withRouter } from "react-router-dom";
 import { GlobalContext } from "context";
 // import useRegister from '../components/LoginAndRegister/useregister';
@@ -42,7 +47,9 @@ export const TabsProvider = (props) => {
   // GLOBAL CONTEXT
   const { Globalctx } = React.useContext(GlobalContext);
 
-  const [filters, setFilters] = React.useState(initialCtx.ProductDetailCtx.filters);
+  const [filters, setFilters] = React.useState(
+    initialCtx.ProductDetailCtx.filters
+  );
   const [likedatas, setlikedata] = React.useState([]);
   const [viewedddatas, setvieweddata] = React.useState();
   const [rating, setrating] = React.useState([]);
@@ -61,28 +68,35 @@ export const TabsProvider = (props) => {
     pathQueries();
   }, [filters]);
   let variables;
-  const { loading, error, data, makeRequest } = useGraphql(PRODUCTDETAILS, () => {}, {});
-
-  const { loading: likeloading, error: likeerror, data: likedata, makeRequest: likemakeRequest } = useGraphql(
-    YouMayAlsoLike,
+  const { loading, error, data, makeRequest } = useGraphql(
+    PRODUCTDETAILS,
     () => {},
-    {},
-    false
+    {}
   );
+
+  const {
+    loading: likeloading,
+    error: likeerror,
+    data: likedata,
+    makeRequest: likemakeRequest,
+  } = useGraphql(YouMayAlsoLike, () => {}, {}, false);
   // youRecentlyViewed
   // "filtersku": {"skuId": {"in": ["SB0013-18110000","SB0013-18210000"]}}
-  const { loading: viewedloading, error: viewederror, data: vieweddata, makeRequest: viewmakeRequest } = useGraphql(
-    youRecentlyViewed,
-    () => {},
-    {},
-    false
-  );
+  const {
+    loading: viewedloading,
+    error: viewederror,
+    data: vieweddata,
+    makeRequest: viewmakeRequest,
+  } = useGraphql(youRecentlyViewed, () => {}, {}, false);
   // useEffect(()=>{
   //     likemakeRequest(vardata)
   // },[])
-  var con_gust = localStorage.getItem("gut_lg") ? JSON.parse(localStorage.getItem("gut_lg")) : "";
+  var con_gust = localStorage.getItem("gut_lg")
+    ? JSON.parse(localStorage.getItem("gut_lg"))
+    : "";
   const myStorage = sessionStorage.getItem("user_id");
-  const localvalues_check = JSON.parse(localStorage.getItem("gut_lg")) === true ? true : false;
+  const localvalues_check =
+    JSON.parse(localStorage.getItem("gut_lg")) === true ? true : false;
   React.useEffect(() => {
     if (localvalues_check === true) {
       if (con_gust === true) {
@@ -101,7 +115,9 @@ export const TabsProvider = (props) => {
     setvieweddata(vieweddata);
   }, [vieweddata, price, data]);
   useEffect(() => {
-    let localStorageQuantity = localStorage.getItem("quantity") ? JSON.parse(localStorage.getItem("quantity")) : null;
+    let localStorageQuantity = localStorage.getItem("quantity")
+      ? JSON.parse(localStorage.getItem("quantity"))
+      : null;
 
     if (localStorageQuantity) {
       filters.quantity = localStorageQuantity;
@@ -119,7 +135,6 @@ export const TabsProvider = (props) => {
         variables = { conditionfilter: { skuId: filters["skuId"] } };
       } else {
         var urls = window.location.href;
-
         var urlssplit = urls.split("/");
         var urlReplace = urlssplit[urlssplit.length - 1].replace(/-/g, " ");
         variables = {
@@ -143,7 +158,10 @@ export const TabsProvider = (props) => {
 
   useEffect(() => {
     if (Object.entries(data).length !== 0 && data.constructor === Object) {
-      if (data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
+      if (
+        data.data.allTransSkuLists &&
+        data.data.allTransSkuLists.nodes.length > 0
+      ) {
         handleProductDetatiContext();
       }
     }
@@ -223,7 +241,9 @@ export const TabsProvider = (props) => {
             };
           }
         } else {
-          var productType = data.data.allTransSkuLists.nodes[0].productListByProductId.productType;
+          var productType =
+            data.data.allTransSkuLists.nodes[0].productListByProductId
+              .productType;
           variableslike["filterdata"] = {
             and: { productType: { equalTo: productType } },
           };
@@ -309,7 +329,9 @@ export const TabsProvider = (props) => {
             };
           }
         } else {
-          var productType2 = data.data.allTransSkuLists.nodes[0].productListByProductId.productType;
+          var productType2 =
+            data.data.allTransSkuLists.nodes[0].productListByProductId
+              .productType;
           variableslike["filterdata2"] = {
             and: { productType: { equalTo: productType2 } },
           };
@@ -392,7 +414,12 @@ export const TabsProvider = (props) => {
     }
   }, [loading, error, data, price]);
   const updateProductList = async () => {
-    if (variables && Object.entries(variables).length !== 0 && variables.constructor === Object) {
+    if (
+      variables &&
+      Object.entries(variables).length !== 0 &&
+      variables.constructor === Object
+    ) {
+     
       await makeRequest(variables);
     } else {
       return {};
@@ -405,7 +432,8 @@ export const TabsProvider = (props) => {
     if (window.location.search.length > 0) {
       let loc = window.location.search.split("=");
       let productDetailProps = loc[1].split("-");
-      filters["productId"] = data.data.allTransSkuLists.nodes[0].productListByProductId.productId;
+      filters["productId"] =
+        data.data.allTransSkuLists.nodes[0].productListByProductId.productId;
     }
 
     // filters['defaultVariants']['diamondType'] = data.data.allTransSkuLists.nodes[0].diamondType
@@ -430,19 +458,28 @@ export const TabsProvider = (props) => {
   };
   useEffect(() => {
     if (Object.entries(data).length !== 0 && data.constructor === Object) {
-      if (data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
+      if (
+        data.data &&
+        data.data.allTransSkuLists &&
+        data.data.allTransSkuLists.nodes.length > 0
+      ) {
         if (!data.data.allTransSkuLists.nodes[0].isActive) {
           props.history.push("/jewellery");
         }
-        filters["defaultVariants"]["diamondType"] = data.data.allTransSkuLists.nodes[0].diamondType;
-        filters["defaultVariants"]["metalColor"] = data.data.allTransSkuLists.nodes[0].metalColor;
-        filters["defaultVariants"]["purity"] = data.data.allTransSkuLists.nodes[0].purity;
-        filters["defaultVariants"]["skuSize"] = data.data.allTransSkuLists.nodes[0].skuSize;
+        filters["defaultVariants"]["diamondType"] =
+          data.data.allTransSkuLists.nodes[0].diamondType;
+        filters["defaultVariants"]["metalColor"] =
+          data.data.allTransSkuLists.nodes[0].metalColor;
+        filters["defaultVariants"]["purity"] =
+          data.data.allTransSkuLists.nodes[0].purity;
+        filters["defaultVariants"]["skuSize"] =
+          data.data.allTransSkuLists.nodes[0].skuSize;
         // filters['skuId'] = data.data.allTransSkuLists.nodes[0].skuId
         filters["skuId"] = data.data.allTransSkuLists.nodes[0].skuId;
         // window.location.search=`${`skuId=${filters['skuId']}`}`
         if (window.location.search.length === 0) {
-          filters["productId"] = data.data.allTransSkuLists.nodes[0].productListByProductId.productId;
+          filters["productId"] =
+            data.data.allTransSkuLists.nodes[0].productListByProductId.productId;
         }
         setFilters(filters);
       }
@@ -453,7 +490,9 @@ export const TabsProvider = (props) => {
       let loc = window.location.search.split("=");
       let productDetailProps = loc[1];
       if (filters["skuId"] !== productDetailProps)
-        props.history.push(`${props.location.pathname}?${`skuId=${filters["skuId"]}`}`);
+        props.history.push(
+          `${props.location.pathname}?${`skuId=${filters["skuId"]}`}`
+        );
     }
   }, [data, loading, error]);
   useEffect(() => {
@@ -467,10 +506,21 @@ export const TabsProvider = (props) => {
       let loc = window.location.search.split("=");
       let productDetailProps = loc[1];
       if (filters["skuId"] !== productDetailProps)
-        props.history.push(`${props.location.pathname}?${`skuId=${filters["skuId"]}`}`);
+        props.history.push(
+          `${props.location.pathname}?${`skuId=${filters["skuId"]}`}`
+        );
     }
   }, [data, loading, error]);
-  useEffect(() => {}, [likedata, likeerror, likeloading, loading, error, data, price, filters]);
+  useEffect(() => {}, [
+    likedata,
+    likeerror,
+    likeloading,
+    loading,
+    error,
+    data,
+    price,
+    filters,
+  ]);
 
   // useEffect(()=>{
   //     console.info('priceprice_price',price, data )
