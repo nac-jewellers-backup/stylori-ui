@@ -48,20 +48,21 @@ class Allorders extends React.Component {
     let TData =
       this?.props?.allorderdata?.data?.allOrders?.nodes[0]?.shoppingCartByCartId
         ?.shoppingCartItemsByShoppingCartId.nodes;
-
-    TData.map((l) => {
-      let data = {
-        id: l?.transSkuListByProductSku?.generatedSku,
-        name: l?.transSkuListByProductSku?.productListByProductId?.productName,
-        list_name: "Search Results",
-        category:
-          l?.transSkuListByProductSku?.productListByProductId?.productType,
-        list_position: 1,
-        quantity: l?.qty,
-        price: l?.transSkuListByProductSku?.markupPrice,
-      };
-      gData.push(data);
-    });
+    TData &&
+      TData.map((l) => {
+        let data = {
+          id: l?.transSkuListByProductSku?.generatedSku,
+          name: l?.transSkuListByProductSku?.productListByProductId
+            ?.productName,
+          list_name: "Search Results",
+          category:
+            l?.transSkuListByProductSku?.productListByProductId?.productType,
+          list_position: 1,
+          quantity: l?.qty,
+          price: l?.transSkuListByProductSku?.markupPrice,
+        };
+        gData.push(data);
+      });
     const tagManagerArgs = {
       gtmId: "GTM-PW3ZXSF",
       events: {
@@ -75,7 +76,7 @@ class Allorders extends React.Component {
         items: gData,
       },
     };
-    TagManager.initialize(tagManagerArgs);
+    TData && TagManager.initialize(tagManagerArgs);
   }
 
   handleChange = (panel) => (event) => {
