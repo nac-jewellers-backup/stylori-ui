@@ -1,12 +1,26 @@
 import React, { useEffect } from "react";
 import { useGraphql } from "hooks/GraphqlHook";
-import { PRODUCTDETAILS, conditions, YouMayAlsoLike, youRecentlyViewed } from "queries/productdetail";
+import {
+  PRODUCTDETAILS,
+  conditions,
+  YouMayAlsoLike,
+  youRecentlyViewed,
+} from "queries/productdetail";
 import { withRouter } from "react-router-dom";
 // import useRegister from '../components/LoginAndRegister/useregister';
 // const { setValues } = useRegister();
 const initialCtx = {
   ProductDetailCtx: {
-    filters: { productId: "", defaultVariants: { diamondType: "", metalColor: "", purity: "", skuSize: "" }, skuId: "" },
+    filters: {
+      productId: "",
+      defaultVariants: {
+        diamondType: "",
+        metalColor: "",
+        purity: "",
+        skuSize: "",
+      },
+      skuId: "",
+    },
     loading: false,
     error: false,
     data: [],
@@ -28,7 +42,9 @@ const initialCtx = {
 export const ProductDetailContext = React.createContext(initialCtx);
 export const ProductDetailConsumer = ProductDetailContext.Consumer;
 export const TabsProvider = (props) => {
-  const [filters, setFilters] = React.useState(initialCtx.ProductDetailCtx.filters);
+  const [filters, setFilters] = React.useState(
+    initialCtx.ProductDetailCtx.filters
+  );
   const [likedatas, setlikedata] = React.useState([]);
   const [viewedddatas, setvieweddata] = React.useState();
   const [rating, setrating] = React.useState([]);
@@ -45,24 +61,26 @@ export const TabsProvider = (props) => {
     pathQueries();
   }, [filters]);
   let variables;
-  const { loading, error, data, makeRequest } = useGraphql(PRODUCTDETAILS, () => {}, {});
-
- 
-
-  const { loading: likeloading, error: likeerror, data: likedata, makeRequest: likemakeRequest } = useGraphql(
-    YouMayAlsoLike,
+  const { loading, error, data, makeRequest } = useGraphql(
+    PRODUCTDETAILS,
     () => {},
-    {},
-    false
+    {}
   );
+
+  const {
+    loading: likeloading,
+    error: likeerror,
+    data: likedata,
+    makeRequest: likemakeRequest,
+  } = useGraphql(YouMayAlsoLike, () => {}, {}, false);
   // youRecentlyViewed
   // "filtersku": {"skuId": {"in": ["SB0013-18110000","SB0013-18210000"]}}
-  const { loading: viewedloading, error: viewederror, data: vieweddata, makeRequest: viewmakeRequest } = useGraphql(
-    youRecentlyViewed,
-    () => {},
-    {},
-    false
-  );
+  const {
+    loading: viewedloading,
+    error: viewederror,
+    data: vieweddata,
+    makeRequest: viewmakeRequest,
+  } = useGraphql(youRecentlyViewed, () => {}, {}, false);
   // useEffect(()=>{
   //     likemakeRequest(vardata)
   // },[])
@@ -85,7 +103,12 @@ export const TabsProvider = (props) => {
         var urls = window.location.href;
         var urlssplit = urls.split("/");
         var urlReplace = urlssplit[urlssplit.length - 1].replace(/-/g, " ");
-        variables = { productnamefilter: { productListByProductId: { productName: { equalTo: urlReplace } } }, number: 1 };
+        variables = {
+          productnamefilter: {
+            productListByProductId: { productName: { equalTo: urlReplace } },
+          },
+          number: 1,
+        };
       }
     }
 
@@ -101,7 +124,10 @@ export const TabsProvider = (props) => {
 
   useEffect(() => {
     if (Object.entries(data).length !== 0 && data.constructor === Object) {
-      if (data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
+      if (
+        data.data.allTransSkuLists &&
+        data.data.allTransSkuLists.nodes.length > 0
+      ) {
         handleProductDetatiContext();
       }
     }
@@ -131,9 +157,19 @@ export const TabsProvider = (props) => {
       };
       // let locviewdata = data.data.allTransSkuLists.nodes[0].skuId
       if (_sessionStorage && _sessionStorage.indexOf(",") > -1) {
-        variablesviewed["filtersku"] = { skuId: { in: sessionStorage.getItem("skuId").split(","), notEqualTo: filters.skuId } };
+        variablesviewed["filtersku"] = {
+          skuId: {
+            in: sessionStorage.getItem("skuId").split(","),
+            notEqualTo: filters.skuId,
+          },
+        };
       } else {
-        variablesviewed["filtersku"] = { skuId: { in: [sessionStorage.getItem("skuId")], notEqualTo: filters.skuId } };
+        variablesviewed["filtersku"] = {
+          skuId: {
+            in: [sessionStorage.getItem("skuId")],
+            notEqualTo: filters.skuId,
+          },
+        };
       }
       let variableslike = {};
       let recommended_products = window.location.pathname.split("/");
@@ -153,10 +189,16 @@ export const TabsProvider = (props) => {
         data.data.allTransSkuLists.nodes[0]
       ) {
         if (filters["productType"] && filters["productType"].length > 0) {
-          variableslike["filterdata"] = { productType: { equalTo: filters["productType"] } };
+          variableslike["filterdata"] = {
+            productType: { equalTo: filters["productType"] },
+          };
         } else {
-          var productType = data.data.allTransSkuLists.nodes[0].productListByProductId.productType;
-          variableslike["filterdata"] = { productType: { equalTo: productType } };
+          var productType =
+            data.data.allTransSkuLists.nodes[0].productListByProductId
+              .productType;
+          variableslike["filterdata"] = {
+            productType: { equalTo: productType },
+          };
         }
       }
 
@@ -205,10 +247,16 @@ export const TabsProvider = (props) => {
         data.data.allTransSkuLists.nodes[0]
       ) {
         if (filters["productType"] && filters["productType"].length > 0) {
-          variableslike["filterdata2"] = { productType: { equalTo: filters["productType"] } };
+          variableslike["filterdata2"] = {
+            productType: { equalTo: filters["productType"] },
+          };
         } else {
-          var productType2 = data.data.allTransSkuLists.nodes[0].productListByProductId.productType;
-          variableslike["filterdata2"] = { productType: { equalTo: productType2 } };
+          var productType2 =
+            data.data.allTransSkuLists.nodes[0].productListByProductId
+              .productType;
+          variableslike["filterdata2"] = {
+            productType: { equalTo: productType2 },
+          };
         }
       }
 
@@ -273,7 +321,10 @@ export const TabsProvider = (props) => {
     }
   }, [loading, error, data, price]);
   const updateProductList = async () => {
-    if (Object.entries(variables).length !== 0 && variables.constructor === Object) {
+    if (
+      Object.entries(variables).length !== 0 &&
+      variables.constructor === Object
+    ) {
       await makeRequest(variables);
     } else {
       return {};
@@ -303,23 +354,34 @@ export const TabsProvider = (props) => {
       filters.defaultVariants.metalColor.length > 0
         ? { productColor: filters.defaultVariants.metalColor }
         : null;
-    var ProductVariants = { conditionfilter: { productId: filters["productId"], ...variants } };
+    var ProductVariants = {
+      conditionfilter: { productId: filters["productId"], ...variants },
+    };
     var ConditionimagesMetalColor = { conditionImage: metalColors };
     variables = { ...ProductVariants, ...ConditionimagesMetalColor };
   };
   useEffect(() => {
     if (Object.entries(data).length !== 0 && data.constructor === Object) {
-      if (data.data && data.data.allTransSkuLists && data.data.allTransSkuLists.nodes.length > 0) {
-        filters["defaultVariants"]["diamondType"] = data.data.allTransSkuLists.nodes[0].diamondType;
-        filters["defaultVariants"]["metalColor"] = data.data.allTransSkuLists.nodes[0].metalColor;
-        filters["defaultVariants"]["purity"] = data.data.allTransSkuLists.nodes[0].purity;
-        filters["defaultVariants"]["skuSize"] = data.data.allTransSkuLists.nodes[0].skuSize;
+      if (
+        data.data &&
+        data.data.allTransSkuLists &&
+        data.data.allTransSkuLists.nodes.length > 0
+      ) {
+        filters["defaultVariants"]["diamondType"] =
+          data.data.allTransSkuLists.nodes[0].diamondType;
+        filters["defaultVariants"]["metalColor"] =
+          data.data.allTransSkuLists.nodes[0].metalColor;
+        filters["defaultVariants"]["purity"] =
+          data.data.allTransSkuLists.nodes[0].purity;
+        filters["defaultVariants"]["skuSize"] =
+          data.data.allTransSkuLists.nodes[0].skuSize;
         // filters['skuId'] = data.data.allTransSkuLists.nodes[0].skuId
         filters["skuId"] = data.data.allTransSkuLists.nodes[0].skuId;
 
         // window.location.search=`${`skuId=${filters['skuId']}`}`
         if (window.location.search.length === 0) {
-          filters["productId"] = data.data.allTransSkuLists.nodes[0].productListByProductId.productId;
+          filters["productId"] =
+            data.data.allTransSkuLists.nodes[0].productListByProductId.productId;
         }
         setFilters(filters);
       }
@@ -330,7 +392,9 @@ export const TabsProvider = (props) => {
       let loc = window.location.search.split("=");
       let productDetailProps = loc[1];
       if (filters["skuId"] !== productDetailProps)
-        props.history.push(`${props.location.pathname}?${`skuId=${filters["skuId"]}`}`);
+        props.history.push(
+          `${props.location.pathname}?${`skuId=${filters["skuId"]}`}`
+        );
     }
   }, [data, loading, error]);
   useEffect(() => {
@@ -344,10 +408,21 @@ export const TabsProvider = (props) => {
       let loc = window.location.search.split("=");
       let productDetailProps = loc[1];
       if (filters["skuId"] !== productDetailProps)
-        props.history.push(`${props.location.pathname}?${`skuId=${filters["skuId"]}`}`);
+        props.history.push(
+          `${props.location.pathname}?${`skuId=${filters["skuId"]}`}`
+        );
     }
   }, [data, loading, error]);
-  useEffect(() => {}, [likedata, likeerror, likeloading, loading, error, data, price, filters]);
+  useEffect(() => {}, [
+    likedata,
+    likeerror,
+    likeloading,
+    loading,
+    error,
+    data,
+    price,
+    filters,
+  ]);
 
   // useEffect(()=>{
   //     console.info('priceprice_price',price, data )
