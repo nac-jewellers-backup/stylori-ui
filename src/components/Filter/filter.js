@@ -41,15 +41,20 @@ import ProductLayoutSilver from "../ProductCard/ProductLayoutSilver";
 import { TempTest } from "./TempTest";
 import { filtersLabelMapperStylori } from "utils";
 const PersistentDrawerLeft = (props) => {
-  const { setSort, setloadingfilters, setOffset, setPriceMax, setPriceMin, FilterOptionsCtx, setdelete_fil } = React.useContext(
-    FilterOptionsContext
-  );
+  const {
+    setSort,
+    setloadingfilters,
+    setOffset,
+    setPriceMax,
+    setPriceMin,
+    FilterOptionsCtx,
+    setdelete_fil,
+  } = React.useContext(FilterOptionsContext);
 
   const loc = window.location.search;
   const { NetworkCtx } = React.useContext(NetworkContext);
   const { Globalctx } = React.useContext(GlobalContext);
 
- 
   return (
     <Component
       setSort={setSort}
@@ -134,15 +139,24 @@ class Component extends React.Component {
   }
   componentDidMount() {
     var { checked, chipData, numOne, numTwo, selected } = this.state;
-    if (this.props.data && this.props.data.length > 0 && this.props.data[0] && this.props.data[0].subFilter["Price Range"]) {
+    if (
+      this.props.data &&
+      this.props.data.length > 0 &&
+      this.props.data[0] &&
+      this.props.data[0].subFilter["Price Range"]
+    ) {
       var price_min = Number(this.props.data[0].subFilter["Price Range"].min);
       var price_max = Number(this.props.data[0].subFilter["Price Range"].max);
-      var _price_min = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 0 }).format(
-        Math.round(price_min)
-      );
-      var _price_max = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 0 }).format(
-        Math.round(price_max)
-      );
+      var _price_min = new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        minimumFractionDigits: 0,
+      }).format(Math.round(price_min));
+      var _price_max = new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        minimumFractionDigits: 0,
+      }).format(Math.round(price_max));
 
       // checked['pricemax'] = _price_max
       // checked['pricemin'] = _price_min
@@ -244,7 +258,9 @@ class Component extends React.Component {
           }
         };
 
-        var conditionfiltersSeo = { seofilter: { seoUrl: { in: splitHiphen() } } };
+        var conditionfiltersSeo = {
+          seofilter: { seoUrl: { in: splitHiphen() } },
+        };
         //  alert(JSON.stringify(this.state.checked))
         fetch(this.props.uri, {
           method: "post",
@@ -338,13 +354,6 @@ class Component extends React.Component {
               }
             });
 
-            //prakash inga paaru
-            // data && data.data && data.data.allSeoUrlPriorities && data.data.allSeoUrlPriorities.nodes && data.data.allSeoUrlPriorities.nodes.map(val => {
-            //       var attrName = val.attributeName
-            //       selected.push(attrName)
-            //     })
-            // this.setState(selected)
-            // this.setState(checked)
             this.setState(chipData, selected, checked);
           })
           .catch(function (error) {});
@@ -363,22 +372,33 @@ class Component extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    
     // Typical usage (don't forget to compare props):
     if (this.state.checked !== prevState.checked) {
       // this.myRef.scrollTop()
       window.scrollTo(0, this.myRef.scrollTop);
     }
-    if (this.props.data[0].subFilter["Price Range"] !== prevProps.data[0].subFilter["Price Range"]) {
-      var numberOne = this.props.data[0].subFilter["Price Range"][0] ? this.props.data[0].subFilter["Price Range"][0].min : 0;
-      var numberTwo = this.props.data[0].subFilter["Price Range"][0] ? this.props.data[0].subFilter["Price Range"][0].max : 0;
-      var numOne = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 0 }).format(
-        Math.round(numberOne)
-      );
-      var numTwo = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 0 }).format(
-        Math.round(numberTwo)
-      );
-      this.state.Price_button_click === false && this.setState({ numOne: numOne, numTwo: numTwo });
+    if (
+      this.props.data[0].subFilter["Price Range"] !==
+      prevProps.data[0].subFilter["Price Range"]
+    ) {
+      var numberOne = this.props.data[0].subFilter["Price Range"][0]
+        ? this.props.data[0].subFilter["Price Range"][0].min
+        : 0;
+      var numberTwo = this.props.data[0].subFilter["Price Range"][0]
+        ? this.props.data[0].subFilter["Price Range"][0].max
+        : 0;
+      var numOne = new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        minimumFractionDigits: 0,
+      }).format(Math.round(numberOne));
+      var numTwo = new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        minimumFractionDigits: 0,
+      }).format(Math.round(numberTwo));
+      this.state.Price_button_click === false &&
+        this.setState({ numOne: numOne, numTwo: numTwo });
       // if( this.props.data[0].subFilter['Price Range'].length > 0 && this.props.data[0].subFilter['Price Range'][0] !== undefined){
       //   this.props.setFilters({pricemax:numberTwo, pricemin:numberOne})}
     }
@@ -437,7 +457,15 @@ class Component extends React.Component {
       }
     }
   };
-  handleChange = (value, BoolName, e, title, TargetName, topfilterstate, selectedfiltertop) => {
+  handleChange = (
+    value,
+    BoolName,
+    e,
+    title,
+    TargetName,
+    topfilterstate,
+    selectedfiltertop
+  ) => {
     // window.scrollTo(0,2)
     // debugger
     let mystate = this.state;
@@ -462,7 +490,10 @@ class Component extends React.Component {
 
     if (TargetName === undefined) {
       this.clearSortIfFiltersIsEmpty();
-      if (Object.keys(mystate.checked.category).length === 0 && mystate.checked.category.constructor === Object) {
+      if (
+        Object.keys(mystate.checked.category).length === 0 &&
+        mystate.checked.category.constructor === Object
+      ) {
         var _replaceCategory = JSON.parse(sessionStorage.getItem("category"));
         checked["category"] = _replaceCategory;
         this.setState(checked);
@@ -472,7 +503,8 @@ class Component extends React.Component {
       let checkedvalue = {};
       checkedvalue[value] = BoolName;
 
-      checked[e && e.target.name ? e.target.name : selectedfiltertop] = checkedvalue;
+      checked[e && e.target.name ? e.target.name : selectedfiltertop] =
+        checkedvalue;
       this.setState(
         {
           checked,
@@ -688,28 +720,43 @@ class Component extends React.Component {
     var _price_max;
     if (silverPrice) {
       this.setState(checked);
-      this.setState({ numOne: silverPrice.min, numTwo: silverPrice.max }, () => {
-        this.props.setPriceMax(silverPrice.max);
-        this.props.setPriceMin(silverPrice.min);
-      });
+      this.setState(
+        { numOne: silverPrice.min, numTwo: silverPrice.max },
+        () => {
+          this.props.setPriceMax(silverPrice.max);
+          this.props.setPriceMin(silverPrice.min);
+        }
+      );
     } else {
       this.setState({ Price_button_click: true });
       if (isNaN(Number(document.getElementById("num1").value.charAt(0)))) {
-        _price_min = Number(document.getElementById("num1").value.substr(1).replace(/,/g, ""));
+        _price_min = Number(
+          document.getElementById("num1").value.substr(1).replace(/,/g, "")
+        );
       } else {
-        _price_min = Number(document.getElementById("num1").value.replace(/,/g, ""));
+        _price_min = Number(
+          document.getElementById("num1").value.replace(/,/g, "")
+        );
       }
       if (isNaN(Number(document.getElementById("num2").value.charAt(0)))) {
-        _price_max = Number(document.getElementById("num2").value.substr(1).replace(/,/g, ""));
+        _price_max = Number(
+          document.getElementById("num2").value.substr(1).replace(/,/g, "")
+        );
       } else {
-        _price_max = Number(document.getElementById("num2").value.replace(/,/g, ""));
+        _price_max = Number(
+          document.getElementById("num2").value.replace(/,/g, "")
+        );
       }
-      var price_min = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 0 }).format(
-        Math.round(_price_min)
-      );
-      var price_max = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 0 }).format(
-        Math.round(_price_max)
-      );
+      var price_min = new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        minimumFractionDigits: 0,
+      }).format(Math.round(_price_min));
+      var price_max = new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        minimumFractionDigits: 0,
+      }).format(Math.round(_price_max));
 
       var pricemin =
         price_min.indexOf(",") > -1
@@ -767,7 +814,9 @@ class Component extends React.Component {
   // })
 
   render() {
-    const found = window.location.pathname.split(/-/g).find((element) => element === "/goldcoins" || element === "goldcoins");
+    const found = window.location.pathname
+      .split(/-/g)
+      .find((element) => element === "/goldcoins" || element === "goldcoins");
     const { classes, data, loading } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
 
@@ -824,7 +873,12 @@ class Component extends React.Component {
                   in={check}
                   mountOnEnter
                   unmountOnExit
-                  style={{ position: "sticky", top: "119px", maxHeight: "80vh", overflowY: "scroll" }}
+                  style={{
+                    position: "sticky",
+                    top: "119px",
+                    maxHeight: "80vh",
+                    overflowY: "scroll",
+                  }}
                   className="SliderFilter scrollBarFilter"
                   id="SliderFilter"
                 >
@@ -842,17 +896,28 @@ class Component extends React.Component {
                       <List className="fil-main-list">
                         <div style={{ margin: "5px" }}>
                           <Typography
-                            style={{ fontSize: "1.0rem !important", paddingTop: "10px !important", fontWeight: 600 }}
+                            style={{
+                              fontSize: "1.0rem !important",
+                              paddingTop: "10px !important",
+                              fontWeight: 600,
+                            }}
                             className="fil-list-items"
                           >
                             Price
                           </Typography>
-                          <Grid container spacing={12} style={{ paddingLeft: "14px" }}>
+                          <Grid
+                            container
+                            spacing={12}
+                            style={{ paddingLeft: "14px" }}
+                          >
                             <Grid item xs={4}>
                               <TextField
                                 error={this.state.errorPriceMessage}
                                 onChange={(e) => {
-                                  this.setState({ numOne: e.target.value, errorPriceMessage: false });
+                                  this.setState({
+                                    numOne: e.target.value,
+                                    errorPriceMessage: false,
+                                  });
                                 }}
                                 onKeyPress={(e) => {
                                   this.txtFieldChange(e);
@@ -870,7 +935,10 @@ class Component extends React.Component {
                               <TextField
                                 error={this.state.errorPriceMessage}
                                 onChange={(e) => {
-                                  this.setState({ numTwo: e.target.value, errorPriceMessage: false });
+                                  this.setState({
+                                    numTwo: e.target.value,
+                                    errorPriceMessage: false,
+                                  });
                                 }}
                                 onKeyPress={(e) => {
                                   this.txtFieldChange(e);
@@ -895,7 +963,9 @@ class Component extends React.Component {
                             </Grid>
                           </Grid>
                           {this.state.errorPriceMessage ? (
-                            <label className={`${classes.priceError}`}>Max price should be greater</label>
+                            <label className={`${classes.priceError}`}>
+                              Max price should be greater
+                            </label>
                           ) : null}
                         </div>
                         {/* filter */}
@@ -906,9 +976,13 @@ class Component extends React.Component {
                                 filter.map((row, i) => {
                                   return (
                                     <>
-                                      {subFilter && subFilter[row] && subFilter[row].length > 0 && row !== "price" ? (
+                                      {subFilter &&
+                                      subFilter[row] &&
+                                      subFilter[row].length > 0 &&
+                                      row !== "price" ? (
                                         <>
-                                          {window.location.pathname === "/goldcoins" ||
+                                          {window.location.pathname ===
+                                            "/goldcoins" ||
                                           found === "goldcoins" ||
                                           found === "/goldcoins" ? (
                                             row === "Offers" ? (
@@ -916,15 +990,22 @@ class Component extends React.Component {
                                             ) : (
                                               <ListItem
                                                 key={row}
-                                                onClick={() => this.selectItem(row)}
+                                                onClick={() =>
+                                                  this.selectItem(row)
+                                                }
                                                 className={`${classes.li_item_filter}`}
                                               >
                                                 <ListItemText>
-                                                  <Typography className="fil-list-items" variant="h4" component="h4">
+                                                  <Typography
+                                                    className="fil-list-items"
+                                                    variant="h4"
+                                                    component="h4"
+                                                  >
                                                     {row}
                                                   </Typography>
                                                 </ListItemText>
-                                                {selected.indexOf(row) !== -1 ? (
+                                                {selected.indexOf(row) !==
+                                                -1 ? (
                                                   <ExpandLess className="fil-drawer-arrow" />
                                                 ) : (
                                                   <ExpandMore className="fil-drawer-arrow" />
@@ -934,12 +1015,20 @@ class Component extends React.Component {
                                           ) : (
                                             <ListItem
                                               key={row}
-                                              onClick={() => this.selectItem(row)}
+                                              onClick={() =>
+                                                this.selectItem(row)
+                                              }
                                               className={`${classes.li_item_filter}`}
                                             >
                                               <ListItemText>
-                                                <Typography className="fil-list-items" variant="h4" component="h4">
-                                                  {filtersLabelMapperStylori(row)}
+                                                <Typography
+                                                  className="fil-list-items"
+                                                  variant="h4"
+                                                  component="h4"
+                                                >
+                                                  {filtersLabelMapperStylori(
+                                                    row
+                                                  )}
                                                   {/* {mapperLabelCustomizer(row)} */}
                                                 </Typography>
                                               </ListItemText>
@@ -960,34 +1049,105 @@ class Component extends React.Component {
                                         {selected.indexOf(row) !== -1 && (
                                           <>
                                             {subFilter[row]
-                                              .filter((row12, i) => i < (this.state[`li_${row}`] ? this.state[`li_${row}`] : 4))
+                                              .filter(
+                                                (row12, i) =>
+                                                  i <
+                                                  (this.state[`li_${row}`]
+                                                    ? this.state[`li_${row}`]
+                                                    : 4)
+                                              )
                                               .map((row12) => {
                                                 return (
-                                                  <div style={{ padding: "0 20px" }}>
+                                                  <div
+                                                    style={{
+                                                      padding: "0 20px",
+                                                    }}
+                                                  >
                                                     <ListItem key={row12}>
                                                       {" "}
                                                       {/* button */}
                                                       <FormGroup row>
-                                                        {row12.constructor === Object ? (
+                                                        {row12.constructor ===
+                                                        Object ? (
                                                           <FormControlLabel
                                                             control={
                                                               <Checkbox
-                                                                disabled={this.check_goldCoins(row12) === true ? true : false}
+                                                                disabled={
+                                                                  this.check_goldCoins(
+                                                                    row12
+                                                                  ) === true
+                                                                    ? true
+                                                                    : false
+                                                                }
                                                                 checked={
-                                                                  this.state.checked[row.replace(/\s/g, "")] &&
-                                                                  this.state.checked[row.replace(/\s/g, "")][row12.value] !==
+                                                                  this.state
+                                                                    .checked[
+                                                                    row.replace(
+                                                                      /\s/g,
+                                                                      ""
+                                                                    )
+                                                                  ] &&
+                                                                  this.state
+                                                                    .checked[
+                                                                    row.replace(
+                                                                      /\s/g,
+                                                                      ""
+                                                                    )
+                                                                  ][
+                                                                    row12.value
+                                                                  ] !==
                                                                     undefined
-                                                                    ? this.state.checked[row.replace(/\s/g, "")] &&
-                                                                      this.state.checked[row.replace(/\s/g, "")][row12.value]
+                                                                    ? this.state
+                                                                        .checked[
+                                                                        row.replace(
+                                                                          /\s/g,
+                                                                          ""
+                                                                        )
+                                                                      ] &&
+                                                                      this.state
+                                                                        .checked[
+                                                                        row.replace(
+                                                                          /\s/g,
+                                                                          ""
+                                                                        )
+                                                                      ][
+                                                                        row12
+                                                                          .value
+                                                                      ]
                                                                     : false
                                                                 }
                                                                 onChange={(e) =>
                                                                   this.handleChange(
                                                                     row12.value,
-                                                                    this.state.checked[row.replace(/\s/g, "")] &&
-                                                                      this.state.checked[row.replace(/\s/g, "")][row12.value] !==
+                                                                    this.state
+                                                                      .checked[
+                                                                      row.replace(
+                                                                        /\s/g,
+                                                                        ""
+                                                                      )
+                                                                    ] &&
+                                                                      this.state
+                                                                        .checked[
+                                                                        row.replace(
+                                                                          /\s/g,
+                                                                          ""
+                                                                        )
+                                                                      ][
+                                                                        row12
+                                                                          .value
+                                                                      ] !==
                                                                         undefined
-                                                                      ? !this.state.checked[row.replace(/\s/g, "")][row12.value]
+                                                                      ? !this
+                                                                          .state
+                                                                          .checked[
+                                                                          row.replace(
+                                                                            /\s/g,
+                                                                            ""
+                                                                          )
+                                                                        ][
+                                                                          row12
+                                                                            .value
+                                                                        ]
                                                                       : true,
                                                                     e,
                                                                     row
@@ -995,8 +1155,13 @@ class Component extends React.Component {
                                                                 }
                                                                 className="fil-submenu-icons"
                                                                 value="checked"
-                                                                color={"secondary"}
-                                                                name={row.replace(/\s/g, "")}
+                                                                color={
+                                                                  "secondary"
+                                                                }
+                                                                name={row.replace(
+                                                                  /\s/g,
+                                                                  ""
+                                                                )}
                                                               />
                                                             }
                                                             label={
@@ -1012,22 +1177,74 @@ class Component extends React.Component {
                                                           <FormControlLabel
                                                             control={
                                                               <Checkbox
-                                                                disabled={this.check_goldCoins(row12) === true ? true : false}
+                                                                disabled={
+                                                                  this.check_goldCoins(
+                                                                    row12
+                                                                  ) === true
+                                                                    ? true
+                                                                    : false
+                                                                }
                                                                 // disabled = {handledisabled}
                                                                 checked={
-                                                                  this.state.checked[row.replace(/\s/g, "")] &&
-                                                                  this.state.checked[row.replace(/\s/g, "")][row12] !== undefined
-                                                                    ? this.state.checked[row.replace(/\s/g, "")] &&
-                                                                      this.state.checked[row.replace(/\s/g, "")][row12]
+                                                                  this.state
+                                                                    .checked[
+                                                                    row.replace(
+                                                                      /\s/g,
+                                                                      ""
+                                                                    )
+                                                                  ] &&
+                                                                  this.state
+                                                                    .checked[
+                                                                    row.replace(
+                                                                      /\s/g,
+                                                                      ""
+                                                                    )
+                                                                  ][row12] !==
+                                                                    undefined
+                                                                    ? this.state
+                                                                        .checked[
+                                                                        row.replace(
+                                                                          /\s/g,
+                                                                          ""
+                                                                        )
+                                                                      ] &&
+                                                                      this.state
+                                                                        .checked[
+                                                                        row.replace(
+                                                                          /\s/g,
+                                                                          ""
+                                                                        )
+                                                                      ][row12]
                                                                     : false
                                                                 }
                                                                 onChange={(e) =>
                                                                   this.handleChange(
                                                                     row12,
-                                                                    this.state.checked[row.replace(/\s/g, "")] &&
-                                                                      this.state.checked[row.replace(/\s/g, "")][row12] !==
+                                                                    this.state
+                                                                      .checked[
+                                                                      row.replace(
+                                                                        /\s/g,
+                                                                        ""
+                                                                      )
+                                                                    ] &&
+                                                                      this.state
+                                                                        .checked[
+                                                                        row.replace(
+                                                                          /\s/g,
+                                                                          ""
+                                                                        )
+                                                                      ][
+                                                                        row12
+                                                                      ] !==
                                                                         undefined
-                                                                      ? !this.state.checked[row.replace(/\s/g, "")][row12]
+                                                                      ? !this
+                                                                          .state
+                                                                          .checked[
+                                                                          row.replace(
+                                                                            /\s/g,
+                                                                            ""
+                                                                          )
+                                                                        ][row12]
                                                                       : true,
                                                                     e,
                                                                     row
@@ -1035,8 +1252,13 @@ class Component extends React.Component {
                                                                 }
                                                                 className="fil-submenu-icons"
                                                                 value="checked"
-                                                                color={"secondary"}
-                                                                name={row.replace(/\s/g, "")}
+                                                                color={
+                                                                  "secondary"
+                                                                }
+                                                                name={row.replace(
+                                                                  /\s/g,
+                                                                  ""
+                                                                )}
                                                               />
                                                             }
                                                             label={
@@ -1055,45 +1277,64 @@ class Component extends React.Component {
                                                 );
                                               })}
 
-                                            {subFilter[row].length - 4 !== 0 && subFilter[row].length - 4 > 0 && (
-                                              <>
-                                                {this.state[`li_${row}`] === undefined || this.state[`li_${row}`] === 4 ? (
-                                                  <div
-                                                    onClick={() => this.setState({ [`li_${row}`]: subFilter[row].length })}
-                                                    className="fil-submenu-icons"
-                                                  >
-                                                    <p
-                                                      style={{
-                                                        fontSize: "14px",
-                                                        paddingLeft: "16px",
-                                                        paddingRight: "16px",
-                                                        color: "rgba(241, 72, 128, 1)",
-                                                        cursor: "pointer",
-                                                      }}
+                                            {subFilter[row].length - 4 !== 0 &&
+                                              subFilter[row].length - 4 > 0 && (
+                                                <>
+                                                  {this.state[`li_${row}`] ===
+                                                    undefined ||
+                                                  this.state[`li_${row}`] ===
+                                                    4 ? (
+                                                    <div
+                                                      onClick={() =>
+                                                        this.setState({
+                                                          [`li_${row}`]:
+                                                            subFilter[row]
+                                                              .length,
+                                                        })
+                                                      }
+                                                      className="fil-submenu-icons"
                                                     >
-                                                      +&nbsp;{subFilter[row].length - 4} More
-                                                    </p>
-                                                  </div>
-                                                ) : (
-                                                  <div
-                                                    className="fil-submenu-icons"
-                                                    onClick={() => this.setState({ [`li_${row}`]: 4 })}
-                                                  >
-                                                    <p
-                                                      style={{
-                                                        fontSize: "14px",
-                                                        paddingLeft: "16px",
-                                                        paddingRight: "16px",
-                                                        color: "rgba(241, 72, 128, 1)",
-                                                        cursor: "pointer",
-                                                      }}
+                                                      <p
+                                                        style={{
+                                                          fontSize: "14px",
+                                                          paddingLeft: "16px",
+                                                          paddingRight: "16px",
+                                                          color:
+                                                            "rgba(241, 72, 128, 1)",
+                                                          cursor: "pointer",
+                                                        }}
+                                                      >
+                                                        +&nbsp;
+                                                        {subFilter[row].length -
+                                                          4}{" "}
+                                                        More
+                                                      </p>
+                                                    </div>
+                                                  ) : (
+                                                    <div
+                                                      className="fil-submenu-icons"
+                                                      onClick={() =>
+                                                        this.setState({
+                                                          [`li_${row}`]: 4,
+                                                        })
+                                                      }
                                                     >
-                                                      Show Less
-                                                    </p>
-                                                  </div>
-                                                )}
-                                              </>
-                                            )}
+                                                      <p
+                                                        style={{
+                                                          fontSize: "14px",
+                                                          paddingLeft: "16px",
+                                                          paddingRight: "16px",
+                                                          color:
+                                                            "rgba(241, 72, 128, 1)",
+                                                          cursor: "pointer",
+                                                        }}
+                                                      >
+                                                        Show Less
+                                                      </p>
+                                                    </div>
+                                                  )}
+                                                </>
+                                              )}
                                           </>
                                         )}
                                       </>
@@ -1103,37 +1344,70 @@ class Component extends React.Component {
                               ) : (
                                 <div class={classes.filtersLoading}>
                                   <div id="inTurnFadingTextG">
-                                    <div id="inTurnFadingTextG_1" class="inTurnFadingTextG">
+                                    <div
+                                      id="inTurnFadingTextG_1"
+                                      class="inTurnFadingTextG"
+                                    >
                                       L
                                     </div>
-                                    <div id="inTurnFadingTextG_2" class="inTurnFadingTextG">
+                                    <div
+                                      id="inTurnFadingTextG_2"
+                                      class="inTurnFadingTextG"
+                                    >
                                       o
                                     </div>
-                                    <div id="inTurnFadingTextG_3" class="inTurnFadingTextG">
+                                    <div
+                                      id="inTurnFadingTextG_3"
+                                      class="inTurnFadingTextG"
+                                    >
                                       a
                                     </div>
-                                    <div id="inTurnFadingTextG_4" class="inTurnFadingTextG">
+                                    <div
+                                      id="inTurnFadingTextG_4"
+                                      class="inTurnFadingTextG"
+                                    >
                                       d
                                     </div>
-                                    <div id="inTurnFadingTextG_5" class="inTurnFadingTextG">
+                                    <div
+                                      id="inTurnFadingTextG_5"
+                                      class="inTurnFadingTextG"
+                                    >
                                       i
                                     </div>
-                                    <div id="inTurnFadingTextG_6" class="inTurnFadingTextG">
+                                    <div
+                                      id="inTurnFadingTextG_6"
+                                      class="inTurnFadingTextG"
+                                    >
                                       n
                                     </div>
-                                    <div id="inTurnFadingTextG_7" class="inTurnFadingTextG">
+                                    <div
+                                      id="inTurnFadingTextG_7"
+                                      class="inTurnFadingTextG"
+                                    >
                                       g
                                     </div>
-                                    <div id="inTurnFadingTextG_8" class="inTurnFadingTextG">
+                                    <div
+                                      id="inTurnFadingTextG_8"
+                                      class="inTurnFadingTextG"
+                                    >
                                       {" "}
                                     </div>
-                                    <div id="inTurnFadingTextG_9" class="inTurnFadingTextG">
+                                    <div
+                                      id="inTurnFadingTextG_9"
+                                      class="inTurnFadingTextG"
+                                    >
                                       .
                                     </div>
-                                    <div id="inTurnFadingTextG_10" class="inTurnFadingTextG">
+                                    <div
+                                      id="inTurnFadingTextG_10"
+                                      class="inTurnFadingTextG"
+                                    >
                                       .
                                     </div>
-                                    <div id="inTurnFadingTextG_11" class="inTurnFadingTextG">
+                                    <div
+                                      id="inTurnFadingTextG_11"
+                                      class="inTurnFadingTextG"
+                                    >
                                       .
                                     </div>
                                   </div>
@@ -1154,7 +1428,9 @@ class Component extends React.Component {
             <div
               // className="filter_page_layout"
               className={`${
-                check ? `filter_page_layout ${classes.productCardscheck}` : `filter_page_layout ${classes.productCardsuncheck}`
+                check
+                  ? `filter_page_layout ${classes.productCardscheck}`
+                  : `filter_page_layout ${classes.productCardsuncheck}`
               } ${isTopFilter ? classes.widthFilter : ""}`}
             >
               {isTopFilter ? (
@@ -1179,7 +1455,14 @@ class Component extends React.Component {
         </div>
 
         <Hidden mdUp>
-          <div style={{ top: "60px", position: "absolute", backgroundColor: "white", width: "100%" }}>
+          <div
+            style={{
+              top: "60px",
+              position: "absolute",
+              backgroundColor: "white",
+              width: "100%",
+            }}
+          >
             <div
               style={{
                 padding: "9px",
@@ -1200,11 +1483,17 @@ class Component extends React.Component {
                   padding: "6px 8px",
                 }}
               >
-                <i className={`fa fa-times ${classes.colorMain}`}></i>&nbsp; Filter
+                <i className={`fa fa-times ${classes.colorMain}`}></i>&nbsp;
+                Filter
               </button>
               <Button
                 onClick={this.handleClearAllData}
-                style={{ float: "right", border: "1px solid #ececec", lineHeight: "15px", fontSize: "0.775rem" }}
+                style={{
+                  float: "right",
+                  border: "1px solid #ececec",
+                  lineHeight: "15px",
+                  fontSize: "0.775rem",
+                }}
                 className={`${classes.colorMain}`}
               >
                 Clear All
@@ -1215,7 +1504,11 @@ class Component extends React.Component {
               container
               xs={12}
               className="p"
-              style={{ overflow: "scroll", height: "100%", display: openMobile ? "none" : "block" }}
+              style={{
+                overflow: "scroll",
+                height: "100%",
+                display: openMobile ? "none" : "block",
+              }}
             >
               <Grid container item xs={12}>
                 <Grid item xs={6} className={classes.filterMain}>
@@ -1229,31 +1522,43 @@ class Component extends React.Component {
                   <List className="mbl-filter-list">
                     {filter &&
                       filter.map((row) => {
-                        return subFilter && subFilter[row] && subFilter[row].length > 0 ? (
+                        return subFilter &&
+                          subFilter[row] &&
+                          subFilter[row].length > 0 ? (
                           <>
-                            {window.location.pathname === "/goldcoins" || found === "/goldcoins" || found === "goldcoins" ? (
+                            {window.location.pathname === "/goldcoins" ||
+                            found === "/goldcoins" ||
+                            found === "goldcoins" ? (
                               row === "Offers" ? (
                                 ""
                               ) : (
                                 <ListItem
                                   key={row}
                                   className={`mbl-filter-list ${
-                                    isTopFilter ? classes.colorBackgroundListSilver : classes.colorBackgroundList
+                                    isTopFilter
+                                      ? classes.colorBackgroundListSilver
+                                      : classes.colorBackgroundList
                                   } ${classes.borderBottomList}`}
                                   onClick={() => this.filterValue(row)}
                                 >
-                                  <ListItemText className="filter-mbl-font filter-mbl-fonts">{row && row}</ListItemText>
+                                  <ListItemText className="filter-mbl-font filter-mbl-fonts">
+                                    {row && row}
+                                  </ListItemText>
                                 </ListItem>
                               )
                             ) : (
                               <ListItem
                                 key={row}
                                 className={`mbl-filter-list ${
-                                  isTopFilter ? classes.colorBackgroundListSilver : classes.colorBackgroundList
+                                  isTopFilter
+                                    ? classes.colorBackgroundListSilver
+                                    : classes.colorBackgroundList
                                 } ${classes.borderBottomList}`}
                                 onClick={() => this.filterValue(row)}
                               >
-                                <ListItemText className="filter-mbl-font filter-mbl-fonts">{row && row}</ListItemText>
+                                <ListItemText className="filter-mbl-font filter-mbl-fonts">
+                                  {row && row}
+                                </ListItemText>
                               </ListItem>
                             )}
                           </>
@@ -1264,7 +1569,11 @@ class Component extends React.Component {
                   </List>
                 </Grid>
                 {this.state.filtercheck !== "" && (
-                  <Grid item xs={6} style={{ overflow: "scroll", height: "73vh" }}>
+                  <Grid
+                    item
+                    xs={6}
+                    style={{ overflow: "scroll", height: "73vh" }}
+                  >
                     {/* <>
                       <div className="header-chips Chip">
                         {this.state.chipData.map(data => {
@@ -1283,10 +1592,21 @@ class Component extends React.Component {
                       </div>
                     </> */}
                     <>
-                      {subFilter[this.state.filtercheck && this.state.filtercheck] !== undefined
-                        ? subFilter[this.state.filtercheck && this.state.filtercheck].map((row) => {
+                      {subFilter[
+                        this.state.filtercheck && this.state.filtercheck
+                      ] !== undefined
+                        ? subFilter[
+                            this.state.filtercheck && this.state.filtercheck
+                          ].map((row) => {
                             return (
-                              <ListItem key={row} style={{ paddingLeft: "0px", paddingRight: "0px", width: "100%" }}>
+                              <ListItem
+                                key={row}
+                                style={{
+                                  paddingLeft: "0px",
+                                  paddingRight: "0px",
+                                  width: "100%",
+                                }}
+                              >
                                 {this.state.filtercheck !== "price" ? (
                                   this.state.filtercheck &&
                                   this.state.filtercheck === "Availability" &&
@@ -1302,37 +1622,72 @@ class Component extends React.Component {
                                           this.handleChange(
                                             row.value,
                                             this.state.checked[
-                                              this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")
+                                              this.state.filtercheck &&
+                                                this.state.filtercheck.replace(
+                                                  /\s/g,
+                                                  ""
+                                                )
                                             ][row.value] !== undefined
                                               ? !this.state.checked[
-                                                  this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")
+                                                  this.state.filtercheck &&
+                                                    this.state.filtercheck.replace(
+                                                      /\s/g,
+                                                      ""
+                                                    )
                                                 ][row.value]
                                               : true,
                                             e
                                           )
                                         }
                                         // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
-                                        icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                                        checkedIcon={<CheckBoxIcon fontSize="small" />}
+                                        icon={
+                                          <CheckBoxOutlineBlankIcon fontSize="small" />
+                                        }
+                                        checkedIcon={
+                                          <CheckBoxIcon fontSize="small" />
+                                        }
                                         name={
-                                          this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "") !== "price"
-                                            ? this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")
-                                            : this.state.filtercheck && this.state.filtercheck.label.replace(/\s/g, "")
+                                          this.state.filtercheck &&
+                                          this.state.filtercheck.replace(
+                                            /\s/g,
+                                            ""
+                                          ) !== "price"
+                                            ? this.state.filtercheck &&
+                                              this.state.filtercheck.replace(
+                                                /\s/g,
+                                                ""
+                                              )
+                                            : this.state.filtercheck &&
+                                              this.state.filtercheck.label.replace(
+                                                /\s/g,
+                                                ""
+                                              )
                                         }
                                         onClick={this.handleDrawerCloseMobile}
                                       />
                                       <ListItemText>
-                                        <Typography variant="" className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}>
+                                        <Typography
+                                          variant=""
+                                          className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}
+                                        >
                                           <div
                                             // onClick={this.handleDrawerCloseMobile}
                                             onClick={(e) =>
                                               this.handleChange(
                                                 row.value,
                                                 this.state.checked[
-                                                  this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")
+                                                  this.state.filtercheck &&
+                                                    this.state.filtercheck.replace(
+                                                      /\s/g,
+                                                      ""
+                                                    )
                                                 ][row.value] !== undefined
                                                   ? !this.state.checked[
-                                                      this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")
+                                                      this.state.filtercheck &&
+                                                        this.state.filtercheck.replace(
+                                                          /\s/g,
+                                                          ""
+                                                        )
                                                     ][row.value]
                                                   : true,
                                                 e
@@ -1356,37 +1711,72 @@ class Component extends React.Component {
                                           this.handleChange(
                                             row,
                                             this.state.checked[
-                                              this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")
+                                              this.state.filtercheck &&
+                                                this.state.filtercheck.replace(
+                                                  /\s/g,
+                                                  ""
+                                                )
                                             ][row] !== undefined
                                               ? !this.state.checked[
-                                                  this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")
+                                                  this.state.filtercheck &&
+                                                    this.state.filtercheck.replace(
+                                                      /\s/g,
+                                                      ""
+                                                    )
                                                 ][row]
                                               : true,
                                             e
                                           )
                                         }
                                         // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
-                                        icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                                        checkedIcon={<CheckBoxIcon fontSize="small" />}
+                                        icon={
+                                          <CheckBoxOutlineBlankIcon fontSize="small" />
+                                        }
+                                        checkedIcon={
+                                          <CheckBoxIcon fontSize="small" />
+                                        }
                                         name={
-                                          this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "") !== "price"
-                                            ? this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")
-                                            : this.state.filtercheck && this.state.filtercheck.label.replace(/\s/g, "")
+                                          this.state.filtercheck &&
+                                          this.state.filtercheck.replace(
+                                            /\s/g,
+                                            ""
+                                          ) !== "price"
+                                            ? this.state.filtercheck &&
+                                              this.state.filtercheck.replace(
+                                                /\s/g,
+                                                ""
+                                              )
+                                            : this.state.filtercheck &&
+                                              this.state.filtercheck.label.replace(
+                                                /\s/g,
+                                                ""
+                                              )
                                         }
                                         onClick={this.handleDrawerCloseMobile}
                                       />
                                       <ListItemText>
-                                        <Typography variant="" className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}>
+                                        <Typography
+                                          variant=""
+                                          className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}
+                                        >
                                           <div
                                             // onClick={this.handleDrawerCloseMobile}
                                             onClick={(e) =>
                                               this.handleChange(
                                                 row,
                                                 this.state.checked[
-                                                  this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")
+                                                  this.state.filtercheck &&
+                                                    this.state.filtercheck.replace(
+                                                      /\s/g,
+                                                      ""
+                                                    )
                                                 ][row] !== undefined
                                                   ? !this.state.checked[
-                                                      this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")
+                                                      this.state.filtercheck &&
+                                                        this.state.filtercheck.replace(
+                                                          /\s/g,
+                                                          ""
+                                                        )
                                                     ][row]
                                                   : true,
                                                 e
@@ -1431,13 +1821,21 @@ class Component extends React.Component {
               </AppBar> */}
             </Grid>
 
-            <AppBar color="primary" className="filter-fixed header" style={{ display: !openMobile ? "none" : "block" }}>
+            <AppBar
+              color="primary"
+              className="filter-fixed header"
+              style={{ display: !openMobile ? "none" : "block" }}
+            >
               <Container>
                 <Container>
                   <Toolbar>
                     <div onClick={this.handleDrawerOpenMobile}>
-                      <Typography variant="" className={`filter-mbl-font ${classes.colorMain}`}>
-                        <i className="filter-icon" class="fa fa-filter"></i> &nbsp; Filter
+                      <Typography
+                        variant=""
+                        className={`filter-mbl-font ${classes.colorMain}`}
+                      >
+                        <i className="filter-icon" class="fa fa-filter"></i>{" "}
+                        &nbsp; Filter
                       </Typography>
                     </div>
 
@@ -1447,11 +1845,19 @@ class Component extends React.Component {
                       edge="end"
                       color="inherit"
                       onClick={() =>
-                        this.setState({ CardRadio: !this.state.CardRadio, productDisplay: !this.state.productDisplay })
+                        this.setState({
+                          CardRadio: !this.state.CardRadio,
+                          productDisplay: !this.state.productDisplay,
+                        })
                       }
                     >
-                      <Typography variant="" className={`filter-mbl-font ${classes.colorMain}`} style={{ fontSize: "1rem" }}>
-                        <i className="filter-icon" class="fa fa-sort"></i>&nbsp; Sort
+                      <Typography
+                        variant=""
+                        className={`filter-mbl-font ${classes.colorMain}`}
+                        style={{ fontSize: "1rem" }}
+                      >
+                        <i className="filter-icon" class="fa fa-sort"></i>&nbsp;
+                        Sort
                       </Typography>
                     </IconButton>
                   </Toolbar>
@@ -1483,7 +1889,9 @@ Component.propTypes = {
   filterdatas: PropTypes.object.isRequired,
 };
 
-export default withRouter(withStyles(styles, { withTheme: true })(PersistentDrawerLeft));
+export default withRouter(
+  withStyles(styles, { withTheme: true })(PersistentDrawerLeft)
+);
 // (props => {
 //   const { mapped } = useDummyRequest(filterParams);
 //   if (Object.keys(mapped).length === 0) return ''
