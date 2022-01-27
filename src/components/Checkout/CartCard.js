@@ -408,7 +408,7 @@ class Checkoutcard extends React.Component {
                             &nbsp;Remove
                           </span>
                           <span>&nbsp;</span>
-                          {!dataval.isActive ? (
+                          {!dataval?.isActive ? (
                             <span
                               style={{
                                 backgroundColor: "red",
@@ -464,9 +464,9 @@ class Checkoutcard extends React.Component {
     let productIsActive = true;
     let productURL;
     this.props.data.map((val) => {
-      if (val.isActive == false) {
-        productIsActive = val.isActive;
-        productURL = val.skuUrl;
+      if (val?.isActive == false) {
+        productIsActive = val?.isActive;
+        productURL = val?.skuUrl;
       }
     });
     let path = window.location.pathname.split("/").pop();

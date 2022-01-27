@@ -37,21 +37,14 @@ const inputsearch = (props, state, handleChanges, handleCodChange, customstyling
       {data[0].ProductContactNum.map((val) => (
         <Grid container spacing={12} className={isSilver ? classes.shadowSilver : classes.shadow} item xs={12}>
           <Grid item xs={isSilver ? 6 : 7} lg={4} sm={7}>
-            {/* <input
-                            placeholder='&#xf041; &nbsp; Enter Pin Code'
-                            className='buynow-search'
-                            type="text"
-                            value={state.values}
-                            onChange={(event) => { handleChanges(event) }}
-                            onKeyPress={(e) => { if (!(e.which >= 48 && e.which <= 57)) e.preventDefault(); }}
-                        /> */}
+            
             <input
               onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
               type="tel"
               placeholder="Enter Pincode"
               maxLength={6}
               className={`buynow-search ${isSilver ? `${"pincode-cust-silver"} ${classes.rating__}` : "pincode-cust"}`}
-              value={state.values}
+              value={state?.values}
               onChange={(event) => {
                 handleChanges(event);
               }}
@@ -143,18 +136,12 @@ const Buydetails = (
         <>
           <Grid container spacing={12} style={{ padding: "0 10px" }}>
             <Grid item xs={12} lg={4} style={{}}>
-              {/* <NavLink to="/cart" style={{ textDecoration: 'none' }} onClick={handleLocalStorage.bind(this)}> */}
               <div
-                // onClick={() => {
-                //   if (props.data[0].isActive) {
-                //
-                //   }
-                // }}
+              
                 onClick={isactive ? handleLocalStorage.bind(this) : ""}
-                // onClick={handleLocalStorage.bind(this)}
               >
                 <Buynowbutton
-                  sku={data[0].skuId}
+                  sku={data[0]?.skuId}
                   productIsActive={isactive ?? ""}
                   class={`buynow-button ${classes.buttons}`}
                   button="buynow-btn-cont"
@@ -190,7 +177,7 @@ const Buydetails = (
                     <i class="fa fa-phone overall-icons" aria-hidden="true"></i>
                     &nbsp;
                   </Typography>
-                  <Typography className={classes.TypoListed}>{val.telephone}</Typography>
+                  <Typography className={classes.TypoListed}>{val?.telephone}</Typography>
                 </Grid>
 
                 <Grid item className={`buy-subheaders ${classes.normalfonts}`}>
@@ -198,7 +185,7 @@ const Buydetails = (
                     <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>
                     &nbsp;
                   </Typography>
-                  <Typography className={classes.TypoListed}>{val.phonenum}</Typography>
+                  <Typography className={classes.TypoListed}>{val?.phonenum}</Typography>
                 </Grid>
 
                 <Grid
@@ -211,7 +198,7 @@ const Buydetails = (
                     <i class="fa fa-comments-o overall-icons" aria-hidden="true"></i>
                     &nbsp;
                   </Typography>
-                  <Typography className={classes.TypoListed}>{val.chat}</Typography>
+                  <Typography className={classes.TypoListed}>{val?.chat}</Typography>
                 </Grid>
               </Grid>
             </Grid>
@@ -236,7 +223,7 @@ const BuydetailsSilverdetailpage = (
 ) => {
   const { data, isSilver } = props;
   const { classes } = props;
-  const isactive = props.data[0].isactive ?? "";
+  const isactive = props?.data[0]?.isactive ?? "";
   let { productShipBy } = state;
   let dateObj = "";
   let shipByDate = "";
@@ -298,8 +285,8 @@ class Component extends React.Component {
         this.props.data[0].fadeImages &&
         this.props.data[0].fadeImages.arrOfurls &&
         this.props.data[0].fadeImages.arrOfurls.length > 0 &&
-        this.props.data[0].fadeImages.arrOfurls[0]
-          ? this.props.data[0].fadeImages.arrOfurls[0]
+        this?.props?.data[0]?.fadeImages?.arrOfurls[0]
+          ? this?.props?.data[0]?.fadeImages?.arrOfurls[0]
           : [],
       open: false,
       values: "",
@@ -314,8 +301,8 @@ class Component extends React.Component {
         this.props.data[0] &&
         this.props.data[0].productsDetails &&
         this.props.data[0].productsDetails[0].namedetail &&
-        this.props.data[0].productsDetails[0].namedetail[3] &&
-        this.props.data[0].productsDetails[0].namedetail[3].details,
+        this?.props?.data[0]?.productsDetails[0]?.namedetail[3] &&
+        this?.props?.data[0]?.productsDetails[0]?.namedetail[3]?.details,
       productShipBy: "",
     };
   }
@@ -331,31 +318,13 @@ class Component extends React.Component {
       .then((res) => {
         this.setState({
           productShipBy: res?.data?.shipping_date,
-          // productShipBy: "",
         });
       })
       .catch((error) => {
         console.error(error);
       });
   }
-  // valus = (valueId) => {
-  //   var valus_locl = localStorage.getItem("cartDetails")
-  //     ? JSON.parse(localStorage.getItem("cartDetails")).products
-  //     : "";
 
-  //   var vals;
-  //   valus_locl &&
-  //     valus_locl.map((val) => {
-  //       const vlx = valueId && valueId;
-  //       if (vlx === val.sku_id) {
-  //         vals = 1;
-  //         return false;
-  //       } else {
-  //         vals = 0;
-  //       }
-  //     });
-  //   return vals;
-  // };
   valus = (valueId) => {
     var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : "";
 
@@ -373,13 +342,13 @@ class Component extends React.Component {
     // Typical usage (don't forget to compare props):
 
     var variab = {};
-    variab["pincode"] = this.state.values;
-    if (prevProps.CodData !== this.props.CodData) {
+    variab["pincode"] = this?.state?.values;
+    if (prevProps?.CodData !== this?.props?.CodData) {
       // Here i have handeled the "check for COD" condition because the response is not setting to the props instantly
-      if (this.props.CodData.data.allPincodeMasters.nodes.length > 0) {
+      if (this?.props?.CodData?.data?.allPincodeMasters?.nodes?.length > 0) {
         if (
-          this.props.data[0].price >= this.props.CodData.data.allPincodeMasters.nodes[0].minCartvalue ||
-          this.props.data[0].price <= this.props.CodData.data.allPincodeMasters.nodes[0].maxCartvalue
+          this?.props?.data[0]?.price >= this?.props?.CodData?.data?.allPincodeMasters?.nodes[0]?.minCartvalue ||
+          this?.props?.data[0]?.price <= this?.props?.CodData?.data?.allPincodeMasters?.nodes[0]?.maxCartvalue
         ) {
           this.setState({ CheckForCodtitle: "COD Not Available" });
         } else {
@@ -393,25 +362,23 @@ class Component extends React.Component {
 
   openModel = () => {
     this.props.setCartFilters({
-      skuId: this.props.data[0].skuId,
+      skuId: this?.props?.data[0]?.skuId,
       qty: 1,
-      price: this.props.data[0].offerPrice,
+      price: this?.props?.data[0]?.offerPrice,
     });
     sessionStorage.setItem(
       "updatedProduct",
       JSON.stringify({
-        skuId: this.props.data[0].skuId,
+        skuId: this?.props?.data[0]?.skuId,
         qty: 1,
-        price: this.props.data[0].offerPrice,
+        price: this?.props?.data[0]?.offerPrice,
       })
     );
     window.location.pathname = "/cart";
   };
 
   handleLocalStorage = () => {
-    if (this.valus(this.props.data[0].skuId) === 1) {
-      // this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
-      // sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
+    if (this.valus(this?.props?.data[0]?.skuId) === 1) {
       window.location.pathname = "/cart";
     } else {
       this.setState({
@@ -427,24 +394,21 @@ class Component extends React.Component {
   };
 
   deletechecklists = () => {
-    // this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
-
-    // sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
     this.props.setCartFilters({
-      skuId: this.props.data[0].skuId,
+      skuId: this?.props?.data[0]?.skuId,
       qty:
-        this.props.quantity && this.props.data && this.props.quantity[this.props.data[0].skuId]
-          ? this.props.quantity[this.props.data[0].skuId]
+        this?.props?.quantity && this?.props?.data && this?.props?.quantity[this?.props?.data[0]?.skuId]
+          ? this?.props?.quantity[this?.props?.data[0]?.skuId]
           : 1,
-      price: this.props.data[0].offerPrice,
+      price: this?.props?.data[0]?.offerPrice,
     });
 
     const _qty =
-      this.props.quantity && this.props.data && this.props.quantity[this.props.data[0].skuId]
-        ? this.props.quantity[this.props.data[0].skuId]
+      this?.props?.quantity && this?.props?.data && this?.props?.quantity[this?.props?.data[0]?.skuId]
+        ? this?.props?.quantity[this?.props?.data[0]?.skuId]
         : 1;
     this.props.setFilters({
-      ...this.props.filters,
+      ...this?.props?.filters,
       quantity: _qty,
     });
     let localStorageQuantity = localStorage.getItem("quantity") ? JSON.parse(localStorage.getItem("quantity")) : null;
@@ -452,7 +416,7 @@ class Component extends React.Component {
     if (!localStorageQuantity) {
       if (localStorageQuantity && !localStorageQuantity[this.props.data[0].skuId]) {
         let _obj = {};
-        localStorageQuantity[this.props.data[0].skuId] = _qty;
+        localStorageQuantity[this?.props?.data[0]?.skuId] = _qty;
         localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
         this.props.filters.quantity[this.props.data[0].skuId] = _qty;
       } else {
@@ -505,15 +469,11 @@ class Component extends React.Component {
       if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
         this.props.makeRequestCod(variab);
 
-        // this.setState({pincodeValues:this.props.CodData})
-        // console.log('variables',variables,queryvariables,data)
-        // console.info('objectdataobject', data, data[0].price> state.pincodeValues.data.allPincodeMasters.nodes[0].maxCartvalue, props.CodData)
       } else {
         return {};
       }
     } else {
       this.setState({ isRequired: true });
-      // alert('Please enter the pincode')
     }
   };
   render() {

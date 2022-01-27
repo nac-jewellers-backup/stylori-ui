@@ -463,7 +463,7 @@ export const TabsProvider = (props) => {
         data.data.allTransSkuLists &&
         data.data.allTransSkuLists.nodes.length > 0
       ) {
-        if (!data.data.allTransSkuLists.nodes[0].isActive) {
+        if (!data?.data?.allTransSkuLists?.nodes[0]?.isActive) {
           props.history.push("/jewellery");
         }
         filters["defaultVariants"]["diamondType"] =

@@ -74,16 +74,16 @@ class Accountdetails extends Component {
                             <Grid container spacing={12}  >
                                 <Grid item  >
                                     <List xs={3} className="pay-index-subhed">
-                                        <p className={this.state.isActive == 'profile' ? "backgrund" : ""}
+                                        <p className={this?.state?.isActive == 'profile' ? "backgrund" : ""}
                                             onClick={() => this.Activeaccounts('profile')}
                                         > Personal Information</p>
-                                        <p className={this.state.isActive == 'addresses' ? "backgrund" : ""}
+                                        <p className={this?.state?.isActive == 'addresses' ? "backgrund" : ""}
                                             onClick={() => this.Activeaccounts('addresses')}
                                         >Address Book </p>
-                                        <p className={this.state.isActive == 'shopping-cart' ? "backgrund" : ""}
+                                        <p className={this?.state?.isActive == 'shopping-cart' ? "backgrund" : ""}
                                             onClick={() => this.Activeaccounts('shopping-cart')}
                                         >Shopping bag ({this.props.data.length ? this.props.data.length : "0"}) </p>
-                                        <p className={this.state.isActive == 'wishlist' ? "backgrund" : ""}
+                                        <p className={this?.state?.isActive == 'wishlist' ? "backgrund" : ""}
                                             onClick={() => this.Activeaccounts('wishlist')}
                                         >
                                             Wishlist ({this.props.wishlistdata &&
@@ -92,7 +92,7 @@ class Accountdetails extends Component {
                                                 this.props.wishlistdata.wishlistdata &&
                                                 this.props.wishlistdata.wishlistdata.nodes.length : "0"
                                             })</p>
-                                        <p className={this.state.isActive == 'allorders' ? "backgrund" : ""}
+                                        <p className={this?.state?.isActive == 'allorders' ? "backgrund" : ""}
                                             onClick={() => this.Activeaccounts('allorders')}
                                         >
                                             All Orders</p>
@@ -101,7 +101,7 @@ class Accountdetails extends Component {
                                 <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
                                     <div className="pay-index-subhed_da">
                                         {
-                                            this.state.isActive == 'profile' &&
+                                            this?.state?.isActive == 'profile' &&
                                             <>
                                                 <div style={{ PaddingLeft: "30px" }}></div>
                                                 {/* {c_k_l !== true ? */}
@@ -113,22 +113,22 @@ class Accountdetails extends Component {
 
                                         }
                                         {
-                                            this.state.isActive == 'addresses' && <Addressform />
+                                            this?.state?.isActive == 'addresses' && <Addressform />
                                         }
                                         {
-                                            this.state.isActive == 'shopping-cart' && <>
+                                            this?.state?.isActive == 'shopping-cart' && <>
 
                                                 {this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
                                                     <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
                                         }
                                         {
-                                            this.state.isActive == 'wishlist' && <>
+                                            this?.state?.isActive == 'wishlist' && <>
                                                 <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
                                                 {/* {JSON.stringify(this.props.wishlistdata)} */}
                                             </>
                                         }
                                         {
-                                            this.state.isActive == 'allorders' && <>
+                                            this?.state?.isActive == 'allorders' && <>
                                                 <Allorders allorderdata={this.props.allorderdata} data={this.props.data} />
 
                                                 {/* {JSON.stringify(this.props.allorderdata)} */}
@@ -156,7 +156,7 @@ class Accountdetails extends Component {
                                     style={{ width: "70%" }}
                                     select
                                     //   label="Select the options"
-                                    value={this.state.isActive}
+                                    value={this?.state?.isActive}
                                     onChange={(e) => this.handleClick(e)}
                                     SelectProps={{
                                         native: true,
@@ -177,7 +177,7 @@ class Accountdetails extends Component {
                     <Grid item xs={9} className="topPadding">
                         <div className="pay-index-subhed_da">
                             {
-                                this.state.isActive == 'profile' &&
+                                this?.state?.isActive == 'profile' &&
                                 <>
 
                                     {/* {c_k_l !== true ? */}
@@ -189,20 +189,20 @@ class Accountdetails extends Component {
 
                             }
                             {
-                                this.state.isActive == 'addresses' && <Addressform />
+                                this?.state?.isActive == 'addresses' && <Addressform />
                             }
                             {
-                                this.state.isActive == 'shopping-cart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
+                                this?.state?.isActive == 'shopping-cart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
                                     <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
                             }
                             {
-                                this.state.isActive == 'wishlist' && <>
+                                this?.state?.isActive == 'wishlist' && <>
                                     <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
                                     {/* {JSON.stringify(this.props.wishlistdata)} */}
                                 </>
                             }
                             {
-                                this.state.isActive == 'allorders' && <>
+                                this?.state?.isActive == 'allorders' && <>
                                     <Allorders allorderdata={this.props.allorderdata} data={this.props.data} />
 
                                     {/* {JSON.stringify(this.props.allorderdata)} */}

@@ -123,25 +123,10 @@ class ProductDetails extends React.Component {
                           >
                             {" "}
                             <span className={_isSilver && "pd_details"}>
-                              {valueofproductdetail.header}
+                              {valueofproductdetail?.header}
                             </span>
                           </div>
-                          {/* SEO TEXT FOR STYLORI SILTER - COMMENTED FOR SOME RESON DON'T REMOVE IT */}
-                          {/* <div
-                            style={{
-                              marginBottom: 15,
-                              fontSize: "12px",
-                              color: "rgba(0, 0, 0, 0.54)",
-                              fontWeight: "bold",
-                              width: "70%",
-                            }}
-                          >
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the 1500s,
-                          </div> */}
-
-                          {/* SEO TEXT FOR STYLORI SILTER */}
+                         
                         </>
                       ) : (
                         <>
@@ -150,7 +135,7 @@ class ProductDetails extends React.Component {
                             className={`product-details ${classes.normalfonts}`}
                           >
                             {" "}
-                            {valueofproductdetail.header}
+                            {valueofproductdetail?.header}
                           </span>
                           <hr class="bottom-line"></hr>
                         </>
@@ -166,7 +151,7 @@ class ProductDetails extends React.Component {
                             marginTop: "0px",
                           }}
                         >
-                          {this.props.data[0].productDescription}
+                          {this?.props?.data[0]?.productDescription}
                         </p>
                       ) : (
                         ""
@@ -179,12 +164,12 @@ class ProductDetails extends React.Component {
                               <>
                                 {res.name && (
                                   <span>
-                                    {res.details ? (
-                                      res.details.length === 0 ? (
+                                    {res?.details ? (
+                                      res?.details?.length === 0 ? (
                                         false
                                       ) : this.handleCheck(
                                           valueofproductdetail.header,
-                                          res.details
+                                          res?.details
                                         ) ? (
                                         <Grid container item xs={12}>
                                           <Grid
@@ -213,10 +198,10 @@ class ProductDetails extends React.Component {
                                                       "product-subheadsss"
                                                     }
                                                   >
-                                                    {res.name}
+                                                    {res?.name}
                                                   </div>
                                                 ) : (
-                                                  res.name
+                                                  res?.name
                                                 )}
                                               </span>
                                             </ListItemText>
@@ -482,21 +467,7 @@ class ProductDetails extends React.Component {
               </div>
             </ExpansionPanelSummary>
             <>
-              {/* silver product description - COMMENTED PURPOSEFULLY DON'T REMOVE IT */}
-              {/* <div
-                style={{
-                  marginBottom: 15,
-                  fontSize: "12px",
-                  color: "rgba(0, 0, 0, 0.54)",
-                  fontWeight: "bold",
-                  width: "100%",
-                  padding: "0px 10px 0px 10px " 
-                }}
-              >
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s,
-              </div> */}
+           
               {isSilver ? (
                 <p
                   style={{
@@ -638,18 +609,7 @@ class ProductDetails extends React.Component {
           Number(
             val.namedetail[5].details[1].replace(/,/g, "").replace(/₹/g, "")
           ) > 15000) ? (
-          // <ExpansionPanel
-          //   style={{
-          //     boxShadow:
-          //     isSilver ? 'unset' :
-          //       "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)",
-          //     margin: "12px 0px",
-          //     padding: "0 5px 5px 5px"
-          //   }}
-          //   expanded={expanded === val.header}
-          //   onChange={this.handle(val.header)}
-          //   key={val.name}
-          // >
+       
           <>
             <div style={{ width: "100%" }}>
               <Typography

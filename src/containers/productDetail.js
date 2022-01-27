@@ -77,14 +77,14 @@ class ProductDetail extends Component {
         },
       },
     };
-    this.props.data && TagManager.initialize(tagManagerArgs);
+    this?.props?.data && TagManager.initialize(tagManagerArgs);
   }
   UNSAFE_componentWillMount() {}
 
   handleOGTag = () => {
-    if (this.props.data && this.props.data.length > 0) {
+    if (this?.props?.data && this?.props?.data?.length > 0) {
       var arr = [
-        { key: "Description", value: this?.props.data[0]?.dis },
+        { key: "Description", value: this?.props?.data[0]?.dis },
         {
           key: "keywords",
           value: this?.props?.data[0]?.productsPendants[0]?.name,
@@ -96,13 +96,13 @@ class ProductDetail extends Component {
         //  {key:"title", value:this.props.data[0].title}
       ];
       arr.map((val) => {
-        document.getElementById(val.key).setAttribute("content", val.value);
+        document.getElementById(val.key).setAttribute("content", val?.value);
       });
-      document.title = this.props.data[0].title;
+      document.title = this?.props?.data[0]?.title;
     }
   };
   renderUrl = () => {
-    var loc = this.props.location.pathname;
+    var loc = this?.props?.location?.pathname;
     var path = loc.split("/");
     if (path[2] === "Bracelets") return "/bracelets-jewellery";
     if (path[2] === "Pendants") return "/pendants-jewellery";
@@ -115,34 +115,22 @@ class ProductDetail extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.data !== prevState.data) {
       this.setState({ data: this.props.data });
-      // this.handleOGTag()
     }
   }
 
   render() {
-    // const meta = {
-    //   title: 'Some Meta Title',
-    //   og_description: 'I am a description, and I can create multiple tags',
-    //   canonical: 'http://example.com/path/to/page',
-    //   meta: {
-    //     charset: 'utf-8',
-    //     name: {
-    //       keywords: 'react,meta,document,html,tags'
-    //     }
-    //   }
-    // };
+ 
 
-    var loc = this.props.location.pathname;
+    var loc = this?.props?.location?.pathname;
     var path = loc.split("/");
     var data_json = [
       { title: "home", url: "/" },
       { title: path[2], url: this.renderUrl() },
       {
         title:
-          this.props.data && this.props.data[0] && this.props.data[0].title,
+          this?.props?.data && this?.props?.data[0] && this?.props?.data[0]?.title,
       },
     ];
-    // alert(JSON.stringify(this.props.wishlistdata))
     const clear_rating = (bool) => {
       if (bool === false) {
         this.setState({
@@ -228,25 +216,7 @@ class ProductDetail extends Component {
         <Hidden smDown>
           <Header wishlist={this?.props?.wishlistdata ?? ""} />
 
-          {/* {!isSilver ? (
-            <Grid
-              Container
-              spacing={12}
-              style={{ maxWidth: "1600px", margin: "auto" }}
-            >
-              <Grid item xs={12}>
-                <div className="pricing-breadcrums-media">
-                  <CustomSeparator
-                    list="pricing-loctn"
-                    classsubhed="pricing-loctn-head"
-                    data={data_json}
-                  />
-                </div>
-              </Grid>
-            </Grid>
-          ) : (
-            <Grid container item xs={12} style={{ marginTop: "30px" }}></Grid>
-          )} */}
+  
 
           <Grid
             Container
@@ -305,13 +275,13 @@ class ProductDetail extends Component {
               <Grid item xs={6}>
                 {isSilver ? (
                   <ProductImageZoom
-                    data={this.props.data}
+                    data={this?.props?.data}
                     isSilver={isSilver}
                     customLimit={3}
                   />
                 ) : (
                   <ProductImageZoom
-                    data={this.props.data}
+                    data={this?.props?.data}
                     isSilver={isSilver}
                   />
                 )}
@@ -320,30 +290,30 @@ class ProductDetail extends Component {
                 {isSilver ? (
                   <div className="overall-box-without-shadow-silver">
                     <SilverProductPrice
-                      data={this.props.data}
-                      wishlist={this.props.wishlistdata}
+                      data={this?.props?.data}
+                      wishlist={this?.props?.wishlistdata}
                     />
                   </div>
                 ) : (
                   <div className="overall-box priceecontainer">
                     <ProductPrice
-                      data={this.props.data}
-                      wishlist={this.props.wishlistdata}
+                      data={this?.props?.data}
+                      wishlist={this?.props?.wishlistdata}
                     />
                   </div>
                 )}
                 {!isSilver && (
                   <div className="overall-box priceecontainer">
-                    <PriceTabs data={this.props.data} isSilver={isSilver} />
+                    <PriceTabs data={this?.props?.data} isSilver={isSilver} />
                   </div>
                 )}
                 {isSilver ? (
                   <div>
-                    <PriceBuynow data={this.props.data} isSilver={isSilver} />
+                    <PriceBuynow data={this?.props?.data} isSilver={isSilver} />
                   </div>
                 ) : (
                   <div className="overall-box priceecontainer">
-                    <PriceBuynow data={this.props.data} isSilver={isSilver} />
+                    <PriceBuynow data={this?.props?.data} isSilver={isSilver} />
                   </div>
                 )}
                 {isSilver && (
@@ -352,16 +322,9 @@ class ProductDetail extends Component {
                     xs={12}
                     style={{ marginBottom: "10px", marginTop: "10px" }}
                   >
-                    {/* <p
-                      style={{
-                        color: "rgb(58, 69, 120)",
-                        fontSize: "14px",
-                      }}
-                    >
-                      {this.props.data[0].dis}
-                    </p> */}
+                   
                     <ProductDetails
-                      data={this.props.data}
+                      data={this?.props?.data}
                       isSilver={isSilver}
                     />
                   </Grid>
@@ -385,7 +348,7 @@ class ProductDetail extends Component {
                   xs={6}
                   style={{ marginBottom: "20px", marginTop: "20px" }}
                 >
-                  <ProductDetails data={this.props.data} isSilver={isSilver} />
+                  <ProductDetails data={this?.props?.data} isSilver={isSilver} />
                 </Grid>
                 {!isSilver && (
                   <Grid
@@ -394,34 +357,14 @@ class ProductDetail extends Component {
                     style={{ marginBottom: "20px", marginTop: "20px" }}
                   >
                     <PriceCertification data={this.props.data} />
-                    <Request data={this.props.data} />
+                    <Request data={this?.props?.data} />
                   </Grid>
                 )}
                 <br />
               </Grid>
             </div>
           )}
-          {/* BUY TOGETHER - COMMENTED FOR SOME RESON DON'T REMOVE IT */}
-          {/* {isSilver && (
-            <div
-              style={{
-                maxWidth: "1600px",
-                margin: "auto",
-                paddingLeft: "5%",
-                paddingRight: "5%",
-                paddingTop: "4%",
-              }}
-            >
-              <Sublistcarousel
-                data={this.props.data}
-                isSilver={isSilver}
-                nextPreviousIconSize = {'3rem'}
-                customLimit={2}
-                label="BUY TOGETHER"
-              />
-            </div>
-          )} */}
-          {/* -------------------------------- */}
+       
           {isSilver ? (
             <div
               style={{
@@ -440,7 +383,7 @@ class ProductDetail extends Component {
               />
             </div>
           ) : (
-            <Sublistcarousel data={this.props.data} isSilver={isSilver} />
+            <Sublistcarousel data={this?.props?.data} isSilver={isSilver} />
           )}
           {isSilver && (
             <div
@@ -454,7 +397,7 @@ class ProductDetail extends Component {
             >
               <ShopBy
                 isSilver={isSilver}
-                shopByStyloriSilver={this.props.shopByStyloriSilver}
+                shopByStyloriSilver={this?.props?.shopByStyloriSilver}
               />
             </div>
           )}
@@ -467,8 +410,8 @@ class ProductDetail extends Component {
             >
               <RatingForm
                 // 0 0 0
-                data={this.props.data}
-                clear_rating={this.state.clear}
+                data={this?.props?.data}
+                clear_rating={this?.state?.clear}
                 clear_rating_onchange={clear_rating}
                 isSilver={isSilver}
               />
@@ -476,8 +419,8 @@ class ProductDetail extends Component {
           ) : (
             <RatingForm
               // 0 0 0
-              data={this.props.data}
-              clear_rating={this.state.clear}
+              data={this?.props?.data}
+              clear_rating={this?.state?.clear}
               clear_rating_onchange={clear_rating}
               isSilver={isSilver}
             />
@@ -489,10 +432,9 @@ class ProductDetail extends Component {
                 margin: "auto",
               }}
             >
-              {/* <CustomerReviews rating={this.props.rating} isSilver={isSilver} /> */}
             </div>
           ) : (
-            <CustomerReviews rating={this.props.rating} isSilver={isSilver} />
+            <CustomerReviews rating={this?.props?.rating} isSilver={isSilver} />
           )}
 
           <Grid item xs={12}>
@@ -501,42 +443,21 @@ class ProductDetail extends Component {
         </Hidden>
 
         <Hidden mdUp>
-          {/* <div style={{ paddingBottom: "50px" }}> */}
-          {/* <Grid container spacing={12} style={{ position: 'sticky', top: '0', zIndex: '1000' }}> */}
-          <Header wishlist={this.props.wishlistdata} pdpage={true} />
+          <Header wishlist={this?.props?.wishlistdata} pdpage={true} />
           {/* </Grid> */}
 
           <Grid item xs={12}>
             <PriceBuynow
-              data={this.props.data}
-              wishlist={this.props.wishlistdata}
+              data={this?.props?.data}
+              wishlist={this?.props?.wishlistdata}
               isSilver={isSilver}
             />
           </Grid>
-          {/* {isSilver && <Grid item xs={12} style={{marginBottom:'15px'}}>
-               <Container > <Quantity data={this.props.data}/></Container>
-                </Grid>} */}
-          {/* {isSilver ? (
-            <>
-              <Grid item xs={11} style={{ margin: "auto" }}>
-                <p
-                  style={{
-                    color: "rgb(58, 69, 120)",
-                    fontSize: "15px",
-                    marginBottom: "20px",
-                  }}
-                >
-                  {this.props.data[0].dis}
-                </p>
-              </Grid>
-            </>
-          ) : (
-            ""
-          )} */}
+  
           <Grid item xs={12}>
             <ProductDetails
-              data={this.props.data}
-              wishlist={this.props.wishlistdata}
+              data={this?.props?.data}
+              wishlist={this?.props?.wishlistdata}
               isSilver={isSilver}
             />
           </Grid>
@@ -554,31 +475,23 @@ class ProductDetail extends Component {
           )}
           {!isSilver && (
             <Grid item xs={12}>
-              <PriceCertification data={this.props.data} isSilver={isSilver} />
+              <PriceCertification data={this?.props?.data} isSilver={isSilver} />
             </Grid>
           )}
           {!isSilver && (
             <Grid item xs={12}>
-              <Request data={this.props.data} />
+              <Request data={this?.props?.data} />
             </Grid>
           )}
 
           <Grid item xs={12}>
             <Sublistcarousel
-              data={this.props.data}
+              data={this?.props?.data}
               isSilver={isSilver}
               customLimit={4}
             />
           </Grid>
-          {/* BUY TOGETHER - COMMENTED FOR SOME RESON DON'T REMOVE IT */}
-          {/* <Grid item xs={12}>
-            <Sublistcarousel
-              data={this.props.data}
-              isSilver={isSilver}
-              label="BUY TOGETHER"
-              customLimit={4}
-            />
-          </Grid> */}
+      
           {isSilver && (
             <Container>
               <Container>
@@ -615,11 +528,7 @@ class ProductDetail extends Component {
                     textAlign: "center",
                   }}
                 >
-                  {/* <ProductTitle
-                    title={"SHOP BY TYPE"}
-                    class={["silverPDPage", "silverPDPagehrline"]}
-                    isSilver={isSilver}
-                  /> */}
+              
                   SHOP BY TYPE
                 </div>
 
@@ -639,14 +548,14 @@ class ProductDetail extends Component {
           </Grid>
           <Grid item xs={12}>
             <RatingForm
-              data={this.props.data}
-              clear_rating={this.state.clear}
+              data={this?.props?.data}
+              clear_rating={this?.state?.clear}
               clear_rating_onchange={clear_rating}
               isSilver={isSilver}
             />
           </Grid>
           <Grid item xs={12}>
-            <CustomerReviews data={this.props.data} />
+            <CustomerReviews data={this?.props?.data} />
           </Grid>
           <Grid item style={{ paddingBottom: "50px" }}>
             <Footer silver={isSilver} />
@@ -666,17 +575,10 @@ const Components = (props) => {
   let _shopsProducts = [];
   const [state, setState] = React.useState({ shopByData: [], allSeo: {} });
   const _shopsProductss = (val) => {
-    // _shopsProducts = [
-    //   {
-    //     label: val.label,
-    //     image:val.images[0].imageUrl,
-    //   },
-
-    // ];
+ 
     _shopsProducts = Object.keys(val).map((data) => {
       return { label: val[data].label, image: val[data].images };
     });
-    // setState({...state,shopByData:_shopsProducts})
   };
 
   const _queryResultsValidator = (_result) => {
@@ -684,7 +586,7 @@ const Components = (props) => {
     var _obj = {};
     _keys.map((val) => {
       var a = _result[val].nodes.map((val) => {
-        return val.productListByProductSku.productImagesByProductId.nodes;
+        return val?.productListByProductSku?.productImagesByProductId?.nodes;
       });
 
       let _arr = [];
@@ -745,7 +647,6 @@ const Components = (props) => {
               });
               return obj;
             };
-            // let _data =func()
             state["allSeo"] = func();
 
             setState({
@@ -780,13 +681,13 @@ const Components = (props) => {
     if (data && !loading) {
       if (Object.keys(data).length > 0) {
         if (
-          data.data.allTransSkuLists &&
-          data.data.allTransSkuLists.nodes.length > 0 &&
-          data.data.allTransSkuLists.nodes[0].productListByProductId &&
-          data.data.allTransSkuLists.nodes[0].productListByProductId
-            .productMaterialsByProductSku &&
-          data.data.allTransSkuLists.nodes[0].productListByProductId
-            .productMaterialsByProductSku.nodes.length > 0
+          data?.data?.allTransSkuLists &&
+          data?.data?.allTransSkuLists?.nodes?.length > 0 &&
+          data?.data?.allTransSkuLists?.nodes[0]?.productListByProductId &&
+          data?.data?.allTransSkuLists?.nodes[0]?.productListByProductId
+            ?.productMaterialsByProductSku &&
+          data?.data?.allTransSkuLists?.nodes[0]?.productListByProductId
+            ?.productMaterialsByProductSku?.nodes?.length > 0
         ) {
           data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku.nodes.map(
             (val) => {

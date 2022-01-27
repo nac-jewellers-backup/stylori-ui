@@ -33,7 +33,7 @@ const WishlistComponent = (props) => {
   let a = props.isSilverbool ? "fa fa-heart overall-icons" : "fa fa-heart-o overall-icons";
   return (
     <>
-      {values.isactive !== 2 ? (
+      {values?.isactive !== 2 ? (
         <>
           {isSilver && props.label && (
             <span

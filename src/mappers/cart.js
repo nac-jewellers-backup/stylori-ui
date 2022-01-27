@@ -168,7 +168,7 @@ export default function (data) {
         isReadyToShip: k.isReadyToShip,
         minOrderQty: k.minOrderQty,
         maxOrderQty: k.maxOrderQty,
-        isActive: k.productListByProductId.isactive,
+        isActive: k?.productListByProductId?.isactive ?? "",
         productsDetails: [
           //                     Quality
           // Metal

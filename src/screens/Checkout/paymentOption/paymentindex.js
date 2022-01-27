@@ -71,7 +71,7 @@ class PaymentIndex extends React.Component {
                                     <div className="dc-icon"></div> &nbsp; Debit card </p> */}
                 <p
                   className={
-                    this.state.isActive == "Netbanking"
+                    this?.state?.isActive == "Netbanking"
                       ? "selectedcolor"
                       : "unselected"
                   }
@@ -83,7 +83,7 @@ class PaymentIndex extends React.Component {
 
                 <p
                   className={`${
-                    this.state.isActive == "CashonDelivey"
+                    this?.state?.isActive == "CashonDelivey"
                       ? "selectedcolor"
                       : "unselected"
                   } 
@@ -103,12 +103,12 @@ class PaymentIndex extends React.Component {
                 style={{ marginTop: "20px" }}
                 className="pay-index-subhed_datas "
               >
-                {this.state.isActive == "Creditform" && <Creditform />}
-                {this.state.isActive == "Debitform" && <Debitform />}
-                {this.state.isActive == "Netbanking" && <Netbanking />}
+                {this?.state?.isActive == "Creditform" && <Creditform />}
+                {this?.state?.isActive == "Debitform" && <Debitform />}
+                {this?.state?.isActive == "Netbanking" && <Netbanking />}
                 {
                   // !dataCard1.length > 0 ?
-                  this.state.isActive == "CashonDelivey" && <CashonDelivey />
+                  this?.state?.isActive == "CashonDelivey" && <CashonDelivey />
                   // :"cash on delivery is not available"
                 }
               </div>

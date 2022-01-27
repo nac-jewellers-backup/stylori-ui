@@ -283,7 +283,7 @@ class Component extends React.Component {
     const enquireLink = () => {
       let ProductIsActiveUrl;
       this.props.data.map((val) => {
-        if (val.isActive == false) {
+        if (val?.isActive == false) {
           ProductIsActiveUrl = val.skuUrl;
         }
       });
@@ -296,7 +296,7 @@ class Component extends React.Component {
 
     let ProductIsActive = true;
     this.props.data.map((val) => {
-      if (val.isActive == false) {
+      if (val?.isActive == false) {
         ProductIsActive = false;
       }
     });

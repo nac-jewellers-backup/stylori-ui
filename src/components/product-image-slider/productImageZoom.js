@@ -18,13 +18,7 @@ import {
   MOUSE_ACTIVATION,
   TOUCH_ACTIVATION,
 } from "react-image-magnifiers";
-// window.onload = function () {
-//   var flashlight = document.querySelector('#flashlight');
-//   document.getElementById('divs').addEventListener('mouseover', function (event) {
-//     flashlight.style.left = (event.pageX - 40) + 'px';
-//     flashlight.style.top = (event.pageY - 40) + 'px';
-//   });
-// };
+
 
 class ProductImageZoom extends React.Component {
   constructor(props) {
@@ -248,13 +242,13 @@ class ProductImageZoom extends React.Component {
                 {data &&
                 data.length > 0 &&
                 data[0] &&
-                data[0].fadeImages.arrOfurls.length > 3 ? (
+                data[0]?.fadeImages?.arrOfurls?.length > 3 ? (
                   <span
                     className={
                       data &&
                       data.length > 0 &&
                       data[0] &&
-                      data[0].fadeImages.arrOfurls.length === 4
+                      data[0]?.fadeImages?.arrOfurls?.length === 4
                         ? classes.cursor_notallowed
                         : null
                     }
@@ -265,7 +259,7 @@ class ProductImageZoom extends React.Component {
                         data &&
                         data.length > 0 &&
                         data[0] &&
-                        data[0].fadeImages.arrOfurls.length === 4
+                        data[0]?.fadeImages?.arrOfurls?.length === 4
                           ? true
                           : false
                       }
@@ -297,13 +291,13 @@ class ProductImageZoom extends React.Component {
                 {data &&
                 data.length > 0 &&
                 data[0] &&
-                data[0].fadeImages.arrOfurls.length > 3 ? (
+                data[0]?.fadeImages?.arrOfurls?.length > 3 ? (
                   <span
                     className={
                       data &&
                       data.length > 0 &&
                       data[0] &&
-                      data[0].fadeImages.arrOfurls.length === 4
+                      data[0]?.fadeImages?.arrOfurls?.length === 4
                         ? classes.cursor_notallowed
                         : null
                     }
@@ -314,7 +308,7 @@ class ProductImageZoom extends React.Component {
                         data &&
                         data.length > 0 &&
                         data[0] &&
-                        data[0].fadeImages.arrOfurls.length === 4
+                        data[0]?.fadeImages?.arrOfurls?.length === 4
                           ? true
                           : false
                       }
@@ -324,7 +318,6 @@ class ProductImageZoom extends React.Component {
                           _isSilver ? classes.iconfill : classes.iconfillStylori
                         }`}
                         style={{ fontSize: "35px" }}
-                        // className={`${classes.colorMain}`}
                       ></i>
                     </Button>
                   </span>
@@ -334,17 +327,7 @@ class ProductImageZoom extends React.Component {
           </Grid>
 
           <Grid item xs={_isSilver ? 9 : 10}>
-            {/* <div className='imagecard' id="divs" onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
-                {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship" ></div> : ""} */}
-            {/* <div id='flashlight'></div> */}
-            {/* <img className='img-zooming-' id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
-              </div>
-              <div className='overly-img' id="overlay"
-                style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}>
-                </div> */}
-
-            {/* <div class="zoomreact" style={{  boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)" , width: "100%" }}><ReactImageZoom {...props} /></div> */}
-
+         
             <div>
               <div
                 className={_isSilver ? "imagecardSilver" : "imagecard"}
@@ -362,32 +345,16 @@ class ProductImageZoom extends React.Component {
                   alignItem: "center",
                 }}
               >
-                {/* {alert(JSON.stringify(this.props.data[0].fadeImages.arrOfurls_2X[0]))} */}
-                {/* <Grid container >
-                <Grid item lg={1}>
-                {data.map(val => {
-                
-                var split = val.offerDiscount.split(" ")
-                  return < span style={{ color: "#fff" }}>
-                < div class="ribbon_dic" > {split[0]} < br /> {split[1]}</div>
-                  </span>
-                })}
-                </Grid>
-                <Grid item lg={3}>
-                {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship" ></div> : ""}
-                
-              </Grid>
-            </Grid> */}
+             
                 {data.map((val) => {
-                  return !this.props.isSilver && val.offerDiscount ? (
+                  return !this?.props?.isSilver && val?.offerDiscount ? (
                     <span style={{ color: "#fff" }} className="overlayCss11">
                       {val.offerDiscount}
                     </span>
                   ) : null;
                 })}
-                {/* !this.props.isSilver &&  */}
-                {data[0].ProductContactNum[0].isReadyToShip == true ? (
-                  this.props.isSilver ? (
+                {data[0]?.ProductContactNum[0]?.isReadyToShip == true ? (
+                  this?.props?.isSilver ? (
                     <div class={"one-day-ship_only_silver"}>
                       <img
                         src={require("assets/StyloriSilver-truckIcon.svg")}
@@ -397,7 +364,7 @@ class ProductImageZoom extends React.Component {
                   ) : (
                     <div
                       class={
-                        data && data[0] && data[0].offerDiscount
+                        data && data[0] && data[0]?.offerDiscount
                           ? "one-day-ship_"
                           : "one-day-ship_only"
                       }
@@ -424,10 +391,8 @@ class ProductImageZoom extends React.Component {
                       showimageBig,
                       `${CDN_URL}product/1000X1000/productnotfound.webp`,
                     ]}
-                    // imageSrc={largeImage}
-                    // onImageLoad={this.imageSrc=`${CDN_URL}product/1000X1000/productnotfound.webp`}
                     imageAlt="Stylori"
-                    magnifierSize={this.props.isSilver ? "40%" : "50%"}
+                    magnifierSize={this?.props?.isSilver ? "40%" : "50%"}
                     largeImageSrc={[
                       largeImage,
                       largeImageBig,
@@ -436,27 +401,13 @@ class ProductImageZoom extends React.Component {
                     ]}
                     magnifierBoxShadow="0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)"
                     magnifierBorderColor={
-                      this.props.isSilver ? "rgb(58,69,120)" : "#f5003240"
+                      this?.props?.isSilver ? "rgb(58,69,120)" : "#f5003240"
                     }
-                    // magnifierBackgroundColor="#f5003240"
                   />
                 )}
               </div>
 
-              {/*              
-              <div className='imagecard' id="divs" style={{height: window.innerWidth>2250?"800px":data[0].image_resolution }} onMouseOut={event => this.zoomOut(event)} onMouseMove={event => this.zoomIn(event)}>
-               
-                {data.map(val=>
-                  <span style={{ color: "#fff" }} className="overlayCss">
-                  {val.offerDiscount}
-                   </span>)}
-                   {data[0].ProductContactNum[0].isReadyToShip == true ? <div class="one-day-ship" ></div> : ""}
-                <img id="imgZoom" width="100%" height="100%" className={`${showimage ? '' : 'shine'}`} src={showimage} alt="" />
-              </div>
-
-              <div className='overly-img' id="overlay"
-                style={{ backgroundImage: `url(${c})`, height: data[0].image_resolution }} onMouseOut={event => this.zoomOut(event)}></div> */}
-
+             
               <div></div>
             </div>
             <Grid container>

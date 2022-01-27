@@ -284,7 +284,7 @@ function MediaControlCard(props) {
                         productid={dataval}
                         onClick={(e) => handleDeleteLocalStorage(e, val)}
                       >
-                        {!dataval.isActive ? (
+                        {!dataval?.isActive ? (
                           <span
                             style={{
                               backgroundColor: "red",

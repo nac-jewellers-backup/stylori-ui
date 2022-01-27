@@ -37,17 +37,17 @@ const mobilecarousel = (props, val, wishlist) => {
         <Grid container spacing={12} xs={12}>
           <Grid container item xs={6}>
             <div
-              className={val && val.offerDiscount ? "css-ts7n45 e5toz5w4" : ""}
+              className={val && val?.offerDiscount ? "css-ts7n45 e5toz5w4" : ""}
             >
               <span
                 style={{ color: "#fff" }}
                 className={
-                  val && val.offerDiscount
+                  val && val?.offerDiscount
                     ? "e195g4sk5 css-5pjie5 ekntgft2"
                     : ""
                 }
               >
-                {val ? val.offerDiscount : null}
+                {val ? val?.offerDiscount : null}
               </span>
               <br />
               {data[0]?.ProductContactNum[0]?.isReadyToShip &&
@@ -75,10 +75,10 @@ const mobilecarousel = (props, val, wishlist) => {
         class="middle"
         className="responseve-carousel testingcur"
         imgClass="responseve-carousel-img"
-        fadeImages={data[0].fadeImages.arrOfurls}
+        fadeImages={data[0]?.fadeImages?.arrOfurls}
         dataCarousel={dataCarousel}
         videoControls={true}
-        size={props.data[0].size}
+        size={props?.data[0]?.size}
       />
     </div>
   );
@@ -90,8 +90,6 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
   const { shipby_arr } = state;
   const open = anchorEl;
   var wishlist = props.wishlist;
-  // alert(JSON.stringify(props.wishlist.wishlistdata.nodes.skuId))
-  // var wishlist = this.props && this.props.wishlist &&
   return (
     <div>
       {data.map((val) => (
@@ -99,51 +97,10 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
           <Grid container spacing={12} sm={12} className={classes.pricedetails}>
             <Hidden mdUp>
               <div className="resp">
-                {/* <div className="respc"> */}
-                {/* <h1 className={`pdp-title ${classes.title}`}>
-                                        {val.title}
-                                    </h1> */}
-                {/* <Grid container spacing={12} xs={12}> */}
-                {/* <Grid container item xs={6} justify={'flex-start'}>
-                                            <Pricing
-                                                offerDiscount={}
-                                            />
-                                        </Grid> */}
-                {/* <Grid container item xs={6} md={6} justify={'flex-end'}>
-                                            <Grid container item xs={8} xs={8} justify={'flex-end'}>
-                                                {data[0].ProductContactNum[0].isReadyToShip == true ? <div className="one-day-ship-mb"></div> : ""}
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                </div> */}
+           
                 {mobilecarousel(props, val, wishlist)}
 
-                {/* <div style={{ background: "rgb(238, 238, 238)", width: "100%" }}>
-                                    <div className="respc">
-                                        <Grid container spacing={12} xs={12}>
-                                            <Grid container item xs={6} justify={'flex-start'}>
-                                                <Pricing
-                                                    price={data[0].price}
-                                                    offerPrice={data[0].offerPrice}
-                                                />
-                                            </Grid> */}
-                {/* <Grid container item xs={6} justify={'flex-end'}>
-                                                <div>
-                                                    {data[0].ProductContactNum.map(val =>
-                                                        <div style={{ marginTop: "10px" }}>
-                                                            <b className={`ships-by ${classes.normalfonts}`}> */}
-                {/* <span class="ship-img"></span> */}
-                {/* <span > {val.shipby}</span>
-                                                            </b>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </Grid> */}
-                {/* </Grid>
-                                    </div>
-                                </div> */}
-                {/* <hr class="bottom-line product-inform-ation"></hr> */}
-                {/* <br /><br /> */}
+          
               </div>
             </Hidden>
             <Paper
@@ -160,12 +117,11 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                             className={`pdp-title ${classes.title}`}
                             style={{ width: "90%" }}
                           >
-                            {val.title}
-                            {/* <i style={{ padding: "2px", fontSize: "12px" }} class="fa fa-info-circle" aria-hidden="true"></i> */}
+                            {val?.title}
                           </h1>
 
                           <div>
-                            {data[0].ProductContactNum.map((val) => (
+                            {data[0]?.ProductContactNum?.map((val) => (
                               <div>
                                 <b
                                   style={{
@@ -202,9 +158,9 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                               style={{ padding: "0px 10px  0px 10px " }}
                             >
                               <Pricing
-                                price={data[0].price}
-                                offerPrice={data[0].offerPrice}
-                                offerDiscount={val.offerDiscount}
+                                price={data[0]?.price}
+                                offerPrice={data[0]?.offerPrice}
+                                offerDiscount={val?.offerDiscount}
                               ></Pricing>
                             </div>
                           </Hidden>
@@ -213,11 +169,11 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                     </Hidden>
                     <Hidden smDown>
                       <h1 className={`pdp-title ${classes.title}`}>
-                        {val.title}
+                        {val?.title}
                       </h1>
                     </Hidden>
                     <Hidden smDown>
-                      <p className={`pdp-desc ${classes.dis}`}>{val.dis}</p>
+                      <p className={`pdp-desc ${classes.dis}`}>{val?.dis}</p>
                     </Hidden>
                   </div>
                 </Grid>
@@ -248,11 +204,10 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                           onClick={handleClick}
                         ></i>{" "}
                         &nbsp;
-                        {/* {JSON.stringify(val.productId)} */}
-                        {/* <Wishlist sku={val.skuId} productId={val.productId} /> */}
+                    
                         <Wishlist
-                          sku={val.skuId}
-                          productId={val.productId}
+                          sku={val?.skuId}
+                          productId={val?.productId}
                           wishlist={wishlist}
                         />
                         <Popover
@@ -277,6 +232,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                               href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
                             >
                               <img
+                              alt=""
                                 class="lazyload"
                                 src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg"
                               />
@@ -288,14 +244,13 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                               href={`http://www.twitter.com/share?url=${window.location.href}`}
                             >
                               <img
+                              alt=""
                                 class="lazyload"
                                 src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg"
                               />
                             </a>
                             &nbsp;
-                            {/* <a class="google" target="_blank">
-                                                            <img class="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />
-                                                        </a> */}
+                           
                           </div>
                         </Popover>
                         <div onClick={() => window.scrollTo(0, 1800)}>
@@ -304,16 +259,13 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                             disable={"disable"}
                           />
                         </div>
-                        {/* <div><Ratings ratings="starts-review" /></div> */}
                       </div>
                     </div>
                   </Hidden>
                 </Grid>
               </Grid>
             </Paper>
-            {/* <Hidden smDown>
-                            <hr class="bottom-line product-inform-ation"></hr>
-                        </Hidden> */}
+          
           </Grid>
 
           <Hidden smDown>
@@ -322,24 +274,14 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
               style={{ padding: "0px 10px  0px 10px " }}
             >
               {data[0].price === data[0].offerPrice ? (
-                <Pricing offerPrice={data[0].offerPrice}>
-                  {/* <Grid container spacing={12}>
-                                    <div className={`price-info ${classes.dis}`}>
-                                        <Grid item xs={4} lg={2} className={`discount-container ${classes.dis}`}>
-                                            {val.price}
-                                        </Grid>
-                                        <Grid item lg={5} xs={8} className={`selling-price ${classes.backgsecondary}`}><i class="fa fa-rupee"></i> &nbsp;
-                              {val.offerPrice}
-                                        </Grid>
-                                    </div>
-                                </Grid> */}
+                <Pricing offerPrice={data[0]?.offerPrice}>
+           
                 </Pricing>
               ) : (
                 <Pricing
-                  offerPrice={data[0].offerPrice}
-                  price={data[0].price}
+                  offerPrice={data[0]?.offerPrice}
+                  price={data[0]?.price}
 
-                  // offerDiscount={val.offerDiscount}
                 ></Pricing>
               )}
             </div>
