@@ -3,6 +3,7 @@ import "./index.css";
 import { Button } from "@material-ui/core";
 import { API_URL } from "config";
 import axios from "axios";
+import { ERRORCATCH } from "queries/home";
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -15,18 +16,25 @@ export default class ErrorBoundary extends React.Component {
       handleError: true,
     });
 
-    // error &&
-    //   errorInfo &&
-    //   axios
-    //     .post(`${API_URL}/send_error_mail`, {
-    //       page: window.location.href,
-    //       error: error?.toString(),
-    //       message: errorInfo?.componentStack?.toString(),
-    //     })
-    //     .then((res) => {
-    //       console.log(res);
-    //     })
-    //     .catch((err) => console.log(err));
+    axios
+      .post(
+        `${API_URL}/graphql`,
+        JSON.stringify({
+          query: ERRORCATCH,
+          variables: {
+            page: window.location.href,
+            error: error?.toString(),
+            message: errorInfo?.componentStack?.toString(),
+          },
+        }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }
 
   render() {

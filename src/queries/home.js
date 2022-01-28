@@ -162,3 +162,20 @@ query MyQuery {
   }
 }
 `;
+
+export const ERRORCATCH = `
+mutation MyMutation($message: String, $page: String, $error: String) {
+  createUiErrorLog(
+    input: { uiErrorLog: { message: $message, page: $page, error: $error } }
+  ) {
+    uiErrorLog {
+      message
+      id
+      page
+      error
+      updatedAt
+      createdAt
+    }
+  }
+}
+`;
