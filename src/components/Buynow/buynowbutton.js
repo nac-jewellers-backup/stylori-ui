@@ -43,7 +43,7 @@ class Buynowbutton extends React.Component {
   }
 
   render() {
-    let productIsActive = this.props.productIsActive ?? "";
+    let productIsActive = this?.props?.productIsActive ?? "";
     const enquireLink = () => {
       if (!productIsActive) {
         if (this.props?.productURL) {

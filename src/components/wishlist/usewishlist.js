@@ -22,31 +22,24 @@ const useWishlists = (props) => {
     const { ProductDetailCtx:{filters}, setFilters } = React.useContext(ProductDetailContext);
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
     const check_gustlog = localStorage.getItem("true") ? localStorage.getItem("true") : {}
-    // useEffect(() => {
-    //     // orderobj["product_sku"] = sku
-    //     setValues(orderobj);
-    // }, []) 
+
     const handleChange = (type, value) => {
         setValues({
             ...values,
             [type]: value
         })
-        // makeFetch(values)
     }
-
     const handleInvalid = (type, status) => {
         setInvalids({
             ...invalids,
             [type]: status
         })
     }
-
     const makeFetch = () => {
         fetch(`${API_URL}/addwishlist`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: JSON.stringify(values)
         }).then((response) => {
@@ -54,22 +47,7 @@ const useWishlists = (props) => {
         })
 
     }
-    // const removemakeFetch = () => {
-    //     
-    //     fetch('https://api.stylori.net/removewishlist', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //             // 'Content-Type': 'application/x-www-form-urlencoded',
-    //         },
-    //         body: JSON.stringify(values)
-    //     }).then((response) => {
-    //         return response.json();
-    //     })
-    //         .then((myJson) => {
-    //             console.log(myJson);
-    //         });
-    // }
+
 const checkProductAlreadyAddedInWishlist = async(num) =>{
     const cartId = JSON.parse(localStorage.getItem('cart_id')).cart_id
     await  fetch(`${API_URL}/graphql`, {
@@ -94,18 +72,12 @@ const checkProductAlreadyAddedInWishlist = async(num) =>{
         setValues({ values, ...values });
         makeFetch()
       }
-            // let _data =func()
-            // state['allSeo'] = func()
-      
-    //   setState({...state,shopByData:_shopsProducts,allSeo:state.allSeo})
-      
     })
-    
 }
     const handelSubmit = (num) => {
 
         setwishlistdata({
-            wishlistdata: values.isactive
+            wishlistdata: values?.isactive
         })
         if (user_id.length > 0 && check_gustlog === "false") {
             checkProductAlreadyAddedInWishlist(num)
@@ -134,7 +106,7 @@ const checkProductAlreadyAddedInWishlist = async(num) =>{
     const handelRemove = (num) => {
         
         setwishlistdata({
-            wishlistdata: values.isactive
+            wishlistdata: values?.isactive
         })
         if (user_id.length > 0 && check_gustlog === "false") {
             values["isactive"] = num

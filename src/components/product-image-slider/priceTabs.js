@@ -59,36 +59,35 @@ class Component extends React.Component {
     values: "",
     expanded: "1",
     skuSize:
-      this.props &&
-      this.props.filters &&
-      this.props.filters.defaultVariants &&
-      this.props.filters.defaultVariants.skuSize,
+      this?.props &&
+      this?.props?.filters &&
+      this?.props?.filters?.defaultVariants &&
+      this?.props?.filters?.defaultVariants?.skuSize,
     purity:
-      this.props &&
-      this.props.data &&
-      this.props.data.length > 0 &&
-      this.props.data[0] &&
-      this.props.data[0].productsDetails &&
-      this.props.data[0].productsDetails.length > 0 &&
-      this.props.data[0].productsDetails[0] &&
-      this.props.data[0].productsDetails[0].namedetail &&
-      this.props.data[0].productsDetails[0].namedetail.length > 0 &&
-      this.props.data[0].productsDetails[0].namedetail[1] &&
-      this.props.data[0].productsDetails[0].namedetail[1].details
-        ? this.props.data[0].productsDetails[0].namedetail[1].details
+      this?.props &&
+      this?.props?.data &&
+      this?.props?.data?.length > 0 &&
+      this?.props?.data[0] &&
+      this?.props?.data[0]?.productsDetails &&
+      this?.props?.data[0]?.productsDetails?.length > 0 &&
+      this?.props?.data[0]?.productsDetails[0] &&
+      this?.props?.data[0]?.productsDetails[0]?.namedetail &&
+      this?.props?.data[0]?.productsDetails[0]?.namedetail.length > 0 &&
+      this?.props?.data[0]?.productsDetails[0]?.namedetail[1] &&
+      this?.props?.data[0]?.productsDetails[0]?.namedetail[1].details
+        ? this.props?.data[0]?.productsDetails[0]?.namedetail[1]?.details
         : "",
     diamondType:
       this.props &&
-      this.props.filters &&
-      this.props.filters.defaultVariants &&
-      this.props.filters.defaultVariants.diamondType,
+      this?.props?.filters &&
+      this?.props?.filters?.defaultVariants &&
+      this?.props?.filters?.defaultVariants?.diamondType,
     open: false,
   };
   handleOpen = () => {
     this.setState({ open: true });
   };
   componentDidMount() {
-    // this.setState({ skuSize: this.props && this.props.filters && this.props.filters.defaultVariants && this.props.filters.defaultVariants.skuSize });
   }
 
   handleClose = () => {
@@ -108,14 +107,7 @@ class Component extends React.Component {
       }); // example : 18k Yellow And White
       var arrPurity;
       var arrColor;
-      // if (_multipleColor.length > 0) {
-      //     arrPurity = objVal[0]
-      //     arrColor = objVal[1].concat(' ').concat(objVal[3])
-      // }
-      // else {
-      //     arrPurity = objVal[0]
-      //     arrColor = objVal[1]
-      // }
+   
       arrPurity = kv.substr(0, kv.indexOf(" "));
       arrColor = kv.substr(kv.indexOf(" ") + 1);
       var diamondTypes = filters["defaultVariants"]["diamondType"];
@@ -138,22 +130,9 @@ class Component extends React.Component {
         diamondType: filters.defaultVariants.diamondType,
       });
       this.props.setFilters(filters);
-      // console.log("filters.defaultVariants.diamondType", filters.defaultVariants.diamondType)
     }
-    // const ringSize = event.target.name;
   };
-  // handleClickMetal = (event) => {
-  //     console.log(event.target.id)
-  //     const metalColor = event.target.id;
-  //     this.setState({
-  //         metalColor,
-  //     }, () => this.props.setFilters('metalColor=' + metalColor));
-  // }
-  // handleClickDiamond = (event) => {
-  //     console.log(event.target.id)
-  //     const diamondType = event.target.id
-  //      this.props.setFilters('diamondType=' + diamondType))
-  // }
+
   handleChange = (event, value) => {
     this.setState({ value });
   };
@@ -214,7 +193,6 @@ class Component extends React.Component {
     const settings = {
       className: "center",
       infinite: false,
-      // slidesToShow: data[0].productTabs[0].tab1.Children.length > 8 ? limit :data[0].productTabs[0].tab1.Children.length,
       slidesToScroll: 8,
       slidesToShow: 8,
       arrows: false,
@@ -222,7 +200,6 @@ class Component extends React.Component {
     const settings_mob = {
       className: "center",
       infinite: false,
-      // slidesToShow: data[0].productTabs[0].tab1.Children.length > 8 ? limit :data[0].productTabs[0].tab1.Children.length,
       slidesToScroll: 5,
       slidesToShow: 5,
       arrows: false,
@@ -516,7 +493,7 @@ class Component extends React.Component {
                                     <img
                                       height="auto"
                                       width="100%"
-                                      src={data[0].size_guide}
+                                      src={data[0]?.size_guide}
                                     />
                                   </div>
                                 )}
@@ -525,11 +502,7 @@ class Component extends React.Component {
                                   <div
                                     className={`${classes.modals_document}  "modalin-ring"`}
                                   >
-                                    {/* <object data={data[0].size_guide} type="application/pdf" className="document_iframe"  width="100%" height="100%">
-  <p>Your web browser doesn't have a PDF plugin.
-  Instead you can <a href={data[0].size_guide}>click here to
-  download the PDF file.</a></p>
-</object> */}
+               
                                     <iframe
                                       className="document_iframe"
                                       src={data[0].size_guide}
@@ -550,7 +523,7 @@ class Component extends React.Component {
                                       controls
                                     >
                                       <source
-                                        src={data[0].size_guide}
+                                        src={data[0]?.size_guide}
                                         type="video/mp4"
                                       />
                                     </video>
@@ -559,9 +532,7 @@ class Component extends React.Component {
                               </>
                               {/* </div> */}
                             </Modal>
-                            {/* <div style={{ marginTop: "10px", textAlign: "center" }}>
-                                                    <span style={{ cursor: "pointer" }} className={`my-ringsize ${classes.normalfonts} `} >My Ring Size ?</span>
-                                                 </div> */}
+                          
                           </Grid>
                         </>
                       ) : (
@@ -598,7 +569,7 @@ class Component extends React.Component {
                         style={{ padding: "0px 10px" }}
                       >
                         <div>
-                          <Quantity data={this.props.data} pdpage={true} />
+                          <Quantity data={this?.props?.data} pdpage={true} />
                         </div>
                       </Grid>
                     </Grid>
@@ -630,14 +601,7 @@ class Component extends React.Component {
                           }); // example : 18k Yellow And White
                           var arrPurity;
                           var arrColor;
-                          // if (_multipleColor.length > 0) {
-                          //     arrPurity = objVal[0]
-                          //     arrColor = objVal[1].concat(' ').concat(objVal[3])
-                          // }
-                          // else {
-                          //     arrPurity = objVal[0]
-                          //     arrColor = objVal[1]
-                          // }
+                       
                           arrPurity = kv.substr(0, kv.indexOf(" "));
                           arrColor = kv.substr(kv.indexOf(" ") + 1);
                           return (
@@ -724,7 +688,7 @@ class Component extends React.Component {
                       xs={12}
                       style={{ display: "flex", alignItems: "center" }}
                     >
-                      <h1 className="rings_tabs">{val.tab3.header}</h1>
+                      <h1 className="rings_tabs">{val?.tab3?.header}</h1>
                     </Grid>
                     <Grid item lg={9} xs={12}>
                       <Grid container spacing={12} lg={12}>
@@ -766,12 +730,11 @@ class Component extends React.Component {
                                       id={val.name}
                                       className={`tabs-cont ${classes.normalfonts}`}
                                     >
-                                      {dimondclarity(val.name)}
+                                      {dimondclarity(val?.name)}
                                     </span>
                                   </button>
                                 </div>
                               </div>
-                              {/* <div className={this.state.diamondType == i ? "rings_tabsvls_active":"rings_tabsvls"}>{arrColor}</div> */}
                             </Grid>
                           );
                         })}
@@ -787,20 +750,13 @@ class Component extends React.Component {
       </div>
     ) : null;
   };
-  // handleChange = (event, value) => {
-  //     this.setState({ value });
-  // };
+
 
   handleChangeIndex = (index) => {
     this.setState({ value: index });
   };
-  // handle = panel => (event, expanded) => {
-  //     this.setState({
-  //         expanded: expanded ? panel : false,
-  //     });
-  // };
+ 
   render() {
-    // console.log('lklkkoik9', this.props.filters.defaultVariants.skuSize)
     const { expanded } = this.state;
     const { isSilver } = this.props;
 
