@@ -294,7 +294,7 @@ export default function ImageGridList(props) {
                                                     </Typography>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
                                                         <Slideshow>
-                                                            {val.productListByProductId.productImagesByProductId.nodes[0].imageUrl ? <img className={classes.imgcoin} src={imageslice(val.productListByProductId.productImagesByProductId.nodes[0].imageUrl)} /> : <img className={classes.imgcoin} src={`${CDN_URL}product/1000X1000/productnotfound.webp`} />}
+                                                            {val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl ? <img className={classes.imgcoin} alt="" src={imageslice(val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)} /> : <img className={classes.imgcoin} src={`${CDN_URL}product/1000X1000/productnotfound.webp`} />}
                                                         </Slideshow>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
@@ -351,7 +351,7 @@ export default function ImageGridList(props) {
                                                     <Grid container>
                                                         <Grid item xs={6} sm={6} style={{ textAlign: 'center' }}>
                                                             <Grid>
-                                                                <img className={classes.imgcoinsm} src={imageslice(val.productListByProductId.productImagesByProductId.nodes[0].imageUrl)} />
+                                                                <img className={classes.imgcoinsm} src={imageslice(val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)} alt="" />
                                                             </Grid>
                                                         </Grid>
                                                         <Grid container item xs={6} sm={6} className={classes.buttonTypo}>

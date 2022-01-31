@@ -102,7 +102,7 @@ class Component extends React.Component {
     if (key === "purity") {
       var kv = event.target.id;
       var objVal = kv.split(" ");
-      var _multipleColor = objVal.filter((val) => {
+      var _multipleColor = objVal?.filter((val) => {
         if (val === "And") return val;
       }); // example : 18k Yellow And White
       var arrPurity;
@@ -262,7 +262,7 @@ class Component extends React.Component {
     };
     // data[0].productTabs[0].tab2.Children
 
-    return Boolean(_isSilver && data[0].productTabs[0].tab1.Children) ||
+    return Boolean(_isSilver && data[0]?.productTabs[0]?.tab1?.Children) ||
       !_isSilver ? (
       <div className={_isSilver ? classes.silverMarginBottom : ""}>
         {data[0]?.productTabs &&
@@ -596,7 +596,7 @@ class Component extends React.Component {
                           var kv = val;
                           var objVal = kv.split(" ");
 
-                          var _multipleColor = objVal.filter((val) => {
+                          var _multipleColor = objVal?.filter((val) => {
                             if (val === "And") return val;
                           }); // example : 18k Yellow And White
                           var arrPurity;

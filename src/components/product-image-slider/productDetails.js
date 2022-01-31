@@ -54,7 +54,7 @@ class ProductDetails extends React.Component {
             )
               return true;
           })
-          .filter((val) => {
+          ?.filter((val) => {
             if (val) {
               return true;
             }

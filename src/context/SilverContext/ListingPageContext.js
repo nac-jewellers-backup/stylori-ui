@@ -341,7 +341,7 @@ const Provider = (props) => {
             // alert(JSON.stringify('filters',filters))
             // alert(JSON.stringify(newObj))
             // newObj['price'] = {'min_price':pricemin,'max_price':pricemax}
-            if (Object.keys(newObj).filter(val => { if (val === 'category') return val }).length !== 0) await fetchproducts(newObj)
+            if (Object.keys(newObj)?.filter(val => { if (val === 'category') return val }).length !== 0) await fetchproducts(newObj)
 
         }
     }
@@ -350,9 +350,9 @@ const Provider = (props) => {
 
         //    alert("filters")
         if (silverFilters && (Object.entries(silverFilters).length !== 0 && silverFilters.constructor === Object)) {
-            if(Object.values(silverFilters).filter(val=>{ if(Object.entries(val).length>0 && val.constructor === Object) {return val}}).length>0)
+            if(Object.values(silverFilters)?.filter(val=>{ if(Object.entries(val).length>0 && val.constructor === Object) {return val}}).length>0)
             {
-                if(Object.keys(silverFilters).filter(val=>{if(val === "a") return val}).length === 0) updatefiltersSort()
+                if(Object.keys(silverFilters)?.filter(val=>{if(val === "a") return val}).length === 0) updatefiltersSort()
             }
         }
 

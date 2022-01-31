@@ -148,26 +148,26 @@ export default function (data) {
 
     try {
       _d = {
-        generatedSku: k.generatedSku,
-        skuId: k.generatedSku,
-        skuUrl: k.skuUrl,
-        productSkuId: k.skuId,
+        generatedSku: k?.generatedSku,
+        skuId: k?.generatedSku,
+        skuUrl: k?.skuUrl,
+        productSkuId: k?.skuId,
 
         materialName:
-          k.productListByProductId.productMaterialsByProductSku.nodes === undefined
+          k?.productListByProductId?.productMaterialsByProductSku?.nodes === undefined
             ? ""
-            : k.productListByProductId.productMaterialsByProductSku.nodes.map((val) => {
-                return val.materialName;
+            : k?.productListByProductId?.productMaterialsByProductSku?.nodes.map((val) => {
+                return val?.materialName;
               }),
         // materialName: k.productMaterialsByProductSku.nodes[0].materialName,
-        productType: k.productListByProductId.productType,
-        prdheader: k.productListByProductId.productName,
+        productType: k?.productListByProductId?.productType,
+        prdheader: k?.productListByProductId?.productName,
         // allorderdata: allorderdata,
-        productId: k.productListByProductId && k.productListByProductId.productId,
-        shipby: generateShipsBy(k.isReadyToShip, k.vendorDeliveryTime),
-        isReadyToShip: k.isReadyToShip,
-        minOrderQty: k.minOrderQty,
-        maxOrderQty: k.maxOrderQty,
+        productId: k?.productListByProductId && k?.productListByProductId?.productId,
+        shipby: generateShipsBy(k?.isReadyToShip, k?.vendorDeliveryTime),
+        isReadyToShip: k?.isReadyToShip,
+        minOrderQty: k?.minOrderQty,
+        maxOrderQty: k?.maxOrderQty,
         isActive: k?.productListByProductId?.isactive ?? "",
         productsDetails: [
           //                     Quality

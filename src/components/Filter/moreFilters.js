@@ -92,7 +92,7 @@ export default function MoreFilters(props) {
               >
                 <CancelIcon />
               </div>
-              {props.filter.map((val, i) => {
+              {props?.filter?.map((val, i) => {
                 if (
                   i >= 0 &&
                   val !== "price" &&

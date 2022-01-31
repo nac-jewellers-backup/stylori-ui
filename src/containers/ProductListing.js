@@ -64,7 +64,7 @@ class Stylori extends React.Component {
             <title>{replaceValue}</title>
             <meta property="og:title" id="fb-title" content={this.props.mappedFilters.seo_url} />
             <meta name="description" content={this.props.mappedFilters.seo_text} />
-            <meta name="keywords" content={this.props.dataFilter[0].filter} />
+            <meta name="keywords" content={this?.props?.dataFilter[0]?.filter ?? ""} />
             <meta property="og:site_name" content="Stylori" />
             <meta property="og:description" content={this.props.mappedFilters.seo_text} />
             <meta property="og:type" content="website" />

@@ -102,8 +102,8 @@ export const injectUrl_url_construct = (url) => {
     browser_type !== undefined &&
     url !== undefined &&
     url &&
-    url.imageUrl &&
-    url.imageUrl.length > 0
+    url?.imageUrl &&
+    url?.imageUrl.length > 0
   ) {
     // If you need device adaptive use this piece of code
     // var resolution = screen_width_type()
@@ -113,7 +113,7 @@ export const injectUrl_url_construct = (url) => {
 
     var _resolutions = `${resolution}X${resolution}`;
     var url_split =
-      url && url.imageUrl ? url.imageUrl.split("/") : url.split("/");
+      url && url?.imageUrl ? url?.imageUrl.split("/") : url.split("/");
     var extension_split = url_split && url_split[url_split.length - 1];
     var browser_type_append =
       extension_split &&

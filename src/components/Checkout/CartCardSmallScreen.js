@@ -25,7 +25,7 @@ function MediaControlCard(props) {
     var currentValue = e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id;
     // console.clear()
     // console.log("e-clear",e.target.id)
-    var a = local_storage.products.filter((val) => {
+    var a = local_storage?.products?.filter((val) => {
       if (currentValue !== val.sku_id) {
         return val;
       }
@@ -73,7 +73,7 @@ function MediaControlCard(props) {
           window.location.reload();
         });
     } else {
-      var _products = JSON.parse(localStorage.getItem("cartDetails")).products.filter((val) => {
+      var _products = JSON.parse(localStorage.getItem("cartDetails"))?.products?.filter((val) => {
         if (val.sku_id !== currentValue) return val;
       });
       var cartId = JSON.parse(localStorage.getItem("cartDetails")).cart_id;
@@ -93,7 +93,7 @@ function MediaControlCard(props) {
   const filter_image = (imges__val, name, details) => {
     var image_urls;
     const width = window.innerWidth;
-    if (imges__val.imageUrl && imges__val.imageUrl.length > 0) {
+    if (imges__val?.imageUrl && imges__val?.imageUrl.length > 0) {
       // this.props.data.map(dataval => {
       //     if (dataval !== undefined && dataval !== null) {
       //         dataval.productsDetails.map(val => {
@@ -104,14 +104,14 @@ function MediaControlCard(props) {
         var valu1 = valu[1];
         var valu2 = valu1[0];
         //  imges__val && imges__val.map(img => {
-        var cnt = imges__val && imges__val.imageUrl.split("/");
+        var cnt = imges__val && imges__val?.imageUrl.split("/");
         var cnt_b = cnt[2].split("-");
         var cnt_c = cnt_b[1];
         if ((cnt_c && cnt_c[1]) === valu2) {
           var browser_type = JSON.parse(localStorage.getItem("browserDetails"));
           var resolution = 500;
           var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`;
-          var url_split = imges__val && imges__val.imageUrl.split("/");
+          var url_split = imges__val && imges__val?.imageUrl.split("/");
           var extension_split = url_split && url_split[url_split.length - 1];
           var browser_type_append =
             extension_split && extension_split.split(".")[0].concat(`${browser_type && browser_type.browser_type}`);

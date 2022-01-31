@@ -39,7 +39,7 @@ const ImageUrl = (image) => {
   // image && image.map(val => {
   //   if (val !== undefined && val !== null) {
   const width = window.innerWidth;
-  var vvv = image && image[0] && image[0].imageUrl
+  var vvv = image && image[0] && image[0]?.imageUrl
   // var vvv = "product/SR0260/SR0260-1Y.webp"
   var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
   var resolution = 500

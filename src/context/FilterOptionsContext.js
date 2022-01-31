@@ -505,7 +505,7 @@ const Provider = (props) => {
         sessionStorage.setItem("category", JSON.stringify(filters.category));
       }
       if (
-        Object.keys(newObj).filter((val) => {
+        Object.keys(newObj)?.filter((val) => {
           if (val === "category") return val;
         }).length !== 0
       )
@@ -533,14 +533,14 @@ const Provider = (props) => {
     // if(!sortFilterCombo) setSort("")
     if (filters && Object.entries(filters).length !== 0 && filters.constructor === Object) {
       if (
-        Object.values(filters).filter((val) => {
+        Object.values(filters)?.filter((val) => {
           if (Object.entries(val).length > 0 && val.constructor === Object) {
             return val;
           }
         }).length > 0
       ) {
         if (
-          Object.keys(filters).filter((val) => {
+          Object.keys(filters)?.filter((val) => {
             if (val === "a") return val;
           }).length === 0
         )
@@ -659,14 +659,14 @@ const Provider = (props) => {
     }
       if (filters && Object.entries(filters).length !== 0 && filters.constructor === Object) {
         if (
-          Object.values(filters).filter((val) => {
+          Object.values(filters)?.filter((val) => {
             if (Object.entries(val).length > 0 && val.constructor === Object) {
               return val;
             }
           }).length > 0
         ) {
           if (
-            Object.keys(filters).filter((val) => {
+            Object.keys(filters)?.filter((val) => {
               if (val === "a") return val;
             }).length === 0
           )
@@ -701,9 +701,9 @@ const Provider = (props) => {
 
       seoUrlFetch();
       var loc = window.location.pathname
-        .split("/")[1]
-        .split("-")
-        .filter((val) => {
+        ?.split("/")[1]
+        ?.split("-")
+        ?.filter((val) => {
           if (val === "silver") return val;
         });
       if (loc.length === 0) setGlobalCtx({ ...Globalctx, pathName: false });

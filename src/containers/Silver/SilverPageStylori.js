@@ -171,8 +171,8 @@ const Components = (props) => {
       .then(status)
       .then(json)
       .then((data) => {
-        allCollections = data.data.allMasterCollections.nodes
-          .filter((val) => {
+        allCollections = data?.data?.allMasterCollections?.nodes
+          ?.filter((val) => {
             return Boolean(val.name);
           })
           .map((val) => {

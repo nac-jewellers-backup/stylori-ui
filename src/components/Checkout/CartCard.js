@@ -86,7 +86,7 @@ class Checkoutcard extends React.Component {
     var currentValue =
       e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id;
 
-    var a = local_storage.products.filter((val) => {
+    var a = local_storage?.products?.filter((val) => {
       if (currentValue !== val.sku_id) {
         return val;
       }
@@ -143,7 +143,7 @@ class Checkoutcard extends React.Component {
     } else {
       var _products = JSON.parse(
         localStorage.getItem("cartDetails")
-      ).products.filter((val) => {
+      )?.products?.filter((val) => {
         if (val.sku_id !== currentValue) return val;
       });
       var cartId = JSON.parse(localStorage.getItem("cartDetails")).cart_id;
@@ -197,7 +197,7 @@ class Checkoutcard extends React.Component {
     const filter_image = (imges__val, name, details) => {
       var image_urls;
       const width = window.innerWidth;
-      if (imges__val.imageUrl && imges__val.imageUrl.length > 0) {
+      if (imges__val?.imageUrl && imges__val?.imageUrl.length > 0) {
         // this.props.data.map(dataval => {
         //     if (dataval !== undefined && dataval !== null) {
         //         dataval.productsDetails.map(val => {
@@ -208,7 +208,7 @@ class Checkoutcard extends React.Component {
           var valu1 = valu[1];
           var valu2 = valu1[0];
           //  imges__val && imges__val.map(img => {
-          var cnt = imges__val && imges__val.imageUrl.split("/");
+          var cnt = imges__val && imges__val?.imageUrl.split("/");
           var cnt_b = cnt[2].split("-");
           var cnt_c = cnt_b[1];
           if ((cnt_c && cnt_c[1]) === valu2) {
@@ -220,7 +220,7 @@ class Checkoutcard extends React.Component {
               width < 960
                 ? `${resolution * 2}X${resolution * 2}`
                 : `${resolution}X${resolution}`;
-            var url_split = imges__val && imges__val.imageUrl.split("/");
+            var url_split = imges__val && imges__val?.imageUrl.split("/");
             var extension_split = url_split && url_split[url_split.length - 1];
             var browser_type_append =
               extension_split &&
@@ -382,7 +382,7 @@ class Checkoutcard extends React.Component {
 
                       {this.state.shipby_arr.map((val) => (
                         <>
-                          {val.skuId === dataval.productSkuId ? (
+                          {val?.skuId === dataval.productSkuId ? (
                             <Typography
                               className={`subhesder ${classes.normalfonts}`}
                             >

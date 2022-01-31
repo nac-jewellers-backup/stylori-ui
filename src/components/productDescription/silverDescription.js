@@ -69,8 +69,8 @@ class ProductDescription extends Component {
       .then((res) => res.json())
       .then((data) => {
         let bannerFullData = data.data.allStyloriSilverBanners.nodes;
-        const specificPageData = bannerFullData.filter((item) => item.urlParam === window.location.pathname);
-        const listedPageData = bannerFullData.filter((item) => item.urlParam === "listingPage");
+        const specificPageData = bannerFullData?.filter((item) => item.urlParam === window.location.pathname);
+        const listedPageData = bannerFullData?.filter((item) => item.urlParam === "listingPage");
 
         if (specificPageData.length > 0) {
           this.setState({ bannerData: specificPageData });

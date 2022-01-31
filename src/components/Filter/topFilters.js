@@ -144,7 +144,7 @@ export const TopFilters = (props) => {
                     </Grid>
                   </Grid>
                 </Grid>
-                {props.filter.map((listName, i) => {
+                {props?.filter?.map((listName, i) => {
                   // let urlsmall = listName.title.toLowerCase()
                   // debugger
                   // console.log(i)
@@ -314,7 +314,7 @@ export const TopFilters = (props) => {
           open={state.morefiltersOpen}
           state={props.state}
           onpricechange={props.onpricechange}
-          filter={props.filter}
+          filter={props?.filter}
           onchoosetype={props.onchangefunc}
           checked={props.checked}
           subFilter={props.subFilter}

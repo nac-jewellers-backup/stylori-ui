@@ -75,9 +75,9 @@ const injectUrl = (url, baseUi) => {
   var extension_split_1000x1000;
   var browser_type_append_1000x1000;
 
-  if (url && url.imageUrl.length > 0) {
-    url_split = url.imageUrl.split("/");
-    url_split_1000X1000 = url.imageUrl.split("/");
+  if (url && url?.imageUrl.length > 0) {
+    url_split = url?.imageUrl.split("/");
+    url_split_1000X1000 = url?.imageUrl.split("/");
     extension_split = url_split[url_split.length - 1];
     extension_split_1000x1000 =
       url_split_1000X1000[url_split_1000X1000.length - 1];

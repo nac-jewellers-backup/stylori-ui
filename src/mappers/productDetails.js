@@ -104,7 +104,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
     browser_type !== undefined &&
     url !== undefined &&
     url &&
-    url.imageUrl.length > 0 &&
+    url?.imageUrl?.length > 0 &&
     screen_res !== undefined &&
     baseUi !== undefined
   ) {
@@ -113,7 +113,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
       width < 960
         ? `${resolution * 2}X${resolution * 2}`
         : `${resolution}X${resolution}`;
-    var url_split = url && url.imageUrl.split("/");
+    var url_split = url && url?.imageUrl.split("/");
     var extension_split = url_split && url_split[url_split.length - 1];
     var browser_type_append =
       extension_split &&
@@ -192,19 +192,19 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
         if (!handleVideoCheck(imgurl.imageUrl)) {
           if (
             imgurl &&
-            imgurl.imageUrl &&
-            imgurl.imageUrl.indexOf(".") > -1 &&
-            imgurl.imageUrl.indexOf("-")[0] > -1
+            imgurl?.imageUrl &&
+            imgurl?.imageUrl?.indexOf(".") > -1 &&
+            imgurl?.imageUrl?.indexOf("-")[0] > -1
           ) {
-            if (imgurl.imageUrl.split(".")[0].split("-")[1].length > 2) {
-              imgurlsplit = imgurl.imageUrl
+            if (imgurl?.imageUrl?.split(".")[0].split("-")[1].length > 2) {
+              imgurlsplit = imgurl?.imageUrl
                 .split(".")[0]
                 .split("-")[1]
                 .substr(1);
             } else {
-              imgurlsplit = imgurl.imageUrl
+              imgurlsplit = imgurl?.imageUrl
                 .split(".")[0]
-                .charAt(imgurl.imageUrl.split(".")[0].length - 1);
+                .charAt(imgurl?.imageUrl.split(".")[0].length - 1);
             }
           }
 
@@ -226,8 +226,8 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
           // }
           if (!tabsChange) {
             if (
-              imgurl.productColor === PD.metalColor ||
-              imgurl.productColor === PD.metalColor
+              imgurl?.productColor === PD.metalColor ||
+              imgurl?.productColor === PD.metalColor
             ) {
               arrOfurls.push(
                 injectUrl_url_construct(imgurl, CDN_URL, screen_res)
@@ -257,8 +257,8 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
 
           return { arrOfurls, arrOfurls_2X };
         } else {
-          arrOfurls.push(`${CDN_URL}${imgurl.imageUrl}`);
-          arrOfurls_2X.push(`${CDN_URL}${imgurl.imageUrl}`);
+          arrOfurls.push(`${CDN_URL}${imgurl?.imageUrl}`);
+          arrOfurls_2X.push(`${CDN_URL}${imgurl?.imageUrl}`);
           return { arrOfurls, arrOfurls_2X };
         }
       } else {
@@ -537,11 +537,11 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
             tab3: {
               header: "Diamond Clarity",
               Children:
-                PD.productListByProductId.productDiamondsByProductSku.nodes &&
-                PD.productListByProductId.productDiamondsByProductSku.nodes
+                PD?.productListByProductId?.productDiamondsByProductSku?.nodes &&
+                PD?.productListByProductId?.productDiamondsByProductSku?.nodes
                   .length > 0 &&
                 generatedimondClarity(
-                  PD.productListByProductId.productDiamondsByProductSku.nodes
+                  PD?.productListByProductId?.productDiamondsByProductSku?.nodes
                 ),
               // var c = [...new Set(temp1.map(bill => bill.name))]
             },
@@ -1005,7 +1005,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
         fadeImageSublist:
           like_data &&
           like_data.data &&
-          Object.entries(like_data.data).length > 0 &&
+          Object.entries(like_data?.data).length > 0 &&
           like_data.data.youMayalsolike1 &&
           (like_data.data.youMayalsolike1.nodes.length !== 0 ||
             like_data.data.youMayalsolike2.nodes.length !== 0)
@@ -1101,7 +1101,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
         fadeImageSublistRecentlyViewed:
           viewedddatas &&
           viewedddatas.data &&
-          Object.entries(viewedddatas.data).length > 0 &&
+          Object.entries(viewedddatas?.data).length > 0 &&
           viewedddatas.constructor === Object &&
           viewedddatas?.data?.allTransSkuLists?.nodes.length > 0
             ? viewedddatas?.data?.allTransSkuLists?.nodes?.map((val) => {

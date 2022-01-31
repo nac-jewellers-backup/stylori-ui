@@ -22,13 +22,13 @@ export const GlobalProvider = (props) => {
 
   React.useEffect(() => {
     var loc = window.location.pathname
-      .split("/")[1]
-      .split("-")
-      .filter((val) => {
+      ?.split("/")[1]
+      ?.split("-")
+      ?.filter((val) => {
         if (val === "silver") return val;
       });
     var locsilverStaticPage = window.location.pathname.split("/")[1];
-    var loc_PD = window.location.pathname.split("/").filter((val) => {
+    var loc_PD = window.location.pathname.split("/")?.filter((val) => {
       if (val === "silverjewellery") return val;
     });
     if (`/${locsilverStaticPage}` === routes.Silver) setGlobalCtx({ ...Globalctx, pathName: true });

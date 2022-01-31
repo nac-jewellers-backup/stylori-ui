@@ -126,7 +126,7 @@ class Allorders extends React.Component {
                                                         <Grid item lg={2}>
                                                             {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs => (
                                                                 <div className="wishlist_img">
-                                                                    <img className="viewport-img" src={`https://assets.stylori.net/base_images/${imgs.imageUrl}`}
+                                                                    <img className="viewport-img" alt="" src={`https://assets.stylori.net/base_images/${imgs?.imageUrl}`}
                                                                     />
                                                                 </div>
                                                             ))}

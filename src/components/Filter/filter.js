@@ -439,7 +439,7 @@ class Component extends React.Component {
 
     if (window.location.search) {
       Object.keys(this.state.checked).map((fk) => {
-        const filter = this.state.checked[fk];
+        const filter = this?.state?.checked[fk];
         const fv = Object.keys(filter);
         if (fk !== "Category" && fk !== "category" && fk !== "filters") {
           if (fv.length > 0) {
@@ -549,12 +549,12 @@ class Component extends React.Component {
       if (checkTitle) {
         chipData.push({ label: value, title: title });
       } else {
-        arr = chipData.filter((val) => val.title !== title);
+        arr = chipData?.filter((val) => val.title !== title);
         arr.push({ label: value, title: title });
         chipData = arr;
       }
     } else {
-      arr = chipData.filter((val) => val.label !== value);
+      arr = chipData?.filter((val) => val.label !== value);
       chipData = arr;
     }
     this.setState({
@@ -581,9 +581,9 @@ class Component extends React.Component {
           }
           let arr = [],
             arr1 = [];
-          arr = chipData.filter((val) => val.label !== value);
+          arr = chipData?.filter((val) => val.label !== value);
           if (checked) {
-            arr1 = this.delete_val_chips(value).filter((val) => {
+            arr1 = this.delete_val_chips(value)?.filter((val) => {
               var dlt;
               if (val !== undefined && val !== null) {
                 dlt = Object.values(val) === -1;
@@ -603,9 +603,9 @@ class Component extends React.Component {
         } else {
           let arr = [],
             arr1 = [];
-          arr = chipData.filter((val) => val.label !== value);
+          arr = chipData?.filter((val) => val.label !== value);
           if (checked) {
-            arr1 = this.delete_val_chips(value).filter((val) => {
+            arr1 = this.delete_val_chips(value)?.filter((val) => {
               var dlt;
               if (val !== undefined && val !== null) {
                 dlt = Object.values(val) === -1;
@@ -685,7 +685,7 @@ class Component extends React.Component {
       }
     });
     if (map.indexOf(name) > -1) {
-      arr1 = selected.filter((val) => {
+      arr1 = selected?.filter((val) => {
         if (val !== undefined && val !== null) {
           if (val !== name) {
             return val;
@@ -972,8 +972,8 @@ class Component extends React.Component {
                         <div>
                           {
                             <>
-                              {filter && filter.length > 0 ? (
-                                filter.map((row, i) => {
+                              {filter && filter?.length > 0 ? (
+                                filter?.map((row, i) => {
                                   return (
                                     <>
                                       {subFilter &&
@@ -1049,7 +1049,7 @@ class Component extends React.Component {
                                         {selected.indexOf(row) !== -1 && (
                                           <>
                                             {subFilter[row]
-                                              .filter(
+                                              ?.filter(
                                                 (row12, i) =>
                                                   i <
                                                   (this.state[`li_${row}`]
@@ -1521,7 +1521,7 @@ class Component extends React.Component {
                     : ""} */}
                   <List className="mbl-filter-list">
                     {filter &&
-                      filter.map((row) => {
+                      filter?.map((row) => {
                         return subFilter &&
                           subFilter[row] &&
                           subFilter[row].length > 0 ? (

@@ -91,7 +91,7 @@ class Allorders extends React.Component {
     var a;
     var dis_price;
     var _val =
-      arr.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.filter(
+      arr?.shoppingCartByCartId?.shoppingCartItemsByShoppingCartId?.nodes?.filter(
         (val) => {
           if (val.transSkuListByProductSku) return val;
         }
@@ -141,7 +141,7 @@ class Allorders extends React.Component {
     var ppp;
     if (paymentsuccess) {
       var metalColor_ = metal;
-      var cnt = imgs.imageUrl.split("/");
+      var cnt = imgs?.imageUrl.split("/");
       var cnt_b = cnt[2].split("-");
       var cnt_c = cnt_b[1];
 
@@ -155,7 +155,7 @@ class Allorders extends React.Component {
           width < 960
             ? `${resolution * 2}X${resolution * 2}`
             : `${resolution}X${resolution}`;
-        var url_split = imgs && imgs.imageUrl.split("/");
+        var url_split = imgs && imgs?.imageUrl.split("/");
         var extension_split = url_split && url_split[url_split.length - 1];
         var browser_type_append =
           extension_split &&
@@ -187,7 +187,7 @@ class Allorders extends React.Component {
                     if (cart !== undefined && cart !== null) {
                       var metalColor_ = metal;
                       var cnt =
-                        imgs[0].transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes[0].imageUrl.split(
+                        imgs[0]?.transSkuListByProductSku?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl.split(
                           "/"
                         );
                       var cnt_b = cnt[2].split("-");
@@ -207,7 +207,7 @@ class Allorders extends React.Component {
                             : `${resolution}X${resolution}`;
                         var url_split =
                           imgs &&
-                          imgs[0].transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes[0].imageUrl.split(
+                          imgs[0]?.transSkuListByProductSku?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl.split(
                             "/"
                           );
                         var extension_split =
@@ -473,7 +473,7 @@ class Allorders extends React.Component {
                                         cart.transSkuListByProductSku &&
                                         cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(
                                           (imgs) =>
-                                            this.ImageUrl(
+                                            this?.ImageUrl(
                                               imgs,
                                               cart &&
                                                 cart.transSkuListByProductSku &&
@@ -486,7 +486,7 @@ class Allorders extends React.Component {
                                               <div className="wishlist_img">
                                                 <img
                                                   className="viewport-img"
-                                                  src={this.ImageUrl(
+                                                  src={this?.ImageUrl(
                                                     imgs,
                                                     cart &&
                                                       cart.transSkuListByProductSku &&

@@ -323,9 +323,9 @@ class Component extends React.Component {
                   >
                     {" "}
                     <Wishlist
-                      sku={val.skuId}
-                      productId={val.productId}
-                      wishlist={this.props.wishlist}
+                      sku={val?.skuId}
+                      productId={val?.productId}
+                      wishlist={this?.props.wishlist}
                       globalContext={globalContext}
                       // isSilver={isSilver}
                       // label = {<b>SAVE</b>}
@@ -433,7 +433,7 @@ class Component extends React.Component {
     return vals;
   };
   handleLocalStorage = () => {
-    if (this.valus(this.props.data[0].skuId) === 1) {
+    if (this.valus(this?.props?.data[0]?.skuId) === 1) {
       // this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
       // sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
       window.location.pathname = "/cart";
@@ -453,17 +453,17 @@ class Component extends React.Component {
 
   deletechecklists = () => {
     this.props.setCartFilters({
-      skuId: this.props.data[0].skuId,
+      skuId: this?.props?.data[0]?.skuId,
       qty: 1,
-      price: this.props.data[0].offerPrice,
+      price: this?.props?.data[0]?.offerPrice,
     });
 
     sessionStorage.setItem(
       "updatedProduct",
       JSON.stringify({
-        sku_id: this.props.data[0].skuId,
+        sku_id: this?.props?.data[0]?.skuId,
         qty: 1,
-        price: this.props.data[0].offerPrice,
+        price: this?.props?.data[0]?.offerPrice,
       })
     );
     window.location.pathname = "/cart";

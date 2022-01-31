@@ -80,7 +80,7 @@ const ProductModal = (props) => {
   const handleCollectionDataMapper = (_collectiondata, fadeImagessublist) => {
     let data = _collectiondata.data;
 
-    var _keysCollections = Object.keys(data).filter((val) => {
+    var _keysCollections = Object.keys(data)?.filter((val) => {
       let tempdata = data[val];
       if (tempdata.nodes.length > 0) return val;
     });

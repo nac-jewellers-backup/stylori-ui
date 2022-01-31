@@ -196,7 +196,7 @@ class Component extends React.Component {
         // data[0].productTabs[0].tab2.Children
         return (
             <div>
-                {data[0].productTabs.map(val => {
+                {data[0]?.productTabs?.map(val => {
 
                     const arr = val.tab1.Children !== null && val.tab1.Children
                     const arr2 = val.tab2.Children !== null && (val.tab2.Children).split(',')
