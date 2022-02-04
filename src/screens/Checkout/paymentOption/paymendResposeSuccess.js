@@ -54,36 +54,32 @@ class PaymentResponseSuccess extends React.Component {
       method: "post",
       headers: {
         "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify(obj),
     })
       .then((res) => {
-        // alert(
-        //    'Order Placed Successfully'
-        // )
         return res.json();
       })
       .then((resdata) => {
         if (resdata.message !== undefined && resdata.message !== null) {
-          // alert(
-          //    resdata && resdata.message
-          // )
-          // alert('success',"We sent activation mail. Please check your mail.")
         }
         alert("Your mail has been Resending on successfully");
       })
-      .catch((err) => {
-        // console.log(err)
-      });
+      .catch((err) => {});
   };
 
   componentDidMount() {
     if (localStorage.getItem("gut_lg") && localStorage.getItem("user_id"))
       localStorage.removeItem("user_id");
+
+
+
+
+      localStorage.removeItem("cartDetails");
+      localStorage.removeItem("quantity");
+
   }
   render() {
-    // alert(JSON.stringify(this.props.data))
     let gut_lg = localStorage.getItem("gut_lg")
       ? JSON.parse(localStorage.getItem("gut_lg"))
       : {};
@@ -91,14 +87,7 @@ class PaymentResponseSuccess extends React.Component {
     return (
       <>
         <Header wishlist={this.props.wishlistdata} paymentSucces={true} />
-        {/* <CustomSeparator
-             arrowicon='cart-head-arrows'  
-             className={"breadcrums-header bcjk "}
-             classsubhed={"breadcrums-sub bcjk"}
-             list={"MuiBreadcrumbs-li whi"}
-             data={this.props.data.length > 0 ? this.props.data[0].breadcrumsdata : breadcrumsdata}
-             subdata={this.props.data.length > 0 ? this.props.data[0].cartsubdata : cartsubdata}
-          /> */}
+
         <Grid container justify="center" style={{ paddingTop: "10px" }}>
           <Hidden smDown>
             <Grid
