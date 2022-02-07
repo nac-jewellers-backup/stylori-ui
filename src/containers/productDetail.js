@@ -60,7 +60,7 @@ class ProductDetail extends Component {
 
     // Google Tag Manager
     const tagManagerArgs = {
-      gtmId: "GTM-PW3ZXSF",
+      gtmId: "GTM-5W65BJT",
       dataLayer: {
         ecommerce: {
           detail: {

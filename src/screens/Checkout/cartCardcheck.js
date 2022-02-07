@@ -94,7 +94,7 @@ class Component extends React.Component {
       gData.push(data);
     });
     const tagManagerArgs = {
-      gtmId: "GTM-PW3ZXSF",
+      gtmId: "GTM-5W65BJT",
       event: "addToCart",
       dataLayer: {
         ecommerce: {
