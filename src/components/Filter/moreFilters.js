@@ -6,6 +6,7 @@ import Fade from "@material-ui/core/Fade";
 import { Grid, FormControlLabel, FormGroup } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
 import CancelIcon from "@material-ui/icons/Cancel";
+import CheckIcon from "@material-ui/icons/Check";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -25,21 +26,12 @@ const useStyles = makeStyles((theme) => ({
       color: `${theme.palette.secondary.main} !important`,
       fontSize: "18px",
     },
-    // .arrow-chek, .MuiSvgIcon-root, .MuiExpansionPanelDetails-root, .MuiExpansionPanelDetails-root
-    // "&.arrow-chek":{
-    //     "&.MuiSvgIcon-root":{
-    //         "&.MuiExpansionPanelDetails-root":{
-    //             "&.MuiExpansionPanelDetails-root":{
-    //                 fill:`${theme.palette.primary.main} important`
-    //             }
-    //         }
-    //     }
-    // }
   },
   checkboxlabel: {
     color: theme.palette.secondary.main,
   },
   checkboxgrid: {
+    visibility: "hidden",
     "&.MuiIconButton-colorSecondary": {
       padding: "4px !important",
     },
@@ -60,10 +52,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MoreFilters(props) {
-  // debugger;
-  // console.log(props.filter);
-  // console.log(props.subFilter);
-
   const classes = useStyles();
   return (
     <div>
@@ -98,20 +86,21 @@ export default function MoreFilters(props) {
                   val !== "price" &&
                   val !== "Product Type" &&
                   val !== "Collection" &&
-                  val !== "Style" 
+                  val !== "Style"
                 ) {
                   return (
                     <Grid item xs={3} style={{ marginBottom: "3%" }}>
-                      <div style={{ marginBottom: "10px" }}>
-                        <b>{val}</b>
+                      <div
+                        style={{ marginBottom: "10px", paddingLeft: "20px" }}
+                      >
+                        <span style={{ color: "#6D6E71", fontWeight: "bold" }}>
+                          {val}
+                        </span>
                       </div>
                       <FormGroup row>
                         {props.subFilter[val].map((valsub) => {
                           if (val && val !== "price") {
                             return (
-                              // <div>
-                              // {val}
-                              // </div>
                               <Grid
                                 item
                                 xs={12}
@@ -156,37 +145,39 @@ export default function MoreFilters(props) {
                                       color={"secondary"}
                                     />
                                   }
+                                  style={{ color: "#6D6E71" }}
                                   label={valsub}
                                 />
+                                    <span
+                                        style={{
+                                          color: "#2F348B",
+                                          fontSize: "12px",
+                                        }}
+                                      >
+                                        {props.checked[
+                                          val.replace(/\s/g, "")
+                                        ] &&
+                                        props.checked[val.replace(/\s/g, "")][
+                                          valsub
+                                        ] !== undefined ? (
+                                          props.checked[
+                                            val.replace(/\s/g, "")
+                                          ] &&
+                                          props.checked[val.replace(/\s/g, "")][
+                                            valsub
+                                          ] ? (
+                                            <CheckIcon style={{ color: "#01A99D"}}/>
+                                          ) : (
+                                            ""
+                                          )
+                                        ) : (
+                                          false
+                                        )}
+                                      </span>
                               </Grid>
                             );
                           } else {
                             return null;
-                            //                         return(
-                            //                           // <div>
-                            //                           // {val}
-                            //                           // </div>
-                            //                           <Grid item xs = {12} className={classes.checkboxlabel} >
-                            // <FormControlLabel
-                            //                           control={
-                            //                             <Checkbox
-                            //                             className={classes.checkboxgrid}
-                            //                             checked={props.state ?
-                            //                               props.state.numTwo ===  valsub.max : false}
-                            //                             onChange={(e) => {
-                            //                               props.handleClose();
-                            //                               props.onpricechange(e,valsub)
-                            //                             }}
-
-                            //                               name={val.replace(/\s/g, "")}
-                            //                                                               color={"secondary"}
-                            //                             />
-                            //                           }
-                            //                           label={valsub.label}
-                            //                         />
-                            //                           </Grid>
-
-                            //                          )
                           }
                         })}
                       </FormGroup>

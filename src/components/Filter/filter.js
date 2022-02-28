@@ -18,7 +18,7 @@ import {
   Paper,
   Hidden,
   Container,
-  Chip,
+  
 } from "@material-ui/core";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import "./filter.css";
@@ -27,18 +27,16 @@ import FilterHeader from "./FilterHeader";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CardRadioButton from "../InputComponents/RadioButton/index";
-import { useDummyRequest } from "hooks/index";
-import { filterParams } from "mappers/index";
+
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import styles from "./styles";
 import { FilterOptionsContext, GlobalContext } from "context";
 import { NetworkContext } from "context/NetworkContext";
-import { PRODUCTLIST, conditions, seoUrlResult } from "queries/productListing";
+import {  seoUrlResult } from "queries/productListing";
 import { withRouter } from "react-router-dom";
 import { TopFilters } from "./topFilters";
 import ProductLayoutSilver from "../ProductCard/ProductLayoutSilver";
-import { TempTest } from "./TempTest";
 import { filtersLabelMapperStylori } from "utils";
 const PersistentDrawerLeft = (props) => {
   const {
@@ -51,7 +49,6 @@ const PersistentDrawerLeft = (props) => {
     setdelete_fil,
   } = React.useContext(FilterOptionsContext);
 
-  const loc = window.location.search;
   const { NetworkCtx } = React.useContext(NetworkContext);
   const { Globalctx } = React.useContext(GlobalContext);
 
@@ -74,14 +71,6 @@ const PersistentDrawerLeft = (props) => {
   );
 };
 
-// const mapperLabelCustomizer = (val) =>{
-//   if(val === "Product Type"){
-//     return "Dinesh"
-//   }
-//   else {
-//     return val
-//   }
-// }
 
 class Component extends React.Component {
   constructor(props) {
@@ -214,26 +203,7 @@ class Component extends React.Component {
       }
     }
 
-    //    ****ENDS**** setting state search parameters ....
-
-    // This is used for checking the check boxes if we copy and pasted the url to new tab or new window
-    // if (window.location.search) {
-
-    //   let urlSearchparams = window.location.search;
-
-    //   let urlSearchparamsDecode = decodeURI(urlSearchparams)
-
-    //   let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
-
-    //   let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
-
-    //   let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
-    //   let mapUrlParamsSplitEqual = urlSplitparamsEqual();
-    //   this.handleChange(() => { }, true, () => { }, mapUrlParamsSplitEqual)
-
-    // }
-    // This is used for checking the check boxes if we copy and pasted the url to new tab or new window
-    // *****Ends*****
+ 
     var paramsfilter;
     var abcd;
     const filters_checked = () => {
@@ -278,21 +248,7 @@ class Component extends React.Component {
           .then(status)
           .then(json)
           .then(async function (data) {
-            // alert(data)
-            // var {checked} = this.state
-            //    data.data.allSeoUrlPriorities.nodes.map(val => {
-            //     alert(JSON.stringify(data))
-            //     let attrName = val.attributeName.replace(/\s/g, '')
-            //     let attrVal = val.attributeValue
-            //     checked[attrName] = {[attrVal]:true}
-            //     data.allSeoUrlPriorities.nodes.map(val =>{return val})
-            //     this.setState({checked},()=>{alert(JSON.stringify(checked))})
-            //     return abcd = a
-
-            //     // this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
-
-            // })
-
+     
             paramsfilter =
               data &&
               data.data &&
@@ -309,12 +265,9 @@ class Component extends React.Component {
                   }
                 }
                 a[attrName] = { [attrVal]: true };
-                // checked[attrName] = a
-                // alert(JSON.stringify(attrName))
+              
                 return a;
-                // return val
               });
-            // this.setState(checked)
 
             Object.entries(paramsfilter[0]).map((val) => {
               var keys = val[0];
@@ -399,8 +352,7 @@ class Component extends React.Component {
       }).format(Math.round(numberTwo));
       this.state.Price_button_click === false &&
         this.setState({ numOne: numOne, numTwo: numTwo });
-      // if( this.props.data[0].subFilter['Price Range'].length > 0 && this.props.data[0].subFilter['Price Range'][0] !== undefined){
-      //   this.props.setFilters({pricemax:numberTwo, pricemin:numberOne})}
+     
     }
   }
 
@@ -427,7 +379,6 @@ class Component extends React.Component {
               checked[val[0]] = { [mm]: false };
               this.setState(checked);
             }
-            // alert(JSON.stringify(checked))
             return false;
           }
         });
@@ -466,27 +417,14 @@ class Component extends React.Component {
     topfilterstate,
     selectedfiltertop
   ) => {
-    // window.scrollTo(0,2)
-    // debugger
+   
     let mystate = this.state;
     let { chipData } = this.state;
     let checked = { ...this.state.checked };
     var queries = [{}];
     let pathnameSplit = window.location.pathname.split("/");
 
-    // if (Object.entries(this.state.category).length === 0 && this.state.category.constructor === Object) {
-    //   const splitHiphen = () => {
-    //     if (pathnameSplit[1].indexOf('-')) {
-    //       return pathnameSplit[1].split('-')
-    //     }
-    //   }
-    //   var _category_capital_letter = splitHiphen()[0].charAt(0).toUpperCase() + splitHiphen()[0].slice(1)
-    //
-    //   var _category_obj = {}
-    //   _category_obj[_category_capital_letter] = true
-    //   checked['category'] = _category_obj
-    //   this.setState(checked)
-    // }
+ 
 
     if (TargetName === undefined) {
       this.clearSortIfFiltersIsEmpty();
@@ -520,11 +458,9 @@ class Component extends React.Component {
           let checkedvalue = {};
           checkedvalue[keyNameFilter] = true;
           checked[nameFilter] = checkedvalue;
-          // arr.push({  label: nameFilter, title: title });
-          // chipData = arr;
+         
           this.setState(
             {
-              // chipData,
               checked,
             },
             () => this.props.setFilters(checked)
@@ -545,7 +481,6 @@ class Component extends React.Component {
       }
     });
     if (BoolName === true) {
-      // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
       if (checkTitle) {
         chipData.push({ label: value, title: title });
       } else {
@@ -560,8 +495,7 @@ class Component extends React.Component {
     this.setState({
       chipData,
     });
-    // , () => this.props.setFilters(checked)
-    // alert(JSON.stringify(this.state.checked))
+   
   };
 
   handleDelete = (value) => {
@@ -625,17 +559,7 @@ class Component extends React.Component {
       }
     });
 
-    // var bb = {}
-    // bb["delete_fil"] = "12345"
-    // this.props && this.props.setdelete_fil && this.props.setdelete_fil(bb)
 
-    // alert(JSON.stringify(data))
-    // this.setState(state => {
-    //   const chipData = [...state.chipData];
-    //   const chipToDelete = chipData.indexOf(data);
-    //   chipData.splice(chipToDelete, 1);
-    //   return { chipData };
-    // });
   };
   handlebye = () => {};
   check_goldCoins = (values_) => {
@@ -695,17 +619,13 @@ class Component extends React.Component {
       selected = arr1;
       this.setState({ selected });
     } else {
-      // var same =map.indexOf(name)
       selected.push(name);
       this.setState({ selected });
     }
   };
   filterValue = (filtercheck) => {
-    // if (filtercheck === this.state.filtercheck) {
-    //   this.setState({ filtercheck: '' })
-    // } else {
+   
     this.setState({ filtercheck });
-    // }
   };
 
   handleChangeDrawer = () => {
@@ -774,10 +694,7 @@ class Component extends React.Component {
           : price_max.indexOf(" ") > -1
           ? Number(price_max.substr(2))
           : Number(price_max.substr(1));
-      // alert("came in ")
-      //
-      // alert(pricemin)
-      // alert(pricemax)
+    
       if (pricemin > pricemax) {
         this.setState({ errorPriceMessage: true });
       } else if (pricemin === 0 && pricemax === 0) {
@@ -794,7 +711,6 @@ class Component extends React.Component {
   txtFieldChange(e) {
     if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
 
-    // this.setState({[e.target.name]:e.target.value})
   }
   handleChangesort = (event) => {
     if (this.props.offset > 0) this.props.setOffset(0);
@@ -804,14 +720,7 @@ class Component extends React.Component {
 
     this.setState({ productDisplay: true });
   };
-  // chck_res = () => this.state.chipData.map(data => {
-  //
-  //   var value;
-  //   if (data.label.length > 0 && data.label !== "" && data.label !== undefined) {
-  //     value = <>{data.label}</>
-  //   }
-  //   return value
-  // })
+
 
   render() {
     const found = window.location.pathname
@@ -823,12 +732,6 @@ class Component extends React.Component {
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
     const isTopFilter = this.props.globalcontext.pathName ? true : false;
-    //  const chck_res =  this.state.chipData.map(data => {
-    //   return (
-    //     data.label
-    //   );
-    // })
-    // alert(JSON.stringify(this.state.selected))
 
     return (
       <>
@@ -849,7 +752,6 @@ class Component extends React.Component {
             />
           </Hidden>
         )}
-        {/* <TempTest onchangefunc={this.handleChange}/> */}
 
         {!isTopFilter && (
           <Hidden smDown>
@@ -860,13 +762,11 @@ class Component extends React.Component {
               check={this.state.check}
               checked={this.state.checked}
             />
-            {/*  handleDrawerOpen={this.handleDrawerOpen.bind(this)} */}
           </Hidden>
         )}
         <div className={classes.root}>
           {!isTopFilter && (
             <Hidden smDown>
-              {/* <CssBaseline /> */}
               <div>
                 <Slide
                   direction="right"
@@ -888,9 +788,7 @@ class Component extends React.Component {
                       variant="persistent"
                       anchor="left"
                       open={open}
-                      // classes={{
-                      //   paper: classes.drawerPaper,
-                      // }}
+                    
                     >
                       <Divider />
                       <List className="fil-main-list">
@@ -1029,7 +927,6 @@ class Component extends React.Component {
                                                   {filtersLabelMapperStylori(
                                                     row
                                                   )}
-                                                  {/* {mapperLabelCustomizer(row)} */}
                                                 </Typography>
                                               </ListItemText>
                                               {selected.indexOf(row) !== -1 ? (
@@ -1045,7 +942,6 @@ class Component extends React.Component {
                                       )}
 
                                       <>
-                                        {/* {JSON.stringify()} */}
                                         {selected.indexOf(row) !== -1 && (
                                           <>
                                             {subFilter[row]
@@ -1184,7 +1080,6 @@ class Component extends React.Component {
                                                                     ? true
                                                                     : false
                                                                 }
-                                                                // disabled = {handledisabled}
                                                                 checked={
                                                                   this.state
                                                                     .checked[
@@ -1416,7 +1311,6 @@ class Component extends React.Component {
                             </>
                           }
                         </div>
-                        {/* filter Ends */}
                       </List>
                     </Paper>
                   </div>
@@ -1574,23 +1468,7 @@ class Component extends React.Component {
                     xs={6}
                     style={{ overflow: "scroll", height: "73vh" }}
                   >
-                    {/* <>
-                      <div className="header-chips Chip">
-                        {this.state.chipData.map(data => {
-                          return (
-                            <Chip
-                              className="header-chips-text"
-                              key={data.key}
-                              label={data.label}
-                              onClick={() => this.handleDelete}
-                              avatar={data.label ?
-                                <i className="search-choice-close" class="fa fa-times"></i>
-                                : ""}
-                            />
-                          );
-                        })}
-                      </div>
-                    </> */}
+                
                     <>
                       {subFilter[
                         this.state.filtercheck && this.state.filtercheck
@@ -1616,7 +1494,6 @@ class Component extends React.Component {
                                         value="checked"
                                         color="primary"
                                         className={`${classes.sublistMobile}`}
-                                        // checked={this.state.checked && this.state.filtercheck && this.state.filtercheck[this.state.filtercheck] && this.state.filtercheck[this.state.filtercheck.replace(/\s/g, "")][row.value] ? this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row.value] : false}
 
                                         onChange={(e) =>
                                           this.handleChange(
@@ -1639,7 +1516,6 @@ class Component extends React.Component {
                                             e
                                           )
                                         }
-                                        // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
                                         icon={
                                           <CheckBoxOutlineBlankIcon fontSize="small" />
                                         }
@@ -1671,7 +1547,6 @@ class Component extends React.Component {
                                           className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}
                                         >
                                           <div
-                                            // onClick={this.handleDrawerCloseMobile}
                                             onClick={(e) =>
                                               this.handleChange(
                                                 row.value,
@@ -1705,7 +1580,6 @@ class Component extends React.Component {
                                         value="checked"
                                         color="primary"
                                         className={`${classes.sublistMobile}`}
-                                        // checked={this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row] : false}
 
                                         onChange={(e) =>
                                           this.handleChange(
@@ -1728,7 +1602,6 @@ class Component extends React.Component {
                                             e
                                           )
                                         }
-                                        // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
                                         icon={
                                           <CheckBoxOutlineBlankIcon fontSize="small" />
                                         }
@@ -1760,7 +1633,6 @@ class Component extends React.Component {
                                           className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}
                                         >
                                           <div
-                                            // onClick={this.handleDrawerCloseMobile}
                                             onClick={(e) =>
                                               this.handleChange(
                                                 row,
@@ -1801,24 +1673,7 @@ class Component extends React.Component {
                   </Grid>
                 )}
               </Grid>
-              {/* <Grid container item xs={12} className="filterButtonMobile" justify="flex-end">
-                <Paper>
-                    <Button variant="contained" style={{backgroundColor:'rgba(58, 69, 120, 1)', color:'white'}}>
-                      Apply
-                    </Button>
-                </Paper>    
-              </Grid> */}
-              {/* <AppBar color="primary" className="filter-fixed header" >
-                <Grid container item xs={12} justify="flex-end" alignItems="center" style={{ padding: '2%' }}>
-                  <Grid item xs={6}>
-
-                    <Button variant='contained' className={`filterBtnMobile`}>
-                      Apply
-                    </Button>
-                  </Grid>
-                </Grid>
-
-              </AppBar> */}
+         
             </Grid>
 
             <AppBar
@@ -1892,8 +1747,4 @@ Component.propTypes = {
 export default withRouter(
   withStyles(styles, { withTheme: true })(PersistentDrawerLeft)
 );
-// (props => {
-//   const { mapped } = useDummyRequest(filterParams);
-//   if (Object.keys(mapped).length === 0) return ''
-//   return < PersistentDrawerLeft {...props} data={mapped} />
-// });
+

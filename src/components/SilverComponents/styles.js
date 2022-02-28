@@ -1,13 +1,13 @@
 // import '../../fonts/font.css'
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   headIcons: {
     color: theme.palette.secondary.dark,
     fontFamily: "fontawesome",
-    textAlign: 'right',
+    textAlign: "right",
     // fontSize: '20px !important',
-    marginTop: '18px !important',
+    marginTop: "18px !important",
     display: "flex",
     alignContent: "center",
     alignItems: "center",
@@ -19,14 +19,14 @@ export const styles = theme => ({
     backgroundColor: theme.palette.secondary.dark,
     display: "flex",
     justifyContent: "center",
-    alignContent: "center"
+    alignContent: "center",
   },
   searchcontainerplain: {
     padding: "4px",
     // backgroundColor: theme.palette.secondary.dark,
     display: "flex",
     justifyContent: "center",
-    alignContent: "center"
+    alignContent: "center",
   },
   searchcontainTop: {
     padding: "2px",
@@ -36,22 +36,22 @@ export const styles = theme => ({
     alignContent: "center",
     marginTop: "3px",
   },
-  [theme.breakpoints.only('xs')]: {
+  [theme.breakpoints.only("xs")]: {
     padding: "3px !important",
     backgroundColor: theme.palette.secondary.dark,
     display: "flex",
     justifyContent: "center",
-    alignContent: "center"
+    alignContent: "center",
   },
   iconFafa: {
     color: theme.palette.secondary.dark,
     marginLeft: "24px",
     letterSpacing: "4px",
-    cursor: 'pointer',
+    cursor: "pointer",
     alignItems: "center",
     // display: "flex",
     fontSize: "20px",
-    [theme.breakpoints.only('xs')]: {
+    [theme.breakpoints.only("xs")]: {
       marginLeft: "6px",
       letterSpacing: "2px",
     },
@@ -62,21 +62,21 @@ export const styles = theme => ({
   mobile_icon_i: {
     // "&.MuiBadge-colorSecondary":{backgroundColor: `red !important`},
     "& i": {
-      color: `${theme.palette.secondary.dark} !important`
-    }
+      color: `${theme.palette.secondary.dark} !important`,
+    },
   },
   iconFafaheart: {
     color: theme.palette.secondary.dark,
     marginLeft: "24px",
     letterSpacing: "4px",
-    cursor: 'pointer',
+    cursor: "pointer",
     alignItems: "center",
     display: "flex",
     fontSize: "17px",
     fill: "#d51f63",
-    [theme.breakpoints.only('xs')]: {
+    [theme.breakpoints.only("xs")]: {
       marginLeft: "6px",
-      letterSpacing: "2px"
+      letterSpacing: "2px",
     },
   },
   callerNum: {
@@ -87,40 +87,40 @@ export const styles = theme => ({
     textAlign: "center",
     padding: " 0px 20px 0px 0px",
     fontWeight: 600,
-    letterSpacing: 2
+    letterSpacing: 2,
   },
   headerNavbarList: {
     color: theme.palette.secondary.dark,
-    textAlign: 'right'
+    textAlign: "right",
   },
   menuListCursor: {
-    cursor: 'pointer',
-    fontFamily: 'Roboto',
+    cursor: "pointer",
+    fontFamily: "Roboto",
     fontWeight: 600,
     color: "#6e6d72",
     borderBottom: "1px solid #fff",
-    '&:hover': {
+    "&:hover": {
       color: theme.palette.secondary.dark,
       // paddingBottom: "2px",
       borderBottom: "1px solid " + theme.palette.secondary.dark,
-    }
+    },
   },
   seletectedMenu: {
     color: theme.palette.secondary.dark,
     // paddingBottom: "2px",
-    cursor: 'pointer',
-    fontFamily: 'Roboto',
+    cursor: "pointer",
+    fontFamily: "Roboto",
     fontWeight: 600,
     borderBottom: "1px solid #fff",
     // borderBottom: "1px solid " + theme.palette.secondary.dark,
-    '&:hover': {
+    "&:hover": {
       borderBottom: "1px solid " + theme.palette.secondary.dark,
-    }
+    },
   },
 
   mouseOverPopoverfilterslist: {
-    paddingTop: '0px !important',
-    paddingBottom: '0px !important'
+    paddingTop: "0px !important",
+    paddingBottom: "0px !important",
   },
   mobileNavIcon: {
     color: theme.palette.secondary.dark,
@@ -130,7 +130,7 @@ export const styles = theme => ({
     width: "230px !important",
     position: "sticky",
     top: "0px",
-    zIndex: 10000
+    zIndex: 10000,
   },
   drawerPaper: {
     maxHeight: "100% !important",
@@ -141,36 +141,43 @@ export const styles = theme => ({
     height: "100% !important",
     width: "100%",
     color: theme.palette.secondary.main,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     "& .MuiList-padding": {
       paddingTop: 0,
-      paddingBottom: 0
-    }
+      paddingBottom: 0,
+    },
   },
   listItems1: {
-
-    textAlign: 'left',
-    whiteSpace: 'nowrap',
-    width: '100%',
-    fontSize: '11px !important',
-    letterSpacing: '1px',
-    textTransform: 'capitalize',
-    fontFamily: 'Roboto',
+    textAlign: "left",
+    whiteSpace: "nowrap",
+    width: "100%",
+    fontSize: "11px !important",
+    letterSpacing: "1px",
+    textTransform: "capitalize",
+    fontFamily: "Roboto",
+  },
+  menulistitemcolor: {
+    color: "#6D6E71",
+    textAlign: "left",
+    whiteSpace: "nowrap",
+    width: "100%",
+    fontSize: "11px !important",
+    letterSpacing: "1px",
+    textTransform: "capitalize",
+    fontFamily: "Roboto",
   },
   menulistItem: {
     color: "white",
     textAlign: "center",
-    fontWeight: 'bold',
-    fontSize: '20px !important'
+    fontWeight: "bold",
+    fontSize: "20px !important",
   },
   iconbuttons: {
     position: "fixed",
     left: "228px",
-    top: "-9px"
+    top: "-9px",
   },
-  iconbuttonsSilver: {
-
-  },
+  iconbuttonsSilver: {},
   menuTitle: {
     textAlign: "center",
     display: "flex",
@@ -178,23 +185,23 @@ export const styles = theme => ({
     backgroundColor: theme.palette.secondary.main,
     color: "white",
     "& .MuiListItemText-root": {
-      display: "flex"
+      display: "flex",
     },
     "& .MuiListItemText-primary": {
       display: "inline-flex",
-      alignItems: "center"
-    }
+      alignItems: "center",
+    },
   },
   drawerArrowSilver: {
-    color: `${theme.palette.secondary.main} !important`
+    color: `${theme.palette.secondary.main} !important`,
   },
   drawerList1: {
-    '&:hover': {
+    "&:hover": {
       "& .MuiTypography-root": {
-        backgroundColor: 'transparent',
-        borderBottom: '1px solid'
-      }
-    }
+        backgroundColor: "transparent",
+        borderBottom: "1px solid",
+      },
+    },
   },
   subtitles: {
     color: theme.palette.background.darkFade,
@@ -207,24 +214,24 @@ export const styles = theme => ({
 
   subtitleContainer: {
     backgroundColor: "#fff !important",
-    '&:hover': {
+    "&:hover": {
       backgroundColor: "#fff !important",
-    }
+    },
   },
   subtitleContainerSilver: {
     backgroundColor: theme.palette.ternary.light,
-    '&:hover': {
+    "&:hover": {
       backgroundColor: theme.palette.secondary.main,
-      '& .MuiTypography-root': {
-        color: 'white !important'
+      "& .MuiTypography-root": {
+        color: "white !important",
       },
       "& i": {
-        color: 'white !important'
-      }
-    }
+        color: "white !important",
+      },
+    },
   },
   subtitlesSilver: {
-    color: theme.palette.secondary.main,
+    color: "#6D6E71",
     textAlign: "left",
     width: "100%",
     fontSize: "11px",
@@ -235,136 +242,138 @@ export const styles = theme => ({
     backgroundColor: theme.palette.background.darkFade,
   },
   badgeColor: {
-    '& .MuiBadge-badge': {
+    "& .MuiBadge-badge": {
       background: theme.palette.badgeColor.background,
-      color: 'white'
-    }
+      color: "white",
+    },
   },
   badgeColorsilver: {
-    '& .MuiBadge-badge': {
-      color: '#000',
+    "& .MuiBadge-badge": {
+      color: "#000",
       top: -3,
       right: 12,
-
     },
-    [theme.breakpoints.only('xs')]: {
-      '& .MuiBadge-badge': {
+    [theme.breakpoints.only("xs")]: {
+      "& .MuiBadge-badge": {
         background: "#fff",
         top: "-10px !important",
         right: 12,
       },
-    }
-  }
+    },
+  },
 });
 
-export const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles((theme) => ({
   imgcont: {
     marginBottom: "15px",
-    '&:hover': {
-      boxShadow: " 0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important",
-    }
+    "&:hover": {
+      boxShadow:
+        " 0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important",
+    },
   },
   paperdiv: {
-    position: 'absolute',
-    width: 'fit-content',
+    position: "absolute",
+    width: "fit-content",
   },
   root: {
-    width: '100%',
+    width: "100%",
   },
   mouseOverPopover: {
     zIndex: 1000,
-    top: '4px !important',
-    backgroundColor: (props) => props.isSilver ? 'white' : theme.palette.background.fade,
-    color: (props) => props.isSilver ? theme.palette.secondary.main : 'white',
-    '& span': {
-      fontFamily: 'Roboto',
-      letterSpacing: '1px'
+    top: "4px !important",
+    backgroundColor: (props) =>
+      props.isSilver ? "white" : theme.palette.background.fade,
+    color: (props) => (props.isSilver ? theme.palette.secondary.main : "white"),
+    "& span": {
+      fontFamily: "Roboto",
+      letterSpacing: "1px",
     },
-    '& nav': {
-      padding: '0px !important'
+    "& nav": {
+      padding: "0px !important",
     },
-    '& li:hover': {
-      backgroundColor: (props) => props.isSilver ? theme.palette.secondary.main : theme.palette.secondary.dark,
-      color: (props) => props.isSilver ? 'white' : 'white'
-    }
+    "& li:hover": {
+      backgroundColor: (props) =>
+        props.isSilver
+          ? theme.palette.secondary.main
+          : theme.palette.secondary.dark,
+      color: (props) => (props.isSilver ? "white" : "white"),
+    },
   },
   mouseOverPopoverfilters: {
     "& .MuiRadio-root": {
-      padding: '2px 6px !important'
+      padding: "2px 6px !important",
     },
     radioBtnsort: {
-      color: 'red'
+      color: "red",
     },
     zIndex: 1000,
-    top: '4px !important',
-    backgroundColor: 'white',
+    top: "4px !important",
+    backgroundColor: "white",
     color: theme.palette.secondary.main,
-    '& span': {
-      fontFamily: 'Roboto',
-      letterSpacing: '1px'
+    "& span": {
+      fontFamily: "Roboto",
+      letterSpacing: "1px",
     },
-    '& nav': {
-      padding: '0px !important',
+    "& nav": {
+      padding: "0px !important",
       minWidth: 150,
-      [theme.breakpoints.only('md')]: {
-        minWidth: 100
-      }
+      [theme.breakpoints.only("md")]: {
+        minWidth: 100,
+      },
     },
-    '& li:hover': {
+    "& li:hover": {
       backgroundColor: theme.palette.secondary.dark,
-      color: 'white'
-    }
+      color: "white",
+    },
   },
   mouseOverPopoverfiltersselected: {
     backgroundColor: `white !important`,
-    color: `${theme.palette.secondary.main} !important`
+    color: `#6D6E71 !important`,
   },
   paperdivsub: {
-    position: 'absolute',
-    width: 'fit-content',
+    position: "absolute",
+    width: "fit-content",
   },
   rootsub: {
-    width: '100%',
-
+    width: "100%",
   },
 
   mouseOverPopoversub: {
     zIndex: 1000,
-    top: '0px !important',
+    top: "0px !important",
     backgroundColor: "#fff",
     color: theme.palette.background.fade,
     cursor: "pointer",
-    '& span': {
-      fontFamily: 'Roboto',
-      letterSpacing: '1px',
+    "& span": {
+      fontFamily: "Roboto",
+      letterSpacing: "1px",
       cursor: "pointer",
     },
-    '& nav': {
-      padding: '0px !important',
+    "& nav": {
+      padding: "0px !important",
       cursor: "pointer",
     },
-    '& li:hover': {
+    "& li:hover": {
       backgroundColor: "#fff",
-    }
+    },
   },
   listedItems: {
     padding: "0px",
     fontSize: "0.7rem !important",
-    cursor: "pointer"
+    cursor: "pointer",
   },
   listedItemsub: {
     padding: "0px",
     fontSize: "0.7rem !important",
-    '&:hover': {
-      backgroundColor: "#000"
-    }
+    "&:hover": {
+      backgroundColor: "#000",
+    },
   },
   listedItemsvalue: {
     padding: "2px 16px 2px 16px",
     fontSize: "0.7rem !important",
     letterSpacing: 2,
     cursor: "pointer",
-
   },
   sortSilver: {
     // "&.MuiRadio-root":{
@@ -374,35 +383,33 @@ export const useStyles = makeStyles(theme => ({
     //   padding:"4px !important"
     // },
     "& svg": {
-      fontSize: "1rem"
-
-    }
+      fontSize: "1rem",
+    },
   },
   filtersList: {
     "& span": {
       letterSpacing: 3,
-    }
-
+    },
   },
   filtersListtopfilters: {
+    
     "& span": {
       letterSpacing: 2,
-    }
-
+    },
   },
   mouseOverPopoverfilterslist: {
-    paddingTop: '0px !important',
-    paddingBottom: '0px !important'
+    paddingTop: "0px !important",
+    paddingBottom: "0px !important",
   },
   listedItemsvalue2: {
     padding: "2px 16px 2px 16px",
     fontSize: "0.7rem !important",
     letterSpacing: 2,
     cursor: "pointer",
-    '&:hover': {
+    "&:hover": {
       backgroundColor: theme.palette.background.darkFade,
-      color: "#fff"
-    }
+      color: "#fff",
+    },
   },
   subtopic1: {
     padding: "10px 0px 10px 0px",
@@ -410,7 +417,10 @@ export const useStyles = makeStyles(theme => ({
   subtopic2: {
     padding: "10px 0px 10px 0px",
     borderTop: "1px solid",
-    backgroundColor: (props) => props.isSilver ? theme.palette.ternary.light : theme.palette.background.darkFade,
+    backgroundColor: (props) =>
+      props.isSilver
+        ? theme.palette.ternary.light
+        : theme.palette.background.darkFade,
   },
   drawer: {
     backgroundColor: "#394578",

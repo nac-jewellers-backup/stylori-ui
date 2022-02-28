@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import classNames from "classnames";
 import "./header.css";
-import Tooltip from "@material-ui/core/Tooltip";
 import {
   AppBar,
   Grid,
-  InputBase,
   Badge,
   Drawer,
   Toolbar,
@@ -15,9 +13,7 @@ import {
   ListItem,
   ListItemText,
   Container,
-  InputAdornment,
   Modal,
-  Fab,
   ClickAwayListener,
   Divider,
   ListItemAvatar,
@@ -27,29 +23,22 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Hidden } from "@material-ui/core";
 import HeaderHoverMenuItem from "./HoverNavBarListing/HeaderHoverMenuItem";
 import HeaderHoversubMenu from "./HoverNavBarListing/HeaderHoversubMenu";
-// import HeaderNotification from './Notification/HeaderNotification'
 import { withStyles } from "@material-ui/core/styles";
 import { useDummyRequest } from "../../hooks";
 import { headerDataSilver } from "../../mappers";
 import { headerDataStyloriSilver } from "../../mappers";
 import { styles } from "./styles";
-import LogoSmallScreen from "../../assets/Stylori Silver logo.svg";
 import Seach from "../../assets/search";
 import stylorisilverlogo from "../../assets/stylori_silver_logo.svg";
-import Popover from "@material-ui/core/Popover";
-// import LogoSmallScreen from '../../assets/stylori-silver-logo-small-screen.png';
-// import Seach from '../../assets/search'
-// import stylorisilverlogo from '../../assets/stylori-silver-logo.png'
-import { NavLink } from "react-router-dom";
-import logout from "../../assets/Icons/logout.svg";
+
 import styloriLogo from "../../assets/Stylorilogo.svg";
 import ElasticSearch from "components/ElasticSearch/ElasticSearch";
 import { CartContext, GlobalContext } from "context";
 import silverOpenLinkImage from "../../assets/silverOpenLink.png";
-import Collection from "screens/Stylori/Collection";
 
-let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
-// var path = window.location.pathname.split('/').pop();
+let user_id = localStorage.getItem("user_id")
+  ? localStorage.getItem("user_id")
+  : {};
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -146,7 +135,11 @@ class Header extends Component {
     });
   };
   scrolling = () => {
-    if (document.getElementsByTagName("body")[0].scrollHeight > window.innerHeight && window.scrollY > 0) {
+    if (
+      document.getElementsByTagName("body")[0].scrollHeight >
+        window.innerHeight &&
+      window.scrollY > 0
+    ) {
       if (document.getElementById("topNav")) {
         document.getElementById("topNav").style.marginTop = "-69px";
       }
@@ -183,13 +176,13 @@ class Header extends Component {
   };
 
   render() {
-    const { mainlist, Jewellery, subheader, menuListHeader, menuLists } = this.props.data;
+    const { mainlist, Jewellery, subheader, menuListHeader, menuLists } =
+      this.props.data;
     // debugger;
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
     const { anchorEl } = this.state;
     const openPopover = anchorEl;
-    const opened = this.state;
     var a = window.location.pathname;
     var b = a.split("/");
 
@@ -217,8 +210,16 @@ class Header extends Component {
         <Hidden smDown>
           {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
 
-          <div className="header-appbar-sticky1" id="headerDiv" style={{ position: "fixed", zIndex: "1000" }}>
-            <AppBar className="header-appbarsilver1 " id="topNav" style={{ transition: "height 0.2s" }}>
+          <div
+            className="header-appbar-sticky1"
+            id="headerDiv"
+            style={{ position: "fixed", zIndex: "1000" }}
+          >
+            <AppBar
+              className="header-appbarsilver1 "
+              id="topNav"
+              style={{ transition: "height 0.2s" }}
+            >
               <Container maxWidth="lg" id="searchcontainer">
                 <Grid
                   container
@@ -232,7 +233,13 @@ class Header extends Component {
                       : "cartcardrelese"
                   }
                 >
-                  <Grid container item xs={12} justify="flex-end" alignItems="center">
+                  <Grid
+                    container
+                    item
+                    xs={12}
+                    justify="flex-end"
+                    alignItems="center"
+                  >
                     {this.props.paymentSucces ||
                     window.location.pathname === "/cart" ||
                     window.location.pathname === "/checkout" ? (
@@ -241,7 +248,9 @@ class Header extends Component {
                           id="logoDiv1"
                           className="logoDiv1"
                           onClick={() => {
-                            window.location.href = isSilver ? "/styloriSilver" : "/";
+                            window.location.href = isSilver
+                              ? "/styloriSilver"
+                              : "/";
                           }}
                           style={{ cursor: "pointer" }}
                         >
@@ -263,14 +272,33 @@ class Header extends Component {
                     ) : (
                       ""
                     )}
-                    <Grid container item xs={9} justify="flex-end" alignItems="center">
+                    <Grid
+                      container
+                      item
+                      xs={9}
+                      justify="flex-end"
+                      alignItems="center"
+                    >
                       <div className={`head-icons1 ${classes.headIcons}`}>
                         <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
-                        <Typography className={classes.callerNum}>1800 102 0330</Typography>
-                        <Grid onClick={this.handleClose} style={{ cursor: "pointer" }} className={`search`}>
+                        <Typography className={classes.callerNum}>
+                          1800 102 0330
+                        </Typography>
+                        <Grid
+                          onClick={this.handleClose}
+                          style={{ cursor: "pointer" }}
+                          className={`search`}
+                        >
                           <Grid container>
-                            <Typography style={{ flexGrow: 1, fontSize: "0.96rem" }}>Search</Typography>
-                            <div className={classes.searchcontainer} style={{ width: "25px" }}>
+                            <Typography
+                              style={{ flexGrow: 1, fontSize: "0.96rem" }}
+                            >
+                              Search
+                            </Typography>
+                            <div
+                              className={classes.searchcontainer}
+                              style={{ width: "25px" }}
+                            >
                               <Seach className={"searchsvg"} />
                             </div>
                           </Grid>
@@ -286,9 +314,13 @@ class Header extends Component {
                                 window.location.href = "/account-profile";
                               }}
                             >
-                              <i style={{ fontSize: "20px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                              <i
+                                style={{ fontSize: "20px" }}
+                                class={`fa fa-user  ${classes.iconFafa}`}
+                              ></i>
                               <span className="tooltip-slog">
-                                {Boolean(localStorage.getItem("user_id")) && !Boolean(localStorage.getItem("gut_lg"))
+                                {Boolean(localStorage.getItem("user_id")) &&
+                                !Boolean(localStorage.getItem("gut_lg"))
                                   ? "Account"
                                   : "Login"}
                               </span>
@@ -300,54 +332,29 @@ class Header extends Component {
                           <div className="tooltip ">
                             <span
                               className={`MuiBadge-root ${classes.badgecolor}`}
-                              onClick={() => (window.location.pathname = "/login")}
+                              onClick={() =>
+                                (window.location.pathname = "/login")
+                              }
                             >
-                              <i style={{ fontSize: "20px" }} class={`fa fa-user  ${classes.iconFafa}`}></i>
+                              <i
+                                style={{ fontSize: "20px" }}
+                                class={`fa fa-user  ${classes.iconFafa}`}
+                              ></i>
                               <span className="tooltip-slog">
-                                {Boolean(localStorage.getItem("user_id")) && !Boolean(localStorage.getItem("gut_lg"))
+                                {Boolean(localStorage.getItem("user_id")) &&
+                                !Boolean(localStorage.getItem("gut_lg"))
                                   ? "Account"
                                   : "Login"}
                               </span>
                             </span>
                           </div>
                         )}
-                        {/* <Popover
-                                                    id="simple-popper"
-                                                    open={openPopover}
-                                                    anchorEl={anchorEl}
-                                                    onClose={this.handleClosePopover}
-                                                    anchorOrigin={{
-                                                        vertical: 'bottom',
-                                                        horizontal: 'center',
-                                                    }}
-                                                    transformOrigin={{
-                                                        vertical: 'top',
-                                                        horizontal: 'center',
-                                                    }}
-                                                >
-                                                    <div
-                                                    >
-                                                        <Grid
-                                                            style={{ padding: "10px", width: "194px", cursor: "pointer" }}
-                                                            container spacing={12} lg={12}>
-                                                            <Grid item > <div style={{ padding: "0px 6px 0px 0px" }}
-                                                                onClick={() => {
-                                                                    localStorage.clear();
-                                                                    sessionStorage.clear()
-                                                                    window.location.reload()
-                                                                    window.location.pathname = "/login"
-                                                                }}><img className="icons-header-sizes" src={logout} />&nbsp;Logout
-                                             </div></Grid>
-                                                            <Grid item > <div style={{ float: "right" }} onClick={() => { window.location.href = "/account-profile" }}>
-                                                                / My Account
-                                                 </div></Grid>
-                                                        </Grid>
-
-                                                    </div>
-                                                </Popover> */}
+             
                         <div className="tooltip">
                           <Badge
-                            className={`${isSilver && classes.badgeColorsilver} ${!isSilver && classes.badgeColor}`}
+                            className={`${
+                              isSilver && classes.badgeColorsilver
+                            } ${!isSilver && classes.badgeColor}`}
                             badgeContent={
                               !isSilver &&
                               (this.props.wishlist &&
@@ -360,8 +367,6 @@ class Header extends Component {
                                   this.props.wishlist.wishlistdata.nodes.length
                                 : "0")
                             }
-                            // wishlist_count
-                            // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                           >
                             <i
                               style={{ fontSize: "18px" }}
@@ -380,26 +385,35 @@ class Header extends Component {
 
                         <div className="tooltip">
                           <Badge
-                            className={`${isSilver && classes.badgeColorsilver} ${!isSilver && classes.badgeColor}`}
+                            className={`${
+                              isSilver && classes.badgeColorsilver
+                            } ${!isSilver && classes.badgeColor}`}
                             badgeContent={
                               this.props.cart_count &&
                               this.props.cart_count.data &&
                               this.props.cart_count.data.allTransSkuLists &&
-                              this.props.cart_count.data.allTransSkuLists.nodes.length > 0
+                              this.props.cart_count.data.allTransSkuLists.nodes
+                                .length > 0
                                 ? this.props.cart_count &&
                                   this.props.cart_count.data &&
                                   this.props.cart_count.data.allTransSkuLists &&
-                                  this.props.cart_count.data.allTransSkuLists.nodes.length
+                                  this.props.cart_count.data.allTransSkuLists
+                                    .nodes.length
                                 : !isSilver && "0"
                               // this.props && this.props.cart_count && this.props.cart_count.length
                             }
                           >
                             <a href="/cart" className="highlighter">
-                              <i style={{ fontSize: "20px" }} class={`fa fa-shopping-cart  ${classes.iconFafa}`}></i>
+                              <i
+                                style={{ fontSize: "20px" }}
+                                class={`fa fa-shopping-cart  ${classes.iconFafa}`}
+                              ></i>
                               <span
                                 className="tooltip-s"
                                 style={{
-                                  color: isSilver ? "rgb(6, 171, 159)" : "#d51f63",
+                                  color: isSilver
+                                    ? "rgb(6, 171, 159)"
+                                    : "#d51f63",
                                 }}
                               >
                                 Cart
@@ -420,13 +434,20 @@ class Header extends Component {
               ) : (
                 <Grid container id="headerContainer">
                   <Container maxWidth="lg">
-                    <Grid container spacing={12} id="fullcontainer" className="setHeight">
+                    <Grid
+                      container
+                      spacing={12}
+                      id="fullcontainer"
+                      className="setHeight"
+                    >
                       <Grid item xs={3} className="logoImgHeader1">
                         <div
                           id="logoDiv1"
                           className="logoDiv1"
                           onClick={() => {
-                            window.location.href = isSilver ? "/styloriSilver" : "/";
+                            window.location.href = isSilver
+                              ? "/styloriSilver"
+                              : "/";
                           }}
                           style={{ cursor: "pointer" }}
                         >
@@ -463,12 +484,13 @@ class Header extends Component {
                         <Grid item xs={12} className="titleTop" id={"titleTop"}>
                           <nav>
                             {menuListHeader.map((listName) => {
-                              let urlsmall = listName.title.toLowerCase();
                               return (
                                 <a
                                   href={listName.url}
                                   className={
-                                    window.location.pathname === listName.url ? classes.seletectedMenu : classes.menuListCursor
+                                    window.location.pathname === listName.url
+                                      ? classes.seletectedMenu
+                                      : classes.menuListCursor
                                   }
                                   onMouseOver={(event) => {
                                     this.setState({
@@ -477,15 +499,19 @@ class Header extends Component {
                                       subTitleData: null,
                                       subTitleAllData: null,
                                       targetopen: event.currentTarget,
-                                      listHoverItem: listName.title.replace(/ +/g, ""),
+                                      listHoverItem: listName.title.replace(
+                                        / +/g,
+                                        ""
+                                      ),
                                     });
                                   }}
                                   target={
-                                    listName.title === "STYLORISILVER" || listName.title === "VISIT STYLORI.COM" ? "_blank" : ""
+                                    listName.title === "STYLORISILVER" ||
+                                    listName.title === "VISIT STYLORI.COM"
+                                      ? "_blank"
+                                      : ""
                                   }
-                                  // {
-                                  //   listName.title === "STYLORISILVER" ? ""
-                                  // }
+                                  
                                 >
                                   {listName.title === "VISIT STYLORI.COM" ? (
                                     <img
@@ -497,8 +523,7 @@ class Header extends Component {
                                   ) : listName.title === "STYLORISILVER" ? (
                                     <img
                                       src={silverOpenLinkImage}
-                                      // width="25px"
-                                      // height="25px"
+                                   
                                       alt="stylori"
                                       style={{ width: "25px", height: "25px" }}
                                     />
@@ -506,24 +531,18 @@ class Header extends Component {
                                     listName.title
                                   )}
 
-                                  {/* {listName.title === "VISIT STYLORISILVER" ? (
-                                    <img
-                                      src="https://assets.stylori.com/images/favicon.gif"
-                                      width="25px"
-                                      height="25px"
-                                      alt="stylori"
-                                    />
-                                  ) : (
-                                    listName.title
-                                  )} */}
+                                 
                                 </a>
                               );
                             })}
                           </nav>
-                          {this.state.Menuopen && menuLists[this.state.listHoverItem] ? (
+                          {this.state.Menuopen &&
+                          menuLists[this.state.listHoverItem] ? (
                             <HeaderHoverMenuItem
                               tabdata={this.props.data}
-                              listHoverItem={menuLists[this.state.listHoverItem]}
+                              listHoverItem={
+                                menuLists[this.state.listHoverItem]
+                              }
                               isSilver={isSilver}
                               onMouseOver={(event) => {
                                 this.setState({
@@ -548,7 +567,9 @@ class Header extends Component {
                               onMouseOver={(event) => {
                                 this.setState({ submenuOpen: true });
                               }}
-                              listHoverItem={menuLists[this.state.listHoverItem]}
+                              listHoverItem={
+                                menuLists[this.state.listHoverItem]
+                              }
                               data={this.state.subTitleData}
                               allData={this.state.subTitleAllData}
                               subMenuTarget={this.subMenuTarget}
@@ -576,7 +597,11 @@ class Header extends Component {
           </div>
         </Hidden>
 
-        <Modal open={this.state.opened} onClose={this.handleClose} className="docc-modal">
+        <Modal
+          open={this.state.opened}
+          onClose={this.handleClose}
+          className="docc-modal"
+        >
           <ElasticSearch handleClose={this.handleClose} />
         </Modal>
         <Hidden mdUp>
@@ -585,7 +610,17 @@ class Header extends Component {
               <div className="header-appbar-sticky1">
                 <AppBar className="header-appbar-moblie1" id="smallScreen">
                   <Toolbar className={"toolbarsetting"}>
-                    <Grid container item xs={1} sm={1} md={1} lg={1} xl={1} justify="center" alignItems="center">
+                    <Grid
+                      container
+                      item
+                      xs={1}
+                      sm={1}
+                      md={1}
+                      lg={1}
+                      xl={1}
+                      justify="center"
+                      alignItems="center"
+                    >
                       <IconButton onClick={this.handleDrawerOpen}>
                         <MenuIcon className={classes.mobileNavIcon} />
                       </IconButton>
@@ -595,7 +630,9 @@ class Header extends Component {
                       <div
                         className="logoDiv1"
                         onClick={() => {
-                          window.location.href = isSilver ? "/styloriSilver" : "/";
+                          window.location.href = isSilver
+                            ? "/styloriSilver"
+                            : "/";
                         }}
                         style={{ cursor: "pointer" }}
                       >
@@ -610,7 +647,10 @@ class Header extends Component {
                       </div>
                     </Grid>
                     <Grid item xs={6}>
-                      <div onClick={this.handleSearch} className={`mobli-icon1 ${classes.mobile_icon_i}`}>
+                      <div
+                        onClick={this.handleSearch}
+                        className={`mobli-icon1 ${classes.mobile_icon_i}`}
+                      >
                         <Grid
                           item
                           xs={12}
@@ -623,7 +663,11 @@ class Header extends Component {
                           }}
                         >
                           <div className={`head-icons1 ${classes.headIcons}`}>
-                            <div id="search" onClick={this.handleClose} className={classes.searchcontainTop}>
+                            <div
+                              id="search"
+                              onClick={this.handleClose}
+                              className={classes.searchcontainTop}
+                            >
                               <Seach className={"searchsvgmobile"} />
                             </div>
                             {/* {localStorage.getItem("true") ?
@@ -658,7 +702,11 @@ class Header extends Component {
                                 ></i>
                               </span>
                             ) : (
-                              <span onClick={() => (window.location.pathname = "/login")}>
+                              <span
+                                onClick={() =>
+                                  (window.location.pathname = "/login")
+                                }
+                              >
                                 <i
                                   class={`fa fa-user  ${classes.iconFafa}`}
                                   style={{
@@ -707,17 +755,21 @@ class Header extends Component {
                             {/* </div>
                                                         </Popover> */}
                             <Badge
-                              className={`${isSilver && classes.badgeColorsilver}`}
+                              className={`${
+                                isSilver && classes.badgeColorsilver
+                              }`}
                               badgeContent={
                                 !isSilver &&
                                 (this.props.wishlist &&
                                 this.props.wishlist.wishlistdata &&
                                 this.props.wishlist.wishlistdata.nodes &&
-                                this.props.wishlist.wishlistdata.nodes.length > 0
+                                this.props.wishlist.wishlistdata.nodes.length >
+                                  0
                                   ? this.props.wishlist &&
                                     this.props.wishlist.wishlistdata &&
                                     this.props.wishlist.wishlistdata.nodes &&
-                                    this.props.wishlist.wishlistdata.nodes.length
+                                    this.props.wishlist.wishlistdata.nodes
+                                      .length
                                   : "0")
                               }
                               color="secondary"
@@ -734,17 +786,22 @@ class Header extends Component {
                               ></i>
                             </Badge>
                             <Badge
-                              className={`${isSilver && classes.badgeColorsilver}`}
+                              className={`${
+                                isSilver && classes.badgeColorsilver
+                              }`}
                               style={{ fontSize: "9px" }}
                               badgeContent={
                                 this.props.cart_count &&
                                 this.props.cart_count.data &&
                                 this.props.cart_count.data.allTransSkuLists &&
-                                this.props.cart_count.data.allTransSkuLists.nodes.length > 0
+                                this.props.cart_count.data.allTransSkuLists
+                                  .nodes.length > 0
                                   ? this.props.cart_count &&
                                     this.props.cart_count.data &&
-                                    this.props.cart_count.data.allTransSkuLists &&
-                                    this.props.cart_count.data.allTransSkuLists.nodes.length
+                                    this.props.cart_count.data
+                                      .allTransSkuLists &&
+                                    this.props.cart_count.data.allTransSkuLists
+                                      .nodes.length
                                   : !isSilver && "0"
 
                                 // localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"
@@ -775,33 +832,56 @@ class Header extends Component {
             anchor="left"
             open={this.state.open}
             classes={{
-              paper: classNames(isSilver ? classes.drawerPaperSilver : classes.drawerPaper),
+              paper: classNames(
+                isSilver ? classes.drawerPaperSilver : classes.drawerPaper
+              ),
             }}
           >
-            <ClickAwayListener onClickAway={(e) => this.handleExpandClickClose(e)}>
+            <ClickAwayListener
+              onClickAway={(e) => this.handleExpandClickClose(e)}
+            >
               <div>
                 {!isSilver && (
                   <div className={classes.menuheader}>
-                    <IconButton onClick={this.handleDrawerClose} style={{ float: "right" }} className={classes.iconbuttons}>
+                    <IconButton
+                      onClick={this.handleDrawerClose}
+                      style={{ float: "right" }}
+                      className={classes.iconbuttons}
+                    >
                       <i class="fa fa-times closebus"></i>
                     </IconButton>
                   </div>
                 )}
                 <List className="sideNavListing">
                   {isSilver && (
-                    <ListItem button key={"Menu"} className={`${"drawer-list1"} ${classes.menuTitle}`}>
+                    <ListItem
+                      button
+                      key={"Menu"}
+                      className={`${"drawer-list1"} ${classes.menuTitle}`}
+                    >
                       <ListItemText>
-                        <div className={classes.menuheader} style={{ flexBasis: "10%" }}>
+                        <div
+                          className={classes.menuheader}
+                          style={{ flexBasis: "10%" }}
+                        >
                           <IconButton
                             onClick={this.handleDrawerClose}
                             style={{ float: "left", color: "white" }}
-                            className={isSilver ? classes.iconbuttonsSilver : classes.iconbuttons}
+                            className={
+                              isSilver
+                                ? classes.iconbuttonsSilver
+                                : classes.iconbuttons
+                            }
                           >
                             <i class="fa fa-times closebus"></i>
                           </IconButton>
                         </div>
                         <Typography
-                          className={isSilver ? `${classes.listItems1} ${classes.menulistItem}` : "list-items1"}
+                          className={
+                            isSilver
+                              ? `${classes.listItems1} ${classes.menulistItem}`
+                              : "list-items1"
+                          }
                           variant=""
                         >
                           MENU
@@ -811,7 +891,13 @@ class Header extends Component {
                   )}
                   {mainlist.map((row) => (
                     <>
-                      <ListItem button key={row.name} className={`${isSilver ? classes.drawerList1 : `drawer-list1`}`}>
+                      <ListItem
+                        button
+                        key={row.name}
+                        className={`${
+                          isSilver ? classes.drawerList1 : `drawer-list1`
+                        }`}
+                      >
                         <ListItemText
                           onClick={
                             row.url === "/" || row.url === "/styloriSilver"
@@ -821,16 +907,35 @@ class Header extends Component {
                                 }
                           }
                         >
-                          <Typography className={isSilver ? classes.listItems1 : "list-items1"} variant="">
+                          <Typography
+                            className={
+                              isSilver ? classes.menulistitemcolor : "list-items1"
+                            }
+                            variant=""
+                          >
                             {row.name.toUpperCase()}
                           </Typography>
                         </ListItemText>
-                        <div onClick={() => (Jewellery[row.name] !== undefined ? this.selectItem(row.name) : "")}>
+                        <div
+                          onClick={() =>
+                            Jewellery[row.name] !== undefined
+                              ? this.selectItem(row.name)
+                              : ""
+                          }
+                        >
                           {Jewellery[row.name] !== undefined ? (
                             row.name === selected ? (
-                              <i class={`fa fa-caret-up drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""}`}></i>
+                              <i
+                                class={`fa fa-caret-up drawer-arrow ${
+                                  isSilver ? classes.drawerArrowSilver : ""
+                                }`}
+                              ></i>
                             ) : (
-                              <i class={`fa fa-caret-down drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""}`}></i>
+                              <i
+                                class={`fa fa-caret-down drawer-arrow ${
+                                  isSilver ? classes.drawerArrowSilver : ""
+                                }`}
+                              ></i>
                             )
                           ) : (
                             ""
@@ -843,54 +948,104 @@ class Header extends Component {
                             <ListItem
                               button
                               key={Jewellery[selected][row2].name}
-                              className={isSilver ? classes.subtitleContainerSilver : classes.subtitleContainer}
+                              className={
+                                isSilver
+                                  ? classes.subtitleContainerSilver
+                                  : classes.subtitleContainer
+                              }
                             >
                               <ListItemText
                                 onClick={() => {
-                                  window.location.href = Jewellery[selected][row2].url;
+                                  window.location.href =
+                                    Jewellery[selected][row2].url;
                                 }}
                               >
-                                <Typography className={isSilver ? classes.subtitlesSilver : classes.subtitles} variant="">
+                                <Typography
+                                  className={
+                                    isSilver
+                                      ? classes.subtitlesSilver
+                                      : classes.subtitles
+                                  }
+                                  variant=""
+                                >
                                   {Jewellery[selected][row2].name.toUpperCase()}
                                 </Typography>
                               </ListItemText>
-                              <div onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>
-                                {selected1 === Jewellery[selected][row2].name ? (
+                              <div
+                                onClick={() =>
+                                  this.selectItem1(
+                                    Jewellery[selected][row2].name
+                                  )
+                                }
+                              >
+                                {selected1 ===
+                                Jewellery[selected][row2].name ? (
                                   <span>
-                                    {Jewellery[selected][row2].name !== "NEW ARRIVALS" &&
-                                      Jewellery[selected][row2].name !== "RINGS" &&
-                                      Jewellery[selected][row2].name !== "BEST SELLERS" &&
-                                      Jewellery[selected][row2].name !== "BANGLE" &&
-                                      Jewellery[selected][row2].name !== "StarStruck" &&
-                                      Jewellery[selected][row2].name !== "Mural Collection" &&
-                                      Jewellery[selected][row2].name !== "Elemental Collection" &&
-                                      Jewellery[selected][row2].name !== "Akruti Collection" &&
-                                      Jewellery[selected][row2].name !== "Concentric Collection" &&
-                                      Jewellery[selected][row2].name !== "In love Collection" &&
-                                      Jewellery[selected][row2].name !== "Baroque Whites Collection" && 
-                                      Jewellery[selected][row2].name !== "Gift Voucher" && 
-                                      
-                                      (
-                                        <i class={`fa fa-caret-up drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""}`}></i>
+                                    {Jewellery[selected][row2].name !==
+                                      "NEW ARRIVALS" &&
+                                      Jewellery[selected][row2].name !==
+                                        "RINGS" &&
+                                      Jewellery[selected][row2].name !==
+                                        "BEST SELLERS" &&
+                                      Jewellery[selected][row2].name !==
+                                        "BANGLE" &&
+                                      Jewellery[selected][row2].name !==
+                                        "StarStruck" &&
+                                      Jewellery[selected][row2].name !==
+                                        "Mural Collection" &&
+                                      Jewellery[selected][row2].name !==
+                                        "Elemental Collection" &&
+                                      Jewellery[selected][row2].name !==
+                                        "Akruti Collection" &&
+                                      Jewellery[selected][row2].name !==
+                                        "Concentric Collection" &&
+                                      Jewellery[selected][row2].name !==
+                                        "In love Collection" &&
+                                      Jewellery[selected][row2].name !==
+                                        "Baroque Whites Collection" &&
+                                      Jewellery[selected][row2].name !==
+                                        "Gift Voucher" && (
+                                        <i
+                                          class={`fa fa-caret-up drawer-arrow ${
+                                            isSilver
+                                              ? classes.drawerArrowSilver
+                                              : ""
+                                          }`}
+                                        ></i>
                                       )}
                                   </span>
                                 ) : (
                                   <span>
-                                    {Jewellery[selected][row2].name !== "NEW ARRIVALS" &&
-                                      Jewellery[selected][row2].name !== "RINGS" &&
-                                      Jewellery[selected][row2].name !== "BEST SELLERS" &&
-                                      Jewellery[selected][row2].name !== "BANGLE" &&
-                                      Jewellery[selected][row2].name !== "StarStruck" &&
-                                      Jewellery[selected][row2].name !== "Mural Collection" &&
-                                      Jewellery[selected][row2].name !== "Elemental Collection" &&
-                                      Jewellery[selected][row2].name !== "Akruti Collection" &&
-                                      Jewellery[selected][row2].name !== "Concentric Collection" &&
-                                      Jewellery[selected][row2].name !== "In love Collection" &&
-                                      Jewellery[selected][row2].name !== "Baroque Whites Collection" &&
-                                      Jewellery[selected][row2].name !== "Gift Voucher" &&
-                                      (
+                                    {Jewellery[selected][row2].name !==
+                                      "NEW ARRIVALS" &&
+                                      Jewellery[selected][row2].name !==
+                                        "RINGS" &&
+                                      Jewellery[selected][row2].name !==
+                                        "BEST SELLERS" &&
+                                      Jewellery[selected][row2].name !==
+                                        "BANGLE" &&
+                                      Jewellery[selected][row2].name !==
+                                        "StarStruck" &&
+                                      Jewellery[selected][row2].name !==
+                                        "Mural Collection" &&
+                                      Jewellery[selected][row2].name !==
+                                        "Elemental Collection" &&
+                                      Jewellery[selected][row2].name !==
+                                        "Akruti Collection" &&
+                                      Jewellery[selected][row2].name !==
+                                        "Concentric Collection" &&
+                                      Jewellery[selected][row2].name !==
+                                        "In love Collection" &&
+                                      Jewellery[selected][row2].name !==
+                                        "Baroque Whites Collection" &&
+                                      Jewellery[selected][row2].name !==
+                                        "Gift Voucher" && (
                                         <i
-                                          class={`fa fa-caret-down drawer-arrow ${isSilver ? classes.drawerArrowSilver : ""}`}
+                                          class={`fa fa-caret-down drawer-arrow ${
+                                            isSilver
+                                              ? classes.drawerArrowSilver
+                                              : ""
+                                          }`}
                                         ></i>
                                       )}
                                   </span>
@@ -907,7 +1062,11 @@ class Header extends Component {
                                                                 <span style={{ paddingTop: "5px" }} className="header-viewal1">View All</span>
                                                             </ListItemText>
                                                         </ListItem> */}
-                                {Boolean(subheader && selected1 && subheader?.[selected1]) ? (
+                                {Boolean(
+                                  subheader &&
+                                    selected1 &&
+                                    subheader?.[selected1]
+                                ) ? (
                                   //   subheader[selected1].name
                                   isSilver ? (
                                     <Grid
@@ -921,200 +1080,217 @@ class Header extends Component {
                                         zIndex: "10000",
                                       }}
                                     >
-                                      {subheader[selected1]?.name.map((row, i) => {
-                                        return row.img ? (
-                                          <Grid
-                                            item
-                                            xs={6}
-                                            style={{ marginBottom: 30 }}
-                                            onClick={() => {
-                                              window.location.href = row.url;
-                                            }}
-                                          >
-                                            {/* <Grid
-                                          container
-                                          className={classes.imgcont}
-                                          onClick={() => {
-                                            window.location.href =
-                                              "/studs-earrings-jewellery";
-                                          }}
-                                          justify="center"
-                                          alignContent="center"
-                                          alignItems="center"
-                                          style={{ cursor: "pointer" }}
-                                        > */}
+                                      {subheader[selected1]?.name.map(
+                                        (row, i) => {
+                                          return row.img ? (
                                             <Grid
                                               item
-                                              style={{
-                                                justifyContent: "center",
-                                                alignContent: "center",
-                                                display: "flex",
+                                              xs={6}
+                                              style={{ marginBottom: 30 }}
+                                              onClick={() => {
+                                                window.location.href = row.url;
                                               }}
                                             >
-                                              <img
-                                                style={{
-                                                  width: "55%",
-                                                  margin: "auto",
-                                                  height: "100%",
-                                                }}
-                                                src={row.img}
-                                              />
-                                            </Grid>
-                                            <Grid item style={{ margin: "auto" }}>
-                                              <Typography
-                                                style={{
-                                                  margin: "auto",
-                                                  textAlign: "center",
-                                                  color: "rgb(96, 97, 97)",
-                                                  fontWeight: "bold",
-                                                  fontSize: "0.6rem",
-                                                }}
-
-                                                // className={
-                                                //   classes.listedItemsvalue
-                                                // }
-                                              >
-                                                {row?.name?.toUpperCase()}
-                                              </Typography>
-                                            </Grid>
-                                          </Grid>
-                                        ) : (
-                                          <>
-                                            {row?.name && (
                                               <Grid
                                                 item
-                                                xs={6}
-                                                onClick={() => {
-                                                  window.location.href = row.url;
+                                                style={{
+                                                  justifyContent: "center",
+                                                  alignContent: "center",
+                                                  display: "flex",
                                                 }}
                                               >
-                                                <ListItem>
-                                                  <ListItemText>
-                                                    <Typography
-                                                      variant="body1"
-                                                      style={{
-                                                        boxShadow: "rgb(204, 204, 204) 3px 3px 2px",
-                                                        border: "1px solid rgb(204, 204, 204)",
-                                                        padding: 5,
-                                                        color: "rgb(96, 97, 97)",
-                                                        fontSize: "0.8rem",
-                                                        fontWeight: "bold",
-                                                        textAlign: "center",
-                                                      }}
-                                                    >
-                                                      {row?.name?.toUpperCase()}
-                                                    </Typography>
-                                                  </ListItemText>
-                                                </ListItem>
-                                              </Grid>
-                                            )}
-                                            {row?.style && (
-                                              <Grid>
-                                                <Divider
+                                                <img
+                                                  alt="images"
                                                   style={{
-                                                    width: "100%",
-                                                    backgroundColor: "rgb(6, 171, 159)",
-                                                    margin: "5px 0",
+                                                    width: "55%",
+                                                    margin: "auto",
+                                                    height: "100%",
                                                   }}
+                                                  src={row.img}
                                                 />
-                                                <List className={classes.root}>
+                                              </Grid>
+                                              <Grid
+                                                item
+                                                style={{ margin: "auto" }}
+                                              >
+                                                <Typography
+                                                  style={{
+                                                    margin: "auto",
+                                                    textAlign: "center",
+                                                    color: "rgb(96, 97, 97)",
+                                                    fontWeight: "bold",
+                                                    fontSize: "0.6rem",
+                                                  }}
+
+                                                  // className={
+                                                  //   classes.listedItemsvalue
+                                                  // }
+                                                >
+                                                  {row?.name?.toUpperCase()}
+                                                </Typography>
+                                              </Grid>
+                                            </Grid>
+                                          ) : (
+                                            <>
+                                              {row?.name && (
+                                                <Grid
+                                                  item
+                                                  xs={6}
+                                                  onClick={() => {
+                                                    window.location.href =
+                                                      row.url;
+                                                  }}
+                                                >
                                                   <ListItem>
                                                     <ListItemText>
                                                       <Typography
                                                         variant="body1"
                                                         style={{
-                                                          color: "rgb(6, 171, 159)",
+                                                          // boxShadow: "rgb(204, 204, 204) 3px 3px 2px",
+                                                          border:
+                                                            "1px solid rgb(204, 204, 204)",
+                                                          padding: 5,
+                                                          color:
+                                                            "rgb(96, 97, 97)",
                                                           fontSize: "0.8rem",
+                                                          fontWeight: "bold",
+                                                          textAlign: "center",
                                                         }}
                                                       >
-                                                        SHOP BY STYLE{" "}
+                                                        {row?.name?.toUpperCase()}
                                                       </Typography>
                                                     </ListItemText>
                                                   </ListItem>
-                                                  <Grid container>
-                                                    {row?.style?.map((v) => {
-                                                      return (
-                                                        <Grid item xs={6}>
-                                                          <ListItem
-                                                            onClick={() => {
-                                                              window.location.href = v.url;
-                                                            }}
-                                                          >
-                                                            <ListItemAvatar>
-                                                              <Avatar alt="a" src={v.img} />
-                                                            </ListItemAvatar>
-                                                            <ListItemText
-                                                              primary={v.name}
-                                                              style={{
-                                                                color: "rgb(96, 97, 97)",
+                                                </Grid>
+                                              )}
+                                              {row?.style && (
+                                                <Grid>
+                                                  <Divider
+                                                    style={{
+                                                      width: "100%",
+                                                      backgroundColor:
+                                                        "rgb(6, 171, 159)",
+                                                      margin: "5px 0",
+                                                    }}
+                                                  />
+                                                  <List
+                                                    className={classes.root}
+                                                  >
+                                                    <ListItem>
+                                                      <ListItemText>
+                                                        <Typography
+                                                          variant="body1"
+                                                          style={{
+                                                            color:
+                                                              "rgb(6, 171, 159)",
+                                                            fontSize: "0.8rem",
+                                                          }}
+                                                        >
+                                                          SHOP BY STYLE{" "}
+                                                        </Typography>
+                                                      </ListItemText>
+                                                    </ListItem>
+                                                    <Grid container>
+                                                      {row?.style?.map((v) => {
+                                                        return (
+                                                          <Grid item xs={6}>
+                                                            <ListItem
+                                                              onClick={() => {
+                                                                window.location.href =
+                                                                  v.url;
                                                               }}
-                                                            />
-                                                          </ListItem>
-                                                        </Grid>
-                                                      );
-                                                    })}
-                                                  </Grid>
-                                                </List>
-                                              </Grid>
-                                            )}
-                                            {row?.TextPrice && (
-                                              <Grid>
-                                                <Divider
-                                                  style={{
-                                                    width: "100%",
-                                                    backgroundColor: "rgb(6, 171, 159)",
-                                                    // margin: '5px 0'
-                                                  }}
-                                                />
-                                                <List className={classes.root}>
-                                                  <ListItem>
-                                                    <ListItemText>
-                                                      <Typography
-                                                        variant="body1"
-                                                        style={{
-                                                          color: "rgb(6, 171, 159)",
-                                                          fontSize: "0.8rem",
-                                                        }}
-                                                      >
-                                                        SHOP BY PRICE{" "}
-                                                      </Typography>
-                                                    </ListItemText>
-                                                  </ListItem>
-                                                  <Grid container>
-                                                    {row?.TextPrice?.map((v) => {
-                                                      return (
-                                                        <Grid item xs={6}>
-                                                          <ListItem
-                                                            onClick={() => {
-                                                              window.location.href = v.url;
-                                                            }}
-                                                          >
-                                                            <ListItemText>
-                                                              <Typography
-                                                                variant="body1"
+                                                            >
+                                                              <ListItemAvatar>
+                                                                <Avatar
+                                                                  alt="a"
+                                                                  src={v.img}
+                                                                />
+                                                              </ListItemAvatar>
+                                                              <ListItemText
+                                                                primary={v.name}
                                                                 style={{
-                                                                  boxShadow: "rgb(204, 204, 204) 3px 3px 2px",
-                                                                  border: "1px solid rgb(204, 204, 204)",
-                                                                  padding: 5,
-                                                                  color: "rgb(96, 97, 97)",
-                                                                  fontSize: "0.8rem",
-                                                                  textAlign: "center",
+                                                                  color:
+                                                                    "rgb(96, 97, 97)",
+                                                                }}
+                                                              />
+                                                            </ListItem>
+                                                          </Grid>
+                                                        );
+                                                      })}
+                                                    </Grid>
+                                                  </List>
+                                                </Grid>
+                                              )}
+                                              {row?.TextPrice && (
+                                                <Grid>
+                                                  <Divider
+                                                    style={{
+                                                      width: "100%",
+                                                      backgroundColor:
+                                                        "rgb(6, 171, 159)",
+                                                      // margin: '5px 0'
+                                                    }}
+                                                  />
+                                                  <List
+                                                    className={classes.root}
+                                                  >
+                                                    <ListItem>
+                                                      <ListItemText>
+                                                        <Typography
+                                                          variant="body1"
+                                                          style={{
+                                                            color:
+                                                              "rgb(6, 171, 159)",
+                                                            fontSize: "0.8rem",
+                                                          }}
+                                                        >
+                                                          SHOP BY PRICE{" "}
+                                                        </Typography>
+                                                      </ListItemText>
+                                                    </ListItem>
+                                                    <Grid container>
+                                                      {row?.TextPrice?.map(
+                                                        (v) => {
+                                                          return (
+                                                            <Grid item xs={6}>
+                                                              <ListItem
+                                                                onClick={() => {
+                                                                  window.location.href =
+                                                                    v.url;
                                                                 }}
                                                               >
-                                                                {v?.name}
-                                                              </Typography>
-                                                            </ListItemText>
-                                                          </ListItem>
-                                                        </Grid>
-                                                      );
-                                                    })}
-                                                  </Grid>
-                                                </List>
-                                              </Grid>
-                                            )}
-                                          </>
-                                        );
-                                      })}
+                                                                <ListItemText>
+                                                                  <Typography
+                                                                    variant="body1"
+                                                                    style={{
+                                                                      // boxShadow: "rgb(204, 204, 204) 3px 3px 2px",
+                                                                      border:
+                                                                        "1px solid rgb(204, 204, 204)",
+                                                                      padding: 5,
+                                                                      color:
+                                                                        "rgb(96, 97, 97)",
+                                                                      fontSize:
+                                                                        "0.8rem",
+                                                                      textAlign:
+                                                                        "center",
+                                                                    }}
+                                                                  >
+                                                                    {v?.name}
+                                                                  </Typography>
+                                                                </ListItemText>
+                                                              </ListItem>
+                                                            </Grid>
+                                                          );
+                                                        }
+                                                      )}
+                                                    </Grid>
+                                                  </List>
+                                                </Grid>
+                                              )}
+                                            </>
+                                          );
+                                        }
+                                      )}
                                     </Grid>
                                   ) : (
                                     subheader[selected1].name.map((row, i) => {
@@ -1126,10 +1302,15 @@ class Header extends Component {
                                             onClick={() => {
                                               window.location.href = row.url;
                                             }}
-                                            className={classes.subtitle2Container}
+                                            className={
+                                              classes.subtitle2Container
+                                            }
                                           >
                                             <ListItemText>
-                                              <Typography className="list-items1" variant="">
+                                              <Typography
+                                                className="list-items1"
+                                                variant=""
+                                              >
                                                 {row.name.toUpperCase()}
                                               </Typography>
                                             </ListItemText>
@@ -1146,7 +1327,12 @@ class Header extends Component {
                     </>
                   ))}
                   {isSilver ? (
-                    <Grid container xs={12} className="follow_us_container" style={{ boxShadow: "0 5px 5px -5px #aaa" }}>
+                    <Grid
+                      container
+                      xs={12}
+                      className="follow_us_container"
+                      style={{ boxShadow: "0 5px 5px -5px #aaa" }}
+                    >
                       <Grid item xs={8}>
                         <p
                           style={{
@@ -1157,17 +1343,33 @@ class Header extends Component {
                         >
                           Follow us
                         </p>
-                        <p style={{ fontSize: "20px", margin: "0px" }}>@stylorisilver</p>
+                        <p style={{ fontSize: "20px", margin: "0px" }}>
+                          @stylorisilver
+                        </p>
                       </Grid>
                       <Grid item className="icon_container" xs={4}>
                         {/* <i class="fab fa-facebook"></i><i class="fab fa-instagram"></i> */}
-                        <a href="https://www.facebook.com/StyloriSilver/" className="follow_us_a_tag">
-                          <i class="fa fa-facebook" aria-hidden="true" style={{ fontSize: "18px" }}></i>
+                        <a
+                          href="https://www.facebook.com/StyloriSilver/"
+                          className="follow_us_a_tag"
+                        >
+                          <i
+                            class="fa fa-facebook"
+                            aria-hidden="true"
+                            style={{ fontSize: "18px" }}
+                          ></i>
                         </a>
                         &nbsp;&nbsp;
-                        <a href="https://www.instagram.com/stylorisilver/" className="follow_us_a_tag">
+                        <a
+                          href="https://www.instagram.com/stylorisilver/"
+                          className="follow_us_a_tag"
+                        >
                           {" "}
-                          <i class="fa fa-instagram" aria-hidden="true" style={{ fontSize: "18px" }}></i>
+                          <i
+                            class="fa fa-instagram"
+                            aria-hidden="true"
+                            style={{ fontSize: "18px" }}
+                          ></i>
                         </a>
                       </Grid>
                     </Grid>
@@ -1177,16 +1379,26 @@ class Header extends Component {
                   {!localStorage.getItem("true") ? (
                     <>
                       <ListItem button className="drawer-list12">
-                        <ListItemText onClick={() => (window.location.pathname = "/login")}>
+                        <ListItemText
+                          onClick={() => (window.location.pathname = "/login")}
+                        >
                           {isSilver ? (
-                            <Typography style={{ fontSize: "11px" }}>LOGIN</Typography>
+                            <Typography style={{ fontSize: "11px" }}>
+                              LOGIN
+                            </Typography>
                           ) : (
-                            <Typography className="list-items1">LOGIN</Typography>
+                            <Typography className="list-items1">
+                              LOGIN
+                            </Typography>
                           )}
                         </ListItemText>
                       </ListItem>
                       <ListItem button className="drawer-list12">
-                        <ListItemText onClick={() => (window.location.pathname = "/registers")}>
+                        <ListItemText
+                          onClick={() =>
+                            (window.location.pathname = "/registers")
+                          }
+                        >
                           {isSilver ? (
                             <Typography
                               style={{
@@ -1196,7 +1408,9 @@ class Header extends Component {
                               REGISTER
                             </Typography>
                           ) : (
-                            <Typography className="list-items1">REGISTER</Typography>
+                            <Typography className="list-items1">
+                              REGISTER
+                            </Typography>
                           )}
                         </ListItemText>
                       </ListItem>
@@ -1213,9 +1427,13 @@ class Header extends Component {
                           }}
                         >
                           {isSilver ? (
-                            <Typography style={{ fontSize: "11px" }}>CONTACT US</Typography>
+                            <Typography style={{ fontSize: "11px" }}>
+                              CONTACT US
+                            </Typography>
                           ) : (
-                            <Typography className="list-items1">CONTACT US</Typography>
+                            <Typography className="list-items1">
+                              CONTACT US
+                            </Typography>
                           )}
                         </ListItemText>
                       </ListItem>
@@ -1223,30 +1441,54 @@ class Header extends Component {
                   ) : (
                     <>
                       <ListItem button className="drawer-list12">
-                        <ListItemText onClick={() => (window.location.href = `/account${"-allorders"}`)}>
+                        <ListItemText
+                          onClick={() =>
+                            (window.location.href = `/account${"-allorders"}`)
+                          }
+                        >
                           {isSilver ? (
-                            <Typography style={{ fontSize: "11px" }}>MY ORDERS</Typography>
+                            <Typography style={{ fontSize: "11px" }}>
+                              MY ORDERS
+                            </Typography>
                           ) : (
-                            <Typography className="list-items1">ALL ORDERS</Typography>
+                            <Typography className="list-items1">
+                              ALL ORDERS
+                            </Typography>
                           )}
                         </ListItemText>
                       </ListItem>
 
                       <ListItem button className="drawer-list12">
-                        <ListItemText onClick={() => (window.location.href = `/account${"-wishlist"}`)}>
+                        <ListItemText
+                          onClick={() =>
+                            (window.location.href = `/account${"-wishlist"}`)
+                          }
+                        >
                           {isSilver ? (
-                            <Typography style={{ fontSize: "11px" }}>RETURN INFORMATION</Typography>
+                            <Typography style={{ fontSize: "11px" }}>
+                              RETURN INFORMATION
+                            </Typography>
                           ) : (
-                            <Typography className="list-items1">MY WHISLIST</Typography>
+                            <Typography className="list-items1">
+                              MY WHISLIST
+                            </Typography>
                           )}
                         </ListItemText>
                       </ListItem>
                       <ListItem button className="drawer-list12">
-                        <ListItemText onClick={() => (window.location.href = `/ account${"-profile"}`)}>
+                        <ListItemText
+                          onClick={() =>
+                            (window.location.href = `/ account${"-profile"}`)
+                          }
+                        >
                           {isSilver ? (
-                            <Typography style={{ fontSize: "11px" }}>VIEW PROFILE</Typography>
+                            <Typography style={{ fontSize: "11px" }}>
+                              VIEW PROFILE
+                            </Typography>
                           ) : (
-                            <Typography className="list-items1">VIEW PROFILE</Typography>
+                            <Typography className="list-items1">
+                              VIEW PROFILE
+                            </Typography>
                           )}
                         </ListItemText>
                       </ListItem>
@@ -1257,9 +1499,13 @@ class Header extends Component {
                           }}
                         >
                           {isSilver ? (
-                            <Typography style={{ fontSize: "11px" }}>CONTACT US</Typography>
+                            <Typography style={{ fontSize: "11px" }}>
+                              CONTACT US
+                            </Typography>
                           ) : (
-                            <Typography className="list-items1">CONTACT US</Typography>
+                            <Typography className="list-items1">
+                              CONTACT US
+                            </Typography>
                           )}
                         </ListItemText>
                       </ListItem>
@@ -1279,9 +1525,13 @@ class Header extends Component {
                           }}
                         >
                           {isSilver ? (
-                            <Typography style={{ fontSize: "11px" }}>LOGOUT</Typography>
+                            <Typography style={{ fontSize: "11px" }}>
+                              LOGOUT
+                            </Typography>
                           ) : (
-                            <Typography className="list-items1">LOGOUT</Typography>
+                            <Typography className="list-items1">
+                              LOGOUT
+                            </Typography>
                           )}
                         </ListItemText>
                       </ListItem>
@@ -1291,7 +1541,9 @@ class Header extends Component {
                 {isSilver ? (
                   <Grid container xs={12} className="follow_us_container">
                     <Grid item xs={12}>
-                      <p style={{ fontSize: "13px", margin: "0px" }}>HELP & INFORMATION</p>
+                      <p style={{ fontSize: "13px", margin: "0px" }}>
+                        HELP & INFORMATION
+                      </p>
                     </Grid>
                   </Grid>
                 ) : (
@@ -1308,16 +1560,29 @@ class Header extends Component {
 
 export default withStyles(styles)((props) => {
   let {
-    CartCtx: { cartFilters, data: cart_count, loading, error, allorderdata, wishlistdata, NewUser },
+    CartCtx: { data: cart_count },
   } = React.useContext(CartContext);
 
   let GLobalCtx = React.useContext(GlobalContext);
 
   const isSilver =
-    GLobalCtx.Globalctx && GLobalCtx.Globalctx.pathName && GLobalCtx.Globalctx.pathName ? GLobalCtx.Globalctx.pathName : false;
+    GLobalCtx.Globalctx &&
+    GLobalCtx.Globalctx.pathName &&
+    GLobalCtx.Globalctx.pathName
+      ? GLobalCtx.Globalctx.pathName
+      : false;
 
-  const { mapped } = useDummyRequest(isSilver ? headerDataStyloriSilver : headerDataSilver);
+  const { mapped } = useDummyRequest(
+    isSilver ? headerDataStyloriSilver : headerDataSilver
+  );
   if (Object.keys(mapped).length === 0) return "";
 
-  return <Header {...props} globalContext={GLobalCtx} data={mapped} cart_count={cart_count} />;
+  return (
+    <Header
+      {...props}
+      globalContext={GLobalCtx}
+      data={mapped}
+      cart_count={cart_count}
+    />
+  );
 });

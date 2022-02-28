@@ -22,9 +22,8 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import Wishlist from "components/wishlist/wishlist";
 
 export const SilverImgMediaCard = (props) => {
-  const { ProductDetailCtx, setFilters } = React.useContext(
-    ProductDetailContext
-  );
+  const { ProductDetailCtx, setFilters } =
+    React.useContext(ProductDetailContext);
   const loc = window.location.search;
   const classes = styles();
 
@@ -102,7 +101,6 @@ const imageOnError = async (
     current_url.splice(current_url.length - 2, 1, size);
     _url = current_url.join().replace(/\,/g, "/");
     return _url;
-    
   };
   // let _url_2400X2400 = res.url_1000x1000;
   let _notFound =
@@ -285,8 +283,8 @@ const useStyles = makeStyles((theme) => ({
   card: {
     minWidth: "90%",
     maxWidth: "90%",
-    boxShadow:
-      "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important",
+    // boxShadow:
+    //   "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important",
     margin: "10px 0px ",
     borderRadius: "0 !important",
   },
@@ -475,7 +473,10 @@ function Component(props) {
   };
   return (
     <div className={classes.root} style={{ marginLeft: "0px !important" }}>
-      <Card className={classes.card} style={{ marginLeft: "0px !important" }}>
+      <Card
+        className={classes.card}
+        style={{ marginLeft: "0px !important", boxShadow: "none" }}
+      >
         {/* <CardActions className={classes.cardAtionspadding}>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
