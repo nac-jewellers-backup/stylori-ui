@@ -18,6 +18,7 @@ import {
   Paper,
   Hidden,
   Container,
+  Chip,
 } from "@material-ui/core";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import "./filter.css";
@@ -1343,27 +1344,26 @@ class Component extends React.Component {
                   background: "none",
                   border: "none",
                   fontWeight: "600",
-                  color: "rgba(58, 69, 120, 1)",
+                  color: "#747578",
                   padding: "6px 8px",
                 }}
               >
-                <i className={`fa fa-times ${classes.colorMain}`}></i>&nbsp;
+                <i className={`fa fa-times ${classes.cross}`}></i>&nbsp;
                 Filter
               </button>
               <Button
                 onClick={this.handleClearAllData}
                 style={{
                   float: "right",
-                  border: "1px solid #ececec",
+                  border: "none",
                   lineHeight: "15px",
                   fontSize: "0.775rem",
                 }}
-                className={`${classes.colorMain}`}
+                className={`${classes.clearall}`}
               >
                 Clear All
               </Button>
             </div>
-
             <Grid
               container
               xs={12}
@@ -1429,7 +1429,7 @@ class Component extends React.Component {
                   <Grid
                     item
                     xs={6}
-                    style={{ overflow: "scroll", height: "73vh" }}
+                    style={{ overflow: "scroll", height: "73vh",backgroundColor:"#E5E6E7" }}
                   >
                     <>
                       {subFilter[
@@ -1590,7 +1590,7 @@ class Component extends React.Component {
                                       <ListItemText>
                                         <Typography
                                           variant=""
-                                          className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}
+                                          className={`filter-mbl-font fnts ${classes.colorMainSecondary2}`}
                                         >
                                           <div
                                             onClick={(e) =>

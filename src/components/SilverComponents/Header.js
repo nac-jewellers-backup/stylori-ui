@@ -30,7 +30,9 @@ import { headerDataStyloriSilver } from "../../mappers";
 import { styles } from "./styles";
 import Seach from "../../assets/search";
 import stylorisilverlogo from "../../assets/stylori_silver_logo.svg";
-
+import heart from "../../assets/Icons/loveGrey.svg"
+import cart from "../../assets/Icons/cartGrey.svg"
+import searchIcon from "../../assets/Icons/searchGrey.svg"
 import styloriLogo from "../../assets/Stylorilogo.svg";
 import ElasticSearch from "components/ElasticSearch/ElasticSearch";
 import { CartContext, GlobalContext } from "context";
@@ -290,16 +292,16 @@ class Header extends Component {
                           className={`search`}
                         >
                           <Grid container>
-                            <Typography
+                            {/* <Typography
                               style={{ flexGrow: 1, fontSize: "0.96rem" }}
                             >
                               Search
-                            </Typography>
+                            </Typography> */}
                             <div
                               className={classes.searchcontainer}
                               style={{ width: "25px" }}
-                            >
-                              <Seach className={"searchsvg"} />
+                            > <img src={searchIcon} alt="icon" />
+                              {/* <Seach className={"searchsvg"} /> */}
                             </div>
                           </Grid>
                         </Grid>
@@ -337,7 +339,7 @@ class Header extends Component {
                               }
                             >
                               <i
-                                style={{ fontSize: "20px" }}
+                                style={{ fontSize: "20px",color:"#6D6E71" }}
                                 class={`fa fa-user  ${classes.iconFafa}`}
                               ></i>
                               <span className="tooltip-slog">
@@ -370,7 +372,7 @@ class Header extends Component {
                           >
                             <i
                               style={{ fontSize: "18px" }}
-                              class={`fa fa-heart  ${classes.iconFafaheart}`}
+                              class={classes.iconFafaheart}
                               onClick={() => {
                                 if (user_id.length > 0) {
                                   window.location.href = `/account${"-wishlist"}`;
@@ -378,7 +380,7 @@ class Header extends Component {
                                   window.location.href = "/login";
                                 }
                               }}
-                            ></i>
+                            ><img src={heart} alt="icon" /></i>
                             <span className="tooltip-s">Wishlist</span>
                           </Badge>
                         </div>
@@ -406,8 +408,8 @@ class Header extends Component {
                             <a href="/cart" className="highlighter">
                               <i
                                 style={{ fontSize: "20px" }}
-                                class={`fa fa-shopping-cart  ${classes.iconFafa}`}
-                              ></i>
+                                class={classes.iconFafa}
+                              ><img src={cart} alt="icon"/> </i>
                               <span
                                 className="tooltip-s"
                                 style={{

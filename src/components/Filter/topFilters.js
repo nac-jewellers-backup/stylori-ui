@@ -352,6 +352,7 @@ export const TopFilters = (props) => {
               ""
             )}
           </>
+          
           {props?.chips.length > 0 ? (
             props?.chips.map((data) => {
               return data.label === "Silver" ? null : (

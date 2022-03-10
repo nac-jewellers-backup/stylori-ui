@@ -298,6 +298,7 @@ const useStyles = makeStyles((theme) => ({
   priceClass: {
     // boxShadow: "0px 0px 5px #F699A3 inset",
     padding: "10px",
+    paddingLeft:"0px",
     height: "75px",
     display: "flex",
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
@@ -424,7 +425,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.9rem",
     // whiteSpace: "nowrap",
     // flex: 0.6,
-    color: "rgb(109,110,112)",
+    // color: "rgb(109,110,112)",
+    color:"#959598",
+    fontWeight:"500",
     overflow: "hidden",
     // textOverflow: "ellipsis",
     width: "90%",
@@ -609,10 +612,12 @@ sizes="(max-width: 320px) 320w,
                     className={classes.offerMainPriceStrike}
                     style={{
                       // width: "100%",
-                      fontSize: "12px",
+                      fontSize: "22px",
                       paddingLeft: "5px",
                       display: "flex",
                       alignItems: "flex-end",
+                      marginBottom: "1px",
+
                     }}
                   >
                     {/* <i
@@ -691,7 +696,7 @@ sizes="(max-width: 320px) 320w,
                     component="h4"
                     className={classes.offerMainPrice}
                     style={{
-                      paddingLeft: "5px",
+                      // paddingLeft: "5px",
                       display: "flex",
                       width: "100%",
                     }}
@@ -711,6 +716,7 @@ sizes="(max-width: 320px) 320w,
                         paddingLeft: "5px",
                         display: "flex",
                         alignItems: "flex-end",
+                        marginBottom: "1px"
                       }}
                     >
                       {/* <i
@@ -731,10 +737,12 @@ sizes="(max-width: 320px) 320w,
                       style={{
                         fontSize: "13px",
                         display: "flex",
-                        alignItems: "flex-end",
-                        justifyContent: "flex-end",
+                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
                         width: "100%",
                         paddingRight: "5px",
+                        marginTop:"2px",
+                        marginLeft:"5px",
                         color: "rgb(6, 171, 159)",
                       }}
                     >
@@ -778,7 +786,7 @@ sizes="(max-width: 320px) 320w,
                   <Typography
                     variant="body1"
                     component="span"
-                    style={{ paddingLeft: "5px" }}
+                    style={{ color:"#959598" }}
                     className={`${classes.titles}`}
                   >
                     {props.data.title}

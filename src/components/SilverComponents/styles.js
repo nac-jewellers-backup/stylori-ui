@@ -16,10 +16,11 @@ export const styles = (theme) => ({
   searchcontainer: {
     padding: "3px 2px 2px 2px",
     marginTop: "-1px",
-    backgroundColor: theme.palette.secondary.dark,
+    // backgroundColor: theme.palette.secondary.dark,
+    // backgroundColor:"#6D6E71",
     display: "flex",
-    justifyContent: "center",
-    alignContent: "center",
+    // justifyContent: "center",
+    // alignContent: "center",
   },
   searchcontainerplain: {
     padding: "4px",
@@ -81,7 +82,8 @@ export const styles = (theme) => ({
   },
   callerNum: {
     fontSize: "13px",
-    color: theme.palette.secondary.dark,
+    // color: theme.palette.secondary.dark,
+    color:"#6D6E71",
     display: "flex",
     alignItems: "center",
     textAlign: "center",
