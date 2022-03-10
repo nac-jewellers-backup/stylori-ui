@@ -1,11 +1,6 @@
 import React from "react";
 
-import {
-  Grid,
-  Container,
-
-  Chip,
-} from "@material-ui/core";
+import { Grid, Container, Chip } from "@material-ui/core";
 import HeaderHoverMenuItem from "../SilverComponents/HoverNavBarListing/HeaderHoverMenuItem";
 import { filterParams } from "../../mappers";
 import { useDummyRequest } from "../../hooks";
@@ -43,7 +38,7 @@ export const TopFilters = (props) => {
   const { mapped } = useDummyRequest(filterParams);
   const { setSort, setOffset, FilterOptionsCtx } =
     React.useContext(FilterOptionsContext);
- 
+
   const submenuDetails = (data, target) => {
     setState({
       ...state,
@@ -67,9 +62,6 @@ export const TopFilters = (props) => {
     setState({ ...state, expanded: false });
     window.scrollTo(0, 0);
   };
-
-
-
   return Object.keys(mapped).length === 0 ? (
     <div>loading...</div>
   ) : (
@@ -102,7 +94,6 @@ export const TopFilters = (props) => {
                 justify="space-between"
                 style={{ paddingBottom: 20 }}
               >
-              
                 <Grid
                   item
                   xs={2}
@@ -143,7 +134,6 @@ export const TopFilters = (props) => {
                   </Grid>
                 </Grid>
                 {props?.filter?.map((listName, i) => {
-                 
                   if (
                     i < 6 &&
                     listName !== "Material" &&
@@ -304,7 +294,7 @@ export const TopFilters = (props) => {
                 </Grid>
               </Grid>
             </Grid>
-        
+
             {state.expanded ? (
               <HeaderHoverMenuItem
                 tabdata={sortOptions}
@@ -312,7 +302,6 @@ export const TopFilters = (props) => {
                 sort={true}
                 opened={state.expanded}
                 targetopened={state.targetopen}
-               
                 values={FilterOptionsCtx.sort}
                 onchoosetype={handleChange}
                 onMouseLeave={() => {
@@ -336,6 +325,33 @@ export const TopFilters = (props) => {
           handleClose={handleMoreFilters}
         />
         <Grid container item xs={12} style={{ margin: "0px 17px" }}>
+          <>
+            {props?.chips.length > 1 ? (
+              <Chip
+                size="small"
+                label={"Clear All Fillters"}
+                style={{
+                  padding: "14px 14px",
+                  marginRight: 14,
+                  backgroundColor: "#FFFFFF",
+                  border: "1px solid #777878",
+                  color: "#06AA9E",
+                  borderRadius: "0px",
+                  textTransform: "uppercase",
+
+                  fontFamily: "notoSerif-regular",
+                  cursor: "pointer",
+                }}
+                deleteIcon={false}
+                onClick={() => {
+                  props.history.push("/jewellery");
+                  window.location.reload();
+                }}
+              />
+            ) : (
+              ""
+            )}
+          </>
           {props?.chips.length > 0 ? (
             props?.chips.map((data) => {
               return data.label === "Silver" ? null : (
@@ -344,11 +360,12 @@ export const TopFilters = (props) => {
                   variant="outlined"
                   label={data.label}
                   style={{
-                    padding: "10px",
-                    marginRight: 5,
+                    padding: "14px",
+                    marginRight: 14,
                     borderRadius: "0px",
                     color: "#6D6E71",
-                    borderColor: "#6D6E71",
+                    borderColor: "#777878",
+                    fontSize: "14px",
                   }}
                   onDelete={() => props.click(data.label)}
                   deleteIcon={

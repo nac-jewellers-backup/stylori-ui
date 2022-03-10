@@ -2,7 +2,6 @@ import { resolutions } from "utils";
 import { CDN_URL } from "config";
 import moment from "moment";
 
-//
 var colSize = null;
 var colSize_like_view = null;
 var img_res_X_2 = null;
@@ -24,7 +23,6 @@ const screenWidth = () => {
     colSize = 2.1;
   }
 };
-
 const screen_width_type_like_view = () => {
   if (width > 2555) {
     colSize_like_view = 4;
@@ -40,10 +38,8 @@ const screen_width_type_like_view = () => {
     colSize_like_view = 1;
   }
 };
-
 var img_res;
 var screen_width_type = (screen_res, largeImageZoom) => {
-  // const {window_width, browser_type} = await lambda_func_front_end()
   var window_width = JSON.parse(localStorage.getItem("browserDetails"));
 
   var _calc = () => {
@@ -56,12 +52,10 @@ var screen_width_type = (screen_res, largeImageZoom) => {
   };
   var calc = _calc();
 
-  // var img_res;
   var sizes = [
     275, 300, 350, 375, 400, 500, 600, 675, 700, 775, 800, 900, 975, 1000, 1100,
     2400,
   ];
-  // [50, 60, 70, 80, 90, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500, 525, 550, 575, 600, 625, 650, 675, 700, 725, 750, 775, 800, 825, 850, 875, 900, 925, 950, 975, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400]
   if (largeImageZoom) {
     img_res = 1000;
   } else {
@@ -94,10 +88,6 @@ var screen_width_type = (screen_res, largeImageZoom) => {
 };
 screen_width_type_like_view();
 screenWidth();
-// console.log('screen_width_type()',screen_width_type())
-
-// const baseUi = "https://assets-cdn.stylori.com/";
-// const injectUrl = (url, baseUi) => url ? resolutions.map(k => ({ ...k, img: `${baseUi}${url.imageUrl===undefined  ? url : url.imageUrl}` })) : [];
 const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
   var browser_type = JSON.parse(localStorage.getItem("browserDetails"));
   if (
@@ -139,9 +129,7 @@ const injectUrl_url_construct = (url, baseUi, screen_res, largeImageZoom) => {
 
   return `${img_url}?_=${new Date().getTime()}`;
 };
-
 // video validation
-
 const handleVideoCheck = (url) => {
   var extensionVideoLists = [
     "m4v",
@@ -208,7 +196,6 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
             }
           }
 
-          // var imgurlsplit
           if (PD.metalColor.split(" ").length > 1) {
             var colorOne = PD.metalColor.split(" ")[0].charAt(0);
             var colorTwo = PD.metalColor.split(" ")[1].charAt(0);
@@ -219,11 +206,6 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
             else metalcolor = "";
           }
 
-          // if (imgurlsplit === metalcolor) {
-
-          // arrOfurls.push(injectUrl_url_construct(imgurl, CDN_URL, screen_res))
-
-          // }
           if (!tabsChange) {
             if (
               imgurl?.productColor === PD.metalColor ||
@@ -319,7 +301,6 @@ const gemstoneType = (PD, valGemstoneType, type) => {
   });
   return arrOfGemstoneType;
 };
-// if (val.gemstoneType === PD.gemstoneType) { arrOfGemstoneType.push(val[type]) } return arrOfGemstoneType })
 const generatedimondClarity = (val) => {
   var a = [...new Set(val.map((P) => P.diamondType))];
 
@@ -371,23 +352,15 @@ const handle_mapper = (val) => {
   _obj["header"] = "Certificate";
   _obj["name"] = "Certificate";
   if (val) {
-    // var _split = val.split(',')
-    // _split.map((val, i) => { _obj[`img${i}`] = val })
-    // return [_obj]
     _obj["image"] = val;
     return _obj;
   } else {
     return null;
   }
 };
-// icon: "https://img.icons8.com/color/48/000000/gold-bars.png"})
 export default function (data, like_data, viewedddatas, rating, tabsChange) {
-  // debugger;
-  // console.log(data);
-
   let mapperdata = [];
   try {
-    // mapperda = ;
     mapperdata = data.data.allTransSkuLists.nodes;
   } catch (error) {
     mapperdata = [];
@@ -403,8 +376,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
           rating.CodData.data.allCustomerReviews.nodes
             ? rating?.CodData?.data?.allCustomerReviews?.nodes
             : " ",
-        // title: rating.CodData.data.allCustomerReviews.nodes[0].title,
-        // ratings: rating.CodData.data.allCustomerReviews.nodes[0].rating,
+
         productId: PD?.productListByProductId
           ? PD?.productListByProductId?.productId
           : "",
@@ -527,8 +499,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
             },
             tab2: {
               header: "Metal Purity",
-              // purity: PD.transSkuListsByProductId.nodes!==undefined?(PD.transSkuListsByProductId.nodes).map(P => (P.purity)):"",
-              // metalColor: (PD.transSkuListsByProductId.nodes).map(P => (P.metalColor)),
+
               Children:
                 (PD?.productListByProductId &&
                   PD?.productListByProductId?.colourVarient) ??
@@ -537,13 +508,13 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
             tab3: {
               header: "Diamond Clarity",
               Children:
-                PD?.productListByProductId?.productDiamondsByProductSku?.nodes &&
+                PD?.productListByProductId?.productDiamondsByProductSku
+                  ?.nodes &&
                 PD?.productListByProductId?.productDiamondsByProductSku?.nodes
                   .length > 0 &&
                 generatedimondClarity(
                   PD?.productListByProductId?.productDiamondsByProductSku?.nodes
                 ),
-              // var c = [...new Set(temp1.map(bill => bill.name))]
             },
           },
         ],
@@ -1001,7 +972,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
             ],
           },
         ],
-        // like_data.data.youMayalsolike1.nodes
+
         fadeImageSublist:
           like_data &&
           like_data.data &&
@@ -1128,9 +1099,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
               })
             : [],
       };
-    } catch (e) {
-      // console.log("product detail page error", "-----", e)
-    }
+    } catch (e) {}
 
     return _d;
   });

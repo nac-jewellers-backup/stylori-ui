@@ -19,7 +19,6 @@ import {
   TOUCH_ACTIVATION,
 } from "react-image-magnifiers";
 
-
 class ProductImageZoom extends React.Component {
   constructor(props) {
     super(props);
@@ -327,25 +326,23 @@ class ProductImageZoom extends React.Component {
           </Grid>
 
           <Grid item xs={_isSilver ? 9 : 10}>
-         
             <div>
               <div
                 className={_isSilver ? "imagecardSilver" : "imagecard"}
                 id="divs"
                 style={{
-                  height:
-                    window.innerWidth > 2250
-                      ? _isSilver
-                        ? "500px"
-                        : "800px"
-                      : _isSilver
-                      ? this.props.data[0].size - 100
-                      : this.props.data[0].size,
+                  // height:
+                  //   window.innerWidth > 2250
+                  //     ? _isSilver
+                  //       ? "500px"
+                  //       : "800px"
+                  //     : _isSilver
+                  //     ? this.props.data[0].size - 100
+                  //     : this.props.data[0].size,
                   display: "flex",
                   alignItem: "center",
                 }}
               >
-             
                 {data.map((val) => {
                   return !this?.props?.isSilver && val?.offerDiscount ? (
                     <span style={{ color: "#fff" }} className="overlayCss11">
@@ -407,7 +404,6 @@ class ProductImageZoom extends React.Component {
                 )}
               </div>
 
-             
               <div></div>
             </div>
             <Grid container>

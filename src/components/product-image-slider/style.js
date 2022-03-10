@@ -49,8 +49,16 @@ const styles = (theme) => ({
   titleSilver: {
     marginTop: "0 !important",
     marginBottom: "0 !important",
-    fontSize: "0.9rem !important",
-    color: `${theme.palette.ternary.dark} !important`,
+    fontSize: "28px !important",
+    lineHeight: "28px",
+    color: `#606161 !important`,
+  },
+  skuIdSilver: {
+    marginTop: "14px !important",
+    marginBottom: "0 !important",
+    fontSize: "16px !important",
+    lineHeight: "16px",
+    color: `#606161 !important`,
   },
   dis: {
     color: theme.palette.text.secondary,

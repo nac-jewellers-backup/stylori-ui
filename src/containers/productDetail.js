@@ -13,14 +13,12 @@ import RatingForm from "components/product-image-slider/ratingform";
 import Sublistcarousel from "components/product-image-slider/subListcarousel";
 import CustomerReviews from "components/product-image-slider/customer-reviews";
 import Footer from "components/Footer/Footer";
-import Buynowfixed from "components/product-image-slider/buynowfixed";
 import "components/product-image-slider/product-images.css";
 import { withRouter } from "react-router-dom";
 import productDetails from "mappers/productDetails";
-import { PRODUCTDETAILS, conditions } from "queries/productdetail";
-import { useGraphql } from "hooks/GraphqlHook";
+
 import { ProductDetailContext } from "context/ProductDetailContext";
-import { CDN_URL, API_URL } from "config";
+import { API_URL } from "config";
 import "screens/screens.css";
 import { Helmet } from "react-helmet";
 import { CartContext } from "context";
@@ -29,8 +27,7 @@ import SilverProductPrice from "components/product-image-slider/silverProductPri
 import ShopBy from "components/shopBy";
 import ProductModal from "../components/SilverComponents/ProductModal";
 import { shopByStyloriSilver, allSeoPriorities } from "queries/productdetail";
-import ProductTitle from "components/SilverComponents/ProductTitle";
-import Quantity from "../components/quantity";
+
 import { Slideshow } from "components";
 import { Diversestyles } from "../components/product-image-slider/Gagetstylori/Diversestyles-pink";
 import { Certified } from "../components/product-image-slider/Gagetstylori/Certified";
@@ -43,7 +40,6 @@ import NeedHelp from "../components/needHelp";
 import ReactPixel from "react-facebook-pixel";
 import TagManager from "react-gtm-module";
 
-// import {Helmet} from "react-helmet";
 class ProductDetail extends Component {
   constructor(props) {
     super(props);
@@ -93,7 +89,6 @@ class ProductDetail extends Component {
         { key: "og_title", value: this?.props?.data[0]?.title },
         { key: "og_type", value: "website_stylori" },
         { key: "og_url", value: window.location.href },
-        //  {key:"title", value:this.props.data[0].title}
       ];
       arr.map((val) => {
         document.getElementById(val.key).setAttribute("content", val?.value);
@@ -119,8 +114,6 @@ class ProductDetail extends Component {
   }
 
   render() {
- 
-
     var loc = this?.props?.location?.pathname;
     var path = loc.split("/");
     var data_json = [
@@ -128,7 +121,9 @@ class ProductDetail extends Component {
       { title: path[2], url: this.renderUrl() },
       {
         title:
-          this?.props?.data && this?.props?.data[0] && this?.props?.data[0]?.title,
+          this?.props?.data &&
+          this?.props?.data[0] &&
+          this?.props?.data[0]?.title,
       },
     ];
     const clear_rating = (bool) => {
@@ -164,7 +159,6 @@ class ProductDetail extends Component {
         />
       ),
     };
-    //  debugger
 
     return (
       <div>
@@ -216,8 +210,6 @@ class ProductDetail extends Component {
         <Hidden smDown>
           <Header wishlist={this?.props?.wishlistdata ?? ""} />
 
-  
-
           <Grid
             Container
             spacing={12}
@@ -225,17 +217,20 @@ class ProductDetail extends Component {
           >
             <Grid item xs={12}>
               <div className="pricing-breadcrums-media">
-                <CustomSeparator
-                  list="pricing-loctn"
-                  classsubhed="pricing-loctn-head"
-                  data={data_json}
-                  listSilver="pricing-loctn-silver"
-                  isSilver={isSilver}
-                />
+                {isSilver ? (
+                  ""
+                ) : (
+                  <CustomSeparator
+                    list="pricing-loctn"
+                    classsubhed="pricing-loctn-head"
+                    data={data_json}
+                    listSilver="pricing-loctn-silver"
+                    isSilver={isSilver}
+                  />
+                )}
               </div>
             </Grid>
           </Grid>
-          {/* {isSilver && ( */}
           <>
             <Hidden smDown>
               <div
@@ -265,7 +260,15 @@ class ProductDetail extends Component {
           {/* )} */}
           <div
             className="pricing-imgzom-media"
-            style={{ maxWidth: "1600px", margin: "auto" }}
+            xs={12}
+            sm={12}
+            md={10}
+            lg={10}
+            xl={10}
+            style={{
+              margin: "auto",
+              paddingTop: isSilver ? "30px" : "",
+            }}
           >
             <Grid
               container
@@ -287,6 +290,15 @@ class ProductDetail extends Component {
                 )}
               </Grid>
               <Grid item xs={6}>
+                {isSilver && (
+                  <CustomSeparator
+                    list="pricing-loctn"
+                    classsubhed="pricing-loctn-head"
+                    data={data_json}
+                    listSilver="pricing-loctn-silver"
+                    isSilver={isSilver}
+                  />
+                )}
                 {isSilver ? (
                   <div className="overall-box-without-shadow-silver">
                     <SilverProductPrice
@@ -322,7 +334,6 @@ class ProductDetail extends Component {
                     xs={12}
                     style={{ marginBottom: "10px", marginTop: "10px" }}
                   >
-                   
                     <ProductDetails
                       data={this?.props?.data}
                       isSilver={isSilver}
@@ -348,7 +359,10 @@ class ProductDetail extends Component {
                   xs={6}
                   style={{ marginBottom: "20px", marginTop: "20px" }}
                 >
-                  <ProductDetails data={this?.props?.data} isSilver={isSilver} />
+                  <ProductDetails
+                    data={this?.props?.data}
+                    isSilver={isSilver}
+                  />
                 </Grid>
                 {!isSilver && (
                   <Grid
@@ -364,7 +378,7 @@ class ProductDetail extends Component {
               </Grid>
             </div>
           )}
-       
+
           {isSilver ? (
             <div
               style={{
@@ -409,7 +423,6 @@ class ProductDetail extends Component {
               }}
             >
               <RatingForm
-                // 0 0 0
                 data={this?.props?.data}
                 clear_rating={this?.state?.clear}
                 clear_rating_onchange={clear_rating}
@@ -418,7 +431,6 @@ class ProductDetail extends Component {
             </div>
           ) : (
             <RatingForm
-              // 0 0 0
               data={this?.props?.data}
               clear_rating={this?.state?.clear}
               clear_rating_onchange={clear_rating}
@@ -431,8 +443,7 @@ class ProductDetail extends Component {
                 maxWidth: "1600px",
                 margin: "auto",
               }}
-            >
-            </div>
+            ></div>
           ) : (
             <CustomerReviews rating={this?.props?.rating} isSilver={isSilver} />
           )}
@@ -444,7 +455,6 @@ class ProductDetail extends Component {
 
         <Hidden mdUp>
           <Header wishlist={this?.props?.wishlistdata} pdpage={true} />
-          {/* </Grid> */}
 
           <Grid item xs={12}>
             <PriceBuynow
@@ -453,7 +463,7 @@ class ProductDetail extends Component {
               isSilver={isSilver}
             />
           </Grid>
-  
+
           <Grid item xs={12}>
             <ProductDetails
               data={this?.props?.data}
@@ -475,7 +485,10 @@ class ProductDetail extends Component {
           )}
           {!isSilver && (
             <Grid item xs={12}>
-              <PriceCertification data={this?.props?.data} isSilver={isSilver} />
+              <PriceCertification
+                data={this?.props?.data}
+                isSilver={isSilver}
+              />
             </Grid>
           )}
           {!isSilver && (
@@ -491,7 +504,7 @@ class ProductDetail extends Component {
               customLimit={4}
             />
           </Grid>
-      
+
           {isSilver && (
             <Container>
               <Container>
@@ -528,7 +541,6 @@ class ProductDetail extends Component {
                     textAlign: "center",
                   }}
                 >
-              
                   SHOP BY TYPE
                 </div>
 
@@ -561,7 +573,6 @@ class ProductDetail extends Component {
             <Footer silver={isSilver} />
           </Grid>
         </Hidden>
-        {/* </DocumentMeta> */}
       </div>
     );
   }
@@ -575,7 +586,6 @@ const Components = (props) => {
   let _shopsProducts = [];
   const [state, setState] = React.useState({ shopByData: [], allSeo: {} });
   const _shopsProductss = (val) => {
- 
     _shopsProducts = Object.keys(val).map((data) => {
       return { label: val[data].label, image: val[data].images };
     });
@@ -666,15 +676,7 @@ const Components = (props) => {
 
   const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
   const {
-    ProductDetailCtx: {
-      data,
-      loading,
-      error,
-      likedatas,
-      viewedddatas,
-      rating,
-      filters: { quantity },
-    },
+    ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating },
   } = React.useContext(ProductDetailContext);
   const _silverArr = [];
   React.useEffect(() => {

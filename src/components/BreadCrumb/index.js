@@ -22,9 +22,12 @@ export default function CustomSeparator(props) {
         className={props.arrowicon}
         alt=""
       />
+    ) : props.isSilver ? (
+      <span>&nbsp;/&nbsp;</span>
     ) : (
       <NavigateNextIcon />
     );
+
   const tabs = localStorage.getItem("panel");
 
   const handleUrl = (data) => {
@@ -105,7 +108,7 @@ export default function CustomSeparator(props) {
     >
       <div className={props.className}>
         <Paper elevation={0} className={props.classsubhed}>
-          <Container>
+          <Container style={{ padding: props.isSilver && "0px" }}>
             <Grid container>
               <Grid item lg={7}>
                 {window.location.pathname === "/cart" ||

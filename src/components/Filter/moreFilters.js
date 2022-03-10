@@ -5,7 +5,6 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { Grid, FormControlLabel, FormGroup } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
-import CancelIcon from "@material-ui/icons/Cancel";
 import CheckIcon from "@material-ui/icons/Check";
 
 const useStyles = makeStyles((theme) => ({
@@ -29,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
   },
   checkboxlabel: {
     color: theme.palette.secondary.main,
+    display: "flex",
+    alignItems: "center",
   },
   checkboxgrid: {
     visibility: "hidden",
@@ -41,13 +42,24 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  tickIcon: {
+    fill: `#06AA9E !important`,
+    "& svg": {
+      fill: `#06AA9E !important`,
+    },
+  },
+  ticks: {
+    fill: `#06AA9E !important`,
+    "& svg": {
+      fill: `#06AA9E !important`,
+    },
+  },
   closeIcon: {
     position: "fixed",
-    top: 55,
-    right: 45,
-    "& svg": {
-      fill: `white !important`,
-    },
+    fontSize: "35px",
+    color: "#606161",
+    right: 130,
+    cursor: "pointer",
   },
 }));
 
@@ -78,7 +90,7 @@ export default function MoreFilters(props) {
                   props.handleClose();
                 }}
               >
-                <CancelIcon />
+                &#10005;
               </div>
               {props?.filter?.map((val, i) => {
                 if (
@@ -148,32 +160,33 @@ export default function MoreFilters(props) {
                                   style={{ color: "#6D6E71" }}
                                   label={valsub}
                                 />
-                                    <span
-                                        style={{
-                                          color: "#2F348B",
-                                          fontSize: "12px",
-                                        }}
-                                      >
-                                        {props.checked[
-                                          val.replace(/\s/g, "")
-                                        ] &&
-                                        props.checked[val.replace(/\s/g, "")][
-                                          valsub
-                                        ] !== undefined ? (
-                                          props.checked[
-                                            val.replace(/\s/g, "")
-                                          ] &&
-                                          props.checked[val.replace(/\s/g, "")][
-                                            valsub
-                                          ] ? (
-                                            <CheckIcon style={{ color: "#01A99D"}}/>
-                                          ) : (
-                                            ""
-                                          )
-                                        ) : (
-                                          false
-                                        )}
-                                      </span>
+                                <span
+                                  className={classes.tickIcon}
+                                  style={{
+                                    color: "#2F348B",
+                                    fontSize: "12px",
+                                    fill: "#06AA9E !important",
+                                  }}
+                                >
+                                  {props.checked[val.replace(/\s/g, "")] &&
+                                  props.checked[val.replace(/\s/g, "")][
+                                    valsub
+                                  ] !== undefined ? (
+                                    props.checked[val.replace(/\s/g, "")] &&
+                                    props.checked[val.replace(/\s/g, "")][
+                                      valsub
+                                    ] ? (
+                                      <CheckIcon
+                                        className={classes.ticks}
+                                        style={{ fill: "#06AA9E !important" }}
+                                      />
+                                    ) : (
+                                      ""
+                                    )
+                                  ) : (
+                                    false
+                                  )}
+                                </span>
                               </Grid>
                             );
                           } else {

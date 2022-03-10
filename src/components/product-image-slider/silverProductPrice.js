@@ -96,9 +96,7 @@ const mobilecarousel = (props, val, wishlist, isSilver) => {
           ))
         : null}
 
-      {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
       <>
-        {/* <ArrowLeftIcon onClick={next}/> */}
         <Slideshow
           zindex="1000"
           class="middle"
@@ -108,7 +106,6 @@ const mobilecarousel = (props, val, wishlist, isSilver) => {
           dataCarousel={isSilver ? dataCarouselSilver : dataCarousel}
           videoControls={true}
         />
-        {/* <ArrowRightIcon/> */}
       </>
     </div>
   );
@@ -138,11 +135,11 @@ const Productprice = (
   const { classes } = props;
 
   const open = anchorEl;
-  // const snackBarOpen = snacksBar;
   var wishlist = props.wishlist;
   const isSilver = globalContext.Globalctx.pathName ? true : false;
 
   const isactive = props?.data[0]?.isactive ?? "";
+
   return (
     <div>
       {data.map((val) => (
@@ -229,6 +226,15 @@ const Productprice = (
                         <h5 className={`pdp-title`}>{val?.title ?? ""}</h5>
                       )}
                     </div>
+                    <div style={{ marginTop: 8 }}>
+                      {isSilver ? (
+                        <div className={`pdp-title  ${classes.skuIdSilver}`}>
+                          {val?.skuId ?? ""}
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </Hidden>
                 </div>
               </Grid>
@@ -248,8 +254,6 @@ const Productprice = (
                   }}
                 >
                   <Pricing
-                    // globalContext={globalContext.Globalctx}
-                    // offerPrice={data[0].offerPrice}
                     offerPrice={data[0]?.offerPrice}
                     price={data[0]?.price}
                     offerDiscount={data[0]?.offerDiscount}
@@ -371,8 +375,6 @@ const Productprice = (
                                   onClick={handleClick}
                                 ></i>{" "}
                                 &nbsp;
-                                {/* {JSON.stringify(val.productId)} */}
-                                {/* <Wishlist sku={val.skuId} productId={val.productId} /> */}
                                 <Popover
                                   id="simple-popper"
                                   open={open}
@@ -425,10 +427,6 @@ const Productprice = (
                 </Hidden>
               </Grid>
             </Grid>
-            {/* </Paper> */}
-            {/* <Hidden smDown>
-                            <hr class="bottom-line product-inform-ation"></hr>
-                        </Hidden> */}
           </Grid>
         </>
       ))}
@@ -462,7 +460,6 @@ class Component extends React.Component {
       heart: false,
       anchorEl: false,
       modelOpen: false,
-      // snacksBar: false,
     };
   }
 
@@ -478,21 +475,7 @@ class Component extends React.Component {
       anchorEl: false,
     });
   };
-  // handleSnackBarClick = () => {
-  //   debugger;
-  //   console.log("hello");
-  //   alert("hello");
-  //   this.setState({
-  //     snacksBar: true,
-  //   });
-  // };
-  // handleSnackBarClose = () => {
-  //   debugger;
 
-  //   this.setState({
-  //     snacksBar: false,
-  //   });
-  // };
   valus = (valueId) => {
     var valus_locl = localStorage.getItem("cartDetails")
       ? JSON.parse(localStorage.getItem("cartDetails")).products
@@ -510,8 +493,6 @@ class Component extends React.Component {
   };
   handleLocalStorage = () => {
     if (this.valus(this.props.data[0].skuId) === 1) {
-      // this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
-      // sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
       window.location.pathname = "/cart";
     } else {
       this.setState({
@@ -590,7 +571,6 @@ class Component extends React.Component {
     const { anchorEl } = this.state;
     const context = this.context;
     const { snacksBar } = this.state;
-    // alert(JSON.stringify(this.props.wishlist))
     return (
       <div>
         <Hidden smDown>
@@ -605,9 +585,6 @@ class Component extends React.Component {
             this.canceldeletechecklistCancel,
             this.deletechecklists,
             this.handletest
-            // snacksBar,
-            // this.handleSnackBarClick,
-            // this.handleSnackBarClose
           )}
         </Hidden>
 
@@ -624,9 +601,6 @@ class Component extends React.Component {
               this.canceldeletechecklistCancel,
               this.deletechecklists,
               this.handletest
-              // snacksBar,
-              // this.handleSnackBarClick,
-              // this.handleSnackBarClose
             )}
           </Container>
         </Hidden>
