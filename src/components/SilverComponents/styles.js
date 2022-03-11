@@ -7,7 +7,7 @@ export const styles = (theme) => ({
     fontFamily: "fontawesome",
     textAlign: "right",
     // fontSize: '20px !important',
-    marginTop: "18px !important",
+    marginTop: "21px !important",
     display: "flex",
     alignContent: "center",
     alignItems: "center",
@@ -31,7 +31,7 @@ export const styles = (theme) => ({
   },
   searchcontainTop: {
     padding: "2px",
-    backgroundColor: theme.palette.secondary.dark,
+    // backgroundColor: theme.palette.secondary.dark,
     display: "flex",
     justifyContent: "center",
     alignContent: "center",
@@ -63,7 +63,8 @@ export const styles = (theme) => ({
   mobile_icon_i: {
     // "&.MuiBadge-colorSecondary":{backgroundColor: `red !important`},
     "& i": {
-      color: `${theme.palette.secondary.dark} !important`,
+      // color: `${theme.palette.secondary.dark} !important`,
+      color:"#6D6E71 !important"
     },
   },
   iconFafaheart: {
@@ -93,7 +94,7 @@ export const styles = (theme) => ({
   },
   headerNavbarList: {
     color: theme.palette.secondary.dark,
-    textAlign: "right",
+    textAlign: "left",
   },
   menuListCursor: {
     cursor: "pointer",
@@ -125,8 +126,9 @@ export const styles = (theme) => ({
     paddingBottom: "0px !important",
   },
   mobileNavIcon: {
-    color: theme.palette.secondary.dark,
-    fill: theme.palette.secondary.dark + "!important",
+    // color: theme.palette.secondary.dark,
+    // fill: theme.palette.secondary.dark + "!important",
+    color: "#6D6E71"
   },
   menuheader: {
     width: "230px !important",

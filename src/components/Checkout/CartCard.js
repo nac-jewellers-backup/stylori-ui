@@ -287,7 +287,7 @@ class Checkoutcard extends React.Component {
                                       to={dataval.skuUrl}
                                       style={{ textDecoration: "none" }}
                                     >
-                                      <Slideshow
+                                      {/* <Slideshow
                                         className="image"
                                         fadeImages={filter_image(
                                           im_,
@@ -295,18 +295,19 @@ class Checkoutcard extends React.Component {
                                           val.details
                                         )}
                                         dataCarousel={dataCarousel}
-                                      />
+                                      /> */}
                                     </NavLink>
                                   ) : (
-                                    <Slideshow
-                                      className="image"
-                                      fadeImages={filter_image(
-                                        im_,
-                                        val.name,
-                                        val.details
-                                      )}
-                                      dataCarousel={dataCarousel}
-                                    />
+                                    // <Slideshow
+                                    //   className="image"
+                                    //   fadeImages={filter_image(
+                                    //     im_,
+                                    //     val.name,
+                                    //     val.details
+                                    //   )}
+                                    //   dataCarousel={dataCarousel}
+                                    // />
+                                    ""
                                   )}
                                 </>
                               ) : (
@@ -397,7 +398,7 @@ class Checkoutcard extends React.Component {
                       {window.location.pathname !== "/checkout" ? (
                         <div>
                           <span
-                            className="highlighter"
+                            // className="highlighter"
                             className={`subhesder hov ${classes.normalfonts}`}
                             id={dataval.generatedSku}
                             onClick={(event) =>

@@ -12,6 +12,7 @@ import AddBoxIcon from "@material-ui/icons/AddBox";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 export const TopFilters = (props) => {
+  debugger
   const [state, setState] = React.useState({
     open: false,
     panel: false,

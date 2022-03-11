@@ -45,7 +45,6 @@ class HomeStylori extends React.Component {
     
     return (
       <Grid container>
-       
         <Header />
         <CarosolTop />
         <Container maxWidth={"lg"}>

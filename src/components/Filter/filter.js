@@ -19,6 +19,7 @@ import {
   Hidden,
   Container,
   Chip,
+  Card,
 } from "@material-ui/core";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import "./filter.css";
@@ -199,6 +200,7 @@ class Component extends React.Component {
     var paramsfilter;
 
     const filters_checked = () => {
+      debugger
       const { checked } = this.state;
       if (window.location.pathname.split("/")[1] !== "jewellery") {
         function status(response) {
@@ -294,7 +296,7 @@ class Component extends React.Component {
                 chipData.push({ label: a[0], title: keys });
               }
             });
-
+            debugger
             this.setState(chipData, selected, checked);
           })
           .catch(function (error) {});
@@ -399,11 +401,12 @@ class Component extends React.Component {
     e,
     title,
     TargetName,
-
     selectedfiltertop
   ) => {
+    debugger
     let mystate = this.state;
     let { chipData } = this.state;
+    // let { filterData } = this.state;
     let checked = { ...this.state.checked };
 
     if (TargetName === undefined) {
@@ -423,6 +426,11 @@ class Component extends React.Component {
 
       checked[e && e.target.name ? e.target.name : selectedfiltertop] =
         checkedvalue;
+
+        // this.setState({
+        //   filterData : value,
+        // })
+
       this.setState(
         {
           checked,
@@ -477,6 +485,7 @@ class Component extends React.Component {
   };
 
   handleDelete = (value) => {
+    debugger
     this.handlebye();
     let { chipData, checked } = this.state;
     Object.entries(checked).map((val) => {
@@ -1335,6 +1344,7 @@ class Component extends React.Component {
                 display: openMobile ? "none" : "block",
                 position: "sticky",
                 top: "0px",
+                marginTop: "15px"
               }}
               className={`${classes.colorMain}`}
             >
@@ -1363,6 +1373,36 @@ class Component extends React.Component {
               >
                 Clear All
               </Button>
+              {this.state.chipData.length > 0 ? (
+                    
+                    <div>
+                      {this.state.chipData.map((data) =>{
+                        return data.label === "Silver" ? null :(
+                      <Chip
+                      size="small"
+                      variant="outlined"
+                      label={data.label}
+                      style={{
+                        padding: "14px",
+                        marginRight: 14,
+                        borderRadius: "0px",
+                        color: "#6D6E71",
+                        borderColor: "#777878",
+                        fontSize: "14px",
+                      }} 
+                      onDelete={()=> this.handleDelete(data.label)}
+                      deleteIcon={
+                        data.label ? (
+                          <i
+                            className="search-choice-close"
+                            class="fa fa-times"
+                          ></i>
+                        ) : (
+                          ""
+                        )
+                      } />
+                    )})}
+                    </div>) : (<div>No Filter Applied</div>) }
             </div>
             <Grid
               container
@@ -1432,7 +1472,7 @@ class Component extends React.Component {
                     style={{ overflow: "scroll", height: "73vh",backgroundColor:"#E5E6E7" }}
                   >
                     <>
-                      {subFilter[
+                    {subFilter[
                         this.state.filtercheck && this.state.filtercheck
                       ] !== undefined
                         ? subFilter[

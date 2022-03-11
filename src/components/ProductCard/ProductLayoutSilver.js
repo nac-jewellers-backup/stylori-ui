@@ -46,9 +46,10 @@ const styles = (theme) => ({
     },
   },
   viewmoreColorSilver: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: "#06AB9F",
+    color:"white",
     "&:hover": {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: "#06AB9F",
       opacity: "0.9",
     },
   },

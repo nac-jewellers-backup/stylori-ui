@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   navTitle: {
     cursor: "pointer",
     padding: "7px 0px 6px 0px",
+    color: "white",
     "&:hover": {
       textDecoration: "underline",
     },
@@ -75,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   spanSizeColor: {
-    color: "#808080",
+    color: "white",
     fontSize: "12px",
   },
   colorWhiteBorder: {
@@ -675,13 +676,13 @@ export default function Footer(props) {
         </Hidden>
       )}
 
-      <Container>
+      <Container style={{backgroundColor:"#06AB9F"}}>
         <Hidden only={["sm", "xs"]}>
           <Grid
             container
             item
             className={`${classes.colorWhiteBackground}`}
-            style={{ padding: "15px 0px 15px 0px" }}
+            style={{ padding: "15px 0px 15px 0px",backgroundColor:"#06AB9F" }}
           >
             <Grid
               container
@@ -706,6 +707,7 @@ export default function Footer(props) {
                         {localStorage.getItem("true") ? (
                           <Grid
                             container
+                            style={{color: 'white'}}
                             className={classes.navTitle}
                             onClick={() => {
                               window.location.href = data.url;
@@ -717,6 +719,7 @@ export default function Footer(props) {
                         ) : (
                           <Grid
                             container
+                            style={{color: 'white'}}
                             className={classes.navTitle}
                             onClick={() => {
                               window.location.href = data.url;
@@ -785,7 +788,7 @@ export default function Footer(props) {
                   padding: "0px 0px 0px 14px",
                   fontWeight: "600",
                   fontSize: "12px",
-                  color: "#808080",
+                  color: "white",
                   letterSpacing: "0.8px",
                 }}
               >
@@ -863,7 +866,7 @@ export default function Footer(props) {
                 </div>
                 <div
                   style={{
-                    color: "#808080",
+                    color: "white",
                     fontSize: "11px",
                     justifyContent: "center",
                     display: "flex",
@@ -886,7 +889,7 @@ export default function Footer(props) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            color: "#808080",
+            color: "white",
             fontSize: "11px",
             padding: "8px 0px",
           }}
@@ -897,7 +900,7 @@ export default function Footer(props) {
       <Grid
         container
         style={{
-          backgroundColor: "#a7a7aa",
+          backgroundColor: "#06AB9F",
           display: "flex",
           justifyContent: "center",
           padding: "10px 15px",
@@ -947,13 +950,13 @@ export default function Footer(props) {
       </Grid>
 
       <Hidden only={["sm", "xs"]}>
-        <Grid container className={`${classes.colorWhiteBackground}`}>
+        <Grid container style={{backgroundColor: "#06AB9F"}} className={`${classes.colorWhiteBackground}`}>
           <Container>
             <Grid item xs={12} style={{ padding: "15px 0px 15px 0px" }}>
               <Typography className={`${classes.colorBlue}`}>
                 POPULAR SEARCH TERMS:
               </Typography>
-              <Typography style={{ fontSize: "11px", color: "#808080" }}>
+              <Typography style={{ fontSize: "11px", color: "#fff" }}>
                 Silver Jewellery , Silver Ring, Women’s Rings, Silver Earrings,
                 Jhumkas, Studs, Drops, Pendants, Silver Pendants, Nose Pins,
                 Silver Nose Pins, Ear Cuff, Silver Bangles, Silver Bangles,

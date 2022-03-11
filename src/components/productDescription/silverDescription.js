@@ -163,7 +163,7 @@ class ProductDescription extends Component {
               </Hidden>
             </Grid>
             <Grid item container alignItems="center">
-              <Grid item xs={12} style={{ textAlign: "center" }}>
+              {/* <Grid item xs={12} style={{ textAlign: "center" }}>
                 <Hidden smDown>
                   <Slideshow
                     sliderRef={this.slider}
@@ -248,7 +248,7 @@ class ProductDescription extends Component {
                     ))}
                   </Slideshow>
                 </Hidden>
-              </Grid>
+              </Grid> */}
               <Grid item container>
                 <Hidden mdDown>
                   <Grid

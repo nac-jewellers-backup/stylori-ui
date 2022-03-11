@@ -265,7 +265,7 @@ class Header extends Component {
                             alt=""
                             style={{
                               // transition: "height 0.2s",
-                              height: isSilver ? 120 : 60,
+                              height: isSilver ? 60 : 60,
                               marginTop: "9px",
                             }}
                           />
@@ -274,157 +274,6 @@ class Header extends Component {
                     ) : (
                       ""
                     )}
-                    <Grid
-                      container
-                      item
-                      xs={9}
-                      justify="flex-end"
-                      alignItems="center"
-                    >
-                      <div className={`head-icons1 ${classes.headIcons}`}>
-                        <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
-                        <Typography className={classes.callerNum}>
-                          1800 102 0330
-                        </Typography>
-                        <Grid
-                          onClick={this.handleClose}
-                          style={{ cursor: "pointer" }}
-                          className={`search`}
-                        >
-                          <Grid container>
-                            {/* <Typography
-                              style={{ flexGrow: 1, fontSize: "0.96rem" }}
-                            >
-                              Search
-                            </Typography> */}
-                            <div
-                              className={classes.searchcontainer}
-                              style={{ width: "25px" }}
-                            > <img src={searchIcon} alt="icon" />
-                              {/* <Seach className={"searchsvg"} /> */}
-                            </div>
-                          </Grid>
-                        </Grid>
-
-                        {localStorage.getItem("true") ? (
-                          <div className="tooltip ">
-                            <span
-                              class="MuiBadge-root"
-                              aria-owns={openPopover ? "simple-popper" : ""}
-                              // onClick={this.handleClickPopover}
-                              onClick={() => {
-                                window.location.href = "/account-profile";
-                              }}
-                            >
-                              <i
-                                style={{ fontSize: "20px" }}
-                                class={`fa fa-user  ${classes.iconFafa}`}
-                              ></i>
-                              <span className="tooltip-slog">
-                                {Boolean(localStorage.getItem("user_id")) &&
-                                !Boolean(localStorage.getItem("gut_lg"))
-                                  ? "Account"
-                                  : "Login"}
-                              </span>
-                            </span>
-                          </div>
-                        ) : (
-                          // <img className="icons-header-sizes" src={usershape}/>
-
-                          <div className="tooltip ">
-                            <span
-                              className={`MuiBadge-root ${classes.badgecolor}`}
-                              onClick={() =>
-                                (window.location.pathname = "/login")
-                              }
-                            >
-                              <i
-                                style={{ fontSize: "20px",color:"#6D6E71" }}
-                                class={`fa fa-user  ${classes.iconFafa}`}
-                              ></i>
-                              <span className="tooltip-slog">
-                                {Boolean(localStorage.getItem("user_id")) &&
-                                !Boolean(localStorage.getItem("gut_lg"))
-                                  ? "Account"
-                                  : "Login"}
-                              </span>
-                            </span>
-                          </div>
-                        )}
-             
-                        <div className="tooltip">
-                          <Badge
-                            className={`${
-                              isSilver && classes.badgeColorsilver
-                            } ${!isSilver && classes.badgeColor}`}
-                            badgeContent={
-                              !isSilver &&
-                              (this.props.wishlist &&
-                              this.props.wishlist.wishlistdata &&
-                              this.props.wishlist.wishlistdata.nodes &&
-                              this.props.wishlist.wishlistdata.nodes.length > 0
-                                ? this.props.wishlist &&
-                                  this.props.wishlist.wishlistdata &&
-                                  this.props.wishlist.wishlistdata.nodes &&
-                                  this.props.wishlist.wishlistdata.nodes.length
-                                : "0")
-                            }
-                          >
-                            <i
-                              style={{ fontSize: "18px" }}
-                              class={classes.iconFafaheart}
-                              onClick={() => {
-                                if (user_id.length > 0) {
-                                  window.location.href = `/account${"-wishlist"}`;
-                                } else {
-                                  window.location.href = "/login";
-                                }
-                              }}
-                            ><img src={heart} alt="icon" /></i>
-                            <span className="tooltip-s">Wishlist</span>
-                          </Badge>
-                        </div>
-
-                        <div className="tooltip">
-                          <Badge
-                            className={`${
-                              isSilver && classes.badgeColorsilver
-                            } ${!isSilver && classes.badgeColor}`}
-                            badgeContent={
-                              this.props.cart_count &&
-                              this.props.cart_count.data &&
-                              this.props.cart_count.data.allTransSkuLists &&
-                              this.props.cart_count.data.allTransSkuLists.nodes
-                                .length > 0
-                                ? this.props.cart_count &&
-                                  this.props.cart_count.data &&
-                                  this.props.cart_count.data.allTransSkuLists &&
-                                  this.props.cart_count.data.allTransSkuLists
-                                    .nodes.length
-                                : !isSilver && "0"
-                              // this.props && this.props.cart_count && this.props.cart_count.length
-                            }
-                          >
-                            <a href="/cart" className="highlighter">
-                              <i
-                                style={{ fontSize: "20px" }}
-                                class={classes.iconFafa}
-                              ><img src={cart} alt="icon"/> </i>
-                              <span
-                                className="tooltip-s"
-                                style={{
-                                  color: isSilver
-                                    ? "rgb(6, 171, 159)"
-                                    : "#d51f63",
-                                }}
-                              >
-                                Cart
-                              </span>
-                            </a>{" "}
-                          </Badge>
-                        </div>
-                      </div>
-                    </Grid>
                   </Grid>
                 </Grid>
               </Container>
@@ -442,7 +291,7 @@ class Header extends Component {
                       id="fullcontainer"
                       className="setHeight"
                     >
-                      <Grid item xs={3} className="logoImgHeader1">
+                      <Grid item xs={2} className="logoImgHeader1">
                         <div
                           id="logoDiv1"
                           className="logoDiv1"
@@ -462,7 +311,7 @@ class Header extends Component {
                             alt=""
                             style={{
                               transition: "height 0.2s",
-                              height: isSilver ? 120 : 60,
+                              height: isSilver ? 60 : 60,
                             }}
                           />
                         </div>
@@ -470,7 +319,7 @@ class Header extends Component {
                       <Grid
                         container
                         item
-                        xs={9}
+                        xs={8}
                         id={"containerTitle"}
                         justify="flex-end"
                         alignItems="center"
@@ -590,6 +439,152 @@ class Header extends Component {
                           )}
                         </Grid>
                       </Grid>
+                      <Grid item xs={2}>
+                      <div className={`head-icons1 ${classes.headIcons}`}>
+                        {/* <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
+                        <Typography className={classes.callerNum}>
+                          1800 102 0330
+                        </Typography> */}
+                        <Grid
+                          onClick={this.handleClose}
+                          style={{ cursor: "pointer" }}
+                          className={`search`}
+                        >
+                          <Grid container>
+                            {/* <Typography
+                              style={{ flexGrow: 1, fontSize: "0.96rem" }}
+                            >
+                              Search
+                            </Typography> */}
+                            <div
+                              className={classes.searchcontainer}
+                              style={{ width: "25px" }}
+                            > <img src={searchIcon} alt="icon" />
+                              {/* <Seach className={"searchsvg"} /> */}
+                            </div>
+                          </Grid>
+                        </Grid>
+
+                        {localStorage.getItem("true") ? (
+                          <div className="tooltip ">
+                            <span
+                              class="MuiBadge-root"
+                              aria-owns={openPopover ? "simple-popper" : ""}
+                              // onClick={this.handleClickPopover}
+                              onClick={() => {
+                                window.location.href = "/account-profile";
+                              }}
+                            >
+                              <i
+                                style={{ fontSize: "20px",color:"#6D6E71", }}
+                                class={`fa fa-user  ${classes.iconFafa}`}
+                              ></i>
+                              <span className="tooltip-slog">
+                                {Boolean(localStorage.getItem("user_id")) &&
+                                !Boolean(localStorage.getItem("gut_lg"))
+                                  ? "Account"
+                                  : "Login"}
+                              </span>
+                            </span>
+                          </div>
+                        ) : (
+                          // <img className="icons-header-sizes" src={usershape}/>
+
+                          <div className="tooltip ">
+                            <span
+                              className={`MuiBadge-root ${classes.badgecolor}`}
+                              onClick={() =>
+                                (window.location.pathname = "/login")
+                              }
+                            >
+                              <i
+                                style={{ fontSize: "20px",color:"#6D6E71" }}
+                                class={`fa fa-user  ${classes.iconFafa}`}
+                              ></i>
+                              <span className="tooltip-slog">
+                                {Boolean(localStorage.getItem("user_id")) &&
+                                !Boolean(localStorage.getItem("gut_lg"))
+                                  ? "Account"
+                                  : "Login"}
+                              </span>
+                            </span>
+                          </div>
+                        )}
+             
+                        <div className="tooltip">
+                          <Badge
+                            className={`${
+                              isSilver && classes.badgeColorsilver
+                            } ${!isSilver && classes.badgeColor}`}
+                            badgeContent={
+                              !isSilver &&
+                              (this.props.wishlist &&
+                              this.props.wishlist.wishlistdata &&
+                              this.props.wishlist.wishlistdata.nodes &&
+                              this.props.wishlist.wishlistdata.nodes.length > 0
+                                ? this.props.wishlist &&
+                                  this.props.wishlist.wishlistdata &&
+                                  this.props.wishlist.wishlistdata.nodes &&
+                                  this.props.wishlist.wishlistdata.nodes.length
+                                : "0")
+                            }
+                          >
+                            <i
+                              style={{ fontSize: "18px" }}
+                              class={classes.iconFafaheart}
+                              onClick={() => {
+                                if (user_id.length > 0) {
+                                  window.location.href = `/account${"-wishlist"}`;
+                                } else {
+                                  window.location.href = "/login";
+                                }
+                              }}
+                            ><img src={heart} alt="icon" /></i>
+                            <span className="tooltip-s">Wishlist</span>
+                          </Badge>
+                        </div>
+
+                        <div className="tooltip">
+                          <Badge
+                            className={`${
+                              isSilver && classes.badgeColorsilver
+                            } ${!isSilver && classes.badgeColor}`}
+                            badgeContent={
+                              this.props.cart_count &&
+                              this.props.cart_count.data &&
+                              this.props.cart_count.data.allTransSkuLists &&
+                              this.props.cart_count.data.allTransSkuLists.nodes
+                                .length > 0
+                                ? this.props.cart_count &&
+                                  this.props.cart_count.data &&
+                                  this.props.cart_count.data.allTransSkuLists &&
+                                  this.props.cart_count.data.allTransSkuLists
+                                    .nodes.length
+                                : !isSilver && "0"
+                              // this.props && this.props.cart_count && this.props.cart_count.length
+                            }
+                          >
+                            <a href="/cart" className="highlighter">
+                              <i
+                                style={{ fontSize: "20px" }}
+                                class={classes.iconFafa}
+                              ><img src={cart} alt="icon"/> </i>
+                              <span
+                                className="tooltip-s"
+                                style={{
+                                  color: isSilver
+                                    ? "rgb(6, 171, 159)"
+                                    : "#d51f63",
+                                }}
+                              >
+                                Cart
+                              </span>
+                            </a>{" "}
+                          </Badge>
+                        </div>
+                      </div>
+                        
+                        </Grid>
                     </Grid>
                   </Container>
                 </Grid>
@@ -612,7 +607,7 @@ class Header extends Component {
               <div className="header-appbar-sticky1">
                 <AppBar className="header-appbar-moblie1" id="smallScreen">
                   <Toolbar className={"toolbarsetting"}>
-                    <Grid
+                  {/* <Grid
                       container
                       item
                       xs={1}
@@ -626,7 +621,7 @@ class Header extends Component {
                       <IconButton onClick={this.handleDrawerOpen}>
                         <MenuIcon className={classes.mobileNavIcon} />
                       </IconButton>
-                    </Grid>
+                    </Grid> */}
 
                     <Grid item xs={5} className="logoImgHeader1">
                       <div
@@ -648,7 +643,8 @@ class Header extends Component {
                         />
                       </div>
                     </Grid>
-                    <Grid item xs={6}>
+                    
+                    <Grid item xs={7}>
                       <div
                         onClick={this.handleSearch}
                         className={`mobli-icon1 ${classes.mobile_icon_i}`}
@@ -661,16 +657,20 @@ class Header extends Component {
                             justifyContent: "flex-end",
                             alignContent: "center",
                             paddingRight: "10px",
-                            paddingBottom: "15px",
+                            // paddingBottom: "15px",
                           }}
                         >
                           <div className={`head-icons1 ${classes.headIcons}`}>
+                          <IconButton onClick={this.handleDrawerOpen}>
+                          <MenuIcon className={classes.mobileNavIcon} />
+                          </IconButton>
                             <div
                               id="search"
                               onClick={this.handleClose}
                               className={classes.searchcontainTop}
                             >
-                              <Seach className={"searchsvgmobile"} />
+                              <img src={searchIcon} alt="icon" />
+                              {/* <Seach className={"searchsvgmobile"} /> */}
                             </div>
                             {/* {localStorage.getItem("true") ?
                                                     <span
@@ -698,6 +698,7 @@ class Header extends Component {
                                   class={`fa fa-user  ${classes.iconFafa}`}
                                   style={{
                                     display: "flex",
+                                    color:"#6D6E71",
                                     alignItems: "flex-end",
                                     justifyContent: "center",
                                   }}
@@ -713,6 +714,7 @@ class Header extends Component {
                                   class={`fa fa-user  ${classes.iconFafa}`}
                                   style={{
                                     display: "flex",
+                                    color:"#6D6E71",
                                     alignItems: "flex-end",
                                     justifyContent: "center",
                                   }}
@@ -777,7 +779,7 @@ class Header extends Component {
                               color="secondary"
                             >
                               <i
-                                class={`fa fa-heart ${classes.iconFafaheart}`}
+                                class={classes.iconFafaheart}
                                 onClick={() => {
                                   if (user_id.length > 0) {
                                     window.location.href = `/account${"-wishlist"}`;
@@ -785,13 +787,13 @@ class Header extends Component {
                                     window.location.href = "/login";
                                   }
                                 }}
-                              ></i>
+                              ><img src={heart} alt="icon" /></i>
                             </Badge>
                             <Badge
                               className={`${
                                 isSilver && classes.badgeColorsilver
                               }`}
-                              style={{ fontSize: "9px" }}
+                              style={{ fontSize: "9px",marginTop:"5px" }}
                               badgeContent={
                                 this.props.cart_count &&
                                 this.props.cart_count.data &&
@@ -817,8 +819,8 @@ class Header extends Component {
                                     fontSize: "15px !important",
                                     zIndex: 1000,
                                   }}
-                                  class={`fa fa-shopping-cart  ${classes.iconFafa}`}
-                                ></i>
+                                  class={classes.iconFafa}
+                                ><img src={cart} alt="icon"/></i>
                               </a>
                             </Badge>
                           </div>

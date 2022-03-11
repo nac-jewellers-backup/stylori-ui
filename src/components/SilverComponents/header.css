@@ -93,7 +93,7 @@
   text-transform: capitalize;
   font-size: 13px !important;
   text-decoration: none !important;
-  margin-left: 4%;
+  margin-left: 2.5%;
 }
 
 .imgsilver1 {
@@ -110,6 +110,7 @@
   margin-top: -63px;
   position: inherit;
   margin-bottom: -63px;
+  width: "80% !important";
 }
 
 .icons-header-sizes {
