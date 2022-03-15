@@ -300,10 +300,11 @@ const BuydetailsSilverdetailpage = (
               <Grid
                 item
                 xs={12}
-                lg={4}
+                lg={6}
                 style={{
                   fontSize: "0.9rem",
                   color: "#606161",
+                  whiteSpace: "nowrap"
                 }}
               >
                 {shipByDate}

@@ -58,8 +58,8 @@ import SliderWithHeading from "components/SilverComponents/SliderWithHeading";
 import SilverFooter from "components/SilverComponents/SilverFooter";
 
 // V2 Desktop
-import { CustomSeparator } from "components/SilverComponents/v2"
-
+import { CustomSeparator } from "components/SilverComponents/v2";
+import NACSection from "components/HouseOfNac";
 
 const styles = (theme) => ({
   font: {
@@ -170,11 +170,23 @@ const styles = (theme) => ({
   },
   trademarks: {
     display: "flex",
+    justifyContent: "center",
+    columnGap: "9%",
+    marginTop: 60,
   },
 
   // Collection Card
   collectionCardContainer: {
     marginBottom: 50,
+  },
+
+  backToProducts: {
+    width: 320,
+    margin: "80px auto",
+  },
+
+  sliderWithHeadingContainer: {
+    marginTop: 52,
   },
 });
 
@@ -359,7 +371,7 @@ class ProductDetail extends Component {
         <Hidden smDown>
           {/* <Header wishlist={this?.props?.wishlistdata ?? ""} /> */}
 
-          <Grid
+          {/* <Grid
             Container
             spacing={12}
             style={{ maxWidth: "1600px", margin: "auto" }}
@@ -379,7 +391,9 @@ class ProductDetail extends Component {
                 )}
               </div>
             </Grid>
-          </Grid>
+          </Grid> */}
+
+          {/* Need Help */}
           <>
             <Hidden smDown>
               <div
@@ -406,7 +420,8 @@ class ProductDetail extends Component {
               </div>
             </Hidden>
           </>
-          {/* )} */}
+
+          {/* Main Container for Product image and Details */}
           <div
             className="pricing-imgzom-media"
             xs={12}
@@ -424,6 +439,7 @@ class ProductDetail extends Component {
               spacing={isSilver ? 5 : 12}
               justify={isSilver ? "space-between" : "space-evenly"}
             >
+              {/* Product Image section */}
               <Grid item xs={6}>
                 {isSilver ? (
                   <ProductImageZoom
@@ -438,7 +454,10 @@ class ProductDetail extends Component {
                   />
                 )}
               </Grid>
+
+              {/* Product Detail section */}
               <Grid item xs={6}>
+                {/* Breadcrumbs */}
                 {isSilver && (
                   <CustomSeparator
                     list="pricing-loctn"
@@ -448,6 +467,8 @@ class ProductDetail extends Component {
                     isSilver={isSilver}
                   />
                 )}
+
+                {/* Product title and SKU ID */}
                 {isSilver ? (
                   <div className="overall-box-without-shadow-silver">
                     <SilverProductPrice
@@ -528,7 +549,7 @@ class ProductDetail extends Component {
             </div>
           )}
 
-          {isSilver ? (
+          {/* {isSilver ? (
             <div
               style={{
                 maxWidth: "1600px",
@@ -547,8 +568,8 @@ class ProductDetail extends Component {
             </div>
           ) : (
             <Sublistcarousel data={this?.props?.data} isSilver={isSilver} />
-          )}
-          {isSilver && (
+          )} */}
+          {/* {isSilver && (
             <div
               style={{
                 maxWidth: "1600px",
@@ -563,7 +584,7 @@ class ProductDetail extends Component {
                 shopByStyloriSilver={this?.props?.shopByStyloriSilver}
               />
             </div>
-          )}
+          )} */}
           {isSilver ? (
             <div
               style={{
@@ -597,6 +618,49 @@ class ProductDetail extends Component {
             <CustomerReviews rating={this?.props?.rating} isSilver={isSilver} />
           )}
 
+          {/* HouseOfNac */}
+          <div>
+            <NACSection />
+          </div>
+
+          {/* Trademarks Section */}
+          <Container maxWidth="md">
+            <div className={classes.trademarks}>
+              <Securepayments size={88} color="rgb(6, 171, 159)" />
+              <Certified size={88} color="rgb(6, 171, 159)" />
+              <Diversestyles size={88} color="rgb(6, 171, 159)" />
+              <Hypoallergenic size={88} color="rgb(6, 171, 159)" />
+              {/* <Fromthehouseofnac color="rgb(6, 171, 159)" /> */}
+            </div>
+          </Container>
+
+          {/* SLider with Headings */}
+          <div className={classes.sliderWithHeadingContainer}>
+            <SliderWithHeading
+              heading="Recently Viewed"
+              products={jewelData?.fadeImages?.arrOfurls}
+            />
+          </div>
+
+          <div className={classes.sliderWithHeadingContainer}>
+            <SliderWithHeading
+              heading="You may also like"
+              products={jewelData?.fadeImages?.arrOfurls}
+            />
+          </div>
+
+          <Wrapper>
+            <div className={classes.backToProducts}>
+              <SilverButton
+                variant="contained"
+                color="secondary"
+                style={{ padding: "8px 16px" }}
+              >
+                Back to Products
+              </SilverButton>
+            </div>
+          </Wrapper>
+
           <Grid item xs={12}>
             <Footer silver={isSilver} />
           </Grid>
@@ -604,7 +668,6 @@ class ProductDetail extends Component {
 
         <Hidden mdUp>
           <Header wishlist={this?.props?.wishlistdata} pdpage={true} />
-
 
           {/* Product Slider */}
           {/* <JewelSlider slides={jewelData?.fadeImages} /> */}

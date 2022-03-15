@@ -2,11 +2,11 @@
   padding: 0 20% 0 0 !important;
 } */
 /* the slides */
-.slick-slide {
+.sliderWithHeading .slick-slide {
   margin: 0 12px 0px 0px;
 }
 
-.slick-slide:first-child {
+.sliderWithHeading .slick-slide:first-child {
   margin: 0 12px 0px 60px;
 }
 
