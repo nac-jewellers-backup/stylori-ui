@@ -1,7 +1,7 @@
 import { Hidden, Grid, Container, withStyles } from "@material-ui/core";
 import React, { Component } from "react";
 import Header from "components/SilverComponents/Header";
-import CustomSeparator from "components/BreadCrumb/index";
+// import CustomSeparator from "components/BreadCrumb/index";
 import ProductImageZoom from "components/product-image-slider/productImageZoom";
 import ProductPrice from "components/product-image-slider/productPrice";
 import PriceTabs from "components/product-image-slider/priceTabs";
@@ -40,7 +40,7 @@ import NeedHelp from "../components/needHelp";
 import ReactPixel from "react-facebook-pixel";
 import TagManager from "react-gtm-module";
 
-import JewelSlider from "components/SilverComponents/JewelSlider";
+// import JewelSlider from "components/SilverComponents/JewelSlider";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import classNames from "classnames";
@@ -54,8 +54,12 @@ import HouseOfNac2x from "assets/houseOfNAC@2x.png";
 import HouseOfNac3x from "assets/houseOfNAC@3x.png";
 import { SilverButton } from "components/SilverComponents/SilverButton";
 import SliderWithHeading from "components/SilverComponents/SliderWithHeading";
-import CollectionCard from "components/SilverComponents/CollectionCard";
+// import CollectionCard from "components/SilverComponents/CollectionCard";
 import SilverFooter from "components/SilverComponents/SilverFooter";
+
+// V2 Desktop
+import { CustomSeparator } from "components/SilverComponents/v2"
+
 
 const styles = (theme) => ({
   font: {
@@ -353,7 +357,7 @@ class ProductDetail extends Component {
         </Helmet>
 
         <Hidden smDown>
-          <Header wishlist={this?.props?.wishlistdata ?? ""} />
+          {/* <Header wishlist={this?.props?.wishlistdata ?? ""} /> */}
 
           <Grid
             Container
@@ -601,8 +605,9 @@ class ProductDetail extends Component {
         <Hidden mdUp>
           <Header wishlist={this?.props?.wishlistdata} pdpage={true} />
 
+
           {/* Product Slider */}
-          <JewelSlider slides={jewelData?.fadeImages} />
+          {/* <JewelSlider slides={jewelData?.fadeImages} /> */}
 
           {/* Product Detail section */}
           <Wrapper>
@@ -752,11 +757,11 @@ class ProductDetail extends Component {
 
           {/* Collection Card section */}
 
-          <div className={classes.collectionCardContainer}>
+          {/* <div className={classes.collectionCardContainer}>
             <CollectionCard
               collection={jewelData?.fadeImages?.arrOfurls?.[1]}
             />
-          </div>
+          </div> */}
 
           {/* Footer Section */}
           <SilverFooter />
