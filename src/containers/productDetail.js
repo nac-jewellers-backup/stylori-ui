@@ -1,4 +1,4 @@
-import { Hidden, Grid, Container } from "@material-ui/core";
+import { Hidden, Grid, Container, withStyles } from "@material-ui/core";
 import React, { Component } from "react";
 import Header from "components/SilverComponents/Header";
 import CustomSeparator from "components/BreadCrumb/index";
@@ -39,6 +39,152 @@ import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import NeedHelp from "../components/needHelp";
 import ReactPixel from "react-facebook-pixel";
 import TagManager from "react-gtm-module";
+
+import JewelSlider from "components/SilverComponents/JewelSlider";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import classNames from "classnames";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import JewelDetailAccordion from "components/SilverComponents/JewelDetailAccordion";
+import HouseOfNac from "assets/houseOfNAC.png";
+import HouseOfNac2x from "assets/houseOfNAC@2x.png";
+import HouseOfNac3x from "assets/houseOfNAC@3x.png";
+
+const styles = (theme) => ({
+  font: {
+    fontFamily: `'Playfair Display', serif !important`,
+  },
+  breadcrumbs: {
+    fontSize: 12,
+    color: theme.palette.text.secondary,
+    fontFamily: `'Playfair Display', serif`,
+    fontWeight: 500,
+    marginTop: 8,
+  },
+  name: {
+    fontSize: 15,
+    color: theme.palette.text.secondary,
+    fontWeight: 600,
+    marginTop: 8,
+  },
+  tag: {
+    fontSize: 12,
+    color: theme.palette.text.secondary,
+    fontWeight: 500,
+    marginTop: 2,
+  },
+  price: {
+    color: theme.palette.primary.main,
+    fontSize: 24,
+    fontWeight: 600,
+    marginTop: 16,
+    lineHeight: 1,
+  },
+  discountContainer: {
+    fontSize: 16,
+    fontWeight: 600,
+  },
+  actualPrice: {
+    color: theme.palette.primary.main,
+    textDecoration: "line-through",
+  },
+  discount: {
+    color: theme.palette.secondary.main,
+    textDecoration: "unset",
+  },
+  tax: {
+    color: theme.palette.text.secondary,
+    fontSize: 12,
+    fontWeight: 500,
+    marginTop: 8,
+    marginBottom: 8,
+  },
+  orderButton: {
+    borderRadius: "0px",
+    width: "100%",
+    border: "2px solid rgba(6, 171, 159, 1)",
+    fontSize: "12px",
+    letterSpacing: "1.5px",
+  },
+
+  buyNowButton: {
+    borderRadius: "0px",
+    width: "100%",
+    fontSize: "12px",
+    letterSpacing: "1.5px",
+    marginTop: 8,
+  },
+  bestSellerText: {
+    color: theme.palette.secondary.main,
+    fontSize: 12,
+    marginTop: 20,
+  },
+  description: {
+    color: theme.palette.text.secondary,
+    textAlign: "left",
+    fontSize: 12,
+    fontWeight: 500,
+  },
+  getInTouchButton: {
+    borderRadius: "0px",
+    width: "100%",
+    border: "2px solid rgb(166, 168, 171)",
+    fontSize: "12px",
+    letterSpacing: "1.5px",
+    marginTop: theme.spacing(2.5),
+  },
+  houseOfNacContainer: {
+    position: "relative",
+    "& img": {
+      width: "100%",
+    },
+  },
+  nacDescription: {
+    color: "#6D6E71",
+    position: "absolute",
+    padding: theme.spacing(3, 2),
+    background: "#F8E3C0",
+    textAlign: "center",
+    margin: "-20px 16px",
+    maxWidth: 320,
+    "& #title": {
+      fontFamily: `'Playfair Display', serif !important`,
+      fontWeight: 500,
+      fontSize: 22,
+      color: "#6D6E71",
+    },
+    "& #desc": {
+      fontSize: 12,
+      textAlign: "center",
+      fontWeight: 500,
+      color: "#6D6E71",
+    },
+  },
+  productDimensions: {
+    display: "flex",
+    gap: 24,
+  },
+  productDetailText: {
+    color: theme.palette.text.secondary,
+    textAlign: "left",
+    fontSize: 12,
+  },
+  productLabel: {
+    fontWeight: 500,
+  },
+  trademarks: {
+    display: "flex",
+  },
+});
+
+const Wrapper = ({ children }) => {
+  return (
+    <div style={{ padding: "0px 16px", textAlign: "center" }}>{children}</div>
+  );
+};
 
 class ProductDetail extends Component {
   constructor(props) {
@@ -159,6 +305,11 @@ class ProductDetail extends Component {
         />
       ),
     };
+
+    console.log(this?.props);
+
+    const { classes } = this.props;
+    const jewelData = this.props?.data?.[0];
 
     return (
       <div>
@@ -456,22 +607,156 @@ class ProductDetail extends Component {
         <Hidden mdUp>
           <Header wishlist={this?.props?.wishlistdata} pdpage={true} />
 
-          <Grid item xs={12}>
+          {/* New Slider */}
+          <JewelSlider slides={jewelData?.fadeImages} />
+
+          <Wrapper>
+            <Typography
+              color="textSecondary"
+              align="center"
+              className={classes.breadcrumbs}
+            >
+              Home / Collections / Earring Finish and Design
+            </Typography>
+
+            <Typography className={classNames(classes.font, classes.name)}>
+              Exquisite Kemp Peacock Silver Ear Stud
+            </Typography>
+
+            <Typography className={classes.tag}>SE5117-92570000</Typography>
+            <Typography className={classes.price}>₹ 4751</Typography>
+            <Typography className={classes.discountContainer}>
+              <span className={classes.actualPrice}>₹ 5939</span>
+              <span className={classes.discount}>&nbsp;(20% off)</span>
+            </Typography>
+            <Typography className={classes.tax}>Tax included</Typography>
+            <Button
+              className={classes.orderButton}
+              variant="outlined"
+              color="secondary"
+            >
+              Add to cart
+            </Button>
+            <Button
+              className={classes.buyNowButton}
+              variant="contained"
+              color="secondary"
+            >
+              Buy now
+            </Button>
+
+            <Typography className={classes.tax}>
+              Shipping calculated at checkout.
+            </Typography>
+
+            <Typography className={classes.bestSellerText}>
+              Ouch! You have picked our best seller. We will be able to
+              manufacture same in 25-40 days time once the order is placed.
+            </Typography>
+
+            <JewelDetailAccordion title="Description">
+              <Typography className={classes.description}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                eget.
+              </Typography>
+            </JewelDetailAccordion>
+            <JewelDetailAccordion title="Product Details">
+              <div>
+                <div className={classes.productDimensions}>
+                  <Typography>
+                    <span>Height:</span>&nbsp;&nbsp;&nbsp;45mm
+                  </Typography>
+                  <Typography>
+                    <span>Width:</span>&nbsp;&nbsp;&nbsp;25mm
+                  </Typography>
+                </div>
+
+                <Grid container>
+                  <Grid container item xs={12}>
+                    <Grid item xs={8}>
+                      <Typography>Metal Type/Finish</Typography>
+                    </Grid>
+                    <Grid item xs={4}>
+                      92.5 Oxidised Silver
+                    </Grid>
+                  </Grid>
+
+                  <Grid container item xs={12}>
+                    <Grid item xs={8}>
+                      <Typography>Approx Metal Weight (in gm)</Typography>
+                    </Grid>
+                    <Grid item xs={4}>
+                      20.97
+                    </Grid>
+                  </Grid>
+                </Grid>
+
+                <Typography className={classes.description}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                  eget.
+                </Typography>
+              </div>
+            </JewelDetailAccordion>
+            <JewelDetailAccordion title="Jewellery Care">
+              <Typography>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                eget.
+              </Typography>
+            </JewelDetailAccordion>
+
+            <Button className={classes.getInTouchButton} variant="outlined">
+              Get in Touch
+            </Button>
+          </Wrapper>
+
+          <div className={classes.houseOfNacContainer}>
+            <img
+              srcset={`${HouseOfNac},
+              ${HouseOfNac2x} 2x,
+              ${HouseOfNac3x} 3x`}
+              src={HouseOfNac}
+              alt="House of NAC"
+            />
+
+            {/* <div className={classes.nacDescription}>
+              <Typography id="title">From the House of Nac</Typography>
+              <Typography id="desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                eget.
+              </Typography>
+            </div> */}
+          </div>
+
+          <Container maxWidth="sm">
+            <div className={classes.trademarks}>
+              <Securepayments color="rgb(6, 171, 159)" />
+              <Certified color="rgb(6, 171, 159)" />
+              <Diversestyles color="rgb(6, 171, 159)" />
+              <Hypoallergenic color="rgb(6, 171, 159)" />
+              {/* <Fromthehouseofnac color="rgb(6, 171, 159)" /> */}
+            </div>
+          </Container>
+
+          {/* <Grid item xs={12}>
             <PriceBuynow
               data={this?.props?.data}
               wishlist={this?.props?.wishlistdata}
               isSilver={isSilver}
             />
-          </Grid>
+          </Grid> */}
 
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <ProductDetails
               data={this?.props?.data}
               wishlist={this?.props?.wishlistdata}
               isSilver={isSilver}
             />
-          </Grid>
-          {isSilver && (
+          </Grid> */}
+          {/* {isSilver && (
             <div
               style={{
                 position: "fixed",
@@ -482,30 +767,30 @@ class ProductDetail extends Component {
             >
               <NeedHelp position="top" />
             </div>
-          )}
-          {!isSilver && (
+          )} */}
+          {/* {!isSilver && (
             <Grid item xs={12}>
               <PriceCertification
                 data={this?.props?.data}
                 isSilver={isSilver}
               />
             </Grid>
-          )}
-          {!isSilver && (
+          )} */}
+          {/* {!isSilver && (
             <Grid item xs={12}>
               <Request data={this?.props?.data} />
             </Grid>
-          )}
+          )} */}
 
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <Sublistcarousel
               data={this?.props?.data}
               isSilver={isSilver}
               customLimit={4}
             />
-          </Grid>
+          </Grid> */}
 
-          {isSilver && (
+          {/* {isSilver && (
             <Container>
               <Container>
                 <Grid container xs={12}>
@@ -526,8 +811,8 @@ class ProductDetail extends Component {
                 </Grid>
               </Container>
             </Container>
-          )}
-          <Grid item xs={12}>
+          )} */}
+          {/* <Grid item xs={12}>
             {isSilver && (
               <Container>
                 <div
@@ -557,21 +842,21 @@ class ProductDetail extends Component {
                 />
               </Container>
             )}
-          </Grid>
-          <Grid item xs={12}>
+          </Grid> */}
+          {/* <Grid item xs={12}>
             <RatingForm
               data={this?.props?.data}
               clear_rating={this?.state?.clear}
               clear_rating_onchange={clear_rating}
               isSilver={isSilver}
             />
-          </Grid>
-          <Grid item xs={12}>
+          </Grid> */}
+          {/* <Grid item xs={12}>
             <CustomerReviews data={this?.props?.data} />
-          </Grid>
-          <Grid item style={{ paddingBottom: "50px" }}>
+          </Grid> */}
+          {/* <Grid item style={{ paddingBottom: "50px" }}>
             <Footer silver={isSilver} />
-          </Grid>
+          </Grid> */}
         </Hidden>
       </div>
     );
@@ -746,4 +1031,4 @@ const Components = (props) => {
   }
 };
 
-export default withRouter(Components);
+export default withRouter(withStyles(styles)(Components));
