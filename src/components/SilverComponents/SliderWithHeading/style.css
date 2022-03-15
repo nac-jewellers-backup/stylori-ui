@@ -1,3 +1,21 @@
-.slick-list {
+/* .slick-list {
   padding: 0 20% 0 0 !important;
+} */
+/* the slides */
+.slick-slide {
+  margin: 0 12px 0px 0px;
+}
+
+.slick-slide:first-child {
+  margin: 0 12px 0px 60px;
+}
+
+/* the parent */
+/* .slick-list {
+  margin: 0 -12px;
+} */
+
+.slick-list {
+  /* padding-right: -20% !important; */
+  /* margin: 0 -12px; */
 }

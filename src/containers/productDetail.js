@@ -52,6 +52,10 @@ import JewelDetailAccordion from "components/SilverComponents/JewelDetailAccordi
 import HouseOfNac from "assets/houseOfNAC.png";
 import HouseOfNac2x from "assets/houseOfNAC@2x.png";
 import HouseOfNac3x from "assets/houseOfNAC@3x.png";
+import { SilverButton } from "components/SilverComponents/SilverButton";
+import SliderWithHeading from "components/SilverComponents/SliderWithHeading";
+import CollectionCard from "components/SilverComponents/CollectionCard";
+import SilverFooter from "components/SilverComponents/SilverFooter";
 
 const styles = (theme) => ({
   font: {
@@ -101,21 +105,6 @@ const styles = (theme) => ({
     fontWeight: 500,
     marginTop: 8,
     marginBottom: 8,
-  },
-  orderButton: {
-    borderRadius: "0px",
-    width: "100%",
-    border: "2px solid rgba(6, 171, 159, 1)",
-    fontSize: "12px",
-    letterSpacing: "1.5px",
-  },
-
-  buyNowButton: {
-    borderRadius: "0px",
-    width: "100%",
-    fontSize: "12px",
-    letterSpacing: "1.5px",
-    marginTop: 8,
   },
   bestSellerText: {
     color: theme.palette.secondary.main,
@@ -177,6 +166,11 @@ const styles = (theme) => ({
   },
   trademarks: {
     display: "flex",
+  },
+
+  // Collection Card
+  collectionCardContainer: {
+    marginBottom: 50,
   },
 });
 
@@ -607,9 +601,10 @@ class ProductDetail extends Component {
         <Hidden mdUp>
           <Header wishlist={this?.props?.wishlistdata} pdpage={true} />
 
-          {/* New Slider */}
+          {/* Product Slider */}
           <JewelSlider slides={jewelData?.fadeImages} />
 
+          {/* Product Detail section */}
           <Wrapper>
             <Typography
               color="textSecondary"
@@ -630,20 +625,13 @@ class ProductDetail extends Component {
               <span className={classes.discount}>&nbsp;(20% off)</span>
             </Typography>
             <Typography className={classes.tax}>Tax included</Typography>
-            <Button
-              className={classes.orderButton}
-              variant="outlined"
-              color="secondary"
-            >
+
+            <SilverButton variant="outlined" color="secondary">
               Add to cart
-            </Button>
-            <Button
-              className={classes.buyNowButton}
-              variant="contained"
-              color="secondary"
-            >
+            </SilverButton>
+            <SilverButton variant="contained" color="secondary">
               Buy now
-            </Button>
+            </SilverButton>
 
             <Typography className={classes.tax}>
               Shipping calculated at checkout.
@@ -707,11 +695,14 @@ class ProductDetail extends Component {
               </Typography>
             </JewelDetailAccordion>
 
-            <Button className={classes.getInTouchButton} variant="outlined">
+            {/* <Button className={classes.getInTouchButton} variant="outlined">
               Get in Touch
-            </Button>
+            </Button> */}
+
+            <SilverButton variant="outlined">Get in Touch</SilverButton>
           </Wrapper>
 
+          {/* House of NAC Section */}
           <div className={classes.houseOfNacContainer}>
             <img
               srcset={`${HouseOfNac},
@@ -731,6 +722,7 @@ class ProductDetail extends Component {
             </div> */}
           </div>
 
+          {/* Trademarks Section */}
           <Container maxWidth="sm">
             <div className={classes.trademarks}>
               <Securepayments color="rgb(6, 171, 159)" />
@@ -740,6 +732,34 @@ class ProductDetail extends Component {
               {/* <Fromthehouseofnac color="rgb(6, 171, 159)" /> */}
             </div>
           </Container>
+
+          {/* SLider with Headings */}
+          <SliderWithHeading
+            heading="Recently Viewed"
+            products={jewelData?.fadeImages?.arrOfurls}
+          />
+
+          <SliderWithHeading
+            heading="You may also like"
+            products={jewelData?.fadeImages?.arrOfurls}
+          />
+
+          <Wrapper>
+            <SilverButton variant="contained" color="secondary">
+              Back to Products
+            </SilverButton>
+          </Wrapper>
+
+          {/* Collection Card section */}
+
+          <div className={classes.collectionCardContainer}>
+            <CollectionCard
+              collection={jewelData?.fadeImages?.arrOfurls?.[1]}
+            />
+          </div>
+
+          {/* Footer Section */}
+          <SilverFooter />
 
           {/* <Grid item xs={12}>
             <PriceBuynow
