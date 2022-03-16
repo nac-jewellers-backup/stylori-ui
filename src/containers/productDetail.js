@@ -40,7 +40,7 @@ import NeedHelp from "../components/needHelp";
 import ReactPixel from "react-facebook-pixel";
 import TagManager from "react-gtm-module";
 
-// import JewelSlider from "components/SilverComponents/JewelSlider";
+import JewelSlider from "components/SilverComponents/JewelSlider";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import classNames from "classnames";
@@ -123,16 +123,12 @@ const styles = (theme) => ({
     fontSize: 12,
     fontWeight: 500,
   },
-  getInTouchButton: {
-    borderRadius: "0px",
-    width: "100%",
-    border: "2px solid rgb(166, 168, 171)",
-    fontSize: "12px",
-    letterSpacing: "1.5px",
-    marginTop: theme.spacing(2.5),
+  getInTouchButtonContainer: {
+    marginTop: 32,
   },
   houseOfNacContainer: {
     position: "relative",
+    marginTop: 50,
     "& img": {
       width: "100%",
     },
@@ -177,6 +173,7 @@ const styles = (theme) => ({
     columnGap: 8,
     [theme.breakpoints.up("sm")]: {
       columnGap: "9%",
+      justifyContent: "space-between",
     },
   },
 
@@ -191,10 +188,17 @@ const styles = (theme) => ({
   backToProducts: {
     width: 320,
     margin: "80px auto",
+    [theme.breakpoints.up("sm")]: {
+      width: 280,
+      margin: "40px auto",
+    },
   },
 
   sliderWithHeadingContainer: {
     marginTop: 52,
+    [theme.breakpoints.up("sm")]: {
+      marginTop: 30,
+    },
   },
 });
 
@@ -686,7 +690,7 @@ class ProductDetail extends Component {
           <Header wishlist={this?.props?.wishlistdata} pdpage={true} />
 
           {/* Product Slider */}
-          {/* <JewelSlider slides={jewelData?.fadeImages} /> */}
+          <JewelSlider slides={jewelData?.fadeImages} />
 
           {/* Product Detail section */}
           <Wrapper>
@@ -713,7 +717,12 @@ class ProductDetail extends Component {
             <SilverButton variant="outlined" color="secondary">
               Add to cart
             </SilverButton>
-            <SilverButton variant="contained" color="secondary">
+
+            <SilverButton
+              variant="contained"
+              color="secondary"
+              style={{ marginTop: 12 }}
+            >
               Buy now
             </SilverButton>
 
@@ -779,11 +788,9 @@ class ProductDetail extends Component {
               </Typography>
             </JewelDetailAccordion>
 
-            {/* <Button className={classes.getInTouchButton} variant="outlined">
-              Get in Touch
-            </Button> */}
-
-            <SilverButton variant="outlined">Get in Touch</SilverButton>
+            <div className={classes.getInTouchButtonContainer}>
+              <SilverButton variant="outlined">Get in Touch</SilverButton>
+            </div>
           </Wrapper>
 
           {/* House of NAC Section */}
@@ -809,37 +816,39 @@ class ProductDetail extends Component {
           {/* Trademarks Section */}
           <Container maxWidth="sm">
             <div className={classes.trademarks}>
-              <Securepayments color="rgb(6, 171, 159)" />
-              <Certified color="rgb(6, 171, 159)" />
-              <Diversestyles color="rgb(6, 171, 159)" />
-              <Hypoallergenic color="rgb(6, 171, 159)" />
+              <Securepayments size={60} color="rgb(6, 171, 159)" />
+              <Certified size={60} color="rgb(6, 171, 159)" />
+              <Diversestyles size={60} color="rgb(6, 171, 159)" />
+              <Hypoallergenic size={60} color="rgb(6, 171, 159)" />
               {/* <Fromthehouseofnac color="rgb(6, 171, 159)" /> */}
             </div>
           </Container>
 
           {/* SLider with Headings */}
-          <SliderWithHeading
-            heading="Recently Viewed"
-            products={jewelData?.fadeImages?.arrOfurls}
-          />
+          <div className={classes.sliderWithHeadingContainer}>
+            <SliderWithHeading
+              heading="Recently Viewed"
+              products={jewelData?.fadeImages?.arrOfurls}
+            />
+          </div>
 
-          <SliderWithHeading
-            heading="You may also like"
-            products={jewelData?.fadeImages?.arrOfurls}
-          />
+          <div className={classes.sliderWithHeadingContainer}>
+            <SliderWithHeading
+              heading="You may also like"
+              products={jewelData?.fadeImages?.arrOfurls}
+            />
+          </div>
 
-          <Wrapper>
+          <div className={classes.backToProducts}>
             <SilverButton variant="contained" color="secondary">
               Back to Products
             </SilverButton>
-          </Wrapper>
+          </div>
 
           {/* Collection Card section */}
 
           <div className={classes.collectionCardContainer}>
-            <CollectionCard
-              collection={jewelData?.fadeImages?.arrOfurls?.[1]}
-            />
+            <CollectionCard image={jewelData?.fadeImages?.arrOfurls?.[1]} />
           </div>
 
           {/* Footer Section */}

@@ -21,18 +21,6 @@ export default class JewelSlider extends Component {
     return (
       <div>
         <Slider {...settings}>
-          {/* <div>
-            <p>1</p>
-          </div>
-          <div>
-            <p>2</p>
-          </div>
-          <div>
-            <p>3</p>
-          </div>
-          <div>
-            <p>4</p>
-          </div> */}
           {arrOfurls.map((slide) => (
             <img
               src={slide}

@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
       "& p": {
         fontSize: "30px",
         letterSpacing: "14px",
+        padding: theme.spacing(0, 2),
       },
     },
   },

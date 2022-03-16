@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     textTransform: "uppercase",
     fontWeight: 600,
+    marginTop: 12,
   },
   description: {
     fontWeight: 500,
