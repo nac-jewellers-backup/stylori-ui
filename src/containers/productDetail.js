@@ -61,6 +61,7 @@ import SilverFooter from "components/SilverComponents/SilverFooter";
 import { CustomSeparator } from "components/SilverComponents/v2";
 import NACSection from "components/HouseOfNac";
 import CollectionSlider from "components/SilverComponents/CollectionSlider";
+import DesktopFooter from "components/SilverComponents/DesktopFooter";
 
 const styles = (theme) => ({
   font: {
@@ -670,13 +671,10 @@ class ProductDetail extends Component {
 
           {/* Collection Card section */}
           <div className={classes.collectionCardContainer}>
-            <CollectionSlider
-              collections={jewelData?.fadeImages?.arrOfurls}
-            />
+            <CollectionSlider collections={jewelData?.fadeImages?.arrOfurls} />
           </div>
 
-            
-
+          <DesktopFooter />
 
           {/* <Grid item xs={12}>
             <Footer silver={isSilver} />

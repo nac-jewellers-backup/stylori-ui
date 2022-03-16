@@ -183,10 +183,10 @@ export const filtersLabelMapperStylori = (filterName) => {
       mappedFilterName = filterName;
       break;
     default:
-    mappedFilterName = filterName
+      mappedFilterName = filterName;
   }
 
-  return mappedFilterName
+  return mappedFilterName;
 };
 
 // export const filtersLabelMapperStyloriSilver = (filterName) => {
@@ -201,3 +201,75 @@ export const filtersLabelMapperStylori = (filterName) => {
 //     // code block
 //   }
 // };
+
+export const shopByCategory = [
+  {
+    url: "#",
+    title: "Jewellery",
+  },
+  {
+    url: "#",
+    title: "Style",
+  },
+  {
+    url: "#",
+    title: "Collections",
+  },
+  {
+    url: "#",
+    title: "Finish",
+  },
+  {
+    url: "#",
+    title: "Ready to ship",
+  },
+  {
+    url: "#",
+    title: "CSK Merchandise",
+  },
+];
+
+export const aboutUs = [
+  {
+    url: "#",
+    title: "NAC Jewellers",
+  },
+  {
+    url: "#",
+    title: "Stylori",
+  },
+  {
+    url: "#",
+    title: "Press & Media",
+  },
+];
+
+export const customerService = [
+  {
+    url: "#",
+    title: "My Account",
+  },
+  {
+    url: "#",
+    title: "Shipping & Return",
+  },
+  {
+    url: "#",
+    title: "FAQs",
+  },
+];
+
+export const contactUs = [
+  {
+    url: "#",
+    title: "Whatsapp:- +91 99526 25252",
+  },
+  {
+    url: "#",
+    title: "Email:- hello@stylori.com",
+  },
+  {
+    url: "#",
+    title: "Customer Care:- 1800 102 0330",
+  },
+];

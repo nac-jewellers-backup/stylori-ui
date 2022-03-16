@@ -10,78 +10,7 @@ import AmericanExpress from "assets/American-Express.png";
 import DinersClub from "assets/Diners-Club.jpg";
 import Netbanking from "assets/mouse.png";
 import cartoonFooter from "assets/cartoonFooter.png";
-
-const shopByCategory = [
-  {
-    url: "#",
-    title: "Jewellery",
-  },
-  {
-    url: "#",
-    title: "Style",
-  },
-  {
-    url: "#",
-    title: "Collections",
-  },
-  {
-    url: "#",
-    title: "Finish",
-  },
-  {
-    url: "#",
-    title: "Ready to ship",
-  },
-  {
-    url: "#",
-    title: "CSK Merchandise",
-  },
-];
-
-const aboutUs = [
-  {
-    url: "#",
-    title: "NAC Jewellers",
-  },
-  {
-    url: "#",
-    title: "Stylori",
-  },
-  {
-    url: "#",
-    title: "Press & Media",
-  },
-];
-
-const customerService = [
-  {
-    url: "#",
-    title: "My Account",
-  },
-  {
-    url: "#",
-    title: "Shipping & Return",
-  },
-  {
-    url: "#",
-    title: "FAQs",
-  },
-];
-
-const contactUs = [
-  {
-    url: "#",
-    title: "Whatsapp:- +91 99526 25252",
-  },
-  {
-    url: "#",
-    title: "Email:- hello@stylori.com",
-  },
-  {
-    url: "#",
-    title: "Customer Care:- 1800 102 0330",
-  },
-];
+import { shopByCategory, aboutUs, customerService, contactUs } from "utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
