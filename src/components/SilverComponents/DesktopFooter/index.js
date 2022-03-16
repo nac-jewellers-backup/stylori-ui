@@ -1,4 +1,10 @@
-import { makeStyles, Typography, Grid } from "@material-ui/core";
+import {
+  makeStyles,
+  Typography,
+  Grid,
+  createTheme,
+  ThemeProvider,
+} from "@material-ui/core";
 import React from "react";
 import { shopByCategory, aboutUs, customerService, contactUs } from "utils";
 import Input from "@material-ui/core/Input";
@@ -10,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
     margin: "0px auto",
     padding: "60px 60px",
+  },
+  container: {
+    display: "flex",
+    justifyContent: "space-around",
+    position: "relative", // To make payment mode image stick to this container
   },
   categoryContainer: {
     display: "flex",
@@ -33,10 +44,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 12,
     opacity: 0.9,
   },
-  middleItemCategoryContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
   paymentModeContainer: {
     position: "absolute",
     width: "fit-content",
@@ -53,13 +60,6 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     fontSize: "12px",
     opacity: 0.9,
-  },
-
-  //   New classes
-  container: {
-    display: "flex",
-    justifyContent: "space-around",
-    position: "relative", // To make payment mode image stick to this container
   },
 }));
 
@@ -112,10 +112,7 @@ function DesktopFooter() {
             ))}
           </div>
         </div>
-        <div>
-          <ContactEmail />
-          <div>{/* Icons Section */}</div>
-        </div>
+        <ContactStylori />
         <div className={classes.paymentModeContainer}>
           <img
             src={"https://assets.stylori.com/images/static/footer.png"}
@@ -123,75 +120,6 @@ function DesktopFooter() {
           />
         </div>
       </div>
-
-      {/* <Grid container spacing={2}>
-        <Grid item>
-          <div className={classes.categoryContainer}>
-            <Typography className={classes.categoryTitle}>
-              Shop By Categories
-            </Typography>
-            <div className={classes.categoryItemContainer}>
-              {shopByCategory.map((item) => (
-                <Typography className={classes.categoryItem}>
-                  {item.title}
-                </Typography>
-              ))}
-            </div>
-          </div>
-        </Grid>
-        <Grid item xs>
-          <div className={classes.middleItemCategoryContainer}>
-            <div className={classes.categoryContainer}>
-              <Typography className={classes.categoryTitle}>
-                About Us
-              </Typography>
-              <div className={classes.categoryItemContainer}>
-                {aboutUs.map((item) => (
-                  <Typography className={classes.categoryItem}>
-                    {item.title}
-                  </Typography>
-                ))}
-              </div>
-            </div>
-            <div className={classes.categoryContainer}>
-              <Typography className={classes.categoryTitle}>
-                Customer Service
-              </Typography>
-              <div className={classes.categoryItemContainer}>
-                {customerService.map((item) => (
-                  <Typography className={classes.categoryItem}>
-                    {item.title}
-                  </Typography>
-                ))}
-              </div>
-            </div>
-            <div className={classes.categoryContainer}>
-              <Typography className={classes.categoryTitle}>
-                Contact Us
-              </Typography>
-              <div className={classes.categoryItemContainer}>
-                {contactUs.map((item) => (
-                  <Typography className={classes.categoryItem}>
-                    {item.title}
-                  </Typography>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className={classes.paymentModeContainer}>
-            <img
-              src={"https://assets.stylori.com/images/static/footer.png"}
-              alt="Payment Modes"
-            />
-          </div>
-        </Grid>
-        <Grid item>
-          <div>
-            <ContactEmail />
-            <div></div>
-          </div>
-        </Grid>
-      </Grid> */}
       <Typography className={classes.copyright}>
         &#169;&nbsp;2021&nbsp;Stylori&nbsp;Silver
       </Typography>
@@ -201,21 +129,66 @@ function DesktopFooter() {
 
 export default DesktopFooter;
 
-const ContactEmail = () => {
+const useContactEmailStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  inputRoot: {
+    color: "white",
+  },
+  underline: {
+    "&:before": {
+      borderBottom: "2px solid rgba(255, 255, 255, 0.62)",
+    },
+    "&:hover:not($disabled):not($focused):not($error):before": {
+      borderBottom: "2px solid rgba(255, 255, 255, 0.72)",
+    },
+    "&:after": {
+      borderBottom: "3px solid rgba(255, 255, 255, 1)",
+    },
+  },
+  disabled: {},
+  focused: {},
+  error: {},
+}));
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#fff",
+    },
+  },
+});
+
+const ContactStylori = () => {
+  const classes = useContactEmailStyles();
   const [email, setEmail] = React.useState("");
   return (
-    <form>
-      <Input
-        id="contact-email"
-        type={"email"}
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        endAdornment={
-          <InputAdornment position="end">
-            <MailOutlineRoundedIcon />
-          </InputAdornment>
-        }
-      />
-    </form>
+    <div className={classes.root}>
+      <ThemeProvider theme={theme}>
+        <Input
+          id="contact-email"
+          type={"email"}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter Email"
+          endAdornment={
+            <InputAdornment position="end">
+              <MailOutlineRoundedIcon />
+            </InputAdornment>
+          }
+          className={classes.input}
+          classes={{
+            root: classes.inputRoot,
+            underline: classes.underline,
+            disabled: classes.disabled,
+            focused: classes.focused,
+            error: classes.error,
+          }}
+        />
+      </ThemeProvider>
+      <div></div>
+    </div>
   );
 };
