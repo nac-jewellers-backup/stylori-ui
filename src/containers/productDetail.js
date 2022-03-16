@@ -54,12 +54,13 @@ import HouseOfNac2x from "assets/houseOfNAC@2x.png";
 import HouseOfNac3x from "assets/houseOfNAC@3x.png";
 import { SilverButton } from "components/SilverComponents/SilverButton";
 import SliderWithHeading from "components/SilverComponents/SliderWithHeading";
-// import CollectionCard from "components/SilverComponents/CollectionCard";
+import CollectionCard from "components/SilverComponents/CollectionCard";
 import SilverFooter from "components/SilverComponents/SilverFooter";
 
 // V2 Desktop
 import { CustomSeparator } from "components/SilverComponents/v2";
 import NACSection from "components/HouseOfNac";
+import CollectionSlider from "components/SilverComponents/CollectionSlider";
 
 const styles = (theme) => ({
   font: {
@@ -171,13 +172,19 @@ const styles = (theme) => ({
   trademarks: {
     display: "flex",
     justifyContent: "center",
-    columnGap: "9%",
     marginTop: 60,
+    columnGap: 8,
+    [theme.breakpoints.up("sm")]: {
+      columnGap: "9%",
+    },
   },
 
   // Collection Card
   collectionCardContainer: {
     marginBottom: 50,
+    [theme.breakpoints.up("sm")]: {
+      margin: "0px 30px 50px 30px",
+    },
   },
 
   backToProducts: {
@@ -661,11 +668,22 @@ class ProductDetail extends Component {
             </div>
           </Wrapper>
 
-          <Grid item xs={12}>
+          {/* Collection Card section */}
+          <div className={classes.collectionCardContainer}>
+            <CollectionSlider
+              collections={jewelData?.fadeImages?.arrOfurls}
+            />
+          </div>
+
+            
+
+
+          {/* <Grid item xs={12}>
             <Footer silver={isSilver} />
-          </Grid>
+          </Grid> */}
         </Hidden>
 
+        {/* --------------------------------------------MOBILE UI BELOW---------------------------------------------------- */}
         <Hidden mdUp>
           <Header wishlist={this?.props?.wishlistdata} pdpage={true} />
 
@@ -820,11 +838,11 @@ class ProductDetail extends Component {
 
           {/* Collection Card section */}
 
-          {/* <div className={classes.collectionCardContainer}>
+          <div className={classes.collectionCardContainer}>
             <CollectionCard
               collection={jewelData?.fadeImages?.arrOfurls?.[1]}
             />
-          </div> */}
+          </div>
 
           {/* Footer Section */}
           <SilverFooter />

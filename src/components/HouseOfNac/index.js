@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "0",
     // paddingTop: "66.64%",
-    paddingTop: `clamp(calc(201 / 377 * 82%), calc(201 / 377 * 66%), calc(201 / 377 * 56%))` /* (img-height / img-width * container-width) */,
+    paddingTop: `clamp(calc(201 / 377 * 65%), calc(201 / 377 * 50%), calc(201 / 377 * 40%))` /* (img-height / img-width * container-width) */,
     backgroundPosition: "bottom",
   },
 

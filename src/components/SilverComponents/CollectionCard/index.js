@@ -24,15 +24,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CollectionCard({ collection, title, description, onClick }) {
+function CollectionCard({ image, title, description, onClick }) {
   const classes = useStyles();
   return (
     <div>
-      <img
-        src={collection}
-        alt={title}
-        style={{ width: "100vw", maxWidth: 400 }}
-      />
+      <img src={image} alt={title} style={{ width: "100vw", maxWidth: 350 }} />
 
       <Typography className={classNames(classes.text, classes.title)}>
         Mural Collection
