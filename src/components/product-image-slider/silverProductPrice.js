@@ -217,7 +217,7 @@ const Productprice = (
                     </Grid>
                   </Hidden>
                   <Hidden smDown>
-                    <div style={{ marginTop: 8 }}>
+                    <div>
                       {isSilver ? (
                         <div className={`pdp-title  ${classes.titleSilver}`}>
                           {val?.title ?? ""}

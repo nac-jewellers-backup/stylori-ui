@@ -1,0 +1,62 @@
+.lockSymbol {
+  background-image: url("https://assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 61px;
+  height: 30px;
+  background-position: -44px -8px;
+  background-repeat: no-repeat;
+}
+
+.netbank {
+  background-image: url("https://assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 72px;
+  height: 34px;
+  background-position: -362px -9px;
+  background-repeat: no-repeat;
+}
+
+.cashBack {
+  background-image: url("https://assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 85px;
+  height: 32px;
+  background-position: -451px -8px;
+  background-repeat: no-repeat;
+}
+
+.visacard {
+  background-image: url("https://assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 54px;
+  height: 32px;
+  background-position: -133px -8px;
+  background-repeat: no-repeat;
+}
+
+.mastercard {
+  background-image: url("https://assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 54px;
+  height: 32px;
+  background-position: -187px -8px;
+  background-repeat: no-repeat;
+}
+
+.americanexp {
+  background-image: url("https://assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 54px;
+  height: 32px;
+  background-position: -241px -8px;
+  background-repeat: no-repeat;
+}
+
+.dinerClubs {
+  background-image: url("https://assets.stylori.com/images/static/footer.png");
+  float: left;
+  width: 54px;
+  height: 32px;
+  background-position: -293px -8px;
+  background-repeat: no-repeat;
+}

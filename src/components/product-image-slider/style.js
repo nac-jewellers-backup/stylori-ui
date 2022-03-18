@@ -47,14 +47,15 @@ const styles = (theme) => ({
     justifyContent: "center",
   },
   titleSilver: {
+    fontFamily: `'Playfair Display', serif !important`,
     marginTop: "0 !important",
     marginBottom: "0 !important",
-    fontSize: "28px !important",
+    fontSize: "20px !important",
     lineHeight: "28px",
     color: `#606161 !important`,
   },
   skuIdSilver: {
-    marginTop: "14px !important",
+    marginTop: "12px !important",
     marginBottom: "0 !important",
     fontSize: "16px !important",
     lineHeight: "16px",

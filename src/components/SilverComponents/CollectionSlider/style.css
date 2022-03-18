@@ -1,0 +1,7 @@
+.collectionSlider .slick-slide {
+  margin: 0 12px 0px 0px;
+}
+
+.collectionSlider .slick-list {
+  margin: 0 -12px 0px 0px;
+}
