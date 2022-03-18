@@ -313,7 +313,7 @@ export const useStyles = makeStyles((theme) => ({
     zIndex: 1000,
     top: "4px !important",
     backgroundColor: "white",
-    color: theme.palette.secondary.main,
+    color: "#6D6E71 !important",
     "& span": {
       fontFamily: "Roboto",
       letterSpacing: "1px",
@@ -328,6 +328,7 @@ export const useStyles = makeStyles((theme) => ({
     "& li:hover": {
       backgroundColor: theme.palette.secondary.dark,
       color: "white",
+      cursor:"pointer"
     },
   },
   mouseOverPopoverfiltersselected: {

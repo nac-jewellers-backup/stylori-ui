@@ -143,7 +143,7 @@ class Header extends Component {
       window.scrollY > 0
     ) {
       if (document.getElementById("topNav")) {
-        document.getElementById("topNav").style.marginTop = "-69px";
+        document.getElementById("topNav").style.marginTop = "-29px";
       }
       if (document.getElementById("logoImage")) {
         if (this.props?.globalContext?.Globalctx?.pathName) {
@@ -235,7 +235,7 @@ class Header extends Component {
                       : "cartcardrelese"
                   }
                 >
-                  <Grid
+                  {/* <Grid
                     container
                     item
                     xs={12}
@@ -274,7 +274,7 @@ class Header extends Component {
                     ) : (
                       ""
                     )}
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Container>
               {window.location.pathname === "/cart" ||

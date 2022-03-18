@@ -31,6 +31,8 @@ import LocalMallIcon from "@material-ui/icons/LocalMall";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import PriceBuynow from "components/product-image-slider/buyNow"
+
 const dataCarousel = {
   dots: true,
   infinite: false,
@@ -144,6 +146,7 @@ const Productprice = (
     <div>
       {data.map((val) => (
         <>
+      
           <Grid
             container
             spacing={12}
@@ -260,6 +263,7 @@ const Productprice = (
                     withOffer={true}
                     globalContext={globalContext?.Globalctx}
                   />
+                    <PriceBuynow data={props?.data} isSilver={isSilver}/>
                 </Grid>
               </Hidden>
 
@@ -282,8 +286,8 @@ const Productprice = (
                       ) || !isSilver ? (
                         <Grid item xs={12}>
                           <div className="overall-box ">
-                            <PriceTabs data={props?.data} isSilver={isSilver} />
-                          </div>
+                            <PriceTabs data={props?.data} isSilver={isSilver} /> 
+                          </div>      
                         </Grid>
                       ) : null}
 
@@ -291,16 +295,21 @@ const Productprice = (
                         <Grid
                           item
                           xs={12}
-                          style={{ padding: "10px 0px 20px 0px" }}
+                          style={{ padding: "20px 0px 20px 0px",display:"flex"}}
                         >
-                          <Grid item xs={3} sm={4} md={4} lg={3}>
+                          <Grid item xs={3} sm={4} md={4} lg={5}>
+                          
                             <div onClick={isactive ? deletechecklists : ""}>
                               {isactive ? (
                                 <>
                                   {" "}
                                   <Buynowbutton
                                     sku={data[0].skuId}
-                                    class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart} ${classes.robotoBoldFont} ${classes.add_to_cart_text}`}
+                                    style={{   
+                                    borderColor:"#06A296",
+                                    color:"#06A296",
+                                    padding:5
+                                    }}
                                     button="buynow-btn-cont"
                                     id="silverButton"
                                     withoutBag={true}
@@ -311,22 +320,25 @@ const Productprice = (
                                         ? handleLocalStorage.bind(this)
                                         : ""
                                     }
-                                  />{" "}
+                                  />
+                                  
+                                  {" "}
                                 </>
                               ) : (
                                 ""
                               )}
                             </div>
                           </Grid>
-                        </Grid>
-                      )}
-                      <Grid container item xs={12}>
-                        <Grid item xs={3} sm={4} md={5} lg={4}>
+                          <Grid item xs={3} sm={4} md={5} lg={5} style={{marginLeft:10}}>
                           <div onClick={isactive ? deletechecklists : ""}>
                             <Buynowbutton
                               sku={data[0].skuId}
-                              class={`${classes.buynowButtonSilver} ${classes.buttonsilver} ${classes.robotoBoldFont}`}
-                              button="buynow-btn-cont"
+                              style={{    
+                                backgroundColor:"#06A296",
+                                color:"#fff",
+                                padding:5
+                              }}
+                              // button="buynow-btn-cont"
                               id="silverButton"
                               withoutBag={true}
                               productIsActive={isactive ?? ""}
@@ -335,8 +347,16 @@ const Productprice = (
                               }
                             />
                           </div>
+                           </Grid>
                         </Grid>
-                        <Grid
+                      )}
+                      <Grid container item xs={12}>
+                        <Typography
+                        style={{
+                          color:"#06A296"
+                        }}
+                        >Shipping Calculated at Checkout</Typography>
+                        {/* <Grid
                           container
                           item
                           xs={4}
@@ -420,7 +440,7 @@ const Productprice = (
                               </div>
                             </div>
                           </Grid>
-                        </Grid>
+                        </Grid> */}
                       </Grid>
                     </Grid>
                   </Grid>

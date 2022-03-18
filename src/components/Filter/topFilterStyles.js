@@ -203,10 +203,11 @@ export const styles = makeStyles((theme) => ({
   },
   filtersHeaderTop: {
     position: "sticky",
-    top: "68px",
+    top: "52px",
     zIndex: 15,
     background: "white",
     padding: "2px",
+    opacity:0.95
   },
   mobileNavIcon: {
     color: theme.palette.secondary.dark,

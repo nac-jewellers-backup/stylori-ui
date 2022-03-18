@@ -223,7 +223,6 @@ class Header extends Component {
                     <Badge
                       color="secondary"
                       badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"}
-                      color="secondary"
                       // wishlist_count
                       // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                     >

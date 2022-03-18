@@ -433,6 +433,7 @@ class ProductDetail extends Component {
             </Hidden>
           </>
 
+          <Header paymentSucces={true} />
           {/* Main Container for Product image and Details */}
           <div
             className="pricing-imgzom-media"
@@ -443,7 +444,7 @@ class ProductDetail extends Component {
             xl={10}
             style={{
               margin: "auto",
-              paddingTop: isSilver ? "30px" : "",
+              paddingTop: isSilver ? "20px" : "",
             }}
           >
             <Grid
@@ -470,6 +471,7 @@ class ProductDetail extends Component {
               {/* Product Detail section */}
               <Grid item xs={6}>
                 {/* Breadcrumbs */}
+
                 {isSilver && (
                   <CustomSeparator
                     list="pricing-loctn"
@@ -496,12 +498,8 @@ class ProductDetail extends Component {
                     />
                   </div>
                 )}
-                {!isSilver && (
-                  <div className="overall-box priceecontainer">
-                    <PriceTabs data={this?.props?.data} isSilver={isSilver} />
-                  </div>
-                )}
-                {isSilver ? (
+{/* 
+              {isSilver ? (
                   <div>
                     <PriceBuynow data={this?.props?.data} isSilver={isSilver} />
                   </div>
@@ -509,7 +507,14 @@ class ProductDetail extends Component {
                   <div className="overall-box priceecontainer">
                     <PriceBuynow data={this?.props?.data} isSilver={isSilver} />
                   </div>
+                )} */}
+
+                {!isSilver && (
+                  <div className="overall-box priceecontainer">
+                    <PriceTabs data={this?.props?.data} isSilver={isSilver} />
+                  </div>
                 )}
+               
                 {isSilver && (
                   <Grid
                     item

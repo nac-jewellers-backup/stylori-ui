@@ -13,7 +13,7 @@ import {
 import { useStyles } from "../styles";
 import PropTypes from "prop-types";
 
-import "./../header.css";
+// import "./../header.css";
 
 function HeaderHoverMenuItem(props) {
   const [activetab, setActivetab] = React.useState("earings");
@@ -155,14 +155,6 @@ function HeaderHoverMenuItem(props) {
                             : ""
                         );
                       }}
-                      className={`${
-                        props.checked[
-                          props.filtercheck &&
-                            props.filtercheck.replace(/\s/g, "")
-                        ][menuList]
-                          ? classes.mouseOverPopoverfiltersselected
-                          : ""
-                      } ${classes.mouseOverPopoverfilterslist}`}
                       className={`${
                         props.checked[
                           props.filtercheck &&

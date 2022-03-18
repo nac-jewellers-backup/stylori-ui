@@ -28,7 +28,6 @@ import FilterHeader from "./FilterHeader";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CardRadioButton from "../InputComponents/RadioButton/index";
-
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import styles from "./styles";
@@ -199,8 +198,7 @@ class Component extends React.Component {
 
     var paramsfilter;
 
-    const filters_checked = () => {
-      debugger
+    const filters_checked = () => { 
       const { checked } = this.state;
       if (window.location.pathname.split("/")[1] !== "jewellery") {
         function status(response) {
@@ -296,7 +294,7 @@ class Component extends React.Component {
                 chipData.push({ label: a[0], title: keys });
               }
             });
-            debugger
+           
             this.setState(chipData, selected, checked);
           })
           .catch(function (error) {});
@@ -403,7 +401,7 @@ class Component extends React.Component {
     TargetName,
     selectedfiltertop
   ) => {
-    debugger
+    
     let mystate = this.state;
     let { chipData } = this.state;
     // let { filterData } = this.state;
@@ -485,7 +483,6 @@ class Component extends React.Component {
   };
 
   handleDelete = (value) => {
-    debugger
     this.handlebye();
     let { chipData, checked } = this.state;
     Object.entries(checked).map((val) => {
