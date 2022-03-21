@@ -273,7 +273,8 @@ export default function Footer(props) {
     var element_input = document.getElementById("_input");
     element_input.classList.remove("error");
     element.classList.remove("error");
-    var emailvld = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var emailvld =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!document.getElementById("_input").value.length > 0) {
       element_input.classList.add("error");
       element.classList.add("error");
@@ -315,7 +316,10 @@ export default function Footer(props) {
       direction="row"
       justify="center"
       alignItems="center"
-      style={{ padding: "0" }}
+      style={{
+        padding: "0",
+        backgroundColor: silver ? "rgb(6, 171, 159)" : "",
+      }}
     >
       {silver ? (
         ""
@@ -677,13 +681,22 @@ export default function Footer(props) {
         </Hidden>
       )}
 
-      <Container style={{backgroundColor: silver ? "#06AB9F": "#fff",color: silver ? "#fff" :"#111"}}>
+      <Container
+        style={{
+          backgroundColor: silver ? "#06AB9F" : "#fff",
+          color: silver ? "#fff" : "#111",
+        }}
+      >
         <Hidden only={["sm", "xs"]}>
           <Grid
             container
             item
             className={`${classes.colorWhiteBackground}`}
-            style={{ padding: "15px 0px 15px 0px",backgroundColor: silver ? "#06AB9F": "#fff",color: silver ? "#fff" :"#111" }}
+            style={{
+              padding: "15px 0px 15px 0px",
+              backgroundColor: silver ? "#06AB9F" : "#fff",
+              color: silver ? "#fff" : "#111",
+            }}
           >
             <Grid
               container
@@ -695,12 +708,7 @@ export default function Footer(props) {
               sm={6}
               alignItems="center"
             >
-              <Grid
-                container
-                item
-                xs={12}
-                style={{fontSize: "13px", }}
-              >
+              <Grid container item xs={12} style={{ fontSize: "13px" }}>
                 <Grid item xs={3}>
                   {footerData1.map((data) => {
                     return (
@@ -708,7 +716,9 @@ export default function Footer(props) {
                         {localStorage.getItem("true") ? (
                           <Grid
                             container
-                            style={{color: silver ? "#fff" :"rgb(128, 128, 128)"}}
+                            style={{
+                              color: silver ? "#fff" : "rgb(128, 128, 128)",
+                            }}
                             className={classes.navTitle}
                             onClick={() => {
                               window.location.href = data.url;
@@ -720,7 +730,9 @@ export default function Footer(props) {
                         ) : (
                           <Grid
                             container
-                            style={{color: silver ? "#fff" :"rgb(128, 128, 128)"}}
+                            style={{
+                              color: silver ? "#fff" : "rgb(128, 128, 128)",
+                            }}
                             className={classes.navTitle}
                             onClick={() => {
                               window.location.href = data.url;
@@ -739,7 +751,9 @@ export default function Footer(props) {
                     return (
                       <Grid
                         container
-                        style={{color: silver ? "#fff" :"rgb(128, 128, 128)"}}
+                        style={{
+                          color: silver ? "#fff" : "rgb(128, 128, 128)",
+                        }}
                         className={classes.navTitle}
                         onClick={() => {
                           window.location.href = data.url;
@@ -756,7 +770,9 @@ export default function Footer(props) {
                     return (
                       <Grid
                         container
-                        style={{color: silver ? "#fff" :"rgb(128, 128, 128)"}}
+                        style={{
+                          color: silver ? "#fff" : "rgb(128, 128, 128)",
+                        }}
                         className={classes.navTitle}
                         onClick={() => {
                           window.location.href = data.url;
@@ -791,7 +807,7 @@ export default function Footer(props) {
                   padding: "0px 0px 0px 14px",
                   fontWeight: "600",
                   fontSize: "12px",
-                  color: silver ? "#fff" :"rgb(128, 128, 128)",
+                  color: silver ? "#fff" : "rgb(128, 128, 128)",
                   letterSpacing: "0.8px",
                 }}
               >
@@ -805,22 +821,40 @@ export default function Footer(props) {
                   }}
                 >
                   <i class="iTags fa">&#xf003;</i>
-                  <span className={classes.spanSizeColor} style={{ color: silver ? "#fff" :"rgb(128, 128, 128)",}}>
+                  <span
+                    className={classes.spanSizeColor}
+                    style={{ color: silver ? "#fff" : "rgb(128, 128, 128)" }}
+                  >
                     hello@stylori.com
                   </span>
                 </Grid>
                 <Grid class="contantf">
                   <i class="iTags fa">&#xf0e6;</i>
-                  <span className={classes.spanSizeColor} style={{ color: silver ? "#fff" :"rgb(128, 128, 128)",}}>chat</span>
+                  <span
+                    className={classes.spanSizeColor}
+                    style={{ color: silver ? "#fff" : "rgb(128, 128, 128)" }}
+                  >
+                    chat
+                  </span>
                 </Grid>
                 <Grid class="contantf">
                   {" "}
                   <i class="iTags fa">&#xf095;</i>
-                  <span className={classes.spanSizeColor} style={{ color: silver ? "#fff" :"rgb(128, 128, 128)",}}>1800 102 0330</span>
+                  <span
+                    className={classes.spanSizeColor}
+                    style={{ color: silver ? "#fff" : "rgb(128, 128, 128)" }}
+                  >
+                    1800 102 0330
+                  </span>
                 </Grid>
                 <Grid class="contantf">
                   <i class="iTags fa">&#xf232;</i>
-                  <span className={classes.spanSizeColor} style={{ color: silver ? "#fff" :"rgb(128, 128, 128)",}}>+91 99526 25252</span>
+                  <span
+                    className={classes.spanSizeColor}
+                    style={{ color: silver ? "#fff" : "rgb(128, 128, 128)" }}
+                  >
+                    +91 99526 25252
+                  </span>
                 </Grid>
               </Grid>
             </Grid>
@@ -869,7 +903,7 @@ export default function Footer(props) {
                 </div>
                 <div
                   style={{
-                    color: silver ? "#fff" :"rgb(128, 128, 128)",
+                    color: silver ? "#fff" : "rgb(128, 128, 128)",
                     fontSize: "11px",
                     justifyContent: "center",
                     display: "flex",
@@ -904,7 +938,7 @@ export default function Footer(props) {
       <Grid
         container
         style={{
-          backgroundColor: silver ? "#06AB9F": "rgb(167, 167, 170)",
+          backgroundColor: silver ? "#06AB9F" : "rgb(167, 167, 170)",
           display: "flex",
           justifyContent: "center",
           padding: "10px 15px",
@@ -954,13 +988,22 @@ export default function Footer(props) {
       </Grid>
 
       <Hidden only={["sm", "xs"]}>
-        <Grid container style={{ backgroundColor: silver ? "#06AB9F": "#fff",}} className={`${classes.colorWhiteBackground}`}>
+        <Grid
+          container
+          style={{ backgroundColor: silver ? "#06AB9F" : "#fff" }}
+          className={`${classes.colorWhiteBackground}`}
+        >
           <Container>
             <Grid item xs={12} style={{ padding: "15px 0px 15px 0px" }}>
               <Typography className={`${classes.colorBlue}`}>
                 POPULAR SEARCH TERMS:
               </Typography>
-              <Typography style={{ fontSize: "11px", color: silver ? "#fff" :"rgb(128, 128, 128)" }}>
+              <Typography
+                style={{
+                  fontSize: "11px",
+                  color: silver ? "#fff" : "rgb(128, 128, 128)",
+                }}
+              >
                 Silver Jewellery , Silver Ring, Women’s Rings, Silver Earrings,
                 Jhumkas, Studs, Drops, Pendants, Silver Pendants, Nose Pins,
                 Silver Nose Pins, Ear Cuff, Silver Bangles, Silver Bangles,
