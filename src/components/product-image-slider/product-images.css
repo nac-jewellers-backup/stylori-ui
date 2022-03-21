@@ -55,6 +55,24 @@ body {
     font-size: 20px !important;
 }
 
+.footer-above{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif !important;
+    color: #606161 !important;
+    font-size: 12px !important;
+}
+.desc-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif !important;
+    color: #606161 !important;
+    font-size: 12px !important;
+    text-align: center;
+}
+
 .accordian-item{
     border-bottom: 1px solid #06a296;
 }

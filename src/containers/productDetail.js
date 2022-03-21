@@ -55,6 +55,7 @@ import HouseOfNac3x from "assets/houseOfNAC@3x.png";
 import { SilverButton } from "components/SilverComponents/SilverButton";
 import SliderWithHeading from "components/SilverComponents/SliderWithHeading";
 import CollectionCard from "components/SilverComponents/CollectionCard";
+import FinalCard from "components/SilverComponents/finalCard";
 import SilverFooter from "components/SilverComponents/SilverFooter";
 
 // V2 Desktop
@@ -168,20 +169,20 @@ const styles = (theme) => ({
   },
   trademarks: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-around",
     marginTop: 60,
     columnGap: 8,
-    [theme.breakpoints.up("sm")]: {
-      columnGap: "9%",
+    [theme.breakpoints.down("sm")]: {
       justifyContent: "space-between",
+      marginTop: 130,
     },
   },
 
   // Collection Card
   collectionCardContainer: {
     marginBottom: 50,
-    display:"flex",
-     [theme.breakpoints.up("sm")]: {
+    display: "flex",
+    [theme.breakpoints.up("sm")]: {
       margin: "0px 30px 50px 30px",
     },
   },
@@ -191,9 +192,9 @@ const styles = (theme) => ({
     margin: "80px auto",
     [theme.breakpoints.down("sm")]: {
       width: 200,
-      display:"flex",
-      justifyContent:"center",
-      alignItems:"center"
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     },
   },
 
@@ -218,8 +219,8 @@ class ProductDetail extends Component {
     this.state = {
       clear: "",
       data: null,
-      isActive:false,
-      Index:""
+      isActive: false,
+      Index: "",
     };
   }
   componentDidMount() {
@@ -300,7 +301,6 @@ class ProductDetail extends Component {
       },
     ];
 
-    
     const clear_rating = (bool) => {
       if (bool === false) {
         this.setState({
@@ -337,24 +337,26 @@ class ProductDetail extends Component {
 
     const { classes } = this.props;
     const jewelData = this.props?.data?.[0];
-    var detail_data =[
+    var detail_data = [
       {
-        title:"Description",
-        data:<Typography className="no-data">No Data Found</Typography>
+        title: "Description",
+        data: <Typography className="no-data">No Data Found</Typography>,
       },
       {
-        title:"Product Details",
-        data: <ProductDetails
-        data={this?.props?.data}
-        isSilver={isSilver}
-        isActive={this.state.isActive}
-       />
+        title: "Product Details",
+        data: (
+          <ProductDetails
+            data={this?.props?.data}
+            isSilver={isSilver}
+            isActive={this.state.isActive}
+          />
+        ),
       },
       {
-        title:"Jewellery Care",
-        data:<Typography className="no-data">No Data Found</Typography>
-      }
-    ]
+        title: "Jewellery Care",
+        data: <Typography className="no-data">No Data Found</Typography>,
+      },
+    ];
     return (
       <div>
         <Helmet>
@@ -520,8 +522,8 @@ class ProductDetail extends Component {
                     />
                   </div>
                 )}
-                {/* 
-              {isSilver ? (
+
+                {/* {isSilver ? (
                   <div>
                     <PriceBuynow data={this?.props?.data} isSilver={isSilver} />
                   </div>
@@ -529,7 +531,7 @@ class ProductDetail extends Component {
                   <div className="overall-box priceecontainer">
                     <PriceBuynow data={this?.props?.data} isSilver={isSilver} />
                   </div>
-                )} */}
+                )}  */}
 
                 {!isSilver && (
                   <div className="overall-box priceecontainer">
@@ -538,38 +540,41 @@ class ProductDetail extends Component {
                 )}
 
                 {isSilver && (
-                <div className="">
-                  <div className="" >
-                    {detail_data.map((item,index) =>(
-                      <div className="accordian-item">
-                        <div
-                        className="accordion-title"
-                        onClick={() => this.setState({
-                          isActive:!this.state.isActive,
-                          Index:index
-                        })}
-                      >
-                        <div className="accordion-title2">{item.title}</div>
-                        <div style={{cursor:"pointer"}}>{this.state.isActive &&  this.state.Index === index ? '-' : '+'}</div>
-                      </div>
-                  {this.state.isActive &&  this.state.Index === index ?
-                   <div className="" style={{margin:10}}>
-                      {item.data}
-                      </div>
-                    :null  
-                    }
-
-                      </div>
-                    ))} 
+                  <div className="">
+                    <div className="">
+                      {detail_data.map((item, index) => (
+                        <div className="accordian-item">
+                          <div
+                            className="accordion-title"
+                            onClick={() =>
+                              this.setState({
+                                isActive: !this.state.isActive,
+                                Index: index,
+                              })
+                            }
+                          >
+                            <div className="accordion-title2">{item.title}</div>
+                            <div style={{ cursor: "pointer" }}>
+                              {this.state.isActive && this.state.Index === index
+                                ? "-"
+                                : "+"}
+                            </div>
+                          </div>
+                          {this.state.isActive && this.state.Index === index ? (
+                            <div className="" style={{ margin: 10 }}>
+                              {item.data}
+                            </div>
+                          ) : null}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
                 )}
-               {isSilver && 
-               <div className={classes.getInTouchButtonContainer}>
-                 <SilverButton variant="outlined">Get in Touch</SilverButton>
-               </div>
-               }
-              
+                {isSilver && (
+                  <div className={classes.getInTouchButtonContainer}>
+                    <SilverButton variant="outlined">Get in Touch</SilverButton>
+                  </div>
+                )}
               </Grid>
             </Grid>
           </div>
@@ -608,6 +613,7 @@ class ProductDetail extends Component {
               </Grid>
             </div>
           )}
+          {!isSilver &&   <Sublistcarousel data={this?.props?.data} isSilver={isSilver} />}
 
           {/* {isSilver ? (
             <div
@@ -679,12 +685,13 @@ class ProductDetail extends Component {
           )}
 
           {/* HouseOfNac */}
-          <div>
+          {isSilver &&  <div>
             <NACSection />
-          </div>
+          </div>}
+         
 
           {/* Trademarks Section */}
-          <Container maxWidth="md">
+          {isSilver &&  <Container maxWidth="md">
             <div className={classes.trademarks}>
               <Securepayments size={88} color="rgb(6, 171, 159)" />
               <Certified size={88} color="rgb(6, 171, 159)" />
@@ -692,47 +699,59 @@ class ProductDetail extends Component {
               <Hypoallergenic size={88} color="rgb(6, 171, 159)" />
               {/* <Fromthehouseofnac color="rgb(6, 171, 159)" /> */}
             </div>
-          </Container>
+          </Container>}
+         
 
           {/* SLider with Headings */}
-          <div className={classes.sliderWithHeadingContainer}>
-            <SliderWithHeading
-              heading="Recently Viewed"
-              products={jewelData?.fadeImages?.arrOfurls}
-            />
-          </div>
+          {isSilver && 
+             <div className={classes.sliderWithHeadingContainer}>
+             <SliderWithHeading
+               heading="Recently Viewed"
+               products={jewelData?.fadeImages?.arrOfurls}
+             />
+           </div>
+ 
+          }
 
+          {isSilver && 
           <div className={classes.sliderWithHeadingContainer}>
-            <SliderWithHeading
-              heading="You may also like"
-              products={jewelData?.fadeImages?.arrOfurls}
-            />
+          <SliderWithHeading
+            heading="You may also like"
+            products={jewelData?.fadeImages?.arrOfurls}
+          />
           </div>
-
-          <Wrapper>
-            <div className={classes.backToProducts}>
-              <SilverButton
-                variant="contained"
-                color="secondary"
-                style={{ padding: "8px 16px" }}
-              >
-                Back to Products
-              </SilverButton>
-            </div>
-          </Wrapper>
+          }
+       
+        {isSilver && 
+         <Wrapper>
+         <div className={classes.backToProducts}>
+           <SilverButton
+             variant="contained"
+             color="secondary"
+             style={{ padding: "8px 16px" }}
+           >
+             Back to Products
+           </SilverButton>
+         </div>
+       </Wrapper>
+        }
+         
 
           {/* Collection Card section */}
           <div className={classes.collectionCardContainer}>
-            {['BAROQUE WHITES','MURAL COLLECTIONS','STAR STRUCK'].map((items) =>(
-              <div>
-              <Card style={{height:250,width:400,margin:5}}>
-                <img src={jewelData?.fadeImages?.arrOfurls[1]}></img> 
-               </Card>
-               <Typography className="card-image">{items}</Typography>
-               </div>
-            ))}
-            
-            {/* <CollectionSlider collections={jewelData?.fadeImages?.arrOfurls} /> */}
+            {isSilver &&
+              <div style={{display:"flex"}}>
+                {["BAROQUE WHITES", "MURAL COLLECTIONS", "STAR STRUCK"].map(
+                  (items) => (
+                    <div>
+                      <Card style={{ height: 250, width: 400, margin: 5 }}>
+                        <img src={jewelData?.fadeImages?.arrOfurls[1]}></img>
+                      </Card>
+                      <Typography className="card-image">{items}</Typography>
+                    </div>
+                  )
+                )}
+              </div> }
           </div>
 
           <DesktopFooter />
@@ -747,80 +766,103 @@ class ProductDetail extends Component {
           <Header wishlist={this?.props?.wishlistdata} pdpage={true} />
 
           {/* Product Slider */}
-          <JewelSlider slides={jewelData?.fadeImages} />
+          {isSilver ? (
+            <JewelSlider slides={jewelData?.fadeImages} />
+          ) : (
+            <ProductPrice
+              data={this?.props?.data}
+              wishlist={this?.props?.wishlistdata}
+            />
+          )}
+
+          {!isSilver && (
+            <PriceTabs data={this?.props?.data} isSilver={isSilver} />
+          )}
 
           {/* Product Detail section */}
-          <Wrapper>
-            <Typography
-              color="textSecondary"
-              align="center"
-              className={classes.breadcrumbs}
-            >
-              Home / Collections / Earring Finish and Design
-            </Typography>
-
-            <Typography className={classNames(classes.font, classes.name)}>
-              Exquisite Kemp Peacock Silver Ear Stud
-            </Typography>
-
-            <Typography className={classes.tag}>SE5117-92570000</Typography>
-            <Typography className={classes.price}>₹ 4751</Typography>
-            <Typography className={classes.discountContainer}>
-              <span className={classes.actualPrice}>₹ 5939</span>
-              <span className={classes.discount}>&nbsp;(20% off)</span>
-            </Typography>
-            <Typography className={classes.tax}>Tax included</Typography>
-
-            <SilverButton variant="outlined" color="secondary">
-              Add to cart
-            </SilverButton>
-
-            <SilverButton
-              variant="contained"
-              color="secondary"
-              style={{ marginTop: 12 }}
-            >
-              Buy now
-            </SilverButton>
-
-            <Typography className={classes.tax}>
-              Shipping calculated at checkout.
-            </Typography>
-
-            <Typography className={classes.bestSellerText}>
-              Ouch! You have picked our best seller. We will be able to
-              manufacture same in 25-40 days time once the order is placed.
-            </Typography>
-
-            <JewelDetailAccordion title="Description">
-              <Typography className={classes.description}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
+          {isSilver ? (
+            <Wrapper>
+              <Typography
+                color="textSecondary"
+                align="center"
+                className={classes.breadcrumbs}
+              >
+                Home / Collections / Earring Finish and Design
               </Typography>
-            </JewelDetailAccordion>
-            <JewelDetailAccordion title="Product Details">
-             <ProductDetails
-               data={this?.props?.data}
-               isSilver={isSilver}
-               isActive={true}
+
+              <Typography className={classNames(classes.font, classes.name)}>
+                Exquisite Kemp Peacock Silver Ear Stud
+              </Typography>
+
+              <Typography className={classes.tag}>SE5117-92570000</Typography>
+              <Typography className={classes.price}>₹ 4751</Typography>
+              <Typography className={classes.discountContainer}>
+                <span className={classes.actualPrice}>₹ 5939</span>
+                <span className={classes.discount}>&nbsp;(20% off)</span>
+              </Typography>
+              <Typography className={classes.tax}>Tax included</Typography>
+
+              <SilverButton variant="outlined" color="secondary">
+                Add to cart
+              </SilverButton>
+
+              <SilverButton
+                variant="contained"
+                color="secondary"
+                style={{ marginTop: 12 }}
+              >
+                Buy now
+              </SilverButton>
+
+              <Typography className={classes.tax}>
+                Shipping calculated at checkout.
+              </Typography>
+
+              <Typography className={classes.bestSellerText}>
+                Ouch! You have picked our best seller. We will be able to
+                manufacture same in 25-40 days time once the order is placed.
+              </Typography>
+
+              <JewelDetailAccordion title="Description">
+                <Typography className={classes.description}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                  eget.
+                </Typography>
+              </JewelDetailAccordion>
+              <JewelDetailAccordion title="Product Details">
+                <ProductDetails
+                  data={this?.props?.data}
+                  isSilver={isSilver}
+                  isActive={true}
+                />
+              </JewelDetailAccordion>
+              <JewelDetailAccordion title="Jewellery Care">
+                <Typography>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+                  eget.
+                </Typography>
+              </JewelDetailAccordion>
+
+              <div className={classes.getInTouchButtonContainer}>
+                <SilverButton variant="outlined">Get in Touch</SilverButton>
+              </div>
+            </Wrapper>
+          ) : (
+            <div>
+              <ProductDetails
+                data={this?.props?.data}
+                isSilver={isSilver}
+                isActive={true}
               />
-            </JewelDetailAccordion>
-            <JewelDetailAccordion title="Jewellery Care">
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
-              </Typography>
-            </JewelDetailAccordion>
-
-            <div className={classes.getInTouchButtonContainer}>
-              <SilverButton variant="outlined">Get in Touch</SilverButton>
+              <PriceCertification data={this.props.data} />
+              <Request data={this?.props?.data} />
             </div>
-          </Wrapper>
+          )}
 
           {/* House of NAC Section */}
-          <div className={classes.houseOfNacContainer}>
+          {isSilver &&  <div className={classes.houseOfNacContainer}>
             <img
               srcset={`${HouseOfNac},
               ${HouseOfNac2x} 2x,
@@ -838,9 +880,10 @@ class ProductDetail extends Component {
               </Typography>
             </div>
           </div>
-
+}
+         
           {/* Trademarks Section */}
-          <Container maxWidth="sm">
+          {isSilver &&   <Container maxWidth="sm">
             <div className={classes.trademarks}>
               <Securepayments size={60} color="rgb(6, 171, 159)" />
               <Certified size={60} color="rgb(6, 171, 159)" />
@@ -848,34 +891,53 @@ class ProductDetail extends Component {
               <Hypoallergenic size={60} color="rgb(6, 171, 159)" />
               {/* <Fromthehouseofnac color="rgb(6, 171, 159)" /> */}
             </div>
-          </Container>
+          </Container>}
+        
+
+          {!isSilver &&   <Sublistcarousel data={this?.props?.data} isSilver={isSilver} />}
 
           {/* SLider with Headings */}
+          {isSilver && 
+           <div className={classes.sliderWithHeadingContainer}>
+           <SliderWithHeading
+             heading="Recently Viewed"
+             products={jewelData?.fadeImages?.arrOfurls}
+           />
+         </div>
+          }
+         
+         {isSilver && 
           <div className={classes.sliderWithHeadingContainer}>
-            <SliderWithHeading
-              heading="Recently Viewed"
-              products={jewelData?.fadeImages?.arrOfurls}
-            />
-          </div>
-
-          <div className={classes.sliderWithHeadingContainer}>
-            <SliderWithHeading
-              heading="You may also like"
-              products={jewelData?.fadeImages?.arrOfurls}
-            />
-          </div>
-
-          <div className={classes.backToProducts}>
-            <SilverButton variant="contained" color="secondary">
-              Back to Products
-            </SilverButton>
-          </div>
+          <SliderWithHeading
+            heading="You may also like"
+            products={jewelData?.fadeImages?.arrOfurls}
+          />
+        </div>
+         }
+         
+          {isSilver && 
+           <div className={classes.backToProducts}>
+           <SilverButton variant="contained" color="secondary">
+             Back to Products
+           </SilverButton>
+           </div>
+          }
+         
+         {!isSilver && 
+          <RatingForm
+          data={this?.props?.data}
+          clear_rating={this?.state?.clear}
+          clear_rating_onchange={clear_rating}
+          isSilver={isSilver}
+          />
+         }
 
           {/* Collection Card section */}
 
+          {isSilver &&
+            <FinalCard slides={jewelData?.fadeImages?.arrOfurls} />
+          }
           
-            <CollectionCard slides={jewelData?.fadeImages?.arrOfurls} />
-         
 
           {/* Footer Section */}
           <SilverFooter />
