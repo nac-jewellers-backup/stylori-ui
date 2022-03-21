@@ -73,7 +73,7 @@ class ProductDetails extends React.Component {
   };
 
   productsDetails = (data) => {
-    const { classes, isSilver } = this.props;
+    const { classes, isSilver} = this.props;
     // debugger
 
     const _mapper =
@@ -122,9 +122,13 @@ class ProductDetails extends React.Component {
                             style={{ marginBottom: 4 }}
                           >
                             {" "}
-                            <span className={_isSilver && "pd_details"}>
-                              {valueofproductdetail?.header}
-                            </span>
+                            {this?.props?.isActive ? 
+                             ""
+                           :  <span className={_isSilver && "pd_details"}>
+                           {valueofproductdetail?.header}
+                         </span>
+                            }
+                            
                           </div>
                          
                         </>
@@ -171,9 +175,10 @@ class ProductDetails extends React.Component {
                                           valueofproductdetail.header,
                                           res?.details
                                         ) ? (
-                                        <Grid container item xs={12}>
+                                        <Grid container xs={12} spacing={1}>
                                           <Grid
-                                            xs={4}
+                                            item
+                                            xs={8}
                                             lg={4}
                                             className={`${classes.margindek} ${classes.pds}`}
                                           >
@@ -188,7 +193,8 @@ class ProductDetails extends React.Component {
                                             >
                                               <span
                                                 style={{
-                                                  fontSize: "12px",
+                                                  fontSize: "16px",
+                                                  fontWeight:700
                                                 }}
                                               >
                                                 {_isSilver ? (
@@ -207,9 +213,9 @@ class ProductDetails extends React.Component {
                                             </ListItemText>
                                           </Grid>
                                           <Grid
-                                            container
                                             item
-                                            xs={8}
+                                            xs={4}
+                                            lg={7}
                                             style={{ alignItems: "center" }}
                                           >
                                             {
@@ -331,7 +337,7 @@ class ProductDetails extends React.Component {
                                                       : ""
                                                   }`}
                                                 >
-                                                  {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
+                                                   {/* data[0].productsDetails[3].namedetail[1].length > 0  */}
                                                   {
                                                     <span
                                                       style={{
@@ -811,12 +817,16 @@ class ProductDetails extends React.Component {
     });
   };
   render() {
-    const { data } = this.props;
+    const { data,isSilver } = this.props;
     return (
       <div>
         <Hidden smDown>{this.productsDetails(data)}</Hidden>
-
+        {isSilver ? 
+        <Hidden mdUp>{this.productsDetails(data)}</Hidden>
+        :
         <Hidden mdUp>{this.mobileproductsDetails()}</Hidden>
+        }
+        
       </div>
     );
   }

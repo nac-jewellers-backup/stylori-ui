@@ -29,6 +29,42 @@ body {
     /* padding: 0 10px !important; */
 }
 
+.accordion-title {
+    display: flex;
+    justify-content: space-between;
+    margin:10px;
+    color:#06a296;
+    font-size: 20px;
+}
+
+.accordion-title2{
+    color: #606161 !important;
+    font-size: 20px !important;
+    margin-top: 0 !important;
+    font-family: 'Playfair Display', serif !important;
+    line-height: 28px;
+    margin-bottom: 0 !important;
+}
+
+.card-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif !important;
+    color: #606161 !important;
+    font-size: 20px !important;
+}
+
+.accordian-item{
+    border-bottom: 1px solid #06a296;
+}
+.no-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
 .containbev {
     box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
     padding: 5px 8px 5px 8px;

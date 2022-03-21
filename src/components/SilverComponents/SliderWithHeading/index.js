@@ -51,9 +51,10 @@ const useStyles = makeStyles((theme) => ({
   },
   imageContainer: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "row",  
     "& img": {
-      width: "100%",
+      height:200,
+      width:"auto",
     },
     "& p": {
       textAlign: "center",
@@ -84,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-
+   
     display: "flex",
     justifyContent: "space-between",
 
@@ -95,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
   },
   sliderArrow: {
     pointerEvents: "all",
+    color:"#fff",
   },
 }));
 
@@ -108,10 +110,12 @@ const SliderWithHeading = (props) => {
 
   var settings = {
     dots: false,
-    infinite: false,
-    //   slidesToShow: 1,
-    slidesToScroll: 1,
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 2,
     adaptiveHeight: true,
+    centerMode: true,
+    centerPadding: "60px",
     // lazyLoad: "progressive",
     swipeToSlide: true,
     arrows: false,
@@ -152,9 +156,9 @@ const SliderWithHeading = (props) => {
           {tempProducts.map((product) => (
             <div
               className={classes.imageContainer}
-              style={{
-                width: aboveSm ? 320 : 150,
-              }}
+              // style={{
+              //   width: aboveSm ? 320 : 'auto',
+              // }}
             >
               <img
                 src={product}
@@ -173,14 +177,14 @@ const SliderWithHeading = (props) => {
               onClick={handlePrevClick}
               disabled={currentIndex === 0}
             >
-              <ChevronLeftIcon />
+              <ChevronLeftIcon style={{color:"#fff"}}/>
             </IconButton>
             <IconButton
               className={classes.sliderArrow}
               onClick={handleNextClick}
               disabled={currentIndex === tempProducts.length - 1}
             >
-              <ChevronRightIcon />
+              <ChevronRightIcon style={{color:"#fff"}}/>
             </IconButton>
           </div>
         )}

@@ -297,59 +297,98 @@ const Productprice = (
                           xs={12}
                           style={{ padding: "20px 0px 20px 0px",display:"flex"}}
                         >
-                          <Grid item xs={3} sm={4} md={4} lg={5}>
+                          {isactive ?
+                           <Grid item xs={3} sm={4} md={4} lg={6}>
                           
+                           <div onClick={isactive ? deletechecklists : ""}>
+                             {isactive ? (
+                               <>
+                                 {" "}
+                                 <Buynowbutton
+                                   sku={data[0].skuId}
+                                   style={{   
+                                   borderColor:"#06A296",
+                                   color:"#06A296",
+                                   padding:5
+                                   }}
+                                   button="buynow-btn-cont"
+                                   id="silverButton"
+                                   withoutBag={true}
+                                   addtoCartToBuyNow={true}
+                                   productIsActive={isactive ?? ""}
+                                   onClick={
+                                     isactive
+                                       ? handleLocalStorage.bind(this)
+                                       : ""
+                                   }
+                                 />
+                                 
+                                 {" "}
+                               </>
+                             ) : (
+                               ""
+                             )}
+                           </div>
+                            </Grid>
+                         :  <Grid item xs={3} sm={4} md={4} lg={12}>    
                             <div onClick={isactive ? deletechecklists : ""}>
-                              {isactive ? (
-                                <>
-                                  {" "}
-                                  <Buynowbutton
-                                    sku={data[0].skuId}
-                                    style={{   
-                                    borderColor:"#06A296",
-                                    color:"#06A296",
-                                    padding:5
-                                    }}
-                                    button="buynow-btn-cont"
-                                    id="silverButton"
-                                    withoutBag={true}
-                                    addtoCartToBuyNow={true}
-                                    productIsActive={isactive ?? ""}
-                                    onClick={
-                                      isactive
-                                        ? handleLocalStorage.bind(this)
-                                        : ""
-                                    }
-                                  />
-                                  
-                                  {" "}
-                                </>
-                              ) : (
-                                ""
-                              )}
+                           {isactive ? (
+                             <>
+                               {" "}
+                               <Buynowbutton
+                                 sku={data[0].skuId}
+                                 style={{   
+                                 borderColor:"#06A296",
+                                 color:"#06A296",
+                                 padding:5
+                                 }}
+                                 button="buynow-btn-cont"
+                                 id="silverButton"
+                                 withoutBag={true}
+                                 addtoCartToBuyNow={true}
+                                 productIsActive={isactive ?? ""}
+                                 onClick={
+                                   isactive
+                                     ? handleLocalStorage.bind(this)
+                                     : ""
+                                 }
+                               />
+                               
+                               {" "}
+                             </>
+                           ) : (
+                             ""
+                           )}
                             </div>
                           </Grid>
-                          <Grid item xs={3} sm={4} md={5} lg={5} style={{marginLeft:10}}>
-                          <div onClick={isactive ? deletechecklists : ""}>
-                            <Buynowbutton
-                              sku={data[0].skuId}
-                              style={{    
-                                backgroundColor:"#06A296",
-                                color:"#fff",
-                                padding:5
-                              }}
-                              // button="buynow-btn-cont"
-                              id="silverButton"
-                              withoutBag={true}
-                              productIsActive={isactive ?? ""}
-                              onClick={
-                                isactive ? handleLocalStorage.bind(this) : ""
-                              }
-                            />
-                          </div>
-                           </Grid>
+                           }
+                          {isactive ? 
+                           <Grid item xs={3} sm={4} md={5} lg={6} style={{marginLeft:10}}>
+                           <div onClick={isactive ? deletechecklists : ""}>
+                             <Buynowbutton
+                               sku={data[0].skuId}
+                               style={{    
+                                 backgroundColor:"#06A296",
+                                 color:"#fff",
+                                 padding:5
+                               }}
+                               // button="buynow-btn-cont"
+                               id="silverButton"
+                               withoutBag={true}
+                               productIsActive={isactive ?? ""}
+                               onClick={
+                                 isactive ? handleLocalStorage.bind(this) : ""
+                               }
+                             />
+                           </div>
+                            </Grid>
+                            : null
+                          }
+                         
                         </Grid>
                       )}
+
+
                       <Grid container item xs={12}>
                         <Typography
                         style={{

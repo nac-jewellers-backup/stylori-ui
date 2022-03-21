@@ -74,7 +74,7 @@ export default function JewelDetailAccordion({ title, children, ...props }) {
       >
         <Typography>{title}</Typography>
       </AccordionSummary>
-      <AccordionDetails>{children}</AccordionDetails>
+      <AccordionDetails style={{display:"block"}}>{children}</AccordionDetails>
     </Accordion>
   );
 }

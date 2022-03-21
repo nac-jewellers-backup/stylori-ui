@@ -1,4 +1,4 @@
-import { Hidden, Grid, Container, withStyles } from "@material-ui/core";
+import { Hidden, Grid, Container, withStyles, Card } from "@material-ui/core";
 import React, { Component } from "react";
 import Header from "components/SilverComponents/Header";
 // import CustomSeparator from "components/BreadCrumb/index";
@@ -180,7 +180,8 @@ const styles = (theme) => ({
   // Collection Card
   collectionCardContainer: {
     marginBottom: 50,
-    [theme.breakpoints.up("sm")]: {
+    display:"flex",
+     [theme.breakpoints.up("sm")]: {
       margin: "0px 30px 50px 30px",
     },
   },
@@ -188,9 +189,11 @@ const styles = (theme) => ({
   backToProducts: {
     width: 320,
     margin: "80px auto",
-    [theme.breakpoints.up("sm")]: {
-      width: 280,
-      margin: "40px auto",
+    [theme.breakpoints.down("sm")]: {
+      width: 200,
+      display:"flex",
+      justifyContent:"center",
+      alignItems:"center"
     },
   },
 
@@ -215,6 +218,8 @@ class ProductDetail extends Component {
     this.state = {
       clear: "",
       data: null,
+      isActive:false,
+      Index:""
     };
   }
   componentDidMount() {
@@ -294,6 +299,8 @@ class ProductDetail extends Component {
           this?.props?.data[0]?.title,
       },
     ];
+
+    
     const clear_rating = (bool) => {
       if (bool === false) {
         this.setState({
@@ -328,11 +335,26 @@ class ProductDetail extends Component {
       ),
     };
 
-    console.log(this?.props);
-
     const { classes } = this.props;
     const jewelData = this.props?.data?.[0];
-
+    var detail_data =[
+      {
+        title:"Description",
+        data:<Typography className="no-data">No Data Found</Typography>
+      },
+      {
+        title:"Product Details",
+        data: <ProductDetails
+        data={this?.props?.data}
+        isSilver={isSilver}
+        isActive={this.state.isActive}
+       />
+      },
+      {
+        title:"Jewellery Care",
+        data:<Typography className="no-data">No Data Found</Typography>
+      }
+    ]
     return (
       <div>
         <Helmet>
@@ -498,7 +520,7 @@ class ProductDetail extends Component {
                     />
                   </div>
                 )}
-{/* 
+                {/* 
               {isSilver ? (
                   <div>
                     <PriceBuynow data={this?.props?.data} isSilver={isSilver} />
@@ -514,19 +536,40 @@ class ProductDetail extends Component {
                     <PriceTabs data={this?.props?.data} isSilver={isSilver} />
                   </div>
                 )}
-               
+
                 {isSilver && (
-                  <Grid
-                    item
-                    xs={12}
-                    style={{ marginBottom: "10px", marginTop: "10px" }}
-                  >
-                    <ProductDetails
-                      data={this?.props?.data}
-                      isSilver={isSilver}
-                    />
-                  </Grid>
+                <div className="">
+                  <div className="" >
+                    {detail_data.map((item,index) =>(
+                      <div className="accordian-item">
+                        <div
+                        className="accordion-title"
+                        onClick={() => this.setState({
+                          isActive:!this.state.isActive,
+                          Index:index
+                        })}
+                      >
+                        <div className="accordion-title2">{item.title}</div>
+                        <div style={{cursor:"pointer"}}>{this.state.isActive &&  this.state.Index === index ? '-' : '+'}</div>
+                      </div>
+                  {this.state.isActive &&  this.state.Index === index ?
+                   <div className="" style={{margin:10}}>
+                      {item.data}
+                      </div>
+                    :null  
+                    }
+
+                      </div>
+                    ))} 
+                  </div>
+                </div>
                 )}
+               {isSilver && 
+               <div className={classes.getInTouchButtonContainer}>
+                 <SilverButton variant="outlined">Get in Touch</SilverButton>
+               </div>
+               }
+              
               </Grid>
             </Grid>
           </div>
@@ -680,7 +723,16 @@ class ProductDetail extends Component {
 
           {/* Collection Card section */}
           <div className={classes.collectionCardContainer}>
-            <CollectionSlider collections={jewelData?.fadeImages?.arrOfurls} />
+            {['BAROQUE WHITES','MURAL COLLECTIONS','STAR STRUCK'].map((items) =>(
+              <div>
+              <Card style={{height:250,width:400,margin:5}}>
+                <img src={jewelData?.fadeImages?.arrOfurls[1]}></img> 
+               </Card>
+               <Typography className="card-image">{items}</Typography>
+               </div>
+            ))}
+            
+            {/* <CollectionSlider collections={jewelData?.fadeImages?.arrOfurls} /> */}
           </div>
 
           <DesktopFooter />
@@ -748,42 +800,11 @@ class ProductDetail extends Component {
               </Typography>
             </JewelDetailAccordion>
             <JewelDetailAccordion title="Product Details">
-              <div>
-                <div className={classes.productDimensions}>
-                  <Typography>
-                    <span>Height:</span>&nbsp;&nbsp;&nbsp;45mm
-                  </Typography>
-                  <Typography>
-                    <span>Width:</span>&nbsp;&nbsp;&nbsp;25mm
-                  </Typography>
-                </div>
-
-                <Grid container>
-                  <Grid container item xs={12}>
-                    <Grid item xs={8}>
-                      <Typography>Metal Type/Finish</Typography>
-                    </Grid>
-                    <Grid item xs={4}>
-                      92.5 Oxidised Silver
-                    </Grid>
-                  </Grid>
-
-                  <Grid container item xs={12}>
-                    <Grid item xs={8}>
-                      <Typography>Approx Metal Weight (in gm)</Typography>
-                    </Grid>
-                    <Grid item xs={4}>
-                      20.97
-                    </Grid>
-                  </Grid>
-                </Grid>
-
-                <Typography className={classes.description}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                  eget.
-                </Typography>
-              </div>
+             <ProductDetails
+               data={this?.props?.data}
+               isSilver={isSilver}
+               isActive={true}
+              />
             </JewelDetailAccordion>
             <JewelDetailAccordion title="Jewellery Care">
               <Typography>
@@ -808,14 +829,14 @@ class ProductDetail extends Component {
               alt="House of NAC"
             />
 
-            {/* <div className={classes.nacDescription}>
+            <div className={classes.nacDescription}>
               <Typography id="title">From the House of Nac</Typography>
               <Typography id="desc">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
                 eget.
               </Typography>
-            </div> */}
+            </div>
           </div>
 
           {/* Trademarks Section */}
@@ -852,9 +873,9 @@ class ProductDetail extends Component {
 
           {/* Collection Card section */}
 
-          <div className={classes.collectionCardContainer}>
-            <CollectionCard image={jewelData?.fadeImages?.arrOfurls?.[1]} />
-          </div>
+          
+            <CollectionCard slides={jewelData?.fadeImages?.arrOfurls} />
+         
 
           {/* Footer Section */}
           <SilverFooter />
