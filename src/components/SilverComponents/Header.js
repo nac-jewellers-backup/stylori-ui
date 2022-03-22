@@ -603,7 +603,7 @@ class Header extends Component {
         </Modal>
         <Hidden mdUp>
           <Grid>
-            <Grid style={{ position: "fixed", zIndex: "1300" }}>
+            <Grid style={{ position: "fixed", zIndex: "1300",display:"flex",alignItems:"center" }}>
               <div className="header-appbar-sticky1">
                 <AppBar className="header-appbar-moblie1" id="smallScreen">
                   <Toolbar className={"toolbarsetting"}>

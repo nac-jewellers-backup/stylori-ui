@@ -11,6 +11,16 @@ import {
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import "./breadcrumb.css";
 
+const useStyles= makeStyles((theme)=>({
+  crumbs:{
+    '& .MuiBreadcrumbs-ol':{
+       display:"flex",
+       justifyContent:"center"
+    }
+  }
+  
+}))
+
 export default function CustomSeparator(props) {
   var a = window.location.pathname;
   var b = a.split("/");
@@ -29,6 +39,7 @@ export default function CustomSeparator(props) {
     );
 
   const tabs = localStorage.getItem("panel");
+  const classes = useStyles()
 
   const handleUrl = (data) => {
     let dataurl = data.toLowerCase();
@@ -67,7 +78,6 @@ export default function CustomSeparator(props) {
       return;
     }
   };
-
   const activetabs = (data) => {
     if (path === "/checkout" || path === "/cart") {
       if (path === "/checkout") {
@@ -130,11 +140,11 @@ export default function CustomSeparator(props) {
                     ))}
                   </ol>
                 ) : (
-                  <Breadcrumbs separator={seperators}>
+                  <Breadcrumbs separator={seperators} className={classes.crumbs} >
                     {props.data.map((data) => (
                       <div
-                        style={{ cursor: "pointer" }}
-                        onClick={() => handleUrl(data.title)}
+                        // style={{ cursor: "pointer" }}
+                        // onClick={() => handleUrl(data.title)}
                       >
                         <li
                           className={
