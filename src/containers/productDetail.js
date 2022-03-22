@@ -539,6 +539,12 @@ class ProductDetail extends Component {
                   </div>
                 )}
 
+                {!isSilver && 
+                <div className="overall-box priceecontainer">
+                    <PriceBuynow data={this?.props?.data} isSilver={isSilver} />
+                 </div>
+                }
+
                 {isSilver && (
                   <div className="">
                     <div className="">
@@ -754,7 +760,9 @@ class ProductDetail extends Component {
               </div> }
           </div>
 
-          <DesktopFooter />
+          {isSilver ? 
+               <DesktopFooter /> : <Footer silver={isSilver}/>}
+     
 
           {/* <Grid item xs={12}>
             <Footer silver={isSilver} />
@@ -769,15 +777,20 @@ class ProductDetail extends Component {
           {isSilver ? (
             <JewelSlider slides={jewelData?.fadeImages} />
           ) : (
-            <ProductPrice
-              data={this?.props?.data}
-              wishlist={this?.props?.wishlistdata}
-            />
+            // <ProductPrice
+            //   data={this?.props?.data}
+            //   wishlist={this?.props?.wishlistdata}
+            // />
+            <PriceBuynow
+            data={this?.props?.data}
+            wishlist={this?.props?.wishlistdata}
+            isSilver={isSilver}
+          />
           )}
 
-          {!isSilver && (
+          {/* {!isSilver && (
             <PriceTabs data={this?.props?.data} isSilver={isSilver} />
-          )}
+          )} */}
 
           {/* Product Detail section */}
           {isSilver ? (
@@ -940,7 +953,10 @@ class ProductDetail extends Component {
           
 
           {/* Footer Section */}
-          <SilverFooter />
+          {isSilver ? 
+          <SilverFooter /> : <Footer silver={isSilver}/>
+          }
+          
 
           {/* <Grid item xs={12}>
             <PriceBuynow
