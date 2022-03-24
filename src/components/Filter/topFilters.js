@@ -7,7 +7,6 @@ import { useDummyRequest } from "../../hooks";
 import { styles } from "./topFilterStyles";
 import MorefiltersOpen from "./moreFilters";
 import { FilterOptionsContext } from "context";
-
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
@@ -208,13 +207,6 @@ export const TopFilters = (props) => {
                   >
                     <Grid item xs={6}>
                       More
-                    </Grid>
-                    <Grid
-                      item
-                      xs={6}
-                      style={{ display: "flex", justifyContent: "flex-end" }}
-                    >
-                      <AddBoxIcon color="primary" />
                     </Grid>
                   </Grid>
                 </Grid>
