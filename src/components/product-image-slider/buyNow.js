@@ -600,8 +600,29 @@ class Component extends React.Component {
                 this.handleLocalStorage
               )}
         </Hidden>
-
-        <Hidden mdUp>
+        {this?.props?.isRequired ? 
+          <Hidden mdUp>
+          {isSilver
+            ? BuydetailsSilverdetailpage(
+                this.props,
+                this.state,
+                this.handleChanges,
+                this.handleCodChange,
+                this.canceldeletechecklist,
+                this.deletechecklists,
+                this.handleLocalStorage
+              )
+            : Buydetails(
+                this.props,
+                this.state,
+                this.handleChanges,
+                this.handleCodChange,
+                this.canceldeletechecklist,
+                this.deletechecklists,
+                this.handleLocalStorage
+              )}
+           </Hidden>:
+          <Hidden mdUp>
           <div style={{ marginTop: "10px" }}>
             {isSilver ? (
               <SilverProductPrice
@@ -654,7 +675,9 @@ class Component extends React.Component {
               productIsActive={isactive ?? ""}
             />
           </div>
-        </Hidden>
+           </Hidden>
+         }
+      
       </div>
     );
   }

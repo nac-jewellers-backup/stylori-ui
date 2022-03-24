@@ -1,10 +1,8 @@
 import React from "react";
-import { Card, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { SilverButton } from "../SilverButton";
 import { makeStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
-import Slider from "react-slick";
-import "components/product-image-slider/product-images.css";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -27,39 +25,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-function CollectionCard({ slides, title, description, onClick }) {
+function CollectionCard({ image, title, description, onClick }) {
   const classes = useStyles();
+  return (
+    <div>
+      <img src={image} alt={title} style={{ width: "100vw", maxWidth: 350 }} />
 
-    const settings = {
-      //   className: "center",
-      infinite: false,
-      //   centerPadding: "60px",
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      swipeToSlide: true,
-      dots: false,
-      arrows: true,
-      swipeToSlide: true,
-    };
-    return (
-      <div>
-        <Slider {...settings}>
-          {slides.map((slide) => (
-            <div>
-               <img
-              src={slide}
-              alt={"Product Image"}
-              onError={() => {}}
-              style={{ width: "100vw" }}
-            />
-            <Typography className="card-image">MURAL COLLECTIONS</Typography>
-            </div>
-           
-          ))}
-        </Slider>
+      <Typography className={classNames(classes.text, classes.title)}>
+        Mural Collection
+      </Typography>
+      <Typography className={classNames(classes.text, classes.description)}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+        malesuada lacus ex, sit amet blandit leo lobortis eget.
+      </Typography>
+
+      <div className={classes.buttonContainer}>
+        <SilverButton variant="outlined" size="dense" weight="semi-bold">
+          Shop Now
+        </SilverButton>
       </div>
-    );
+    </div>
+  );
 }
 
 export default CollectionCard;

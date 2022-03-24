@@ -191,7 +191,6 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                     >
                       <div
                         className="row social-shares"
-                        className={classes.icon}
                       >
                         <i
                           class="fa fa-share-alt overall-icons"

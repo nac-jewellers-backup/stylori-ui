@@ -54,12 +54,27 @@ const styles = (theme) => ({
     lineHeight: "28px",
     color: `#606161 !important`,
   },
+  titleSilverMobile:{
+    fontFamily: `'Playfair Display', serif !important`,
+    marginTop: "0 !important",
+    marginBottom: "0 !important",
+    fontSize: "16px !important",
+    lineHeight: "28px",
+    color: `#606161 !important`,
+  },
   skuIdSilver: {
     marginTop: "12px !important",
     marginBottom: "0 !important",
     fontSize: "16px !important",
     lineHeight: "16px",
     color: `#606161 !important`,
+  },
+  skuIdSilverMobile:{
+    marginBottom: "0 !important",
+    fontSize: "12px !important",
+    lineHeight: "16px",
+    color: `#606161 !important`,
+    textAlign:"center"
   },
   dis: {
     color: theme.palette.text.secondary,

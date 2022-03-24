@@ -178,7 +178,7 @@ class ProductDetails extends React.Component {
                                         <Grid container xs={12} spacing={1}>
                                           <Grid
                                             item
-                                            xs={8}
+                                            xs={6}
                                             lg={4}
                                             className={`${classes.margindek} ${classes.pds}`}
                                           >
@@ -214,7 +214,7 @@ class ProductDetails extends React.Component {
                                           </Grid>
                                           <Grid
                                             item
-                                            xs={4}
+                                            xs={6}
                                             lg={7}
                                             style={{ alignItems: "center" }}
                                           >

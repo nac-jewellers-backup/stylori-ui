@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./style.css";
+import { useLocation,useHistory } from "react-router-dom";
 import {
   makeStyles,
   Typography,
@@ -53,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",  
     "& img": {
-      height:200,
+      height:220,
       width:"auto",
     },
     "& p": {
@@ -77,6 +78,8 @@ const useStyles = makeStyles((theme) => ({
   },
   sliderContainer: {
     position: "relative",
+    height:"100%",
+    width:"100%"
   },
   arrowContainer: {
     width: "100%",
@@ -104,6 +107,8 @@ const SliderWithHeading = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const aboveSm = useMediaQuery(theme.breakpoints.up("sm"));
+  const location = useLocation();
+  const history = useHistory();
 
   const [sliderInstance, setSliderInstance] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
@@ -113,7 +118,7 @@ const SliderWithHeading = (props) => {
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 2,
-    adaptiveHeight: true,
+    adaptiveHeight: false,
     centerMode: true,
     centerPadding: "60px",
     // lazyLoad: "progressive",
@@ -126,17 +131,7 @@ const SliderWithHeading = (props) => {
 
   const { heading, products = [] } = props;
 
-  const tempProducts = [
-    ...products,
-    products[1],
-    products[1],
-    products[1],
-    products[1],
-    products[1],
-    products[1],
-    products[1],
-    products[1],
-  ];
+  
 
   const handlePrevClick = () => {
     sliderInstance.slickPrev();
@@ -146,49 +141,55 @@ const SliderWithHeading = (props) => {
   };
 
   return (
-    <div>
-      <div className={classes.headingContainer}>
-        <hr />
-        <Typography>{props.heading}</Typography>
-      </div>
-      <div className={classes.sliderContainer}>
-        <Slider ref={(s) => setSliderInstance(s)} {...settings}>
-          {tempProducts.map((product) => (
-            <div
-              className={classes.imageContainer}
-              // style={{
-              //   width: aboveSm ? 320 : 'auto',
-              // }}
-            >
-              <img
-                src={product}
-                alt={"Product Image"} //   style={{ width: "120px" }}
-              />
-              <Typography>Blissfull Silver Earrings</Typography>
-              <Typography>₹ 5939</Typography>
-            </div>
-          ))}
-        </Slider>
-
-        {aboveSm && (
-          <div className={classes.arrowContainer}>
-            <IconButton
-              className={classes.sliderArrow}
-              onClick={handlePrevClick}
-              disabled={currentIndex === 0}
-            >
-              <ChevronLeftIcon style={{color:"#fff"}}/>
-            </IconButton>
-            <IconButton
-              className={classes.sliderArrow}
-              onClick={handleNextClick}
-              disabled={currentIndex === tempProducts.length - 1}
-            >
-              <ChevronRightIcon style={{color:"#fff"}}/>
-            </IconButton>
-          </div>
-        )}
-      </div>
+    <div>  
+        <div className={classes.headingContainer}>
+       <hr />
+       <Typography>{props.heading}</Typography>
+     </div>
+     {products.length > 0 ? 
+     <div className={classes.sliderContainer}> 
+       <Slider ref={(s) => setSliderInstance(s)} {...settings}>
+         {products.map((product) => (
+           <div
+             className={classes.imageContainer}
+           >
+             <img
+               src={product.img}
+               alt={"Product Image"}
+               onClick={() => { window.open(`/${product.url}`)}}
+               style={{ cursor:"pointer" }}
+             />
+             <div style={{width:'220px'}}>
+             <Typography>{product.title}</Typography>
+             <Typography>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(product.price))}</Typography>
+             </div>
+             
+           </div>
+         ))}
+       </Slider>
+       
+       {aboveSm && (
+         <div className={classes.arrowContainer}>
+           <IconButton
+             className={classes.sliderArrow}
+             onClick={handlePrevClick}  
+           >
+             <ChevronLeftIcon style={{color:"#fff"}}/>
+           </IconButton>
+           <IconButton
+             className={classes.sliderArrow}
+             onClick={handleNextClick}
+           >
+             <ChevronRightIcon style={{color:"#fff"}}/>
+           </IconButton>
+         </div>
+       )}
+     </div>
+      :<Typography className="no-data">No Data Found</Typography>
+      }
+     
+      
+     
     </div>
   );
 };
