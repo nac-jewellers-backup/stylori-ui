@@ -301,13 +301,16 @@ function Login(props) {
   );
 
   useEffect(() => {
-    if (data?.accessToken) {
-      props.handleClose();
+    if (data?.accessToken) { 
       localStorage.setItem("email", data.userprofile.email);
       var bb = data.userprofile.id ? data.userprofile.id : "";
       localStorage.setItem("user_id", bb);
       sessionStorage.setItem("user_id", bb);
       localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem('check_dlt',false);
+      localStorage.setItem('isedit',1);
+      localStorage.setItem('true',false)
+      props.handleClose();
     }
   }, [data]);
 

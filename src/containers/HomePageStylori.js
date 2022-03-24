@@ -406,13 +406,12 @@ class HomeStylori extends React.Component {
             </div>
           </Hidden>
         </>
-        {sessionStorage.getItem("accessToken") === null  ? 
-         this.state.login ? 
-          <Login 
+        {localStorage.getItem("accessToken") ?  
+           null
+          :  <Login 
           open={this.state.login}
           handleClose={this.handleClose}
-          /> :null
-          : alert('You are already Logged In')
+          /> 
         }
        
       </Grid>
