@@ -119,8 +119,6 @@ class ProductDetail extends Component {
   }
 
   render() {
- 
-
     var loc = this?.props?.location?.pathname;
     var path = loc.split("/");
     var data_json = [
@@ -128,7 +126,9 @@ class ProductDetail extends Component {
       { title: path[2], url: this.renderUrl() },
       {
         title:
-          this?.props?.data && this?.props?.data[0] && this?.props?.data[0]?.title,
+          this?.props?.data &&
+          this?.props?.data[0] &&
+          this?.props?.data[0]?.title,
       },
     ];
     const clear_rating = (bool) => {
@@ -215,8 +215,6 @@ class ProductDetail extends Component {
 
         <Hidden smDown>
           <Header wishlist={this?.props?.wishlistdata ?? ""} />
-
-  
 
           <Grid
             Container
@@ -322,7 +320,6 @@ class ProductDetail extends Component {
                     xs={12}
                     style={{ marginBottom: "10px", marginTop: "10px" }}
                   >
-                   
                     <ProductDetails
                       data={this?.props?.data}
                       isSilver={isSilver}
@@ -348,7 +345,10 @@ class ProductDetail extends Component {
                   xs={6}
                   style={{ marginBottom: "20px", marginTop: "20px" }}
                 >
-                  <ProductDetails data={this?.props?.data} isSilver={isSilver} />
+                  <ProductDetails
+                    data={this?.props?.data}
+                    isSilver={isSilver}
+                  />
                 </Grid>
                 {!isSilver && (
                   <Grid
@@ -364,7 +364,7 @@ class ProductDetail extends Component {
               </Grid>
             </div>
           )}
-       
+
           {isSilver ? (
             <div
               style={{
@@ -431,8 +431,7 @@ class ProductDetail extends Component {
                 maxWidth: "1600px",
                 margin: "auto",
               }}
-            >
-            </div>
+            ></div>
           ) : (
             <CustomerReviews rating={this?.props?.rating} isSilver={isSilver} />
           )}
@@ -453,7 +452,7 @@ class ProductDetail extends Component {
               isSilver={isSilver}
             />
           </Grid>
-  
+
           <Grid item xs={12}>
             <ProductDetails
               data={this?.props?.data}
@@ -475,7 +474,10 @@ class ProductDetail extends Component {
           )}
           {!isSilver && (
             <Grid item xs={12}>
-              <PriceCertification data={this?.props?.data} isSilver={isSilver} />
+              <PriceCertification
+                data={this?.props?.data}
+                isSilver={isSilver}
+              />
             </Grid>
           )}
           {!isSilver && (
@@ -491,7 +493,7 @@ class ProductDetail extends Component {
               customLimit={4}
             />
           </Grid>
-      
+
           {isSilver && (
             <Container>
               <Container>
@@ -528,7 +530,6 @@ class ProductDetail extends Component {
                     textAlign: "center",
                   }}
                 >
-              
                   SHOP BY TYPE
                 </div>
 
@@ -575,7 +576,6 @@ const Components = (props) => {
   let _shopsProducts = [];
   const [state, setState] = React.useState({ shopByData: [], allSeo: {} });
   const _shopsProductss = (val) => {
- 
     _shopsProducts = Object.keys(val).map((data) => {
       return { label: val[data].label, image: val[data].images };
     });

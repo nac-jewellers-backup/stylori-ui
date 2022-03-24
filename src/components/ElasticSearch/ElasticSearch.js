@@ -1,12 +1,6 @@
 import React from "react";
 import { API_URL } from "config.js";
-import {
-  Grid,
-  InputBase,
-  Typography,
-  InputAdornment,
-  ListItem,
-} from "@material-ui/core";
+import { Grid, InputBase, Typography, InputAdornment } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Seach from "../../assets/search";
@@ -16,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     overflow: "scroll",
     backgroundColor: "#fff",
-    // transition: "all 3s"
   },
   closeIcons: {
     fontSize: "16px",
@@ -66,7 +59,6 @@ export default function ElasticSearch(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(null);
   const [data, setData] = React.useState({});
-  const product = ["Bange", "Ring", "pendent", "Nosepin"];
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -114,7 +106,6 @@ export default function ElasticSearch(props) {
         <Grid container justify="center" style={{ paddingBottom: "16px" }}>
           <Grid item container className={classes.searchContainer}>
             <InputBase
-              //   disabled={true}
               autoFocus
               className={classes.withinput}
               placeholder="Search"
@@ -131,98 +122,71 @@ export default function ElasticSearch(props) {
           </Grid>
         </Grid>
         <Grid container justify="center">
-          {Object.entries(data).length > 0 && data.seo_results.length > 0 ? (
+          {Object.entries(data)?.length > 0 && data?.seo_results?.length > 0 ? (
             <Grid container item className={classes.searchContainer}>
               <Grid item className={classes.TitleContainer} xs={12}>
                 <Typography className={classes.productTitle}>
                   Categories
                 </Typography>
               </Grid>
-              {data.seo_results.map((val) => (
+              {data?.seo_results?.map((val) => (
                 <Grid item xs={12} style={{ margin: "5px" }}>
-                  {/* <a href={`/${val.seo_url}`} className={classes.productSublist}>
-                {val.seo_name}
-            </a> */}
                   <Link
-                    to={`/${val.seo_url}`}
+                    to={`/${val?.seo_url ?? ""}`}
                     className={`${classes.productSublist} ${classes.link}`}
                     replace
                   >
-                    {val.seo_name}
+                    {val?.seo_name ?? ""}
                   </Link>
                 </Grid>
               ))}
             </Grid>
           ) : null}
-          {(Object.entries(data).length > 0 && data.sku_results.length > 0) ||
-            (Object.entries(data).length > 0 &&
-              data.product_results.length > 0) ? (
+          {(Object.entries(data)?.length > 0 &&
+            data?.sku_results?.length > 0) ||
+          (Object.entries(data)?.length > 0 &&
+            data?.product_results?.length > 0) ? (
             <Grid container item className={classes.searchContainer}>
               <Grid item className={classes.TitleContainer} xs={12}>
                 <Typography className={classes.productTitle}>
                   Product(s)
                 </Typography>
               </Grid>
-              {Object.entries(data).length > 0 && data.sku_results.length > 0
-                ? data.sku_results.map((val) => (
-                  <Grid item xs={12} style={{ margin: "5px" }}>
-                    {/* <a href={`/${val.sku_url}`} className={classes.productSublist}>
-                {val.sku_code}
-            </a> */}
-                    <Link
-                      to={`/${val.sku_url}`}
-                      className={`${classes.productSublist} ${classes.link}`}
-                      replace
-                    >
-                      {" "}
-                      {val.sku_code}
-                    </Link>
-                  </Grid>
-                ))
+              {Object.entries(data)?.length > 0 && data?.sku_results?.length > 0
+                ? data?.sku_results?.map((val) => (
+                    <Grid item xs={12} style={{ margin: "5px" }}>
+                      <Link
+                        to={`/${val?.sku_url ?? ""}`}
+                        className={`${classes.productSublist} ${classes.link}`}
+                        replace
+                      >
+                        {" "}
+                        {val?.sku_code ?? ""}
+                      </Link>
+                    </Grid>
+                  ))
                 : null}
-              {Object.entries(data).length > 0 &&
-                data.product_results.length > 0
-                ? data.product_results.map((val) => (
-                  <Grid item xs={12} style={{ margin: "5px" }}>
-                    {/* <a href={`/${val.sku_url}`} className={classes.productSublist}>
-                {val.product_name}
-            </a> */}
-                    <Link
-                      to={`/${val.sku_url}`}
-                      className={`${classes.productSublist} ${classes.link}`}
-                      replace
-                    >
-                      {val.product_name}
-                    </Link>
-                  </Grid>
-                ))
+              {Object.entries(data)?.length > 0 &&
+              data?.product_results?.length > 0
+                ? data?.product_results?.map((val) => (
+                    <Grid item xs={12} style={{ margin: "5px" }}>
+                      <Link
+                        to={`/${val?.sku_url ?? ""}`}
+                        className={`${classes.productSublist} ${classes.link}`}
+                        replace
+                      >
+                        {val?.product_name ?? ""}
+                      </Link>
+                    </Grid>
+                  ))
                 : null}
             </Grid>
           ) : null}
-          {/* {
- Object.entries(data).length>0 && data.product_results.length > 0? 
-        <Grid container item className={classes.searchContainer}>
-        <Grid item className={classes.TitleContainer} xs={12}>
-            <Typography className={classes.productTitle}>
-            Product (s)
-        </Typography>
-        </Grid>
-        {
-            
-            data.product_results.map(val =>
-        <Grid item xs={12} style={{margin:"5px"}}>
-            <Link to={`/${val.sku_url}`} className={`${classes.productSublist} ${classes.link}`} replace >{val.product_name}</Link>
-        </Grid>
-                )
-                }
-    </Grid>
-    :
-    null
-}               */}
-          {Object.entries(data).length > 0 &&
-            data.product_results.length === 0 &&
-            data.sku_results.length === 0 &&
-            data.seo_results.length === 0
+
+          {Object.entries(data)?.length > 0 &&
+          data?.product_results?.length === 0 &&
+          data?.sku_results?.length === 0 &&
+          data?.seo_results?.length === 0
             ? "no results found"
             : null}
         </Grid>
