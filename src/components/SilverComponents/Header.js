@@ -160,7 +160,7 @@ class Header extends Component {
       if (document.getElementById("logoImage")) {
         document.getElementById("logoImage").style.width = "100%";
         if (this.props?.globalContext?.Globalctx?.pathName) {
-          document.getElementById("logoImage").style.height = "120px";
+          document.getElementById("logoImage").style.height = "90px";
         }
       }
     }

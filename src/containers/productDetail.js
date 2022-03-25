@@ -337,8 +337,7 @@ class ProductDetail extends Component {
 
     const { classes } = this.props;
     const jewelData = this.props?.data?.[0];
-    console.log(jewelData,"lllll")
-
+  
     var detail_data = [
       {
         title: "Description",

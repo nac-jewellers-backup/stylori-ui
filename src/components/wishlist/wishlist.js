@@ -53,7 +53,7 @@ const WishlistComponent = (props) => {
             </span>
           )}
           <i
-            className={`${a} ${props.props ? classes.colorTheme : classes.colorTheme} ${isSilver ? classes.silverColor : ""} ${
+            className={`${a} ${isSilver ? classes.silverTheme : classes.colorTheme} ${isSilver ? classes.silverColor : ""} ${
               classes[customClassName]
             }`}
             onClick={() => {

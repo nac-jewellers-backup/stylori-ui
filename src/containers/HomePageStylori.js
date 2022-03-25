@@ -1,10 +1,31 @@
 import React from "react";
 import Header from "components/SilverComponents/Header";
 import Aos from "aos";
-import { Grid, Hidden, Typography } from "@material-ui/core";
+import {
+  Dialog,
+  DialogTitle,
+  Grid,
+  Hidden,
+  Modal,
+  TextField,
+  Typography,
+  Box,
+  DialogContent,
+  Divider,
+  Button,
+  IconButton,
+} from "@material-ui/core";
+import {
+  Cancel,
+  Clear,
+  Delete,
+  PhoneAndroid,
+  PhoneIphone,
+} from "@material-ui/icons";
 import Skeleton from "@material-ui/lab/Skeleton";
 import Footer from "components/Footer/Footer";
 import { withRouter } from "react-router";
+import { makeStyles } from "@material-ui/styles";
 import "index.css";
 import Slideshow from "../components/Carousel/carosul";
 import StaticView from "../components/CarouselLazyer/StaticView";
@@ -20,10 +41,14 @@ import { CDN_URL, API_URL } from "../config";
 import { ALLSTYLORILANDINGBANNERS } from "queries/home";
 import "aos/dist/aos.css";
 import ReactPixel from "react-facebook-pixel";
+import facebook from "../assets/facebook.svg";
+import gmail from "../assets/gmail.svg";
+import { AiOutlineMobile } from "react-icons/ai";
+import Login from "components/SilverComponents/login";
+
 class HomeStylori extends React.Component {
   constructor(props) {
     super(props);
-
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.slider = React.createRef();
@@ -33,8 +58,10 @@ class HomeStylori extends React.Component {
       datas: [],
       starting: false,
       imageLoading: false,
+      login: true,
     };
   }
+
   next = () => {
     this.slider.current.slickNext();
   };
@@ -70,6 +97,12 @@ class HomeStylori extends React.Component {
       });
     Aos.init({ duration: 1500 });
   }
+
+  handleClose = () => {
+    this.setState({
+      login: false,
+    });
+  };
 
   render() {
     const dataCarousel = {
@@ -114,8 +147,14 @@ class HomeStylori extends React.Component {
       <Grid container style={{ overflowX: "auto" }}>
         <div>
           <MetaTags>
-            <title>Online Jewellery Shopping in India | Gold and Diamond Jewellery Online</title>
-            <meta name="facebook-domain-verification" content="t3yrba182xfqp79aqld63vtoaong46" />
+            <title>
+              Online Jewellery Shopping in India | Gold and Diamond Jewellery
+              Online
+            </title>
+            <meta
+              name="facebook-domain-verification"
+              content="t3yrba182xfqp79aqld63vtoaong46"
+            />
             <meta
               name="description"
               content="Buy Gold and Diamond Jewellery Shopping Online from Stylori.com with variety of products like Pendants, Gold Rings, Bangles, Earrings"
@@ -133,16 +172,32 @@ class HomeStylori extends React.Component {
               property="og:description"
               content="Buy Gold and Diamond Jewellery Shopping Online from Stylori.com with variety of products like Pendants, Gold Rings, Bangles, Earrings"
             />
-            <meta property="og:url" id="fb-product-url" content={window.location.href} />
-            <meta property="og:image" id="fb_imageUrl" content="https://assets.stylori.com/stylori-logo.svg" />
+            <meta
+              property="og:url"
+              id="fb-product-url"
+              content={window.location.href}
+            />
+            <meta
+              property="og:image"
+              id="fb_imageUrl"
+              content="https://assets.stylori.com/stylori-logo.svg"
+            />
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@StyloriLove" />
-            <meta name="twitter:title" id="twitter-title" content="Online Jewellery Shopping" />
+            <meta
+              name="twitter:title"
+              id="twitter-title"
+              content="Online Jewellery Shopping"
+            />
             <meta
               name="twitter:description"
               content="Buy Gold and Diamond Jewellery Shopping Online from Stylori.com with variety of products like Pendants, Gold Rings, Bangles, Earrings"
             />
-            <meta name="twitter:image" id="twitter_imageUrl" content="https://assets.stylori.com/stylori-logo.svg" />
+            <meta
+              name="twitter:image"
+              id="twitter_imageUrl"
+              content="https://assets.stylori.com/stylori-logo.svg"
+            />
             {/* <meta name="google-site-verification" content="6I1mw4ayVxUxw1AZYP_BK73mXUaajhhhYyYl3Qv0E60" /> */}
           </MetaTags>
         </div>
@@ -167,7 +222,10 @@ class HomeStylori extends React.Component {
                 </Grid>
               )}
             </Hidden>
-            <Slideshow sliderRef={this.slider} dataCarousel={homePageStylori.carouselTop.setting}>
+            <Slideshow
+              sliderRef={this.slider}
+              dataCarousel={homePageStylori.carouselTop.setting}
+            >
               {this.state.datas.map((val, index) => (
                 <>
                   <Hidden smDown>
@@ -185,7 +243,9 @@ class HomeStylori extends React.Component {
                           loading="auto"
                           alt="…"
                           style={{ width: "100%", height: "100%" }}
-                          className={`image-${this.state.imageLoading ? "visible" : "hidden"}`}
+                          className={`image-${
+                            this.state.imageLoading ? "visible" : "hidden"
+                          }`}
                           onLoad={this.imageLoader}
                         />
                       </a>
@@ -204,7 +264,9 @@ class HomeStylori extends React.Component {
                         <img
                           src={val.mobile}
                           style={{ width: "100%", height: "100%" }}
-                          className={`smooth-image image-${this.state.imageLoading ? "visible" : "hidden"}`}
+                          className={`smooth-image image-${
+                            this.state.imageLoading ? "visible" : "hidden"
+                          }`}
                           onLoad={this.imageLoader}
                         />
                       </a>
@@ -215,12 +277,22 @@ class HomeStylori extends React.Component {
             </Slideshow>
           </Grid>
         ) : (
-          <Skeleton variant="rect" style={{ width: "100%" }} className="skeletonHeight" animation="wave" />
+          <Skeleton
+            variant="rect"
+            style={{ width: "100%" }}
+            className="skeletonHeight"
+            animation="wave"
+          />
         )}
 
         <Hidden mdUp>
           <Grid container>
-            <Grid item xs={12} alignItems="center" style={{ paddingTop: "6px" }}>
+            <Grid
+              item
+              xs={12}
+              alignItems="center"
+              style={{ paddingTop: "6px" }}
+            >
               <Typography style={{ width: "100%", textAlign: "center" }}>
                 <Slideshow dataCarousel={dataCarousel}>
                   {productsubHead.map((val, index) => (
@@ -270,8 +342,10 @@ class HomeStylori extends React.Component {
         </Hidden>
 
         <Grid Container className="GridConatiner">
-          <Grid item className="GridListImg" 
-          // data-aos="fade-left"
+          <Grid
+            item
+            className="GridListImg"
+            // data-aos="fade-left"
           >
             <GridList GridImage={homePageStylori.collectionGrid} />
           </Grid>
@@ -298,7 +372,10 @@ class HomeStylori extends React.Component {
             <em className="rightImage"></em>
           </Grid>
         </Grid>
-        <Stories dataCarousel={homePageStylori.Stories.carousel.setting} carosolData={storyData.storiesData} />
+        <Stories
+          dataCarousel={homePageStylori.Stories.carousel.setting}
+          carosolData={storyData.storiesData}
+        />
 
         <Grid item xs={12} style={{ marginTop: 20 }}>
           <Footer />
@@ -329,6 +406,14 @@ class HomeStylori extends React.Component {
             </div>
           </Hidden>
         </>
+        {localStorage.getItem("accessToken") ?  
+           null
+          :  <Login 
+          open={this.state.login}
+          handleClose={this.handleClose}
+          /> 
+        }
+       
       </Grid>
     );
   }
