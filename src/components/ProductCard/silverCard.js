@@ -135,12 +135,12 @@ const Gallery = (
     <div className="imageHeight">
       {props.data.oneDayShipping ? (
         <div
-          className={`one-day-ship-listing-page-withoutTop ${props.classes.colorTheme}`}
+          className={`one-day-ship-listing-page-withoutTop`}
           style={{ zIndex: 2 }}
         >
-          <i class="fa fa-truck" style={{ fontSize: "20px",marginLeft:'10px' }}></i>
+          <i class="fa fa-truck" style={{ fontSize: "22px",marginLeft:'10px' }}></i>
           <span
-            className={`one-day-ship-listing-page-label ${props.classes.colorTheme}`}
+            className={`one-day-ship-listing-page-label`}
           >
             1 day shipping
           </span>
@@ -185,6 +185,7 @@ const Gallery = (
           sku={props.data.skuId}
           productId={props.data.productId}
           wishlist={props.wishlist}
+          isSilver
         />
       </div>
       <Link
