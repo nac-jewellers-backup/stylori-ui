@@ -69,10 +69,11 @@ function Login(props) {
   const [condition, setCondition] = useState({
     isMobile: false,
     isOtp: false,
+    alert:false
   });
 
   const ValidateEmail = (email) => {
-    var re = /\S+@\S+\.\S+/;
+    var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     return re.test(email);
   };
 
@@ -99,17 +100,20 @@ function Login(props) {
       };
       fetch(`${API_URL}/send_otp`, opts)
         .then((res) => res.json())
-        .then((fetchValue) => {
-          setCondition({ ...condition, isOtp: true });
+        .then((fetchValue) => {         
+          setCondition({ ...condition, isOtp: true});
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      let error = number.error;
-      error.otpemail = "Please enter valid email id";
-      setNumber({ ...number, error });
 
+      if(!ValidateEmail(number.otpemail)){
+        let error = number.error;
+        error.otpemail = "Please enter valid email id";
+        setNumber({ ...number, error });
+      }
+    
       if (number?.mobile?.length !== 10) {
         let error = number.error;
         error.mobile = "Please enter valid number";
@@ -421,6 +425,7 @@ function Login(props) {
                       setCondition({
                         ...condition,
                         isMobile: !condition.isMobile,
+                        isOtp: false
                       })
                     }
                   >
