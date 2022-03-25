@@ -1,10 +1,8 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-
 import CartCard from "components/Checkout/CartCard";
 import Footer from "components/Footer/Footer";
 import { Grid, Container, Hidden } from "@material-ui/core";
-
 import Header from "components/SilverComponents/Header";
 import "screens/Stylori/index.css";
 import { CartContext, ProductDetailContext } from "context";
@@ -14,7 +12,6 @@ import CustomSeparator from "../components/BreadCrumb/index";
 import styles from "../components/Checkout/style";
 import { withStyles } from "@material-ui/core/styles";
 import "./index.css";
-
 import NeedHelp from "../components/needHelp";
 import TagManager from "react-gtm-module";
 import ReactPixel from "react-facebook-pixel";
@@ -84,8 +81,15 @@ class Cart extends React.Component {
     let path = window.location.pathname.split("/").pop();
     return (
       <Grid container>
+       
         <Hidden smDown>
-          <Header wishlist={this.props.wishlistdata} />
+
+          <Grid container spacing={12}>
+              {/* <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}> */}
+              <Header wishlist={this.props.wishlistdata} />
+              {/* </Grid> */}
+            </Grid>
+
           {path === "checkout" ? (
             ""
           ) : (

@@ -6,6 +6,10 @@
   margin: 0 12px 0px 0px;
 }
 
+.sliderWithHeading .slick-track {
+  width: max-content !important;
+}
+
 .sliderWithHeading .slick-slide:first-child {
   margin: 0 12px 0px 60px;
 }
