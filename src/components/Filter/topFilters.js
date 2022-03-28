@@ -235,6 +235,7 @@ export const TopFilters = (props) => {
                   targetopened={state.targetopen}
                   filtercheck={state.listHoverItem}
                   checked={props.checked}
+                  chips= {props.chips}
                   onchoosetype={props.onchangefunc}
                   state={props.state}
                   onchoosetypeprice={props.onpricechange}
@@ -335,7 +336,7 @@ export const TopFilters = (props) => {
             {props?.chips.length > 1 ? (
               <Chip
                 size="small"
-                label={"Clear All Fillters"}
+                label={"Clear All Filters"}
                 style={{
                   padding: "14px 14px",
                   marginRight: 14,

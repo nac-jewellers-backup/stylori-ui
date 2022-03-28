@@ -73,8 +73,13 @@ function Login(props) {
     isMobile: false,
     isOtp: false,
     alert:false,
-    alertMsg:""
+    alertMsg:"",
+    cls:false
   });
+  
+  useEffect(()=>{
+    setCondition({...condition,alert:false})
+  },[])
 
   const ValidateEmail = (email) => {
     var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -146,7 +151,7 @@ function Login(props) {
       fetch(`${API_URL}/verify_otp`, opts)
         .then((res) => res.json())
         .then((fetchValue) => {
-        
+          setCondition({...condition,alert:true,alertMsg:"OTP validated"})
         })
         .catch((err) => {
           console.log(err);
@@ -315,7 +320,6 @@ function Login(props) {
   );
 
   useEffect(() => {
-    setCondition({...condition,alert:true,alertMsg:"Login success"})
     if (data?.accessToken) { 
       localStorage.setItem("email", data.userprofile.email);
       var bb = data.userprofile.id ? data.userprofile.id : "";
@@ -325,9 +329,18 @@ function Login(props) {
       localStorage.setItem('check_dlt',false);
       localStorage.setItem('isedit',1);
       localStorage.setItem('true',false)
-      props.handleClose();
+      setCondition({...condition,alert:true,alertMsg:"Login success"});
+      setTimeout(function() { //Start the timer
+        setCondition({...condition,cls:true}); //After 1 second, set render to true
+     }, 1000)
     }
   }, [data]);
+
+  useEffect(()=>{
+   if(condition.cls === true){
+    props.handleClose();
+   }
+  },[condition.cls])
 
   return (
     <div>
@@ -721,7 +734,7 @@ function Login(props) {
       <SimpleSnackbar
       severity="success"
       message={condition?.alertMsg}
-      open={condition.alert}
+      open={condition?.alert}
       handleClose={onClose}
       />
       :null

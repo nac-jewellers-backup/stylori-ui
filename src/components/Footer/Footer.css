@@ -57,6 +57,12 @@
   }
 }
 
+.footerTitle{
+  margin-top: 0 !important;
+  font-family: 'Playfair Display', serif !important;
+  margin-bottom: 0 !important;
+}
+
 .lockSymbol {
   background-image: url("https://assets.stylori.com/images/static/footer.png");
   float: left;

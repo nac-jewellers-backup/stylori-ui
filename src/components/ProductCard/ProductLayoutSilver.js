@@ -9,7 +9,6 @@ import {
 } from "@material-ui/core";
 import ProductCards from "./index";
 import { withStyles } from "@material-ui/core/styles";
-
 import { FilterOptionsContext } from "context";
 import { withRouter } from "react-router";
 import { homePageStylori } from "../../containers/dummydatahome";
