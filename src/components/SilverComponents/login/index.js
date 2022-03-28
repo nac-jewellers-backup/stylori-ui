@@ -9,42 +9,31 @@ import {
   IconButton,
   Dialog,
   DialogContent,
-  Input,
 } from "@material-ui/core";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import facebook from "../../../assets/facebook.svg";
 import gmail from "../../../assets/gmail.svg";
 import { AiOutlineMobile } from "react-icons/ai";
 import { useNetworkRequest } from "hooks/index";
 import { makeStyles } from "@material-ui/core";
 import { SimpleSnackbar } from "../Alert";
-import {
-  Cancel,
-  Clear,
-  Close,
-  Delete,
-  PhoneAndroid,
-  PhoneIphone,
-} from "@material-ui/icons";
+import { Clear } from "@material-ui/icons";
 import "index.css";
 import { GoogleLogin } from "react-google-login";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import { API_URL, FACEBOOK_APP_ID, GOOGLE_CLIENT_ID } from "../../../config";
-import { Alert } from "@material-ui/lab";
 
-
-const useStyles = makeStyles((theme) =>({
-  mobile:{
-    marginLeft:'150px',
-    [theme.breakpoints.down('sm')]:{
-      marginLeft:'0px'
-    }
+const useStyles = makeStyles((theme) => ({
+  mobile: {
+    marginLeft: "150px",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "0px",
+    },
   },
-}))
+}));
 
 function Login(props) {
   const history = useHistory();
-  const location = useLocation();
   const classes = useStyles();
 
   let url = API_URL;
@@ -72,12 +61,18 @@ function Login(props) {
   const [condition, setCondition] = useState({
     isMobile: false,
     isOtp: false,
-    alert:false,
-    alertMsg:""
+    alert: false,
+    alertMsg: "",
+    cls: false,
   });
 
+  useEffect(() => {
+    setCondition({ ...condition, alert: false });
+  }, []);
+
   const ValidateEmail = (email) => {
-    var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    var re =
+      /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     return re.test(email);
   };
 
@@ -104,22 +99,26 @@ function Login(props) {
       };
       fetch(`${API_URL}/send_otp`, opts)
         .then((res) => {
-          res.json()
+          res.json();
         })
-        .then((fetchValue) => {         
-          setCondition({ ...condition, isOtp: true,alert:true,alertMsg:"OTP success"});
+        .then((fetchValue) => {
+          setCondition({
+            ...condition,
+            isOtp: true,
+            alert: true,
+            alertMsg: "OTP success",
+          });
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-
-      if(!ValidateEmail(number.otpemail)){
+      if (!ValidateEmail(number.otpemail)) {
         let error = number.error;
         error.otpemail = "Please enter valid email id";
         setNumber({ ...number, error });
       }
-    
+
       if (number?.mobile?.length !== 10) {
         let error = number.error;
         error.mobile = "Please enter valid number";
@@ -128,12 +127,12 @@ function Login(props) {
     }
   };
 
-   // Validate OTP
-   const ValidateOtp = () => {
+  // Validate OTP
+  const ValidateOtp = () => {
     if (number?.otp && number?.otp?.length === 6) {
       let error = number.error;
-      error.otp =""
-      setNumber({...number,error})
+      error.otp = "";
+      setNumber({ ...number, error });
       let body = {
         mobile_no: number.mobile,
         otp: number.otp,
@@ -146,15 +145,21 @@ function Login(props) {
       fetch(`${API_URL}/verify_otp`, opts)
         .then((res) => res.json())
         .then((fetchValue) => {
-        
+          if (fetchValue.accessToken) {
+            localStorage.setItem("accessToken", fetchValue.accessToken);
+            localStorage.setItem("user_id", fetchValue.user.id);
+            localStorage.setItem("email", fetchValue.user.email);
+            props.handleClose();
+          } else {
+          }
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
       let error = number.error;
-      error.otp ="Please enter valid OTP"
-      setNumber({...number,error})
+      error.otp = "Please enter valid OTP";
+      setNumber({ ...number, error });
     }
   };
 
@@ -216,7 +221,6 @@ function Login(props) {
             localStorage.setItem("user_id", fetchValue.user.id);
             localStorage.setItem("email", fetchValue.user.email);
             props.handleClose();
-            // handlers.FacebookLogin(fetchValue);
           } else {
             if (typeof response.email === "undefined") {
               setValues({
@@ -253,8 +257,20 @@ function Login(props) {
         .then((res) => res.json())
         .then((fetchValue) => {
           if (fetchValue.accessToken) {
+            localStorage.setItem("accessToken", fetchValue.accessToken);
+            localStorage.setItem("user_id", fetchValue.user.id);
+            localStorage.setItem("email", fetchValue.user.email);
             props.handleClose();
-            // handlers.VerifyOTP(fetchValue);
+          } else {
+            if (typeof response.email === "undefined") {
+              setValues({
+                ...values,
+                first_name: response.first_name,
+                last_name: response.last_name,
+                userId: response.id,
+              });
+            } else {
+            }
           }
         })
         .catch(console.error);
@@ -304,9 +320,9 @@ function Login(props) {
     history.replace("/registers");
   };
 
-  const onClose =()=>{
-    setCondition({...condition,alert:false})
-  }
+  const onClose = () => {
+    setCondition({ ...condition, alert: false });
+  };
 
   const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest(
     "/api/auth/signin",
@@ -315,19 +331,28 @@ function Login(props) {
   );
 
   useEffect(() => {
-    setCondition({...condition,alert:true,alertMsg:"Login success"})
-    if (data?.accessToken) { 
+    if (data?.accessToken) {
       localStorage.setItem("email", data.userprofile.email);
       var bb = data.userprofile.id ? data.userprofile.id : "";
       localStorage.setItem("user_id", bb);
       sessionStorage.setItem("user_id", bb);
       localStorage.setItem("accessToken", data.accessToken);
-      localStorage.setItem('check_dlt',false);
-      localStorage.setItem('isedit',1);
-      localStorage.setItem('true',false)
-      props.handleClose();
+      localStorage.setItem("check_dlt", false);
+      localStorage.setItem("isedit", 1);
+      localStorage.setItem("true", false);
+      setCondition({ ...condition, alert: true, alertMsg: "Login success" });
+      setTimeout(function () {
+        //Start the timer
+        setCondition({ ...condition, cls: true }); //After 1 second, set render to true
+      }, 1000);
     }
   }, [data]);
+
+  useEffect(() => {
+    if (condition.cls === true) {
+      props.handleClose();
+    }
+  }, [condition.cls]);
 
   return (
     <div>
@@ -338,9 +363,7 @@ function Login(props) {
         maxWidth="sm"
         fullWidth
       >
-        <DialogContent
-        className="slide"
-        >
+        <DialogContent className="slide">
           <Grid constainer style={{ display: "flex", flexDirection: "column" }}>
             <Grid
               item
@@ -357,11 +380,13 @@ function Login(props) {
                 <img
                   src="http://localhost:3000/static/media/Stylorilogo.svg"
                   style={{ width: "30%", height: "30%" }}
+                  alt="images"
                 ></img>
                 <Box className="divider" />
                 <img
                   src="http://localhost:3000/static/media/stylori_silver_logo.svg"
                   style={{ width: "30%", height: "30%" }}
+                  alt="images"
                 ></img>
               </Box>
               <Box display="flex" justifyContent="center">
@@ -404,6 +429,9 @@ function Login(props) {
                 <Grid item xs={12} lg={6}>
                   <GoogleLogin
                     clientId={GOOGLE_CLIENT_ID}
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={"single_host_origin"}
                     render={(renderProps) => (
                       <Button
                         className="button"
@@ -417,8 +445,6 @@ function Login(props) {
                             style={{ width: "60%", height: "60%" }}
                           />
                         }
-                        onSuccess={responseGoogle}
-                        onFailure={responseGoogle}
                       >
                         Sign in with Google
                       </Button>
@@ -426,42 +452,45 @@ function Login(props) {
                   />
                 </Grid>
                 <Grid item xs={12} lg={6} className={classes.mobile}>
-                  {condition.isMobile ? 
+                  {condition.isMobile ? (
                     <Button
-                    className="button"
-                    variant="contained"
-                    fullWidth
-                    style={{ padding: 10 }}
-                    startIcon={<AiOutlineMobile style={{ color: "#E28CAB" }} />}
-                    onClick={() =>
-                      setCondition({
-                        ...condition,
-                        isMobile: !condition.isMobile,
-                        isOtp: false
-                      })
-                    }
-                  >
-                    Sign in with Email
-                  </Button> 
-                  :
-                  <Button
-                  className="button"
-                  variant="contained"
-                  fullWidth
-                  style={{ padding: 10 }}
-                  startIcon={<AiOutlineMobile style={{ color: "#E28CAB" }} />}
-                  onClick={() =>
-                    setCondition({
-                      ...condition,
-                      isMobile: !condition.isMobile,
-                      isOtp: false
-                    })
-                  }
-                >
-                  Sign in with OTP
-                </Button>
-                   }
-                
+                      className="button"
+                      variant="contained"
+                      fullWidth
+                      style={{ padding: 10 }}
+                      startIcon={
+                        <AiOutlineMobile style={{ color: "#E28CAB" }} />
+                      }
+                      onClick={() =>
+                        setCondition({
+                          ...condition,
+                          isMobile: !condition.isMobile,
+                          isOtp: false,
+                        })
+                      }
+                    >
+                      Sign in with Email
+                    </Button>
+                  ) : (
+                    <Button
+                      className="button"
+                      variant="contained"
+                      fullWidth
+                      style={{ padding: 10 }}
+                      startIcon={
+                        <AiOutlineMobile style={{ color: "#E28CAB" }} />
+                      }
+                      onClick={() =>
+                        setCondition({
+                          ...condition,
+                          isMobile: !condition.isMobile,
+                          isOtp: false,
+                        })
+                      }
+                    >
+                      Sign in with OTP
+                    </Button>
+                  )}
                 </Grid>
               </Grid>
             </Grid>
@@ -478,190 +507,97 @@ function Login(props) {
               {condition.isMobile ? (
                 <div>
                   {condition.isOtp ? (
-                  <Grid container spacing={4}>
-                     <Grid item xs={12}>
-                       <TextField
-                         placeholder="Enter OTP"
-                         type="number"
-                         value={number.otp}
-                         onChange={(e) =>
-                           handleMobileChange(e.target.value, "otp")
-                         }
-                         fullWidth
-                       />
-                       {number.error.otp !== "" && (
-                         <Typography style={{ fontSize: "10px", color: "red" }}>
-                           {number.error.otp}
-                         </Typography>
-                       )}
-                     </Grid>
-                     <Grid item xs={12}>
-                         <Button
-                           variant="contained"
-                           fullWidth
-                           style={{ color: "#fff", backgroundColor: "#6D6E71" }}
-                           onClick={()=>ValidateOtp()}
-                         >
-                           Validate OTP
-                         </Button>
-                       </Grid>
-                       <Grid item xs={12}>
-                         <Button
-                           variant="contained"
-                           fullWidth
-                           style={{ color: "#fff", backgroundColor: "#6D6E71" }}
-                           onClick={()=>ResendOtp()}
-                         >
-                           Resend OTP
-                         </Button>
-                       </Grid>
-                 </Grid>
-                  ):(
-                 <Grid container spacing={4}>
-                       <Grid item xs={12}>
-                         <TextField
-                           placeholder="Mobile Number"
-                           type="number"
-                           value={number.mobile}
-                           onChange={(e) =>
-                             handleMobileChange(e.target.value, "mobile")
-                           }
-                           fullWidth
-                         />
-                         {number.error.mobile !== "" && (
-                           <Typography
-                             style={{ fontSize: "10px", color: "red" }}
-                           >
-                             {number.error.mobile}
-                           </Typography>
-                         )}
-                       </Grid>
-                       <Grid item xs={12}>
-                         <TextField
-                           id="standard-start-adornment"
-                           placeholder="Email address"
-                           value={number.otpemail}
-                           onChange={(e) =>
-                             handleMobileChange(e.target.value, "otpemail")
-                           }
-                           fullWidth
-                         />
-                         {number.error.otpemail !== "" && (
-                           <Typography
-                             style={{ fontSize: "10px", color: "red" }}
-                           >
-                             {number.error.otpemail}
-                           </Typography>
-                         )}
-                       </Grid>
-                       <Grid item xs={12}>
-                       <Button
-                         variant="contained"
-                         fullWidth
-                         style={{ color: "#fff", backgroundColor: "#6D6E71" }}
-                         onClick={() => SendOTP()}
-                       >
-                         Send OTP
-                       </Button>
-                     </Grid>
-                 </Grid>
+                    <Grid container spacing={4}>
+                      <Grid item xs={12}>
+                        <TextField
+                          placeholder="Enter OTP"
+                          type="number"
+                          value={number.otp}
+                          onChange={(e) =>
+                            handleMobileChange(e.target.value, "otp")
+                          }
+                          fullWidth
+                        />
+                        {number.error.otp !== "" && (
+                          <Typography
+                            style={{ fontSize: "10px", color: "red" }}
+                          >
+                            {number.error.otp}
+                          </Typography>
+                        )}
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Button
+                          variant="contained"
+                          fullWidth
+                          style={{ color: "#fff", backgroundColor: "#6D6E71" }}
+                          onClick={() => ValidateOtp()}
+                        >
+                          Validate OTP
+                        </Button>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Button
+                          variant="contained"
+                          fullWidth
+                          style={{ color: "#fff", backgroundColor: "#6D6E71" }}
+                          onClick={() => ResendOtp()}
+                        >
+                          Resend OTP
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  ) : (
+                    <Grid container spacing={4}>
+                      <Grid item xs={12}>
+                        <TextField
+                          placeholder="Mobile Number"
+                          type="number"
+                          value={number.mobile}
+                          onChange={(e) =>
+                            handleMobileChange(e.target.value, "mobile")
+                          }
+                          fullWidth
+                        />
+                        {number.error.mobile !== "" && (
+                          <Typography
+                            style={{ fontSize: "10px", color: "red" }}
+                          >
+                            {number.error.mobile}
+                          </Typography>
+                        )}
+                      </Grid>
+                      <Grid item xs={12}>
+                        <TextField
+                          id="standard-start-adornment"
+                          placeholder="Email address"
+                          value={number.otpemail}
+                          onChange={(e) =>
+                            handleMobileChange(e.target.value, "otpemail")
+                          }
+                          fullWidth
+                        />
+                        {number.error.otpemail !== "" && (
+                          <Typography
+                            style={{ fontSize: "10px", color: "red" }}
+                          >
+                            {number.error.otpemail}
+                          </Typography>
+                        )}
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Button
+                          variant="contained"
+                          fullWidth
+                          style={{ color: "#fff", backgroundColor: "#6D6E71" }}
+                          onClick={() => SendOTP()}
+                        >
+                          Send OTP
+                        </Button>
+                      </Grid>
+                    </Grid>
                   )}
                 </div>
-                // <Grid container spacing={4}>
-                //   {condition.isOtp ? (
-                //     <Grid item xs={12}>
-                //       <TextField
-                //         placeholder="Enter OTP"
-                //         type="number"
-                //         value={number.otp}
-                //         onChange={(e) =>
-                //           handleMobileChange(e.target.value, "otp")
-                //         }
-                //         fullWidth
-                //       />
-                //       {number.error.otp !== "" && (
-                //         <Typography style={{ fontSize: "10px", color: "red" }}>
-                //           {number.error.otp}
-                //         </Typography>
-                //       )}
-                //     </Grid>
-                //   ) : (
-                //     <div>
-                //       <Grid item xs={12}>
-                //         <TextField
-                //           placeholder="Mobile Number"
-                //           type="number"
-                //           value={number.mobile}
-                //           onChange={(e) =>
-                //             handleMobileChange(e.target.value, "mobile")
-                //           }
-                //           fullWidth
-                //         />
-                //         {number.error.mobile !== "" && (
-                //           <Typography
-                //             style={{ fontSize: "10px", color: "red" }}
-                //           >
-                //             {number.error.mobile}
-                //           </Typography>
-                //         )}
-                //       </Grid>
-                //       <Grid item xs={12}>
-                //         <TextField
-                //           id="standard-start-adornment"
-                //           placeholder="Email address"
-                //           value={number.otpemail}
-                //           onChange={(e) =>
-                //             handleMobileChange(e.target.value, "otpemail")
-                //           }
-                //           fullWidth
-                //         />
-                //         {number.error.otpemail !== "" && (
-                //           <Typography
-                //             style={{ fontSize: "10px", color: "red" }}
-                //           >
-                //             {number.error.otpemail}
-                //           </Typography>
-                //         )}
-                //       </Grid>
-                //     </div>
-                //   )}
-
-                //   {condition.isOtp ? (
-                //     <div>
-                //       <Grid item xs={12}>
-                //         <Button
-                //           variant="contained"
-                //           fullWidth
-                //           style={{ color: "#fff", backgroundColor: "#6D6E71" }}
-                //           onClick={()=>ValidateOtp()}
-                //         >
-                //           Validate OTP
-                //         </Button>
-                //       </Grid>
-                //       <Grid item xs={12}>
-                //         <Button
-                //           variant="contained"
-                //           fullWidth
-                //           style={{ color: "#fff", backgroundColor: "#6D6E71" }}
-                //           onClick={()=>ResendOtp()}
-                //         >
-                //           Resend OTP
-                //         </Button>
-                //       </Grid>
-                //     </div>
-                //   ) : (
-                //     <Grid item xs={12}>
-                //       <Button
-                //         variant="contained"
-                //         fullWidth
-                //         style={{ color: "#fff", backgroundColor: "#6D6E71" }}
-                //         onClick={() => SendOTP()}
-                //       >
-                //         Send OTP
-                //       </Button>
-                //     </Grid>
-                //   )}
-                // </Grid>
               ) : (
                 <Grid container spacing={4}>
                   <Grid item xs={12}>
@@ -688,7 +624,9 @@ function Login(props) {
                       fullWidth
                     />
                     <span className="forgotPassword">
-                      <Typography onClick={()=>onRegister()}>Forget password?</Typography>
+                      <Typography onClick={() => onRegister()}>
+                        Forget password?
+                      </Typography>
                     </span>
                   </Grid>
                   <Grid item xs={12}>
@@ -717,20 +655,17 @@ function Login(props) {
             </Grid>
           </Grid>
         </DialogContent>
-        {condition.alert ? 
-      <SimpleSnackbar
-      severity="success"
-      message={condition?.alertMsg}
-      open={condition.alert}
-      handleClose={onClose}
-      />
-      :null
-      }
+        {condition.alert ? (
+          <SimpleSnackbar
+            severity="success"
+            message={condition?.alertMsg}
+            open={condition?.alert}
+            handleClose={onClose}
+          />
+        ) : null}
       </Dialog>
-      
     </div>
   );
 }
-
 
 export default Login;

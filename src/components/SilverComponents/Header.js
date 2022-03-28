@@ -30,9 +30,9 @@ import { headerDataStyloriSilver } from "../../mappers";
 import { styles } from "./styles";
 import Seach from "../../assets/search";
 import stylorisilverlogo from "../../assets/stylori_silver_logo.svg";
-import heart from "../../assets/Icons/loveGrey.svg"
-import cart from "../../assets/Icons/cartGrey.svg"
-import searchIcon from "../../assets/Icons/searchGrey.svg"
+import heart from "../../assets/Icons/loveGrey.svg";
+import cart from "../../assets/Icons/cartGrey.svg";
+import searchIcon from "../../assets/Icons/searchGrey.svg";
 import styloriLogo from "../../assets/Stylorilogo.svg";
 import ElasticSearch from "components/ElasticSearch/ElasticSearch";
 import { CartContext, GlobalContext } from "context";
@@ -222,11 +222,19 @@ class Header extends Component {
               id="topNav"
               style={{ transition: "height 0.2s" }}
             >
-              <Container maxWidth="lg" id="searchcontainer" style={{backgroundColor:isSilver? "#606161" :"",marginLeft:0}}>
+              <Container
+                id="searchcontainer"
+                style={{
+                  backgroundColor: isSilver ? "#606161" : "",
+                  marginLeft: 0,
+                  width: "100%",
+                  maxWidth: "100%",
+                }}
+              >
                 <Grid
                   container
                   spacing={12}
-                  style={{display:"contents"}}
+                  style={{ display: "contents" }}
                   className={
                     window.location.pathname === "/cart" ||
                     b[1] === "paymentsuccess" ||
@@ -235,17 +243,21 @@ class Header extends Component {
                       ? "cartheader"
                       : "cartcardrelese"
                   }
-             
                 >
-                  {isSilver ? 
-                  <Typography style={{
-                    display:"flex",
-                    justifyContent:"center",
-                    alignItems:"center",
-                    color:"white"
-                  }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</Typography>
-                  :null
-                  }
+                  {isSilver ? (
+                    <Typography
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        color: "white",
+                      }}
+                    >
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry's
+                      standard dummy
+                    </Typography>
+                  ) : null}
                   {/* <Grid
                     container
                     item
@@ -292,311 +304,315 @@ class Header extends Component {
               window.location.pathname === "/checkout" ||
               b[1] === "paymentsuccess" ||
               b[1] === "paymentfail" ? (
-              <Grid container id="headerContainer">
-                <Container maxWidth="lg">
-                  <Grid
-                    container
-                    spacing={12}
-                    id="fullcontainer"
-                    className="setHeight"
-                  >
-                    <Grid item xs={2} className="logoImgHeader1">
-                      <div
-                        id="logoDiv1"
-                        className="logoDiv1"
-                        onClick={() => {
-                          window.location.href = isSilver
-                            ? "/styloriSilver"
-                            : "/";
-                        }}
-                        style={{ cursor: "pointer" }}
-                      >
-                        <img
-                          id="logoImage"
-                          className={`${isSilver && "silverlogo"} ${"imges"}`}
-                          src={isSilver ? stylorisilverlogo : styloriLogo}
-                          onLoad={() => this.setState({ load: true })}
-                          onLoadedData={() => this.setState({ load: false })}
-                          alt=""
-                          style={{
-                            transition: "height 0.2s",
-                            height: isSilver ? 60 : 60,
-                          }}
-                        />
-                      </div>
-                    </Grid>
+                <Grid container id="headerContainer">
+                  <Container maxWidth="lg">
                     <Grid
                       container
-                      item
-                      xs={8}
-                      id={"containerTitle"}
-                      justify="flex-end"
-                      alignItems="center"
-                      className={`header-navbar-list1 ${classes.headerNavbarList}`}
-                      onMouseLeave={() => {
-                        this.setState({
-                          Menuopen: false,
-                          Checked: false,
-                          targetopen: null,
-                        });
-                      }}
+                      spacing={12}
+                      id="fullcontainer"
+                      className="setHeight"
                     >
-                      <Grid item xs={12} className="titleTop" id={"titleTop"}>
-                        <nav>
-                          {menuListHeader.map((listName) => {
-                            return (
-                              <a
-                                href={listName.url}
-                                className={
-                                  window.location.pathname === listName.url
-                                    ? classes.seletectedMenu
-                                    : classes.menuListCursor
-                                }
-                                onMouseOver={(event) => {
-                                  this.setState({
-                                    Menuopen: true,
-                                    submenuOpen: false,
-                                    subTitleData: null,
-                                    subTitleAllData: null,
-                                    targetopen: event.currentTarget,
-                                    listHoverItem: listName.title.replace(
-                                      / +/g,
-                                      ""
-                                    ),
-                                  });
-                                }}
-                                target={
-                                  listName.title === "STYLORISILVER" ||
-                                  listName.title === "VISIT STYLORI.COM"
-                                    ? "_blank"
-                                    : ""
-                                }
-                                
-                              >
-                                {listName.title === "VISIT STYLORI.COM" ? (
-                                  <img
-                                    src="https://assets.stylori.com/images/favicon.gif"
-                                    width="25px"
-                                    height="25px"
-                                    alt="stylori"
-                                  />
-                                ) : listName.title === "STYLORISILVER" ? (
-                                  <img
-                                    src={silverOpenLinkImage}
-                                 
-                                    alt="stylori"
-                                    style={{ width: "25px", height: "25px" }}
-                                  />
-                                ) : (
-                                  listName.title
-                                )}
-
-                               
-                              </a>
-                            );
-                          })}
-                        </nav>
-                        {this.state.Menuopen &&
-                        menuLists[this.state.listHoverItem] ? (
-                          <HeaderHoverMenuItem
-                            tabdata={this.props.data}
-                            listHoverItem={
-                              menuLists[this.state.listHoverItem]
-                            }
-                            isSilver={isSilver}
-                            onMouseOver={(event) => {
-                              this.setState({
-                                Menuopen: true,
-                                targetopenSubmenu: event.currentTarget,
-                              });
-                            }}
-                            opened={this.state.Menuopen}
-                            targetopened={this.state.targetopen}
-                            submenuDetails={this.submenuDetails}
-                            onMouseLeave={() => {
-                              this.setState({ targetopen: null });
+                      <Grid item xs={2} className="logoImgHeader1">
+                        <div
+                          id="logoDiv1"
+                          className="logoDiv1"
+                          onClick={() => {
+                            window.location.href = isSilver
+                              ? "/styloriSilver"
+                              : "/";
+                          }}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <img
+                            id="logoImage"
+                            className={`${isSilver && "silverlogo"} ${"imges"}`}
+                            src={isSilver ? stylorisilverlogo : styloriLogo}
+                            onLoad={() => this.setState({ load: true })}
+                            onLoadedData={() => this.setState({ load: false })}
+                            alt=""
+                            style={{
+                              transition: "height 0.2s",
+                              height: isSilver ? 60 : 60,
                             }}
                           />
-                        ) : (
-                          ""
-                        )}
-                        {this.state.Menuopen && this.state.submenuOpen ? (
-                          <HeaderHoversubMenu
-                            opened={this.state.submenuOpen}
-                            isSilver={isSilver}
-                            onMouseOver={(event) => {
-                              this.setState({ submenuOpen: true });
-                            }}
-                            listHoverItem={
-                              menuLists[this.state.listHoverItem]
-                            }
-                            data={this.state.subTitleData}
-                            allData={this.state.subTitleAllData}
-                            subMenuTarget={this.subMenuTarget}
-                            targetopened={this.state.subMenuTarget}
-                            onMouseLeave={() => {
-                              this.setState({
-                                submenuOpen: false,
-                                subTitleData: "",
-                                subTitleAllData: "",
-                                subMenuTarget: "",
-                              });
-                            }}
-                          />
-                        ) : (
-                          ""
-                        )}
+                        </div>
                       </Grid>
-                    </Grid>
-                    <Grid item xs={2}>
-                    <div className={`head-icons1 ${classes.headIcons}`}>
-                      {/* <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
+                      <Grid
+                        container
+                        item
+                        xs={8}
+                        id={"containerTitle"}
+                        justify="flex-end"
+                        alignItems="center"
+                        className={`header-navbar-list1 ${classes.headerNavbarList}`}
+                        onMouseLeave={() => {
+                          this.setState({
+                            Menuopen: false,
+                            Checked: false,
+                            targetopen: null,
+                          });
+                        }}
+                      >
+                        <Grid item xs={12} className="titleTop" id={"titleTop"}>
+                          <nav>
+                            {menuListHeader.map((listName) => {
+                              return (
+                                <a
+                                  href={listName.url}
+                                  className={
+                                    window.location.pathname === listName.url
+                                      ? classes.seletectedMenu
+                                      : classes.menuListCursor
+                                  }
+                                  onMouseOver={(event) => {
+                                    this.setState({
+                                      Menuopen: true,
+                                      submenuOpen: false,
+                                      subTitleData: null,
+                                      subTitleAllData: null,
+                                      targetopen: event.currentTarget,
+                                      listHoverItem: listName.title.replace(
+                                        / +/g,
+                                        ""
+                                      ),
+                                    });
+                                  }}
+                                  target={
+                                    listName.title === "STYLORISILVER" ||
+                                    listName.title === "VISIT STYLORI.COM"
+                                      ? "_blank"
+                                      : ""
+                                  }
+                                >
+                                  {listName.title === "VISIT STYLORI.COM" ? (
+                                    <img
+                                      src="https://assets.stylori.com/images/favicon.gif"
+                                      width="25px"
+                                      height="25px"
+                                      alt="stylori"
+                                    />
+                                  ) : listName.title === "STYLORISILVER" ? (
+                                    <img
+                                      src={silverOpenLinkImage}
+                                      alt="stylori"
+                                      style={{ width: "25px", height: "25px" }}
+                                    />
+                                  ) : (
+                                    listName.title
+                                  )}
+                                </a>
+                              );
+                            })}
+                          </nav>
+                          {this.state.Menuopen &&
+                          menuLists[this.state.listHoverItem] ? (
+                            <HeaderHoverMenuItem
+                              tabdata={this.props.data}
+                              listHoverItem={
+                                menuLists[this.state.listHoverItem]
+                              }
+                              isSilver={isSilver}
+                              onMouseOver={(event) => {
+                                this.setState({
+                                  Menuopen: true,
+                                  targetopenSubmenu: event.currentTarget,
+                                });
+                              }}
+                              opened={this.state.Menuopen}
+                              targetopened={this.state.targetopen}
+                              submenuDetails={this.submenuDetails}
+                              onMouseLeave={() => {
+                                this.setState({ targetopen: null });
+                              }}
+                            />
+                          ) : (
+                            ""
+                          )}
+                          {this.state.Menuopen && this.state.submenuOpen ? (
+                            <HeaderHoversubMenu
+                              opened={this.state.submenuOpen}
+                              isSilver={isSilver}
+                              onMouseOver={(event) => {
+                                this.setState({ submenuOpen: true });
+                              }}
+                              listHoverItem={
+                                menuLists[this.state.listHoverItem]
+                              }
+                              data={this.state.subTitleData}
+                              allData={this.state.subTitleAllData}
+                              subMenuTarget={this.subMenuTarget}
+                              targetopened={this.state.subMenuTarget}
+                              onMouseLeave={() => {
+                                this.setState({
+                                  submenuOpen: false,
+                                  subTitleData: "",
+                                  subTitleAllData: "",
+                                  subMenuTarget: "",
+                                });
+                              }}
+                            />
+                          ) : (
+                            ""
+                          )}
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={2}>
+                        <div className={`head-icons1 ${classes.headIcons}`}>
+                          {/* <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                       <Typography className={classes.callerNum}>
                         1800 102 0330
                       </Typography> */}
-                      <Grid
-                        onClick={this.handleClose}
-                        style={{ cursor: "pointer" }}
-                        className={`search`}
-                      >
-                        <Grid container>
-                          {/* <Typography
+                          <Grid
+                            onClick={this.handleClose}
+                            style={{ cursor: "pointer" }}
+                            className={`search`}
+                          >
+                            <Grid container>
+                              {/* <Typography
                             style={{ flexGrow: 1, fontSize: "0.96rem" }}
                           >
                             Search
                           </Typography> */}
-                          <div
-                            className={classes.searchcontainer}
-                            style={{ width: "25px" }}
-                          > <img src={searchIcon} alt="icon" />
-                            {/* <Seach className={"searchsvg"} /> */}
-                          </div>
-                        </Grid>
-                      </Grid>
+                              <div
+                                className={classes.searchcontainer}
+                                style={{ width: "25px" }}
+                              >
+                                {" "}
+                                <img src={searchIcon} alt="icon" />
+                                {/* <Seach className={"searchsvg"} /> */}
+                              </div>
+                            </Grid>
+                          </Grid>
 
-                      {localStorage.getItem("true") ? (
-                        <div className="tooltip ">
-                          <span
-                            class="MuiBadge-root"
-                            aria-owns={openPopover ? "simple-popper" : ""}
-                            // onClick={this.handleClickPopover}
-                            onClick={() => {
-                              window.location.href = "/account-profile";
-                            }}
-                          >
-                            <i
-                              style={{ fontSize: "20px",color:"#6D6E71", }}
-                              class={`fa fa-user  ${classes.iconFafa}`}
-                            ></i>
-                            <span className="tooltip-slog">
-                              {Boolean(localStorage.getItem("user_id")) &&
-                              !Boolean(localStorage.getItem("gut_lg"))
-                                ? "Account"
-                                : "Login"}
-                            </span>
-                          </span>
-                        </div>
-                      ) : (
-                        // <img className="icons-header-sizes" src={usershape}/>
+                          {localStorage.getItem("true") ? (
+                            <div className="tooltip ">
+                              <span
+                                class="MuiBadge-root"
+                                aria-owns={openPopover ? "simple-popper" : ""}
+                                // onClick={this.handleClickPopover}
+                                onClick={() => {
+                                  window.location.href = "/account-profile";
+                                }}
+                              >
+                                <i
+                                  style={{ fontSize: "20px", color: "#6D6E71" }}
+                                  class={`fa fa-user  ${classes.iconFafa}`}
+                                ></i>
+                                <span className="tooltip-slog">
+                                  {Boolean(localStorage.getItem("user_id")) &&
+                                  !Boolean(localStorage.getItem("gut_lg"))
+                                    ? "Account"
+                                    : "Login"}
+                                </span>
+                              </span>
+                            </div>
+                          ) : (
+                            // <img className="icons-header-sizes" src={usershape}/>
 
-                        <div className="tooltip ">
-                          <span
-                            className={`MuiBadge-root ${classes.badgecolor}`}
-                            onClick={() =>
-                              (window.location.pathname = "/login")
-                            }
-                          >
-                            <i
-                              style={{ fontSize: "20px",color:"#6D6E71" }}
-                              class={`fa fa-user  ${classes.iconFafa}`}
-                            ></i>
-                            <span className="tooltip-slog">
-                              {Boolean(localStorage.getItem("user_id")) &&
-                              !Boolean(localStorage.getItem("gut_lg"))
-                                ? "Account"
-                                : "Login"}
-                            </span>
-                          </span>
-                        </div>
-                      )}
-           
-                      <div className="tooltip">
-                        <Badge
-                          className={`${
-                            isSilver && classes.badgeColorsilver
-                          } ${!isSilver && classes.badgeColor}`}
-                          badgeContent={
-                            !isSilver &&
-                            (this.props.wishlist &&
-                            this.props.wishlist.wishlistdata &&
-                            this.props.wishlist.wishlistdata.nodes &&
-                            this.props.wishlist.wishlistdata.nodes.length > 0
-                              ? this.props.wishlist &&
+                            <div className="tooltip ">
+                              <span
+                                className={`MuiBadge-root ${classes.badgecolor}`}
+                                onClick={() =>
+                                  (window.location.pathname = "/login")
+                                }
+                              >
+                                <i
+                                  style={{ fontSize: "20px", color: "#6D6E71" }}
+                                  class={`fa fa-user  ${classes.iconFafa}`}
+                                ></i>
+                                <span className="tooltip-slog">
+                                  {Boolean(localStorage.getItem("user_id")) &&
+                                  !Boolean(localStorage.getItem("gut_lg"))
+                                    ? "Account"
+                                    : "Login"}
+                                </span>
+                              </span>
+                            </div>
+                          )}
+
+                          <div className="tooltip">
+                            <Badge
+                              className={`${
+                                isSilver && classes.badgeColorsilver
+                              } ${!isSilver && classes.badgeColor}`}
+                              badgeContent={
+                                !isSilver &&
+                                (this.props.wishlist &&
                                 this.props.wishlist.wishlistdata &&
                                 this.props.wishlist.wishlistdata.nodes &&
-                                this.props.wishlist.wishlistdata.nodes.length
-                              : "0")
-                          }
-                        >
-                          <i
-                            style={{ fontSize: "18px" }}
-                            class={classes.iconFafaheart}
-                            onClick={() => {
-                              if (user_id.length > 0) {
-                                window.location.href = `/account${"-wishlist"}`;
-                              } else {
-                                window.location.href = "/login";
+                                this.props.wishlist.wishlistdata.nodes.length >
+                                  0
+                                  ? this.props.wishlist &&
+                                    this.props.wishlist.wishlistdata &&
+                                    this.props.wishlist.wishlistdata.nodes &&
+                                    this.props.wishlist.wishlistdata.nodes
+                                      .length
+                                  : "0")
                               }
-                            }}
-                          ><img src={heart} alt="icon" /></i>
-                          <span className="tooltip-s">Wishlist</span>
-                        </Badge>
-                      </div>
+                            >
+                              <i
+                                style={{ fontSize: "18px" }}
+                                class={classes.iconFafaheart}
+                                onClick={() => {
+                                  if (user_id.length > 0) {
+                                    window.location.href = `/account${"-wishlist"}`;
+                                  } else {
+                                    window.location.href = "/login";
+                                  }
+                                }}
+                              >
+                                <img src={heart} alt="icon" />
+                              </i>
+                              <span className="tooltip-s">Wishlist</span>
+                            </Badge>
+                          </div>
 
-                      <div className="tooltip">
-                        <Badge
-                          className={`${
-                            isSilver && classes.badgeColorsilver
-                          } ${!isSilver && classes.badgeColor}`}
-                          badgeContent={
-                            this.props.cart_count &&
-                            this.props.cart_count.data &&
-                            this.props.cart_count.data.allTransSkuLists &&
-                            this.props.cart_count.data.allTransSkuLists.nodes
-                              .length > 0
-                              ? this.props.cart_count &&
+                          <div className="tooltip">
+                            <Badge
+                              className={`${
+                                isSilver && classes.badgeColorsilver
+                              } ${!isSilver && classes.badgeColor}`}
+                              badgeContent={
+                                this.props.cart_count &&
                                 this.props.cart_count.data &&
                                 this.props.cart_count.data.allTransSkuLists &&
                                 this.props.cart_count.data.allTransSkuLists
-                                  .nodes.length
-                              : !isSilver && "0"
-                            // this.props && this.props.cart_count && this.props.cart_count.length
-                          }
-                        >
-                          <a href="/cart" className="highlighter">
-                            <i
-                              style={{ fontSize: "20px" }}
-                              class={classes.iconFafa}
-                            ><img src={cart} alt="icon"/> </i>
-                            <span
-                              className="tooltip-s"
-                              style={{
-                                color: isSilver
-                                  ? "rgb(6, 171, 159)"
-                                  : "#d51f63",
-                              }}
+                                  .nodes.length > 0
+                                  ? this.props.cart_count &&
+                                    this.props.cart_count.data &&
+                                    this.props.cart_count.data
+                                      .allTransSkuLists &&
+                                    this.props.cart_count.data.allTransSkuLists
+                                      .nodes.length
+                                  : !isSilver && "0"
+                                // this.props && this.props.cart_count && this.props.cart_count.length
+                              }
                             >
-                              Cart
-                            </span>
-                          </a>{" "}
-                        </Badge>
-                      </div>
-                    </div>
-                      
+                              <a href="/cart" className="highlighter">
+                                <i
+                                  style={{ fontSize: "20px" }}
+                                  class={classes.iconFafa}
+                                >
+                                  <img src={cart} alt="icon" />{" "}
+                                </i>
+                                <span
+                                  className="tooltip-s"
+                                  style={{
+                                    color: isSilver
+                                      ? "rgb(6, 171, 159)"
+                                      : "#d51f63",
+                                  }}
+                                >
+                                  Cart
+                                </span>
+                              </a>{" "}
+                            </Badge>
+                          </div>
+                        </div>
                       </Grid>
-                  </Grid>
-                </Container>
-              </Grid>
+                    </Grid>
+                  </Container>
+                </Grid>
               ) : (
                 <Grid container id="headerContainer">
                   <Container maxWidth="lg">
@@ -677,7 +693,6 @@ class Header extends Component {
                                       ? "_blank"
                                       : ""
                                   }
-                                  
                                 >
                                   {listName.title === "VISIT STYLORI.COM" ? (
                                     <img
@@ -689,15 +704,12 @@ class Header extends Component {
                                   ) : listName.title === "STYLORISILVER" ? (
                                     <img
                                       src={silverOpenLinkImage}
-                                   
                                       alt="stylori"
                                       style={{ width: "25px", height: "25px" }}
                                     />
                                   ) : (
                                     listName.title
                                   )}
-
-                                 
                                 </a>
                               );
                             })}
@@ -755,158 +767,164 @@ class Header extends Component {
                         </Grid>
                       </Grid>
                       <Grid item xs={2}>
-                      <div className={`head-icons1 ${classes.headIcons}`}>
-                        {/* <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
+                        <div className={`head-icons1 ${classes.headIcons}`}>
+                          {/* <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                         <Typography className={classes.callerNum}>
                           1800 102 0330
                         </Typography> */}
-                        <Grid
-                          onClick={this.handleClose}
-                          style={{ cursor: "pointer" }}
-                          className={`search`}
-                        >
-                          <Grid container>
-                            {/* <Typography
+                          <Grid
+                            onClick={this.handleClose}
+                            style={{ cursor: "pointer" }}
+                            className={`search`}
+                          >
+                            <Grid container>
+                              {/* <Typography
                               style={{ flexGrow: 1, fontSize: "0.96rem" }}
                             >
                               Search
                             </Typography> */}
-                            <div
-                              className={classes.searchcontainer}
-                              style={{ width: "25px" }}
-                            > <img src={searchIcon} alt="icon" />
-                              {/* <Seach className={"searchsvg"} /> */}
-                            </div>
+                              <div
+                                className={classes.searchcontainer}
+                                style={{ width: "25px" }}
+                              >
+                                {" "}
+                                <img src={searchIcon} alt="icon" />
+                                {/* <Seach className={"searchsvg"} /> */}
+                              </div>
+                            </Grid>
                           </Grid>
-                        </Grid>
 
-                        {localStorage.getItem("true") ? (
-                          <div className="tooltip ">
-                            <span
-                              class="MuiBadge-root"
-                              aria-owns={openPopover ? "simple-popper" : ""}
-                              // onClick={this.handleClickPopover}
-                              onClick={() => {
-                                window.location.href = "/account-profile";
-                              }}
-                            >
-                              <i
-                                style={{ fontSize: "20px",color:"#6D6E71", }}
-                                class={`fa fa-user  ${classes.iconFafa}`}
-                              ></i>
-                              <span className="tooltip-slog">
-                                {Boolean(localStorage.getItem("user_id")) &&
-                                !Boolean(localStorage.getItem("gut_lg"))
-                                  ? "Account"
-                                  : "Login"}
+                          {localStorage.getItem("true") ? (
+                            <div className="tooltip ">
+                              <span
+                                class="MuiBadge-root"
+                                aria-owns={openPopover ? "simple-popper" : ""}
+                                // onClick={this.handleClickPopover}
+                                onClick={() => {
+                                  window.location.href = "/account-profile";
+                                }}
+                              >
+                                <i
+                                  style={{ fontSize: "20px", color: "#6D6E71" }}
+                                  class={`fa fa-user  ${classes.iconFafa}`}
+                                ></i>
+                                <span className="tooltip-slog">
+                                  {Boolean(localStorage.getItem("user_id")) &&
+                                  !Boolean(localStorage.getItem("gut_lg"))
+                                    ? "Account"
+                                    : "Login"}
+                                </span>
                               </span>
-                            </span>
-                          </div>
-                        ) : (
-                          // <img className="icons-header-sizes" src={usershape}/>
+                            </div>
+                          ) : (
+                            // <img className="icons-header-sizes" src={usershape}/>
 
-                          <div className="tooltip ">
-                            <span
-                              className={`MuiBadge-root ${classes.badgecolor}`}
-                              onClick={() =>
-                                (window.location.pathname = "/login")
+                            <div className="tooltip ">
+                              <span
+                                className={`MuiBadge-root ${classes.badgecolor}`}
+                                onClick={() =>
+                                  (window.location.pathname = "/login")
+                                }
+                              >
+                                <i
+                                  style={{ fontSize: "20px", color: "#6D6E71" }}
+                                  class={`fa fa-user  ${classes.iconFafa}`}
+                                ></i>
+                                <span className="tooltip-slog">
+                                  {Boolean(localStorage.getItem("user_id")) &&
+                                  !Boolean(localStorage.getItem("gut_lg"))
+                                    ? "Account"
+                                    : "Login"}
+                                </span>
+                              </span>
+                            </div>
+                          )}
+
+                          <div className="tooltip">
+                            <Badge
+                              className={`${
+                                isSilver && classes.badgeColorsilver
+                              } ${!isSilver && classes.badgeColor}`}
+                              badgeContent={
+                                !isSilver &&
+                                (this.props.wishlist &&
+                                this.props.wishlist.wishlistdata &&
+                                this.props.wishlist.wishlistdata.nodes &&
+                                this.props.wishlist.wishlistdata.nodes.length >
+                                  0
+                                  ? this.props.wishlist &&
+                                    this.props.wishlist.wishlistdata &&
+                                    this.props.wishlist.wishlistdata.nodes &&
+                                    this.props.wishlist.wishlistdata.nodes
+                                      .length
+                                  : "0")
                               }
                             >
                               <i
-                                style={{ fontSize: "20px",color:"#6D6E71" }}
-                                class={`fa fa-user  ${classes.iconFafa}`}
-                              ></i>
-                              <span className="tooltip-slog">
-                                {Boolean(localStorage.getItem("user_id")) &&
-                                !Boolean(localStorage.getItem("gut_lg"))
-                                  ? "Account"
-                                  : "Login"}
-                              </span>
-                            </span>
-                          </div>
-                        )}
-             
-                        <div className="tooltip">
-                          <Badge
-                            className={`${
-                              isSilver && classes.badgeColorsilver
-                            } ${!isSilver && classes.badgeColor}`}
-                            badgeContent={
-                              !isSilver &&
-                              (this.props.wishlist &&
-                              this.props.wishlist.wishlistdata &&
-                              this.props.wishlist.wishlistdata.nodes &&
-                              this.props.wishlist.wishlistdata.nodes.length > 0
-                                ? this.props.wishlist &&
-                                  this.props.wishlist.wishlistdata &&
-                                  this.props.wishlist.wishlistdata.nodes &&
-                                  this.props.wishlist.wishlistdata.nodes.length
-                                : "0")
-                            }
-                          >
-                            <i
-                              style={{ fontSize: "18px" }}
-                              class={classes.iconFafaheart}
-                              onClick={() => {
-                                if (user_id.length > 0) {
-                                  window.location.href = `/account${"-wishlist"}`;
-                                } else {
-                                  window.location.href = "/login";
-                                }
-                              }}
-                            ><img src={heart} alt="icon" /></i>
-                            <span className="tooltip-s">Wishlist</span>
-                          </Badge>
-                        </div>
-
-                        <div className="tooltip">
-                          <Badge
-                            className={`${
-                              isSilver && classes.badgeColorsilver
-                            } ${!isSilver && classes.badgeColor}`}
-                            badgeContent={
-                              this.props.cart_count &&
-                              this.props.cart_count.data &&
-                              this.props.cart_count.data.allTransSkuLists &&
-                              this.props.cart_count.data.allTransSkuLists.nodes
-                                .length > 0
-                                ? this.props.cart_count &&
-                                  this.props.cart_count.data &&
-                                  this.props.cart_count.data.allTransSkuLists &&
-                                  this.props.cart_count.data.allTransSkuLists
-                                    .nodes.length
-                                : !isSilver && "0"
-                              // this.props && this.props.cart_count && this.props.cart_count.length
-                            }
-                          >
-                            <a href="/cart" className="highlighter">
-                              <i
-                                style={{ fontSize: "20px" }}
-                                class={classes.iconFafa}
-                              ><img src={cart} alt="icon"/> </i>
-                              <span
-                                className="tooltip-s"
-                                style={{
-                                  color: isSilver
-                                    ? "rgb(6, 171, 159)"
-                                    : "#d51f63",
+                                style={{ fontSize: "18px" }}
+                                class={classes.iconFafaheart}
+                                onClick={() => {
+                                  if (user_id.length > 0) {
+                                    window.location.href = `/account${"-wishlist"}`;
+                                  } else {
+                                    window.location.href = "/login";
+                                  }
                                 }}
                               >
-                                Cart
-                              </span>
-                            </a>{" "}
-                          </Badge>
+                                <img src={heart} alt="icon" />
+                              </i>
+                              <span className="tooltip-s">Wishlist</span>
+                            </Badge>
+                          </div>
+
+                          <div className="tooltip">
+                            <Badge
+                              className={`${
+                                isSilver && classes.badgeColorsilver
+                              } ${!isSilver && classes.badgeColor}`}
+                              badgeContent={
+                                this.props.cart_count &&
+                                this.props.cart_count.data &&
+                                this.props.cart_count.data.allTransSkuLists &&
+                                this.props.cart_count.data.allTransSkuLists
+                                  .nodes.length > 0
+                                  ? this.props.cart_count &&
+                                    this.props.cart_count.data &&
+                                    this.props.cart_count.data
+                                      .allTransSkuLists &&
+                                    this.props.cart_count.data.allTransSkuLists
+                                      .nodes.length
+                                  : !isSilver && "0"
+                                // this.props && this.props.cart_count && this.props.cart_count.length
+                              }
+                            >
+                              <a href="/cart" className="highlighter">
+                                <i
+                                  style={{ fontSize: "20px" }}
+                                  class={classes.iconFafa}
+                                >
+                                  <img src={cart} alt="icon" />{" "}
+                                </i>
+                                <span
+                                  className="tooltip-s"
+                                  style={{
+                                    color: isSilver
+                                      ? "rgb(6, 171, 159)"
+                                      : "#d51f63",
+                                  }}
+                                >
+                                  Cart
+                                </span>
+                              </a>{" "}
+                            </Badge>
+                          </div>
                         </div>
-                      </div>
-                        
-                        </Grid>
+                      </Grid>
                     </Grid>
                   </Container>
                 </Grid>
               )}
-              <Grid container id="headerContainerTop">
-
-              </Grid>
+              <Grid container id="headerContainerTop"></Grid>
             </AppBar>
           </div>
         </Hidden>
@@ -920,11 +938,18 @@ class Header extends Component {
         </Modal>
         <Hidden mdUp>
           <Grid>
-            <Grid style={{ position: "fixed", zIndex: "1300",display:"flex",alignItems:"center" }}>
+            <Grid
+              style={{
+                position: "fixed",
+                zIndex: "1300",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <div className="header-appbar-sticky1">
                 <AppBar className="header-appbar-moblie1" id="smallScreen">
                   <Toolbar className={"toolbarsetting"}>
-                  {/* <Grid
+                    {/* <Grid
                       container
                       item
                       xs={1}
@@ -960,7 +985,7 @@ class Header extends Component {
                         />
                       </div>
                     </Grid>
-                    
+
                     <Grid item xs={7}>
                       <div
                         onClick={this.handleSearch}
@@ -978,9 +1003,9 @@ class Header extends Component {
                           }}
                         >
                           <div className={`head-icons1 ${classes.headIcons}`}>
-                          <IconButton onClick={this.handleDrawerOpen}>
-                          <MenuIcon className={classes.mobileNavIcon} />
-                          </IconButton>
+                            <IconButton onClick={this.handleDrawerOpen}>
+                              <MenuIcon className={classes.mobileNavIcon} />
+                            </IconButton>
                             <div
                               id="search"
                               onClick={this.handleClose}
@@ -1015,7 +1040,7 @@ class Header extends Component {
                                   class={`fa fa-user  ${classes.iconFafa}`}
                                   style={{
                                     display: "flex",
-                                    color:"#6D6E71",
+                                    color: "#6D6E71",
                                     alignItems: "flex-end",
                                     justifyContent: "center",
                                   }}
@@ -1031,7 +1056,7 @@ class Header extends Component {
                                   class={`fa fa-user  ${classes.iconFafa}`}
                                   style={{
                                     display: "flex",
-                                    color:"#6D6E71",
+                                    color: "#6D6E71",
                                     alignItems: "flex-end",
                                     justifyContent: "center",
                                   }}
@@ -1104,13 +1129,15 @@ class Header extends Component {
                                     window.location.href = "/login";
                                   }
                                 }}
-                              ><img src={heart} alt="icon" /></i>
+                              >
+                                <img src={heart} alt="icon" />
+                              </i>
                             </Badge>
                             <Badge
                               className={`${
                                 isSilver && classes.badgeColorsilver
                               }`}
-                              style={{ fontSize: "9px",marginTop:"5px" }}
+                              style={{ fontSize: "9px", marginTop: "5px" }}
                               badgeContent={
                                 this.props.cart_count &&
                                 this.props.cart_count.data &&
@@ -1137,7 +1164,9 @@ class Header extends Component {
                                     zIndex: 1000,
                                   }}
                                   class={classes.iconFafa}
-                                ><img src={cart} alt="icon"/></i>
+                                >
+                                  <img src={cart} alt="icon" />
+                                </i>
                               </a>
                             </Badge>
                           </div>
@@ -1230,7 +1259,9 @@ class Header extends Component {
                         >
                           <Typography
                             className={
-                              isSilver ? classes.menulistitemcolor : "list-items1"
+                              isSilver
+                                ? classes.menulistitemcolor
+                                : "list-items1"
                             }
                             variant=""
                           >

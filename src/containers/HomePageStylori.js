@@ -377,7 +377,7 @@ class HomeStylori extends React.Component {
           carosolData={storyData.storiesData}
         />
 
-        <Grid item xs={12} style={{ marginTop: 20 }}>
+        <Grid item xs={12}  style={{ marginTop: 20,width:'100%' }}>
           <Footer />
         </Grid>
         <>

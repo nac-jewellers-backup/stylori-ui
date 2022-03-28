@@ -326,8 +326,6 @@ export const useStyles = makeStyles((theme) => ({
       },
     },
     "& li:hover": {
-      backgroundColor: theme.palette.secondary.dark,
-      color: "white",
       cursor:"pointer"
     },
   },
@@ -396,8 +394,17 @@ export const useStyles = makeStyles((theme) => ({
       letterSpacing: 3,
     },
   },
-  filtersListtopfilters: {
-    
+  ListTick:{
+    color:theme.palette.secondary.dark,  
+  },
+  filtersListTick:{
+     display:"flex",
+     justifyContent:"space-between",
+     "&:hover": {
+      color: theme.palette.secondary.dark,
+    },
+  },
+  filtersListtopfilters: {  
     "& span": {
       letterSpacing: 2,
     },

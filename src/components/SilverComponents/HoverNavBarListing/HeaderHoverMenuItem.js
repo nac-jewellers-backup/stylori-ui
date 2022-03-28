@@ -9,9 +9,12 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  Icon,
 } from "@material-ui/core";
 import { useStyles } from "../styles";
 import PropTypes from "prop-types";
+import { Close, Done } from "@material-ui/icons";
+import DoneOutlinedIcon from '@material-ui/icons/DoneOutlined';
 
 // import "./../header.css";
 
@@ -36,6 +39,7 @@ function HeaderHoverMenuItem(props) {
     setTarget(props.targetopened);
   });
 
+  console.log(props.chips,";;;;")
   // top: '18px !important',
   return (
     <Grid container className={classes.root}>
@@ -91,7 +95,6 @@ function HeaderHoverMenuItem(props) {
                   >
                     <ListItemText variant>
                       <Typography className={classes.listedItemsvalue}>
-                        {/* {menuList.title.toUpperCase()} */}
                         {menuList.title
                           ? menuList.title.toUpperCase()
                           : menuList}
@@ -103,6 +106,7 @@ function HeaderHoverMenuItem(props) {
                 props.filters &&
                 mapper &&
                 mapper.map((menuList) => {
+                  console.log(menuList,props.chips,"sadasd")
                   return menuList.constructor === Object ? (
                     <ListItem
                       component="li"
@@ -171,9 +175,23 @@ function HeaderHoverMenuItem(props) {
                             ? classes.filtersListtopfilters
                             : classes.filtersList
                         }`}
-                        style={{ fontSize: "0.9rem" , }}
+                        style={{ fontSize: "0.9rem" }}
                       >
-                        {menuList.title ? menuList.title : menuList}
+                        <div className={classes.filtersListTick}>
+                        <Typography>{menuList.title ? menuList.title : menuList}</Typography>
+                         
+
+                         {props.chips.map(data =>{
+                          if(data.label === menuList){
+                            return(
+                              <DoneOutlinedIcon className={classes.ListTick}/>
+                            )
+                          }
+                          else return;
+                         })}
+                      
+                        </div>
+                       
                       </ListItemText>
                     </ListItem>
                   );
@@ -241,7 +259,7 @@ function HeaderHoverMenuItem(props) {
                     >
                       <ListItemText variant>
                         <Typography className={classes.listedItemsvalue}>
-                          {/* {menuList.title.toUpperCase()} */}
+
                           {menuList.title
                             ? menuList.title.toUpperCase()
                             : menuList}

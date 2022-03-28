@@ -73,7 +73,7 @@ class HomeStylori extends React.Component {
             </Grid>
           </Hidden>
         </Container>
-        <Grid item>
+        <Grid item xs={12}>
           <Footer silver={true} />
         </Grid>
 

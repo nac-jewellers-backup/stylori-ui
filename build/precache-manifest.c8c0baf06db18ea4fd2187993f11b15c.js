@@ -4,31 +4,31 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "224b36541d477a6c1743",
+    "revision": "f0174744b13408d13a2b",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "d48b6c34c3d6a690fd37",
+    "revision": "35294d988081d19c5932",
     "url": "/static/css/4.css"
   },
   {
-    "revision": "2d64e2d90f2fd35b401a",
+    "revision": "5a26c92fedcb0033c713",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "224b36541d477a6c1743",
+    "revision": "f0174744b13408d13a2b",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "26afbbd3a4999723487b",
+    "revision": "a79c1eb01f50872fbc67",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "d48b6c34c3d6a690fd37",
+    "revision": "35294d988081d19c5932",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "2d64e2d90f2fd35b401a",
+    "revision": "5a26c92fedcb0033c713",
     "url": "/static/js/main.js"
   },
   {
@@ -74,6 +74,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "731e5ecd2c7827cef3f847ec91080214",
     "url": "/static/media/delivery.svg"
+  },
+  {
+    "revision": "6b446a380e308ad3d84cf955d088f3be",
+    "url": "/static/media/facebook.svg"
+  },
+  {
+    "revision": "992ac34a80cdd509871cff78c6d98e72",
+    "url": "/static/media/gmail.svg"
   },
   {
     "revision": "29eb22227ee81796ad8304a217a6a177",
