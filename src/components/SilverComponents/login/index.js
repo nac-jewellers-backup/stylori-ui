@@ -17,9 +17,11 @@ import gmail from "../../../assets/gmail.svg";
 import { AiOutlineMobile } from "react-icons/ai";
 import { useNetworkRequest } from "hooks/index";
 import { makeStyles } from "@material-ui/core";
+import { SimpleSnackbar } from "../Alert";
 import {
   Cancel,
   Clear,
+  Close,
   Delete,
   PhoneAndroid,
   PhoneIphone,
@@ -28,6 +30,7 @@ import "index.css";
 import { GoogleLogin } from "react-google-login";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import { API_URL, FACEBOOK_APP_ID, GOOGLE_CLIENT_ID } from "../../../config";
+import { Alert } from "@material-ui/lab";
 
 
 const useStyles = makeStyles((theme) =>({
@@ -69,10 +72,12 @@ function Login(props) {
   const [condition, setCondition] = useState({
     isMobile: false,
     isOtp: false,
+    alert:false,
+    alertMsg:""
   });
 
   const ValidateEmail = (email) => {
-    var re = /\S+@\S+\.\S+/;
+    var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     return re.test(email);
   };
 
@@ -98,18 +103,23 @@ function Login(props) {
         body: JSON.stringify(body),
       };
       fetch(`${API_URL}/send_otp`, opts)
-        .then((res) => res.json())
-        .then((fetchValue) => {
-          setCondition({ ...condition, isOtp: true });
+        .then((res) => {
+          res.json()
+        })
+        .then((fetchValue) => {         
+          setCondition({ ...condition, isOtp: true,alert:true,alertMsg:"OTP success"});
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      let error = number.error;
-      error.otpemail = "Please enter valid email id";
-      setNumber({ ...number, error });
 
+      if(!ValidateEmail(number.otpemail)){
+        let error = number.error;
+        error.otpemail = "Please enter valid email id";
+        setNumber({ ...number, error });
+      }
+    
       if (number?.mobile?.length !== 10) {
         let error = number.error;
         error.mobile = "Please enter valid number";
@@ -294,6 +304,10 @@ function Login(props) {
     history.replace("/registers");
   };
 
+  const onClose =()=>{
+    setCondition({...condition,alert:false})
+  }
+
   const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest(
     "/api/auth/signin",
     {},
@@ -301,6 +315,7 @@ function Login(props) {
   );
 
   useEffect(() => {
+    setCondition({...condition,alert:true,alertMsg:"Login success"})
     if (data?.accessToken) { 
       localStorage.setItem("email", data.userprofile.email);
       var bb = data.userprofile.id ? data.userprofile.id : "";
@@ -411,7 +426,8 @@ function Login(props) {
                   />
                 </Grid>
                 <Grid item xs={12} lg={6} className={classes.mobile}>
-                  <Button
+                  {condition.isMobile ? 
+                    <Button
                     className="button"
                     variant="contained"
                     fullWidth
@@ -421,11 +437,31 @@ function Login(props) {
                       setCondition({
                         ...condition,
                         isMobile: !condition.isMobile,
+                        isOtp: false
                       })
                     }
                   >
-                    Sign in with OTP
-                  </Button>
+                    Sign in with Email
+                  </Button> 
+                  :
+                  <Button
+                  className="button"
+                  variant="contained"
+                  fullWidth
+                  style={{ padding: 10 }}
+                  startIcon={<AiOutlineMobile style={{ color: "#E28CAB" }} />}
+                  onClick={() =>
+                    setCondition({
+                      ...condition,
+                      isMobile: !condition.isMobile,
+                      isOtp: false
+                    })
+                  }
+                >
+                  Sign in with OTP
+                </Button>
+                   }
+                
                 </Grid>
               </Grid>
             </Grid>
@@ -652,7 +688,7 @@ function Login(props) {
                       fullWidth
                     />
                     <span className="forgotPassword">
-                      <Typography>Forget password?</Typography>
+                      <Typography onClick={()=>onRegister()}>Forget password?</Typography>
                     </span>
                   </Grid>
                   <Grid item xs={12}>
@@ -681,9 +717,20 @@ function Login(props) {
             </Grid>
           </Grid>
         </DialogContent>
+        {condition.alert ? 
+      <SimpleSnackbar
+      severity="success"
+      message={condition?.alertMsg}
+      open={condition.alert}
+      handleClose={onClose}
+      />
+      :null
+      }
       </Dialog>
+      
     </div>
   );
 }
+
 
 export default Login;

@@ -13,7 +13,6 @@ import {
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import classNames from "classnames";
 
 const useStyles = makeStyles((theme) => ({
   headingContainer: {
@@ -119,7 +118,7 @@ const SliderWithHeading = (props) => {
     slidesToShow: 4,
     slidesToScroll: 2,
     adaptiveHeight: false,
-    centerMode: true,
+    centerMode: false,
     centerPadding: "60px",
     // lazyLoad: "progressive",
     swipeToSlide: true,

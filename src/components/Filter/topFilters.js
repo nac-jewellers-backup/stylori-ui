@@ -65,7 +65,7 @@ export const TopFilters = (props) => {
     <div>loading...</div>
   ) : (
     <div className={classes.filtersHeaderTop} id="topfilter">
-      <Container style={{ marginTop: "25px" }}>
+      <Container style={{ marginTop: "45px" }}>
         <Grid container item xs={12}>
           <Grid
             container
@@ -122,7 +122,7 @@ export const TopFilters = (props) => {
                     <Grid
                       item
                       xs={6}
-                      style={{ display: "flex", justifyContent: "flex-end" }}
+                      style={{ display: "flex" }}
                     >
                       {state.listHoverItem === "price" ? (
                         <ArrowDropUpIcon color="primary" />
@@ -206,8 +206,22 @@ export const TopFilters = (props) => {
                     className={classes.spacingfilterdiv}
                   >
                     <Grid item xs={6}>
-                      More
+                      More Filters
                     </Grid>
+                    <Grid
+                      item
+                      xs={6}
+                      style={{
+                      display: "flex",
+                      justifyContent: "flex-end",
+                      }}
+                          >
+                            {state.Menuopen ? (
+                              <ArrowDropUpIcon color="primary" />
+                            ) : (
+                              <ArrowDropDownIcon color="primary" />
+                            )}
+                          </Grid>
                   </Grid>
                 </Grid>
                 {/* </nav> */}

@@ -1,6 +1,14 @@
 import React from "react";
-
-import { Grid, Button, Hidden, Container, Typography } from "@material-ui/core";
+import {
+  Grid,
+  Button,
+  Hidden,
+  Container,
+  Typography,
+  TextField,
+  InputAdornment,
+  Input,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import googlePlaystore from "../../assets/iconsPlayStore.png";
 import visa from "../../assets/visa.jpg";
@@ -12,6 +20,7 @@ import cartoonFooter from "../../assets/cartoonFooter.png";
 import "./Footer.css";
 import { pointer } from "popmotion";
 import stylorisilverlogo from "../../assets/Stylori Silver logo.svg";
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
 
 import { API_URL } from "config";
 import { SnackBar } from "components/snackbarAlert/SnackBar";
@@ -870,7 +879,7 @@ export default function Footer(props) {
               sm={6}
               style={{
                 display: "flex",
-                justifyContent: "flex-end",
+                justifyContent: silver ? "" : "flex-end",
                 alignItems: "flex-start",
               }}
             >
@@ -883,12 +892,21 @@ export default function Footer(props) {
                   {silver === true ? (
                     //
                     <>
-                      {" "}
+                      <Input
+                        style={{ color: "white" }}
+                        color="primary"
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <MailOutlineIcon />
+                          </InputAdornment>
+                        }
+                      />
+                      {/* {" "}
                       <img
                         src={stylorisilverlogo}
                         alt=""
                         style={{ width: "100%" }}
-                      />
+                      /> */}
                     </>
                   ) : (
                     <>
@@ -901,16 +919,21 @@ export default function Footer(props) {
                     </>
                   )}
                 </div>
-                <div
-                  style={{
-                    color: silver ? "#fff" : "rgb(128, 128, 128)",
-                    fontSize: "11px",
-                    justifyContent: "center",
-                    display: "flex",
-                  }}
-                >
-                  Copyright © 2020 stylori.com
-                </div>
+                {silver ? (
+                  ""
+                ) : (
+                  <div
+                    style={{
+                      color: silver ? "#fff" : "rgb(128, 128, 128)",
+                      fontSize: "11px",
+                      justifyContent: "center",
+                      display: "flex",
+                      padding: "40px",
+                    }}
+                  >
+                    Copyright © 2020 stylori.com
+                  </div>
+                )}
               </Grid>
             </Grid>
           </Grid>
@@ -982,12 +1005,25 @@ export default function Footer(props) {
                 <span className="breathspace netbank"></span>
                 <span className="breathspace cashBack"></span>
               </Grid>
+              {silver && (
+                <div
+                  style={{
+                    color: silver ? "#fff" : "rgb(128, 128, 128)",
+                    fontSize: "11px",
+                    justifyContent: "center",
+                    display: "flex",
+                    padding: "40px",
+                  }}
+                >
+                  Copyright © 2020 stylori.com
+                </div>
+              )}
             </Grid>
           </Grid>
         </Hidden>
       </Grid>
 
-      <Hidden only={["sm", "xs"]}>
+      <Hidden only={["sm", "xs", "lg"]}>
         <Grid
           container
           style={{ backgroundColor: silver ? "#06AB9F" : "#fff" }}
