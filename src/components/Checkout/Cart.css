@@ -11,6 +11,11 @@
         width: 100% !important;
     }
 
+
+    .total{
+        color: #6D6E71 !important;
+    }
+
     .bread-header ol li a:after {
         content: " ";
         display: block;

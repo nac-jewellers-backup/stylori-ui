@@ -798,3 +798,48 @@
     justify-content: center;
   }
 }
+
+.cardTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.cardBorder{
+  border: 1px solid #6D6E71 !important;
+  width: 250px !important;
+}
+.cart{
+  font-size: 18px;
+  font-family: 'Playfair Display', serif !important;
+  letter-spacing: 0.15em;
+  color: #6D6E71;
+}
+
+.summary{
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px;
+}
+.summaryText{
+  letter-spacing: 0.15em;
+  color: #6D6E71;
+}
+.checkout{
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px;
+  width: max-content;
+}
+.coupon{
+  background-color: #d8dce6;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  margin-left: 20px;
+}
+
+.arrow.MuiSvgIcon-root{
+  fill: #6D6E71 !important;
+  color: blue;
+}
