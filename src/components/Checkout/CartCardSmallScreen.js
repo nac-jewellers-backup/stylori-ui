@@ -149,7 +149,7 @@ function MediaControlCard(props) {
       {/* <Grid container>
         <Grid xs={6} > */}
       <span className="cartTitle"> Shopping cart </span> <br />
-      <Divider className="cardBorder" style={{marginLeft:"50px",marginTop:"-12px"}}/>
+      <Divider className="cardBorderMobile" style={{width:"none"}}/>
       {/* <div> <span style={{ color: "#394578", fontSize: "14px", fontWeight: "bold" }}>Item:</span> ({props.data.length})</div><br /> */}
       {/* </Grid>
         <Grid xs={6}  >
