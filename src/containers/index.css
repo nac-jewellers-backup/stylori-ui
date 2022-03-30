@@ -812,7 +812,7 @@
 .cart{
   font-size: 18px;
   font-family: 'Playfair Display', serif !important;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.20em !important;
   color: #6D6E71;
 }
 
@@ -832,7 +832,7 @@
   width: max-content;
 }
 .coupon{
-  background-color: #d8dce6;
+  background-color: whitesmoke;
   display: flex;
   justify-content: space-between;
   padding: 5px;

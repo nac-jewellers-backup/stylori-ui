@@ -1,4 +1,4 @@
-import { Hidden, Grid, Container, withStyles, Card } from "@material-ui/core";
+import { Hidden, Grid, Container, withStyles, Card, CardMedia } from "@material-ui/core";
 import React, { Component } from "react";
 import Header from "components/SilverComponents/Header";
 // import CustomSeparator from "components/BreadCrumb/index";
@@ -16,6 +16,7 @@ import Footer from "components/Footer/Footer";
 import "components/product-image-slider/product-images.css";
 import { withRouter } from "react-router-dom";
 import productDetails from "mappers/productDetails";
+import MainCard from "components/SilverComponents/mainSlider";
 
 import { ProductDetailContext } from "context/ProductDetailContext";
 import { API_URL } from "config";
@@ -181,7 +182,6 @@ const styles = (theme) => ({
   // Collection Card
   collectionCardContainer: {
     marginBottom: 50,
-    display: "flex",
     [theme.breakpoints.up("sm")]: {
       margin: "0px 30px 50px 30px",
     },
@@ -223,6 +223,7 @@ class ProductDetail extends Component {
       Index: "",
     };
   }
+  
   componentDidMount() {
     // Facebook Pixel Code
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
@@ -300,7 +301,11 @@ class ProductDetail extends Component {
           this?.props?.data[0]?.title,
       },
     ];
-
+   
+   const enquireLink = () => {  
+     window.open(`https://wa.me/919952625252?text=Hi - ${window.location.href}`);
+    };
+    console.log(this.props)
     const clear_rating = (bool) => {
       if (bool === false) {
         this.setState({
@@ -338,6 +343,31 @@ class ProductDetail extends Component {
     const { classes } = this.props;
     const jewelData = this.props?.data?.[0];
   
+   var brand_card =[
+     {
+       title:"MURAL COLLECTIONS",
+       image:"https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Mural.jpg",
+       url:"https://www.stylori.com/silver-jewellery-mural+collection"
+     },
+     {
+      title:"STAR STRUCK",
+      image:"https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Starstruck.jpg",
+      url:"https://www.stylori.com/silver-jewellery-starstruck+collection"
+     },
+     {
+      title:"ELEMENTAL",
+      image:"https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Elemental.jpg",
+      url:"https://www.stylori.com/silver-jewellery-elemental+collection"
+     },
+     {
+       title:"CONCENTRIC",
+       image:"https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Concentric.jpg",
+       url:"https://www.stylori.com/silver-jewellery-concentric+collection"
+     }
+   ]
+
+   
+
     var detail_data = [
       {
         title: "Description",
@@ -355,7 +385,17 @@ class ProductDetail extends Component {
       },
       {
         title: "Jewellery Care",
-        data: <Typography className="no-data">No Data Found</Typography>,
+        data: (
+          <div>
+         <Typography className="detailTitle">{jewelData?.dis}</Typography>
+         <ProductDetails
+            data={this?.props?.data}
+            isSilver={isSilver}
+            isActive={this.state.isActive}
+          />
+          </div>
+         
+        ),
       },
     ];
 
@@ -580,7 +620,7 @@ class ProductDetail extends Component {
                 )}
                 {isSilver && (
                   <div className={classes.getInTouchButtonContainer}>
-                    <SilverButton variant="outlined">Get in Touch</SilverButton>
+                    <SilverButton variant="outlined" onClick={()=>enquireLink}>Get in Touch</SilverButton>
                   </div>
                 )}
               </Grid>
@@ -751,18 +791,9 @@ class ProductDetail extends Component {
           {/* Collection Card section */}
           <div className={classes.collectionCardContainer}>
             {isSilver && (
-              <div style={{ display: "flex" }}>
-                {["BAROQUE WHITES", "MURAL COLLECTIONS", "STAR STRUCK"].map(
-                  (items) => (
-                    <div>
-                      <Card style={{ height: 250, width: 400, margin: 5 }}>
-                        <img src={jewelData?.fadeImages?.arrOfurls[1]}></img>
-                      </Card>
-                      <Typography className="card-image">{items}</Typography>
-                    </div>
-                  )
-                )}
-              </div>
+             <MainCard
+             products={brand_card}
+           />    
             )}
           </div>
 

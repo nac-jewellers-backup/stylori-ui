@@ -23,9 +23,8 @@ import Pricing from "../Pricing/index";
 import styles from "./style";
 import { NavLink } from "react-router-dom";
 import { CartContext, ProductDetailContext } from "context";
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
-
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { API_URL, CDN_URL } from "config";
 import Quantity from "../quantity/index";
 import axios from "axios";
@@ -38,6 +37,7 @@ class Checkoutcard extends React.Component {
       shipby_arr: [],
     };
   }
+  
   async componentDidMount() {
     let skuId_arr = this.props?.data;
     let shipby_arr_object = [];
@@ -192,8 +192,9 @@ class Checkoutcard extends React.Component {
       arrows: false,
     };
     const { classes, data } = this.props;
+
     // Quantity {JSON.parse(localStorage.getItem('quantity'))[val.namedetail[0].details]}
-    const { productsDetails, fadeImages, dataCard1 } = this.props.data;
+    const { productsDetails, fadeImages} = this.props.data;
     // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
     // React.useEffect(()=>{
     //     setcartcount({
@@ -247,6 +248,28 @@ class Checkoutcard extends React.Component {
       if (_data.indexOf("silver") > -1) return false;
       else return true;
     };
+    var discounted_price = this.props.cartFilters.discounted_price
+    ? this.props.cartFilters.discounted_price
+    : "";
+  const dataCard1 = this.props.data
+    .map((val) => {
+      return (
+        val.dataCard1[0].offerPrice *
+        JSON.parse(localStorage.getItem("quantity"))[val.generatedSku]
+      );
+    })
+    .reduce(myFunc);
+
+  function myFunc(total, num) {
+    var cart_price;
+    if (discounted_price.length > 0) {
+      var a = Math.round(total + num);
+      cart_price = a - discounted_price;
+    } else {
+      cart_price = Math.round(total + num);
+    }
+    return cart_price;
+  }
 
     return (
       <div style={{ marginTop: "10px" }}>
@@ -259,27 +282,35 @@ class Checkoutcard extends React.Component {
           style={{ display: "flex", flexDirection: "row" }}
           spacing={1}
         >
-          {this.props.data.map((dataval) =>
+
+          <Grid item container xs={7} spacing={1}>
+          <Grid item>
+                <Typography className="total">{`Total ( ${this.props.data.length} items) :   ${
+                    new Intl.NumberFormat("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                      minimumFractionDigits: 0,
+                    }).format(Math.round(     props.cartFilters.discounted_amount
+                      ? Math.round(props.cartFilters.discounted_amount)
+                      : Math.round(dataCard1 - discounted_price))) 
+                      }`}</Typography>
+           </Grid>
+           {this.props.data.map((dataval) =>
             dataval.productsDetails.map((val) => {
-              return(
-                 <Grid container
-              spacing={12}
-              xs={7}>
-               <Grid item>
-                <Typography className="total">{`Total (${dataval.productsDetails.length} items) :`}</Typography>
-                </Grid>
-              <Grid
+              return(    
+                 <Grid
                 item
                 container
                 xs={12}
                 style={{
                   outline: "none",
                   marginBottom: "25px",
-                  boxShadow: "1px 2px 13px 7px #DEDADA",
+                  // boxShadow: "1px 2px 13px 7px #DEDADA",
                   padding: "10px",
-                  height:"200px"
+                  height:"180px",
+                  backgroundColor:"whitesmoke"
                 }}
-                className={classes.cart}
+                // className={classes.cart}
               >
                 
                   <Grid
@@ -309,7 +340,7 @@ class Checkoutcard extends React.Component {
                                         to={dataval.skuUrl}
                                         style={{ textDecoration: "none" }}
                                       >
-                                        {/* <Slideshow
+                                        <Slideshow
                                         className="image"
                                         fadeImages={filter_image(
                                           im_,
@@ -317,19 +348,19 @@ class Checkoutcard extends React.Component {
                                           val.details
                                         )}
                                         dataCarousel={dataCarousel}
-                                      /> */}
+                                      />
                                       </NavLink>
                                     ) : (
-                                      // <Slideshow
-                                      //   className="image"
-                                      //   fadeImages={filter_image(
-                                      //     im_,
-                                      //     val.name,
-                                      //     val.details
-                                      //   )}
-                                      //   dataCarousel={dataCarousel}
-                                      // />
-                                      ""
+                                      <Slideshow
+                                        className="image"
+                                        fadeImages={filter_image(
+                                          im_,
+                                          val.name,
+                                          val.details
+                                        )}
+                                        dataCarousel={dataCarousel}
+                                      />
+                                      
                                     )}
                                   </>
                                 ) : (
@@ -469,12 +500,14 @@ class Checkoutcard extends React.Component {
                           <div>
                             <Button
                               // className="highlighter"
-                              className={`subhesder hov ${classes.normalfonts}`}
+                              // className={`subhesder hov ${classes.normalfonts}`}
                               id={dataval.generatedSku}
                               onClick={(event) =>
                                 this.handleDeleteLocalStorage(event)
                               }
                               variant="outlined"
+                              fullWidth
+                              style={{padding:'7px',fontSize:'13px',border:'1px solid grey',color:"#6D6E71"}}
                             >
                               &nbsp;Remove
                             </Button>
@@ -503,14 +536,16 @@ class Checkoutcard extends React.Component {
                           <div>
                             <Button
                               // className="highlighter"
-                              className={`subhesder hov ${classes.normalfonts}`}
+                              // className={`subhesder hov ${classes.normalfonts}`}
                               id={dataval.generatedSku}
                               onClick={(event) =>
                                 this.handleDeleteLocalStorage(event)
                               }
                               variant="outlined"
+                              fullWidth
+                              style={{padding:'7px',fontSize:'13px',border:'1px solid grey',color:"#6D6E71"}}
                             >
-                              &nbsp;Whislist
+                              &nbsp;Move To Wishlist
                             </Button>
                             <span>&nbsp;</span>
                             {!dataval?.isActive ? (
@@ -556,12 +591,15 @@ class Checkoutcard extends React.Component {
                     </div>
                   </Grid> */}
                
-              </Grid>
-              <Grid item container>
+                 </Grid>    
+              )   
+            })
+           )}
+            <Grid item container spacing={1}>
                 <Grid item style={{display:"flex",alignItems:"center"}}>
-                <ArrowLeftIcon fontSize="small"/>
+                   <ArrowLeftIcon fontSize="small"/>
                 
-                  <div>Go Back to <span style={{borderBottom:"2px solid #f14880"}}>
+                  <div>Go Back to <span style={{borderBottom:"2px solid #f14880",cursor:"pointer"}} onClick={()=>window.location.replace('/stylori')}>
                    Stylori
                     </span>
                     </div>
@@ -569,18 +607,16 @@ class Checkoutcard extends React.Component {
                 </Grid>
                 <Grid item style={{display:"flex",alignItems:"center"}}>
                 <ArrowLeftIcon fontSize="small"/>
-                <div>Go Back to <span style={{borderBottom:"2px solid #06ab9f"}}>
-                  Stylori Silver
+                  <div>Go Back to <span style={{borderBottom:"2px solid #06ab9f",cursor:"pointer"}} onClick={()=>window.location.replace('/styloriSilver')}>
+                      Stylori Silver
                     </span>
                     </div>
-                </Grid>
-              
-               
-              </Grid>
-              </Grid>    
-              )   
-            })
-          )}
+                </Grid>      
+            </Grid>
+          </Grid>
+          
+          
+          
           <Grid item xs={1} style={{display:"flex",justifyContent:"center"}}>
              <Divider variant="vertical"/>
           </Grid>     
@@ -621,6 +657,7 @@ class Checkoutcard extends React.Component {
               }}
             >
               <Buynowbutton
+                isCart={true}
                 productURL={productURL}
                 productIsActive={productIsActive ?? ""}
                 class={`chckout-page-buynow ${classes.buttons}`}
@@ -666,25 +703,27 @@ class Checkoutcard extends React.Component {
       .reduce(myFunc);
     let path = window.location.pathname.split("/").pop();
     const { classes } = this.props;
+     console.log(props,"sad")
     return (
       <div>
-        <Grid container className="coupon" xs={8}>
+        <Grid container xs={12} lg={10} spacing={2}>
+        <Grid item container className="coupon" xs={12}>
            <Grid item style={{display:'flex',alignItems:"center"}} xs={11}>
              <img src={percentage}></img>
-             <Typography style={{color:'#6D6E71',marginLeft:2}}>Apply Coupon</Typography>
+             <Typography style={{color:'#6D6E71',marginLeft:5}}>Apply Coupon</Typography>
            </Grid>
            <Grid item xs={1}>      
-             <PlayArrowIcon className="arrow" fontSize="small" />   
+             <ArrowRightIcon className="arrow" fontSize="medium" />   
            </Grid>
         </Grid>
 
-        <Grid container className="summary" xs={8}>
+        <Grid item container className="summary" xs={12}>
           <Typography className="summaryText">Order Summary</Typography>
         </Grid>
 
-        <Grid container style={{ display: "flex",paddingLeft:20 }} xs={10}>
+        <Grid item container style={{ display: "flex"}} xs={12}>
           <Grid item xs={6} />
-          <Grid item container xs={12}>
+          <Grid item container xs={12} spacing={12}>
             {/* {dataCard1.map(val => */}
             <Grid item xs={7}>
               <Typography className={`subhesder ${classes.normalfonts}`}>
@@ -712,7 +751,7 @@ class Checkoutcard extends React.Component {
                 Grand Total
               </Typography>
             </Grid>
-            <Grid item xs={5} style={{paddingLeft:"50px"}}>
+            <Grid item xs={5} style={{textAlign:"end"}}>
               <Typography className={`subhesder ${classes.normalfonts}`}>
                 {props.cartFilters.gross_amount
                   ? Math.round(props.cartFilters.gross_amount)
@@ -749,9 +788,11 @@ class Checkoutcard extends React.Component {
           </Grid>
         </Grid>
 
-        <Grid container xs={10} className="checkout">
+        <Grid item container xs={12} className="checkout">
           {this.checkoutbutton()}
         </Grid>
+        </Grid>
+      
 
         {/* <Grid container style={{display:"flex",justifyContent:"center"}}>
           {/* {path == "checkout" ? (

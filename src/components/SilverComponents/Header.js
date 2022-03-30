@@ -574,16 +574,22 @@ class Header extends Component {
                           }
                         >
                           <a href="/cart" className="highlighter">
+                         
                             <i
                               style={{ fontSize: "20px" }}
                               class={classes.iconFafa}
-                            ><img src={cart} alt="icon"/> </i>
+                            >
+                              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                              {/* <img src={cart} alt="icon"/> */}
+                               </i>
+                            
                             <span
                               className="tooltip-s"
                               style={{
                                 color: isSilver
                                   ? "rgb(6, 171, 159)"
                                   : "#d51f63",
+                                  marginTop:7
                               }}
                             >
                               Cart
@@ -883,7 +889,10 @@ class Header extends Component {
                               <i
                                 style={{ fontSize: "20px" }}
                                 class={classes.iconFafa}
-                              ><img src={cart} alt="icon"/> </i>
+                              >
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                {/* <img src={cart} alt="icon"/>  */}
+                                </i>
                               <span
                                 className="tooltip-s"
                                 style={{
