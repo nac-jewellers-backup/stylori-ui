@@ -34,6 +34,13 @@ const styles = theme => ({
     cover: {
         width: "30vw"
     },
+    cartTitle:{
+        color: "#666", 
+        fontSize: "14px", 
+        margin: "0px 0px 10px",
+        display:"flex",
+        justifyContent:"center"
+    },
     controls: {
         display: "flex",
         alignItems: "center",
