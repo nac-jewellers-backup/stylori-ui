@@ -38,6 +38,14 @@ body {
     font-size: 20px;
 }
 
+.accordion-title-check {
+    display: flex;
+    justify-content: space-between;
+    margin:10px;
+    color:#A6A8AB;
+    font-size: 20px;
+}
+
 .button{
     width: 330px;
     
@@ -52,6 +60,15 @@ body {
 .accordion-title2{
     color: #606161 !important;
     font-size: 20px !important;
+    margin-top: 0 !important;
+    font-family: 'Playfair Display', serif !important;
+    line-height: 28px;
+    margin-bottom: 0 !important;
+}
+
+.accordion-title2-check{
+    color: #606161 !important;
+    font-size: 16px !important;
     margin-top: 0 !important;
     font-family: 'Playfair Display', serif !important;
     line-height: 28px;

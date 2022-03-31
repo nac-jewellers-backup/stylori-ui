@@ -11,6 +11,11 @@
 box-shadow: none !important;
 
 }
+.text_title{
+    font-weight: 700 !important;
+    color: #6D6E71;
+    font-size: 14px !important;
+}
 @media screen and (min-width: 600px) {
     .extra-box{
         box-shadow: none !important;

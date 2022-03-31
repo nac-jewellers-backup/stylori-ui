@@ -13,7 +13,7 @@ const Addressform = (props) => {
 }
 
 const AddressComponent = (props) => {
-    const { values, handle, setValues } = Addressforms(() => props.changePanel(3, values.selest_my_address));
+    const { values, handle, setValues } = Addressforms(() => props.changePanel(4, values.selest_my_address));
     const cl = <input onChange={() => setValues({
         values, ...values,
         checkValue: !values.checkValue

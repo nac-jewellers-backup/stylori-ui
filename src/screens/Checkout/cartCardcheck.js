@@ -30,6 +30,8 @@ import cart from "../../mappers/cart";
 import { CheckForCod } from "queries/productdetail";
 import { useCheckForCod } from "hooks/CheckForCodHook";
 import Header from "components/SilverComponents/Header";
+import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { withRouter } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import ReactPixel from "react-facebook-pixel";
@@ -69,6 +71,8 @@ class Component extends React.Component {
     // expandedlimit: 1,
     mailId: null,
     adres_details: null,
+    isActive:false,
+    Index:null
   };
   componentDidMount() {
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
@@ -227,7 +231,7 @@ class Component extends React.Component {
     // localStorage.removeItem("cart_id")
     // this.props.setCartFilters(obj_user)
     // }
-    this.changePanel(4);
+    this.changePanel(3);
   };
 
   render() {
@@ -264,6 +268,7 @@ class Component extends React.Component {
         icon: "https://assets.stylori.com/images/static/icon-return.png",
       },
     ];
+
     adres["value"] = localStorage.getItem("select_addres")
       ? JSON.parse(localStorage.getItem("select_addres"))
       : {};
@@ -325,7 +330,7 @@ class Component extends React.Component {
         </Helmet>
         <Header wishlist={this.props.wishlistdata} />
 
-        <CustomSeparator
+        {/* <CustomSeparator
           arrowicon="cart-head-arrows"
           className={`breadcrums-header ${classes.normalcolorback}`}
           classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
@@ -341,10 +346,98 @@ class Component extends React.Component {
               : cartsubdata_static
           }
           changePanel={this.changePanel}
-        />
-        <div className="pt-sm checkout-ovralldiv-media marginTop">
-          <div style={{ marginTop: "20px" }}>
-            <ExpansionPanel
+        /> */}
+
+        <Grid container spacing={2}>
+          <Grid item container xs={6} style={{backgroundColor:"whitesmoke"}}>
+            <div style={{width:"100%"}}>
+                  <div className="">
+                    <div className="">
+                   
+                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
+                          <div
+                            className="accordion-title-check"
+                            onClick={this.handleChange(1)}
+                          >
+                            <div className="accordion-title2-check">{`1. LOGIN`}</div>
+                            <div style={{ cursor: "pointer" }}>
+                              {expanded === "panel1"
+                                ? "-"
+                                : "+"}
+                            </div>
+                          </div>
+                          {expanded === "panel1" ? (
+                            <div className="" style={{ margin: 10 }}>
+                              <LoginRegisterIndex changePanel={this.changePanel} />
+                            </div>
+                          ) : null}
+                        </div>
+                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
+                          <div
+                            className="accordion-title-check"
+                            onClick={this.handleChange(2)}
+                          >
+                            <div className="accordion-title2-check">{`2. ADD A GIFT MESSAGE`}</div>
+                            <div style={{ cursor: "pointer" }}>
+                              {expanded === "panel2"
+                                ? "-"
+                                : "+"}
+                            </div>
+                          </div>
+                          {expanded === "panel2" ? (
+                            <div className="" style={{ margin: 10 }}>
+                              <ProductList  onClickgift={() => this.pincodeapi()} check={true}/>
+                              <Button
+                                      onClick={() => this.pincodeapi()}
+                                      className="summaryOrder-pay-btn-check"
+                                      style={{ width: "100%" }}
+                                      fullWidth={true}
+                                    >
+                                      Continue to Delivery Information
+                                    </Button>
+                            </div>
+                          ) : null}
+                        </div>
+                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
+                          <div
+                            className="accordion-title-check"
+                            onClick={this.handleChange(3)}
+                          >
+                            <div className="accordion-title2-check">{`3. DELIVERY/PICKUP INFORMATION`}</div>
+                            <div style={{ cursor: "pointer" }}>
+                              {expanded === "panel3"
+                                ? "-"
+                                : "+"}
+                            </div>
+                          </div>
+                          {expanded === "panel3" ? (
+                            <div className="" style={{ margin: 10 }}>
+                               <Addressform changePanel={this.changePanel} />
+                            </div>
+                          ) : null}
+                        </div>
+                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
+                          <div
+                            className="accordion-title-check"
+                            onClick={this.handleChange(4)}
+                          >
+                            <div className="accordion-title2-check">{`4. PAYMENT METHOD`}</div>
+                            <div style={{ cursor: "pointer" }}>
+                              {expanded === "panel4"
+                                ? "-"
+                                : "+"}
+                            </div>
+                          </div>
+                          {expanded === "panel4" ? (
+                            <div className="" style={{ margin: 10 }}>
+                              <PaymentIndex data={data} CodData={this.props.CodData} />
+                            </div>
+                          ) : null}
+                        </div>
+                     
+                    </div>
+                  </div>
+            {/* <ExpansionPanel
               square
               expanded={expanded === "panel1"}
               onChange={this.handleChange(1)}
@@ -473,12 +566,60 @@ class Component extends React.Component {
               <ExpansionPanelDetails
                 style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}
               >
-                <Grid container>
+                
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+            <ExpansionPanel
+              square
+              expanded={expanded === "panel4"}
+              onChange={this.handleChange(4)}
+              style={{
+                boxShadow: "none",
+                boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px",
+              }}
+            >
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon className="arrow-chek" />}
+                className="ckcut-main-body"
+              >
+                <Avatar className={`avart-ckc ${classes.normalcolorback}`}>
+                  4
+                </Avatar>
+                <Typography className="text-chck">Payment Options</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails
+                style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}
+              >
+                <PaymentIndex data={data} CodData={this.props.CodData} />
+              </ExpansionPanelDetails>
+            </ExpansionPanel> */}
+            </div>
+              <Grid item container>
+              <Grid item style={{display:"flex",alignItems:"center",justifyContent:"space-around",marginLeft:'15px'}}>
+                 <ArrowLeftIcon fontSize="small"/>
+              
+                <div>Go Back to <span style={{borderBottom:"2px solid #f14880",cursor:"pointer"}} onClick={()=>window.location.replace('/stylori')}>
+                 Stylori
+                  </span>
+                  </div>
+            
+              </Grid>
+              <Grid item style={{display:"flex",alignItems:"center",marginLeft:'15px'}}>
+              <ArrowLeftIcon fontSize="small"/>
+                <div>Go Back to <span style={{borderBottom:"2px solid #06ab9f",cursor:"pointer"}} onClick={()=>window.location.replace('/styloriSilver')}>
+                    Stylori Silver
+                  </span>
+                  </div>
+              </Grid>      
+              </Grid>
+          </Grid>
+           <Grid item container xs={6}>
+       
                   <Grid item xs={12} lg={12}>
                     {/* {JSON.stringify(this.datalist(cartContext))} */}
                     <Grid container>
                       <Grid xs={12} lg={7} />
-                      <Grid xs={12} lg={4}>
+                      {/* <Grid xs={12} lg={4}>
                         <div style={{ float: "right" }}>
                           {ProductIsActive ? (
                             <Button
@@ -496,14 +637,15 @@ class Component extends React.Component {
                             </Button>
                           )}
                         </div>
-                      </Grid>
+                      </Grid> */}
                     </Grid>
                     <br />
-
+                    <Typography className="checkoutSummary">Order Summary</Typography>
                     <CartCard
                       data={data}
                       isStateFilterContextQty={this.props.isdatafromstate}
                       isdatafromstate={this.props.isdatafromstate}
+                      checkout={true}
                     />
 
                     <Hidden smDown>
@@ -532,9 +674,9 @@ class Component extends React.Component {
                       <br />
                     </Hidden>
                   </Grid>
-                  <Grid item xs={12} lg={12} className={classes.cart}>
+                  {/* <Grid item xs={12} lg={12} className={classes.cart}>
                     <ProductList />
-                  </Grid>
+                  </Grid> */}
                   <Hidden mdUp>
                     <Grid container style={{ marginTop: "10px" }}>
                       <Grid xs={12} lg={7} />
@@ -560,35 +702,12 @@ class Component extends React.Component {
                     </Grid>
                     <br />
                   </Hidden>
-                </Grid>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel
-              square
-              expanded={expanded === "panel4"}
-              onChange={this.handleChange(4)}
-              style={{
-                boxShadow: "none",
-                boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px",
-              }}
-            >
-              <ExpansionPanelSummary
-                expandIcon={<ExpandMoreIcon className="arrow-chek" />}
-                className="ckcut-main-body"
-              >
-                <Avatar className={`avart-ckc ${classes.normalcolorback}`}>
-                  4
-                </Avatar>
-                <Typography className="text-chck">Payment Options</Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails
-                style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}
-              >
-                <PaymentIndex data={data} CodData={this.props.CodData} />
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-          </div>
-        </div>
+          </Grid> 
+        </Grid>
+
+        {/* <div className="pt-sm checkout-ovralldiv-media marginTop">
+         
+        </div> */}
       </Grid>
     );
   }
