@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import { Button, Grid } from "@material-ui/core";
+import { Button, Grid,Divider } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 // import { productsDetails } from '../product-image-slider/producthoverData';
 // import { dataCard1 } from '../ProductCard/ProductData';
@@ -12,7 +12,7 @@ import { productcarddatas } from "../../mappers";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./style";
 import { NavLink } from "react-router-dom";
-import Cart from "./Cart.css";
+import "./Cart.css";
 import { API_URL, CDN_URL } from "config";
 import Quantity from "../quantity/index";
 import { Slideshow } from "components";
@@ -148,13 +148,14 @@ function MediaControlCard(props) {
     <div style={{ paddingTop: "10px" }}>
       {/* <Grid container>
         <Grid xs={6} > */}
-      <span style={{ color: "#666", fontSize: "14px", margin: "0px 0px 10px" }}> Shopping cart </span> <br />
+      <span className="cartTitle"> Shopping cart </span> <br />
+      <Divider className="cardBorderMobile" style={{width:"none"}}/>
       {/* <div> <span style={{ color: "#394578", fontSize: "14px", fontWeight: "bold" }}>Item:</span> ({props.data.length})</div><br /> */}
       {/* </Grid>
         <Grid xs={6}  >
           jh</Grid>
       </Grid><br /> */}
-      {props.checkoutbutton}
+      {/* {props.checkoutbutton} */}
       <br />
       <br />
       <br />
@@ -275,7 +276,7 @@ function MediaControlCard(props) {
                       variant="contained"
                       style={{ cursor: "pointer", fontSize: "0.9rem" }}
                       className={`${classes.normalfonts} ${classes.controls}`}
-                      className="highliter"
+                      // className="highliter"
                     >
                       &nbsp;
                       <div

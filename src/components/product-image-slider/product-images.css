@@ -9,6 +9,7 @@ body {
 
 }
 
+
 #modalElementSizeGuide {
     overflow: hidden;
 }
@@ -36,6 +37,17 @@ body {
     color:#06a296;
     font-size: 20px;
 }
+
+.button{
+    width: 330px;
+    
+}
+@media only screen and (max-width: 321px) {
+    .button {
+       width: 281px;
+    }
+}
+
 
 .accordion-title2{
     color: #606161 !important;
@@ -1908,3 +1920,13 @@ body {
 .imagecardSilver div {
     display: flex !important;
 }
+
+.detailTitle {
+    color: #606161 !important;
+    font-size: 16px !important;
+    margin-top: 0 !important;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif !important;
+    line-height: 28px;
+    margin-bottom: 0 !important;
+  }

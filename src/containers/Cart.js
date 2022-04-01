@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import CartCard from "components/Checkout/CartCard";
 import Footer from "components/Footer/Footer";
-import { Grid, Container, Hidden } from "@material-ui/core";
+import { Grid, Container, Hidden, Typography, Divider } from "@material-ui/core";
 import Header from "components/SilverComponents/Header";
 import "screens/Stylori/index.css";
 import { CartContext, ProductDetailContext } from "context";
@@ -84,7 +84,7 @@ class Cart extends React.Component {
        
         <Hidden smDown>
 
-          <Grid container spacing={12}>
+             <Grid container spacing={12}>
               {/* <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}> */}
               <Header wishlist={this.props.wishlistdata} />
               {/* </Grid> */}
@@ -93,23 +93,35 @@ class Cart extends React.Component {
           {path === "checkout" ? (
             ""
           ) : (
-            <CustomSeparator
-              arrowicon="cart-head-arrows"
-              className={`breadcrums-header ${classes.normalcolorback}`}
-              classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
-              list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
-              data={
-                this.props.data.length > 0
-                  ? this.props.data[0].breadcrumsdata
-                  : breadcrumsdata
-              }
-              subdata={
-                this.props.data.length > 0
-                  ? this.props.data[0].cartsubdata
-                  : cartsubdata
-              }
-            />
+            <Grid container className="cardTitle" spacing={1}>
+             <Grid item >
+                <Typography className="cart">SHOPPING CART</Typography>
+             </Grid>
+             <Grid item >
+              <Divider className="cardBorder"/>
+             </Grid>
+            </Grid>
+            
+            
+            // <CustomSeparator
+            //   arrowicon="cart-head-arrows"
+            //   className={`breadcrums-header ${classes.normalcolorback}`}
+            //   classsubhed={`breadcrums-sub ${classes.normalcolorback}`}
+            //   list={`MuiBreadcrumbs-li ${classes.fontwhite}`}
+            //   data={
+            //     this.props.data.length > 0
+            //       ? this.props.data[0].breadcrumsdata
+            //       : breadcrumsdata
+            //   }
+            //   subdata={
+            //     this.props.data.length > 0
+            //       ? this.props.data[0].cartsubdata
+            //       : cartsubdata
+            //   }
+            // />
           )}
+
+         
           <div className="cart-ovralldiv-media " style={{ marginTop: "3%" }}>
             <Grid Container spacing={12}>
               {this.props.data.length > 0 ? (

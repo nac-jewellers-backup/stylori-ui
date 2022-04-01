@@ -19,14 +19,7 @@ const CollectionSlider = ({ collections = [] }) => {
   return (
     <div>
       <Slider {...settings}>
-        {[
-          collections[1],
-          collections[1],
-          collections[1],
-          collections[1],
-          collections[1],
-          collections[1],
-        ].map((collection) => (
+        {collections.map((collection) => (
           <div style={{ width: 350 }}>
             <CollectionCard image={collection} />
           </div>

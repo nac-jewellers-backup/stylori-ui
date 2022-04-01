@@ -240,6 +240,7 @@ class Header extends Component {
                     <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
                       <NavLink to="/cart">
                         {" "}
+                        
                         <img className="icons-header-sizes" src={shopping} />
                       </NavLink>{" "}
                     </Badge>

@@ -11,6 +11,27 @@
         width: 100% !important;
     }
 
+    .cartTitle {
+        margin: 0px 0px 10px;
+        display:flex;
+        justify-content:center;
+        font-size: 18px;
+        font-family: 'Playfair Display', serif !important;
+        letter-spacing: 0.20em !important;
+        color: #6D6E71;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+
+    .cardBorderMobile {
+        border: 1px solid #6D6E71 !important;
+    }
+
+    .total{
+        color: #6D6E71 !important;
+    }
+
     .bread-header ol li a:after {
         content: " ";
         display: block;
@@ -83,15 +104,15 @@
     }
 
     .product-image-thumb {
-        margin-top: 10px !important;
+        /* margin-top: 10px !important; */
         text-align: center;
-        width: 80% !important;
+        width: 100% !important;
+        height: 80% !important;
         margin: 0px auto !important;
         border: 0.5px solid rgba(0, 0, 0, 0.12);
-        padding: 25px 0px;
+        padding: 15px 0px;
         /* box-shadow: 10px 10px 16px 4px #dedada !important; */
         box-shadow: none !important;
-
         border-radius: none !important;
         outline: none !important;
     }

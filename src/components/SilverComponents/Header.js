@@ -223,12 +223,11 @@ class Header extends Component {
               style={{ transition: "height 0.2s" }}
             >
               <Container
+                maxWidth="lg"
                 id="searchcontainer"
                 style={{
                   backgroundColor: isSilver ? "#606161" : "",
                   marginLeft: 0,
-                  width: "100%",
-                  maxWidth: "100%",
                 }}
               >
                 <Grid
@@ -593,14 +592,20 @@ class Header extends Component {
                                   style={{ fontSize: "20px" }}
                                   class={classes.iconFafa}
                                 >
-                                  <img src={cart} alt="icon" />{" "}
+                                  <i
+                                    class="fa fa-shopping-cart"
+                                    aria-hidden="true"
+                                  ></i>
+                                  {/* <img src={cart} alt="icon"/> */}
                                 </i>
+
                                 <span
                                   className="tooltip-s"
                                   style={{
                                     color: isSilver
                                       ? "rgb(6, 171, 159)"
                                       : "#d51f63",
+                                    marginTop: 7,
                                   }}
                                 >
                                   Cart
@@ -903,7 +908,11 @@ class Header extends Component {
                                   style={{ fontSize: "20px" }}
                                   class={classes.iconFafa}
                                 >
-                                  <img src={cart} alt="icon" />{" "}
+                                  <i
+                                    class="fa fa-shopping-cart"
+                                    aria-hidden="true"
+                                  ></i>
+                                  {/* <img src={cart} alt="icon"/>  */}
                                 </i>
                                 <span
                                   className="tooltip-s"
