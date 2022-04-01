@@ -368,7 +368,7 @@ class Component extends React.Component {
                           </div>
                           {expanded === "panel1" ? (
                             <div className="" style={{ margin: 10 }}>
-                              <LoginRegisterIndex changePanel={this.changePanel} />
+                              <LoginRegisterIndex changePanel={this.changePanel}/>
                             </div>
                           ) : null}
                         </div>
@@ -412,7 +412,7 @@ class Component extends React.Component {
                           </div>
                           {expanded === "panel3" ? (
                             <div className="" style={{ margin: 10 }}>
-                               <Addressform changePanel={this.changePanel} />
+                               <Addressform changePanel={this.changePanel} isCheck={true}/>
                             </div>
                           ) : null}
                         </div>

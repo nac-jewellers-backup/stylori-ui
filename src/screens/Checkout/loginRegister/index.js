@@ -75,7 +75,7 @@ class LoginRegisterIndex extends React.Component {
               style={{
                 height: "42px",
                 color: "#fff",
-                background: "#394578",
+                background: "#d51f63",
                 borderLeft: "none !important",
                 border: "0px !important",
                 borderRadius: "0px",

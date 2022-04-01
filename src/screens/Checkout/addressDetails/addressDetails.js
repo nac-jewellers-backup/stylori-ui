@@ -198,7 +198,7 @@ class Addressdetails extends React.Component {
                                                     <Button disabled
                                                         style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
                                                         }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
-                                                        <Button style={{ float: "right" }} className='apply-b' onClick={() => {
+                                                        <Button style={{ float: "center"}} className= {this.props.isCheck ? "apply-c" :"apply-b"} onClick={() => {
                                                             this.props.selectaddreses(val_addrs1, 1, index, "yes")
                                                         }}>Select to continue </Button></>}</>
                                                 : ""}
