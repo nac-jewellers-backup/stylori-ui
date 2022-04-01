@@ -74,12 +74,8 @@ class Component extends React.Component {
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
     ReactPixel.fbq("track", "PageView");
     ReactPixel.track("InitiateCheckout");
-
-
   }
   googleTagManager(data, step, option) {
-  
-
     let gData = [];
     let TData = data;
 
@@ -96,10 +92,12 @@ class Component extends React.Component {
     const tagManagerArgs = {
       gtmId: "GTM-5W65BJT",
       event: "addToCart",
+
       dataLayer: {
         ecommerce: {
+          currencyCode: "INR",
           checkout: {
-            actionField: { step: (step - 1), option: option },
+            actionField: { step: step - 1, option: option },
             products: gData,
           },
         },
@@ -109,7 +107,6 @@ class Component extends React.Component {
     TagManager.initialize(tagManagerArgs);
   }
   handleChange = (panel) => (event) => {
-
     if (panel === 2) {
       adres["value"] = {};
       localStorage.removeItem("bil_isactive");
@@ -167,7 +164,6 @@ class Component extends React.Component {
   };
 
   changePanel = (panel, adres_detail) => {
- 
     if (panel === 2) {
       this.googleTagManager(this.props.data, panel, "Login");
     }
