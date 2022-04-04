@@ -324,9 +324,9 @@ export default function Pricing(props) {
             <Hidden smDown>
               {props.offerDiscount ? (
                 <span
-                  className={`discount ${classes.backgsecondary} ${classes.off}`}
+                  className={props.check ? '' : `discount ${classes.backgsecondary} ${classes.off}`}
                 >
-                  {props.offerDiscount}
+                  {props.check ? "" : props.offerDiscount}
                 </span>
               ) : (
                 <Typography style={{ display: "flex" }}>

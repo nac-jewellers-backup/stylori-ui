@@ -249,12 +249,12 @@
     }
 
     .chckout-page-buynow:hover {
-        background: #f36e23 !important;
+        background: #f36e23;
         color: #fff !important;
     }
 
     .chckout-page-buynow {
-        background: #f36e23 !important;
+        background: #f36e23;
         border: 1px solid #f36e23 !important;
         color: #FFF !important;
         font-size: 17px;

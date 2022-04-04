@@ -119,6 +119,19 @@ export const ALLORDERS = `query MyQuery($userProfileId: [UUID!]) {
 
 
 `
+export const UPDATEGIFT = `mutation MyMutation ($cartId:UUID,$id:UUID!,$message:String,$giftTo:String) {
+  updateGiftwrapById(
+    input: {giftwrapPatch: {cartId:$cartId , message: $message,giftTo:$giftTo}, id: $id}
+  ) {
+    giftwrap {
+      cartId
+      message
+      id
+      giftTo
+    }
+  }
+}`
+
 
 // query MyQuery($userProfileId: [UUID!]) {
 //   allOrders(filter: {id: {in: $userProfileId}}) {

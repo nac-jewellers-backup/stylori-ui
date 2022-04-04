@@ -57,7 +57,7 @@ class Buynowbutton extends React.Component {
       <div className={this.props.isCart ? "button" :""}>
         <Button
           className={this.props.class}
-          style={{ borderRadius: "5px", ...this.props.style }}
+          style={{ borderRadius: "5px", ...this.props.style,backgroundColor: this.props.isCart ? "#d51f63": "" }}
           variant= {this.props.addtoCartToBuyNow ? "outlined" :"contained"}
           fullWidth
           // disabled={productIsActive ? false : true}
@@ -104,7 +104,9 @@ class Buynowbutton extends React.Component {
                 ) : (
                   <>
                     {productIsActive ? (
-                      <span className={this.props.button}>Buy Now</span>
+                      <span className={this.props.button}>
+                        {this.props.isCart ? "Checkout Securely" : "Buy Now"}
+                        </span>
                     ) : (
                       <span
                         className={this.props.button}

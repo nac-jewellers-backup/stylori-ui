@@ -80,6 +80,10 @@ const styles = theme => ({
     normalfonts: {
         color: theme.palette.text.primary,
     },
+    normalfontsCheck:{
+       color:"#6D6E71",
+       fontSize:"14px"
+    },
     backgsecondary: {
         background: theme.palette.secondary.dark,
     },

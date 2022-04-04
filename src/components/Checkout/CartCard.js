@@ -279,22 +279,24 @@ class Checkoutcard extends React.Component {
         </Grid>
         <Grid
           container
-          style={{ display: "flex", flexDirection: "row" }}
+          style={{ display: "flex", flexDirection: this.props?.checkout ? "column" :"row" }}
           spacing={1}
         >
 
-          <Grid item container xs={7} spacing={1}>
-          <Grid item>
-                <Typography className="total">{`Total ( ${this.props.data.length} items) :   ${
-                    new Intl.NumberFormat("en-IN", {
-                      style: "currency",
-                      currency: "INR",
-                      minimumFractionDigits: 0,
-                    }).format(Math.round(     props.cartFilters.discounted_amount
-                      ? Math.round(props.cartFilters.discounted_amount)
-                      : Math.round(dataCard1 - discounted_price))) 
-                      }`}</Typography>
+          <Grid item container xs={ this.props?.checkout ? 12 : 7} spacing={1}>
+          {!this.props.checkout &&
+          <Grid item>    
+              <Typography className="total">{`Total ( ${this.props.data.length} items) :   ${
+                new Intl.NumberFormat("en-IN", {
+                  style: "currency",
+                  currency: "INR",
+                  minimumFractionDigits: 0,
+                }).format(Math.round(     props.cartFilters.discounted_amount
+                  ? Math.round(props.cartFilters.discounted_amount)
+                  : Math.round(dataCard1 - discounted_price))) 
+                  }`}</Typography>  
            </Grid>
+            }
            {this.props.data.map((dataval) =>
             dataval.productsDetails.map((val) => {
               return(    
@@ -308,7 +310,7 @@ class Checkoutcard extends React.Component {
                   // boxShadow: "1px 2px 13px 7px #DEDADA",
                   padding: "10px",
                   height:"180px",
-                  backgroundColor:"whitesmoke"
+                  backgroundColor: this.props.checkout ? "" :"whitesmoke"
                 }}
                 // className={classes.cart}
               >
@@ -379,25 +381,25 @@ class Checkoutcard extends React.Component {
                         to={dataval.skuUrl}
                         style={{ textDecoration: "none" }}
                       >
-                        <h3 className={`title ${classes.normalfonts}`}>
+                        <h3 className={ this.props.checkout ? `${classes.normalfontsCheck}` : `title ${classes.normalfonts}`}>
                           {val.pro_header}
                         </h3>
                       </NavLink>
                     ) : (
-                      <h3 className={`title ${classes.normalfonts}`}>
+                      <h3 className={this.props.checkout ? `${classes.normalfontsCheck}` : `title ${classes.normalfonts}`}>
                         {val.pro_header}
                       </h3>
                     )}
                     <Grid container spacing={12}>
                       <Grid item xs={8}>
                            <Typography
-                              className={`subhesder ${classes.normalfonts}`}
+                              className={this.props.checkout ? `${classes.normalfontsCheck}` : `title ${classes.normalfonts}`}
                             >
                              {val.namedetail[0].details}
                             </Typography>
                             <Typography
                           style={{ marginTop: "8px" }}
-                          className={`subhesder ${classes.normalfonts}`}
+                          className={ this.props.checkout ? `${classes.normalfontsCheck}` :`subhesder ${classes.normalfonts}`}
                         >
                           {window.location.pathname === "/checkout" ||
                           checkMaterial(dataval.materialName) ||
@@ -414,7 +416,7 @@ class Checkoutcard extends React.Component {
                           <>
                             {val?.skuId === dataval.productSkuId ? (
                               <Typography
-                                className={`subhesder ${classes.normalfonts}`}
+                                className={this.props.checkout ? `${classes.normalfontsCheck}` :`subhesder ${classes.normalfonts}`}
                               >
                                 {val.shipby}
                               </Typography>
@@ -427,6 +429,7 @@ class Checkoutcard extends React.Component {
                         return (
                           <Pricing
                             detail={dataval}
+                            check={this.props.checkout}
                             offerDiscount={
                               val.discount ? `${val.discount}% - OFF` : null
                             }
@@ -590,37 +593,43 @@ class Checkoutcard extends React.Component {
                       })}
                     </div>
                   </Grid> */}
-               
-                 </Grid>    
+                  {this.props.checkout && 
+                  <Divider style={{width:"100%"}}/>  
+                  }          
+                 </Grid>  
+                 
               )   
             })
            )}
-            <Grid item container spacing={1}>
-                <Grid item style={{display:"flex",alignItems:"center"}}>
-                   <ArrowLeftIcon fontSize="small"/>
-                
-                  <div>Go Back to <span style={{borderBottom:"2px solid #f14880",cursor:"pointer"}} onClick={()=>window.location.replace('/stylori')}>
-                   Stylori
-                    </span>
-                    </div>
+           {!this.props.checkout && 
+              <Grid item container spacing={1}>
+              <Grid item style={{display:"flex",alignItems:"center"}}>
+                 <ArrowLeftIcon fontSize="small"/>
               
-                </Grid>
-                <Grid item style={{display:"flex",alignItems:"center"}}>
-                <ArrowLeftIcon fontSize="small"/>
-                  <div>Go Back to <span style={{borderBottom:"2px solid #06ab9f",cursor:"pointer"}} onClick={()=>window.location.replace('/styloriSilver')}>
-                      Stylori Silver
-                    </span>
-                    </div>
-                </Grid>      
-            </Grid>
+                <div>Go Back to <span style={{borderBottom:"2px solid #f14880",cursor:"pointer"}} onClick={()=>window.location.replace('/stylori')}>
+                 Stylori
+                  </span>
+                  </div>
+            
+              </Grid>
+              <Grid item style={{display:"flex",alignItems:"center"}}>
+              <ArrowLeftIcon fontSize="small"/>
+                <div>Go Back to <span style={{borderBottom:"2px solid #06ab9f",cursor:"pointer"}} onClick={()=>window.location.replace('/styloriSilver')}>
+                    Stylori Silver
+                  </span>
+                  </div>
+              </Grid>      
+              </Grid>
+            }
+         
           </Grid>
-          
-          
-          
+          {!this.props.checkout &&
           <Grid item xs={1} style={{display:"flex",justifyContent:"center"}}>
-             <Divider variant="vertical"/>
-          </Grid>     
-          <Grid item xs={4}>
+          <Divider variant= "vertical"/>
+          </Grid>
+          } 
+               
+          <Grid item xs={this.props?.checkout ? 12 : 4}>
             {this.subtotals(props)}
           </Grid>
         </Grid>
@@ -703,62 +712,69 @@ class Checkoutcard extends React.Component {
       .reduce(myFunc);
     let path = window.location.pathname.split("/").pop();
     const { classes } = this.props;
-     console.log(props,"sad")
+
     return (
       <div>
-        <Grid container xs={12} lg={10} spacing={2}>
-        <Grid item container className="coupon" xs={12}>
-           <Grid item style={{display:'flex',alignItems:"center"}} xs={11}>
-             <img src={percentage}></img>
-             <Typography style={{color:'#6D6E71',marginLeft:5}}>Apply Coupon</Typography>
+        <Grid container xs={12} lg={ this.props.checkout ? 12 : 10} spacing={2}>
+          {!props.checkout && 
+          <Grid item container className="coupon" xs={12}>
+          <Grid item style={{display:'flex',alignItems:"center"}} xs={11}>
+            <img src={percentage}></img>
+            <Typography style={{color:'#6D6E71',marginLeft:5}}>Apply Coupon</Typography>
+          </Grid>
+          <Grid item xs={1}>      
+            <ArrowRightIcon className="arrow" fontSize="medium" />   
+          </Grid>
            </Grid>
-           <Grid item xs={1}>      
-             <ArrowRightIcon className="arrow" fontSize="medium" />   
-           </Grid>
-        </Grid>
-
-        <Grid item container className="summary" xs={12}>
-          <Typography className="summaryText">Order Summary</Typography>
-        </Grid>
+          }
+        
+        {!props.checkout && 
+         <Grid item container className="summary" xs={12}>
+         <Typography className="summaryText">Order Summary</Typography>
+         </Grid>
+        }
+       
 
         <Grid item container style={{ display: "flex"}} xs={12}>
           <Grid item xs={6} />
           <Grid item container xs={12} spacing={12}>
             {/* {dataCard1.map(val => */}
             <Grid item xs={7}>
-              <Typography className={`subhesder ${classes.normalfonts}`}>
-                Subtotal
+              <Typography className={ this.props.checkout ? `${classes.normalfontsCheck}` : `subhesder ${classes.normalfonts}`} style={{paddingBottom:this.props.checkout ? "20px" :""}}>
+                {this.props.checkout ? "SUBTOTAL" : "Subtotal"}
               </Typography>
               {yousave !== 0 || props.cartFilters.tax_price ? (
-                <Typography className={`subhesder ${classes.normalfonts}`}>
-                  You Saved
+                <Typography className={this.props.checkout ? `${classes.normalfontsCheck}` : `subhesder ${classes.normalfonts}`}>
+                  {this.props.checkout ? "CART DISCOUNT" : "You Save"}
                 </Typography>
               ) : null}
 
               {props.cartFilters.tax_price ? (
-                <Typography className={`subhesder ${classes.normalfonts}`}>
+                <Typography className={this.props.checkout ? `${classes.normalfontsCheck}` : `subhesder ${classes.normalfonts}`}>
                   {props.cartFilters.coupon_type}
                 </Typography>
               ) : (
                 ""
               )}
-              <Typography className={`subhesder ${classes.normalfonts}`}>
-                Shipping
+              <Typography className={this.props.checkout ? `${classes.normalfontsCheck}` : `subhesder ${classes.normalfonts}`}>
+              {this.props.checkout ? "SHIPPING CHARGES(Standard)" : "Shipping"}
               </Typography>
+
               <Typography
-                className={`subhesder-totsl-size ${classes.normalfonts}`}
+                className={ this.props.checkout ? `${classes.normalfontsCheck}` :`subhesder-totsl-size ${classes.normalfonts}`}
+                style={{paddingTop:this.props.checkout ? 20 : '',fontWeight:this.props.checkout ? 700 : ''}}
               >
-                Grand Total
+                {this.props.checkout ? "TOTAL COST" : "Grand Total"}
               </Typography>
             </Grid>
             <Grid item xs={5} style={{textAlign:"end"}}>
-              <Typography className={`subhesder ${classes.normalfonts}`}>
+              <Typography className={this.props.checkout ? `${classes.normalfontsCheck}` : `subhesder ${classes.normalfonts}`}>
                 {props.cartFilters.gross_amount
                   ? Math.round(props.cartFilters.gross_amount)
                   : Math.round(dataCard1)}
               </Typography>
               {yousave !== 0 || props.cartFilters.tax_price ? (
-                <Typography className={`subhesder ${classes.normalfonts}`}>
+                <Typography className={this.props.checkout ? `${classes.normalfontsCheck}` : `subhesder ${classes.normalfonts}`} style={{paddingTop:this.props.checkout ? "20px" :""}}>
                   {props.cartFilters.tax_price
                     ? Math.round(yousave) + props.cartFilters.tax_price
                     : Math.round(yousave)}
@@ -769,15 +785,16 @@ class Checkoutcard extends React.Component {
               }
 
               {props.cartFilters.tax_price ? (
-                <Typography className={`subhesder ${classes.normalfonts}`}>
+                <Typography className={this.props.checkout ? `${classes.normalfontsCheck}` : `subhesder ${classes.normalfonts}`}>
                   {props.cartFilters.tax_price}
                 </Typography>
               ) : null}
-              <Typography className={`subhesder ${classes.normalfonts}`}>
+              <Typography className={this.props.checkout ? `${classes.normalfontsCheck}` : `subhesder ${classes.normalfonts}`}>
                 {props.shipping_charge}{" "}
               </Typography>
               <Typography
-                className={`subhesder-totsl-size ${classes.normalfonts}`}
+                className={this.props.checkout ? `${classes.normalfontsCheck}` : `subhesder ${classes.normalfonts}`}
+                style={{paddingTop:this.props.checkout ? 20 : '',fontWeight:this.props.checkout ? 700 : ''}}
               >
                 {props.cartFilters.discounted_amount
                   ? Math.round(props.cartFilters.discounted_amount)

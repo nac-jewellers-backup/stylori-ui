@@ -32,6 +32,24 @@
     box-shadow: #f55d07 1px 2px 6px 0px !important;
 }
 
+.summaryOrder-pay-btn-check {
+    background: #d51f63 !important;
+    color: #FFF !important;
+    border-radius: 0px !important;
+    border: 1px solid #d51f63 !important;
+    font-size: 16px !important;
+    min-width: 100px !important;
+    text-transform: none !important;
+    /* box-shadow: #d51f63 1px 2px 6px 0px !important; */
+}
+
+
+.checkoutSummary{
+    margin-left: 30px !important;
+    color: #6D6E71;
+    font-weight: 700 !important;
+}
+
 .text-chck {
     padding: 8px 15px;
     color: #394578;
