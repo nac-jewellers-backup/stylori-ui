@@ -7,8 +7,12 @@ import {
   ExpansionPanelSummary,
   ExpansionPanelDetails,
   Typography,
+  Checkbox,
+  FormGroup,
+  FormControlLabel
 } from "@material-ui/core";
 import "./payment.css";
+import { withStyles } from '@material-ui/core/styles';
 import Creditform from "./creditForm";
 import Debitform from "./debitForm";
 import CashonDelivey from "./cashonDelivery";
@@ -21,6 +25,8 @@ import { CheckForCod } from "queries/productdetail";
 import { cartCodPincode } from "queries/pincode";
 import { API_URL } from "config";
 var va = {};
+
+
 class PaymentIndex extends React.Component {
   constructor() {
     super();
@@ -30,6 +36,7 @@ class PaymentIndex extends React.Component {
     };
   }
 
+  
   toggleCollapsed = (name) => {
     if (name == "CashonDelivey" && this.state.disabledCOD) {
       return false;
@@ -47,18 +54,71 @@ class PaymentIndex extends React.Component {
         this.setState({ isActive: "Netbanking", disabledCOD: true });
       }
   }
+
+
   render() {
     var a = 1;
 
     const dataCard1 = this.props.data ? this.props.data : [];
+
+    const GreenCheckbox = withStyles({
+      root: {
+        color: "#d51f63",
+        '&$checked': {
+          color: "#d51f63",
+          fill:"#d51f63 !important",
+        },
+        '& .MuiSvgIcon-root':{
+          color: "#d51f63",
+          fill:"#d51f63 !important",
+        }
+      },
+      checked: {},
+    })((props) => <Checkbox color="default" {...props} />);
+   
 
     return (
       <div className="payment-div" style={{ width: "100%" }}>
         <Hidden smDown>
           <Grid container  lg={12} spacing={2} style={{display:"flex",flexDirection:"column"}}>
             <Grid item lg={6}>
-              <div className="pay-index-subhed" style={{width:"100%"}}>
-                {/* <p style={{ background: this.state.isActive == "Creditform" ? "#dfdfdf" : "" }}
+                          <FormGroup column>
+                          <FormControlLabel
+                               control={<GreenCheckbox
+                                checked={this?.state?.isActive == "Netbanking"
+                                ? true
+                                : false}
+                                 disabled={
+                                  this?.state?.isActive == "Netbanking"
+                                  ? false
+                                  : true
+                                 }
+                                 onClick={() => this.toggleCollapsed("Netbanking")}
+                                 name="Pay Online"
+                             
+                                  />}
+                               label="Pay Online"
+                                 />
+                            <FormControlLabel
+                             control={
+                                 <GreenCheckbox
+                                   checked={ this?.state?.isActive == "CashonDelivey"
+                                    ? true
+                                     : false}
+                                     disabled={
+                                      this?.state?.isActive == "CashonDelivey"
+                                      ? false
+                                       : true
+                                     }
+                                     name="Cash on Delivery (COD)"  
+                                     onClick={() => this.toggleCollapsed("CashonDelivey")}
+                                       />
+                                       }
+                                     label="Cash on Delivery (COD)"
+                                        />
+                          </FormGroup>
+              {/* <div className="pay-index-subhed" style={{width:"100%"}}>
+                <p style={{ background: this.state.isActive == "Creditform" ? "#dfdfdf" : "" }}
                                     style={{ background: "#a8a1a1" }}
                                 onClick={() => this.toggleCollapsed('Creditform')}
                                 >
@@ -68,7 +128,9 @@ class PaymentIndex extends React.Component {
                                     style={{ background: "#a8a1a1" }}
 
                                 >
-                                    <div className="dc-icon"></div> &nbsp; Debit card </p> */}
+                          
+                          <div className="dc-icon"></div> &nbsp; Debit card </p>
+                        
                 <p
                   className={
                     this?.state?.isActive == "Netbanking"
@@ -76,7 +138,7 @@ class PaymentIndex extends React.Component {
                       : "unselected"
                   }
                   onClick={() => this.toggleCollapsed("Netbanking")}
-                  // style={{ background: "#dfdfdf" }}
+                  style={{ background: "#dfdfdf" }}
                 >
                   <div className="net-bnk-icon"></div> &nbsp; Pay Online{" "}
                 </p>
@@ -96,7 +158,7 @@ class PaymentIndex extends React.Component {
                 >
                   <div className="code-icon"></div>&nbsp; Cash on Delivery (COD)
                 </p>
-              </div>
+              </div> */}
             </Grid>
             <Grid item lg={6}>
               <div
