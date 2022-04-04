@@ -55,9 +55,9 @@ class PaymentIndex extends React.Component {
     return (
       <div className="payment-div" style={{ width: "100%" }}>
         <Hidden smDown>
-          <Grid container spacing={12} lg={12} className="panel-body">
-            <Grid item lg={3}>
-              <div className="pay-index-subhed">
+          <Grid container  lg={12} spacing={2} style={{display:"flex",flexDirection:"column"}}>
+            <Grid item lg={6}>
+              <div className="pay-index-subhed" style={{width:"100%"}}>
                 {/* <p style={{ background: this.state.isActive == "Creditform" ? "#dfdfdf" : "" }}
                                     style={{ background: "#a8a1a1" }}
                                 onClick={() => this.toggleCollapsed('Creditform')}
@@ -98,10 +98,10 @@ class PaymentIndex extends React.Component {
                 </p>
               </div>
             </Grid>
-            <Grid item lg={7}>
+            <Grid item lg={6}>
               <div
                 style={{ marginTop: "20px" }}
-                className="pay-index-subhed_datas "
+                // className="pay-index-subhed_datas "
               >
                 {this?.state?.isActive == "Creditform" && <Creditform />}
                 {this?.state?.isActive == "Debitform" && <Debitform />}

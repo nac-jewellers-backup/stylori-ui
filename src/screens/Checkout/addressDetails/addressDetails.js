@@ -272,9 +272,9 @@ class Addressdetails extends React.Component {
                                                     {window.location.pathname.split("-")[0] !== "/account" ?
                                                         <>{JSON.parse(localStorage.getItem("ship_isactive")) === index || JSON.parse(localStorage.getItem("bil_isactive")) === index ? <>
                                                             <Button disabled
-                                                                style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
+                                                                style={{ float: "right" }} className= {this.props.isCheck ? 'apply-c address_card_disable' : 'apply-b address_card_disable'} onClick={() => {
                                                                 }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
-                                                                <Button style={{ float: "right" }} className='apply-b' onClick={() => {
+                                                                <Button style={{ float: "right",marginRight:'-10px' }} className= {this.props.isCheck ? "apply-c" :"apply-b"} onClick={() => {
                                                                     this.props.selectaddreses(val_addrs1, 1, index, "yes")
                                                                 }}>Select to continue </Button></>}</>
                                                         : ""}
@@ -371,11 +371,13 @@ class Addressdetails extends React.Component {
                                                                     style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
                                                                         // this.props.selectaddreses(val_addrs1, 1)
                                                                         // this.props.changevalue(3)
-                                                                    }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
+                                                                    }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : 
+                                                                    <>
                                                                     <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                                                         this.props.selectaddreses(val_addrs2, 2, index, "no")
                                                                         // this.props.changevalue(3)
-                                                                    }}>Select to continue </Button></>}</>
+                                                                    }}>Select to continue </Button>
+                                                                    </>}</>
 
                                                         </div>
                                                     </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { API_URL } from "../../../../src/config";
 import "./payment.css";
-import { Grid } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import { CartContext } from "context";
 
 export default function PaymentHiddenForm(props) {
@@ -200,14 +200,23 @@ export default function PaymentHiddenForm(props) {
         </div>
       </form>
       <Grid item container>
-        <input
+        <Button
+          onClick={generateOrderdId}
+          style={{ cursor: "pointer",backgroundColor:"#ed1165",color:"#fff",width:'inherit' }}
+          variant="contained"
+        >
+          {` Pay ${Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 0 }).format(
+                   props.data
+                  )}`}
+        </Button>
+        {/* <input
           style={{ cursor: "pointer" }}
           type="button"
           onClick={generateOrderdId}
           className="credit-button"
           name="submitBtn"
           value="Pay now"
-        />
+        /> */}
       </Grid>
     </div>
   );

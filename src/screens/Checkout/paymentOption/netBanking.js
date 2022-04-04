@@ -69,7 +69,8 @@ class Netbanking extends React.Component {
                 </Grid> */}
 
         <Grid item lg={12} xs={12}>
-          <div className="amout-pay"> Amount Payable </div>
+        <PaymentHiddenForm data={Math.round(dataCard1 - discounted_price)} />
+          {/* <div className="amout-pay"> Amount Payable </div>
           <div className="credit-btn-div">
             <Grid container>
               <Grid item>
@@ -81,12 +82,12 @@ class Netbanking extends React.Component {
                 &nbsp;&nbsp;&nbsp;
               </Grid>
               <Grid item container>
-                <PaymentHiddenForm data={Math.round(dataCard1 - discounted_price)} />
+                
               </Grid>
-              {/* <Button className="credit-button" type="submit"
-                            >Pay Now</Button> */}
+              <Button className="credit-button" type="submit"
+                            >Pay Now</Button>
             </Grid>
-          </div>
+          </div> */}
         </Grid>
         {/* <div className="code-btn-top">
                         COD orders are subject to telephonic verification.

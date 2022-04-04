@@ -44,7 +44,7 @@ const AddressComponent = (props) => {
                                         </></>}
 
                                   {props.isCheck ? 
-                                   <Grid container style={{display:"flex",flexDirection:"row"}} spacing={1}>
+                                   <Grid container style={{display:"flex",flexDirection:"row"}} spacing={2}>
                                    <Grid item container  xs={6}>
                                        <Grid item container xs={12}>
                                            <Grid item xs={4}>
@@ -68,7 +68,7 @@ const AddressComponent = (props) => {
                                        </Grid>
                                        <Grid item xs={12}>
                                        <Input
-                                               className='text-f'
+                                            //    className='text-f'
                                                type="text"
                                                name="lastname"
                                                value={values.addressOne.lastname}
@@ -92,11 +92,11 @@ const AddressComponent = (props) => {
                                        </Grid>
                                        <Grid item xs={12}>
                                        <Input
-                                               className='text-f'
+                                            //    className='text-f'
                                                type="text"
                                                name='city'
                                                placeholder="City"
-                                               style={{ background: "rgba(192, 192, 192, 0.41)" }}
+                                               style={{width:"100%",background: "rgba(192, 192, 192, 0.41)" }}
                                                onChange={(event) => handle.handleChange('addressOne', 'city', event.target.value)}
                                                value={values.addressOne.city}
                                                helperText="City is required"
@@ -163,11 +163,11 @@ const AddressComponent = (props) => {
                                        </Grid>
                                        <Grid item xs={12}>
                                        <Input
-                                                className='text-f'
+                                                // className='text-f'
                                                 type="text"
                                                 name='country'
                                                 placeholder="Country"
-                                                style={{ background: "rgba(192, 192, 192, 0.41)" }}
+                                                style={{width:"100%",background: "rgba(192, 192, 192, 0.41)" }}
                                                 onChange={(event) => handle.handleChange('addressOne', 'country', event.target.value)}
                                                 value={values.addressOne.country}
                                                 helperText="Country is required"
