@@ -64,7 +64,7 @@ class Allorders extends React.Component {
         gData.push(data);
       });
     const tagManagerArgs = {
-      gtmId: "GTM-5W65BJT",
+      gtmId: "UA-60938497-1",
       events: {
         purchase: "purchase",
         transaction_id: this?.props?.allorderdata?.data?.allOrders?.nodes[0].id,

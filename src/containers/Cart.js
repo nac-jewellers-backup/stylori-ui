@@ -64,7 +64,7 @@ class Cart extends React.Component {
       gData.push(data);
     });
     const tagManagerArgs = {
-      gtmId: "GTM-5W65BJT",
+      gtmId: "UA-60938497-1",
       event: "addToCart",
       dataLayer: {
         ecommerce: {
