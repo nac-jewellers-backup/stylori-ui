@@ -76,7 +76,7 @@ class Cart extends React.Component {
       },
     };
 
-    TagManager.initialize(tagManagerArgs);
+    // TagManager.initialize(tagManagerArgs);
   }
   render() {
     const { data, classes, isStateFilterContextQty } = this.props;

@@ -77,7 +77,7 @@ class ProductDetail extends Component {
         },
       },
     };
-    this?.props?.data && TagManager.initialize(tagManagerArgs);
+    // this?.props?.data && TagManager.initialize(tagManagerArgs);
   }
   UNSAFE_componentWillMount() {}
 

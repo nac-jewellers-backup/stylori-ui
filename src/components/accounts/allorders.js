@@ -76,7 +76,7 @@ class Allorders extends React.Component {
         items: gData,
       },
     };
-    TData && TagManager.initialize(tagManagerArgs);
+    // TData && TagManager.initialize(tagManagerArgs);
   }
 
   handleChange = (panel) => (event) => {

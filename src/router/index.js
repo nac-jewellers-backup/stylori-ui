@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { Stylori } from "screens";
 import PricingPage from "screens/Stylori/PricingPage";
@@ -27,7 +27,6 @@ import Contactus from "../screens/Stylori/contactUs";
 import Careers from "../screens/Stylori/careers";
 import { Helmet } from "react-helmet";
 import ReactPixel from "react-facebook-pixel";
-import ReactGA from "react-ga";
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
 

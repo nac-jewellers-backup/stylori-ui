@@ -104,7 +104,7 @@ class Component extends React.Component {
       },
     };
 
-    TagManager.initialize(tagManagerArgs);
+    // TagManager.initialize(tagManagerArgs);
   }
   handleChange = (panel) => (event) => {
     if (panel === 2) {
