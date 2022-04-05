@@ -1,6 +1,6 @@
 import React from "react";
 import "./loginRegisters.css";
-import { Container, Grid, Button, Card, CardContent } from "@material-ui/core";
+import { Container, Grid, Button, Card, CardContent, Divider } from "@material-ui/core";
 import Login from "./login";
 import Login2 from "./login2";
 import Register from "./register";
@@ -92,6 +92,7 @@ class LoginRegisterIndex extends React.Component {
           <div style={{ width: "100%" }}>
             <Login2
             changePanel={this.props.changePanel}
+            isGuest={true}
             />
             {/* <div
               className="pt-sm"

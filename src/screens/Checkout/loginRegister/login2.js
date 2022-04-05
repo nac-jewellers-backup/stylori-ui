@@ -431,9 +431,9 @@ function Login2(props) {
                     }
                   >
                     Sign in with Email
-                  </Button> 
+                    </Button> 
                   :
-                  <Button
+                    <Button
                   className="button"
                   variant="contained"
                   fullWidth
@@ -448,7 +448,7 @@ function Login2(props) {
                   }
                 >
                   Sign in with OTP
-                </Button>
+                   </Button>
                    }
                 
                 </Grid>
@@ -556,101 +556,6 @@ function Login2(props) {
                  </Grid>
                   )}
                 </div>
-                // <Grid container spacing={4}>
-                //   {condition.isOtp ? (
-                //     <Grid item xs={12}>
-                //       <TextField
-                //         placeholder="Enter OTP"
-                //         type="number"
-                //         value={number.otp}
-                //         onChange={(e) =>
-                //           handleMobileChange(e.target.value, "otp")
-                //         }
-                //         fullWidth
-                //       />
-                //       {number.error.otp !== "" && (
-                //         <Typography style={{ fontSize: "10px", color: "red" }}>
-                //           {number.error.otp}
-                //         </Typography>
-                //       )}
-                //     </Grid>
-                //   ) : (
-                //     <div>
-                //       <Grid item xs={12}>
-                //         <TextField
-                //           placeholder="Mobile Number"
-                //           type="number"
-                //           value={number.mobile}
-                //           onChange={(e) =>
-                //             handleMobileChange(e.target.value, "mobile")
-                //           }
-                //           fullWidth
-                //         />
-                //         {number.error.mobile !== "" && (
-                //           <Typography
-                //             style={{ fontSize: "10px", color: "red" }}
-                //           >
-                //             {number.error.mobile}
-                //           </Typography>
-                //         )}
-                //       </Grid>
-                //       <Grid item xs={12}>
-                //         <TextField
-                //           id="standard-start-adornment"
-                //           placeholder="Email address"
-                //           value={number.otpemail}
-                //           onChange={(e) =>
-                //             handleMobileChange(e.target.value, "otpemail")
-                //           }
-                //           fullWidth
-                //         />
-                //         {number.error.otpemail !== "" && (
-                //           <Typography
-                //             style={{ fontSize: "10px", color: "red" }}
-                //           >
-                //             {number.error.otpemail}
-                //           </Typography>
-                //         )}
-                //       </Grid>
-                //     </div>
-                //   )}
-
-                //   {condition.isOtp ? (
-                //     <div>
-                //       <Grid item xs={12}>
-                //         <Button
-                //           variant="contained"
-                //           fullWidth
-                //           style={{ color: "#fff", backgroundColor: "#6D6E71" }}
-                //           onClick={()=>ValidateOtp()}
-                //         >
-                //           Validate OTP
-                //         </Button>
-                //       </Grid>
-                //       <Grid item xs={12}>
-                //         <Button
-                //           variant="contained"
-                //           fullWidth
-                //           style={{ color: "#fff", backgroundColor: "#6D6E71" }}
-                //           onClick={()=>ResendOtp()}
-                //         >
-                //           Resend OTP
-                //         </Button>
-                //       </Grid>
-                //     </div>
-                //   ) : (
-                //     <Grid item xs={12}>
-                //       <Button
-                //         variant="contained"
-                //         fullWidth
-                //         style={{ color: "#fff", backgroundColor: "#6D6E71" }}
-                //         onClick={() => SendOTP()}
-                //       >
-                //         Send OTP
-                //       </Button>
-                //     </Grid>
-                //   )}
-                // </Grid>
               ) : (
                 <Grid container spacing={4}>
                   <Grid item xs={12}>
@@ -684,7 +589,7 @@ function Login2(props) {
                     <Button
                       variant="contained"
                       fullWidth
-                      style={{ color: "#fff", backgroundColor: "#6D6E71" }}
+                      style={{ color: "#fff", backgroundColor: props.isGuest ? "rgba(241, 72, 128, 1)" :"#6D6E71" }}
                       onClick={() => onSubmit()}
                     >
                       LOG IN
@@ -704,6 +609,51 @@ function Login2(props) {
                 </Grid>
               )}
             </Grid>
+            {props.isGuest ? 
+             <Grid item xs={12} style={{paddingTop:10}}>
+
+                 <Divider style={{border:"1px solid #6D6E71",marginTop:20}}/>
+                  <Typography className="checkout-new">
+                      Guest Checkout ? Not Ready to become a Member Yet ?
+                  </Typography>
+                  {condition.isMobile ? 
+                    <Button
+                    className="button-check"
+                    variant="contained"
+                    fullWidth
+                    style={{ padding: 10,marginTop:10 }}
+                    onClick={() =>
+                      setCondition({
+                        ...condition,
+                        isMobile: !condition.isMobile,
+                        isOtp: false
+                      })
+                    }
+                  >
+                    Continue with Email
+                    </Button> 
+                  :
+                    <Button
+                  className="button-check"
+                  variant="contained"
+                  fullWidth
+                  style={{ padding: 10,marginTop:10 }}
+                  onClick={() =>
+                    setCondition({
+                      ...condition,
+                      isMobile: !condition.isMobile,
+                      isOtp: false
+                    })
+                  }
+                >
+                  Continue as Guest
+                   </Button>
+                   }
+               
+             </Grid>
+             :null
+            }
+           
           </Grid>  
     </div>
   );
