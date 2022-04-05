@@ -2,6 +2,7 @@ import React from "react";
 import "./loginRegisters.css";
 import { Container, Grid, Button, Card, CardContent } from "@material-ui/core";
 import Login from "./login";
+import Login2 from "./login2";
 import Register from "./register";
 import Continues from "./continues";
 import { useDummyRequest } from "../../../hooks";
@@ -89,7 +90,10 @@ class LoginRegisterIndex extends React.Component {
           </div>
         ) : (
           <div style={{ width: "100%" }}>
-            <div
+            <Login2
+            changePanel={this.props.changePanel}
+            />
+            {/* <div
               className="pt-sm"
               style={{ display: this.state.show == true ? "block" : "none" }}
             >
@@ -172,7 +176,7 @@ class LoginRegisterIndex extends React.Component {
                   });
                 }}
               />
-            </div>
+            </div> */}
           </div>
         )}
       </Grid>

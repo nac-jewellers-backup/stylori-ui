@@ -42,8 +42,8 @@ class PaymentIndex extends React.Component {
       return false;
     } else this.setState({ isActive: [name] });
   };
-  componentDidMount() {
-   
+
+  componentDidMount() { 
     if (!this.props.isCodAvailable) {
       this.setState({ isActive: "Netbanking", disabledCOD: true });
     }
@@ -88,13 +88,8 @@ class PaymentIndex extends React.Component {
                                 checked={this?.state?.isActive == "Netbanking"
                                 ? true
                                 : false}
-                                 disabled={
-                                  this?.state?.isActive == "Netbanking"
-                                  ? false
-                                  : true
-                                 }
                                  onClick={() => this.toggleCollapsed("Netbanking")}
-                                 name="Pay Online"
+                                 name="Netbanking"
                              
                                   />}
                                label="Pay Online"
@@ -105,12 +100,7 @@ class PaymentIndex extends React.Component {
                                    checked={ this?.state?.isActive == "CashonDelivey"
                                     ? true
                                      : false}
-                                     disabled={
-                                      this?.state?.isActive == "CashonDelivey"
-                                      ? false
-                                       : true
-                                     }
-                                     name="Cash on Delivery (COD)"  
+                                     name="CashonDelivey"  
                                      onClick={() => this.toggleCollapsed("CashonDelivey")}
                                        />
                                        }
