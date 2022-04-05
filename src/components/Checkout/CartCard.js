@@ -400,7 +400,7 @@ class Checkoutcard extends React.Component {
                             <Typography
                           style={{ marginTop: "8px" }}
                           className={ this.props.checkout ? `${classes.normalfontsCheck}` :`subhesder ${classes.normalfonts}`}
-                        >
+                          >
                           {window.location.pathname === "/checkout" ||
                           checkMaterial(dataval.materialName) ||
                           !Boolean(dataval?.[0]?.maxOrderQty) ||
@@ -734,12 +734,11 @@ class Checkoutcard extends React.Component {
          </Grid>
         }
        
-
         <Grid item container style={{ display: "flex"}} xs={12}>
           <Grid item xs={6} />
           <Grid item container xs={12} spacing={12}>
             {/* {dataCard1.map(val => */}
-            <Grid item xs={7}>
+            <Grid item xs={8} lg={7}>
               <Typography className={ this.props.checkout ? `${classes.normalfontsCheck}` : `subhesder ${classes.normalfonts}`} style={{paddingBottom:this.props.checkout ? "20px" :""}}>
                 {this.props.checkout ? "SUBTOTAL" : "Subtotal"}
               </Typography>
@@ -767,7 +766,7 @@ class Checkoutcard extends React.Component {
                 {this.props.checkout ? "TOTAL COST" : "Grand Total"}
               </Typography>
             </Grid>
-            <Grid item xs={5} style={{textAlign:"end"}}>
+            <Grid item xs={4} lg={5} style={{textAlign:"end"}}>
               <Typography className={this.props.checkout ? `${classes.normalfontsCheck}` : `subhesder ${classes.normalfonts}`}>
                 {props.cartFilters.gross_amount
                   ? Math.round(props.cartFilters.gross_amount)
@@ -789,9 +788,11 @@ class Checkoutcard extends React.Component {
                   {props.cartFilters.tax_price}
                 </Typography>
               ) : null}
+
               <Typography className={this.props.checkout ? `${classes.normalfontsCheck}` : `subhesder ${classes.normalfonts}`}>
                 {props.shipping_charge}{" "}
               </Typography>
+             
               <Typography
                 className={this.props.checkout ? `${classes.normalfontsCheck}` : `subhesder ${classes.normalfonts}`}
                 style={{paddingTop:this.props.checkout ? 20 : '',fontWeight:this.props.checkout ? 700 : ''}}
@@ -800,6 +801,7 @@ class Checkoutcard extends React.Component {
                   ? Math.round(props.cartFilters.discounted_amount)
                   : Math.round(dataCard1 - discounted_price)}
               </Typography>
+          
             </Grid>
             {/* // )}  */}
           </Grid>
@@ -834,7 +836,6 @@ class Checkoutcard extends React.Component {
       slidesToShow: 1,
       arrows: false,
     };
-    var data = this.props.data;
 
     const { classes } = this.props;
     // alert(discounted_price)
@@ -853,6 +854,7 @@ class Checkoutcard extends React.Component {
         <Hidden mdUp>
           <CardSmallScreen
             data={this.props.data}
+            checkout={this.props.checkout}
             handleDeleteLocalStorage={(event) =>
               this.handleDeleteLocalStorage(event)
             }

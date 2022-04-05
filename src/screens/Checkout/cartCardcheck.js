@@ -36,6 +36,7 @@ import { withRouter } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import ReactPixel from "react-facebook-pixel";
 import TagManager from "react-gtm-module";
+import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
 var adres = {};
 var variab = {};
@@ -347,8 +348,8 @@ class Component extends React.Component {
           }
           changePanel={this.changePanel}
         /> */}
-
-        <Grid container spacing={2}>
+       <Hidden smDown>
+       <Grid container spacing={2}>
           <Grid item container xs={6} style={{backgroundColor:"whitesmoke"}}>
             <div style={{width:"100%"}}>
                   <div className="">
@@ -362,8 +363,8 @@ class Component extends React.Component {
                             <div className="accordion-title2-check">{`1. LOGIN`}</div>
                             <div style={{ cursor: "pointer" }}>
                               {expanded === "panel1"
-                                ? "-"
-                                : "+"}
+                                ? <ExpandLess/>
+                                : <ExpandMore/>}
                             </div>
                           </div>
                           {expanded === "panel1" ? (
@@ -380,8 +381,8 @@ class Component extends React.Component {
                             <div className="accordion-title2-check">{`2. ADD A GIFT MESSAGE`}</div>
                             <div style={{ cursor: "pointer" }}>
                               {expanded === "panel2"
-                                ? "-"
-                                : "+"}
+                                ? <ExpandLess/>
+                                : <ExpandMore/>}
                             </div>
                           </div>
                           {expanded === "panel2" ? (
@@ -406,8 +407,8 @@ class Component extends React.Component {
                             <div className="accordion-title2-check">{`3. DELIVERY/PICKUP INFORMATION`}</div>
                             <div style={{ cursor: "pointer" }}>
                               {expanded === "panel3"
-                                ? "-"
-                                : "+"}
+                                 ? <ExpandLess/>
+                                 : <ExpandMore/>}
                             </div>
                           </div>
                           {expanded === "panel3" ? (
@@ -424,8 +425,8 @@ class Component extends React.Component {
                             <div className="accordion-title2-check">{`4. PAYMENT METHOD`}</div>
                             <div style={{ cursor: "pointer" }}>
                               {expanded === "panel4"
-                                ? "-"
-                                : "+"}
+                                ? <ExpandLess/>
+                                : <ExpandMore/>}
                             </div>
                           </div>
                           {expanded === "panel4" ? (
@@ -653,7 +654,7 @@ class Component extends React.Component {
                         <Grid xs={12} lg={7} />
                         <Grid xs={12} lg={4}>
                           <div style={{ float: "right", marginBottom: "5px" }}>
-                            {ProductIsActive ? (
+                            {/* {ProductIsActive ? (
                               <Button
                                 onClick={() => this.pincodeapi()}
                                 className="summaryOrder-pay-btn"
@@ -667,7 +668,7 @@ class Component extends React.Component {
                               >
                                 Enquire Now
                               </Button>
-                            )}
+                            )} */}
                           </div>
                         </Grid>
                       </Grid>
@@ -704,6 +705,366 @@ class Component extends React.Component {
                   </Hidden>
           </Grid> 
         </Grid>
+       </Hidden>
+       <Hidden mdUp>
+       <Grid container spacing={2} style={{display:"flex",flexDirection:"column"}}>
+          <Grid item container xs={12} style={{backgroundColor:"whitesmoke"}}>
+            <div style={{width:"100%"}}>
+                  <div className="">
+                    <div className="">
+                   
+                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
+                          <div
+                            className="accordion-title-check"
+                            onClick={this.handleChange(1)}
+                          >
+                            <div className="accordion-title2-check">{`1. LOGIN`}</div>
+                            <div style={{ cursor: "pointer" }}>
+                              {expanded === "panel1"
+                                ? <ExpandLess/>
+                                : <ExpandMore/>}
+                            </div>
+                          </div>
+                          {expanded === "panel1" ? (
+                            <div className="" style={{ margin: 10 }}>
+                              <LoginRegisterIndex changePanel={this.changePanel}/>
+                            </div>
+                          ) : null}
+                        </div>
+                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
+                          <div
+                            className="accordion-title-check"
+                            onClick={this.handleChange(2)}
+                          >
+                            <div className="accordion-title2-check">{`2. ADD A GIFT MESSAGE`}</div>
+                            <div style={{ cursor: "pointer" }}>
+                              {expanded === "panel2"
+                                 ? <ExpandLess/>
+                                 : <ExpandMore/>}
+                            </div>
+                          </div>
+                          {expanded === "panel2" ? (
+                            <div className="" style={{ margin: 10 }}>
+                              <ProductList  onClickgift={() => this.pincodeapi()} check={true}/>
+                              <Button
+                                      onClick={() => this.pincodeapi()}
+                                      className="summaryOrder-pay-btn-check"
+                                      style={{ width: "100%" }}
+                                      fullWidth={true}
+                                    >
+                                      Continue to Delivery Information
+                                    </Button>
+                            </div>
+                          ) : null}
+                        </div>
+                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
+                          <div
+                            className="accordion-title-check"
+                            onClick={this.handleChange(3)}
+                          >
+                            <div className="accordion-title2-check">{`3. DELIVERY/PICKUP INFORMATION`}</div>
+                            <div style={{ cursor: "pointer" }}>
+                              {expanded === "panel3"
+                                 ? <ExpandLess/>
+                                 : <ExpandMore/>}
+                            </div>
+                          </div>
+                          {expanded === "panel3" ? (
+                            <div className="" style={{ margin: 10 }}>
+                               <Addressform changePanel={this.changePanel} isCheck={true}/>
+                            </div>
+                          ) : null}
+                        </div>
+                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
+                          <div
+                            className="accordion-title-check"
+                            onClick={this.handleChange(4)}
+                          >
+                            <div className="accordion-title2-check">{`4. PAYMENT METHOD`}</div>
+                            <div style={{ cursor: "pointer" }}>
+                              {expanded === "panel4"
+                               ? <ExpandLess/>
+                               : <ExpandMore/>}
+                            </div>
+                          </div>
+                          {expanded === "panel4" ? (
+                            <div className="" style={{ margin: 10 }}>
+                              <PaymentIndex data={data} CodData={this.props.CodData} />
+                            </div>
+                          ) : null}
+                        </div>
+                     
+                    </div>
+                  </div>
+            {/* <ExpansionPanel
+              square
+              expanded={expanded === "panel1"}
+              onChange={this.handleChange(1)}
+              style={{ boxShadow: "none" }}
+            >
+              <ExpansionPanelSummary
+                style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}
+                expandIcon={<ExpandMoreIcon className="arrow-chek" />}
+                className="ckcut-main-body"
+              >
+                <Avatar className={`avart-ckc ${classes.normalcolorback}`}>
+                  1
+                </Avatar>
+                <Typography className="text-chck">
+                  {" "}
+                  Login or Register
+                  <div className="ch-d-vl">{email}</div>
+                </Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails
+                style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}
+              >
+                <LoginRegisterIndex changePanel={this.changePanel} />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel
+              xs={6}
+              square
+              expanded={expanded === "panel2"}
+              onChange={this.handleChange(2)}
+              style={{ boxShadow: "none" }}
+            >
+              <ExpansionPanelSummary
+                style={{
+                  width: "100%",
+                  overflow: "hidden",
+                  boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px",
+                }}
+                expandIcon={<ExpandMoreIcon className="arrow-chek" />}
+                className="ckcut-main-body"
+              >
+                <Avatar className={`avart-ckc ${classes.normalcolorback}`}>
+                  2
+                </Avatar>
+                <Typography className="text-chck">
+                  Address Detail
+                  <div className="ch-d-vl">
+                    {obj_values &&
+                    obj_values.adres_details &&
+                    obj_values.adres_details.firstname &&
+                    obj_values.adres_details.firstname.length > 0
+                      ? obj_values.adres_details &&
+                        obj_values.adres_details.firstname
+                      : adres.value && adres.value.firstname}
+                    &nbsp;
+                    {obj_values &&
+                    obj_values.adres_details &&
+                    obj_values.adres_details.firstname &&
+                    obj_values.adres_details.firstname.length > 0
+                      ? obj_values.adres_details &&
+                        obj_values.adres_details.lastname
+                      : adres.value && adres.value.lastname}
+                    &nbsp;
+                    {obj_values &&
+                    obj_values.adres_details &&
+                    obj_values.adres_details.firstname &&
+                    obj_values.adres_details.firstname.length > 0
+                      ? obj_values.adres_details &&
+                        obj_values.adres_details.addressline1
+                      : adres.value && adres.value.addressline1}
+                    &nbsp;
+                    {obj_values &&
+                    obj_values.adres_details &&
+                    obj_values.adres_details.firstname &&
+                    obj_values.adres_details.firstname.length > 0
+                      ? obj_values.adres_details &&
+                        obj_values.adres_details.city
+                      : adres.value && adres.value.city}
+                    {obj_values &&
+                    obj_values.adres_details &&
+                    obj_values.adres_details.firstname &&
+                    obj_values.adres_details.firstname.length > 0
+                      ? obj_values.adres_details &&
+                        obj_values.adres_details.state
+                      : adres.value && adres.value.state}
+                    &nbsp;
+                    {obj_values &&
+                    obj_values.adres_details &&
+                    obj_values.adres_details.firstname &&
+                    obj_values.adres_details.firstname.length > 0
+                      ? obj_values.adres_details &&
+                        obj_values.adres_details.pincode
+                      : adres.value && adres.value.pincode}
+                  </div>
+                </Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails
+                style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}
+              >
+                <Grid container>
+                  <Grid item xs={12} lg={12}>
+                    <Addressform changePanel={this.changePanel} />
+                  </Grid>
+                </Grid>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+            <ExpansionPanel
+              square
+              expanded={expanded === "panel3"}
+              onChange={this.handleChange(3)}
+              style={{
+                boxShadow: "none",
+                boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px",
+              }}
+            >
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon className="arrow-chek" />}
+                className="ckcut-main-body"
+              >
+                <Avatar className={`avart-ckc ${classes.normalcolorback}`}>
+                  3
+                </Avatar>
+                <Typography className="text-chck">Order Summary</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails
+                style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}
+              >
+                
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+            <ExpansionPanel
+              square
+              expanded={expanded === "panel4"}
+              onChange={this.handleChange(4)}
+              style={{
+                boxShadow: "none",
+                boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px",
+              }}
+            >
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon className="arrow-chek" />}
+                className="ckcut-main-body"
+              >
+                <Avatar className={`avart-ckc ${classes.normalcolorback}`}>
+                  4
+                </Avatar>
+                <Typography className="text-chck">Payment Options</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails
+                style={{ boxShadow: "rgb(222, 218, 218) 1px 2px 6px 0px" }}
+              >
+                <PaymentIndex data={data} CodData={this.props.CodData} />
+              </ExpansionPanelDetails>
+            </ExpansionPanel> */}
+            </div>
+              <Grid item container spacing={2}>
+              <Grid item style={{display:"flex",alignItems:"center",justifyContent:"space-around",marginLeft:'15px'}}>
+                 <ArrowLeftIcon fontSize="small"/>
+              
+                <div>Go Back to <span style={{borderBottom:"2px solid #f14880",cursor:"pointer"}} onClick={()=>window.location.replace('/stylori')}>
+                 Stylori
+                  </span>
+                  </div>
+            
+              </Grid>
+              <Grid item style={{display:"flex",alignItems:"center",marginLeft:'15px'}}>
+              <ArrowLeftIcon fontSize="small"/>
+                <div>Go Back to <span style={{borderBottom:"2px solid #06ab9f",cursor:"pointer"}} onClick={()=>window.location.replace('/styloriSilver')}>
+                    Stylori Silver
+                  </span>
+                  </div>
+              </Grid>      
+              </Grid>
+          </Grid>
+           <Grid item container xs={12}>
+       
+                  <Grid item xs={12} lg={12}>
+                    {/* {JSON.stringify(this.datalist(cartContext))} */}
+                    <Grid container>
+                      <Grid xs={12} lg={7} />
+                      {/* <Grid xs={12} lg={4}>
+                        <div style={{ float: "right" }}>
+                          {ProductIsActive ? (
+                            <Button
+                              onClick={() => this.pincodeapi()}
+                              className="summaryOrder-pay-btn"
+                            >
+                              Continue to Pay
+                            </Button>
+                          ) : (
+                            <Button
+                              className="summaryOrder-pay-btn"
+                              onClick={enquireLink}
+                            >
+                              Enquire Now
+                            </Button>
+                          )}
+                        </div>
+                      </Grid> */}
+                    </Grid>
+                    <br />
+                    <Typography className="checkoutSummary">Order Summary</Typography>
+                    <CartCard
+                      data={data}
+                      isStateFilterContextQty={this.props.isdatafromstate}
+                      isdatafromstate={this.props.isdatafromstate}
+                      checkout={true}
+                    />
+
+                    {/* <Hidden smDown>
+                      <Grid container>
+                        <Grid xs={12} lg={7} />
+                        <Grid xs={12} lg={4}>
+                          <div style={{ float: "right", marginBottom: "5px" }}>
+                            {ProductIsActive ? (
+                              <Button
+                                onClick={() => this.pincodeapi()}
+                                className="summaryOrder-pay-btn"
+                              >
+                                Continue to Pay
+                              </Button>
+                            ) : (
+                              <Button
+                                className="summaryOrder-pay-btn"
+                                onClick={enquireLink}
+                              >
+                                Enquire Now
+                              </Button>
+                            )}
+                          </div>
+                        </Grid>
+                      </Grid>
+                      <br />
+                    </Hidden> */}
+                  </Grid>
+                  {/* <Grid item xs={12} lg={12} className={classes.cart}>
+                    <ProductList />
+                  </Grid>
+                  <Hidden mdUp>
+                    <Grid container style={{ marginTop: "10px" }}>
+                      <Grid xs={12} lg={7} />
+                      <Grid xs={12} lg={4}>
+                        <div style={{ float: "right", marginBottom: "5px" }}>
+                          {ProductIsActive ? (
+                            <Button
+                              onClick={() => this.pincodeapi()}
+                              className="summaryOrder-pay-btn"
+                            >
+                              Continue to Pay
+                            </Button>
+                          ) : (
+                            <Button
+                              className="summaryOrder-pay-btn"
+                              onClick={enquireLink}
+                            >
+                              Enquire Now
+                            </Button>
+                          )}
+                        </div>
+                      </Grid>
+                    </Grid>
+                    <br />
+                  </Hidden> */}
+          </Grid> 
+        </Grid>
+       </Hidden>
+       
 
         {/* <div className="pt-sm checkout-ovralldiv-media marginTop">
          
