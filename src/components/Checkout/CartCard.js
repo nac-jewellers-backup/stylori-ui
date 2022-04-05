@@ -666,6 +666,9 @@ class Checkoutcard extends React.Component {
               }}
             >
               <Buynowbutton
+                style={{
+                  backgroundColor:"#d51f63"
+                }}
                 isCart={true}
                 productURL={productURL}
                 productIsActive={productIsActive ?? ""}
