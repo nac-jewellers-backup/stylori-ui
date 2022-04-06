@@ -870,7 +870,8 @@ class Checkoutcard extends React.Component {
                   style={{
                     paddingTop: this.props.checkout ? 20 : "",
                     fontWeight: 700,
-                    lineHeight:2
+                    lineHeight:2,
+                    borderTop: this.props.checkout ? 'solid #DEDFE0' : '',
                   }}
                 >
                   {this.props.checkout ? "TOTAL COST" : "TOTAL COST"}
@@ -942,6 +943,7 @@ class Checkoutcard extends React.Component {
                     paddingTop: this.props.checkout ? 14 : "",
                     fontWeight: this.props.checkout ? 900 : 700,
                     fontSize: this.props.checkout ? '20px' : '14px',
+                    borderTop: this.props.checkout ? 'solid #DEDFE0' : '',
                     lineHeight:2 
                   }}
                 >

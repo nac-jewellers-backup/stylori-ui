@@ -349,8 +349,8 @@ class Component extends React.Component {
           changePanel={this.changePanel}
         /> */}
        <Hidden smDown>
-       <Grid container style={{height:"100vh"}}>
-          <Grid item container xs={6} style={{backgroundColor:"whitesmoke"}}>
+       <Grid container style={{height:"100vh",marginTop:"-20px"}}>
+          <Grid item container xs={6} style={{backgroundColor:"#E6E7E8"}}>
             <div style={{width:"100%"}}>
                   <div className="">
                     <div className="">

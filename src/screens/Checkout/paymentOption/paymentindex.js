@@ -63,14 +63,14 @@ class PaymentIndex extends React.Component {
 
     const GreenCheckbox = withStyles({
       root: {
-        color: "#d51f63",
+        color: "#D32564",
         '&$checked': {
-          color: "#d51f63",
-          fill:"#d51f63 !important",
+          color: "#D32564",
+          fill:"#D32564 !important",
         },
         '& .MuiSvgIcon-root':{
-          color: "#d51f63",
-          fill:"#d51f63 !important",
+          color: "#D32564",
+          fill:"#D32564 !important",
         }
       },
       checked: {},
