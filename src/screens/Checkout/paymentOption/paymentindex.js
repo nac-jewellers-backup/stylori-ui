@@ -92,7 +92,8 @@ class PaymentIndex extends React.Component {
                                  name="Netbanking"
                              
                                   />}
-                               label="Pay Online"
+                                  style={{color:"#6D6E71"}}
+                                 label="Pay Online"
                                  />
                             <FormControlLabel
                              control={
@@ -104,6 +105,7 @@ class PaymentIndex extends React.Component {
                                      onClick={() => this.toggleCollapsed("CashonDelivey")}
                                        />
                                        }
+                                       style={{color:"#6D6E71"}}
                                      label="Cash on Delivery (COD)"
                                         />
                           </FormGroup>

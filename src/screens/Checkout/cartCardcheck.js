@@ -388,11 +388,11 @@ class Component extends React.Component {
                           {expanded === "panel2" ? (
                             <div className="" style={{ margin: 10 }}>
                               <ProductList  onClickgift={() => this.pincodeapi()} check={true}/>
-                              <Button
+                                   <Button
                                       onClick={() => this.pincodeapi()}
                                       className="summaryOrder-pay-btn-check"
-                                      style={{ width: "100%" }}
-                                      fullWidth={true}
+                                      style={{ width: "50%",marginTop:10 }}
+                                      // fullWidth={true}
                                     >
                                       Continue to Delivery Information
                                     </Button>
@@ -432,6 +432,10 @@ class Component extends React.Component {
                           {expanded === "panel4" ? (
                             <div className="" style={{ margin: 10 }}>
                               <PaymentIndex data={data} CodData={this.props.CodData} />
+                              <div style={{marginTop:10,marginLeft:"-20px"}}>
+                                 <Addressform changePanel={this.changePanel} isCheck={true}/>
+                              </div>
+                               
                             </div>
                           ) : null}
                         </div>
@@ -746,7 +750,7 @@ class Component extends React.Component {
                           {expanded === "panel2" ? (
                             <div className="" style={{ margin: 10 }}>
                               <ProductList  onClickgift={() => this.pincodeapi()} check={true}/>
-                              <Button
+                                    <Button
                                       onClick={() => this.pincodeapi()}
                                       className="summaryOrder-pay-btn-check"
                                       style={{ width: "100%" }}
