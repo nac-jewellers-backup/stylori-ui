@@ -38,8 +38,22 @@
   text-transform: none !important;
 }
 
+
+.button-check{
+  text-align: center;
+  background-color: rgba(241, 72, 128, 1) !important;
+  text-transform: none !important;
+  color: #fff !important;
+}
+
 .textMain{
   font-family: 'Playfair Display', serif !important
+}
+.checkout-new{
+  color: #6D6E71;
+   padding: 10px;
+   display: flex;
+   justify-content: center;
 }
 
 .textSide{

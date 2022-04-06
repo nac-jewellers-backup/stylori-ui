@@ -80,7 +80,7 @@ class Cart extends React.Component {
 
     let path = window.location.pathname.split("/").pop();
     return (
-      <Grid container>
+      <Grid container >
        
         <Hidden smDown>
 
@@ -90,10 +90,15 @@ class Cart extends React.Component {
               {/* </Grid> */}
             </Grid>
 
-          {path === "checkout" ? (
+         
+
+         
+          <div className="cart-ovralldiv-media " style={{height:"100vh",backgroundColor:"#E6E7E8",marginTop:"-15px"}}>
+            <Grid Container spacing={12}>
+            {path === "checkout" ? (
             ""
           ) : (
-            <Grid container className="cardTitle" spacing={1}>
+            <Grid item container className="cardTitle">
              <Grid item >
                 <Typography className="cart">SHOPPING CART</Typography>
              </Grid>
@@ -120,10 +125,6 @@ class Cart extends React.Component {
             //   }
             // />
           )}
-
-         
-          <div className="cart-ovralldiv-media " style={{ marginTop: "3%" }}>
-            <Grid Container spacing={12}>
               {this.props.data.length > 0 ? (
                 <Grid item xs={12}>
                   <CartCard
@@ -144,11 +145,11 @@ class Cart extends React.Component {
             </Grid>
           </div>
 
-          <Grid Container spacing={12}>
+          {/* <Grid Container spacing={12}>
             <Grid item xs={12}>
               <Footer />
             </Grid>
-          </Grid>
+          </Grid> */}
         </Hidden>
         <Hidden mdUp>
           {path === "checkout" ? (

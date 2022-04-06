@@ -804,6 +804,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 50px !important
 }
 .cardBorder{
   border: 1px solid #6D6E71 !important;
@@ -824,6 +825,7 @@
 .summaryText{
   letter-spacing: 0.15em;
   color: #6D6E71;
+  font-weight: 600 !important;
 }
 .checkout{
   display: flex;
@@ -832,7 +834,7 @@
   width: max-content;
 }
 .coupon{
-  background-color: whitesmoke;
+  background-color: #D3D4D5;
   display: flex;
   justify-content: space-between;
   padding: 5px;

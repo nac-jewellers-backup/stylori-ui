@@ -349,7 +349,7 @@ class Component extends React.Component {
           changePanel={this.changePanel}
         /> */}
        <Hidden smDown>
-       <Grid container spacing={2}>
+       <Grid container style={{height:"100vh"}}>
           <Grid item container xs={6} style={{backgroundColor:"whitesmoke"}}>
             <div style={{width:"100%"}}>
                   <div className="">
@@ -595,7 +595,7 @@ class Component extends React.Component {
               </ExpansionPanelDetails>
             </ExpansionPanel> */}
             </div>
-              <Grid item container>
+              <Grid item container style={{padding:20}}>
               <Grid item style={{display:"flex",alignItems:"center",justifyContent:"space-around",marginLeft:'15px'}}>
                  <ArrowLeftIcon fontSize="small"/>
               
@@ -708,7 +708,7 @@ class Component extends React.Component {
        </Hidden>
        <Hidden mdUp>
        <Grid container spacing={2} style={{display:"flex",flexDirection:"column"}}>
-          <Grid item container xs={12} style={{backgroundColor:"whitesmoke"}}>
+          <Grid item container xs={12} style={{backgroundColor:"#E6E7E8"}}>
             <div style={{width:"100%"}}>
                   <div className="">
                     <div className="">
