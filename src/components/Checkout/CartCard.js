@@ -12,6 +12,9 @@ import {
   Box,
   Divider,
   Icon,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails
 } from "@material-ui/core";
 import percentage from "../../assets/percentage.svg";
 import Slideshow from "../Carousel/carosul";
@@ -25,6 +28,7 @@ import { NavLink } from "react-router-dom";
 import { CartContext, ProductDetailContext } from "context";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
+import Promo from "screens/Checkout/orderSummary/promocode";
 import { API_URL, CDN_URL } from "config";
 import Quantity from "../quantity/index";
 import axios from "axios";
@@ -35,6 +39,7 @@ class Checkoutcard extends React.Component {
     this.state = {
       cart: true,
       shipby_arr: [],
+      expanded: false,
     };
   }
 
@@ -736,6 +741,68 @@ class Checkoutcard extends React.Component {
       </div>
     );
   };
+  applycoupon = (props) => {
+    const { expanded } = this.state;
+    const { classes } = this.props;
+    return (
+      <Accordion
+        elevation={3}
+        style={{
+          border: "0px",
+          outline: "0px",
+          borderRadius: "0px",
+          padding: "0px",
+          minHeight: "40px",
+          backgroundColor:"#D3D4D5",
+          boxShadow:"none",
+          color:"#7E7F82"
+        }}
+      >
+        <AccordionSummary
+          expandIcon={
+            expanded ? (
+              <ArrowLeftIcon fontSize="14px" />
+            ) : (
+              <ArrowRightIcon fontSize="14px" />
+            )
+          }
+        >
+          <Hidden smDown>
+            <Typography
+              // className={classes.cartheader}
+              noWrap
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "14px",
+              }}
+            >
+               <img src={percentage}></img>
+              &nbsp;&nbsp;&nbsp;<b>Apply Coupon</b>
+            </Typography>
+          </Hidden>
+          <Hidden mdUp>
+            <Typography
+              // className={classes.cartheader}
+              noWrap
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                fontSize: "14px",
+              }}
+            >
+               <img src={percentage}></img>
+              &nbsp;&nbsp;&nbsp;<b>Apply Coupon</b>
+            </Typography>
+          </Hidden>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Promo />
+        </AccordionDetails>
+      </Accordion>
+    );
+  };
   subtotals = (props) => {
     var discounted_price = this.props.cartFilters.discounted_price
       ? this.props.cartFilters.discounted_price
@@ -775,24 +842,20 @@ class Checkoutcard extends React.Component {
     return (
       <div>
         <Grid container xs={12} lg={this.props.checkout ? 12 : 10} spacing={3}>
-          {!props.checkout && (
-            <Grid item container className="coupon" xs={12}>
-              <Grid
-                item
-                style={{ display: "flex", alignItems: "center" }}
-                xs={11}
-              >
-                <img src={percentage}></img>
+          {!props.checkout && (        
+              <div style={{width:"100%"}}>
+                 {this.applycoupon()}
+                 {/* <img src={percentage}></img>
                 <Typography
                   style={{ color: "#6D6E71", marginLeft: 5, fontWeight: 700 }}
                 >
                   Apply Coupon
-                </Typography>
-              </Grid>
-              <Grid item xs={1}>
+                </Typography> */}
+             
+              {/* <Grid item xs={1}>
                 <ArrowRightIcon className="arrow" fontSize="medium" />
-              </Grid>
-            </Grid>
+              </Grid> */}
+              </div>
           )}
 
           {!props.checkout && (
@@ -978,6 +1041,8 @@ class Checkoutcard extends React.Component {
       </div>
     );
   };
+
+  
 
   render() {
     const dataCarousel = {
