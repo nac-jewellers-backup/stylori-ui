@@ -63,14 +63,14 @@ class PaymentIndex extends React.Component {
 
     const GreenCheckbox = withStyles({
       root: {
-        color: "#d51f63",
+        color: "#D32564",
         '&$checked': {
-          color: "#d51f63",
-          fill:"#d51f63 !important",
+          color: "#D32564",
+          fill:"#D32564 !important",
         },
         '& .MuiSvgIcon-root':{
-          color: "#d51f63",
-          fill:"#d51f63 !important",
+          color: "#D32564",
+          fill:"#D32564 !important",
         }
       },
       checked: {},
@@ -92,7 +92,8 @@ class PaymentIndex extends React.Component {
                                  name="Netbanking"
                              
                                   />}
-                               label="Pay Online"
+                                  style={{color:"#6D6E71"}}
+                                 label="Pay Online"
                                  />
                             <FormControlLabel
                              control={
@@ -104,6 +105,7 @@ class PaymentIndex extends React.Component {
                                      onClick={() => this.toggleCollapsed("CashonDelivey")}
                                        />
                                        }
+                                       style={{color:"#6D6E71"}}
                                      label="Cash on Delivery (COD)"
                                         />
                           </FormGroup>

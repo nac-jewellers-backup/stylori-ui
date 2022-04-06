@@ -589,7 +589,7 @@ function Login2(props) {
                     <Button
                       variant="contained"
                       fullWidth
-                      style={{ color: "#fff", backgroundColor: props.isGuest ? "rgba(241, 72, 128, 1)" :"#6D6E71" }}
+                      style={{ color: "#fff", backgroundColor: props.isGuest ? "#d51f63" :"#6D6E71" }}
                       onClick={() => onSubmit()}
                     >
                       LOG IN

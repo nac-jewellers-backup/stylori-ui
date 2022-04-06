@@ -56,21 +56,36 @@ export const Input = props => {
 
   return (
     <Grid item xs={12}>
-      <TextField
+    
+        <TextField
+          autoComplete={props && props.autoComplete && props.autoComplete}
+          inputProps={{ pattern, maxLength, minLength }}
+          onInvalid={handleInvalid}
+          error={invalid}
+          multiline={multiline}
+          rows={rowsMax}
+          style={{ width: "100%",backgroundColor:"#fff",marginTop:10}}
+          disabled={props.disabled}
+          helperText={invalid && <b>{helperText}</b>}
+          onKeyPress={handleKeyPress}
+          onChange={handleChange}
+          {...rest}
+        />
+      {/* <TextField
         autoComplete={props && props.autoComplete && props.autoComplete}
         inputProps={{ pattern, maxLength, minLength }}
-        style={{ width: "100%" }}
+        style={{ width: "100%"}}
         onInvalid={handleInvalid}
         error={invalid}
         multiline={multiline}
-        rowsMax={rowsMax}
+        rows={10}
         disabled={props.disabled}
         helperText={invalid && <b>{helperText}</b>}
         onKeyPress={handleKeyPress}
         onChange={handleChange}
         {...defaultStyle}
         {...rest}
-      />
+      /> */}
     </Grid>
   );
 };

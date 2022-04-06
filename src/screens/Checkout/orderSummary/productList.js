@@ -102,7 +102,7 @@ const ProductlistComponent = (props) => {
         {props.check ? (
             <div>
             <Grid container spacing={12}>
-              <Grid item xs={12}>
+              <Grid item xs={6}>
                 {/* {props.order ? (
                   " "
                 ) : (
@@ -145,6 +145,7 @@ const ProductlistComponent = (props) => {
                       value={values.message}
                       required
                       maxLength={255}
+                      rowsMax={7}
                       disabled={
                         (data && data.message === "Success") ||
                         values.haveAlready

@@ -119,7 +119,7 @@ class Addressdetails extends React.Component {
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
-                    {window.location.pathname.split("-")[0] === "/account" ? "" : <h5 className='title'> Shipping Address</h5>}
+                    {window.location.pathname.split("-")[0] === "/account" ? "" : <h5 className='title' style={{color:"#6D6E71"}}>  Shipping Address</h5>}
                     {window.location.pathname.split("-")[0] === "/account" ? <>
                         {_add_data_addres() && _add_data_addres().map((val_addrs1, index) =>
                             <>

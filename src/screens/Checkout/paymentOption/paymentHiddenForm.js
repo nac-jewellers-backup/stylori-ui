@@ -202,7 +202,7 @@ export default function PaymentHiddenForm(props) {
       <Grid item container>
         <Button
           onClick={generateOrderdId}
-          style={{ cursor: "pointer",backgroundColor:"#ed1165",color:"#fff",width:'inherit' }}
+          style={{ cursor: "pointer",backgroundColor:"#D32564",color:"#fff",width:'inherit' }}
           variant="contained"
         >
           {` Pay ${Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 0 }).format(
