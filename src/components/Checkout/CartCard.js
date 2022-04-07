@@ -425,7 +425,7 @@ class Checkoutcard extends React.Component {
                           </Typography>
                         
                           <Typography
-                            style={{ marginTop: "8px",lineHeight:3.7}}
+                            style={{ marginTop: "8px",lineHeight:4.5}}
                             className={
                               this.props.checkout
                                 ? `${classes.normalfontsCheck}`
@@ -457,7 +457,10 @@ class Checkoutcard extends React.Component {
                                       ? `${classes.normalfontsCheck}`
                                       : `subhesder ${classes.normalfonts}`
                                   }
-                                  style={{lineHeight:this.props.checkout ? 1.5 : 0.5}}
+                                  style={{
+                                    lineHeight:this.props.checkout ? 1.5 : 0.5,
+                                   
+                                  }}
                                 >
                                   {val.shipby}
                                 </Typography>
@@ -511,7 +514,7 @@ class Checkoutcard extends React.Component {
                           })} */}
                         </Grid>
 
-                        <Grid item xs={4} lg={5} style={{marginTop:"22px"}}>
+                        <Grid item xs={4} lg={5} style={{marginTop:"27px"}}>
                           {/* <Typography
                           style={{ marginTop: "8px" }}
                           className={`subhesder ${classes.normalfonts}`}
@@ -637,7 +640,7 @@ class Checkoutcard extends React.Component {
                     </div>
                   </Grid> */}
                     {this.props.checkout && (
-                      <Divider style={{ width: "100%" }} />
+                      <Divider style={{ width: "100%",border:"1px solid #DEDFE0"}} />
                     )}
                   </Grid>
                 );
@@ -710,7 +713,7 @@ class Checkoutcard extends React.Component {
     let path = window.location.pathname.split("/").pop();
 
     return (
-      <div style={{ width: "100%",marginTop:"10px" }}>
+      <div style={{ width: "100%",marginTop:"20px" }}>
         {path == "checkout" ? (
           ""
         ) : (
@@ -841,7 +844,7 @@ class Checkoutcard extends React.Component {
 
     return (
       <div>
-        <Grid container xs={12} lg={this.props.checkout ? 12 : 10} spacing={3}>
+        <Grid container xs={12} lg={this.props.checkout ? 12 : 10}>
           {!props.checkout && (        
               <div style={{width:"100%"}}>
                  {this.applycoupon()}
@@ -867,7 +870,7 @@ class Checkoutcard extends React.Component {
           <Grid
             item
             container
-            style={{ display: "flex", backgroundColor: "#fff" }}
+            style={{ display: "flex", backgroundColor: "#fff",padding:10 }}
             xs={12}
           >
             <Grid item xs={6} />
@@ -917,7 +920,9 @@ class Checkoutcard extends React.Component {
                       ? `${classes.normalfontsCheck}`
                       : `subhesder ${classes.normalfonts}`
                   }
-                  style={{lineHeight:2}}
+                  style={{lineHeight:2,
+                    marginBottom: this.props.checkout ? '20px' : ''
+                  }}
                 >
                   {this.props.checkout
                     ? "SHIPPING CHARGES(Standard)"
@@ -934,7 +939,7 @@ class Checkoutcard extends React.Component {
                     paddingTop: this.props.checkout ? 20 : "",
                     fontWeight: 700,
                     lineHeight:2,
-                    borderTop: this.props.checkout ? 'solid #DEDFE0' : '',
+                    borderTop: this.props.checkout ? '2px solid #DEDFE0' : '',
                   }}
                 >
                   {this.props.checkout ? "TOTAL COST" : "TOTAL COST"}
@@ -991,7 +996,9 @@ class Checkoutcard extends React.Component {
                       ? `${classes.normalfontsCheck}`
                       : `subhesder ${classes.normalfonts}`
                   }
-                  style={{lineHeight:2 }}
+                  style={{lineHeight:2,
+                    marginBottom: this.props.checkout ? '20px' : ''
+                  }}
                 >
                   {props.shipping_charge}{" "}
                 </Typography>
@@ -1006,7 +1013,7 @@ class Checkoutcard extends React.Component {
                     paddingTop: this.props.checkout ? 14 : "",
                     fontWeight: this.props.checkout ? 900 : 700,
                     fontSize: this.props.checkout ? '20px' : '14px',
-                    borderTop: this.props.checkout ? 'solid #DEDFE0' : '',
+                    borderTop: this.props.checkout ? '2px solid #DEDFE0' : '',
                     lineHeight:2 
                   }}
                 >
@@ -1019,7 +1026,7 @@ class Checkoutcard extends React.Component {
             </Grid>
           </Grid>
 
-          <Grid item container xs={12} className="checkout">
+          <Grid item container xs={12}>
             {this.checkoutbutton()}
           </Grid>
         </Grid>
@@ -1059,7 +1066,7 @@ class Checkoutcard extends React.Component {
         <Hidden smDown>
           {window.location.pathname === "/cart" ||
           window.location.pathname === "/checkout" ? (
-            <Container>{this.row(this.props)}</Container>
+            <Container style={{width:"100%"}}>{this.row(this.props)}</Container>
           ) : (
             <>{this.row(this.props)}</>
           )}

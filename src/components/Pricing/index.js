@@ -238,8 +238,7 @@ export default function Pricing(props) {
               </Grid>
             )}
           </Grid>
-        ) : (
-         
+        ) : (      
           <div style={{display:"flex",flexDirection:"row",alignItems:"center"}}>
             <Grid
               item
@@ -293,7 +292,7 @@ export default function Pricing(props) {
                       (props.offerPrice != null) & (props.offerPrice !== "")
                         ? ""
                         : "shine"
-                    } ${classes.colorMain} ${classes.h6FontSize} ${
+                    } ${classes.colorMain} ${
                       classes.offerPricePadding
                     } `}
                   >
@@ -324,9 +323,14 @@ export default function Pricing(props) {
             <Hidden smDown>
               {props.offerDiscount ? (
                 <span
-                  className={props.check ? '' : `discount ${classes.backgsecondary} ${classes.off}`}
+                  className={props.check ? '' : `discount_count`}
+                  style={{
+                    fontSize:props.check ? '' : '12px',
+                    minInlineSize:"max-content"
+                    // min-inline-size: max-content;
+                  }}
                 >
-                  {props.check ? "" : props.offerDiscount}
+                  {props.check ? "" : `(${props.offerDiscount})`}
                 </span>
               ) : (
                 <Typography style={{ display: "flex" }}>
