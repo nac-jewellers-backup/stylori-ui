@@ -1066,7 +1066,7 @@ class Checkoutcard extends React.Component {
         <Hidden smDown>
           {window.location.pathname === "/cart" ||
           window.location.pathname === "/checkout" ? (
-            <Container style={{width:"100%"}}>{this.row(this.props)}</Container>
+            <Container style={{maxWidth:"100%"}}>{this.row(this.props)}</Container>
           ) : (
             <>{this.row(this.props)}</>
           )}
