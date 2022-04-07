@@ -4,31 +4,31 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "f0174744b13408d13a2b",
+    "revision": "9c238661f2fb0e0681c3",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "35294d988081d19c5932",
+    "revision": "5323c0f01aed92aa9ff8",
     "url": "/static/css/4.css"
   },
   {
-    "revision": "5a26c92fedcb0033c713",
+    "revision": "79d2b547e35b9b4d940d",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "f0174744b13408d13a2b",
+    "revision": "9c238661f2fb0e0681c3",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "a79c1eb01f50872fbc67",
+    "revision": "52c14ad1c49525b94b86",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "35294d988081d19c5932",
+    "revision": "5323c0f01aed92aa9ff8",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "5a26c92fedcb0033c713",
+    "revision": "79d2b547e35b9b4d940d",
     "url": "/static/js/main.js"
   },
   {
@@ -126,6 +126,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "965dabcd31d04c27b319f732b7aae019",
     "url": "/static/media/nosepin.gif"
+  },
+  {
+    "revision": "66395175df56f8182530893dd3a10cd2",
+    "url": "/static/media/percentage.svg"
   },
   {
     "revision": "ff833fca6e3534382b2ef37e592c3efe",
