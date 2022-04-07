@@ -826,6 +826,7 @@
   letter-spacing: 0.15em;
   color: #6D6E71;
   font-weight: 600 !important;
+  margin-left: -17px !important;
 }
 .checkout{
   display: flex;
