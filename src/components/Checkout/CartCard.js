@@ -336,7 +336,7 @@ class Checkoutcard extends React.Component {
                         padding: "1px",
                       }}
                     >
-                      <Card className="product-image-thumb">
+                      <Card className= {this.props.checkout ? "product-image-thumb-check" :"product-image-thumb"}>
                         {val.namedetail !== undefined &&
                           val.namedetail.map((val) =>
                             dataval.fadeImages.map((im_) => {
@@ -616,6 +616,7 @@ class Checkoutcard extends React.Component {
                           ) : (
                             ""
                           )}
+
                         </Grid>
                       </Grid>
                     </Grid>
@@ -685,14 +686,14 @@ class Checkoutcard extends React.Component {
           {!this.props.checkout && (
             <Grid
               item
-              xs={1}
+              xs={2}
               style={{ display: "flex", justifyContent: "center" }}
             >
               <Divider variant="vertical" />
             </Grid>
           )}
 
-          <Grid item xs={this.props?.checkout ? 12 : 4}>
+          <Grid item xs={this.props?.checkout ? 12 : 3}>
             {this.subtotals(props)}
           </Grid>
         </Grid>
@@ -844,7 +845,7 @@ class Checkoutcard extends React.Component {
 
     return (
       <div>
-        <Grid container xs={12} lg={this.props.checkout ? 12 : 10}>
+        <Grid container xs={12} lg={12}>
           {!props.checkout && (        
               <div style={{width:"100%"}}>
                  {this.applycoupon()}
@@ -870,13 +871,13 @@ class Checkoutcard extends React.Component {
           <Grid
             item
             container
-            style={{ display: "flex", backgroundColor: "#fff",padding:10 }}
+            style={{ display: "flex", backgroundColor: "#fff",padding:10}}
             xs={12}
           >
             <Grid item xs={6} />
             <Grid item container xs={12} spacing={12}>
               {/* {dataCard1.map(val => */}
-              <Grid item xs={8} lg={7}>
+              <Grid item xs={9} lg={8}>
                 <Typography
                   className={
                     this.props.checkout
@@ -945,7 +946,7 @@ class Checkoutcard extends React.Component {
                   {this.props.checkout ? "TOTAL COST" : "TOTAL COST"}
                 </Typography>
               </Grid>
-              <Grid item xs={4} lg={5} style={{ textAlign: "end" }}>
+              <Grid item xs={3} lg={4} style={{ textAlign: "end" }}>
                 <Typography
                   className={
                     this.props.checkout

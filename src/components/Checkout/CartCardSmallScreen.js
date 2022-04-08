@@ -16,6 +16,7 @@ import "./Cart.css";
 import { API_URL, CDN_URL } from "config";
 import Quantity from "../quantity/index";
 import { Slideshow } from "components";
+import WishlistButton from "./Wishlistadd";
 function MediaControlCard(props) {
   const { classes } = props;
   const { dataCard1 } = props.data;
@@ -354,6 +355,78 @@ function MediaControlCard(props) {
   </Button>
         </NavLink> */}
                   {window.location.pathname !== "/checkout" ? (
+                            <div style={{lineHeight:3.5,marginLeft:"-125px"}}>
+                              <Button
+                                // className="highlighter"
+                                // className={`subhesder hov ${classes.normalfonts}`}
+                                id={dataval.generatedSku}
+                                onClick={(event) =>
+                                  this.handleDeleteLocalStorage(event)
+                                }
+                                fullWidth
+                                variant="contained"
+                                style={{
+                                  color: "gray",
+                                  width: "96%",
+                                  border: "1.46px solid #919396",
+                                  backgroundColor: "white",
+                                  borderRadius: "0px",
+                                  boxShadow: "none",
+                                  paddingRight: "40px",
+                                  paddingLeft: "40px",
+                                }}
+                              >
+                                &nbsp;Remove
+                              </Button>
+                              <span>&nbsp;</span>
+                              {!dataval?.isActive ? (
+                                <span
+                                  style={{
+                                    backgroundColor: "red",
+                                    fontSize: "10px",
+                                    color: "white",
+                                    padding: "2px 4px",
+                                    borderRadius: "2px",
+                                  }}
+                                >
+                                  Sold Out
+                                </span>
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          ) : (
+                            ""
+                          )}
+
+                          {window.location.pathname !== "/checkout" ? (
+                            <div style={{marginTop:'-7px'}}>
+                              <WishlistButton
+                                sku={dataval.generatedSku}
+                                productId={dataval.productId}
+                                style={{marginTop:0}}
+                              />
+
+                              {!dataval.isActive ? (
+                                <span
+                                  style={{
+                                    backgroundColor: "red",
+                                    fontSize: "10px",
+                                    color: "white",
+                                    padding: "2px 4px",
+                                    borderRadius: "2px",
+                                  }}
+                                >
+                                  Sold Out
+                                </span>
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                  {/* {window.location.pathname !== "/checkout" ? (
                     <div
                       variant="contained"
                       style={{ cursor: "pointer", fontSize: "0.9rem" }}
@@ -392,7 +465,8 @@ function MediaControlCard(props) {
                     </div>
                   ) : (
                     ""
-                  )}{" "}
+                  )}{" "} */}
+
                 </div>
               </div>
             </Card>
