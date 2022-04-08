@@ -800,7 +800,7 @@ class Component extends React.Component {
                 >
                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <div>
-                      <Typography noWrap>Order Summary</Typography>
+                      <Typography noWrap className="checkoutSummary_mobile">Order Summary</Typography>
                     </div>
                   </AccordionSummary>
                   <AccordionDetails style={{display:"block",marginTop:"-50px"}}>

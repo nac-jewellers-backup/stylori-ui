@@ -50,6 +50,11 @@
     font-weight: 700 !important;
 }
 
+.checkoutSummary_mobile{
+    color: #6D6E71;
+    font-weight: 700 !important;
+}
+
 .text-chck {
     padding: 8px 15px;
     color: #394578;
