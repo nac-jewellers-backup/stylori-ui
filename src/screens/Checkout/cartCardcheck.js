@@ -351,7 +351,7 @@ class Component extends React.Component {
        <Hidden smDown>
        <Grid container style={{height:"100vh",marginTop:"-20px"}}>
           <Grid item container xs={6} style={{backgroundColor:"#E6E7E8"}}>
-            <div style={{width:"100%"}}>
+            <div style={{width:"100%",marginLeft:30}}>
                   <div className="">
                     <div className="">
                    
@@ -712,6 +712,96 @@ class Component extends React.Component {
        </Hidden>
        <Hidden mdUp>
        <Grid container spacing={2} style={{display:"flex",flexDirection:"column"}}>
+          <Grid item container xs={12}>
+       
+       <Grid item xs={12} lg={12}>
+         {/* {JSON.stringify(this.datalist(cartContext))} */}
+         <Grid container>
+           <Grid xs={12} lg={7} />
+           {/* <Grid xs={12} lg={4}>
+             <div style={{ float: "right" }}>
+               {ProductIsActive ? (
+                 <Button
+                   onClick={() => this.pincodeapi()}
+                   className="summaryOrder-pay-btn"
+                 >
+                   Continue to Pay
+                 </Button>
+               ) : (
+                 <Button
+                   className="summaryOrder-pay-btn"
+                   onClick={enquireLink}
+                 >
+                   Enquire Now
+                 </Button>
+               )}
+             </div>
+           </Grid> */}
+         </Grid>
+         <br />
+         <Typography className="checkoutSummary">Order Summary</Typography>
+         <CartCard
+           data={data}
+           isStateFilterContextQty={this.props.isdatafromstate}
+           isdatafromstate={this.props.isdatafromstate}
+           checkout={true}
+         />
+
+         {/* <Hidden smDown>
+           <Grid container>
+             <Grid xs={12} lg={7} />
+             <Grid xs={12} lg={4}>
+               <div style={{ float: "right", marginBottom: "5px" }}>
+                 {ProductIsActive ? (
+                   <Button
+                     onClick={() => this.pincodeapi()}
+                     className="summaryOrder-pay-btn"
+                   >
+                     Continue to Pay
+                   </Button>
+                 ) : (
+                   <Button
+                     className="summaryOrder-pay-btn"
+                     onClick={enquireLink}
+                   >
+                     Enquire Now
+                   </Button>
+                 )}
+               </div>
+             </Grid>
+           </Grid>
+           <br />
+         </Hidden> */}
+       </Grid>
+       {/* <Grid item xs={12} lg={12} className={classes.cart}>
+         <ProductList />
+       </Grid>
+       <Hidden mdUp>
+         <Grid container style={{ marginTop: "10px" }}>
+           <Grid xs={12} lg={7} />
+           <Grid xs={12} lg={4}>
+             <div style={{ float: "right", marginBottom: "5px" }}>
+               {ProductIsActive ? (
+                 <Button
+                   onClick={() => this.pincodeapi()}
+                   className="summaryOrder-pay-btn"
+                 >
+                   Continue to Pay
+                 </Button>
+               ) : (
+                 <Button
+                   className="summaryOrder-pay-btn"
+                   onClick={enquireLink}
+                 >
+                   Enquire Now
+                 </Button>
+               )}
+             </div>
+           </Grid>
+         </Grid>
+         <br />
+       </Hidden> */}
+           </Grid> 
           <Grid item container xs={12} style={{backgroundColor:"#E6E7E8"}}>
             <div style={{width:"100%"}}>
                   <div className="">
@@ -753,7 +843,7 @@ class Component extends React.Component {
                                     <Button
                                       onClick={() => this.pincodeapi()}
                                       className="summaryOrder-pay-btn-check"
-                                      style={{ width: "100%" }}
+                                      style={{ width: "100%",marginTop:10 }}
                                       fullWidth={true}
                                     >
                                       Continue to Delivery Information
@@ -976,96 +1066,7 @@ class Component extends React.Component {
               </Grid>      
               </Grid>
           </Grid>
-           <Grid item container xs={12}>
-       
-                  <Grid item xs={12} lg={12}>
-                    {/* {JSON.stringify(this.datalist(cartContext))} */}
-                    <Grid container>
-                      <Grid xs={12} lg={7} />
-                      {/* <Grid xs={12} lg={4}>
-                        <div style={{ float: "right" }}>
-                          {ProductIsActive ? (
-                            <Button
-                              onClick={() => this.pincodeapi()}
-                              className="summaryOrder-pay-btn"
-                            >
-                              Continue to Pay
-                            </Button>
-                          ) : (
-                            <Button
-                              className="summaryOrder-pay-btn"
-                              onClick={enquireLink}
-                            >
-                              Enquire Now
-                            </Button>
-                          )}
-                        </div>
-                      </Grid> */}
-                    </Grid>
-                    <br />
-                    <Typography className="checkoutSummary">Order Summary</Typography>
-                    <CartCard
-                      data={data}
-                      isStateFilterContextQty={this.props.isdatafromstate}
-                      isdatafromstate={this.props.isdatafromstate}
-                      checkout={true}
-                    />
-
-                    {/* <Hidden smDown>
-                      <Grid container>
-                        <Grid xs={12} lg={7} />
-                        <Grid xs={12} lg={4}>
-                          <div style={{ float: "right", marginBottom: "5px" }}>
-                            {ProductIsActive ? (
-                              <Button
-                                onClick={() => this.pincodeapi()}
-                                className="summaryOrder-pay-btn"
-                              >
-                                Continue to Pay
-                              </Button>
-                            ) : (
-                              <Button
-                                className="summaryOrder-pay-btn"
-                                onClick={enquireLink}
-                              >
-                                Enquire Now
-                              </Button>
-                            )}
-                          </div>
-                        </Grid>
-                      </Grid>
-                      <br />
-                    </Hidden> */}
-                  </Grid>
-                  {/* <Grid item xs={12} lg={12} className={classes.cart}>
-                    <ProductList />
-                  </Grid>
-                  <Hidden mdUp>
-                    <Grid container style={{ marginTop: "10px" }}>
-                      <Grid xs={12} lg={7} />
-                      <Grid xs={12} lg={4}>
-                        <div style={{ float: "right", marginBottom: "5px" }}>
-                          {ProductIsActive ? (
-                            <Button
-                              onClick={() => this.pincodeapi()}
-                              className="summaryOrder-pay-btn"
-                            >
-                              Continue to Pay
-                            </Button>
-                          ) : (
-                            <Button
-                              className="summaryOrder-pay-btn"
-                              onClick={enquireLink}
-                            >
-                              Enquire Now
-                            </Button>
-                          )}
-                        </div>
-                      </Grid>
-                    </Grid>
-                    <br />
-                  </Hidden> */}
-          </Grid> 
+          
         </Grid>
        </Hidden>
        

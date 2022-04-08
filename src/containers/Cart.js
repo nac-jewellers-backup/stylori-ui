@@ -183,11 +183,11 @@ class Cart extends React.Component {
               )}
             </Grid>
           </Container>
-          <Grid Container spacing={12}>
+          {/* <Grid Container spacing={12}>
             <Grid item xs={12}>
               <Footer />
             </Grid>
-          </Grid>
+          </Grid> */}
         </Hidden>
         <>
           <Hidden smDown>

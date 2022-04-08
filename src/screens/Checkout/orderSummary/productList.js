@@ -102,7 +102,7 @@ const ProductlistComponent = (props) => {
         {props.check ? (
             <div>
             <Grid container spacing={12}>
-              <Grid item xs={6}>
+              <Grid item xs={12} lg={6}>
                 {/* {props.order ? (
                   " "
                 ) : (
