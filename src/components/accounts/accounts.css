@@ -143,6 +143,13 @@
 
 }
 
+.add{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .order_addres_user div {
     font-size: 13px;
     float: left !important;

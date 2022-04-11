@@ -8,10 +8,15 @@ import {
   Avatar,
   Grid,
   Button,
+  Box,
+  Divider,
+  Hidden,
 } from "@material-ui/core";
 import "./accounts.css";
 import "../Checkout/Cart.css";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ArrowLeft from "@material-ui/icons/ArrowLeft";
+import ArrowRight from "@material-ui/icons/ArrowRight";
 import moment from "moment";
 import Pricing from "../Pricing/index";
 import { CDN_URL } from "config";
@@ -246,6 +251,8 @@ class Allorders extends React.Component {
   render() {
     const { expanded, mailId, expandedlimit } = this.state;
     const { allorderdata } = this.props;
+
+    console.log(allorderdata, "data");
 
     const expanded_ = expanded.map((val) => {
       return val;
@@ -810,396 +817,145 @@ class Allorders extends React.Component {
         ) : (
           <div
             className="pt-sm checkout-ovralldiv-media"
-            style={{ margin: "auto" }}
+            style={{ margin: "auto", paddingTop: 10 }}
           >
             {allorderdata &&
             allorderdata.data &&
             allorderdata.data.allOrders.nodes.length > 0 ? (
-              <Container>
-                <Container>
-                  {allorderdata &&
-                    allorderdata.data &&
-                    allorderdata.data.allOrders.nodes.map((val) => {
-                      return (
-                        <div>
-                          <div style={{ marginTop: "20px", boxShadow: "none" }}>
-                            <div className="address_details">
-                              <div
-                                style={{
-                                  width: "100%",
-                                  marginBottom: "10px",
-                                  display: "flex",
-                                }}
-                              >
-                                <Grid
-                                  container
-                                  spacing={12}
-                                  lg={12}
-                                  xs={11}
-                                  sm={11}
-                                  style={{ justifyContent: "center" }}
-                                >
-                                  <Grid
-                                    item
-                                    sm={6}
-                                    lg={6}
-                                    xs={12}
-                                    className="order_addres"
-                                    style={{ color: "#394578" }}
-                                  >
-                                    <div>
-                                      {" "}
-                                      <b>Order Number</b>:#{val && val.id}
-                                    </div>
-                                    <br />
-                                    <div>
-                                      <b>Order Date </b> :{" "}
-                                      {moment(val && val.createdAt).format(
-                                        "Do MMMM YYYY"
-                                      )}
-                                    </div>
-                                    <br />
-                                    <div>
-                                      {" "}
-                                      <b>Payment Method</b>:{val.paymentMode}
-                                    </div>
-                                  </Grid>
-                                  <Grid
-                                    item
-                                    sm={3}
-                                    lg={3}
-                                    xs={12}
-                                    style={{ color: "#394578" }}
-                                    className="order_addres_user"
-                                  >
-                                    <div>
-                                      <b>Shipping Address :</b>
-                                    </div>
-                                    <br />
-                                    <div>
-                                      {" "}
-                                      {val.shoppingCartByCartId &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes[0] &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes[0]
-                                          .firstname}
-                                      &nbsp;
-                                      {val.shoppingCartByCartId &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes[0] &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes[0]
-                                          .lastname}
-                                    </div>
-                                    <br />
-                                    <div>
-                                      {" "}
-                                      {val.shoppingCartByCartId &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes[0] &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes[0]
-                                          .addressline1}
-                                    </div>
-                                    <br />
-                                    <div>
-                                      {" "}
-                                      {val.shoppingCartByCartId &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes[0] &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes[0].city +
-                                          "-"}
-                                      {val.shoppingCartByCartId &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes[0] &&
-                                        val.shoppingCartByCartId
-                                          .cartAddressesByCartId.nodes[0]
-                                          .pincode}
-                                    </div>
-                                    <br />
-                                    <br />
-                                    {val &&
-                                    val.shoppingCartByCartId &&
-                                    val.shoppingCartByCartId
-                                      .giftwrapsByCartId &&
-                                    val.shoppingCartByCartId.giftwrapsByCartId
-                                      .nodes &&
-                                    val.shoppingCartByCartId.giftwrapsByCartId
-                                      .nodes.length > 0 ? (
+              <Grid container spacing={3}>
+                {allorderdata &&
+                  allorderdata.data &&
+                  allorderdata.data.allOrders.nodes.map((val) => {
+                    return (
+                      <div>
+                         <Hidden smDown>
+                             <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          margin: 20,
+                        }}
+                      >
+                        <Grid item container xs={12} lg={6}>
+                          <Typography
+                            style={{ color: "#6D6E71", fontWeight: 700 }}
+                          >
+                            Order Summary
+                          </Typography>
+                          <Grid
+                            item
+                            style={{
+                              marginTop: "20px",
+                              backgroundColor: "#fff",
+                            }}
+                            className="address_details"
+                          >
+                            {val &&
+                              val.shoppingCartByCartId &&
+                              val.shoppingCartByCartId
+                                .shoppingCartItemsByShoppingCartId &&
+                              val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(
+                                (cart) => {
+                                  if (cart && cart.transSkuListByProductSku)
+                                    return (
                                       <>
-                                        <div>
-                                          {" "}
-                                          <b>Gift to</b> :
-                                          {val &&
-                                            val.shoppingCartByCartId
-                                              .giftwrapsByCartId.nodes[0]
-                                              .giftTo}
-                                        </div>
-                                        <br />
-                                        <div>
-                                          {" "}
-                                          <b>Gift message</b> :
-                                          {val &&
-                                            val.shoppingCartByCartId
-                                              .giftwrapsByCartId.nodes[0]
-                                              .message}
-                                        </div>
-                                      </>
-                                    ) : null}
-                                    <div></div>
-                                  </Grid>
-                                </Grid>
-                              </div>
-                              <div style={{ float: "right", fontSize: "18px" }}>
-                                Grand Total&nbsp;
-                                <span
-                                  style={{ color: "#ed1165", fontSize: "18px" }}
-                                >
-                                  {new Intl.NumberFormat("en-IN", {
-                                    style: "currency",
-                                    currency: "INR",
-                                    minimumFractionDigits: 0,
-                                  }).format(
-                                    Math.round(
-                                      val.shoppingCartByCartId.discountedPrice
-                                    )
-                                  )}
-                                </span>
-                              </div>
-                              {val &&
-                                val.shoppingCartByCartId &&
-                                val.shoppingCartByCartId
-                                  .shoppingCartItemsByShoppingCartId &&
-                                val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(
-                                  (cart) => {
-                                    if (cart && cart.transSkuListByProductSku)
-                                      return (
-                                        <>
-                                          <br />
-                                          <Grid
-                                            container
-                                            spacing={12}
-                                            lg={12}
-                                            style={{
-                                              overflow: "hidden",
-                                              outline: "none",
-                                              padding: " 10px",
-                                              boxShadow:
-                                                " 1px 2px 13px 7px #DEDADA",
-                                              marginBottom: "20px",
-                                              marginTop: "12px",
-                                              color: "#394578",
-                                            }}
-                                          >
-                                            <Grid item lg={2} sm={3}>
-                                              {cart &&
-                                                cart.transSkuListByProductSku &&
-                                                cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(
-                                                  (imgs) =>
-                                                    this.ImageUrl(
-                                                      imgs,
-                                                      cart &&
-                                                        cart.transSkuListByProductSku &&
-                                                        cart
-                                                          .transSkuListByProductSku
-                                                          .generatedSku,
+                                        <Grid
+                                          container
+                                          lg={12}
+                                          style={{
+                                            overflow: "hidden",
+                                            outline: "none",
+                                            padding: "10px",
+                                            // boxShadow:
+                                            //   " 1px 2px 13px 7px #DEDADA",
+                                            marginBottom: "20px",
+                                            // borderBottom:"1px solid grey",
+                                            marginTop: "12px",
+                                            color: "#394578",
+                                          }}
+                                        >
+                                          <Grid item lg={3} sm={3}>
+                                            {cart &&
+                                              cart.transSkuListByProductSku &&
+                                              cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(
+                                                (imgs) =>
+                                                  this.ImageUrl(
+                                                    imgs,
+                                                    cart &&
+                                                      cart.transSkuListByProductSku &&
                                                       cart
                                                         .transSkuListByProductSku
-                                                        .metalColor,
-                                                      paymentsuccess
-                                                    ) ? (
-                                                      <div className="wishlist_img">
-                                                        <img
-                                                          className="viewport-img"
-                                                          src={this.ImageUrl(
-                                                            imgs,
-                                                            cart &&
-                                                              cart.transSkuListByProductSku &&
-                                                              cart
-                                                                .transSkuListByProductSku
-                                                                .generatedSku,
+                                                        .generatedSku,
+                                                    cart
+                                                      .transSkuListByProductSku
+                                                      .metalColor,
+                                                    paymentsuccess
+                                                  ) ? (
+                                                    <div className="wishlist_img">
+                                                      <img
+                                                        className="viewport-img"
+                                                        src={this.ImageUrl(
+                                                          imgs,
+                                                          cart &&
+                                                            cart.transSkuListByProductSku &&
                                                             cart
                                                               .transSkuListByProductSku
-                                                              .metalColor,
-                                                            paymentsuccess
-                                                          )}
-                                                          alt=""
-                                                        />
-                                                      </div>
-                                                    ) : null
-                                                )}
-                                            </Grid>
-                                            <Grid item lg={4} sm={4}>
-                                              <Grid
-                                                container
-                                                spacing={12}
-                                                lg={12}
-                                                className="classGrid"
-                                              >
-                                                <b style={{ width: "100%" }}>
-                                                  {" "}
+                                                              .generatedSku,
+                                                          cart
+                                                            .transSkuListByProductSku
+                                                            .metalColor,
+                                                          paymentsuccess
+                                                        )}
+                                                        alt=""
+                                                      />
+                                                    </div>
+                                                  ) : null
+                                              )}
+                                          </Grid>
+                                          <Grid item lg={6} sm={4}>
+                                            <Grid
+                                              container
+                                              spacing={12}
+                                              lg={12}
+                                              className="classGrid"
+                                            >
+                                              <b style={{ width: "100%" }}>
+                                                {" "}
+                                                {
+                                                  cart.transSkuListByProductSku
+                                                    .productListByProductId
+                                                    .productName
+                                                }
+                                              </b>
+
+                                              <Grid item lg={12} sm={12}>
+                                                <Typography className="subhesder">
                                                   {
                                                     cart
                                                       .transSkuListByProductSku
-                                                      .productListByProductId
-                                                      .productName
+                                                      .generatedSku
                                                   }
-                                                </b>
-                                                <Grid item lg={6} sm={6}>
-                                                  <Typography className="subhesder">
-                                                    {cart
-                                                      .transSkuListByProductSku
-                                                      .generatedSku !==
-                                                      undefined &&
-                                                      (cart
-                                                        .transSkuListByProductSku
-                                                        .generatedSku !== null
-                                                        ? "Product Code"
-                                                        : null)}
-                                                  </Typography>
-                                                  <Typography className="subhesder">
-                                                    {cart.transSkuListByProductSku &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .purity &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .purity !== undefined &&
-                                                    (cart.transSkuListByProductSku &&
+                                                </Typography>
+                                                <Typography className="subhesder">
+                                                  Quantity {cart.qty}
+                                                </Typography>
+                                                <Typography className="subhesder">
+                                                  <img
+                                                    alt=""
+                                                    src="https://assets.stylori.com/images/static/icon-ship.png"
+                                                  />{" "}
+                                                  <a>
+                                                    {this.generateShipsBy(
                                                       cart
                                                         .transSkuListByProductSku
-                                                        .purity &&
+                                                        .readytoship,
                                                       cart
                                                         .transSkuListByProductSku
-                                                        .purity !== null) > 0
-                                                      ? "Metal"
-                                                      : null}
-                                                  </Typography>
-                                                  <Typography className="subhesder">
-                                                    {cart
-                                                      .transSkuListByProductSku
-                                                      .skuWeight !==
-                                                      undefined &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .skuWeight !== null
-                                                      ? cart
-                                                          .transSkuListByProductSku
-                                                          .productListByProductId
-                                                          .productType == "Kada"
-                                                        ? "Weight (Gm)"
-                                                        : "Gold Weight (Gm)"
-                                                      : null}
-                                                  </Typography>
-                                                  {/* : ""} */}
-
-                                                  <Typography className="subhesder">
-                                                    {cart.transSkuListByProductSku &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .productListByProductId &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .productListByProductId
-                                                      .productDiamondsByProductSku &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .productListByProductId
-                                                      .productDiamondsByProductSku
-                                                      .nodes &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .productListByProductId
-                                                      .productDiamondsByProductSku
-                                                      .nodes[0] &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .productListByProductId
-                                                      .productDiamondsByProductSku
-                                                      .nodes[0].stoneWeight !==
-                                                      undefined &&
-                                                    cart.transSkuListByProductSku &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .productListByProductId &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .productListByProductId
-                                                      .productDiamondsByProductSku &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .productListByProductId
-                                                      .productDiamondsByProductSku
-                                                      .nodes &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .productListByProductId
-                                                      .productDiamondsByProductSku
-                                                      .nodes[0] &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .productListByProductId
-                                                      .productDiamondsByProductSku
-                                                      .nodes[0].stoneWeight !==
-                                                      null
-                                                      ? "Diamond Weight"
-                                                      : null}{" "}
-                                                  </Typography>
-                                                  {/* : ""} */}
-                                                  {/* {cart.transSkuListByProductSku.generatedSku.length > 0 ? */}
-                                                  {/* : ""} */}
-
-                                                  {/* {cart.transSkuListByProductSku&&cart.transSkuListByProductSku.purity&&cart.transSkuListByProductSku.purity.length > 0 ? */}
-
-                                                  {/* : ""} */}
-                                                  <Typography className="subhesder">
-                                                    {cart.transSkuListByProductSku &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .skuSize !== undefined &&
-                                                    cart.transSkuListByProductSku &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .skuSize !== null &&
-                                                    cart.transSkuListByProductSku &&
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .skuSize.length > 0
-                                                      ? "Size"
-                                                      : null}
-                                                  </Typography>
-                                                </Grid>
-                                                <Grid item lg={6} sm={6}>
-                                                  <Typography className="subhesder">
-                                                    {
-                                                      cart
-                                                        .transSkuListByProductSku
-                                                        .generatedSku
-                                                    }
-                                                  </Typography>
-
+                                                        .vendorDeliveryTime
+                                                    )}
+                                                  </a>
+                                                </Typography>
+                                                {/* 
                                                   <Typography className="subhesder">
                                                     {cart
                                                       .transSkuListByProductSku
@@ -1243,22 +999,20 @@ class Allorders extends React.Component {
                                                         .nodes[0].stoneWeight +
                                                         " " +
                                                         "CT"}
-                                                  </Typography>
+                                                  </Typography> */}
 
-                                                  <Typography className="subhesder">
-                                                    {
-                                                      cart
-                                                        .transSkuListByProductSku
-                                                        .skuSize
-                                                    }
-                                                  </Typography>
-                                                </Grid>
+                                                <Typography className="subhesder">
+                                                  {
+                                                    cart
+                                                      .transSkuListByProductSku
+                                                      .skuSize
+                                                  }
+                                                </Typography>
                                               </Grid>
                                             </Grid>
-                                            <Grid
+                                          </Grid>
+                                          {/* <Grid
                                               item
-                                              lg={2}
-                                              sm={2}
                                               style={{
                                                 alignItems: "center",
                                                 display: "flex",
@@ -1270,6 +1024,584 @@ class Allorders extends React.Component {
                                                 spacing={12}
                                                 lg={12}
                                               >
+                                                 <Typography className="subhesder">
+                                                  Quantity {cart.qty}
+                                                </Typography> 
+                                                 <Typography className="subhesder">
+                                                  <img
+                                                    alt=""
+                                                    src="https://assets.stylori.com/images/static/icon-ship.png"
+                                                  />{" "}
+                                                  <a>
+                                                    {this.generateShipsBy(
+                                                      cart
+                                                        .transSkuListByProductSku
+                                                        .readytoship,
+                                                      cart
+                                                        .transSkuListByProductSku
+                                                        .vendorDeliveryTime
+                                                    )}
+                                                  </a>
+                                                </Typography>
+                                              </Grid>
+                                            </Grid> */}
+                                          <Grid
+                                            style={{
+                                              padding: "10px",
+                                              justifyContent: "center",
+                                              display: "flex",
+                                              alignItems: "center",
+                                            }}
+                                            className="rups"
+                                            item
+                                            lg={3}
+                                            sm={2}
+                                          >
+                                            <Pricing
+                                              price={
+                                                cart.transSkuListByProductSku
+                                                  .discountPrice
+                                              }
+                                              offerPrice={
+                                                cart.transSkuListByProductSku
+                                                  .markupPrice
+                                              }
+                                            ></Pricing>
+
+                                            <br />
+                                          </Grid>
+                                        </Grid>
+                                        <Divider
+                                          style={{
+                                            border: "1px solid #E6E7E8",
+                                            width: "100%",
+                                          }}
+                                        />
+                                      </>
+                                    );
+                                }
+                              )}
+
+                            {/* <div style={{ float: "right", fontSize: "18px" }}>
+                                Grand Total&nbsp;
+                                <span
+                                  style={{ color: "#ed1165", fontSize: "18px" }}
+                                >
+                                  {new Intl.NumberFormat("en-IN", {
+                                    style: "currency",
+                                    currency: "INR",
+                                    minimumFractionDigits: 0,
+                                  }).format(
+                                    Math.round(
+                                      val.shoppingCartByCartId.discountedPrice
+                                    )
+                                  )}
+                                </span>
+                              </div> */}
+                          </Grid>
+                          <Typography
+                            style={{
+                              color: "#6D6E71",
+                              fontWeight: 700,
+                              marginTop: 10,
+                            }}
+                          >
+                            Order Details
+                          </Typography>
+                          <Grid
+                            item
+                            style={{
+                              marginTop: "20px",
+                              backgroundColor: "#fff",
+                              width: "100%",
+                            }}
+                          >
+                            <div
+                              style={{
+                                width: "100%",
+                                marginBottom: "10px",
+                                display: "flex",
+                                margin: 15,
+                              }}
+                            >
+                              <Grid
+                                container
+                                spacing={12}
+                                lg={12}
+                                xs={11}
+                                sm={11}
+                              >
+                                <Grid
+                                  item
+                                  sm={6}
+                                  lg={6}
+                                  xs={12}
+                                  className="order_addres"
+                                  style={{ color: "rgb(109, 110, 113)" }}
+                                >
+                                  <div style={{ fontSize: "16px" }}>
+                                    {" "}
+                                    <b>ORDER NUMBER</b>:
+                                  </div>
+                                  <br />
+                                  <div style={{ fontSize: "16px" }}>
+                                    <b>ORDER DATE </b> :
+                                  </div>
+                                  <br />
+                                  <div style={{ fontSize: "16px" }}>
+                                    {" "}
+                                    <b>PAYMENT METHOD</b> :
+                                  </div>
+                                </Grid>
+                                <Grid
+                                  item
+                                  sm={6}
+                                  lg={6}
+                                  xs={12}
+                                  className="order_addres"
+                                  style={{ color: "rgb(109, 110, 113)" }}
+                                >
+                                  <div> #{val && val.id}</div>
+                                  <br />
+                                  <div style={{ lineHeight: 3 }}>
+                                    {moment(val && val.createdAt).format(
+                                      "Do MMMM YYYY"
+                                    )}
+                                  </div>
+                                  <br />
+                                  <div>{val.paymentMode}</div>
+                                </Grid>
+                              </Grid>
+                            </div>
+                          </Grid>
+                          <Divider
+                            style={{
+                              border: "1px solid #BCBEC1",
+                              width: "100%",
+                              marginTop: 20,
+                            }}
+                          />
+                          <Grid
+                            item
+                            container
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            <Grid item>
+                              <Typography
+                                style={{
+                                  color: "#6D6E71",
+                                  fontWeight: 700,
+                                  marginTop: 10,
+                                }}
+                              >
+                                TOTAL COST
+                              </Typography>
+                            </Grid>
+                            <Grid item style={{ marginTop: 10 }}>
+                              <span
+                                style={{
+                                  color: "#6D6E71",
+                                  fontSize: "20px",
+                                  fontWeight: 700,
+                                }}
+                              >
+                                {new Intl.NumberFormat("en-IN", {
+                                  style: "currency",
+                                  currency: "INR",
+                                  minimumFractionDigits: 0,
+                                }).format(
+                                  Math.round(
+                                    val.shoppingCartByCartId.discountedPrice
+                                  )
+                                )}
+                              </span>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                        <Grid
+                          item
+                          xs={12}
+                          lg={6}
+                          style={{
+                            display: "flex",
+                            justifyContent: "flex-start",
+                            flexDirection: "column",
+                            marginLeft: "50px",
+                          }}
+                        >
+                          <Typography
+                            style={{
+                              color: "#6D6E71",
+                              fontWeight: 700,
+                            }}
+                          >
+                            Ship To
+                          </Typography>
+                          <Box
+                            className="order_addres_user"
+                            style={{
+                              marginTop: "20px",
+                              backgroundColor: "#fff",
+                              width: "100%",
+                            }}
+                          >
+                            <div className="add">
+                              <div style={{ color: "#6D6E71" }}>
+                                {" "}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].firstname}
+                                &nbsp;
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].lastname}
+                              </div>
+                              <br />
+                              <div style={{ color: "#6D6E71" }}>
+                                {" "}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].addressline1}
+                              </div>
+                              <br />
+                              <div style={{ color: "#6D6E71" }}>
+                                {" "}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].city + "-"}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].pincode}
+                              </div>
+                              <br />
+                              <br />
+                              {val &&
+                              val.shoppingCartByCartId &&
+                              val.shoppingCartByCartId.giftwrapsByCartId &&
+                              val.shoppingCartByCartId.giftwrapsByCartId
+                                .nodes &&
+                              val.shoppingCartByCartId.giftwrapsByCartId.nodes
+                                .length > 0 ? (
+                                <>
+                                  <div>
+                                    {" "}
+                                    <b>Gift to</b> :
+                                    {val &&
+                                      val.shoppingCartByCartId.giftwrapsByCartId
+                                        .nodes[0].giftTo}
+                                  </div>
+                                  <br />
+                                  <div>
+                                    {" "}
+                                    <b>Gift message</b> :
+                                    {val &&
+                                      val.shoppingCartByCartId.giftwrapsByCartId
+                                        .nodes[0].message}
+                                  </div>
+                                </>
+                              ) : null}
+                            </div>
+                          </Box>
+                          <Typography
+                            style={{
+                              color: "#6D6E71",
+                              fontWeight: 700,
+                              marginTop: 30,
+                            }}
+                          >
+                            Bill To
+                          </Typography>
+                          <Box
+                            className="order_addres_user"
+                            style={{
+                              marginTop: "10px",
+                              backgroundColor: "#fff",
+                              width: "100%",
+                            }}
+                          >
+                            <div className="add">
+                              <div style={{ color: "#6D6E71" }}>
+                                {" "}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].firstname}
+                                &nbsp;
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].lastname}
+                              </div>
+                              <br />
+                              <div style={{ color: "#6D6E71" }}>
+                                {" "}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].addressline1}
+                              </div>
+                              <br />
+                              <div style={{ color: "#6D6E71" }}>
+                                {" "}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].city + "-"}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].pincode}
+                              </div>
+                              <br />
+                              <br />
+                              {val &&
+                              val.shoppingCartByCartId &&
+                              val.shoppingCartByCartId.giftwrapsByCartId &&
+                              val.shoppingCartByCartId.giftwrapsByCartId
+                                .nodes &&
+                              val.shoppingCartByCartId.giftwrapsByCartId.nodes
+                                .length > 0 ? (
+                                <>
+                                  <div>
+                                    {" "}
+                                    <b>Gift to</b> :
+                                    {val &&
+                                      val.shoppingCartByCartId.giftwrapsByCartId
+                                        .nodes[0].giftTo}
+                                  </div>
+                                  <br />
+                                  <div>
+                                    {" "}
+                                    <b>Gift message</b> :
+                                    {val &&
+                                      val.shoppingCartByCartId.giftwrapsByCartId
+                                        .nodes[0].message}
+                                  </div>
+                                </>
+                              ) : null}
+                            </div>
+                          </Box>
+                          <Grid item container spacing={2}>
+                            <Grid
+                              item
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-around",
+                                marginLeft: "15px",
+                              }}
+                            >
+                              <ArrowLeft fontSize="small" />
+
+                              <div>
+                                Go Back to{" "}
+                                <span
+                                  style={{
+                                    borderBottom: "2px solid #f14880",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() =>
+                                    window.location.replace("/stylori")
+                                  }
+                                >
+                                  Stylori
+                                </span>
+                              </div>
+                            </Grid>
+                            <Grid
+                              item
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                marginLeft: "15px",
+                              }}
+                            >
+                              <ArrowLeft fontSize="small" />
+                              <div>
+                                Go Back to{" "}
+                                <span
+                                  style={{
+                                    borderBottom: "2px solid #06ab9f",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() =>
+                                    window.location.replace("/styloriSilver")
+                                  }
+                                >
+                                  Stylori Silver
+                                </span>
+                              </div>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </div>
+                          </Hidden>
+                          <Hidden mdUp>
+                             <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          margin: 20,
+                        }}
+                      >
+                        <Grid item container xs={12} lg={6}>
+                          <Typography
+                            style={{ color: "#6D6E71", fontWeight: 700 }}
+                          >
+                            Order Summary
+                          </Typography>
+                          <Grid
+                            item
+                            style={{
+                              marginTop: "20px",
+                              backgroundColor: "#fff",
+                            }}
+                            className="address_details"
+                          >
+                            {val &&
+                              val.shoppingCartByCartId &&
+                              val.shoppingCartByCartId
+                                .shoppingCartItemsByShoppingCartId &&
+                              val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(
+                                (cart) => {
+                                  if (cart && cart.transSkuListByProductSku)
+                                    return (
+                                      <>
+                                        <Grid
+                                          container
+                                          lg={12}
+                                          style={{
+                                            overflow: "hidden",
+                                            outline: "none",
+                                            padding: "10px",
+                                            // boxShadow:
+                                            //   " 1px 2px 13px 7px #DEDADA",
+                                            marginBottom: "20px",
+                                            // borderBottom:"1px solid grey",
+                                            marginTop: "12px",
+                                            color: "#394578",
+                                          }}
+                                        >
+                                          <Grid item lg={3} sm={3}>
+                                            {cart &&
+                                              cart.transSkuListByProductSku &&
+                                              cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(
+                                                (imgs) =>
+                                                  this.ImageUrl(
+                                                    imgs,
+                                                    cart &&
+                                                      cart.transSkuListByProductSku &&
+                                                      cart
+                                                        .transSkuListByProductSku
+                                                        .generatedSku,
+                                                    cart
+                                                      .transSkuListByProductSku
+                                                      .metalColor,
+                                                    paymentsuccess
+                                                  ) ? (
+                                                    <div className="wishlist_img">
+                                                      <img
+                                                        className="viewport-img"
+                                                        src={this.ImageUrl(
+                                                          imgs,
+                                                          cart &&
+                                                            cart.transSkuListByProductSku &&
+                                                            cart
+                                                              .transSkuListByProductSku
+                                                              .generatedSku,
+                                                          cart
+                                                            .transSkuListByProductSku
+                                                            .metalColor,
+                                                          paymentsuccess
+                                                        )}
+                                                        alt=""
+                                                      />
+                                                    </div>
+                                                  ) : null
+                                              )}
+                                          </Grid>
+                                          <Grid item lg={6} sm={4}>
+                                            <Grid
+                                              container
+                                              spacing={12}
+                                              lg={12}
+                                              className="classGrid"
+                                            >
+                                              <b style={{ width: "100%" }}>
+                                                {" "}
+                                                {
+                                                  cart.transSkuListByProductSku
+                                                    .productListByProductId
+                                                    .productName
+                                                }
+                                              </b>
+
+                                              <Grid item lg={12} sm={12}>
+                                                <Typography className="subhesder">
+                                                  {
+                                                    cart
+                                                      .transSkuListByProductSku
+                                                      .generatedSku
+                                                  }
+                                                </Typography>
                                                 <Typography className="subhesder">
                                                   Quantity {cart.qty}
                                                 </Typography>
@@ -1289,64 +1621,552 @@ class Allorders extends React.Component {
                                                     )}
                                                   </a>
                                                 </Typography>
+                                                {/* 
+                                                  <Typography className="subhesder">
+                                                    {cart
+                                                      .transSkuListByProductSku
+                                                      .purity + ""}
+                                                    {
+                                                      cart
+                                                        .transSkuListByProductSku
+                                                        .metalColor
+                                                    }
+                                                  </Typography>
+                                                  <Typography className="subhesder">
+                                                    {cart
+                                                      .transSkuListByProductSku
+                                                      .skuWeight +
+                                                      " " +
+                                                      "GM"}
+                                                  </Typography>
+                                                  <Typography className="subhesder">
+                                                    {cart.transSkuListByProductSku &&
+                                                      cart
+                                                        .transSkuListByProductSku
+                                                        .productListByProductId &&
+                                                      cart
+                                                        .transSkuListByProductSku
+                                                        .productListByProductId
+                                                        .productDiamondsByProductSku &&
+                                                      cart
+                                                        .transSkuListByProductSku
+                                                        .productListByProductId
+                                                        .productDiamondsByProductSku
+                                                        .nodes &&
+                                                      cart
+                                                        .transSkuListByProductSku
+                                                        .productListByProductId
+                                                        .productDiamondsByProductSku
+                                                        .nodes[0] &&
+                                                      cart
+                                                        .transSkuListByProductSku
+                                                        .productListByProductId
+                                                        .productDiamondsByProductSku
+                                                        .nodes[0].stoneWeight +
+                                                        " " +
+                                                        "CT"}
+                                                  </Typography> */}
+
+                                                <Typography className="subhesder">
+                                                  {
+                                                    cart
+                                                      .transSkuListByProductSku
+                                                      .skuSize
+                                                  }
+                                                </Typography>
                                               </Grid>
                                             </Grid>
-
-                                            <Grid
-                                              style={{
-                                                padding: "10px",
-                                                justifyContent: "center",
-                                                display: "flex",
-                                                alignItems: "center",
-                                              }}
-                                              className="rups"
+                                          </Grid>
+                                          {/* <Grid
                                               item
-                                              lg={3}
-                                              sm={2}
+                                              style={{
+                                                alignItems: "center",
+                                                display: "flex",
+                                                padding: "16px",
+                                              }}
                                             >
-                                              {Math.round(cart.discountPrice) >
-                                              Math.round(
+                                              <Grid
+                                                container
+                                                spacing={12}
+                                                lg={12}
+                                              >
+                                                 <Typography className="subhesder">
+                                                  Quantity {cart.qty}
+                                                </Typography> 
+                                                 <Typography className="subhesder">
+                                                  <img
+                                                    alt=""
+                                                    src="https://assets.stylori.com/images/static/icon-ship.png"
+                                                  />{" "}
+                                                  <a>
+                                                    {this.generateShipsBy(
+                                                      cart
+                                                        .transSkuListByProductSku
+                                                        .readytoship,
+                                                      cart
+                                                        .transSkuListByProductSku
+                                                        .vendorDeliveryTime
+                                                    )}
+                                                  </a>
+                                                </Typography>
+                                              </Grid>
+                                            </Grid> */}
+                                          <Grid
+                                            style={{
+                                              padding: "10px",
+                                              justifyContent: "center",
+                                              display: "flex",
+                                              alignItems: "center",
+                                            }}
+                                            className="rups"
+                                            item
+                                            lg={3}
+                                            sm={2}
+                                          >
+                                            <Pricing
+                                              price={
+                                                cart.transSkuListByProductSku
+                                                  .discountPrice
+                                              }
+                                              offerPrice={
                                                 cart.transSkuListByProductSku
                                                   .markupPrice
-                                              ) ? (
-                                                <Pricing
-                                                  price={
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .discountPrice
-                                                  }
-                                                  offerPrice={
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .markupPrice
-                                                  }
-                                                  offerDiscount={"25% - OFF"}
-                                                  quantity={cart.qty}
-                                                ></Pricing>
-                                              ) : (
-                                                <Pricing
-                                                  offerPrice={
-                                                    cart
-                                                      .transSkuListByProductSku
-                                                      .markupPrice
-                                                  }
-                                                  quantity={cart.qty}
-                                                ></Pricing>
-                                              )}
-                                              <br />
-                                            </Grid>
+                                              }
+                                            ></Pricing>
+
+                                            <br />
                                           </Grid>
-                                        </>
-                                      );
-                                  }
-                                )}
+                                        </Grid>
+                                        <Divider
+                                          style={{
+                                            border: "1px solid #E6E7E8",
+                                            width: "100%",
+                                          }}
+                                        />
+                                      </>
+                                    );
+                                }
+                              )}
+
+                            {/* <div style={{ float: "right", fontSize: "18px" }}>
+                                Grand Total&nbsp;
+                                <span
+                                  style={{ color: "#ed1165", fontSize: "18px" }}
+                                >
+                                  {new Intl.NumberFormat("en-IN", {
+                                    style: "currency",
+                                    currency: "INR",
+                                    minimumFractionDigits: 0,
+                                  }).format(
+                                    Math.round(
+                                      val.shoppingCartByCartId.discountedPrice
+                                    )
+                                  )}
+                                </span>
+                              </div> */}
+                          </Grid>
+                          <Typography
+                            style={{
+                              color: "#6D6E71",
+                              fontWeight: 700,
+                              marginTop: 10,
+                            }}
+                          >
+                            Order Details
+                          </Typography>
+                          <Grid
+                            item
+                            style={{
+                              marginTop: "20px",
+                              backgroundColor: "#fff",
+                              width: "100%",
+                            }}
+                          >
+                            <div
+                              style={{
+                                width: "100%",
+                                marginBottom: "10px",
+                                display: "flex",
+                                margin: 15,
+                              }}
+                            >
+                              <Grid
+                                container
+                                spacing={12}
+                                lg={12}
+                                xs={12}
+                                sm={12}
+                                style={{display:"contents"}}
+                              >
+                                <Grid
+                                  item
+                                  sm={6}
+                                  lg={6}
+                                  xs={12}
+                                  className="order_addres"
+                                  style={{ color: "rgb(109, 110, 113)" }}
+                                >
+                                  <div >
+                                    {" "}
+                                    <b>ORDER NUMBER</b>:
+                                  </div>
+                                  <br />
+                                  <div style={{lineHeight:7}}>
+                                    <b>ORDER DATE </b> :
+                                  </div>
+                                  <br />
+                                  <div >
+                                    {" "}
+                                    <b>PAYMENT METHOD</b> :
+                                  </div>
+                                </Grid>
+                                <Grid
+                                  item
+                                  sm={6}
+                                  lg={6}
+                                  xs={12}
+                                  className="order_addres"
+                                  style={{ color: "rgb(109, 110, 113)" }}
+                                >
+                                  <div> #{val && val.id}</div>
+                                  <br />
+                                  <div style={{ lineHeight: 3 }}>
+                                    {moment(val && val.createdAt).format(
+                                      "Do MMMM YYYY"
+                                    )}
+                                  </div>
+                                  <br />
+                                  <div style={{lineHeight:6.4}}>{val.paymentMode}</div>
+                                </Grid>
+                              </Grid>
                             </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                </Container>
-              </Container>
+                          </Grid>
+                          <Divider
+                            style={{
+                              border: "1px solid #BCBEC1",
+                              width: "100%",
+                              marginTop: 20,
+                            }}
+                          />
+                          <Grid
+                            item
+                            container
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            <Grid item>
+                              <Typography
+                                style={{
+                                  color: "#6D6E71",
+                                  fontWeight: 700,
+                                  marginTop: 10,
+                                }}
+                              >
+                                TOTAL COST
+                              </Typography>
+                            </Grid>
+                            <Grid item style={{ marginTop: 10 }}>
+                              <span
+                                style={{
+                                  color: "#6D6E71",
+                                  fontSize: "20px",
+                                  fontWeight: 700,
+                                }}
+                              >
+                                {new Intl.NumberFormat("en-IN", {
+                                  style: "currency",
+                                  currency: "INR",
+                                  minimumFractionDigits: 0,
+                                }).format(
+                                  Math.round(
+                                    val.shoppingCartByCartId.discountedPrice
+                                  )
+                                )}
+                              </span>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                        <Grid
+                          item
+                          xs={12}
+                          lg={6}
+                          style={{
+                            display: "flex",
+                            justifyContent: "flex-start",
+                            flexDirection: "column",
+                            marginTop:"10px"
+                          }}
+                        >
+                          <Typography
+                            style={{
+                              color: "#6D6E71",
+                              fontWeight: 700,
+                            }}
+                          >
+                            Ship To
+                          </Typography>
+                          <Box
+                            className="order_addres_user"
+                            style={{
+                              marginTop: "20px",
+                              backgroundColor: "#fff",
+                              width: "100%",
+                            }}
+                          >
+                            <div className="add">
+                              <div style={{ color: "#6D6E71" }}>
+                                {" "}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].firstname}
+                                &nbsp;
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].lastname}
+                              </div>
+                              <br />
+                              <div style={{ color: "#6D6E71" }}>
+                                {" "}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].addressline1}
+                              </div>
+                              <br />
+                              <div style={{ color: "#6D6E71" }}>
+                                {" "}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].city + "-"}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].pincode}
+                              </div>
+                              <br />
+                              <br />
+                              {val &&
+                              val.shoppingCartByCartId &&
+                              val.shoppingCartByCartId.giftwrapsByCartId &&
+                              val.shoppingCartByCartId.giftwrapsByCartId
+                                .nodes &&
+                              val.shoppingCartByCartId.giftwrapsByCartId.nodes
+                                .length > 0 ? (
+                                <>
+                                  <div>
+                                    {" "}
+                                    <b>Gift to</b> :
+                                    {val &&
+                                      val.shoppingCartByCartId.giftwrapsByCartId
+                                        .nodes[0].giftTo}
+                                  </div>
+                                  <br />
+                                  <div>
+                                    {" "}
+                                    <b>Gift message</b> :
+                                    {val &&
+                                      val.shoppingCartByCartId.giftwrapsByCartId
+                                        .nodes[0].message}
+                                  </div>
+                                </>
+                              ) : null}
+                            </div>
+                          </Box>
+                          <Typography
+                            style={{
+                              color: "#6D6E71",
+                              fontWeight: 700,
+                              marginTop: 30,
+                            }}
+                          >
+                            Bill To
+                          </Typography>
+                          <Box
+                            className="order_addres_user"
+                            style={{
+                              marginTop: "10px",
+                              backgroundColor: "#fff",
+                              width: "100%",
+                            }}
+                          >
+                            <div className="add">
+                              <div style={{ color: "#6D6E71" }}>
+                                {" "}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].firstname}
+                                &nbsp;
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].lastname}
+                              </div>
+                              <br />
+                              <div style={{ color: "#6D6E71" }}>
+                                {" "}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].addressline1}
+                              </div>
+                              <br />
+                              <div style={{ color: "#6D6E71" }}>
+                                {" "}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].city + "-"}
+                                {val.shoppingCartByCartId &&
+                                  val.shoppingCartByCartId
+                                    .cartAddressesByCartId &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0] &&
+                                  val.shoppingCartByCartId.cartAddressesByCartId
+                                    .nodes[0].pincode}
+                              </div>
+                              <br />
+                              <br />
+                              {val &&
+                              val.shoppingCartByCartId &&
+                              val.shoppingCartByCartId.giftwrapsByCartId &&
+                              val.shoppingCartByCartId.giftwrapsByCartId
+                                .nodes &&
+                              val.shoppingCartByCartId.giftwrapsByCartId.nodes
+                                .length > 0 ? (
+                                <>
+                                  <div>
+                                    {" "}
+                                    <b>Gift to</b> :
+                                    {val &&
+                                      val.shoppingCartByCartId.giftwrapsByCartId
+                                        .nodes[0].giftTo}
+                                  </div>
+                                  <br />
+                                  <div>
+                                    {" "}
+                                    <b>Gift message</b> :
+                                    {val &&
+                                      val.shoppingCartByCartId.giftwrapsByCartId
+                                        .nodes[0].message}
+                                  </div>
+                                </>
+                              ) : null}
+                            </div>
+                          </Box>
+                          <Grid item container spacing={2}>
+                            <Grid
+                              item
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-around",
+                                marginLeft: "15px",
+                              }}
+                            >
+                              <ArrowLeft fontSize="small" />
+
+                              <div>
+                                Go Back to{" "}
+                                <span
+                                  style={{
+                                    borderBottom: "2px solid #f14880",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() =>
+                                    window.location.replace("/stylori")
+                                  }
+                                >
+                                  Stylori
+                                </span>
+                              </div>
+                            </Grid>
+                            <Grid
+                              item
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                marginLeft: "15px",
+                              }}
+                            >
+                              <ArrowLeft fontSize="small" />
+                              <div>
+                                Go Back to{" "}
+                                <span
+                                  style={{
+                                    borderBottom: "2px solid #06ab9f",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() =>
+                                    window.location.replace("/styloriSilver")
+                                  }
+                                >
+                                  Stylori Silver
+                                </span>
+                              </div>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </div>
+                          </Hidden>
+                      </div>
+                     
+                       
+                    );
+                  })}
+              </Grid>
             ) : (
               <div style={{ textAlign: "center", color: "#394578" }}>
                 No orders yet

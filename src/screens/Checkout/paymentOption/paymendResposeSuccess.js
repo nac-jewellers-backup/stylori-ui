@@ -87,9 +87,8 @@ class PaymentResponseSuccess extends React.Component {
     return (
       <>
         <Header wishlist={this.props.wishlistdata} paymentSucces={true} />
-
-        <Grid container justify="center" style={{ paddingTop: "30px" }}>
-          <Hidden smDown>
+        <Grid container justify="center" style={{backgroundColor:"#E6E7E8",height:"100vh",height:"100%",marginTop:"-15px" }}>
+          {/* <Hidden smDown>
             <Grid
               container
               justify="center"
@@ -129,15 +128,50 @@ class PaymentResponseSuccess extends React.Component {
                 </Grid>
               </Grid>
             </Grid>
-          </Hidden>
-          <Grid container justify="center" className="smallScreenClass">
+          </Hidden> */}
+          <Grid container justify="center" className="smallScreenClass" style={{display:"flex",flexDirection:"column",marginTop:30}}>
+              <Grid item  className="contant-center container-font-size">
+              
+                <Typography className="thank_you">A Big Thank You!</Typography>
+                <Divider className="divider"/>
+                {/* {" "}
+                <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
+                &nbsp;&nbsp; A Big Thank you!&nbsp;&nbsp;Your order has been placed. */}
+              </Grid>
+              <Grid item  style={{marginTop:30}}> 
+              <Typography className="center_content">Welcome to <span style={{fontWeight:700}}>Stylori</span> Family! We'll take it from here</Typography> 
+               </Grid>   
+               <Grid
+              item
+              className="contant-center"
+              style={{color:"#6D6E71"}}
+            >
+              We've send you an email confirmation.&nbsp;
+              <a
+                onClick={() => {
+                  this.makeFetch_resend_mail();
+                }}
+                style={{
+                  fontSize: "12px",
+                  color: "blue",
+                  textDecoration: "underline",
+                  cursor: "pointer",
+                }}
+              >
+                Resend Email
+              </a>
+              </Grid>
+          </Grid>
+          {/* <Grid container justify="center" >
             <Grid item xs={10} sm={10} md={6} className="contant-center">
               <Grid item className="container-font-size">
+              <Typography style={{color:"#6D6E71"}}>Welcome to <span style={{fontWeight:700}}>Stylori</span> Family! We'll takeit from here</Typography>
                 {" "}
                 <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
-                &nbsp;&nbsp;Thank you!&nbsp;&nbsp;Your order has been placed.
+                &nbsp;&nbsp; A Big Thank you!&nbsp;&nbsp;Your order has been placed.
+                
               </Grid>
-            </Grid>
+            </Grid> 
           </Grid>
           <Grid container justify="center">
             <Grid
@@ -146,7 +180,7 @@ class PaymentResponseSuccess extends React.Component {
               sm={12}
               md={6}
               className="contant-center"
-              style={{ paddingLeft: "10px" }}
+              style={{color:"#6D6E71"}}
             >
               We've send you an email confirmation.&nbsp;
               <a
@@ -163,12 +197,12 @@ class PaymentResponseSuccess extends React.Component {
                 Resend Email
               </a>
             </Grid>
-          </Grid>
+          </Grid> */}
 
           <Grid container>
             <Allorders allorderdata={this.props.allorderdata} />
           </Grid>
-          <Footer />
+          {/* <Footer /> */}
         </Grid>
       </>
     );
