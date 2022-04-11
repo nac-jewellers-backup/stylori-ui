@@ -225,6 +225,9 @@ h6 {
 
 .center_content{ 
     color:#6D6E71 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .contant-center {

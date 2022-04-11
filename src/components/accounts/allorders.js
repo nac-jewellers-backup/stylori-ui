@@ -1439,7 +1439,7 @@ class Allorders extends React.Component {
                               ) : null}
                             </div>
                           </Box>
-                          <Grid item container spacing={2}>
+                          <Grid item container spacing={2} >
                             <Grid
                               item
                               style={{
@@ -1447,6 +1447,7 @@ class Allorders extends React.Component {
                                 alignItems: "center",
                                 justifyContent: "space-around",
                                 marginLeft: "15px",
+                                marginTop:"25px"
                               }}
                             >
                               <ArrowLeft fontSize="small" />
@@ -1472,6 +1473,7 @@ class Allorders extends React.Component {
                                 display: "flex",
                                 alignItems: "center",
                                 marginLeft: "15px",
+                                marginTop:"25px"
                               }}
                             >
                               <ArrowLeft fontSize="small" />
