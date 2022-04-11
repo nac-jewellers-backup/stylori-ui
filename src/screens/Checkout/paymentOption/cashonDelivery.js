@@ -165,7 +165,7 @@ class Component extends React.Component {
               onClick={() => this.makeFetch(this.props)}
               style={{
                 cursor: "pointer",
-                backgroundColor: "#ed1165",
+                backgroundColor: "rgb(211, 37, 100)",
                 color: "#fff",
                 width: "inherit",
               }}

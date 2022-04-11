@@ -79,7 +79,7 @@ class PaymentIndex extends React.Component {
 
     return (
       <div className="payment-div" style={{ width: "100%" }}>
-        <Hidden smDown>
+        
           <Grid container  lg={12} spacing={2} style={{display:"flex",flexDirection:"column"}}>
             <Grid item lg={6}>
                           <FormGroup column>
@@ -168,10 +168,10 @@ class PaymentIndex extends React.Component {
               </div>
             </Grid>
           </Grid>
-        </Hidden>
+   
 
-        <Hidden mdUp>
-          {/* <ExpansionPanel className="respone-div div_DARK"
+        {/* <Hidden mdUp>
+          <ExpansionPanel className="respone-div div_DARK"
                     >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className="py-head"><div className="cc-icon">&nbsp;</div>Credit card  </Typography>
@@ -179,9 +179,9 @@ class PaymentIndex extends React.Component {
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Creditform data={this.props.data} dataCard1={dataCard1}/>
                         </ExpansionPanelDetails> 
-                    </ExpansionPanel> */}
+                    </ExpansionPanel>
 
-          {/* <ExpansionPanel className="respone-div div_DARK"
+          <ExpansionPanel className="respone-div div_DARK"
                     >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className="py-head">  <div className="dc-icon"></div> &nbsp; Debit card </Typography>
@@ -189,7 +189,7 @@ class PaymentIndex extends React.Component {
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Debitform data={this.props.data} dataCard1={dataCard1}/>
                         </ExpansionPanelDetails>
-                    </ExpansionPanel>  */}
+                    </ExpansionPanel> 
 
           <ExpansionPanel className="respone-div">
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
@@ -217,7 +217,7 @@ class PaymentIndex extends React.Component {
               <CashonDelivey data={this.props.data} dataCard1={dataCard1} />
             </ExpansionPanelDetails>
           </ExpansionPanel>
-        </Hidden>
+        </Hidden> */}
       </div>
     );
   }

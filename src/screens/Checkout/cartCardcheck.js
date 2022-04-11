@@ -10,6 +10,9 @@ import {
   Grid,
   Button,
   Hidden,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@material-ui/core";
 import "../../components/Checkout/Cart.css";
 import "./chckout.css";
@@ -30,8 +33,8 @@ import cart from "../../mappers/cart";
 import { CheckForCod } from "queries/productdetail";
 import { useCheckForCod } from "hooks/CheckForCodHook";
 import Header from "components/SilverComponents/Header";
-import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import { withRouter } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import ReactPixel from "react-facebook-pixel";
@@ -72,19 +75,15 @@ class Component extends React.Component {
     // expandedlimit: 1,
     mailId: null,
     adres_details: null,
-    isActive:false,
-    Index:null
+    isActive: false,
+    Index: null,
   };
   componentDidMount() {
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
     ReactPixel.fbq("track", "PageView");
     ReactPixel.track("InitiateCheckout");
-
-
   }
   googleTagManager(data, step, option) {
-  
-
     let gData = [];
     let TData = data;
 
@@ -104,7 +103,7 @@ class Component extends React.Component {
       dataLayer: {
         ecommerce: {
           checkout: {
-            actionField: { step: (step - 1), option: option },
+            actionField: { step: step - 1, option: option },
             products: gData,
           },
         },
@@ -114,7 +113,6 @@ class Component extends React.Component {
     TagManager.initialize(tagManagerArgs);
   }
   handleChange = (panel) => (event) => {
-
     if (panel === 2) {
       adres["value"] = {};
       localStorage.removeItem("bil_isactive");
@@ -172,7 +170,6 @@ class Component extends React.Component {
   };
 
   changePanel = (panel, adres_detail) => {
- 
     if (panel === 2) {
       this.googleTagManager(this.props.data, panel, "Login");
     }
@@ -348,101 +345,142 @@ class Component extends React.Component {
           }
           changePanel={this.changePanel}
         /> */}
-       <Hidden smDown>
-       <Grid container style={{height:"100vh",marginTop:"-20px"}}>
-          <Grid item container xs={6} style={{backgroundColor:"#E6E7E8"}}>
-            <div style={{width:"100%",marginLeft:30}}>
+        <Hidden smDown>
+          <Grid container style={{ height: "100vh", marginTop: "-20px" }}>
+            <Grid item container xs={6} style={{ backgroundColor: "#E6E7E8" }}>
+              <div style={{ width: "100%", marginLeft: 30 }}>
+                <div className="">
                   <div className="">
-                    <div className="">
-                   
-                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
-                          <div
-                            className="accordion-title-check"
-                            onClick={this.handleChange(1)}
-                          >
-                            <div className="accordion-title2-check">{`1. LOGIN`}</div>
-                            <div style={{ cursor: "pointer" }}>
-                              {expanded === "panel1"
-                                ? <ExpandLess/>
-                                : <ExpandMore/>}
-                            </div>
-                          </div>
+                    <div
+                      className="accordian-item"
+                      style={{
+                        paddingTop: "20px",
+                        borderBottom: "1px solid #6D6E71",
+                      }}
+                    >
+                      <div
+                        className="accordion-title-check"
+                        onClick={this.handleChange(1)}
+                      >
+                        <div className="accordion-title2-check">{`1. LOGIN`}</div>
+                        <div style={{ cursor: "pointer" }}>
                           {expanded === "panel1" ? (
-                            <div className="" style={{ margin: 10 }}>
-                              <LoginRegisterIndex changePanel={this.changePanel}/>
-                            </div>
-                          ) : null}
+                            <ExpandLess />
+                          ) : (
+                            <ExpandMore />
+                          )}
                         </div>
-                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
-                          <div
-                            className="accordion-title-check"
-                            onClick={this.handleChange(2)}
-                          >
-                            <div className="accordion-title2-check">{`2. ADD A GIFT MESSAGE`}</div>
-                            <div style={{ cursor: "pointer" }}>
-                              {expanded === "panel2"
-                                ? <ExpandLess/>
-                                : <ExpandMore/>}
-                            </div>
-                          </div>
+                      </div>
+                      {expanded === "panel1" ? (
+                        <div className="" style={{ margin: 10 }}>
+                          <LoginRegisterIndex changePanel={this.changePanel} />
+                        </div>
+                      ) : null}
+                    </div>
+                    <div
+                      className="accordian-item"
+                      style={{
+                        paddingTop: "20px",
+                        borderBottom: "1px solid #6D6E71",
+                      }}
+                    >
+                      <div
+                        className="accordion-title-check"
+                        onClick={this.handleChange(2)}
+                      >
+                        <div className="accordion-title2-check">{`2. ADD A GIFT MESSAGE`}</div>
+                        <div style={{ cursor: "pointer" }}>
                           {expanded === "panel2" ? (
-                            <div className="" style={{ margin: 10 }}>
-                              <ProductList  onClickgift={() => this.pincodeapi()} check={true}/>
-                                   <Button
-                                      onClick={() => this.pincodeapi()}
-                                      className="summaryOrder-pay-btn-check"
-                                      style={{ width: "50%",marginTop:10 }}
-                                      // fullWidth={true}
-                                    >
-                                      Continue to Delivery Information
-                                    </Button>
-                            </div>
-                          ) : null}
+                            <ExpandLess />
+                          ) : (
+                            <ExpandMore />
+                          )}
                         </div>
-                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
-                          <div
-                            className="accordion-title-check"
-                            onClick={this.handleChange(3)}
+                      </div>
+                      {expanded === "panel2" ? (
+                        <div className="" style={{ margin: 10 }}>
+                          <ProductList
+                            onClickgift={() => this.pincodeapi()}
+                            check={true}
+                          />
+                          <Button
+                            onClick={() => this.pincodeapi()}
+                            className="summaryOrder-pay-btn-check"
+                            style={{ width: "50%", marginTop: 10 }}
+                            // fullWidth={true}
                           >
-                            <div className="accordion-title2-check">{`3. DELIVERY/PICKUP INFORMATION`}</div>
-                            <div style={{ cursor: "pointer" }}>
-                              {expanded === "panel3"
-                                 ? <ExpandLess/>
-                                 : <ExpandMore/>}
-                            </div>
-                          </div>
+                            Continue to Delivery Information
+                          </Button>
+                        </div>
+                      ) : null}
+                    </div>
+                    <div
+                      className="accordian-item"
+                      style={{
+                        paddingTop: "20px",
+                        borderBottom: "1px solid #6D6E71",
+                      }}
+                    >
+                      <div
+                        className="accordion-title-check"
+                        onClick={this.handleChange(3)}
+                      >
+                        <div className="accordion-title2-check">{`3. DELIVERY/PICKUP INFORMATION`}</div>
+                        <div style={{ cursor: "pointer" }}>
                           {expanded === "panel3" ? (
-                            <div className="" style={{ margin: 10 }}>
-                               <Addressform changePanel={this.changePanel} isCheck={true}/>
-                            </div>
-                          ) : null}
+                            <ExpandLess />
+                          ) : (
+                            <ExpandMore />
+                          )}
                         </div>
-                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
-                          <div
-                            className="accordion-title-check"
-                            onClick={this.handleChange(4)}
-                          >
-                            <div className="accordion-title2-check">{`4. PAYMENT METHOD`}</div>
-                            <div style={{ cursor: "pointer" }}>
-                              {expanded === "panel4"
-                                ? <ExpandLess/>
-                                : <ExpandMore/>}
-                            </div>
-                          </div>
+                      </div>
+                      {expanded === "panel3" ? (
+                        <div className="" style={{ margin: 10 }}>
+                          <Addressform
+                            changePanel={this.changePanel}
+                            isCheck={true}
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+                    <div
+                      className="accordian-item"
+                      style={{
+                        paddingTop: "20px",
+                        borderBottom: "1px solid #6D6E71",
+                      }}
+                    >
+                      <div
+                        className="accordion-title-check"
+                        onClick={this.handleChange(4)}
+                      >
+                        <div className="accordion-title2-check">{`4. PAYMENT METHOD`}</div>
+                        <div style={{ cursor: "pointer" }}>
                           {expanded === "panel4" ? (
-                            <div className="" style={{ margin: 10 }}>
-                              <PaymentIndex data={data} CodData={this.props.CodData} />
-                              <div style={{marginTop:10,marginLeft:"-20px"}}>
-                                 <Addressform changePanel={this.changePanel} isCheck={true}/>
-                              </div>
-                               
-                            </div>
-                          ) : null}
+                            <ExpandLess />
+                          ) : (
+                            <ExpandMore />
+                          )}
                         </div>
-                     
+                      </div>
+                      {expanded === "panel4" ? (
+                        <div className="" style={{ margin: 10 }}>
+                          <PaymentIndex
+                            data={data}
+                            CodData={this.props.CodData}
+                          />
+                          <div style={{ marginTop: 10, marginLeft: "-20px" }}>
+                            <Addressform
+                              changePanel={this.changePanel}
+                              isCheck={true}
+                            />
+                          </div>
+                        </div>
+                      ) : null}
                     </div>
                   </div>
-            {/* <ExpansionPanel
+                </div>
+                {/* <ExpansionPanel
               square
               expanded={expanded === "panel1"}
               onChange={this.handleChange(1)}
@@ -598,33 +636,62 @@ class Component extends React.Component {
                 <PaymentIndex data={data} CodData={this.props.CodData} />
               </ExpansionPanelDetails>
             </ExpansionPanel> */}
-            </div>
-              <Grid item container style={{padding:20}}>
-              <Grid item style={{display:"flex",alignItems:"center",justifyContent:"space-around",marginLeft:'15px'}}>
-                 <ArrowLeftIcon fontSize="small"/>
-              
-                <div>Go Back to <span style={{borderBottom:"2px solid #f14880",cursor:"pointer"}} onClick={()=>window.location.replace('/stylori')}>
-                 Stylori
-                  </span>
+              </div>
+              <Grid item container style={{ padding: 20 }}>
+                <Grid
+                  item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-around",
+                    marginLeft: "15px",
+                  }}
+                >
+                  <ArrowLeftIcon fontSize="small" />
+
+                  <div>
+                    Go Back to{" "}
+                    <span
+                      style={{
+                        borderBottom: "2px solid #f14880",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => window.location.replace("/stylori")}
+                    >
+                      Stylori
+                    </span>
                   </div>
-            
-              </Grid>
-              <Grid item style={{display:"flex",alignItems:"center",marginLeft:'15px'}}>
-              <ArrowLeftIcon fontSize="small"/>
-                <div>Go Back to <span style={{borderBottom:"2px solid #06ab9f",cursor:"pointer"}} onClick={()=>window.location.replace('/styloriSilver')}>
-                    Stylori Silver
-                  </span>
+                </Grid>
+                <Grid
+                  item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginLeft: "15px",
+                  }}
+                >
+                  <ArrowLeftIcon fontSize="small" />
+                  <div>
+                    Go Back to{" "}
+                    <span
+                      style={{
+                        borderBottom: "2px solid #06ab9f",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => window.location.replace("/styloriSilver")}
+                    >
+                      Stylori Silver
+                    </span>
                   </div>
-              </Grid>      
+                </Grid>
               </Grid>
-          </Grid>
-           <Grid item container xs={6}>
-       
-                  <Grid item xs={12} lg={12}>
-                    {/* {JSON.stringify(this.datalist(cartContext))} */}
-                    <Grid container>
-                      <Grid xs={12} lg={7} />
-                      {/* <Grid xs={12} lg={4}>
+            </Grid>
+            <Grid item container xs={6}>
+              <Grid item xs={12} lg={12}>
+                {/* {JSON.stringify(this.datalist(cartContext))} */}
+                <Grid container>
+                  <Grid xs={12} lg={7} />
+                  {/* <Grid xs={12} lg={4}>
                         <div style={{ float: "right" }}>
                           {ProductIsActive ? (
                             <Button
@@ -643,22 +710,24 @@ class Component extends React.Component {
                           )}
                         </div>
                       </Grid> */}
-                    </Grid>
-                    <br />
-                    <Typography className="checkoutSummary">Order Summary</Typography>
-                    <CartCard
-                      data={data}
-                      isStateFilterContextQty={this.props.isdatafromstate}
-                      isdatafromstate={this.props.isdatafromstate}
-                      checkout={true}
-                    />
+                </Grid>
+                <br />
+                <Typography className="checkoutSummary">
+                  Order Summary
+                </Typography>
+                <CartCard
+                  data={data}
+                  isStateFilterContextQty={this.props.isdatafromstate}
+                  isdatafromstate={this.props.isdatafromstate}
+                  checkout={true}
+                />
 
-                    <Hidden smDown>
-                      <Grid container>
-                        <Grid xs={12} lg={7} />
-                        <Grid xs={12} lg={4}>
-                          <div style={{ float: "right", marginBottom: "5px" }}>
-                            {/* {ProductIsActive ? (
+                <Hidden smDown>
+                  <Grid container>
+                    <Grid xs={12} lg={7} />
+                    <Grid xs={12} lg={4}>
+                      <div style={{ float: "right", marginBottom: "5px" }}>
+                        {/* {ProductIsActive ? (
                               <Button
                                 onClick={() => this.pincodeapi()}
                                 className="summaryOrder-pay-btn"
@@ -673,81 +742,79 @@ class Component extends React.Component {
                                 Enquire Now
                               </Button>
                             )} */}
-                          </div>
-                        </Grid>
-                      </Grid>
-                      <br />
-                    </Hidden>
+                      </div>
+                    </Grid>
                   </Grid>
-                  {/* <Grid item xs={12} lg={12} className={classes.cart}>
+                  <br />
+                </Hidden>
+              </Grid>
+              {/* <Grid item xs={12} lg={12} className={classes.cart}>
                     <ProductList />
                   </Grid> */}
-                  <Hidden mdUp>
-                    <Grid container style={{ marginTop: "10px" }}>
-                      <Grid xs={12} lg={7} />
-                      <Grid xs={12} lg={4}>
-                        <div style={{ float: "right", marginBottom: "5px" }}>
-                          {ProductIsActive ? (
-                            <Button
-                              onClick={() => this.pincodeapi()}
-                              className="summaryOrder-pay-btn"
-                            >
-                              Continue to Pay
-                            </Button>
-                          ) : (
-                            <Button
-                              className="summaryOrder-pay-btn"
-                              onClick={enquireLink}
-                            >
-                              Enquire Now
-                            </Button>
-                          )}
-                        </div>
-                      </Grid>
-                    </Grid>
-                    <br />
-                  </Hidden>
-          </Grid> 
-        </Grid>
-       </Hidden>
-       <Hidden mdUp>
-       <Grid container spacing={2} style={{display:"flex",flexDirection:"column"}}>
-          <Grid item container xs={12}>
-       
-       <Grid item xs={12} lg={12}>
-         {/* {JSON.stringify(this.datalist(cartContext))} */}
-         <Grid container>
-           <Grid xs={12} lg={7} />
-           {/* <Grid xs={12} lg={4}>
-             <div style={{ float: "right" }}>
-               {ProductIsActive ? (
-                 <Button
-                   onClick={() => this.pincodeapi()}
-                   className="summaryOrder-pay-btn"
-                 >
-                   Continue to Pay
-                 </Button>
-               ) : (
-                 <Button
-                   className="summaryOrder-pay-btn"
-                   onClick={enquireLink}
-                 >
-                   Enquire Now
-                 </Button>
-               )}
-             </div>
-           </Grid> */}
-         </Grid>
-         <br />
-         <Typography className="checkoutSummary">Order Summary</Typography>
-         <CartCard
-           data={data}
-           isStateFilterContextQty={this.props.isdatafromstate}
-           isdatafromstate={this.props.isdatafromstate}
-           checkout={true}
-         />
+              <Hidden mdUp>
+                <Grid container style={{ marginTop: "10px" }}>
+                  <Grid xs={12} lg={7} />
+                  <Grid xs={12} lg={4}>
+                    <div style={{ float: "right", marginBottom: "5px" }}>
+                      {ProductIsActive ? (
+                        <Button
+                          onClick={() => this.pincodeapi()}
+                          className="summaryOrder-pay-btn"
+                        >
+                          Continue to Pay
+                        </Button>
+                      ) : (
+                        <Button
+                          className="summaryOrder-pay-btn"
+                          onClick={enquireLink}
+                        >
+                          Enquire Now
+                        </Button>
+                      )}
+                    </div>
+                  </Grid>
+                </Grid>
+                <br />
+              </Hidden>
+            </Grid>
+          </Grid>
+        </Hidden>
+        <Hidden mdUp>
+          <Grid
+            container
+            spacing={2}
+            style={{ display: "flex", flexDirection: "column" }}
+          >
+            <Grid item container xs={12}>
+              <Grid item xs={12} lg={12} style={{marginTop:30}}>
+                {/* {JSON.stringify(this.datalist(cartContext))} */}
+              
+                <Accordion
+                  defaultExpanded
+                  elevation={3}
+                  style={{
+                    border: "0px",
+                    outline: "0px",
+                    borderRadius: "0px",
+                  }}
+                >
+                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                    <div>
+                      <Typography noWrap className="checkoutSummary_mobile">Order Summary</Typography>
+                    </div>
+                  </AccordionSummary>
+                  <AccordionDetails style={{display:"block",marginTop:"-50px"}}>
+                    <CartCard
+                      data={data}
+                      isStateFilterContextQty={this.props.isdatafromstate}
+                      isdatafromstate={this.props.isdatafromstate}
+                      checkout={true}
+                    />
+                  </AccordionDetails>
+                </Accordion>
+                {/* <Typography className="checkoutSummary">Order Summary</Typography> */}
 
-         {/* <Hidden smDown>
+                {/* <Hidden smDown>
            <Grid container>
              <Grid xs={12} lg={7} />
              <Grid xs={12} lg={4}>
@@ -772,8 +839,8 @@ class Component extends React.Component {
            </Grid>
            <br />
          </Hidden> */}
-       </Grid>
-       {/* <Grid item xs={12} lg={12} className={classes.cart}>
+              </Grid>
+              {/* <Grid item xs={12} lg={12} className={classes.cart}>
          <ProductList />
        </Grid>
        <Hidden mdUp>
@@ -801,96 +868,141 @@ class Component extends React.Component {
          </Grid>
          <br />
        </Hidden> */}
-           </Grid> 
-          <Grid item container xs={12} style={{backgroundColor:"#E6E7E8"}}>
-            <div style={{width:"100%"}}>
+            </Grid>
+            <Grid item container xs={12} style={{ backgroundColor: "#E6E7E8" }}>
+              <div style={{ width: "100%" }}>
+                <div className="">
                   <div className="">
-                    <div className="">
-                   
-                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
-                          <div
-                            className="accordion-title-check"
-                            onClick={this.handleChange(1)}
-                          >
-                            <div className="accordion-title2-check">{`1. LOGIN`}</div>
-                            <div style={{ cursor: "pointer" }}>
-                              {expanded === "panel1"
-                                ? <ExpandLess/>
-                                : <ExpandMore/>}
-                            </div>
-                          </div>
+                    <div
+                      className="accordian-item"
+                      style={{
+                        paddingTop: "20px",
+                        borderBottom: "1px solid #6D6E71",
+                      }}
+                    >
+                      <div
+                        className="accordion-title-check"
+                        onClick={this.handleChange(1)}
+                      >
+                        <div className="accordion-title2-check">{`1. LOGIN`}</div>
+                        <div style={{ cursor: "pointer" }}>
                           {expanded === "panel1" ? (
-                            <div className="" style={{ margin: 10 }}>
-                              <LoginRegisterIndex changePanel={this.changePanel}/>
-                            </div>
-                          ) : null}
+                            <ExpandLess />
+                          ) : (
+                            <ExpandMore />
+                          )}
                         </div>
-                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
-                          <div
-                            className="accordion-title-check"
-                            onClick={this.handleChange(2)}
-                          >
-                            <div className="accordion-title2-check">{`2. ADD A GIFT MESSAGE`}</div>
-                            <div style={{ cursor: "pointer" }}>
-                              {expanded === "panel2"
-                                 ? <ExpandLess/>
-                                 : <ExpandMore/>}
-                            </div>
-                          </div>
+                      </div>
+                      {expanded === "panel1" ? (
+                        <div className="" style={{ margin: 10 }}>
+                          <LoginRegisterIndex changePanel={this.changePanel} />
+                        </div>
+                      ) : null}
+                    </div>
+                    <div
+                      className="accordian-item"
+                      style={{
+                        paddingTop: "20px",
+                        borderBottom: "1px solid #6D6E71",
+                      }}
+                    >
+                      <div
+                        className="accordion-title-check"
+                        onClick={this.handleChange(2)}
+                      >
+                        <div className="accordion-title2-check">{`2. ADD A GIFT MESSAGE`}</div>
+                        <div style={{ cursor: "pointer" }}>
                           {expanded === "panel2" ? (
-                            <div className="" style={{ margin: 10 }}>
-                              <ProductList  onClickgift={() => this.pincodeapi()} check={true}/>
-                                    <Button
-                                      onClick={() => this.pincodeapi()}
-                                      className="summaryOrder-pay-btn-check"
-                                      style={{ width: "100%",marginTop:10 }}
-                                      fullWidth={true}
-                                    >
-                                      Continue to Delivery Information
-                                    </Button>
-                            </div>
-                          ) : null}
+                            <ExpandLess />
+                          ) : (
+                            <ExpandMore />
+                          )}
                         </div>
-                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
-                          <div
-                            className="accordion-title-check"
-                            onClick={this.handleChange(3)}
+                      </div>
+                      {expanded === "panel2" ? (
+                        <div className="" style={{ margin: 10 }}>
+                          <ProductList
+                            onClickgift={() => this.pincodeapi()}
+                            check={true}
+                          />
+                          <Button
+                            onClick={() => this.pincodeapi()}
+                            className="summaryOrder-pay-btn-check"
+                            style={{ width: "100%", marginTop: 10 }}
+                            fullWidth={true}
                           >
-                            <div className="accordion-title2-check">{`3. DELIVERY/PICKUP INFORMATION`}</div>
-                            <div style={{ cursor: "pointer" }}>
-                              {expanded === "panel3"
-                                 ? <ExpandLess/>
-                                 : <ExpandMore/>}
-                            </div>
-                          </div>
+                            Continue to Delivery Information
+                          </Button>
+                        </div>
+                      ) : null}
+                    </div>
+                    <div
+                      className="accordian-item"
+                      style={{
+                        paddingTop: "20px",
+                        borderBottom: "1px solid #6D6E71",
+                      }}
+                    >
+                      <div
+                        className="accordion-title-check"
+                        onClick={this.handleChange(3)}
+                      >
+                        <div className="accordion-title2-check">{`3. DELIVERY/PICKUP INFORMATION`}</div>
+                        <div style={{ cursor: "pointer" }}>
                           {expanded === "panel3" ? (
-                            <div className="" style={{ margin: 10 }}>
-                               <Addressform changePanel={this.changePanel} isCheck={true}/>
-                            </div>
-                          ) : null}
+                            <ExpandLess />
+                          ) : (
+                            <ExpandMore />
+                          )}
                         </div>
-                        <div className="accordian-item" style={{paddingTop:"15px",borderBottom: '1px solid #6D6E71'}}>
-                          <div
-                            className="accordion-title-check"
-                            onClick={this.handleChange(4)}
-                          >
-                            <div className="accordion-title2-check">{`4. PAYMENT METHOD`}</div>
-                            <div style={{ cursor: "pointer" }}>
-                              {expanded === "panel4"
-                               ? <ExpandLess/>
-                               : <ExpandMore/>}
-                            </div>
-                          </div>
+                      </div>
+                      {expanded === "panel3" ? (
+                        <div className="" style={{ margin: 10 }}>
+                          <Addressform
+                            changePanel={this.changePanel}
+                            isCheck={true}
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+                    <div
+                      className="accordian-item"
+                      style={{
+                        paddingTop: "20px",
+                        borderBottom: "1px solid #6D6E71",
+                      }}
+                    >
+                      <div
+                        className="accordion-title-check"
+                        onClick={this.handleChange(4)}
+                      >
+                        <div className="accordion-title2-check">{`4. PAYMENT METHOD`}</div>
+                        <div style={{ cursor: "pointer" }}>
                           {expanded === "panel4" ? (
-                            <div className="" style={{ margin: 10 }}>
-                              <PaymentIndex data={data} CodData={this.props.CodData} />
-                            </div>
-                          ) : null}
+                            <ExpandLess />
+                          ) : (
+                            <ExpandMore />
+                          )}
                         </div>
-                     
+                      </div>
+                      {expanded === "panel4" ? (
+                        <div className="" style={{ margin: 10 }}>
+                          <PaymentIndex
+                            data={data}
+                            CodData={this.props.CodData}
+                          />
+                          <div style={{ marginTop: 10, marginLeft: "-20px" }}>
+                            <Addressform
+                              changePanel={this.changePanel}
+                              isCheck={true}
+                            />
+                          </div>
+                        </div>
+                      ) : null}
                     </div>
                   </div>
-            {/* <ExpansionPanel
+                </div>
+                {/* <ExpansionPanel
               square
               expanded={expanded === "panel1"}
               onChange={this.handleChange(1)}
@@ -1046,30 +1158,58 @@ class Component extends React.Component {
                 <PaymentIndex data={data} CodData={this.props.CodData} />
               </ExpansionPanelDetails>
             </ExpansionPanel> */}
-            </div>
+              </div>
               <Grid item container spacing={2}>
-              <Grid item style={{display:"flex",alignItems:"center",justifyContent:"space-around",marginLeft:'15px'}}>
-                 <ArrowLeftIcon fontSize="small"/>
-              
-                <div>Go Back to <span style={{borderBottom:"2px solid #f14880",cursor:"pointer"}} onClick={()=>window.location.replace('/stylori')}>
-                 Stylori
-                  </span>
+                <Grid
+                  item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-around",
+                    marginLeft: "15px",
+                  }}
+                >
+                  <ArrowLeftIcon fontSize="small" />
+
+                  <div>
+                    Go Back to{" "}
+                    <span
+                      style={{
+                        borderBottom: "2px solid #f14880",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => window.location.replace("/stylori")}
+                    >
+                      Stylori
+                    </span>
                   </div>
-            
-              </Grid>
-              <Grid item style={{display:"flex",alignItems:"center",marginLeft:'15px'}}>
-              <ArrowLeftIcon fontSize="small"/>
-                <div>Go Back to <span style={{borderBottom:"2px solid #06ab9f",cursor:"pointer"}} onClick={()=>window.location.replace('/styloriSilver')}>
-                    Stylori Silver
-                  </span>
+                </Grid>
+                <Grid
+                  item
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginLeft: "15px",
+                  }}
+                >
+                  <ArrowLeftIcon fontSize="small" />
+                  <div>
+                    Go Back to{" "}
+                    <span
+                      style={{
+                        borderBottom: "2px solid #06ab9f",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => window.location.replace("/styloriSilver")}
+                    >
+                      Stylori Silver
+                    </span>
                   </div>
-              </Grid>      
+                </Grid>
               </Grid>
+            </Grid>
           </Grid>
-          
-        </Grid>
-       </Hidden>
-       
+        </Hidden>
 
         {/* <div className="pt-sm checkout-ovralldiv-media marginTop">
          
