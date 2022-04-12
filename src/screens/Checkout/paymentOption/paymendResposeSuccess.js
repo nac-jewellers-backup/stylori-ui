@@ -71,10 +71,6 @@ class PaymentResponseSuccess extends React.Component {
   componentDidMount() {
     if (localStorage.getItem("gut_lg") && localStorage.getItem("user_id"))
       localStorage.removeItem("user_id");
-
-
-
-
       localStorage.removeItem("cartDetails");
       localStorage.removeItem("quantity");
 
@@ -87,7 +83,7 @@ class PaymentResponseSuccess extends React.Component {
     return (
       <>
         <Header wishlist={this.props.wishlistdata} paymentSucces={true} />
-        <Grid container justify="center" style={{backgroundColor:"#E6E7E8",height:"100vh",height:"100%",marginTop:"-15px" }}>
+        <Grid container justify="center" style={{backgroundColor:"#E6E7E8",height:"100%",marginTop:"-15px" }}>
           {/* <Hidden smDown>
             <Grid
               container

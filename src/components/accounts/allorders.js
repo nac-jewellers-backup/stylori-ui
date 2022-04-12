@@ -251,6 +251,9 @@ class Allorders extends React.Component {
   render() {
     const { expanded, mailId, expandedlimit } = this.state;
     const { allorderdata } = this.props;
+    let gut_lg = localStorage.getItem("gut_lg")
+      ? JSON.parse(localStorage.getItem("gut_lg"))
+      : {};
 
     console.log(allorderdata, "data");
 
@@ -1439,6 +1442,29 @@ class Allorders extends React.Component {
                               ) : null}
                             </div>
                           </Box>
+                          <Button
+                    style={{
+                      background: "#d51f63",
+                      color: "#fff",
+                      padding: "5px 20px",
+                      marginTop:30
+                    }}
+                    onClick={() => {
+                      localStorage.removeItem("a__c_t");
+                      localStorage.removeItem("panel");
+                      localStorage.removeItem("order_id");
+                      localStorage.removeItem("cartDetails");
+                      localStorage.removeItem("ship_isactive");
+                      localStorage.removeItem("select_addres");
+                      localStorage.removeItem("bil_isactive");
+                      if (gut_lg === true) {
+                        localStorage.clear();
+                      }
+                      this.props.history.push("/home");
+                    }}
+                  >
+                    Continue Shopping
+                  </Button>
                           <Grid item container spacing={2} >
                             <Grid
                               item
