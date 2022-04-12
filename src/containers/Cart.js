@@ -64,7 +64,7 @@ class Cart extends React.Component {
       gData.push(data);
     });
     const tagManagerArgs = {
-      gtmId: "UA-60938497-1",
+      gtmId: "GTM-54JTMML",
       event: "addToCart",
       dataLayer: {
         ecommerce: {
@@ -76,7 +76,7 @@ class Cart extends React.Component {
       },
     };
 
-    // TagManager.initialize(tagManagerArgs);
+    TagManager.initialize(tagManagerArgs);
   }
   render() {
     const { data, classes, isStateFilterContextQty } = this.props;

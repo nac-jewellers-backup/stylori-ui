@@ -60,7 +60,7 @@ class ProductDetail extends Component {
 
     // Google Tag Manager
     const tagManagerArgs = {
-      gtmId: "UA-60938497-1",
+      gtmId: "GTM-54JTMML",
       dataLayer: {
         ecommerce: {
           detail: {
@@ -77,7 +77,7 @@ class ProductDetail extends Component {
         },
       },
     };
-    // this?.props?.data && TagManager.initialize(tagManagerArgs);
+    this?.props?.data && TagManager.initialize(tagManagerArgs);
   }
   UNSAFE_componentWillMount() {}
 
