@@ -168,7 +168,7 @@ class Component extends React.Component {
                 cursor: "pointer",
                 backgroundColor: "rgb(211, 37, 100)",
                 color: "#fff",
-                width: "inherit",
+                width: "100%",
               }}
               variant="contained"
             >

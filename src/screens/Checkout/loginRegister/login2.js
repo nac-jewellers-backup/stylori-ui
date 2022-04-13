@@ -347,8 +347,6 @@ function Login2(props) {
     }
   }, [data]);
 
-console.log(values.error,"error")
-
   return (
     <div>
      

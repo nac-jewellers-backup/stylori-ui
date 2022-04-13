@@ -54,6 +54,9 @@ const styles = theme => ({
             }
         }
     },
+    mainRoot: {
+        backgroundColor:"#E6E7E8",height:"55vw",marginTop:"-15px" 
+      },
 
     playIcon: {
         height: 38,
