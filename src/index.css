@@ -66,10 +66,12 @@
   font-size: 12px;
   cursor: pointer;
   margin-top: 10px;
+  color: #6D6E71;
 }
 .signup{
   text-align: center;
   font-size: 12px;
+  color: #6D6E71;
 }
 
 .login{

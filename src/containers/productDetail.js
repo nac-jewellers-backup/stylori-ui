@@ -371,16 +371,19 @@ class ProductDetail extends Component {
     var detail_data = [
       {
         title: "Description",
-        data: jewelData.dis != "" ? <Typography className="no-data">{jewelData.dis}</Typography> : <Typography className="no-data">No Data Found</Typography>,
+        data: jewelData.dis != "" ? <Typography className="no-data-desc">{jewelData.dis}</Typography> : <Typography className="no-data">No Data Found</Typography>,
       },
       {
         title: "Product Details",
         data: (
-          <ProductDetails
+          <div style={{marginTop:"-15px"}}>
+           <ProductDetails
             data={this?.props?.data}
             isSilver={isSilver}
             isActive={this.state.isActive}
           />
+          </div>
+        
         ),
       },
       {
@@ -609,7 +612,7 @@ class ProductDetail extends Component {
                             </div>
                           </div>
                           {this.state.isActive && this.state.Index === index ? (
-                            <div className="" style={{ margin: 10 }}>
+                            <div className="" style={{ margin: 10}}>
                               {item.data}
                             </div>
                           ) : null}
@@ -848,9 +851,7 @@ class ProductDetail extends Component {
               </Typography>
 
               <JewelDetailAccordion title="Description">
-                <Typography className={classes.description}>
-                  No data Found
-                </Typography>
+              {jewelData.dis != "" ? <Typography className="no-data-desc">{jewelData.dis}</Typography> : <Typography className="no-data">No Data Found</Typography>}
               </JewelDetailAccordion>
               <JewelDetailAccordion title="Product Details">
                 <ProductDetails
@@ -860,9 +861,14 @@ class ProductDetail extends Component {
                 />
               </JewelDetailAccordion>
               <JewelDetailAccordion title="Jewellery Care">
-                <Typography className={classes.description}>
-                  No data Found
-                </Typography>
+               <div>
+                 <Typography className="detailTitle">{jewelData?.dis}</Typography>
+                   <ProductDetails
+                     data={this?.props?.data}
+                     isSilver={isSilver}
+                     isActive={true}
+                    />
+                </div>
               </JewelDetailAccordion>
 
               <div className={classes.getInTouchButtonContainer}>
@@ -958,7 +964,13 @@ class ProductDetail extends Component {
 
           {/* Collection Card section */}
 
-          {isSilver && <FinalCard slides={jewelData?.fadeImages?.arrOfurls} />}
+          {isSilver && (
+             <MainCard
+             products={brand_card}
+           />    
+            )}
+
+          {/* {isSilver && <FinalCard slides={jewelData?.fadeImages?.arrOfurls} />} */}
 
           {/* Footer Section */}
           {isSilver ? <SilverFooter /> : <Footer silver={isSilver} />}

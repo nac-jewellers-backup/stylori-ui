@@ -232,7 +232,7 @@ const Productprice = (
                                    style={{   
                                    borderColor:"#06A296",
                                    color:"#06A296",
-                                   padding:5
+                                   padding:10
                                    }}
                                    button="buynow-btn-cont"
                                    id="silverButton"
@@ -258,7 +258,7 @@ const Productprice = (
                                style={{    
                                  backgroundColor:"#06A296",
                                  color:"#fff",
-                                 padding:5
+                                 padding:10
                                }}
                                // button="buynow-btn-cont"
                                id="silverButton"
@@ -364,7 +364,7 @@ const Productprice = (
                                    style={{   
                                    borderColor:"#06A296",
                                    color:"#06A296",
-                                   padding:5
+                                   padding:10
                                    }}
                                    button="buynow-btn-cont"
                                    id="silverButton"
@@ -395,7 +395,7 @@ const Productprice = (
                                  style={{   
                                  borderColor:"#06A296",
                                  color:"#06A296",
-                                 padding:5
+                                 padding:10
                                  }}
                                  button="buynow-btn-cont"
                                  id="silverButton"
@@ -425,7 +425,7 @@ const Productprice = (
                                style={{    
                                  backgroundColor:"#06A296",
                                  color:"#fff",
-                                 padding:5
+                                 padding:10
                                }}
                                // button="buynow-btn-cont"
                                id="silverButton"

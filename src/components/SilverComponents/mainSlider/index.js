@@ -18,8 +18,14 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",  
     "& img": {
-      height:250,
-      width:"auto",
+      height:280,
+      // width:400,
+    },
+    [theme.breakpoints.down('sm')]:{
+      "& img": {
+        height:200,
+        // width:400,
+      },
     },
     "& p": {
       textAlign: "center",
@@ -65,6 +71,9 @@ const useStyles = makeStyles((theme) => ({
     pointerEvents: "all",
     color:"#fff",
   },
+  title:{
+    display:"flex",justifyContent:"center"
+  }
 }));
 
 const MainCard = (props) => {
@@ -80,7 +89,7 @@ const MainCard = (props) => {
   var settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
     adaptiveHeight: false,
     centerMode: false,
@@ -121,7 +130,7 @@ const MainCard = (props) => {
                onClick={() => { window.open(`/${product.url}`)}}
                style={{ cursor:"pointer" }}
              />
-             <div style={{display:"flex",justifyContent:"center"}}>
+             <div className={classes.title}>
              <Typography>{product.title}</Typography>
              </div>
              

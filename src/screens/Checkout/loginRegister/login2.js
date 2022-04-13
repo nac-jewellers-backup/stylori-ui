@@ -27,6 +27,7 @@ import {
 } from "@material-ui/icons";
 import "index.css";
 import { GoogleLogin } from "react-google-login";
+import useLogin from "./useLogin";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import { API_URL, FACEBOOK_APP_ID, GOOGLE_CLIENT_ID } from "../../../config";
 
@@ -74,6 +75,10 @@ function Login2(props) {
     alertMsg:"",
     cls:false
   });
+
+  const {handlers} = useLogin(() =>
+    props.changePanel(2)
+  );
   
 
   const ValidateEmail = (email) => {
@@ -215,8 +220,7 @@ function Login2(props) {
             localStorage.setItem("accessToken", fetchValue.accessToken);
             localStorage.setItem("user_id", fetchValue.user.id);
             localStorage.setItem("email", fetchValue.user.email);
-            props.handleClose();
-            // handlers.FacebookLogin(fetchValue);
+            handlers.FacebookLogin(fetchValue);
           } else {
             if (typeof response.email === "undefined") {
               setValues({
@@ -253,8 +257,7 @@ function Login2(props) {
         .then((res) => res.json())
         .then((fetchValue) => {
           if (fetchValue.accessToken) {
-            props.handleClose();
-            // handlers.VerifyOTP(fetchValue);
+            handlers.VerifyOTP(fetchValue);
           }
         })
         .catch(console.error);
@@ -267,7 +270,7 @@ function Login2(props) {
 
     if (values.email === "") {
       isValid = false;
-      error.email = "Enter Email Id";
+      error.email = "Enter the Email id";
     }
 
     if (values.email && !values.email.match(email_regex)) {
@@ -312,20 +315,39 @@ function Login2(props) {
   );
 
   useEffect(() => {
-    if (data?.accessToken) { 
-      localStorage.setItem("email", data.userprofile.email);
-      var bb = data.userprofile.id ? data.userprofile.id : "";
-      localStorage.setItem("user_id", bb);
-      sessionStorage.setItem("user_id", bb);
-      localStorage.setItem("accessToken", data.accessToken);
-      localStorage.setItem('check_dlt',false);
-      localStorage.setItem('isedit',1);
-      localStorage.setItem('true',false)
-      props.changePanel(2)
+    var ms = data && data.message;
+    if (ms && data.auth === false) {
+      let error = values.error;
+      error.password = ms;
+      setValues({ ...values, error });
+      // return false
+    } else if (ms && data.auth === undefined) {
+      let error = values.error;
+      error.email = ms;
+      setValues({
+        ...values,
+        error
+      });
+      // return false
+    }
+    else{ 
+      if(data?.accessToken){
+        localStorage.setItem("email", data.userprofile.email);
+        var bb = data.userprofile.id ? data.userprofile.id : "";
+        localStorage.setItem("user_id", bb);
+        sessionStorage.setItem("user_id", bb);
+        localStorage.setItem("accessToken", data.accessToken);
+        localStorage.setItem('check_dlt',false);
+        localStorage.setItem('isedit',1);
+        localStorage.setItem('true',false)
+        props.changePanel(2)
+        window.location.href = "/checkout"
+        window.location.reload()
+      }   
     }
   }, [data]);
 
-
+console.log(values.error,"error")
 
   return (
     <div>
@@ -380,7 +402,7 @@ function Login2(props) {
                         startIcon={
                           <img
                             src={facebook}
-                            alt="facebbok"
+                            alt="facebook"
                             style={{ width: "60%", height: "60%" }}
                           />
                         }
@@ -581,6 +603,11 @@ function Login2(props) {
                       onChange={(e) => handleChange(e.target.value, "password")}
                       fullWidth
                     />
+                     {values.error.password !== "" && (
+                      <Typography style={{ fontSize: "10px", color: "red" }}>
+                        {values.error.password}
+                      </Typography>
+                    )}
                     <span className="forgotPassword">
                       <Typography onClick={()=>onRegister()}>Forget password?</Typography>
                     </span>

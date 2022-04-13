@@ -686,14 +686,14 @@ class Checkoutcard extends React.Component {
           {!this.props.checkout && (
             <Grid
               item
-              xs={2}
+              xs={1}
               style={{ display: "flex", justifyContent: "center" }}
             >
               <Divider variant="vertical" />
             </Grid>
           )}
 
-          <Grid item xs={this.props?.checkout ? 12 : 3}>
+          <Grid item xs={this.props?.checkout ? 12 : 4}>
             {this.subtotals(props)}
           </Grid>
         </Grid>

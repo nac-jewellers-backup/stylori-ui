@@ -222,7 +222,7 @@ class Header extends Component {
               id="topNav"
               style={{ transition: "height 0.2s" }}
             >
-              <Container maxWidth="lg" id="searchcontainer" style={{backgroundColor:isSilver? "#606161" :"",marginLeft:0}}>
+              <Container maxWidth="lg" id="searchcontainer" style={{backgroundColor:isSilver? "#606161" :"",maxWidth:"100%"}}>
                 <Grid
                   container
                   spacing={12}

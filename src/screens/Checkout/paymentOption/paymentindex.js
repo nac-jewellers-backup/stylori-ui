@@ -235,6 +235,7 @@ const Components = (props) => {
     : JSON.parse(localStorage.getItem("cart_id"))
     ? JSON.parse(localStorage.getItem("cart_id")).cart_id
     : null;
+    
   const status = (response) => {
     if (response.status >= 200 && response.status < 300) {
       return Promise.resolve(response);

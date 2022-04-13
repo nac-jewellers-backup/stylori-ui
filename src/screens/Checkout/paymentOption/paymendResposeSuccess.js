@@ -129,7 +129,7 @@ class PaymentResponseSuccess extends React.Component {
               <Grid item  className="contant-center container-font-size">
               
                 <Typography className="thank_you">A Big Thank You!</Typography>
-                <Divider className="divider"/>
+                <Divider className="divider_payment"/>
                 {/* {" "}
                 <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
                 &nbsp;&nbsp; A Big Thank you!&nbsp;&nbsp;Your order has been placed. */}
