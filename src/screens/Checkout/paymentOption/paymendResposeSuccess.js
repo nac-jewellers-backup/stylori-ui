@@ -137,7 +137,7 @@ class PaymentResponseSuccess extends React.Component {
                 &nbsp;&nbsp; A Big Thank you!&nbsp;&nbsp;Your order has been placed. */}
               </Grid>
               <Grid item  style={{marginTop:30}}> 
-              <Typography className="center_content">Welcome to <span style={{fontWeight:700}}>Stylori</span> Family! We'll take it from here</Typography> 
+              <Typography className="center_content">Welcome to <span style={{fontWeight:700,margin:5}}>Stylori</span> Family! We'll take it from here</Typography> 
                </Grid>   
                <Grid
               item
