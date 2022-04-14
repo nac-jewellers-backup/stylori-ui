@@ -24,19 +24,24 @@
     background-color: #f6f5f5;
     cursor:not-allowed;
 }
+
+.credit-contnt {
+    color: rgb(109, 110, 113);
+    font-size: 14px;
+}
+
 .credit-button {
     margin: 8px 0px 0px 0px !important;
     padding: 7px 15px !important;
     border-radius: 0px !important;
-    border: 1px solid #fe6c00 !important;
+    border: 1px solid #D32564 !important;
     font-size: 16px !important;
     min-width: 100px !important;
-    background: #fe6c00 !important;
+    background: #D32564 !important;
     color: #FFF !important;
     font-weight: 400 !important;
     line-height: 1.42857143 !important;
     text-transform: none !important;
-    box-shadow: #f55d07 1px 2px 6px 0px !important;
 }
 
 /* .credit-btn-div {

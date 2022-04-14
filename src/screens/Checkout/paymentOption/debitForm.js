@@ -40,7 +40,6 @@ class Debitform extends React.Component {
         }
     };
     render() {
-
         return (
             <div>
                 <Container>
@@ -64,18 +63,16 @@ class Debitform extends React.Component {
                                     required
                                     onChange={(event) => this.handleChange(event, "debit_card_holder")}
                                 />
+                                 <Input
+                                   name="debit_expiry"
+                                   type="text"
+                                   value={this.state.debit_expiry}
+                                   placeholder="Expiry MM/YY"
+                                   onChange={(event) => this.handleChange(event, "debit_expiry")}
+                                   onKeyPress={(e) => this.handleKeyPress(e, "debit_expiry")}
+                                 />
                                 <Grid container lg={12} xs={12}>
-                                    <Grid item lg={4} xs={12}>
-                                        <Input
-                                            name="debit_expiry"
-                                            type="text"
-                                            value={this.state.debit_expiry}
-                                            placeholder="Expiry MM/YY"
-                                            onChange={(event) => this.handleChange(event, "debit_expiry")}
-                                            onKeyPress={(e) => this.handleKeyPress(e, "debit_expiry")}
-                                        />
-                                    </Grid>
-                                    <Grid item lg={4} xs={12}>
+                                    <Grid item lg={8} xs={12}>
                                         <Input
                                             name="debit_cv"
                                             type="text"
@@ -87,22 +84,21 @@ class Debitform extends React.Component {
                                     </Grid>
                                     <Grid item lg={4} xs={12}>
                                         <Grid spacing={12} container>
-                                            <Grid item lg={6} xs={4}>
-                                                <div className="credit-img">
+                                                <div className="credit-img" style={{margin:10}}>
                                                     <img className="imd-credit" src="https://assets.stylori.com/images/static/icons/cvv.png" />
                                                 </div>
-                                            </Grid>
-                                            <Grid item lg={6} xs={8}>
-                                                <div className="credit-contnt">
-                                                    Last 3 digits printed on the back of the card.
-                                        </div>
-                                            </Grid>
                                         </Grid>
                                     </Grid>
+                                    <Grid item>
+                                    <div className="credit-contnt">
+                                                    Last 3 digits printed on the back of the card.
+                                        </div>
+                                    </Grid>
+                                    <Grid item xs={12}> 
+                                    <Button className="credit-button" type="submit" style={{width:"100%"}}>Pay Now</Button>
+                                    </Grid>
                                 </Grid>
-                                <div className="credit-btn-div">
-                                    <Button className="credit-button" type="submit">Pay Now</Button>
-                                </div>
+                              
                             </Grid>
                         </Grid>
                     </form>

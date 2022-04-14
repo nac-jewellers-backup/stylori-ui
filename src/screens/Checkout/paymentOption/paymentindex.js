@@ -82,7 +82,7 @@ class PaymentIndex extends React.Component {
         
           <Grid container  lg={12} spacing={2} style={{display:"flex",flexDirection:"column"}}>
             <Grid item lg={6}>
-                          <FormGroup column>
+                        <FormGroup column>
                           <FormControlLabel
                                control={<GreenCheckbox
                                 checked={this?.state?.isActive == "Netbanking"
@@ -92,7 +92,7 @@ class PaymentIndex extends React.Component {
                                  name="Netbanking"
                              
                                   />}
-                                  style={{color:"#6D6E71"}}
+                                  style={{color:"#6D6E71",backgroundColor:"#fff",marginTop:10}}
                                  label="Pay Online"
                                  />
                             <FormControlLabel
@@ -105,10 +105,37 @@ class PaymentIndex extends React.Component {
                                      onClick={() => this.toggleCollapsed("CashonDelivey")}
                                        />
                                        }
-                                       style={{color:"#6D6E71"}}
+                                       style={{color:"#6D6E71",backgroundColor:"#fff",marginTop:10}}
                                      label="Cash on Delivery (COD)"
                                         />
+                                        <FormControlLabel
+                             control={
+                                 <GreenCheckbox
+                                   checked={ this?.state?.isActive == "Creditform"
+                                    ? true
+                                     : false}
+                                     name="Creditform"  
+                                     onClick={() => this.toggleCollapsed("Creditform")}
+                                       />
+                                       }
+                                       style={{color:"#6D6E71",backgroundColor:"#fff",marginTop:10}}
+                                     label="Credit Card"
+                                        />
+                                         <FormControlLabel
+                             control={
+                                 <GreenCheckbox
+                                   checked={ this?.state?.isActive == "Debitform"
+                                    ? true
+                                     : false}
+                                     name="Debitform"  
+                                     onClick={() => this.toggleCollapsed("Debitform")}
+                                       />
+                                       }
+                                       style={{color:"#6D6E71",backgroundColor:"#fff",marginTop:10}}
+                                     label="Debit Card"
+                                        />
                           </FormGroup>
+                          
               {/* <div className="pay-index-subhed" style={{width:"100%"}}>
                 <p style={{ background: this.state.isActive == "Creditform" ? "#dfdfdf" : "" }}
                                     style={{ background: "#a8a1a1" }}
@@ -154,11 +181,11 @@ class PaymentIndex extends React.Component {
             </Grid>
             <Grid item lg={6}>
               <div
-                style={{ marginTop: "20px" }}
+                style={{ marginTop: "20px",marginLeft:"-10px" }}
                 // className="pay-index-subhed_datas "
               >
-                {this?.state?.isActive == "Creditform" && <Creditform />}
-                {this?.state?.isActive == "Debitform" && <Debitform />}
+                {this?.state?.isActive == "Creditform" && <Netbanking />}
+                {this?.state?.isActive == "Debitform" && <Netbanking />}
                 {this?.state?.isActive == "Netbanking" && <Netbanking />}
                 {
                   // !dataCard1.length > 0 ?
