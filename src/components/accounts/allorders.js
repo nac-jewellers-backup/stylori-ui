@@ -1249,7 +1249,7 @@ class Allorders extends React.Component {
                           <Box
                             className="order_addres_user"
                             style={{
-                              marginTop: "25px",
+                              marginTop: "27px",
                               backgroundColor: "#fff",
                               width: "100%",
                             }}
