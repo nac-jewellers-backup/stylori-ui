@@ -1,7 +1,6 @@
-import { Hidden, Grid, Container, withStyles, Card, CardMedia } from "@material-ui/core";
+import { Hidden, Grid, Container, withStyles } from "@material-ui/core";
 import React, { Component } from "react";
 import Header from "components/SilverComponents/Header";
-// import CustomSeparator from "components/BreadCrumb/index";
 import ProductImageZoom from "components/product-image-slider/productImageZoom";
 import ProductPrice from "components/product-image-slider/productPrice";
 import PriceTabs from "components/product-image-slider/priceTabs";
@@ -25,44 +24,33 @@ import { Helmet } from "react-helmet";
 import { CartContext } from "context";
 import { GlobalContext } from "context";
 import SilverProductPrice from "components/product-image-slider/silverProductPrice";
-import ShopBy from "components/shopBy";
-import ProductModal from "../components/SilverComponents/ProductModal";
+
 import { shopByStyloriSilver, allSeoPriorities } from "queries/productdetail";
 
-import { Slideshow } from "components";
 import { Diversestyles } from "../components/product-image-slider/Gagetstylori/Diversestyles-pink";
 import { Certified } from "../components/product-image-slider/Gagetstylori/Certified";
-import { Fromthehouseofnac } from "../components/product-image-slider/Gagetstylori/Fromthehouseofnac-pink";
 import { Hypoallergenic } from "../components/product-image-slider/Gagetstylori/Hypoallergenic-pink";
 import { Securepayments } from "../components/product-image-slider/Gagetstylori/Securepayments-pink";
-import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
-import ArrowRightIcon from "@material-ui/icons/ArrowRight";
+
 import NeedHelp from "../components/needHelp";
 import ReactPixel from "react-facebook-pixel";
 import TagManager from "react-gtm-module";
 
 import JewelSlider from "components/SilverComponents/JewelSlider";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import classNames from "classnames";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 import JewelDetailAccordion from "components/SilverComponents/JewelDetailAccordion";
 import HouseOfNac from "assets/houseOfNAC.png";
 import HouseOfNac2x from "assets/houseOfNAC@2x.png";
 import HouseOfNac3x from "assets/houseOfNAC@3x.png";
 import { SilverButton } from "components/SilverComponents/SilverButton";
 import SliderWithHeading from "components/SilverComponents/SliderWithHeading";
-import CollectionCard from "components/SilverComponents/CollectionCard";
-import FinalCard from "components/SilverComponents/finalCard";
+
 import SilverFooter from "components/SilverComponents/SilverFooter";
 
 // V2 Desktop
 import { CustomSeparator } from "components/SilverComponents/v2";
 import NACSection from "components/HouseOfNac";
-import CollectionSlider from "components/SilverComponents/CollectionSlider";
 import DesktopFooter from "components/SilverComponents/DesktopFooter";
 
 const styles = (theme) => ({
@@ -179,7 +167,6 @@ const styles = (theme) => ({
     },
   },
 
-  // Collection Card
   collectionCardContainer: {
     marginBottom: 50,
     [theme.breakpoints.up("sm")]: {
@@ -223,7 +210,7 @@ class ProductDetail extends Component {
       Index: "",
     };
   }
-  
+
   componentDidMount() {
     // Facebook Pixel Code
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
@@ -301,11 +288,13 @@ class ProductDetail extends Component {
           this?.props?.data[0]?.title,
       },
     ];
-   
-   const enquireLink = () => {  
-     window.open(`https://wa.me/919952625252?text=Hi - ${window.location.href}`);
+
+    const enquireLink = () => {
+      window.open(
+        `https://wa.me/919952625252?text=Hi - ${window.location.href}`
+      );
     };
-    console.log(this.props)
+    console.log(this.props);
     const clear_rating = (bool) => {
       if (bool === false) {
         this.setState({
@@ -320,84 +309,70 @@ class ProductDetail extends Component {
     };
     const { Globalctx } = this.props;
     const isSilver = Globalctx.pathName ? true : false;
-    const mobiledataCarousel = {
-      dots: false,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      autoplay: false,
-      autoplaySpeed: 2000,
-      prevArrow: (
-        <ArrowLeftIcon
-          style={{ fill: "rgb(6, 171, 159)", fontSize: "1.7rem" }}
-        />
-      ),
-      nextArrow: (
-        <ArrowRightIcon
-          style={{ fill: "rgb(6, 171, 159)", fontSize: "1.7rem" }}
-        />
-      ),
-    };
 
     const { classes } = this.props;
     const jewelData = this.props?.data?.[0];
-  
-   var brand_card =[
-     {
-       title:"MURAL COLLECTIONS",
-       image:"https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Mural.jpg",
-       url:"https://www.stylori.com/silver-jewellery-mural+collection"
-     },
-     {
-      title:"STAR STRUCK",
-      image:"https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Starstruck.jpg",
-      url:"https://www.stylori.com/silver-jewellery-starstruck+collection"
-     },
-     {
-      title:"ELEMENTAL",
-      image:"https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Elemental.jpg",
-      url:"https://www.stylori.com/silver-jewellery-elemental+collection"
-     },
-     {
-       title:"CONCENTRIC",
-       image:"https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Concentric.jpg",
-       url:"https://www.stylori.com/silver-jewellery-concentric+collection"
-     }
-   ]
 
-   
+    var brand_card = [
+      {
+        title: "MURAL COLLECTIONS",
+        image:
+          "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Mural.jpg",
+        url: "https://www.stylori.com/silver-jewellery-mural+collection",
+      },
+      {
+        title: "STAR STRUCK",
+        image:
+          "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Starstruck.jpg",
+        url: "https://www.stylori.com/silver-jewellery-starstruck+collection",
+      },
+      {
+        title: "ELEMENTAL",
+        image:
+          "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Elemental.jpg",
+        url: "https://www.stylori.com/silver-jewellery-elemental+collection",
+      },
+      {
+        title: "CONCENTRIC",
+        image:
+          "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Concentric.jpg",
+        url: "https://www.stylori.com/silver-jewellery-concentric+collection",
+      },
+    ];
 
     var detail_data = [
       {
         title: "Description",
-        data: jewelData.dis != "" ? <Typography className="no-data-desc">{jewelData.dis}</Typography> : <Typography className="no-data">No Data Found</Typography>,
+        data:
+          jewelData.dis != "" ? (
+            <Typography className="no-data-desc">{jewelData.dis}</Typography>
+          ) : (
+            <Typography className="no-data">No Data Found</Typography>
+          ),
       },
       {
         title: "Product Details",
         data: (
-          <div style={{marginTop:"-15px"}}>
-           <ProductDetails
-            data={this?.props?.data}
-            isSilver={isSilver}
-            isActive={this.state.isActive}
-          />
+          <div style={{ marginTop: "-15px" }}>
+            <ProductDetails
+              data={this?.props?.data}
+              isSilver={isSilver}
+              isActive={this.state.isActive}
+            />
           </div>
-        
         ),
       },
       {
         title: "Jewellery Care",
         data: (
           <div>
-         <Typography className="detailTitle">{jewelData?.dis}</Typography>
-         <ProductDetails
-            data={this?.props?.data}
-            isSilver={isSilver}
-            isActive={this.state.isActive}
-          />
+            <Typography className="detailTitle">{jewelData?.dis}</Typography>
+            <ProductDetails
+              data={this?.props?.data}
+              isSilver={isSilver}
+              isActive={this.state.isActive}
+            />
           </div>
-         
         ),
       },
     ];
@@ -450,30 +425,6 @@ class ProductDetail extends Component {
         </Helmet>
 
         <Hidden smDown>
-          {/* <Header wishlist={this?.props?.wishlistdata ?? ""} /> */}
-
-          {/* <Grid
-            Container
-            spacing={12}
-            style={{ maxWidth: "1600px", margin: "auto" }}
-          >
-            <Grid item xs={12}>
-              <div className="pricing-breadcrums-media">
-                {isSilver ? (
-                  ""
-                ) : (
-                  <CustomSeparator
-                    list="pricing-loctn"
-                    classsubhed="pricing-loctn-head"
-                    data={data_json}
-                    listSilver="pricing-loctn-silver"
-                    isSilver={isSilver}
-                  />
-                )}
-              </div>
-            </Grid>
-          </Grid> */}
-
           {/* Need Help */}
           <>
             <Hidden smDown>
@@ -568,16 +519,6 @@ class ProductDetail extends Component {
                   </div>
                 )}
 
-                {/* {isSilver ? (
-                  <div>
-                    <PriceBuynow data={this?.props?.data} isSilver={isSilver} />
-                  </div>
-                ) : (
-                  <div className="overall-box priceecontainer">
-                    <PriceBuynow data={this?.props?.data} isSilver={isSilver} />
-                  </div>
-                )}  */}
-
                 {!isSilver && (
                   <div className="overall-box priceecontainer">
                     <PriceTabs data={this?.props?.data} isSilver={isSilver} />
@@ -612,7 +553,7 @@ class ProductDetail extends Component {
                             </div>
                           </div>
                           {this.state.isActive && this.state.Index === index ? (
-                            <div className="" style={{ margin: 10}}>
+                            <div className="" style={{ margin: 10 }}>
                               {item.data}
                             </div>
                           ) : null}
@@ -623,7 +564,12 @@ class ProductDetail extends Component {
                 )}
                 {isSilver && (
                   <div className={classes.getInTouchButtonContainer}>
-                    <SilverButton variant="outlined" onClick={()=>enquireLink}>Get in Touch</SilverButton>
+                    <SilverButton
+                      variant="outlined"
+                      onClick={() => enquireLink}
+                    >
+                      Get in Touch
+                    </SilverButton>
                   </div>
                 )}
               </Grid>
@@ -668,42 +614,6 @@ class ProductDetail extends Component {
             <Sublistcarousel data={this?.props?.data} isSilver={isSilver} />
           )}
 
-          {/* {isSilver ? (
-            <div
-              style={{
-                maxWidth: "1600px",
-                margin: "auto",
-                paddingLeft: "5%",
-                paddingRight: "5%",
-                paddingTop: "4%",
-              }}
-            >
-              <Sublistcarousel
-                data={this.props.data}
-                isSilver={isSilver}
-                customLimit={4}
-                nextPreviousIconSize={"3rem"}
-              />
-            </div>
-          ) : (
-            <Sublistcarousel data={this?.props?.data} isSilver={isSilver} />
-          )} */}
-          {/* {isSilver && (
-            <div
-              style={{
-                maxWidth: "1600px",
-                margin: "auto",
-                paddingLeft: "5%",
-                paddingRight: "5%",
-                paddingTop: "4%",
-              }}
-            >
-              <ShopBy
-                isSilver={isSilver}
-                shopByStyloriSilver={this?.props?.shopByStyloriSilver}
-              />
-            </div>
-          )} */}
           {isSilver ? (
             <div
               style={{
@@ -783,7 +693,9 @@ class ProductDetail extends Component {
                   variant="contained"
                   color="secondary"
                   style={{ padding: "8px 16px" }}
-                  onClick={()=>{this.props.history.push("/silver-jewellery")}}
+                  onClick={() => {
+                    this.props.history.push("/silver-jewellery");
+                  }}
                 >
                   Back to Products
                 </SilverButton>
@@ -793,18 +705,10 @@ class ProductDetail extends Component {
 
           {/* Collection Card section */}
           <div className={classes.collectionCardContainer}>
-            {isSilver && (
-             <MainCard
-             products={brand_card}
-           />    
-            )}
+            {isSilver && <MainCard products={brand_card} />}
           </div>
 
           {isSilver ? <DesktopFooter /> : <Footer silver={isSilver} />}
-
-          {/* <Grid item xs={12}>
-            <Footer silver={isSilver} />
-          </Grid> */}
         </Hidden>
 
         {/* --------------------------------------------MOBILE UI BELOW---------------------------------------------------- */}
@@ -815,20 +719,12 @@ class ProductDetail extends Component {
           {isSilver ? (
             <JewelSlider slides={jewelData?.fadeImages} />
           ) : (
-            // <ProductPrice
-            //   data={this?.props?.data}
-            //   wishlist={this?.props?.wishlistdata}
-            // />
             <PriceBuynow
               data={this?.props?.data}
               wishlist={this?.props?.wishlistdata}
               isSilver={isSilver}
             />
           )}
-
-          {/* {!isSilver && (
-            <PriceTabs data={this?.props?.data} isSilver={isSilver} />
-          )} */}
 
           {/* Product Detail section */}
           {isSilver ? (
@@ -851,7 +747,13 @@ class ProductDetail extends Component {
               </Typography>
 
               <JewelDetailAccordion title="Description">
-              {jewelData.dis != "" ? <Typography className="no-data-desc">{jewelData.dis}</Typography> : <Typography className="no-data">No Data Found</Typography>}
+                {jewelData.dis != "" ? (
+                  <Typography className="no-data-desc">
+                    {jewelData.dis}
+                  </Typography>
+                ) : (
+                  <Typography className="no-data">No Data Found</Typography>
+                )}
               </JewelDetailAccordion>
               <JewelDetailAccordion title="Product Details">
                 <ProductDetails
@@ -861,13 +763,15 @@ class ProductDetail extends Component {
                 />
               </JewelDetailAccordion>
               <JewelDetailAccordion title="Jewellery Care">
-               <div>
-                 <Typography className="detailTitle">{jewelData?.dis}</Typography>
-                   <ProductDetails
-                     data={this?.props?.data}
-                     isSilver={isSilver}
-                     isActive={true}
-                    />
+                <div>
+                  <Typography className="detailTitle">
+                    {jewelData?.dis}
+                  </Typography>
+                  <ProductDetails
+                    data={this?.props?.data}
+                    isSilver={isSilver}
+                    isActive={true}
+                  />
                 </div>
               </JewelDetailAccordion>
 
@@ -964,133 +868,10 @@ class ProductDetail extends Component {
 
           {/* Collection Card section */}
 
-          {isSilver && (
-             <MainCard
-             products={brand_card}
-           />    
-            )}
-
-          {/* {isSilver && <FinalCard slides={jewelData?.fadeImages?.arrOfurls} />} */}
+          {isSilver && <MainCard products={brand_card} />}
 
           {/* Footer Section */}
           {isSilver ? <SilverFooter /> : <Footer silver={isSilver} />}
-
-          {/* <Grid item xs={12}>
-            <PriceBuynow
-              data={this?.props?.data}
-              wishlist={this?.props?.wishlistdata}
-              isSilver={isSilver}
-            />
-          </Grid> */}
-
-          {/* <Grid item xs={12}>
-            <ProductDetails
-              data={this?.props?.data}
-              wishlist={this?.props?.wishlistdata}
-              isSilver={isSilver}
-            />
-          </Grid> */}
-          {/* {isSilver && (
-            <div
-              style={{
-                position: "fixed",
-                top: "75%",
-                right: "5px",
-                zIndex: 20,
-              }}
-            >
-              <NeedHelp position="top" />
-            </div>
-          )} */}
-          {/* {!isSilver && (
-            <Grid item xs={12}>
-              <PriceCertification
-                data={this?.props?.data}
-                isSilver={isSilver}
-              />
-            </Grid>
-          )} */}
-          {/* {!isSilver && (
-            <Grid item xs={12}>
-              <Request data={this?.props?.data} />
-            </Grid>
-          )} */}
-
-          {/* <Grid item xs={12}>
-            <Sublistcarousel
-              data={this?.props?.data}
-              isSilver={isSilver}
-              customLimit={4}
-            />
-          </Grid> */}
-
-          {/* {isSilver && (
-            <Container>
-              <Container>
-                <Grid container xs={12}>
-                  <Grid
-                    item
-                    xs={12}
-                    alignItems="center"
-                    style={{ paddingTop: "10%" }}
-                  >
-                    <Slideshow dataCarousel={mobiledataCarousel}>
-                      <Certified color="rgb(6, 171, 159)" />
-                      <Diversestyles color="rgb(6, 171, 159)" />
-                      <Hypoallergenic color="rgb(6, 171, 159)" />
-                      <Fromthehouseofnac color="rgb(6, 171, 159)" />
-                      <Securepayments color="rgb(6, 171, 159)" />
-                    </Slideshow>
-                  </Grid>
-                </Grid>
-              </Container>
-            </Container>
-          )} */}
-          {/* <Grid item xs={12}>
-            {isSilver && (
-              <Container>
-                <div
-                  style={{
-                    marginTop: 20,
-                    marginBottom: 10,
-                    fontSize: 20,
-                    color: "rgb(58,69,120)",
-                    fontWeight: "bold",
-                    letterSpacing: 4,
-                    textAlign: "center",
-                  }}
-                >
-                  SHOP BY TYPE
-                </div>
-
-                <ProductModal
-                  shopByStyloriSilver={
-                    this.props?.shopByStyloriSilver?.length > 3
-                      ? this.props?.shopByStyloriSilver?.slice(0, 4)
-                      : this.props?.shopByStyloriSilver
-                  }
-                  allSeo={this.props.allSeo}
-                  isShowDetails={true}
-                  layout={6}
-                  homepagecollections={true}
-                />
-              </Container>
-            )}
-          </Grid> */}
-          {/* <Grid item xs={12}>
-            <RatingForm
-              data={this?.props?.data}
-              clear_rating={this?.state?.clear}
-              clear_rating_onchange={clear_rating}
-              isSilver={isSilver}
-            />
-          </Grid> */}
-          {/* <Grid item xs={12}>
-            <CustomerReviews data={this?.props?.data} />
-          </Grid> */}
-          {/* <Grid item style={{ paddingBottom: "50px" }}>
-            <Footer silver={isSilver} />
-          </Grid> */}
         </Hidden>
       </div>
     );

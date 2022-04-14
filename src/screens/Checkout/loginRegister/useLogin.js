@@ -1,15 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNetworkRequest } from "hooks/index";
 import { useCheckForCod } from "hooks/CheckForCodHook";
 import { ADDRESSDETAILS } from "queries/productdetail";
-import { useGraphql } from "hooks/GraphqlHook";
 import { CartContext } from "context";
 import Addressforms from "screens/Checkout/addressDetails/addressForm";
 
 var obj = {};
 var obj1 = {};
 var val = {};
-var _history;
 const useLogin = (changePanel, props) => {
   const [values, setValues] = React.useState({
     password: "",
@@ -28,8 +26,7 @@ const useLogin = (changePanel, props) => {
     username: false,
     password: false,
   });
-  const [history, setHistory] = React.useState({});
-  
+
   const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest(
     "/api/auth/signin",
     {},
@@ -38,6 +35,7 @@ const useLogin = (changePanel, props) => {
   const { setCartFilters } = React.useContext(CartContext);
   const { setValues: addressetValues } = Addressforms();
   const pathnames = window.location.pathname === "/login";
+
   const {
     loading: codloading,
     error: coderror,
@@ -82,6 +80,7 @@ const useLogin = (changePanel, props) => {
       ) {
         values["error"]["passerr"] = false;
         values["errortext"]["passerr"] = "";
+
         var bbn =
           data && data.userprofile && data.userprofile.id
             ? data.userprofile.id
@@ -96,33 +95,20 @@ const useLogin = (changePanel, props) => {
           localStorage.setItem("user_id", bb);
           sessionStorage.setItem("user_id", bb);
           localStorage.setItem("accessToken", data.accessToken);
-          if (localStorage.getItem("gut_lg")) {
-            localStorage.removeItem("gut_lg");
-          }
-          // setValues({user_id:data.userprofile.id})
-          // changePanel(3)
         }
       }
     }
   }, [data]);
   React.useEffect(() => {
     var a = addresData ? addresData : "";
-
     if (JSON.stringify(a).length > 10) {
       setCartFilters(obj1);
-      // localStorage.setItem("vals", JSON.stringify(addresData))
       localStorage.setItem("true", false);
       localStorage.setItem("check_dlt", false);
       val["addressvalues"] = addresData;
       val["addrs"] = false;
-      // alert(JSON.stringify(addresData))
-      // if (addresData && addresData.data && addresData.data.allUserAddress && addresData.data.allUserAddress.nodes && addresData.data.allUserAddress.nodes.length < 0) {
       localStorage.setItem("isedit", 1);
-      // }
       addressetValues && addressetValues(val);
-      // localStorage.setItem("isedit", 1)
-      // localStorage.setItem("c_k_l", true)
-      // localStorage.setItem("set_check", "123")
 
       if (!pathnames) {
         changePanel(3);
@@ -134,18 +120,14 @@ const useLogin = (changePanel, props) => {
           window.location.href = localStorage.getItem("review_location");
           return false;
         } else {
+          console.clear();
           window.location.href = "/";
           return false;
         }
       }
     }
   }, [addresData]);
-  // React.useEffect(() => {
-  //     if (user_id.length > 0) {
-  //         obj['userprofileId'] = user_id
-  //         makeRequestCod(obj);
-  //     }
-  // }, [])
+
   const handleChange = (type, value) => {
     if (values.email !== "" && values["error"] && values["errortext"]) {
       values["error"]["emerr"] = false;
@@ -159,7 +141,6 @@ const useLogin = (changePanel, props) => {
       ...values,
       [type]: value,
     });
-    // makeFetch(values)
   };
 
   const handleInvalid = (type, status) => {
@@ -182,10 +163,9 @@ const useLogin = (changePanel, props) => {
       },
     });
   };
-  // const vl = data && data.message
-  const errmsg = data.message ? data.message : "";
-  const auth = data.userprofile ? data.userprofile.id : "";
+
   const handelSubmit = (e, history) => {
+    console.log(values);
     if (values.email === "" && values["error"] && values["errortext"]) {
       values["error"]["emerr"] = true;
       values["errortext"]["emerr"] = "Email is required";
@@ -218,7 +198,6 @@ const useLogin = (changePanel, props) => {
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!emailvld.test(values.email)) {
       values["error"]["emerr"] = true;
-      // values['errortext']['emerr'] = 'An email address must contain a single @/.'
       values["errortext"]["emerr"] = `Please enter a valid email address.`;
       setValues({
         ...values,
@@ -233,13 +212,39 @@ const useLogin = (changePanel, props) => {
     let _roles = values.roles;
     obj_values = { password: _password, email: _email, roles: _roles };
     makeFetch(obj_values);
-    // clear()
-    // reset();
-    // _history=history('/home')
-    // changePanel(3)
   };
 
-  const handlers = { handleChange, handleInvalid, handelSubmit, clear };
+  const VerifyOTP = (data) => {
+    localStorage.setItem("email", data.userprofile.email);
+    var bb = data.userprofile.id ? data.userprofile.id : "";
+    obj["userprofileId"] = bb;
+    obj1["user_id"] = bb;
+    obj1["reload"] = "loading";
+    makeRequestCod(obj);
+    localStorage.setItem("user_id", bb);
+    sessionStorage.setItem("user_id", bb);
+    localStorage.setItem("accessToken", data.accessToken);
+  };
+  const FacebookLogin = (data) => {
+    localStorage.setItem("email", data.userprofile.email);
+    var bb = data.userprofile.id ? data.userprofile.id : "";
+    obj["userprofileId"] = bb;
+    obj1["user_id"] = bb;
+    obj1["reload"] = "loading";
+    makeRequestCod(obj);
+    localStorage.setItem("user_id", bb);
+    sessionStorage.setItem("user_id", bb);
+    localStorage.setItem("accessToken", data.accessToken);
+  };
+
+  const handlers = {
+    handleChange,
+    handleInvalid,
+    handelSubmit,
+    clear,
+    VerifyOTP,
+    FacebookLogin,
+  };
 
   return { values, handlers, setValues, data };
 };
