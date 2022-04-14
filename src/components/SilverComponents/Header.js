@@ -227,7 +227,7 @@ class Header extends Component {
                 id="searchcontainer"
                 style={{
                   backgroundColor: isSilver ? "#606161" : "",
-                  marginLeft: 0,
+                  maxWidth: "100%",
                 }}
               >
                 <Grid

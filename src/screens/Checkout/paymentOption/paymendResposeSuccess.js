@@ -14,6 +14,7 @@ import Header from "components/SilverComponents/Header";
 import styles from "../../../components/Checkout/style";
 import CustomSeparator from "../../../components/BreadCrumb/index";
 import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 import "../../../components/Checkout/Cart.css";
 import "../chckout.css";
 import Footer from "components/Footer/Footer";
@@ -48,6 +49,7 @@ const cartsubdata = [
 ];
 var obj = {};
 obj["order_id"] = order_id;
+
 class PaymentResponseSuccess extends React.Component {
   makeFetch_resend_mail = async (props) => {
     await fetch(`${API_URL}/resendorderemail`, {
@@ -83,7 +85,7 @@ class PaymentResponseSuccess extends React.Component {
     return (
       <>
         <Header wishlist={this.props.wishlistdata} paymentSucces={true} />
-        <Grid container justify="center" style={{backgroundColor:"#E6E7E8",height:"100%",marginTop:"-15px" }}>
+        <Grid container justify="center" className="main-container">
           {/* <Hidden smDown>
             <Grid
               container
@@ -129,13 +131,13 @@ class PaymentResponseSuccess extends React.Component {
               <Grid item  className="contant-center container-font-size">
               
                 <Typography className="thank_you">A Big Thank You!</Typography>
-                <Divider className="divider"/>
+                <Divider className="divider_payment"/>
                 {/* {" "}
                 <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
                 &nbsp;&nbsp; A Big Thank you!&nbsp;&nbsp;Your order has been placed. */}
               </Grid>
               <Grid item  style={{marginTop:30}}> 
-              <Typography className="center_content">Welcome to <span style={{fontWeight:700}}>Stylori</span> Family! We'll take it from here</Typography> 
+              <Typography className="center_content">Welcome to <span style={{fontWeight:700,margin:5}}>Stylori</span> Family! We'll take it from here</Typography> 
                </Grid>   
                <Grid
               item

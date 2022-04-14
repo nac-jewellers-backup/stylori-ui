@@ -124,7 +124,7 @@ class ProductDetails extends React.Component {
                             {" "}
                             {this?.props?.isActive ? 
                              ""
-                           :  <span className={_isSilver && "pd_details"}>
+                           :<span className={_isSilver && "pd_details"}>
                            {valueofproductdetail?.header}
                          </span>
                             }
@@ -178,8 +178,8 @@ class ProductDetails extends React.Component {
                                         <Grid container xs={12} spacing={1}>
                                           <Grid
                                             item
-                                            xs={6}
-                                            lg={4}
+                                            xs={9}
+                                            lg={5}
                                             className={`${classes.margindek} ${classes.pds}`}
                                           >
                                             <ListItemText
@@ -214,7 +214,7 @@ class ProductDetails extends React.Component {
                                           </Grid>
                                           <Grid
                                             item
-                                            xs={6}
+                                            xs={3}
                                             lg={7}
                                             style={{ alignItems: "center" }}
                                           >

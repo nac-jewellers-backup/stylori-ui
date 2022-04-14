@@ -14,6 +14,7 @@ var obj_user = {};
 const order_idx = localStorage.getItem("order_id")
   ? JSON.parse(localStorage.getItem("order_id"))
   : "yourorder";
+
 const CashonDelivey = (props) => {
   let {
     CartCtx: { cartFilters },
@@ -109,7 +110,7 @@ class Component extends React.Component {
       this.props.cartFilters._cart_id &&
       Object.keys(this.props.cartFilters._cart_id).length > 0
         ? this.props.cartFilters._cart_id.cart_id
-        : "";
+        : "";  
     var cart_ids = cart_id.length > 0 ? cart_id : cart_id_lo;
     let user_id = localStorage.getItem("user_id")
       ? localStorage.getItem("user_id")
@@ -167,7 +168,7 @@ class Component extends React.Component {
                 cursor: "pointer",
                 backgroundColor: "rgb(211, 37, 100)",
                 color: "#fff",
-                width: "inherit",
+                width: "100%",
               }}
               variant="contained"
             >

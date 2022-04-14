@@ -243,10 +243,25 @@ h6 {
     justify-content: center;
     font-size: 1.2rem;
 }
-.divider{
+.divider_payment{
     border: 1px solid #6D6E71 !important;
     width: 250px !important;
 }
+
+.main-container{
+    background-color: #E6E7E8;
+    margin-top: -15px;
+    height: 55vw;
+}
+
+@media only screen and (max-width: 600px) {
+    .main-container{
+        background-color: #E6E7E8;
+        margin-top: -15px;
+        height: 100%;
+    }
+}
+
 
 .grand-item {
     margin-left: auto;

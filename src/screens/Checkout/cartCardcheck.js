@@ -1230,10 +1230,12 @@ const Components = (props) => {
   let {
     CartCtx: { data, loading, error, allorderdata, wishlistdata },
   } = React.useContext(CartContext);
+
   const {
     ProductDetailCtx: { filters },
     setFilters,
   } = React.useContext(ProductDetailContext);
+  
   let content, mapped;
   if (!loading && !error) {
     if (Object.keys(data).length !== 0) {

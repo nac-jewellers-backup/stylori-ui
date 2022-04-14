@@ -871,7 +871,7 @@ class Allorders extends React.Component {
                                             padding: "10px",
                                             // boxShadow:
                                             //   " 1px 2px 13px 7px #DEDADA",
-                                            marginBottom: "20px",
+                                            // marginBottom: "20px",
                                             // borderBottom:"1px solid grey",
                                             marginTop: "12px",
                                             color: "#394578",
@@ -1074,12 +1074,15 @@ class Allorders extends React.Component {
                                             <br />
                                           </Grid>
                                         </Grid>
+                                        {val.length >1 &&
                                         <Divider
-                                          style={{
-                                            border: "1px solid #E6E7E8",
-                                            width: "100%",
-                                          }}
-                                        />
+                                        style={{
+                                          border: "1px solid #E6E7E8",
+                                        }}
+                                        variant="middle"
+                                      />
+                                        }
+                                        
                                       </>
                                     );
                                 }
@@ -1246,7 +1249,7 @@ class Allorders extends React.Component {
                           <Box
                             className="order_addres_user"
                             style={{
-                              marginTop: "20px",
+                              marginTop: "25px",
                               backgroundColor: "#fff",
                               width: "100%",
                             }}

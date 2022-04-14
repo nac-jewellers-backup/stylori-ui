@@ -13,12 +13,13 @@ import "./breadcrumb.css";
 
 const useStyles= makeStyles((theme)=>({
   crumbs:{
-    '& .MuiBreadcrumbs-ol':{
-       display:"flex",
-       justifyContent:"center"
-    }
-  }
-  
+    [theme.breakpoints.down('sm')]:{
+      '& .MuiBreadcrumbs-ol':{
+        display:"flex",
+        justifyContent:"center"
+     }
+    }   
+  }  
 }))
 
 export default function CustomSeparator(props) {
