@@ -290,7 +290,7 @@ class Checkoutcard extends React.Component {
           }}
         >
           <Grid item container xs={this.props?.checkout ? 12 : 7}>
-            {!this.props.checkout && (
+            {!this.props.checkout ? (
               <Grid item>
                 <Typography className="total">{`Total ( ${
                   this.props.data.length
@@ -306,7 +306,7 @@ class Checkoutcard extends React.Component {
                   )
                 )}`}</Typography>
               </Grid>
-            )}
+            ) :null}
             {this.props.data.map((dataval) =>
               dataval.productsDetails.map((val) => {
                 return (
@@ -432,7 +432,7 @@ class Checkoutcard extends React.Component {
                                 : `subhesder ${classes.normalfonts}`
                             }
                           >
-                            {!this.props.checkout && 
+                          {!this.props.checkout ?
                             <div>
                            {window.location.pathname === "/checkout" ||
                             checkMaterial(dataval.materialName) ||
@@ -445,6 +445,7 @@ class Checkoutcard extends React.Component {
                               <Quantity data={[dataval]} cart={true} />
                             )}
                             </div>
+                            :""
                             }
                           
                           </Typography>
@@ -640,14 +641,14 @@ class Checkoutcard extends React.Component {
                       })}
                     </div>
                   </Grid> */}
-                    {this.props.checkout && (
+                    {this.props.checkout ? (
                       <Divider style={{ width: "100%",border:"1px solid #DEDFE0"}} />
-                    )}
+                    ) :null}
                   </Grid>
                 );
               })
             )}
-            {!this.props.checkout && (
+            {!this.props.checkout ? (
               <Grid item container spacing={1}>
                 <Grid item style={{ display: "flex", alignItems: "center" }}>
                   <ArrowLeftIcon fontSize="small" />
@@ -681,9 +682,9 @@ class Checkoutcard extends React.Component {
                   </div>
                 </Grid>
               </Grid>
-            )}
+            ) :null}
           </Grid>
-          {!this.props.checkout && (
+          {!this.props.checkout ? (
             <Grid
               item
               xs={1}
@@ -691,7 +692,8 @@ class Checkoutcard extends React.Component {
             >
               <Divider variant="vertical" />
             </Grid>
-          )}
+          )
+        : null}
 
           <Grid item xs={this.props?.checkout ? 12 : 4}>
             {this.subtotals(props)}
@@ -846,7 +848,7 @@ class Checkoutcard extends React.Component {
     return (
       <div>
         <Grid container xs={12} lg={12}>
-          {!props.checkout && (        
+          {!props.checkout ? (        
               <div style={{width:"100%"}}>
                  {this.applycoupon()}
                  {/* <img src={percentage}></img>
@@ -860,13 +862,13 @@ class Checkoutcard extends React.Component {
                 <ArrowRightIcon className="arrow" fontSize="medium" />
               </Grid> */}
               </div>
-          )}
+          ) :null}
 
-          {!props.checkout && (
+          {!props.checkout ? (
             <Grid item container className="summary" xs={12}>
               <Typography className="summaryText">Order Summary</Typography>
             </Grid>
-          )}
+          ) :null}
 
           <Grid
             item
