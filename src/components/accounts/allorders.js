@@ -277,6 +277,8 @@ class Allorders extends React.Component {
       ? JSON.parse(localStorage.getItem("quantity"))
       : 1;
 
+      console.log(allorderdata.data.allOrders.nodes,"mainn")
+
     return (
       <>
         <Helmet></Helmet>
@@ -296,9 +298,9 @@ class Allorders extends React.Component {
                       style={{
                         boxShadow: "none",
                         boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px",
+                        marginBottom: "10px"
                       }}
                       key={index}
-                      style={{ marginBottom: "10px" }}
                     >
                       <ExpansionPanelSummary
                         expandIcon={<ExpandMoreIcon className="arrow-chek" />}
@@ -1074,14 +1076,17 @@ class Allorders extends React.Component {
                                             <br />
                                           </Grid>
                                         </Grid>
-                                        {val.length >1 &&
+                                       {allorderdata.data.allOrders.nodes.length >1 ?
                                         <Divider
                                         style={{
                                           border: "1px solid #E6E7E8",
                                         }}
                                         variant="middle"
                                       />
-                                        }
+                                      :null
+                                       }
+                                       
+                                      
                                         
                                       </>
                                     );
