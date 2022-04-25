@@ -58,21 +58,18 @@ class Cart extends React.Component {
 
     let path = window.location.pathname.split("/").pop();
     return (
-      <Grid container>
+      <Grid container  style={{
+        backgroundColor: "#E6E7E8",
+      }}>
         <Hidden smDown>
           <Grid container spacing={12}>
             <Header wishlist={this.props.wishlistdata} />
           </Grid>
 
           <div
-            className="cart-ovralldiv-media "
-            style={{
-              height: "100vh",
-              backgroundColor: "#E6E7E8",
-              marginTop: "-15px",
-            }}
+            className="cart-ovralldiv-media"  
           >
-            <Grid Container spacing={12}>
+            <Grid Container spacing={12} style={{height: this.props.data.length > 2 ? "70vw" :"50vw"}}>
               {path === "checkout" ? (
                 ""
               ) : (

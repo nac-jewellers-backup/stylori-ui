@@ -85,7 +85,7 @@ class PaymentResponseSuccess extends React.Component {
     return (
       <>
         <Header wishlist={this.props.wishlistdata} paymentSucces={true} />
-        <Grid container justify="center" className="main-container">
+        <Grid container justify="center" className="main-container" style={{height:this.props.allorderdata.length >1 ? "70vw":"55vw"}}>
           {/* <Hidden smDown>
             <Grid
               container
