@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   Grid,
   Popper,
@@ -9,11 +9,9 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
-  Icon,
 } from "@material-ui/core";
 import { useStyles } from "../styles";
 import PropTypes from "prop-types";
-import { Close, Done } from "@material-ui/icons";
 import DoneOutlinedIcon from '@material-ui/icons/DoneOutlined';
 
 // import "./../header.css";

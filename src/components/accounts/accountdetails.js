@@ -2,11 +2,9 @@ import {
     Hidden,
     Grid,
     Container,
-    ListItem
 } from '@material-ui/core';
 import React, { Component } from 'react'
 import 'screens/screens.css';
-// import {  } from 'semantic-ui-react';
 import "./accounts.css"
 import CartCard from 'components/Checkout/CartCard';
 import Register from 'screens/Checkout/loginRegister/register';

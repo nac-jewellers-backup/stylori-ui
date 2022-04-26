@@ -28,7 +28,6 @@ import { useDummyRequest } from "../../hooks";
 import { headerDataSilver } from "../../mappers";
 import { headerDataStyloriSilver } from "../../mappers";
 import { styles } from "./styles";
-import Seach from "../../assets/search";
 import stylorisilverlogo from "../../assets/stylori_silver_logo.svg";
 import heart from "../../assets/Icons/loveGrey.svg";
 import cart from "../../assets/Icons/cartGrey.svg";

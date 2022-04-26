@@ -1,8 +1,7 @@
 import React,{useEffect} from 'react';
-import Aos from "aos";
 import "aos/dist/aos.css";
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Hidden, Typography, Button } from '@material-ui/core';
+import { Grid, Hidden, Typography} from '@material-ui/core';
 import Slideshow from '../../components/Carousel/carosul'
 import '../Testimony/Testimony.css';
 

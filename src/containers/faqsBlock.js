@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "components/SilverComponents/Header";
 // import Header from "components/SilverComponents/Header";
-import { Grid, Hidden, Typography } from "@material-ui/core";
+import { Grid, Hidden } from "@material-ui/core";
 import Footer from "components/Footer/Footer";
 import { withRouter } from "react-router";
 import "index.css";
@@ -11,7 +11,6 @@ import FaqsHelp from "components/faqs/faqsHelp";
 import FaqsCustomer from 'components/faqs/faqsCustomer'
 import Accordian from 'components/faqs/accordian'
 import ProductCareComp from 'components/ProductCare/productCare'
-import PropTypes from 'prop-types';
 import { faqs, ProductCare, deliveryreturns, privacypolicy, termsconditions } from "./dummydatafaqs";
 
 

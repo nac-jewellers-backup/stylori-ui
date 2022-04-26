@@ -1,7 +1,6 @@
 import React from 'react'
-import { Grid, Hidden, Typography } from '@material-ui/core'
+import { Grid, Hidden} from '@material-ui/core'
 import { useStyles } from './style'
-import Slideshow from '../../Carousel/carosul'
 import './index.css'
 
 export const TopPicksGridComponent = (props) => {

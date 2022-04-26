@@ -1,14 +1,11 @@
 import React from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import { Button, Grid, Divider } from "@material-ui/core";
+import { Button, Divider } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 // import { productsDetails } from '../product-image-slider/producthoverData';
 // import { dataCard1 } from '../ProductCard/ProductData';
-import { useDummyRequest } from "../../hooks";
 import Pricing from "../Pricing/index";
-import { productcarddatas } from "../../mappers";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./style";
 import { NavLink } from "react-router-dom";
@@ -17,6 +14,7 @@ import { API_URL, CDN_URL } from "config";
 import Quantity from "../quantity/index";
 import { Slideshow } from "components";
 import WishlistButton from "./Wishlistadd";
+
 function MediaControlCard(props) {
   const { classes } = props;
   const { dataCard1 } = props.data;

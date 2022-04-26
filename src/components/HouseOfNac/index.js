@@ -1,7 +1,5 @@
 import React from "react";
 import HouseOfNac from "assets/houseOfNAC.png";
-import HouseOfNac2x from "assets/houseOfNAC@2x.png";
-import HouseOfNac3x from "assets/houseOfNAC@3x.png";
 import { makeStyles, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({

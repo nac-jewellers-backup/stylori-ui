@@ -1,4 +1,4 @@
-import { resolutions } from "utils";
+
 var colSize = null;
 const screenWidth = () => {
   const width = window.innerWidth;

@@ -5,17 +5,13 @@ import SilverProductDescription from "components/productDescription/silverDescri
 import { Grid, Hidden } from "@material-ui/core";
 import Filter from "components/Filter/filter";
 import Footer from "components/Footer/Footer";
-import { ChatHelp } from "components/ChatHelp";
 import { FilterOptionsContext } from "context";
 import productList from "mappers/productlist";
 import { CDN_URL } from "config";
 import { withRouter } from "react-router";
 import "screens/screens.css";
 import filterData from "mappers/filterData";
-import { async } from "q";
-import MetaTags from "react-meta-tags";
 import { CartContext, GlobalContext } from "context";
-import LiveChat from "react-livechat";
 import NeedHelp from "../components/needHelp";
 import { Helmet } from "react-helmet";
 import ReactPixel from "react-facebook-pixel";

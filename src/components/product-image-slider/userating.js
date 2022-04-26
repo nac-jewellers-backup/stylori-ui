@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CUSTOMERREVIEWS, USERPROFILES } from 'queries/productdetail';
-import { useGraphql } from 'hooks/GraphqlHook';
 // const { setGlobalCtx } = React.useContext(GlobalContext);
 import { ProductDetailContext } from 'context/ProductDetailContext';
 

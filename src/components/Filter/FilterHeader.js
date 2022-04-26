@@ -1,14 +1,11 @@
 import React from 'react';
-import { Paper, Toolbar, Typography, IconButton, Collapse, Chip, Avatar } from '@material-ui/core';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { Paper, Toolbar, Typography, Chip,} from '@material-ui/core';
 import CardRadioButton from "../InputComponents/RadioButton/index"
 import './filter.css';
 import { useDummyRequest } from '../../hooks';
 import { filterParams } from '../../mappers';
 import { Grid, Popper, ClickAwayListener, Grow } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { sortOptions } from '../../mappers/dummydata/filterdata';
 import { FilterOptionsContext } from 'context'
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';

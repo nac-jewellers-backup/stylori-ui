@@ -7,10 +7,9 @@ import "../product-image-slider/product-images.css";
 import PropTypes from "prop-types";
 import Wishlist from "components/wishlist/wishlist";
 import { GlobalContext, CartContext } from "context";
-import Buynowbutton from "../Buynow/buynowbutton";
-import CommenDialog from "../Common/Dialogmodel";
 import { injectUrl_url_construct } from 'common/index'
-import { CDN_URL } from '../../config'
+import { CDN_URL } from '../../config';
+
 const Slideshow = (props) => {
   let {
     CartCtx: { allorderdata, wishlistdata, setratingcountsclear },

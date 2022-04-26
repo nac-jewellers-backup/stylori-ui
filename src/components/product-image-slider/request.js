@@ -6,13 +6,11 @@ import {
     ExpansionPanelSummary,
     ExpansionPanel,
     Typography,
-    TextField
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 import './product-images.css'
 import { Input } from '../InputComponents/TextField/Input'
-import { Form } from '../Form/Form'
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';

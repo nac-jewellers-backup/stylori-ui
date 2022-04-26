@@ -1,18 +1,13 @@
 import React from 'react';
 // import './product-image-slider/loginRegisters.css'
 import { Grid, Button, Container, TextField } from '@material-ui/core';
-import { Input } from 'components/InputComponents/TextField/Input'
 import Header from 'components/SilverComponents/Header'
 import Footer from "components/Footer/Footer"
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom'
-import {
-    Checkbox
-} from '@material-ui/core';
 import { useNetworkRequest } from 'hooks/NetworkHooks'
-import { async } from 'q';
 import CommenDialog from 'components/Common/Dialogmodel'
 
 

@@ -1,5 +1,5 @@
-import { CDN_URL, API_URL } from 'config'
-import React from 'react';
+import { CDN_URL } from 'config'
+
 export const primaryImage = [
   "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Collection+Page/Alpha-Page-tile-01+(1).jpg",
   "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Collection+Page/Alpha-Page-tile-05+(1).jpg",

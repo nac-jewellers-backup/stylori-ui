@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import "./ProductDescription.css";
 import { Container, Hidden, Grid, Typography } from "@material-ui/core";
-import Slideshow from "../Carousel/carosul";
 import { withStyles } from "@material-ui/core/styles";
-
 import { withRouter } from "react-router-dom";
-
-import { homePageStylori } from "../../containers/dummydatahome";
 import { API_URL } from "../../config";
 import { ALLSTYLORISILVERLISTINGPAGE } from "../../queries/home";
 

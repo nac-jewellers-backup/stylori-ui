@@ -29,12 +29,10 @@ import styles from "./styles";
 import { NavLink } from "react-router-dom";
 import usershape from "../../assets/Icons/user-shape.svg";
 import logout from "../../assets/Icons/logout.svg";
-import love from "../../assets/Icons/love.svg";
 import shopping from "../../assets/Icons/shopping.svg";
-import delivery from "../../assets/Icons/delivery.svg";
 import telephone from "../../assets/Icons/telephone.svg";
-import Button from "@material-ui/core/Button";
 import Popover from "@material-ui/core/Popover";
+
 let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
 class Header extends Component {
   constructor(props) {

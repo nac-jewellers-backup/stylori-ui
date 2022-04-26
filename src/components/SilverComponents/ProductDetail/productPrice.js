@@ -1,4 +1,4 @@
-import { Grid, Hidden, ExpansionPanel, Container, Popover, paper, Paper } from "@material-ui/core";
+import { Grid, Hidden, Container, Popover, Paper } from "@material-ui/core";
 import Slideshow from "../../Carousel/carosul";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
@@ -8,7 +8,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Pricing from "../../Pricing/index";
 import styles from "./style";
 import Wishlist from "components/wishlist/wishlist";
-import { Button } from "semantic-ui-react";
 
 const dataCarousel = {
   dots: true,

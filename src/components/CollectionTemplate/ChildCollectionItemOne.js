@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid, Typography, Button, Hidden } from "@material-ui/core";
-import CollectionPageStylori from './CollectionData';
 import Slideshow from '../../components/Carousel/carosul';
 import { makeStyles } from '@material-ui/styles';
 import './Collection.css';

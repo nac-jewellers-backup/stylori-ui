@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { ADDRESSDETAILS } from 'queries/productdetail';
-import { resetWarningCache } from 'prop-types';
 import { CartContext } from 'context';
 import { USERPROFILE } from 'queries/cart';
 

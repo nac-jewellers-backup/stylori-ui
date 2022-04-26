@@ -1,7 +1,7 @@
 import React from "react";
 import { Alert } from "@material-ui/lab";
-import { Button,IconButton,Snackbar } from "@material-ui/core";
-import { Close } from "@material-ui/icons";
+import { Snackbar } from "@material-ui/core";
+
 
 
 export function SimpleSnackbar(props) {

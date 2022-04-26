@@ -3,13 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import FooterAccordion from "../FooterAccordion";
 
-import googlePlaystore from "assets/iconsPlayStore.png";
-import visa from "assets/visa.jpg";
-import mastercard from "assets/mastercard.gif";
-import AmericanExpress from "assets/American-Express.png";
-import DinersClub from "assets/Diners-Club.jpg";
-import Netbanking from "assets/mouse.png";
-import cartoonFooter from "assets/cartoonFooter.png";
 import { shopByCategory, aboutUs, customerService, contactUs } from "utils";
 
 const useStyles = makeStyles((theme) => ({

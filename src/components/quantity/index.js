@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.css";
-import { Paper, Grid, Typography } from "@material-ui/core";
+import {Grid, Typography } from "@material-ui/core";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import IndeterminateCheckBoxIcon from "@material-ui/icons/IndeterminateCheckBox";
 import { withStyles } from "@material-ui/core/styles";

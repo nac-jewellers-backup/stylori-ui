@@ -1,4 +1,3 @@
-import { Autorenew } from "@material-ui/icons";
 
 const styles = (theme) => ({
   searchCheck: {

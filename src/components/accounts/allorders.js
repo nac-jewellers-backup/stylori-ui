@@ -1,11 +1,9 @@
 import React from "react";
 import {
-  Container,
   ExpansionPanel,
   ExpansionPanelSummary,
   ExpansionPanelDetails,
   Typography,
-  Avatar,
   Grid,
   Button,
   Box,
@@ -16,7 +14,6 @@ import "./accounts.css";
 import "../Checkout/Cart.css";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ArrowLeft from "@material-ui/icons/ArrowLeft";
-import ArrowRight from "@material-ui/icons/ArrowRight";
 import moment from "moment";
 import Pricing from "../Pricing/index";
 import { CDN_URL } from "config";

@@ -4,7 +4,6 @@ import {
     Grid,
     Button,
     Container,
-    Hidden,
     TextField
 } from '@material-ui/core';
 import Ratings from "../rating/rating";
@@ -14,6 +13,7 @@ import styles from './style';
 import useRating from "./userating"
 import { withRouter } from "react-router";
 import { ProductDetailContext } from 'context/ProductDetailContext';
+
 const RatingForm = (props) => {
     return <RatingComponent  {...props} />
 }

@@ -1,19 +1,17 @@
 import React from 'react';
 import {
-    Container,
     ExpansionPanel,
     ExpansionPanelSummary,
     ExpansionPanelDetails,
     Typography,
-    Avatar,
     Grid,
     Button
 } from '@material-ui/core';
-// import "../../components/Checkout/Cart.css";
 import "./accounts.css";
 import '../Checkout/Cart.css'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import moment from "moment";
+
 function myFunc(total, num) {
     return Math.round(total + num);
 }

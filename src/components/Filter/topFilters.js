@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Grid, Container, Chip } from "@material-ui/core";
 import HeaderHoverMenuItem from "../SilverComponents/HoverNavBarListing/HeaderHoverMenuItem";
 import { filterParams } from "../../mappers";
@@ -7,9 +6,9 @@ import { useDummyRequest } from "../../hooks";
 import { styles } from "./topFilterStyles";
 import MorefiltersOpen from "./moreFilters";
 import { FilterOptionsContext } from "context";
-import AddBoxIcon from "@material-ui/icons/AddBox";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+
 export const TopFilters = (props) => {
   const [state, setState] = React.useState({
     open: false,

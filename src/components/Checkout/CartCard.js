@@ -3,15 +3,11 @@ import Typography from "@material-ui/core/Typography";
 import "./Cart.css";
 import {
   Grid,
-  CardHeader,
   Card,
-  IconButton,
   Hidden,
   Container,
   Button,
-  Box,
   Divider,
-  Icon,
   Accordion,
   AccordionSummary,
   AccordionDetails
@@ -25,7 +21,7 @@ import WishlistButton from "./Wishlistadd";
 import Pricing from "../Pricing/index";
 import styles from "./style";
 import { NavLink } from "react-router-dom";
-import { CartContext, ProductDetailContext } from "context";
+import { CartContext } from "context";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import Promo from "screens/Checkout/orderSummary/promocode";

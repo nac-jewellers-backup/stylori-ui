@@ -1,6 +1,4 @@
-import FlowerDimon from "../assets/FlowerDimon.jpg";
-import closeheart from "../assets/closeheart.jpg";
-import nosepin from "../assets/nosepin.gif";
+
 
 export const homePageStylori = {
   //------------- banner image ---------------

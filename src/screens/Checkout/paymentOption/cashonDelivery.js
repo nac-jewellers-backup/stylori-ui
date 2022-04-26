@@ -1,11 +1,10 @@
 import React from "react";
-import { Container, Grid, Button } from "@material-ui/core";
+import {Grid, Button } from "@material-ui/core";
 import "./payment.css";
 // import SimpleSelect from '../../../components/InputComponents/Select/Select';
 import { CartContext } from "context";
 import cart from "mappers/cart";
-import { useNetworkRequest } from "hooks/index";
-import { API_URL, HOME_PAGE_URL, CDN_URL } from "../../../config";
+import { API_URL } from "../../../config";
 // import { CartContext } from 'context'
 
 var obj = {};

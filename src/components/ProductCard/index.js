@@ -1,9 +1,6 @@
 import React from "react";
 import {ImgMediaCard} from "./Card.js";
 import {SilverImgMediaCard} from "./silverCard";
-import { useGraphql } from "../../hooks/GraphqlHook.js";
-import productlistmapper from "../../mappers/productlist.js";
-import { productlist as productlistquery } from "../../queries/index.js";
 import {GlobalContext } from 'context'
 // import  {ProductCard}  from "./ProductCard";
 function Card(props) {

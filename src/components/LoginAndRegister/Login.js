@@ -1,17 +1,12 @@
 import React from 'react';
 // import './product-image-slider/loginRegisters.css'
-import { Grid, Button, Container } from '@material-ui/core'; 
-import { Input } from '../../components/InputComponents/TextField/Input'
+import { Grid, Container } from '@material-ui/core'; 
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import useLogin from '../../screens/Checkout/loginRegister/useLogin';
 import Header from 'components/SilverComponents/Header'
 import Footer from "components/Footer/Footer"
 import { withRouter } from "react-router";
-import {
-    Checkbox
-} from '@material-ui/core';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Login from 'screens/Checkout/loginRegister/login';
 import { CartContext } from 'context'
 import { FilterOptionsContext } from 'context'

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useGraphql } from "hooks/GraphqlHook";
 import { useNetworkRequest } from "hooks/NetworkHooks";
-import { PRODUCTLIST, conditions, seoUrlResult } from "queries/productListing";
+import { seoUrlResult } from "queries/productListing";
 import { withRouter } from "react-router-dom";
 import productlist from "mappers/productlist";
 import { CDN_URL } from "config";
@@ -9,9 +9,6 @@ import { matchPath } from "react-router";
 import { createApolloFetch } from "apollo-fetch";
 import { NetworkContext } from "context/NetworkContext";
 import { GlobalContext } from "context/GlobalContext";
-import { bool } from "prop-types";
-import { filterParams } from "mappers";
-import { Redirect } from "react-router-dom";
 
 const initialCtx = {
   FilterOptionsCtx: {

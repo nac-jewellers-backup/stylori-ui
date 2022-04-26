@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useGraphql } from "hooks/GraphqlHook";
 import {
   PRODUCTDETAILS,
-  conditions,
   YouMayAlsoLike,
   youRecentlyViewed,
 } from "queries/productdetail";

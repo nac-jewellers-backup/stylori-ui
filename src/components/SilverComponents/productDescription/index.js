@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import "./ProductDescription.css";
-import { Container, Hidden, Grid, Typography } from "@material-ui/core";
+import { Hidden, Grid} from "@material-ui/core";
 import Slideshow from "components/Carousel/carosul";
-import CustomSeparator from "components/BreadCrumb/index";
 import { withStyles } from "@material-ui/core/styles";
-
 import { withRouter } from "react-router-dom";
+
 const styles = (theme) => ({
   colorLight: {
     color: theme.palette.secondary.light,

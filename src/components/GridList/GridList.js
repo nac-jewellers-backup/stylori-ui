@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import "./GridList.css";
-import { Button, Grid, Hidden } from "@material-ui/core";
+import { Grid, Hidden } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -5,27 +5,19 @@ import {
   Hidden,
   Container,
   Typography,
-  TextField,
   InputAdornment,
   Input,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import googlePlaystore from "../../assets/iconsPlayStore.png";
-import visa from "../../assets/visa.jpg";
-import mastercard from "../../assets/mastercard.gif";
-import AmericanExpress from "../../assets/American-Express.png";
-import DinersClub from "../../assets/Diners-Club.jpg";
-import Netbanking from "../../assets/mouse.png";
 import cartoonFooter from "../../assets/cartoonFooter.png";
 import "./Footer.css";
-import { pointer } from "popmotion";
-import stylorisilverlogo from "../../assets/Stylori Silver logo.svg";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import DesktopFooter from "components/SilverComponents/DesktopFooter";
 import { API_URL } from "config";
 import { SnackBar } from "components/snackbarAlert/SnackBar";
 import { useLocation } from "react-router-dom";
-import { CartContext, GlobalContext } from "context";
+
+
 const useStyles = makeStyles((theme) => ({
   navTitle: {
     cursor: "pointer",

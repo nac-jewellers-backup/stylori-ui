@@ -3,14 +3,9 @@ import Slideshow from "../../Carousel/carosul";
 import { useDummyRequest } from "../../../hooks";
 import { HomedataSilver } from "../../../mappers";
 import { useStyles } from "./styles.js";
-import { Grid, Container, Hidden, Button } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/styles";
+import { Grid, Hidden, Button } from "@material-ui/core";
 import { injectUrl_url_construct } from "common/index";
-import { CDN_URL, API_URL } from "config";
-import {
-  silverStyloriCollections,
-  silverStyloriAllMasterCollections,
-} from "queries/home";
+import { CDN_URL} from "config";
 import {
   ExpansionPanel,
   ExpansionPanelDetails,

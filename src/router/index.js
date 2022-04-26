@@ -25,7 +25,6 @@ import Success from "../screens/Stylori/success";
 import Fail from "../screens/Stylori/fail";
 import Contactus from "../screens/Stylori/contactUs";
 import Careers from "../screens/Stylori/careers";
-import { Helmet } from "react-helmet";
 import ReactPixel from "react-facebook-pixel";
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {

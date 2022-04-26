@@ -19,7 +19,6 @@ import {
   Hidden,
   Container,
   Chip,
-  Card,
 } from "@material-ui/core";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import "./filter.css";

@@ -3,8 +3,6 @@ import './address.css'
 import { Container, Grid, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import styles from "./style"
-import Typography from '@material-ui/core/Typography';
-import Modal from '@material-ui/core/Modal';
 import CommenDialog from "components/Common/Dialogmodel"
 
 // const panel_clear = JSON.parse(localStorage.getItem("panel")) ? JSON.parse(localStorage.getItem("panel")) : ""

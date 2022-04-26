@@ -1,23 +1,15 @@
-import React, { useEffect, useRef } from "react";
-import { Redirect } from "react-router-dom";
-import { Grid, Button, Hidden } from "@material-ui/core";
+import React from "react";
+import { Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import "./payment.css";
 import Divider from "@material-ui/core/Divider";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import { CartContext } from "context";
 import { withRouter } from "react-router-dom";
 import cart from "mappers/cart";
 import Allorders from "components/accounts/allorders";
-import { API_URL, HOME_PAGE_URL, CDN_URL } from "../../../config";
+import { API_URL } from "../../../config";
 import Header from "components/SilverComponents/Header";
-import styles from "../../../components/Checkout/style";
-import CustomSeparator from "../../../components/BreadCrumb/index";
-import { withStyles } from "@material-ui/core/styles";
-import { makeStyles } from '@material-ui/core/styles';
 import "../../../components/Checkout/Cart.css";
 import "../chckout.css";
-import Footer from "components/Footer/Footer";
 
 const order_id = localStorage.getItem("order_id")
   ? JSON.parse(localStorage.getItem("order_id"))

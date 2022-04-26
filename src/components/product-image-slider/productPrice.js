@@ -1,10 +1,8 @@
 import {
   Grid,
   Hidden,
-  ExpansionPanel,
   Container,
   Popover,
-  paper,
   Paper,
 } from "@material-ui/core";
 import Slideshow from "../Carousel/carosul";
@@ -16,9 +14,9 @@ import { withStyles } from "@material-ui/core/styles";
 import Pricing from "../Pricing/index";
 import styles from "./style";
 import Wishlist from "components/wishlist/wishlist";
-import { Button } from "semantic-ui-react";
 import axios from "axios";
-import { API_URL, CDN_URL } from "config";
+import { API_URL} from "config";
+
 const dataCarousel = {
   dots: true,
   infinite: false,

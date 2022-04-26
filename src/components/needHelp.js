@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Popper from "@material-ui/core/Popper";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 // import Fade from "@material-ui/core/Fade";
@@ -9,12 +8,10 @@ import Collapse from "@material-ui/core/Collapse";
 import Paper from "@material-ui/core/Paper";
 import ChatIcon from "@material-ui/icons/Chat";
 import CallIcon from "@material-ui/icons/Call";
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
-import { Divider, Hidden } from "@material-ui/core";
+import { Hidden } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
-import EmailIcon from "@material-ui/icons/Email";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
-import WhatsappPNG from "../assets/Icons/whatsapp.png";
+
 const useStyles = makeStyles((theme) => ({
   //   root: {
   //     width: 500,

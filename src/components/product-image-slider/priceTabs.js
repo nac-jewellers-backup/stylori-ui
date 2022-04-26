@@ -3,14 +3,9 @@ import {
   Grid,
   Hidden,
   ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
-  Tabs,
-  Tab,
   Typography,
   Container,
   Modal,
-  Button,
 } from "@material-ui/core";
 import React from "react";
 import "./product-images.css";

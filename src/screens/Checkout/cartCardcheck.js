@@ -17,7 +17,6 @@ import ProductList from "./orderSummary/productList";
 import LoginRegisterIndex from "./loginRegister";
 import { withStyles } from "@material-ui/core/styles";
 import PaymentIndex from "./paymentOption/paymentindex";
-
 import styles from "../Checkout/loginRegister/style";
 import CartCard from "../../components/Checkout/CartCard";
 import { CartContext, ProductDetailContext } from "../../context";

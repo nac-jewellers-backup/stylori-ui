@@ -1,13 +1,6 @@
 import React from 'react';
 import {
-    Container,
-    ExpansionPanel,
-    ExpansionPanelSummary,
-    ExpansionPanelDetails,
-    Typography,
-    Avatar,
     Grid,
-    Button
 } from '@material-ui/core';
 import "./accounts.css";
 import { CartContext } from 'context'

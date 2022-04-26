@@ -3,7 +3,6 @@ import { Grid, Hidden } from "@material-ui/core";
 import { useStyles } from "./style";
 import Slideshow from "../../Carousel/carosul";
 import "./index.css";
-import NacGagets from "../../../components/NacGagets/NacGagets";
 import Gadgets from "components/product-image-slider/Gagetstylori/Gagetstylori";
 
 export const FeaturedGridComponent = (props) => {

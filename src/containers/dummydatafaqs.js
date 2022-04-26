@@ -1,4 +1,4 @@
-import FlowerDimon from "../assets/FlowerDimon.jpg";
+
 
 export const faqs = {
   carouselTop: {

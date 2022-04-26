@@ -1,22 +1,10 @@
 import React from 'react';
 import { Grid } from '@material-ui/core'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
 import '../faqs/faqs.css'
-import { borderBottom, lineHeight } from '@material-ui/system';
-import Icon from '@material-ui/core/Icon';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Collapse from '@material-ui/core/Collapse';
-import ProductCareAccordian from '../../components/ProductCare/productCareAccordian'
+import ProductCareAccordian from '../../components/ProductCare/productCareAccordian';
+
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',

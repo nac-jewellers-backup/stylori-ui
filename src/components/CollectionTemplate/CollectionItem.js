@@ -1,14 +1,13 @@
 import React from "react";
-import { Grid, Typography, Button, Hidden } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 import CollectionPageStylori from "./CollectionData";
-import Slideshow from "../../components/Carousel/carosul";
 import { makeStyles } from "@material-ui/styles";
 import ChildCollectionItemOne from "./ChildCollectionItemOne";
 import ChildCollectionItemTwo from "./ChildCollectionItemTwo";
 import "./Collection.css";
 import { seoUrlResult } from "queries/productListing";
 import { NetworkContext } from "context/NetworkContext";
-import { useNetworkRequest } from "hooks/NetworkHooks";
+
 import "screens/screens.css";
 
 const useStyles = makeStyles((theme) => ({

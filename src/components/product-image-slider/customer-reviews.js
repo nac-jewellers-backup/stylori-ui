@@ -2,23 +2,13 @@ import {
   Grid,
   Container,
   Hidden,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
-  Typography,
 } from "@material-ui/core";
-import Slideshow from "../Carousel/carosul";
 import React from "react";
 import "./product-images.css";
-import PropTypes from "prop-types";
-import { useDummyRequest } from "../../hooks";
 import { withStyles } from "@material-ui/core/styles";
-import { productpricingPages } from "../../mappers";
 import styles from "./style";
 import { ProductDetailContext } from "context/ProductDetailContext";
 import productDetails from "mappers/productDetails";
-import subcarousel from "components/Home/subcarousel";
-import Sublistcarousel from "./subListcarousel";
 
 const Star = ({ selected = false, onClick = (f) => f }) => (
   <div>

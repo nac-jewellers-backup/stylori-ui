@@ -6,8 +6,6 @@ import { ALLORDERS } from "queries/cart";
 import { ALLUSERWISHLISTS } from "queries/cart";
 import { withRouter } from "react-router-dom";
 import { useNetworkRequest } from "hooks/NetworkHooks";
-import { FilterOptionsContext } from "context/FilterOptionsContext";
-import { matchPath } from "react-router";
 import { API_URL } from "config";
 import axios from "axios";
 // import { productsPendants } from 'mappers/dummydata';

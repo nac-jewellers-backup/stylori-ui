@@ -1,7 +1,6 @@
 import {
   makeStyles,
   Typography,
-  Grid,
   createTheme,
   ThemeProvider,
 } from "@material-ui/core";

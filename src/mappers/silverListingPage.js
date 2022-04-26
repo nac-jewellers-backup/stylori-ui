@@ -1,4 +1,4 @@
-import { resolutions } from "utils";
+
 export default function (data) {
   let mapperdata = [];
   try {

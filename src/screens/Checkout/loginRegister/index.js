@@ -1,15 +1,11 @@
 import React from "react";
 import "./loginRegisters.css";
-import { Container, Grid, Button, Card, CardContent, Divider } from "@material-ui/core";
-import Login from "./login";
+import { Grid, Button} from "@material-ui/core";
 import Login2 from "./login2";
-import Register from "./register";
-import Continues from "./continues";
 import { useDummyRequest } from "../../../hooks";
 import { checkoutloginRegs } from "../../../mappers";
 import styles from "./style";
 import { withStyles } from "@material-ui/core/styles";
-import { fontWeight } from "@material-ui/system";
 import { CartContext } from "../../../context/CartContext";
 
 class LoginRegisterIndex extends React.Component {

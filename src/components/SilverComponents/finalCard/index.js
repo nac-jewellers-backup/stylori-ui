@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { SilverButton } from "../SilverButton";
 import { makeStyles } from "@material-ui/core/styles";
 import classNames from "classnames";

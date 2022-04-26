@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Hidden, Typography, Button } from '@material-ui/core';
+import { Grid, Typography,} from '@material-ui/core';
 import Slideshow from '../../../components/Carousel/carosul';
 import './index.css'
 import Quodes from '../../../assets/Quotes'

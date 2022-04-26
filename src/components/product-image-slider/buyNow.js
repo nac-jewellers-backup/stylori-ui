@@ -17,6 +17,7 @@ import Buynowfixed from "components/SilverComponents/ProductDetail/buynowfixed";
 import SilverProductPrice from "./silverProductPrice";
 import axios from "axios";
 import { API_URL } from "../../config";
+
 const inputsearch = (
   props,
   state,

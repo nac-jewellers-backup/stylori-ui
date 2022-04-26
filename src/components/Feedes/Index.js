@@ -1,15 +1,7 @@
 import React, { useEffect } from "react";
-import Aos from "aos";
 import "aos/dist/aos.css";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography } from "@material-ui/core";
-import Slideshow from "../../components/Carousel/carosul";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
-import StyloriNews from "./StyloriNews";
 import Tweeterfeed from "../../components/storyTemplate/tweeterEmbedded";
 import { Helmet } from "react-helmet";
 import { InstagramFeed } from "./instagramfeed";

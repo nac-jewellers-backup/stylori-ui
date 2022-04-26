@@ -1,12 +1,10 @@
-import { Container, Grid, Button } from '@material-ui/core';
+import {Grid, Button } from '@material-ui/core';
 import React from 'react';
 import './loginRegisters.css'
 import { Input } from '../../../components/InputComponents/TextField/Input'
 import SimpleSelect from '../../../components/InputComponents/Select/Select';
 import useRegister from './useregister';
 import { NavLink } from 'react-router-dom';
-import { useCheckForCod } from 'hooks/CheckForCodHook';
-import { USERPROFILE } from 'queries/cart';
 
 const Register = (props) => {
     return <RegisterComponent  {...props} />

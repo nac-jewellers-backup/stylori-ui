@@ -1,18 +1,11 @@
 import React from 'react';
 import {
-    Container,
-    ExpansionPanel,
-    ExpansionPanelSummary,
-    ExpansionPanelDetails,
-    Typography,
-    Avatar,
     Grid,
-    Button
 } from '@material-ui/core';
 import "./accounts.css";
 import { CartContext } from 'context'
 import RemoveWishlist from 'components/wishlist/removewishlist';
-import { API_URL, CDN_URL } from "config"
+import { CDN_URL } from "config"
 
 // props.setCartFilters({ skuId: data[0].skuId, qty: 1, price: data[0].offerPrice })
 const Wishlists = (props) => {

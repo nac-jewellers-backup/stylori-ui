@@ -1,16 +1,15 @@
-import React, { lazy, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Slideshow from "../../Carousel/carosul";
 import { useDummyRequest } from "../../../hooks";
 import { HomedataSilver } from "../../../mappers";
 import { Grid, Typography, Hidden } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/styles";
 import { useStyles } from "./style.js";
 import { GlobalContext } from "context";
-import Gadgets from "components/product-image-slider/Gagetstylori/Gagetstylori";
 import { Helmet } from "react-helmet";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { API_URL } from "../../../config";
 import { ALLSTYLORISILVERLANDINGBANNERS } from "queries/home";
+
 const SilverCarousel = (props) => {
   const dataCarousel = {
     arrows: true,

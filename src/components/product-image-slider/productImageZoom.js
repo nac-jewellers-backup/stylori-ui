@@ -1,22 +1,14 @@
-import { Grid, Hidden, Container, Button } from "@material-ui/core";
-import { withRouter } from "react-router-dom";
+import { Grid, Hidden, Button } from "@material-ui/core";
 import Slideshow from "../Carousel/carosul";
 import React from "react";
 import PropTypes from "prop-types";
 import "./product-images.css";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../Header/styles";
-import ReactImageZoom from "react-image-zoom";
-import StaticView from "components/CarouselLazyer/StaticView";
 import Gagetstylori from "./Gagetstylori/Gagetstylori";
 import { CDN_URL } from "config";
 import {
-  Magnifier,
   GlassMagnifier,
-  SideBySideMagnifier,
-  PictureInPictureMagnifier,
-  MOUSE_ACTIVATION,
-  TOUCH_ACTIVATION,
 } from "react-image-magnifiers";
 
 class ProductImageZoom extends React.Component {

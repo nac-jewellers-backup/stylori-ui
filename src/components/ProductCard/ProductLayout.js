@@ -2,12 +2,6 @@ import React from 'react';
 import { GridList, GridListTile, Button } from '@material-ui/core';
 import ProductCards from './index';
 import { withStyles } from '@material-ui/core/styles';
-import { useDummyRequest } from 'hooks';
-import { productcarddatas } from 'mappers';
-import productlist from 'mappers/productlist';
-import { PRODUCTLIST } from 'queries';
-import { useGraphql } from 'hooks/GraphqlHook';
-import { CDN_URL } from 'config';
 import { FilterOptionsContext } from 'context'
 import { withRouter } from "react-router";
 

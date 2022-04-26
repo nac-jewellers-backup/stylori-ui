@@ -6,7 +6,8 @@ import ImageGridList from './HoverImagesGrid'
 import PropTypes from 'prop-types';
 import HoverTableGrid from './HoverTableGrid';
 import HoverImagesFullGrid from './HoverImagesFullGrid';
-import './../header.css'
+import './../header.css';
+
 const useStyles = makeStyles(theme => ({
   paperdiv:{
     position: "relative",

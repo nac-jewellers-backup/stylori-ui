@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
-import { useNetworkRequest } from 'hooks/index';
+import React from 'react';
 import { CartContext,ProductDetailContext } from 'context'
-import { API_URL, HOME_PAGE_URL, CDN_URL } from '../../config';
-import { CART, FetchSku, FetchCartId } from 'queries/cart';
+import { API_URL } from '../../config';
+import { FetchCartId } from 'queries/cart';
 import { checkProductAlreadyExistInCart } from "queries/productdetail";
 
 var orderobj = {};

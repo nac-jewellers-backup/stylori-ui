@@ -1,11 +1,7 @@
 import {
   Grid,
   Hidden,
-  ExpansionPanel,
   Container,
-  Popover,
-  paper,
-  Paper,
   Button,
   Typography,
 } from "@material-ui/core";
@@ -13,21 +9,17 @@ import Slideshow from "../Carousel/carosul";
 import React from "react";
 import PropTypes from "prop-types";
 import "./product-images.css";
-import Ratings from "../rating/rating";
 import { withStyles } from "@material-ui/core/styles";
 import Pricing from "../Pricing/index";
 import styles from "./style";
 import Wishlist from "components/wishlist/wishlist";
 import Buynowbutton from "../Buynow/buynowbutton";
-import CommenDialog from "../Common/Dialogmodel";
 // import { Button } from '';
 import { GlobalContext, CartContext } from "context";
 import PriceTabs from "components/product-image-slider/priceTabs";
-import Quantity from "../quantity";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import { ProductDetailContext } from "context/ProductDetailContext";
-import LocalMallIcon from "@material-ui/icons/LocalMall";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";

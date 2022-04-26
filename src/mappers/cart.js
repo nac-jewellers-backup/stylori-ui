@@ -1,6 +1,4 @@
 import moment from "moment";
-import axios from "axios";
-import { API_URL } from "../config";
 // export const productsDetails = [
 //     {
 //         header: "Product Details",

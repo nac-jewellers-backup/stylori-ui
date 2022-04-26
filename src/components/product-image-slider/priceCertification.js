@@ -9,8 +9,6 @@ import {
 import React from "react";
 import "./product-images.css";
 import PropTypes from "prop-types";
-import { useDummyRequest } from "../../hooks";
-import { productpricingPages } from "../../mappers";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./style";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";

@@ -2,30 +2,13 @@ import React from "react";
 import Header from "components/SilverComponents/Header";
 import Aos from "aos";
 import {
-  Dialog,
-  DialogTitle,
   Grid,
   Hidden,
-  Modal,
-  TextField,
   Typography,
-  Box,
-  DialogContent,
-  Divider,
-  Button,
-  IconButton,
 } from "@material-ui/core";
-import {
-  Cancel,
-  Clear,
-  Delete,
-  PhoneAndroid,
-  PhoneIphone,
-} from "@material-ui/icons";
 import Skeleton from "@material-ui/lab/Skeleton";
 import Footer from "components/Footer/Footer";
 import { withRouter } from "react-router";
-import { makeStyles } from "@material-ui/styles";
 import "index.css";
 import Slideshow from "../components/Carousel/carosul";
 import StaticView from "../components/CarouselLazyer/StaticView";
@@ -37,13 +20,10 @@ import Stories from "../components/Stories/Index";
 import MetaTags from "react-meta-tags";
 import { storyData } from "../components/storyTemplate/storyTemplateData";
 import NeedHelp from "../components/needHelp";
-import { CDN_URL, API_URL } from "../config";
+import { API_URL } from "../config";
 import { ALLSTYLORILANDINGBANNERS } from "queries/home";
 import "aos/dist/aos.css";
 import ReactPixel from "react-facebook-pixel";
-import facebook from "../assets/facebook.svg";
-import gmail from "../assets/gmail.svg";
-import { AiOutlineMobile } from "react-icons/ai";
 import Login from "components/SilverComponents/login";
 
 class HomeStylori extends React.Component {
