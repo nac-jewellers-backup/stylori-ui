@@ -63,6 +63,7 @@ function Login(props) {
     isOtp: false,
     alert: false,
     alertMsg: "",
+    alertSev:"",
     cls: false,
   });
 
@@ -107,6 +108,7 @@ function Login(props) {
             isOtp: true,
             alert: true,
             alertMsg: "OTP success",
+            alertSev:"success"
           });
         })
         .catch((err) => {
@@ -330,6 +332,10 @@ function Login(props) {
     []
   );
 
+  useEffect(()=>{
+    console.log(status,error,data,"ssss")
+  },[status,error])
+
   useEffect(() => {
     if (data?.accessToken) {
       localStorage.setItem("email", data.userprofile.email);
@@ -340,11 +346,14 @@ function Login(props) {
       localStorage.setItem("check_dlt", false);
       localStorage.setItem("isedit", 1);
       localStorage.setItem("true", false);
-      setCondition({ ...condition, alert: true, alertMsg: "Login success" });
+      setCondition({ ...condition, alert: true, alertMsg: data.message,alertSev:"success" });
       setTimeout(function () {
         //Start the timer
         setCondition({ ...condition, cls: true }); //After 1 second, set render to true
       }, 1000);
+    }
+    else if(data?.message){
+      setCondition({ ...condition, alert: true, alertMsg: data.message,alertSev:"error" });
     }
   }, [data]);
 
@@ -657,7 +666,7 @@ function Login(props) {
         </DialogContent>
         {condition.alert ? (
           <SimpleSnackbar
-            severity="success"
+            severity={condition?.alertSev}
             message={condition?.alertMsg}
             open={condition?.alert}
             handleClose={onClose}

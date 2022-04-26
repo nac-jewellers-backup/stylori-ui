@@ -3,6 +3,7 @@ import Header from "components/SilverComponents/Header";
 import { Grid, Hidden } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 import ProductModal from "components/SilverComponents/ProductModal";
+import Footer from "components/Footer/Footer";
 import CarosolTop from "components/SilverComponents/SilvercarosolPhoto";
 import { API_URL } from "config";
 import {
