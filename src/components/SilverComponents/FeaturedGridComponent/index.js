@@ -39,10 +39,14 @@ export const FeaturedGridComponent = (props) => {
             {props.data[0].images.map((val, Index) => {
               return (
                 <a
-                  onClick={() =>
-                    (window.location.href =
-                      props.imgs && "/silver-jewellery-dmudra")
-                  }
+                 href={() =>
+                  (window.location.href =
+                    props.imgs && "/silver-jewellery-dmudra")
+                 }
+                  // onClick={() =>
+                  //   (window.location.href =
+                  //     props.imgs && "/silver-jewellery-dmudra")
+                  // }
                   style={{ cursor: "pointer" }}
                 >
                   <img

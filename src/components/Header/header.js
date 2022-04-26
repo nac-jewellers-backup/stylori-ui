@@ -102,17 +102,6 @@ class Header extends Component {
       subheader,
       menuListHeader,
       menuLists,
-      earings,
-      rings,
-      pendants,
-      nosepins,
-      banglesbracelets,
-      valayal,
-      kammal,
-      koluse,
-      Price,
-      Collection,
-      Material,
     } = this.props.data;
     let { selected, selected1 } = this.state;
     const { classes } = this.props;

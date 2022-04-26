@@ -90,15 +90,15 @@ class ProductDescription extends Component {
 
   render() {
     const { classes } = this.props;
-    var loc = this.props.location.pathname;
+    // var loc = this.props.location.pathname;
 
-    var path = loc.split("/");
-    var data_json = [
-      { title: "home", url: "/" },
-      { title: "jewellery", url: "/jewellery" },
-    ];
-    const settings =
-      this.props.data && this.props.data[0] && this.props.data[0].dataCarousel;
+    // var path = loc.split("/");
+    // var data_json = [
+    //   { title: "home", url: "/" },
+    //   { title: "jewellery", url: "/jewellery" },
+    // ];
+    // const settings =
+    //   this.props.data && this.props.data[0] && this.props.data[0].dataCarousel;
     const fadeImages =
       this.props.datalisting &&
       this.props.datalisting &&

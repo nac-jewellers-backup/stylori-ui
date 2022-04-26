@@ -93,7 +93,6 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     backgroundColor: "#fff",
     border: "1px solid #ddd",
-    marginLeft: 0,
     borderTopLeftRadius: "4px",
     borderBottomLeftRadius: "4px",
   },
@@ -194,6 +193,7 @@ export default function StaticView(props) {
                         height: "512px",
                         width: "345px",
                       }}
+                      title="...."
                     ></iframe>{" "}
                   </>
                 ) : (
@@ -210,6 +210,7 @@ export default function StaticView(props) {
                         height: "512px",
                         width: "345px",
                       }}
+                      title="...2"
                     ></iframe>{" "}
                   </>
                 )}

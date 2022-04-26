@@ -87,8 +87,8 @@ class Addressdetails extends React.Component {
         sessionStorage.setItem("Ifcheck", false)
         const { classes } = props;
         var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
-        const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
-        const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
+        // const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
+        // const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
         const delete_all_addresses = (val_addrs1, index) => {
             // alert(JSON.stringify(index))
             if (document.location.pathname === "/checkout") {

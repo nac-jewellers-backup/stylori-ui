@@ -102,8 +102,8 @@ class Component extends React.Component {
 
   }
   render() {
-    const { classes, data, loading } = this.props;
-    const { disabledstate } = this.state;
+    const { classes, data } = this.props;
+    // const { disabledstate } = this.state;
     // const _height = (data && data.imageResolution) ? `${data.imageResolution.img_res + 120}px` : `350px`
     // const disabledstate = this.props.data.length < 24 ? 'disabled=true' : ''
     // console.log(dataCard)

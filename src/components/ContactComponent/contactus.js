@@ -93,7 +93,7 @@ export default function CustomizedInputs() {
         open: false
     });
     const classes = useStyles();
-    const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/addquestion', {}, false, {})
+    const { data: ntxdata, makeFetch } = useNetworkRequest('/addquestion', {}, false, {})
     const handleChange = (name, value) => {
         setValues({ ...values, [name]: value, errorName: "", emailError: "", errorMessage: "", phoneError: "" })
     }

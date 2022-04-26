@@ -6,7 +6,7 @@ export default function (data) {
     mapperdata = [];
   }
   const _format = mapperdata.map((k) => {
-    const get = (data) => (data ? data : []);
+    // const get = (data) => (data ? data : []);
     const getstring = (data) => (data ? data : "");
     const getSubFilterLength = (data) => {
       var arr =
@@ -35,6 +35,7 @@ export default function (data) {
               _obj[val] = getSubFilterLength(data[0][val]);
             }
           }
+          return 0;
         });
       }
       return { ..._obj };
@@ -54,6 +55,7 @@ export default function (data) {
                 ) {
                   if (data[0][val].length > 0) return val;
                 }
+                return 0;
               })
             : [],
 

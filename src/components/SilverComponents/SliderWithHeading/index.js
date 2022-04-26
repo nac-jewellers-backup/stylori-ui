@@ -106,8 +106,6 @@ const SliderWithHeading = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const aboveSm = useMediaQuery(theme.breakpoints.up("sm"));
-  const location = useLocation();
-  const history = useHistory();
 
   const [sliderInstance, setSliderInstance] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
@@ -128,7 +126,7 @@ const SliderWithHeading = (props) => {
     afterChange: (index) => setCurrentIndex(index),
   };
 
-  const { heading, products = [] } = props;
+  const {  products = [] } = props;
 
   
 

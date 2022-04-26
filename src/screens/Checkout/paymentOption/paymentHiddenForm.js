@@ -6,7 +6,7 @@ import { CartContext } from "context";
 
 export default function PaymentHiddenForm(props) {
   let {
-    CartCtx: { setCartFilters, cartFilters, data, loading, error },
+    CartCtx: {cartFilters },
   } = React.useContext(CartContext);
   const [hash, sethash] = useState({
     hashvalue: "",
@@ -31,7 +31,7 @@ export default function PaymentHiddenForm(props) {
   
   const [orderId, setOrderId] = React.useState(null);
   const obj = {};
-  const order_idx = localStorage.getItem("order_id") ? JSON.parse(localStorage.getItem("order_id")) : "yourorder";
+  // const order_idx = localStorage.getItem("order_id") ? JSON.parse(localStorage.getItem("order_id")) : "yourorder";
   let cart_id_lo = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : "";
   let cart_id =
     cartFilters && cartFilters._cart_id && Object.keys(cartFilters._cart_id).length > 0 ? cartFilters._cart_id.cart_id : "";

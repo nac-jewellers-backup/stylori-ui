@@ -197,6 +197,7 @@ export default function MoreFilters(props) {
                     </Grid>
                   );
                 }
+                return 0;
               })}
             </Grid>
           </div>
