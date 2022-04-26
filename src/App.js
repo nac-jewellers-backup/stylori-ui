@@ -4,7 +4,6 @@ import { NetworkProvider, GlobalProvider } from "context";
 import "./index.css";
 import Loading from "screens/Loading";
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/styles";
 import { lambda_func_front_end } from "./utils";
 import Theme from "./Theme.js";
 import { withRouter } from "react-router-dom";

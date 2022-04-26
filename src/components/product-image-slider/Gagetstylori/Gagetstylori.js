@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Grid, Hidden } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 import {Certified} from './Certified'
 import {Diversestyles} from './Diversestyles-pink'
 import {Easyreturns} from './Easyreturns-pink'

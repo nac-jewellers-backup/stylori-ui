@@ -12,7 +12,7 @@ import ProductModal from "components/SilverComponents/ProductModal";
 import MultipleSections from "components/SilverComponents/MultipleSections";
 import Footer from "components/Footer/Footer";
 import CarosolTop from "components/SilverComponents/SilvercarosolPhoto";
-import { CDN_URL, API_URL } from "config";
+import { API_URL } from "config";
 import {
   silverStyloriCollections,
   silverStyloriAllMasterCollections,
@@ -22,8 +22,7 @@ import {
 import Feedes from "components/Feedes/Index";
 import { InstagramFeed } from "components/Feedes/instagramfeed";
 import NeedHelp from "../../components/needHelp";
-import Tweeterfeed from "../../components/storyTemplate/tweeterEmbedded";
-import { Helmet } from "react-helmet";
+
 const styles = (theme) => ({
   instagramTitle: {
     color: "rgb(58,69,120)",

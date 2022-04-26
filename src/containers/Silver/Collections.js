@@ -1,12 +1,10 @@
 import React from "react";
 import Header from "components/SilverComponents/Header";
-import { Grid, Container, Hidden } from "@material-ui/core";
+import { Grid, Hidden } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 import ProductModal from "components/SilverComponents/ProductModal";
-import MultipleSections from "components/SilverComponents/MultipleSections";
-import Footer from "components/Footer/Footer";
 import CarosolTop from "components/SilverComponents/SilvercarosolPhoto";
-import { CDN_URL, API_URL } from "config";
+import { API_URL } from "config";
 import {
   silverStyloriCollections,
   silverStyloriAllMasterCollections,

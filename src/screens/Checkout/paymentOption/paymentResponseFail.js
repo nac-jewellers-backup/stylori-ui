@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React  from "react";
 import { Grid, Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { withRouter } from "react-router-dom";

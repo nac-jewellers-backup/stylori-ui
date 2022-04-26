@@ -1,26 +1,16 @@
 import React from "react";
 import {
-  Container,
   Grid,
-  Hidden,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
-  Typography,
   Checkbox,
   FormGroup,
   FormControlLabel
 } from "@material-ui/core";
 import "./payment.css";
 import { withStyles } from '@material-ui/core/styles';
-import Creditform from "./creditForm";
-import Debitform from "./debitForm";
 import CashonDelivey from "./cashonDelivery";
 import Netbanking from "./netBanking";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CartContext } from "context";
 import cart from "mappers/cart";
-import { useCheckForCod } from "hooks/CheckForCodHook";
 import { CheckForCod } from "queries/productdetail";
 import { cartCodPincode } from "queries/pincode";
 import { API_URL } from "config";
