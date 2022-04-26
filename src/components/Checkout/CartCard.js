@@ -780,7 +780,7 @@ class Checkoutcard extends React.Component {
                 fontSize: "14px",
               }}
             >
-               <img src={percentage}></img>
+               <img src={percentage} loading="lazy" alt="...."></img>
               &nbsp;&nbsp;&nbsp;<b>Apply Coupon</b>
             </Typography>
           </Hidden>
@@ -794,7 +794,7 @@ class Checkoutcard extends React.Component {
                 fontSize: "14px",
               }}
             >
-               <img src={percentage}></img>
+               <img  loading="lazy" alt="...." src={percentage}></img>
               &nbsp;&nbsp;&nbsp;<b>Apply Coupon</b>
             </Typography>
           </Hidden>

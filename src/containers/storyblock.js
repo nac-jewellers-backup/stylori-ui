@@ -42,6 +42,7 @@ class StoryBlock extends React.Component {
                     <img
                       src={val.img}
                       style={{ width: "100%", height: "100%" }}
+                      loading="lazy" alt="...."
                     />
                   </a>
                 </Grid>

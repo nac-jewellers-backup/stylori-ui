@@ -347,7 +347,7 @@ class ProductImageZoom extends React.Component {
                     <div class={"one-day-ship_only_silver"}>
                       <img
                         src={require("assets/StyloriSilver-truckIcon.svg")}
-                        alt=""
+                        loading="lazy" alt="...."
                       />
                     </div>
                   ) : (

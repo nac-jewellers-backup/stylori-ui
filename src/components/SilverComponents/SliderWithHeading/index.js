@@ -155,6 +155,7 @@ const SliderWithHeading = (props) => {
              <img
                src={product.img}
                alt={"Product Image"}
+               loading="lazy" 
                onClick={() => { window.open(`/${product.url}`)}}
                style={{ cursor:"pointer" }}
              />

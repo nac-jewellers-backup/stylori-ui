@@ -57,7 +57,7 @@ class PriceCertification extends React.Component {
                   </div>
                 </ExpansionPanelSummary>
                 <Grid container spacing={12}>
-                  <img src={certificates?.image} alt="" width="100%" />
+                  <img src={certificates?.image} loading="lazy" alt="...." width="100%" />
                 </Grid>
                 {/* <Grid spacing={12}>
                                     <Grid item xs={12} className='certification-img'>
@@ -94,7 +94,7 @@ class PriceCertification extends React.Component {
               </span>
               <hr class="bottom-line"></hr>
               <Grid container spacing={12}>
-                <img src={certificates?.image} alt="" width="100%" />
+                <img src={certificates?.image} loading="lazy" alt="...." width="100%" />
               </Grid>
               {/* <Grid spacing={12}>
                                 <Grid item xs={12} className='certification-img'>

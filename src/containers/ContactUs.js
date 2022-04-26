@@ -44,6 +44,7 @@ function FaqsBlock(props) {
                             <img
                                 src={val.img}
                                 style={{ width: "100%", height: "100%" }}
+                                loading="lazy" alt="...."
                             />
                         </Grid>
                     ))}

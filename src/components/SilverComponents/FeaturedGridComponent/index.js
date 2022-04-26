@@ -28,6 +28,7 @@ export const FeaturedGridComponent = (props) => {
                   style={{ cursor: "pointer" }}
                   src={val.mob}
                   className={`${classes.img}`}
+                  loading="lazy" alt="...."
                 />
               );
             })}
@@ -48,6 +49,7 @@ export const FeaturedGridComponent = (props) => {
                     src={val.web}
                     className={`${classes.img}`}
                     style={{ cursor: "pointer", width: "100%" }}
+                    loading="lazy" alt="...."
                   />
                 </a>
               );

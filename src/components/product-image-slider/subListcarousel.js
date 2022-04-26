@@ -473,7 +473,7 @@ class Sublistcarousel extends React.Component {
                                         display: "flex",
                                       }}
                                     >
-                                      <img style={{ width: "60px" }} src={val.icon} />
+                                      <img style={{ width: "60px" }} src={val.icon} loading="lazy" alt="...."/>
                                     </Grid>
                                   </Grid>
                                 </>

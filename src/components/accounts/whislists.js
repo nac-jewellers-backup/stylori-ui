@@ -89,7 +89,7 @@ class Component extends React.Component {
                                 </Grid>
                                 <Grid item xs={5} sm={3} lg={3}>
                                     <div className={this.check_img(first_map?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl) ?"shine box" : `shine box`} >
-                                        <img className="viewport-img" src={this.check_img(first_map?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)
+                                        <img className="viewport-img"  loading="lazy" src={this.check_img(first_map?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)
                                         } 
                                         alt="Stylori"
                                         onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}

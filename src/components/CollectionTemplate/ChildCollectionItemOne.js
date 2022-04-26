@@ -242,6 +242,7 @@ export default function ChildCollectionItemOne(props) {
                                                                 <img
                                                                     src={val.img}
                                                                     style={{ width: "100%", height: "auto", cursor: "pointer" }}
+                                                                    loading="lazy" alt="...."
                                                                 />
                                                             </a>
 
@@ -258,7 +259,7 @@ export default function ChildCollectionItemOne(props) {
                                                         <Grid >
                                                             <a href={data.primaryNavigateUrl}>
                                                                 <img style={{ cursor: "pointer" }} src={data.primaryImage}
-                                                                    className={classes.imageResolution}></img>
+                                                                    className={classes.imageResolution} loading="lazy" alt="...."></img>
                                                             </a>
 
                                                         </Grid>
@@ -319,7 +320,7 @@ export default function ChildCollectionItemOne(props) {
                                                         <Grid >
                                                             <a href={data.primaryNavigateUrl}>
                                                                 <img style={{ cursor: "pointer" }} src={data.primaryImage}
-                                                                    className={classes.imageResolution}></img>
+                                                                    className={classes.imageResolution} loading="lazy" alt="...."></img>
                                                             </a>
                                                         </Grid>
                                                         <Grid style={{ margin: "0px 0px 10px 0px " }}>
@@ -350,7 +351,7 @@ export default function ChildCollectionItemOne(props) {
 
                                                                                 >
                                                                                     <a href={val.navigateUrl}>
-                                                                                        <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                        <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} loading="lazy" alt="...." />
                                                                                     </a>
 
 
@@ -386,7 +387,7 @@ export default function ChildCollectionItemOne(props) {
                                                     <Grid >
                                                         <a href={data.secondaryNavigateUrl}>
                                                             <img style={{ cursor: "pointer" }} src={data.secondaryImage}
-                                                                className={classes.imageResolution}></img>
+                                                                className={classes.imageResolution} loading="lazy" alt="...."></img>
                                                         </a>
 
                                                     </Grid>
@@ -419,7 +420,7 @@ export default function ChildCollectionItemOne(props) {
 
                                                                             >
                                                                                 <a href={val.navigateUrl}>
-                                                                                    <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                    <img style={{ cursor: "pointer" }} loading="lazy" alt="...." className={classes.imgcoin} src={val.img} />
                                                                                 </a>
 
 
@@ -474,7 +475,7 @@ export default function ChildCollectionItemOne(props) {
                                                         <Grid item >
                                                             <a href={data.primaryNavigateUrl}>
                                                                 <img style={{ cursor: "pointer" }} src={data.primaryImage}
-                                                                    className={classes.imageResolution}></img>
+                                                                    className={classes.imageResolution} loading="lazy" alt="...." ></img>
                                                             </a>
                                                         </Grid>
                                                         <Grid style={{ margin: "0px 0px 10px 0px " }}>
@@ -537,7 +538,7 @@ export default function ChildCollectionItemOne(props) {
                                                         <Grid >
                                                             <a href={data.secondaryNavigateUrl}>
                                                                 <img style={{ cursor: "pointer" }} src={data.secondaryImage}
-                                                                    className={classes.imageResolution}></img>
+                                                                    className={classes.imageResolution} loading="lazy" alt="...." ></img>
                                                             </a>
                                                         </Grid>
                                                         <Grid style={{ margin: "0px 0px 10px 0px " }}>
@@ -566,7 +567,7 @@ export default function ChildCollectionItemOne(props) {
 
                                                                                 <Grid item style={{ cursor: "pointer", display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}
                                                                                 >
-                                                                                    <a href={val.navigateUrl}><img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} /></a>
+                                                                                    <a href={val.navigateUrl}><img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} loading="lazy" alt="...." /></a>
                                                                                 </Grid>
                                                                                 <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
                                                                                     <Typography style={{ color: "#394578" }}>

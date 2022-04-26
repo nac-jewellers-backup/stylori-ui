@@ -243,6 +243,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                     <a href={val.navigateUrl}>
                                                                         <img
                                                                             src={val.img}
+                                                                            loading="lazy" alt="...."
                                                                             style={{ width: "100%", height: "auto", cursor: "pointer" }}
                                                                         />
                                                                     </a>
@@ -259,7 +260,9 @@ export default function ChildCollectionItemTwo(props) {
                                                                 <Grid >
                                                                     <a href={data.primaryNavigateUrl}>
                                                                         <img style={{ cursor: "pointer" }} src={data.primaryImage}
-                                                                            className={classes.imageResolution}></img>
+                                                                            className={classes.imageResolution}
+                                                                            loading="lazy" alt="...."
+                                                                            ></img>
                                                                     </a>
                                                                 </Grid>
                                                                 <Grid style={{ margin: "0px 0px 10px 0px " }}>
@@ -287,7 +290,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         </Typography>
                                                                                         <Grid item style={{ display: "flex", justifyContent: 'center' }}>
                                                                                             <a href={val.navigateUrl}>
-                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} loading="lazy" alt="...."/>
                                                                                             </a>
                                                                                         </Grid>
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
@@ -318,7 +321,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                 <Grid >
                                                                     <a href={data.primaryNavigateUrl}>
                                                                         <img style={{ cursor: "pointer" }} src={data.primaryImage}
-                                                                            className={classes.imageResolution}></img>
+                                                                            className={classes.imageResolution} loading="lazy" alt="...." ></img>
                                                                     </a>
                                                                 </Grid>
                                                                 <Grid style={{ margin: "0px 0px 10px 0px " }}>
@@ -347,7 +350,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         <Grid item style={{ display: "flex", justifyContent: 'center' }}
                                                                                             onClick={() => { window.location.pathname = `${val.navigateUrl}` }}>
                                                                                             <a href={val.navigateUrl}>
-                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} loading="lazy" alt="...." />
                                                                                             </a>
                                                                                         </Grid>
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
@@ -379,7 +382,7 @@ export default function ChildCollectionItemTwo(props) {
                                                             <Grid >
                                                                 <a href={data.secondaryNavigateUrl}>
                                                                     <img style={{ cursor: "pointer" }} src={data.secondaryImage}
-                                                                        className={classes.imageResolution}></img>
+                                                                        className={classes.imageResolution} loading="lazy" alt="...."></img>
                                                                 </a>
                                                             </Grid>
                                                             <Grid style={{ margin: "0px 0px 10px 0px " }}>
@@ -409,7 +412,7 @@ export default function ChildCollectionItemTwo(props) {
 
                                                                                         <Grid item style={{ display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}
                                                                                             onClick={() => { window.location.pathname = `${val.navigateUrl}` }}>
-                                                                                            <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                            <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} loading="lazy" alt="...."/>
                                                                                         </Grid>
 
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
@@ -448,6 +451,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                             <img
                                                                                 src={val.img}
                                                                                 style={{ width: "100%", height: "auto", cursor: "pointer" }}
+                                                                                loading="lazy" alt="...."
                                                                             />
                                                                         </a>
 
@@ -462,7 +466,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                 <Grid item >
                                                                     <a href={data.primaryNavigateUrl}>
                                                                         <img style={{ cursor: "pointer" }} src={data.primaryImage}
-                                                                            className={classes.imageResolution}></img>
+                                                                            className={classes.imageResolution} loading="lazy" alt="...."></img>
                                                                     </a>
                                                                 </Grid>
                                                                 <Grid style={{ margin: "0px 0px 10px 0px " }}>
@@ -492,7 +496,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         <Grid item style={{ display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}
                                                                                             onClick={() => { window.location.pathname = `${val.navigateUrl}` }}>
                                                                                             <a href={val.navigateUrl}>
-                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} loading="lazy" alt="...."/>
                                                                                             </a>
                                                                                         </Grid>
 
@@ -524,7 +528,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                 <Grid >
                                                                     <a href={data.secondaryNavigateUrl}>
                                                                         <img style={{ cursor: "pointer" }} src={data.secondaryImage}
-                                                                            className={classes.imageResolution}></img>
+                                                                            className={classes.imageResolution} loading="lazy" alt="...."></img>
                                                                     </a>
                                                                 </Grid>
                                                                 <Grid style={{ margin: "0px 0px 10px 0px " }}>
@@ -554,7 +558,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         <Grid item style={{ display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}
                                                                                             onClick={() => { window.location.pathname = `${val.navigateUrl}` }}>
                                                                                             <a href={val.navigateUrl}>
-                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} loading="lazy" alt="...."/>
                                                                                             </a>
                                                                                         </Grid>
 

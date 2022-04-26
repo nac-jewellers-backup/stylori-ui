@@ -32,10 +32,10 @@ export default function DummyTest() {
             <div className="product-share">
                 <h5>Share the Jewellery</h5>
                 <a className="facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>
-                    <img className="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" />
+                    <img className="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg" loading="lazy" alt="...."/>
                 </a>&nbsp;
 <a className="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
-                    <img className="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" />
+                    <img className="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg" loading="lazy" alt="...."/>
                 </a>&nbsp;
 {/* <a className="google" target="_blank">
     <img className="lazyload" src="https://assets.stylori.com/images/static/newsprite/iconmonstr-google-plus-5-share.svg" />

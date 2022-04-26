@@ -223,7 +223,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                               href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
                             >
                               <img
-                                alt=""
+                               loading="lazy" alt="...."
                                 class="lazyload"
                                 src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg"
                               />
@@ -235,7 +235,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                               href={`http://www.twitter.com/share?url=${window.location.href}`}
                             >
                               <img
-                                alt=""
+                                loading="lazy" alt="...."
                                 class="lazyload"
                                 src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg"
                               />

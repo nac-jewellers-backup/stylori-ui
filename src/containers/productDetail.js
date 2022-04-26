@@ -800,6 +800,7 @@ class ProductDetail extends Component {
               ${HouseOfNac3x} 3x`}
                 src={HouseOfNac}
                 alt="House of NAC"
+                loading="lazy" 
               />
 
               <div className={classes.nacDescription}>

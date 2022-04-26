@@ -29,7 +29,7 @@ export default function CustomSeparator(props) {
       <img
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAAAmJLR0QA/4ePzL8AAABTSURBVFjD7dfBDYAgFARRqkBCi1ouEa1mbMJPIMw08JK9bUpm9lOclGjiAnowQ6YBL1VGRkZGZjKm0IGbvDbCQQOewLkkJCQkNicGXYchJ8hs8z7oGPzdOrNn/QAAAABJRU5ErkJggg=="
         className={props.arrowicon}
-        alt=""
+        loading="lazy" alt="...."
       />
     ) : props.isSilver ? (
       <span>&nbsp;/&nbsp;</span>
@@ -170,7 +170,7 @@ export default function CustomSeparator(props) {
                           <Grid item xs={1}>
                             <img
                               src={subdata.icon}
-                              alt=""
+                              loading="lazy" alt="...."
                               style={{
                                 width: "25px",
                                 height: "25px",

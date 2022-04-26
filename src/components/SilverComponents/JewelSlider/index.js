@@ -25,6 +25,7 @@ export default class JewelSlider extends Component {
             <img
               src={slide}
               alt={"Product Image"}
+              loading="lazy" 
               onError={() => {}}
               style={{ width: "100vw" }}
             />

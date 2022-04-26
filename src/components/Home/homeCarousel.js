@@ -21,17 +21,17 @@ const HomeCarousel = () => {
       <Fade {...fadeProperties}>
         <div >
           <div className="homecarousel">
-            <img src={FadeImages[0]} width="100%" height="100%"  alt=""/>
+            <img src={FadeImages[0]} width="100%" height="100%" loading="lazy" alt="...."/>
           </div>
         </div>
         <div >
           <div className="homecarousel">
-            <img src={FadeImages[1]} width="100%" height="100%"  alt="" />
+            <img src={FadeImages[1]} width="100%" height="100%"  loading="lazy" alt="...." />
           </div>
         </div>
         <div >
           <div className="homecarousel">
-            <img src={FadeImages[2]} width="100%" height="100%"  alt="" />
+            <img src={FadeImages[2]} width="100%" height="100%"  loading="lazy" alt="...."/>
           </div>
         </div>
       </Fade>

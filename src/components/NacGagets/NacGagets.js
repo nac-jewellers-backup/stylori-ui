@@ -26,7 +26,7 @@ export default function ListDividers() {
                 wg
                 <div className={classes.houseofnac}></div>
             </Grid> */}
-            <img className={classes.houseofnac} src={styloriGagets} />
+            <img className={classes.houseofnac} src={styloriGagets} loading="lazy" alt="...."/>
         </Grid>
     );
 }

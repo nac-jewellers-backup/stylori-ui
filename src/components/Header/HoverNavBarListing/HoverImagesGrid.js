@@ -41,7 +41,7 @@ const {activetab} = props
                      return(
 
                         <GridListTile key={`${tile.img}-${i}`} cols={tile.cols || 1} className={`${classes.ulDiv}`} >
-                            <img src={tile.img} className={'shine menuListHoverDiv  '}  cols={tile.cols || 1} style={{ width: '120px', height: '120px' }} alt="" />
+                            <img src={tile.img} className={'shine menuListHoverDiv  '}  cols={tile.cols || 1} style={{ width: '120px', height: '120px' }} loading="lazy" alt="...."/>
                             <Grid container justify="center">
                                 <Grid item className={classes.imgTextColor}>
                                     {/* {tile.title} */}
@@ -63,7 +63,7 @@ const {activetab} = props
             <Grid container xs={3}>
                 {props.tabdata && props.tabdata[props.activetab] && props.tabdata[props.activetab].sideBanner.map(tile => (
                     <Grid item>
-                        <img src={tile.img} cols={2} alt="img" style={{ width: '100%', height: '100%' }} />
+                        <img src={tile.img} cols={2} alt="img"  loading="lazy"  style={{ width: '100%', height: '100%' }} />
                     </Grid>
 
                 ))}

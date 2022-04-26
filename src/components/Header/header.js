@@ -136,7 +136,7 @@ class Header extends Component {
                     {/* <span><img className="icons-header-sizes" src={delivery} /></span> */}
                     <i class="track-icon icon-truck"></i>
                     <span>
-                      <img className="icons-header-sizes" src={telephone} />
+                      <img className="icons-header-sizes" src={telephone} loading="lazy" alt="...."/>
                     </span>
                   </div>
                 </Grid>
@@ -147,7 +147,7 @@ class Header extends Component {
                       src="https://assets.stylori.com/images/static/stylori-logo.svg"
                       onLoad={() => this.setState({ load: true })}
                       onLoadedData={() => this.setState({ load: false })}
-                      alt=""
+                      loading="lazy" alt="...."
                     />
                   </div>
                 </Grid>
@@ -164,13 +164,13 @@ class Header extends Component {
         </Button> */}
 
                     {localStorage.getItem("true") ? (
-                      <span aria-owns={openPopover ? "simple-popper" : ""} onClick={this.handleClickPopover}>
+                      <span aria-owns={openPopover ? "simple-popper" : ""} onClick={this.handleClickPopover} loading="lazy" alt="....">
                         <img className="icons-header-sizes" src={usershape} />
                       </span>
                     ) : (
                       // <img className="icons-header-sizes" src={usershape}/>
                       <span onClick={() => (window.location.pathname = "/login")}>
-                        <img className="icons-header-sizes" src={usershape} />
+                        <img className="icons-header-sizes" src={usershape} loading="lazy" alt="...." />
                       </span>
                     )}
                     {/* </NavLink> */}
@@ -209,7 +209,7 @@ class Header extends Component {
                             window.location.pathname = "/login";
                           }}
                         >
-                          <img className="icons-header-sizes" src={logout} />
+                          <img className="icons-header-sizes" src={logout} loading="lazy" alt="...."/>
                           &nbsp;Logout
                         </a>
                         &nbsp;/&nbsp;
@@ -239,7 +239,7 @@ class Header extends Component {
                       <NavLink to="/cart">
                         {" "}
                         
-                        <img className="icons-header-sizes" src={shopping} />
+                        <img className="icons-header-sizes" src={shopping} loading="lazy" alt="...."/>
                       </NavLink>{" "}
                     </Badge>
                   </div>
@@ -331,7 +331,7 @@ class Header extends Component {
                 </Grid>
                 <Grid item xs={4}>
                   <div>
-                    <img className="mobile-img" src="https://assets.stylori.com/images/static/stylori-logo.svg" alt="" />
+                    <img className="mobile-img" src="https://assets.stylori.com/images/static/stylori-logo.svg" loading="lazy" alt="...." />
                   </div>
                 </Grid>
                 <Grid item xs={6}>
@@ -377,7 +377,7 @@ class Header extends Component {
               {mainlist.map((row) => (
                 <>
                   <ListItem button key={row.name} className="drawer-list">
-                    <img className="submenu-icons" src={row.icon} alt={row.icon}></img>
+                    <img className="submenu-icons" src={row.icon} alt={row.icon} loading="lazy" alt="...."></img>
                     <ListItemText onClick={() => (Jewellery[row.name] !== undefined ? this.selectItem(row.name) : "")}>
                       <Typography className="list-items" variant="">
                         {row.name}
@@ -397,7 +397,7 @@ class Header extends Component {
                     Object.keys(Jewellery[selected]).map((row2) => (
                       <>
                         <ListItem button key={Jewellery[selected][row2].name} className="drawer-list">
-                          <img className="submenu-icons" src={row2.icon} alt=""></img>
+                          <img className="submenu-icons" src={row2.icon} loading="lazy" alt="...."></img>
                           <ListItemText onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>
                             <Typography className="Jew-mbl-head-list" variant="">
                               {Jewellery[selected][row2].name}

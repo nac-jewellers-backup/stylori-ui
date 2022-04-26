@@ -125,6 +125,7 @@ export default function StyloriNews(props) {
                   <img
                     src={val.img}
                     style={{ width: "60px", height: "60px" }}
+                    loading="lazy" alt="...."
                   />
                 </Grid>
                 <Grid item className={classes.newstop}>
@@ -163,6 +164,7 @@ export default function StyloriNews(props) {
                         height: "12px",
                         fill: "rgb(58, 69, 120)"
                       }}
+                      loading="lazy" alt="...."
                       src={
                         "https://image.flaticon.com/icons/svg/2089/2089720.svg"
                       }
@@ -180,6 +182,7 @@ export default function StyloriNews(props) {
                         height: "12px",
                         fill: "rgb(58, 69, 120)"
                       }}
+                      loading="lazy" alt="...."
                       src={
                         "https://image.flaticon.com/icons/svg/2089/2089724.svg"
                       }

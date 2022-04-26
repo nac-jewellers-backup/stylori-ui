@@ -327,7 +327,7 @@ class Header extends Component {
                             src={isSilver ? stylorisilverlogo : styloriLogo}
                             onLoad={() => this.setState({ load: true })}
                             onLoadedData={() => this.setState({ load: false })}
-                            alt=""
+                            loading="lazy" alt="...."
                             style={{
                               transition: "height 0.2s",
                               height: isSilver ? 60 : 60,
@@ -388,11 +388,13 @@ class Header extends Component {
                                       width="25px"
                                       height="25px"
                                       alt="stylori"
+                                      loading="lazy" 
                                     />
                                   ) : listName.title === "STYLORISILVER" ? (
                                     <img
                                       src={silverOpenLinkImage}
                                       alt="stylori"
+                                      loading="lazy"
                                       style={{ width: "25px", height: "25px" }}
                                     />
                                   ) : (
@@ -476,7 +478,7 @@ class Header extends Component {
                                 style={{ width: "25px" }}
                               >
                                 {" "}
-                                <img src={searchIcon} alt="icon" />
+                                <img src={searchIcon} alt="icon" loading="lazy" />
                                 {/* <Seach className={"searchsvg"} /> */}
                               </div>
                             </Grid>
@@ -559,7 +561,7 @@ class Header extends Component {
                                   }
                                 }}
                               >
-                                <img src={heart} alt="icon" />
+                                <img src={heart} alt="icon" loading="lazy" />
                               </i>
                               <span className="tooltip-s">Wishlist</span>
                             </Badge>
@@ -643,7 +645,7 @@ class Header extends Component {
                             src={isSilver ? stylorisilverlogo : styloriLogo}
                             onLoad={() => this.setState({ load: true })}
                             onLoadedData={() => this.setState({ load: false })}
-                            alt=""
+                            loading="lazy" alt="...."
                             style={{
                               transition: "height 0.2s",
                               height: isSilver ? 60 : 60,
@@ -704,11 +706,13 @@ class Header extends Component {
                                       width="25px"
                                       height="25px"
                                       alt="stylori"
+                                      loading="lazy" 
                                     />
                                   ) : listName.title === "STYLORISILVER" ? (
                                     <img
                                       src={silverOpenLinkImage}
                                       alt="stylori"
+                                      loading="lazy" 
                                       style={{ width: "25px", height: "25px" }}
                                     />
                                   ) : (
@@ -792,7 +796,7 @@ class Header extends Component {
                                 style={{ width: "25px" }}
                               >
                                 {" "}
-                                <img src={searchIcon} alt="icon" />
+                                <img src={searchIcon} alt="icon" loading="lazy"/>
                                 {/* <Seach className={"searchsvg"} /> */}
                               </div>
                             </Grid>
@@ -875,7 +879,7 @@ class Header extends Component {
                                   }
                                 }}
                               >
-                                <img src={heart} alt="icon" />
+                                <img src={heart} alt="icon" loading="lazy" />
                               </i>
                               <span className="tooltip-s">Wishlist</span>
                             </Badge>
@@ -1019,7 +1023,7 @@ class Header extends Component {
                               onClick={this.handleClose}
                               className={classes.searchcontainTop}
                             >
-                              <img src={searchIcon} alt="icon" />
+                              <img src={searchIcon} alt="icon" loading="lazy"/>
                               {/* <Seach className={"searchsvgmobile"} /> */}
                             </div>
                             {/* {localStorage.getItem("true") ?
@@ -1138,7 +1142,7 @@ class Header extends Component {
                                   }
                                 }}
                               >
-                                <img src={heart} alt="icon" />
+                                <img src={heart} alt="icon" loading="lazy"  />
                               </i>
                             </Badge>
                             <Badge
@@ -1173,7 +1177,7 @@ class Header extends Component {
                                   }}
                                   class={classes.iconFafa}
                                 >
-                                  <img src={cart} alt="icon" />
+                                  <img src={cart} alt="icon" loading="lazy" />
                                 </i>
                               </a>
                             </Badge>
@@ -1467,6 +1471,7 @@ class Header extends Component {
                                                     height: "100%",
                                                   }}
                                                   src={row.img}
+                                                  loading="lazy" 
                                                 />
                                               </Grid>
                                               <Grid

@@ -54,6 +54,7 @@ function FinalCard({ slides, title, description, onClick }) {
             <img
               src={slide}
               alt={"Product Image"}
+              loading="lazy" 
               onError={() => {}}
               style={{ width: "100vw" }}
             />

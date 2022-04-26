@@ -213,7 +213,7 @@ export default function ImageGridList(props) {
                  >
                     <Grid container className={classes.container}>
                         <Grid item style={{ width: "3%" }} className={classes.imgleftGrid}>
-                            <img onClick={() => previous()} className={classes.imgleft} />
+                            <img onClick={() => previous()} className={classes.imgleft} loading="lazy" alt="...."/>
                         </Grid>
                         <Grid item style={{ width: "94%", padding: "0px 15px" }}  >
                             <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
@@ -228,7 +228,7 @@ export default function ImageGridList(props) {
                                                 <Grid item className={classes.testimonialRight}>
                                                     <Grid item >
                                                         {/* <a href={val.navigateUrl}> */}
-                                                        <img className={classes.imgcoin} src={val.image} />
+                                                        <img className={classes.imgcoin} src={val.image} loading="lazy" alt="...."/>
                                                         {/* </a> */}
                                                     </Grid>
                                                 </Grid>
@@ -246,7 +246,7 @@ export default function ImageGridList(props) {
                             </Slideshow>
                         </Grid>
                         <Grid item style={{ width: "3%" }} className={classes.imgRightGrid} >
-                            <img onClick={() => next()} className={classes.imgRight} />
+                            <img onClick={() => next()} className={classes.imgRight} loading="lazy" alt="...."/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -257,11 +257,11 @@ export default function ImageGridList(props) {
                  >
                     <Grid container className={classes.container}>
                         <Grid item className={classes.smleftGrid}>
-                            <img onClick={() => previous()} className={classes.leftIc} />
+                            <img onClick={() => previous()} className={classes.leftIc} loading="lazy" alt="...." />
                         </Grid>
                         <Grid item style={{ marginBottom: "15px", width: "89%" }}>
                             <Grid container justify="center">
-                                <Grid item item xs={12} md={3} lg={3} sm={6} xs={12} alignItems="center">
+                                <Grid item  xs={12} md={3} lg={3} sm={6} xs={12} alignItems="center">
                                     <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
                                         {props.carosolData.map((val, index) => <>
                                             <Grid container justify="center">
@@ -271,7 +271,7 @@ export default function ImageGridList(props) {
                                                 <Grid container>
                                                     <Grid item style={{ textAlign: 'center' }}>
                                                         {/* <a href={val.navigateUrl}> */}
-                                                        <img className={classes.imgcoinsm} src={val.image} />
+                                                        <img className={classes.imgcoinsm} src={val.image} loading="lazy" alt="...."/>
                                                         {/* </a> */}
                                                     </Grid>
                                                     <Grid item >
@@ -290,7 +290,7 @@ export default function ImageGridList(props) {
                             </Grid>
                         </Grid>
                         <Grid item className={classes.smleftGrid}>
-                            <img onClick={() => next()} className={classes.rightIc} />
+                            <img onClick={() => next()} className={classes.rightIc} loading="lazy" alt="...."/>
                         </Grid>
                     </Grid>
                 </Grid>

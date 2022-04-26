@@ -65,7 +65,7 @@ export default function ImageGridList(props) {
                     <Grid item md={3} sm={5} xs={6} style={{ padding: '0px !important' }}>
                         <div style={{ padding: "0px 8px 0px 0px" }}>
                             <a href={props.GridImage[0].navigateUrl}>
-                                <img className={classes.lazyload} alt="addSection" src={props.GridImage[0].img} />
+                                <img className={classes.lazyload} alt="addSection" src={props.GridImage[0].img} loading="lazy" />
                             </a>
                         </div>
                     </Grid>
@@ -74,7 +74,7 @@ export default function ImageGridList(props) {
                             <Grid item md={4}>
                                 <div style={{ padding: "0px 0px 16px 8px" }}>
                                     <a href={props.GridImage[1].navigateUrl}>
-                                        <img className={classes.lazyload} alt="addSection" src={props.GridImage[1].img} />
+                                        <img className={classes.lazyload} alt="addSection" src={props.GridImage[1].img} loading="lazy" />
                                     </a>
                                 </div>
                             </Grid>
@@ -82,7 +82,7 @@ export default function ImageGridList(props) {
                             <Grid item md={8}>
                                 <div style={{ padding: "0px 0px 16px 16px" }}>
                                     <a href={props.GridImage[2].navigateUrl}>
-                                        <img className={classes.lazyload} alt="addSection" src={props.GridImage[2].img} />
+                                        <img className={classes.lazyload} alt="addSection" src={props.GridImage[2].img} loading="lazy" />
                                     </a>
                                 </div>
                             </Grid>
@@ -91,7 +91,7 @@ export default function ImageGridList(props) {
                             <Grid item md={8}>
                                 <div style={{ padding: "0px 8px 0px 8px" }}>
                                     <a href={props.GridImage[3].navigateUrl}>
-                                        <img className={classes.lazyload} alt="addSection" src={props.GridImage[3].img} />
+                                        <img className={classes.lazyload} alt="addSection" src={props.GridImage[3].img} loading="lazy"  />
                                     </a>
                                 </div>
                             </Grid>
@@ -99,7 +99,7 @@ export default function ImageGridList(props) {
                             <Grid item md={4}>
                                 <div style={{ padding: "0px 0px 0px 8px" }}>
                                     <a href={props.GridImage[4].navigateUrl}>
-                                        <img className={classes.lazyload} alt="addSection" src={props.GridImage[4].img} />
+                                        <img className={classes.lazyload} alt="addSection" src={props.GridImage[4].img} loading="lazy" />
                                     </a>
                                 </div>
                             </Grid>
@@ -111,33 +111,33 @@ export default function ImageGridList(props) {
                 <Grid container md={12} sm={12} xs={12} style={{ margin: "15px 0px 20px 0px" }}>
                     <Grid item className={classes.firstColumn}>
                         <a href={props.GridImage[0].navigateUrl}>
-                            <img className={classes.lazyload} alt="addSection" src={props.GridImage[0].img} />
+                            <img className={classes.lazyload} alt="addSection" src={props.GridImage[0].img} loading="lazy" />
                         </a>
                     </Grid>
                     <Grid item className={classes.secondcolumn}>
                         <Grid container >
                             <Grid item md={4}>
                                 <a href={props.GridImage[1].navigateUrl}>
-                                    <img className={classes.lazyload} alt="addSection" src={props.GridImage[2].img} />
+                                    <img className={classes.lazyload} alt="addSection" src={props.GridImage[2].img} loading="lazy"/>
                                 </a>
                             </Grid>
 
                             <Grid item md={8}>
                                 <a href={props.GridImage[2].navigateUrl}>
-                                    <img className={classes.lazyload2} alt="addSection" src={props.GridImage[3].img} />
+                                    <img className={classes.lazyload2} alt="addSection" src={props.GridImage[3].img} loading="lazy" />
                                 </a>
                             </Grid>
                         </Grid>
                         <Grid container className={classes.lazyload2}>
                             <Grid md={6} sm={6} xs={6} item style={{ width: 'calc(50% - 5px) !important', padding: "0px 4px 0px 0px" }}>
                                 <a href={props.GridImage[3].navigateUrl}>
-                                    <img className={classes.lazyload} alt="addSection" src={props.GridImage[1].img} />
+                                    <img className={classes.lazyload} alt="addSection" src={props.GridImage[1].img} loading="lazy" />
                                 </a>
                             </Grid>
 
                             <Grid md={6} sm={6} xs={6} item style={{ width: 'calc(50% - 5px) !important', padding: "0px 0px 0px 4px" }}>
                                 <a href={props.GridImage[4].navigateUrl}>
-                                    <img className={classes.lazyload} alt="addSection" src={props.GridImage[4].img} />
+                                    <img className={classes.lazyload} alt="addSection" src={props.GridImage[4].img} loading="lazy" />
                                 </a>
                             </Grid>
                         </Grid>

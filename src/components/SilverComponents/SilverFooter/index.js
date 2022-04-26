@@ -93,6 +93,7 @@ function SilverFooter() {
         <img
           src={"https://assets.stylori.com/images/static/footer.png"}
           alt="Payment Modes"
+          loading="lazy" 
         />
       </div>
 

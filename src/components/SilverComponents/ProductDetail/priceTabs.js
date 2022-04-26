@@ -204,9 +204,9 @@ class Component extends React.Component {
                                 <Grid item lg={9} xs={12} style={{ padding: "0px 5px 0px 5px" }}>
                                     {arr.length > 0 ?
                                         <>
-                                            <Grid container style={{ width: "100%" }} className={classes.pagination} style={{ overflow: "hidden" }}>
+                                            <Grid container  className={classes.pagination} style={{ overflow: "hidden", width: "100%" }}>
                                                 <Grid item style={{ width: "8%", alignItems: "center", justifyContent: "center", display: "flex" }}>
-                                                    <img onClick={() => previous()} className={"icon-leftcaro"} />
+                                                    <img onClick={() => previous()} className={"icon-leftcaro"} loading="lazy" alt="...."/>
 
                                                 </Grid>
                                                 <Grid item style={{ width: "84%" }}>
@@ -227,7 +227,7 @@ class Component extends React.Component {
                                                     </Slideshow>
                                                 </Grid>
                                                 <Grid item style={{ width: "8%", alignItems: "center", justifyContent: "center", display: "flex" }}>
-                                                    <img onClick={() => next()} className={"icon-rightcaro"} />
+                                                    <img onClick={() => next()} className={"icon-rightcaro"} loading="lazy" alt="...." />
 
                                                 </Grid>
                                                 <Modal
@@ -238,7 +238,7 @@ class Component extends React.Component {
                                                     style={{ overflowY: 'scroll' }}
                                                 >
                                                     <div className={`${classes.modals} "modalin-ring"`}>
-                                                        <img height='auto' width='100%' src='https://assets.stylori.com/images/static/Ring-size.jpg' />
+                                                        <img height='auto' width='100%' src='https://assets.stylori.com/images/static/Ring-size.jpg' loading="lazy" alt="...."/>
                                                     </div>
                                                 </Modal>
                                                 {/* <div style={{ marginTop: "10px", textAlign: "center" }}>

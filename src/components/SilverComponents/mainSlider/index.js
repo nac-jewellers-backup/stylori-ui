@@ -127,6 +127,7 @@ const MainCard = (props) => {
              <img
                src={product.image}
                alt={"Product Image"}
+               loading="lazy"
                onClick={() => { window.open(`/${product.url}`)}}
                style={{ cursor:"pointer" }}
              />

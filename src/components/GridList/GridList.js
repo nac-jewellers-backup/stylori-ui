@@ -164,7 +164,8 @@ function FormRow(props) {
       >
         <div className={classes.navlist}>
           <img
-            alt=""
+            alt="...."
+            loading="lazy"
             src={props.imageOne}
             style={{ width: "100%", height: "100%" }}
           />
@@ -185,7 +186,7 @@ function FormRow(props) {
       >
         <div className={classes.navlist}>
           <img
-            alt=""
+            loading="lazy" alt="...."
             src={props.imageTwo}
             style={{ width: "100%", height: "100%" }}
           />
@@ -285,6 +286,7 @@ export default function ImageGridList(props) {
                 href="https://www.stylori.com/jewellery/short%20necklace/Charming-Kasu%20Silver%20Necklace?sku_id=1000965"
               >
                 <img
+                loading="lazy" alt="...."
                   className={classes.imagefulllong}
                   src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.jpg"
                 />
@@ -311,6 +313,7 @@ export default function ImageGridList(props) {
                         href="https://www.stylori.com/jewellery/earrings/Scintillating-Swan%20Silver%20Ear%20Stud?sku_id=1000118"
                       >
                         <img
+                        loading="lazy" alt="...."
                           className={classes.imagefull}
                           src="https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.jpg"
                         />
@@ -324,6 +327,7 @@ export default function ImageGridList(props) {
                         href="https://www.stylori.com/jewellery/long%20necklace/Clinking-Dual%20Tone%20Long%20Silver%20Necklace?sku_id=1000890"
                       >
                         <img
+                        loading="lazy" alt="...."
                           className={classes.imagefull}
                           src="https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.jpg"
                         />
@@ -344,6 +348,7 @@ export default function ImageGridList(props) {
                         href="https://www.stylori.com/jewellery/bangles/Refined-Red%20and%20Green%20Silver%20Bangle?sku_id=1000838"
                       >
                         <img
+                        loading="lazy" alt="...."
                           className={classes.imagefull}
                           src="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.jpg"
                         />
@@ -357,6 +362,7 @@ export default function ImageGridList(props) {
                         href="https://www.stylori.com/jewellery/rings/Outward-Twin%20Finger%20Siver%20Ring?sku_id=1000701"
                       >
                         <img
+                        loading="lazy" alt="...."
                           className={classes.imagefull}
                           src="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.jpg"
                         />
@@ -378,6 +384,7 @@ export default function ImageGridList(props) {
                       href={tileData[0].navigateUrl}
                     >
                       <img
+                      loading="lazy" alt="...."
                         className={classes.imagefull}
                         src={tileData[0].img}
                       />
@@ -391,6 +398,7 @@ export default function ImageGridList(props) {
                       href={tileData[3].navigateUrl}
                     >
                       <img
+                      loading="lazy" alt="...."
                         className={classes.daisyday}
                         src={tileData[3].img}
                         style={{ paddingTop: "2px" }}
@@ -411,6 +419,7 @@ export default function ImageGridList(props) {
                         href={tileData[2].navigateUrl}
                       >
                         <img
+                        loading="lazy" alt="...."
                           className={classes.imagefull}
                           src={tileData[2].img}
                         />
@@ -424,6 +433,7 @@ export default function ImageGridList(props) {
                         href={tileData[1].navigateUrl}
                       >
                         <img
+                        loading="lazy" alt="...."
                           className={classes.imagefull}
                           src={tileData[1].img}
                         />
@@ -442,7 +452,7 @@ export default function ImageGridList(props) {
               xl={0}
             >
               <a className={classes.imagefull} href={tileData[4].navigateUrl}>
-                <img className={classes.imagefulllong} src={tileData[4].img} />
+                <img className={classes.imagefulllong} src={tileData[4].img} loading="lazy" alt="...."/>
               </a>
             </Grid>
           </Grid>
@@ -550,6 +560,7 @@ export default function ImageGridList(props) {
               >
                 <img
                   className={classes.imagefull}
+                  loading="lazy" alt="...."
                   src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.jpg"
                 />
               </a>
@@ -570,6 +581,7 @@ export default function ImageGridList(props) {
                     >
                       <img
                         className={classes.imagefull}
+                        loading="lazy" alt="...."
                         src="https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.jpg"
                       />
                     </a>
@@ -583,6 +595,7 @@ export default function ImageGridList(props) {
                     >
                       <img
                         className={classes.imagefull}
+                        loading="lazy" alt="...."
                         src="https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.jpg"
                         style={{ paddingTop: "2px" }}
                       />
@@ -598,6 +611,7 @@ export default function ImageGridList(props) {
                       >
                         <img
                           className={classes.imagefull}
+                          loading="lazy" alt="...."
                           src="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.jpg"
                         />
                       </a>
@@ -611,6 +625,7 @@ export default function ImageGridList(props) {
                       >
                         <img
                           className={classes.imagefull}
+                          loading="lazy" alt="...."
                           src="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.jpg"
                         />
                       </a>
@@ -632,6 +647,7 @@ export default function ImageGridList(props) {
                     >
                       <img
                         className={classes.imagefull}
+                        loading="lazy" alt="...."
                         src={tileData[0].img}
                       />
                     </a>
@@ -647,6 +663,7 @@ export default function ImageGridList(props) {
                         className={classes.imagefull}
                         src={tileData[1].img}
                         style={{ paddingTop: "2px" }}
+                        loading="lazy" alt="...."
                       />
                     </a>
                   </div>
@@ -661,6 +678,7 @@ export default function ImageGridList(props) {
                         <img
                           className={classes.imagefull}
                           src={tileData[2].img}
+                          loading="lazy" alt="...."
                         />
                       </a>
                     </div>
@@ -674,6 +692,7 @@ export default function ImageGridList(props) {
                         <img
                           className={classes.imagefull}
                           src={tileData[3].img}
+                          loading="lazy" alt="...."
                         />
                       </a>
                     </div>
@@ -690,7 +709,7 @@ export default function ImageGridList(props) {
               xl={3}
             >
               <a className={classes.imagefull} href={tileData[4].navigateUrl}>
-                <img className={classes.imagefull} src={tileData[4].img} />
+                <img className={classes.imagefull} src={tileData[4].img} loading="lazy" alt="...."/>
               </a>
             </Grid>
           </Grid>

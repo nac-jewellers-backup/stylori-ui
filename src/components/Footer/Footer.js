@@ -394,6 +394,7 @@ export default function Footer(props) {
                     width="100%"
                     height="auto"
                     alt="noImage"
+                    loading="lazy" 
                   />
                 </Grid>
               </Grid>
@@ -1116,6 +1117,7 @@ export default function Footer(props) {
                           <img
                             src="https://assets.stylori.com/images/static/stylori-logo.svg"
                             alt=""
+                            loading="lazy" 
                             style={{ width: "100%" }}
                           />{" "}
                         </>

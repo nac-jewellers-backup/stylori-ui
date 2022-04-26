@@ -280,11 +280,11 @@ export default function ImageGridList(props) {
                 <Grid item className={classes.containerRoot}>
                     <Grid container className={classes.container}>
                         <Grid item md={1} lg={1} sm={1} xs={1} className={classes.imgleftGrid}>
-                            <img onClick={() => previous()} className={classes.imgleft} />
+                            <img onClick={() => previous()} className={classes.imgleft} loading="lazy" alt="...."/>
                         </Grid>
                         <Grid item md={10} lg={10} sm={10} xs={10}  >
                             <Grid container>
-                                <Grid item item xs={12} alignItems="center">
+                                <Grid item  xs={12} alignItems="center">
                                     <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
                                         {carosolData && carosolData.map((val, index) => <>
                                             <Grid container>
@@ -327,7 +327,7 @@ export default function ImageGridList(props) {
                             </Grid>
                         </Grid>
                         <Grid item md={1} lg={1} sm={1} xs={1} className={classes.imgRightGrid}>
-                            <img onClick={() => next()} className={classes.imgRight} />
+                            <img onClick={() => next()} className={classes.imgRight} loading="lazy" alt="...."/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -336,7 +336,7 @@ export default function ImageGridList(props) {
                 <Grid item className={classes.containerRoot}>
                     <Grid container className={classes.container}>
                         <Grid item md={1} lg={1} sm={1} xs={1} className={classes.smleftGrid}>
-                            <img onClick={() => previous()} className={classes.leftIc} />
+                            <img onClick={() => previous()} className={classes.leftIc} loading="lazy" alt="...." />
                         </Grid>
                         <Grid item md={10} lg={10} sm={10} xs={10} style={{ marginBottom: "8px", minHeight: "250px" }}>
                             <Grid container >
@@ -351,7 +351,7 @@ export default function ImageGridList(props) {
                                                     <Grid container>
                                                         <Grid item xs={6} sm={6} style={{ textAlign: 'center' }}>
                                                             <Grid>
-                                                                <img className={classes.imgcoinsm} src={imageslice(val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)} alt="" />
+                                                                <img className={classes.imgcoinsm} src={imageslice(val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)} loading="lazy" alt="...." />
                                                             </Grid>
                                                         </Grid>
                                                         <Grid container item xs={6} sm={6} className={classes.buttonTypo}>
@@ -388,7 +388,7 @@ export default function ImageGridList(props) {
                             </Grid>
                         </Grid>
                         <Grid item md={1} lg={1} sm={1} xs={1} style={{ justifyContent: "flex-end" }} className={classes.smleftGrid}>
-                            <img onClick={() => next()} className={classes.rightIc} />
+                            <img onClick={() => next()} className={classes.rightIc} loading="lazy" alt="...."/>
                         </Grid>
                     </Grid>
                 </Grid>

@@ -508,6 +508,7 @@ class Allorders extends React.Component {
                                                     paymentsuccess
                                                   )}
                                                   alt=""
+                                                  loading="lazy"
                                                 />
                                               </div>
                                             ) : null
@@ -705,6 +706,7 @@ class Allorders extends React.Component {
                                           <Typography className="subhesder">
                                             <img
                                               alt=""
+                                              loading="lazy"
                                               src="https://assets.stylori.com/images/static/icon-ship.png"
                                             />{" "}
                                             <a>
@@ -909,6 +911,7 @@ class Allorders extends React.Component {
                                                           paymentsuccess
                                                         )}
                                                         alt=""
+                                                        loading="lazy"
                                                       />
                                                     </div>
                                                   ) : null
@@ -944,6 +947,7 @@ class Allorders extends React.Component {
                                                 <Typography className="subhesder">
                                                   <img
                                                     alt=""
+                                                    loading="lazy"
                                                     src="https://assets.stylori.com/images/static/icon-ship.png"
                                                   />{" "}
                                                   <a>
@@ -1593,6 +1597,7 @@ class Allorders extends React.Component {
                                                     <div className="wishlist_img">
                                                       <img
                                                         className="viewport-img"
+                                                        loading="lazy"
                                                         src={this.ImageUrl(
                                                           imgs,
                                                           cart &&
@@ -1641,6 +1646,7 @@ class Allorders extends React.Component {
                                                 <Typography className="subhesder">
                                                   <img
                                                     alt=""
+                                                    loading="lazy"
                                                     src="https://assets.stylori.com/images/static/icon-ship.png"
                                                   />{" "}
                                                   <a>

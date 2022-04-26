@@ -7,7 +7,7 @@ export const ChatHelp = () =>{
     return(
         <Grid container className="backgroundColor ChatPosition" alignItems="center">
             <Grid item>
-                <img src={icon} alt="noImage" width="30px"/>
+                <img src={icon} alt="noImage" loading="lazy" width="30px"/>
             </Grid>
         </Grid>
     )

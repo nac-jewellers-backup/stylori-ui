@@ -255,6 +255,7 @@ const ProductModal = (props) => {
                                   e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg`;
                                 }}
                                 alt="Stylori"
+                                loading="lazy" 
                               />
                             </a>
                           </Grid>

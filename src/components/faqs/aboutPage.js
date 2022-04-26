@@ -21,7 +21,7 @@ export default function AboutPage(props) {
                 <Grid container className="aboutMargin">
                     <Grid container className="aboutFifty">
                         <Grid item style={{ padding: "10px" }}>
-                            <img style={{ width: "100%" }} src={aboutus.data.img} />
+                            <img style={{ width: "100%" }} src={aboutus.data.img} loading="lazy" alt="...."/>
                         </Grid>
                     </Grid>
                     <Grid container className="aboutFifty">

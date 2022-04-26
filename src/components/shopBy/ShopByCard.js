@@ -112,7 +112,7 @@ export default function MediaCard(props) {
                       onError={(e) => {
                         e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg`;
                       }}
-                      alt=""
+                      loading="lazy" alt="...."
                     />
                     <div className={classes.middle}>
                       <div className={classes.text}>{props.label}</div>

@@ -211,6 +211,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                             >
                               <img
                                 class="lazyload"
+                                loading="lazy" alt="...."
                                 src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg"
                               />
                             </a>
@@ -218,6 +219,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                             <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
                               <img
                                 class="lazyload"
+                                loading="lazy" alt="...."
                                 src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg"
                               />
                             </a>

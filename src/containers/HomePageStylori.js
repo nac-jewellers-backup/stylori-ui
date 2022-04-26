@@ -220,8 +220,8 @@ class HomeStylori extends React.Component {
                       <a href={`${val.url} `} style={{ width: "100%" }}>
                         <img
                           src={val.web}
-                          loading="auto"
                           alt="…"
+                          loading="lazy"
                           style={{ width: "100%", height: "100%" }}
                           className={`image-${
                             this.state.imageLoading ? "visible" : "hidden"
@@ -248,6 +248,7 @@ class HomeStylori extends React.Component {
                             this.state.imageLoading ? "visible" : "hidden"
                           }`}
                           onLoad={this.imageLoader}
+                          loading="lazy" alt="...."
                         />
                       </a>
                     </Grid>
@@ -294,7 +295,7 @@ class HomeStylori extends React.Component {
                             display: "flex",
                           }}
                         >
-                          <img style={{ width: "18%" }} src={val.icon} />
+                          <img style={{ width: "18%" }} src={val.icon} loading="lazy" alt="...."/>
                         </Grid>
                       </Grid>
                     </>

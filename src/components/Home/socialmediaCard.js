@@ -52,17 +52,17 @@ class Socialmediacard extends React.Component {
                         <Grid container item xs={4}>
                             <Grid container spacing={3} style={{ height: "440px" }}>
                                 <Grid container item xs={6}>
-                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' alt=""/>
+                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' loading="lazy" alt="...."/>
                                 </Grid>
                                 <Grid container item xs={6}>
-                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' alt=""/>
+                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' loading="lazy" alt="...."/>
                                 </Grid>
 
                                 <Grid container item xs={6}>
-                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' alt=""/>
+                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' loading="lazy" alt="...."/>
                                 </Grid>
                                 <Grid container item xs={6}>
-                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' alt=""/>
+                                    <img src='https://assets-cdn.stylori.com/200x200/images/product/SE0027/SE0027-1Y.jpg' loading="lazy" alt="...."/>
                                 </Grid>
                             </Grid>
                         </Grid>

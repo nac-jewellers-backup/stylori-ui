@@ -175,6 +175,7 @@ class Component extends React.Component {
                                                   ]?.web ?? ""
                                                 }
                                                 alt="silver banner"
+                                                loading="lazy"
                                                 style={{
                                                   width: "100%",
                                                   height: "100%",
@@ -197,6 +198,7 @@ class Component extends React.Component {
                                                   ]?.mobile ?? ""
                                                 }
                                                 alt="silver banner"
+                                                loading="lazy"
                                                 style={{
                                                   width: "100%",
                                                   height: "100%",

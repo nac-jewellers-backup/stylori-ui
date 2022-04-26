@@ -79,7 +79,7 @@ class Creditform extends React.Component {
                                     </Grid>
                                     <Grid item lg={4} xs={12}>  
                                                 <div className="credit-img" style={{margin:10}}>
-                                                    <img className="imd-credit" src="https://assets.stylori.com/images/static/icons/cvv.png" />
+                                                    <img className="imd-credit" src="https://assets.stylori.com/images/static/icons/cvv.png" loading="lazy" alt="...." />
                                                 </div>
                                     </Grid>
                                     <Grid item>

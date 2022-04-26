@@ -27,19 +27,19 @@ export default function PaperSheet() {
     return (
         <Grid container>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "50%" }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg"} />
+                <img style={{ width: "50%" }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/fromthehouseofnac-pink.svg"} loading="lazy" alt="...."/>
             </Grid>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "50%" }} src={"https://assets.stylori.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg"} />
+                <img style={{ width: "50%" }} src={"https://assets.stylori.com/images/Static%20Pages/Other%20Pages/certifiedjewellery-pink.svg"} loading="lazy" alt="...."/>
             </Grid>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "50%" }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/securepayments-pink.svg"} />
+                <img style={{ width: "50%" }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/securepayments-pink.svg"} loading="lazy" alt="...."/>
             </Grid>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "50%" }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg"} />
+                <img style={{ width: "50%" }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/diversestyles-pink.svg"} loading="lazy" alt="...."/>
             </Grid>
             <Grid item className={classes.mainsource}>
-                <img style={{ width: "50%" }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg"} />
+                <img style={{ width: "50%" }} src={"https://assets.stylori.com/images/Static+Pages/Other+Pages/easyreturns-pink.svg"} loading="lazy" alt="...."/>
             </Grid>
         </Grid>
     );

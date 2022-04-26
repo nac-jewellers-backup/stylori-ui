@@ -40,7 +40,7 @@ function ImageGridList(props) {
 
                 {props.tabdata[props.activetab].map(tile => (
                     <GridListTile key={tile.img} cols={tile.cols || 1} className={classes.gridlistLi}>
-                        <img src={tile.img} style={{width:'100%',height:'auto'}}  alt="img" />
+                        <img src={tile.img} style={{width:'100%',height:'auto'}}  alt="img" loading="lazy"/>
                         <div className={`${classes.gridListtitle}`}>
                             product
                         </div >

@@ -158,9 +158,8 @@ class Component extends React.Component {
                     : ""
                   }`}
                 src={imgs}
-                loading="auto"
+                loading="lazy"
                 alt="..."
-
                 onError={(e) => {
 
                   this.imageOnError(e, imgs)
@@ -190,7 +189,8 @@ class Component extends React.Component {
             src={val.img}
             className="subslider-carousel-img img-responsive"
             style={{ width: "100%", height: "auto" }}
-            alt=""
+            alt="...."
+            loading="lazy"
             onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
           />
           <div className="overlay1">
@@ -215,7 +215,8 @@ class Component extends React.Component {
               src={isInjectUrl ? injectUrl_url_construct(val.img) : val.img}
               className="subslider-carousel-img img-responsive"
               style={{ width: "100%", height: "auto" }}
-              alt=""
+              alt="....."
+              loading="lazy"
               onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
             />
             <div className="overlay1"
@@ -262,7 +263,8 @@ class Component extends React.Component {
               <img
                 src={val.img}
                 className="subslider-carousel-img img-responsive"
-                alt=""
+                alt="..."
+                loading="lazy"
                 onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
               />
               <div className="overlay1silver" >
@@ -343,7 +345,8 @@ class Component extends React.Component {
                   <img
                     src={val.img}
                     className="subslider-carousel-img img-responsive"
-                    alt=""
+                    alt="..."
+                    loading="lazy"
                     onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
                   />
                   <div className="overlay1">
@@ -383,7 +386,8 @@ class Component extends React.Component {
                   height: "auto",
                   display: "block !important  ",
                 }}
-                alt=""
+                alt="..."
+                loading="lazy"
                 onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
               />
             )
@@ -400,7 +404,8 @@ class Component extends React.Component {
                 height: "auto",
                 display: "block !important  ",
               }}
-              alt=""
+              alt="..."
+              loading="lazy"
               onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
             /></a>}
         {/* <div class="overlay1">

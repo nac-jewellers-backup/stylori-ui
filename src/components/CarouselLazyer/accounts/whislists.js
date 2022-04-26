@@ -64,7 +64,7 @@ class Component extends React.Component {
                                         </div>
                                     </Grid>
                                         <div className="wishlist_img" style={{float:"left"}}>
-                                            <img className="viewport-img" alt="" src={`https://assets.stylori.net/base_images/${first_map?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl}`
+                                            <img className="viewport-img" loading="lazy" alt="...." src={`https://assets.stylori.net/base_images/${first_map?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl}`
                                             } />
                                          </div></Grid>
                                     <Grid  style={{width:"50%"}}>

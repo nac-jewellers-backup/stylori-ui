@@ -390,12 +390,14 @@ function Login(props) {
                   src="http://localhost:3000/static/media/Stylorilogo.svg"
                   style={{ width: "30%", height: "30%" }}
                   alt="images"
+                  loading="lazy" 
                 ></img>
                 <Box className="divider" />
                 <img
                   src="http://localhost:3000/static/media/stylori_silver_logo.svg"
                   style={{ width: "30%", height: "30%" }}
                   alt="images"
+                  loading="lazy" 
                 ></img>
               </Box>
               <Box display="flex" justifyContent="center">
@@ -426,6 +428,7 @@ function Login(props) {
                           <img
                             src={facebook}
                             alt="facebbok"
+                            loading="lazy" 
                             style={{ width: "60%", height: "60%" }}
                           />
                         }
@@ -451,6 +454,7 @@ function Login(props) {
                           <img
                             src={gmail}
                             alt="gmail"
+                            loading="lazy" 
                             style={{ width: "60%", height: "60%" }}
                           />
                         }

@@ -29,7 +29,7 @@ function CollectionCard({ image, title, description, onClick }) {
   const classes = useStyles();
   return (
     <div>
-      <img src={image} alt={title} style={{ width: "100vw", maxWidth: 350 }} />
+      <img src={image} alt={title} style={{ width: "100vw", maxWidth: 350 }} loading="lazy"/>
 
       <Typography className={classNames(classes.text, classes.title)}>
         Mural Collection
