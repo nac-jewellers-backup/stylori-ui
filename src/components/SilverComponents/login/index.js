@@ -346,7 +346,7 @@ function Login(props) {
       localStorage.setItem("check_dlt", false);
       localStorage.setItem("isedit", 1);
       localStorage.setItem("true", false);
-      setCondition({ ...condition, alert: true, alertMsg: data.message,alertSev:"success" });
+      setCondition({ ...condition, alert: true, alertMsg:"Login Success",alertSev:"success" });
       setTimeout(function () {
         //Start the timer
         setCondition({ ...condition, cls: true }); //After 1 second, set render to true
