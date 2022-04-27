@@ -4,48 +4,36 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "76fd23efc03d8414b846",
+    "revision": "d70b6350d93613061baa",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "56030d76df1ad1d27a87",
+    "revision": "cf79bbda8f509ff2a206",
     "url": "/static/css/4.css"
   },
   {
-    "revision": "2a1978eaf58b95842fe9",
+    "revision": "5e0174d7f4653156cbbe",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "76fd23efc03d8414b846",
+    "revision": "d70b6350d93613061baa",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "52c14ad1c49525b94b86",
+    "revision": "2fe74a92728b470b3032",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "56030d76df1ad1d27a87",
+    "revision": "cf79bbda8f509ff2a206",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "2a1978eaf58b95842fe9",
+    "revision": "5e0174d7f4653156cbbe",
     "url": "/static/js/main.js"
   },
   {
     "revision": "265884b522a19a75c49d",
     "url": "/static/js/runtime~main.js"
-  },
-  {
-    "revision": "d20d098dccc3deb830808f97fb14f3ca",
-    "url": "/static/media/Diners-Club.jpg"
-  },
-  {
-    "revision": "92e2d23a1a2929823738532362c05eea",
-    "url": "/static/media/FlowerDimon.jpg"
-  },
-  {
-    "revision": "dbcf216caae2a45cbfb8dd2844c8a691",
-    "url": "/static/media/Stylori Silver logo.svg"
   },
   {
     "revision": "34074cbb94b9fe2663250bfed2f2213f",
@@ -66,14 +54,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2b3d63f761a61e5c65a4773359c4eb40",
     "url": "/static/media/close.svg"
-  },
-  {
-    "revision": "1d4ab251e668bd11b62b30615bd88e78",
-    "url": "/static/media/closeheart.jpg"
-  },
-  {
-    "revision": "731e5ecd2c7827cef3f847ec91080214",
-    "url": "/static/media/delivery.svg"
   },
   {
     "revision": "6b446a380e308ad3d84cf955d088f3be",
@@ -116,16 +96,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/logout.svg"
   },
   {
-    "revision": "162c55add6a47b0d4045ee2e69d2e824",
-    "url": "/static/media/love.svg"
-  },
-  {
     "revision": "1157596233d3beac7f872fe4d1d5fe7c",
     "url": "/static/media/loveGrey.svg"
-  },
-  {
-    "revision": "965dabcd31d04c27b319f732b7aae019",
-    "url": "/static/media/nosepin.gif"
   },
   {
     "revision": "66395175df56f8182530893dd3a10cd2",
@@ -160,10 +132,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/slick.woff"
   },
   {
-    "revision": "681db1b372ef45af725df7762fcb49ee",
-    "url": "/static/media/styloriGagets.png"
-  },
-  {
     "revision": "556ec2b95dbf875acfb9740523d0e472",
     "url": "/static/media/stylori_silver_logo.svg"
   },
@@ -186,9 +154,5 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "bcc776345852aa9836e64bcc3e000864",
     "url": "/static/media/user-shape.svg"
-  },
-  {
-    "revision": "0a848483a9d0cc238c3b584e1260e3ec",
-    "url": "/static/media/visa.jpg"
   }
 ]);
