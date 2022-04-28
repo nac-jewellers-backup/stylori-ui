@@ -63,7 +63,7 @@ function Login(props) {
     isOtp: false,
     alert: false,
     alertMsg: "",
-    alertSev:"",
+    alertSev: "",
     cls: false,
   });
 
@@ -108,7 +108,7 @@ function Login(props) {
             isOtp: true,
             alert: true,
             alertMsg: "OTP success",
-            alertSev:"success"
+            alertSev: "success",
           });
         })
         .catch((err) => {
@@ -332,9 +332,9 @@ function Login(props) {
     []
   );
 
-  useEffect(()=>{
-    console.log(status,error,data,"ssss")
-  },[status,error])
+  useEffect(() => {
+    console.log(status, error, data, "ssss");
+  }, [status, error]);
 
   useEffect(() => {
     if (data?.accessToken) {
@@ -346,14 +346,23 @@ function Login(props) {
       localStorage.setItem("check_dlt", false);
       localStorage.setItem("isedit", 1);
       localStorage.setItem("true", false);
-      setCondition({ ...condition, alert: true, alertMsg:"Login Success",alertSev:"success" });
+      setCondition({
+        ...condition,
+        alert: true,
+        alertMsg: "Login Success",
+        alertSev: "success",
+      });
       setTimeout(function () {
         //Start the timer
         setCondition({ ...condition, cls: true }); //After 1 second, set render to true
       }, 1000);
-    }
-    else if(data?.message){
-      setCondition({ ...condition, alert: true, alertMsg: data.message,alertSev:"error" });
+    } else if (data?.message) {
+      setCondition({
+        ...condition,
+        alert: true,
+        alertMsg: data.message,
+        alertSev: "error",
+      });
     }
   }, [data]);
 
@@ -387,17 +396,17 @@ function Login(props) {
               </IconButton>
               <Box display="flex" alignItems="center" justifyContent="center">
                 <img
-                  src="http://localhost:3000/static/media/Stylorilogo.svg"
+                  src="static/media/Stylorilogo.svg"
                   style={{ width: "30%", height: "30%" }}
                   alt="images"
-                  loading="lazy" 
+                  loading="lazy"
                 ></img>
                 <Box className="divider" />
                 <img
-                  src="http://localhost:3000/static/media/stylori_silver_logo.svg"
+                  src="static/media/stylori_silver_logo.svg"
                   style={{ width: "30%", height: "30%" }}
                   alt="images"
-                  loading="lazy" 
+                  loading="lazy"
                 ></img>
               </Box>
               <Box display="flex" justifyContent="center">
@@ -428,7 +437,7 @@ function Login(props) {
                           <img
                             src={facebook}
                             alt="facebbok"
-                            loading="lazy" 
+                            loading="lazy"
                             style={{ width: "60%", height: "60%" }}
                           />
                         }
@@ -454,7 +463,7 @@ function Login(props) {
                           <img
                             src={gmail}
                             alt="gmail"
-                            loading="lazy" 
+                            loading="lazy"
                             style={{ width: "60%", height: "60%" }}
                           />
                         }
