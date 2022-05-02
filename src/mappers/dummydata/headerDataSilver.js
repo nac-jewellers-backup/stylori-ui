@@ -319,7 +319,7 @@ export const subheader = {
       //     url: "/jewellery-from+halo+collection"
       // },
       {
-        name: "Stac",
+        name: "STACK",
         url: "/jewellery-stack+collection?sort=New%20to%20Stylori&startprice=0&endprice=0",
       },
       {
@@ -915,7 +915,7 @@ export const menuLists = {
             // },
             {
               img: "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Stack-PNG.png",
-              content: "Stac",
+              content: "STACK",
               url: "/jewellery-stack+collection?sort=New%20to%20Stylori&startprice=0&endprice=0",
             },
             {
