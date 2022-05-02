@@ -9,12 +9,7 @@ import { Input } from "../../../components/InputComponents/TextField/Input";
 import SimpleSelect from "../../../components/InputComponents/Select/Select";
 import Addressdetails from "./addressDetails";
 import Addressforms from "./Addressforms";
-let namesOf_first = localStorage.getItem("name_Of_1")
-  ? localStorage.getItem("name_Of_1")
-  : "";
-let namesOf_last = localStorage.getItem("name_Of_2")
-  ? localStorage.getItem("name_Of_2")
-  : "";
+
 const Addressform = (props) => {
   return <AddressComponent {...props} />;
 };

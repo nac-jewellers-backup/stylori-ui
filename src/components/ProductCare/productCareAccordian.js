@@ -118,7 +118,7 @@ export default function ProductCareAccordian(props) {
                                     </Grid>
                                     <Grid item>
                                         <Grid>
-                                            <img style={{ width: "100%" }} class="imgPadding" src={value.img} />
+                                            <img style={{ width: "100%" }} class="imgPadding" src={value.img}  alt="..."/>
                                         </Grid>
 
                                     </Grid>
@@ -143,7 +143,7 @@ export default function ProductCareAccordian(props) {
                                             }
                                             {value.rightImg &&
                                                 <Typography>
-                                                    <img class="rightImg" style={{ justifyContent: `${value.align}`, display: "flex" }} src={value.rightImg} />
+                                                    <img class="rightImg" style={{ justifyContent: `${value.align}`, display: "flex" }} src={value.rightImg} alt="..."/>
                                                 </Typography>
                                             }
                                         </Grid>

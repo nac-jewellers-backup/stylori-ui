@@ -8,11 +8,7 @@ import { API_URL } from "../../../config";
 // import { CartContext } from 'context'
 
 var obj = {};
-var obj_user = {};
 // let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
-const order_idx = localStorage.getItem("order_id")
-  ? JSON.parse(localStorage.getItem("order_id"))
-  : "yourorder";
 
 const CashonDelivey = (props) => {
   let {

@@ -124,8 +124,7 @@ class Component extends React.Component {
     this.props.setOffset(offsets);
   };
   render() {
-    const { classes, data, loading } = this.props;
-    const { disabledstate } = this.state;
+    const { classes, data } = this.props;
 
     return (
       <Container maxWidth="lg" disableGutters>

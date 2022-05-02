@@ -107,28 +107,16 @@ const mobilecarousel = (props, val, wishlist, isSilver) => {
 
 const Productprice = (
   props,
-  state,
   anchorEl,
-  handleClick,
-  handleClose,
   globalContext,
   handleLocalStorage,
-  canceldeletechecklist,
   deletechecklists
 ) => {
   const {
     data,
-    allProps,
-    allState,
-    handleChanges,
-    handleCodChange,
-
-    pincode,
   } = props;
 
   const { classes } = props;
-
-  const open = anchorEl;
   var wishlist = props.wishlist;
   const isSilver = globalContext.Globalctx.pathName ? true : false;
 

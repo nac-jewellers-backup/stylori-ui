@@ -111,7 +111,6 @@ const Quantity = (props) => {
 
       if (!localStorageQuantity) {
         if (localStorageQuantity && !localStorageQuantity[props.data[0].skuId]) {
-          let _obj = {};
           localStorageQuantity[props.data[0].skuId] = state.qty;
           localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
           quantity[props.data[0].skuId] = state.qty;
