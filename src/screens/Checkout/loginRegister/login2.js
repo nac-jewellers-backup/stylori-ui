@@ -325,7 +325,7 @@ function Login2(props) {
       });
     } else {
       if (data?.accessToken) {
-        handlers.VerifyOTP(data)
+        handlers.VerifyOTP(data);
         // localStorage.setItem("email", data.userprofile.email);
         // var bb = data.userprofile.id ? data.userprofile.id : "";
         // localStorage.setItem("user_id", bb);
@@ -352,14 +352,14 @@ function Login2(props) {
             <img
               alt="images"
               loading="lazy"
-              src="http://localhost:3000/static/media/Stylorilogo.svg"
+              src="static/media/Stylorilogo.svg"
               style={{ width: "30%", height: "30%" }}
             ></img>
             <Box className="divider" />
             <img
               alt="images"
               loading="lazy"
-              src="http://localhost:3000/static/media/stylori_silver_logo.svg"
+              src="static/media/stylori_silver_logo.svg"
               style={{ width: "30%", height: "30%" }}
             ></img>
           </Box>
@@ -414,7 +414,7 @@ function Login2(props) {
                       <img
                         src={gmail}
                         alt="gmail"
-                        loading="lazy" 
+                        loading="lazy"
                         style={{ width: "60%", height: "60%" }}
                       />
                     }
