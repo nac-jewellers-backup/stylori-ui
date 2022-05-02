@@ -34,9 +34,6 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Logo = () =>{
-
-}
 export default function PaperSheet(props) {
     const isSilver = props.isSilver ? true : false
     const color = isSilver ? "#42ada4" : '#D91965'

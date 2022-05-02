@@ -95,17 +95,17 @@ async function supportsWebp() {
 
 //  const { GlobalCtx, setGlobaCtx } = React.useContext(GlobalContext);
 
-function status(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return Promise.resolve(response);
-  } else {
-    return Promise.reject(new Error(response.statusText));
-  }
-}
+// function status(response) {
+//   if (response.status >= 200 && response.status < 300) {
+//     return Promise.resolve(response);
+//   } else {
+//     return Promise.reject(new Error(response.statusText));
+//   }
+// }
 
-function json(response) {
-  return response.json();
-}
+// function json(response) {
+//   return response.json();
+// }
 
 export const lambda_func_front_end = async () => {
   // const { GlobalCtx, setGlobaCtx } = React.useContext(GlobalContext);

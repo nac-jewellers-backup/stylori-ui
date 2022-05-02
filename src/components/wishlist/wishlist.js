@@ -1,7 +1,7 @@
 import React from "react";
 import useWishlists from "./usewishlist";
 import styles from "./style";
-var orderobj = {};
+
 const Wishlist = (props) => {
   return <WishlistComponent {...props} />;
 };
@@ -25,6 +25,7 @@ const WishlistComponent = (props) => {
               setValues({ values, ...values });
               // return false
             }
+            return 0;
           });
       }
   }, []);

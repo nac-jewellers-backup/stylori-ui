@@ -34,8 +34,6 @@ var adres = {};
 var variab = {};
 const CartCardCheck = (props) => {
   const {
-    loading,
-    error,
     data: CodData,
     makeRequestCod,
   } = useCheckForCod(CheckForCod, () => {}, {});
@@ -83,6 +81,7 @@ class Component extends React.Component {
         quantity: l?.qty ?? 1,
       };
       gData.push(data);
+      return 0;
     });
     const tagManagerArgs = {
       gtmId: "GTM-PW3ZXSF",
@@ -207,12 +206,12 @@ class Component extends React.Component {
   };
 
   render() {
-    const { expanded, mailId, expandedlimit } = this.state;
-    const { classes, data } = this.props;
-    const { breadcrumsdata, cartsubdata } = this.props.data;
-    let email = localStorage.getItem("email")
-      ? localStorage.getItem("email")
-      : "";
+    const { expanded } = this.state;
+    const { data } = this.props;
+    // const { breadcrumsdata, cartsubdata } = this.props.data;
+    // let email = localStorage.getItem("email")
+    //   ? localStorage.getItem("email")
+    //   : "";
     variab["pincode"] = adres.value && adres.value.pincode;
 
     adres["value"] = localStorage.getItem("select_addres")
@@ -225,6 +224,7 @@ class Component extends React.Component {
         if (val?.isActive == false) {
           ProductIsActiveUrl = val.skuUrl;
         }
+        return 0;
       });
       window.open(
         `https://wa.me/919952625252?text=Hi - ${
@@ -717,8 +717,7 @@ const Components = (props) => {
   } = React.useContext(CartContext);
 
   const {
-    ProductDetailCtx: { filters },
-    setFilters,
+    ProductDetailCtx: { filters }
   } = React.useContext(ProductDetailContext);
 
   let content, mapped;

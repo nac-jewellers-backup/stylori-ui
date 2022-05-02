@@ -41,7 +41,7 @@ const useRegister = (changePanel, props) => {
     // const [valuesedit, setValuesedit] = React.useState({
 
     // });
-    const name = Profile_DATAS && Profile_DATAS.User_Profile && Profile_DATAS.User_Profile.firstName.length > 0 ? Profile_DATAS.User_Profile.firstName : ""
+    // const name = Profile_DATAS && Profile_DATAS.User_Profile && Profile_DATAS.User_Profile.firstName.length > 0 ? Profile_DATAS.User_Profile.firstName : ""
     // alert(JSON.stringify(name))
     const [valuesadrees, setvaluesadrees] = React.useState({
         user_id: user_ids,
@@ -56,15 +56,15 @@ const useRegister = (changePanel, props) => {
 
 
     const pathnames = window.location.pathname.split("-")[0] === "/account"
-    const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
+    // const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     // const { makeFetch: makeFetchedit } = useNetworkRequest('/api/auth/signup', {}, false);
     const { data: reg_update_data, makeFetch: makeFetcheditAddress } = useNetworkRequest('/api/updateuserprofile', {}, false);
-    const { data, error, loading, makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
+    const { data,  makeFetch } = useNetworkRequest('/api/auth/signup', {}, false);
     const { setCartFilters ,CartCtx} = React.useContext(CartContext);
-    const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
+    const { makeRequestCod } = useCheckForCod(ADDRESSDETAILS, () => { }, {});
     const pathnamelog = window.location.pathname === "/registers"
 
-    const { loading: Profile_loading, error: Profile_error, data: Profile_Data, makeRequestCod: propfile_fetch } = useCheckForCod(USERPROFILE, () => { }, {});
+    const { data: Profile_Data, makeRequestCod: propfile_fetch } = useCheckForCod(USERPROFILE, () => { }, {});
     React.useEffect(() => {
         if (user_ids && user_ids.length > 0) {
             obj_profile["id"] = user_ids

@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { Stylori } from "screens";
 import PricingPage from "screens/Stylori/PricingPage";
-
 import Cart from "screens/Stylori/Cart";
 import Account from "screens/Stylori/accounts";
 import Checkout from "screens/Stylori/Checkout";
@@ -32,10 +31,8 @@ import ReactPixel from "react-facebook-pixel";
 // SILVER SCREENS
 
 import Silver from "screens/SilverStylori";
-import SilverListingPage from "screens/SilverStylori/listingpage";
 import SilverProductDetail from "screens/SilverStylori/productDetail";
 import ChangePassword from "screens/Checkout/loginRegister/ChangePassword";
-import SilverCollection from "screens/SilverStylori/silverCollections";
 
 // SILVER SCREENS ENDS
 

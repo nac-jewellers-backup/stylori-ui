@@ -192,10 +192,10 @@ class Checkoutcard extends React.Component {
       slidesToShow: 1,
       arrows: false,
     };
-    const { classes, data } = this.props;
+    const { classes } = this.props;
 
     // Quantity {JSON.parse(localStorage.getItem('quantity'))[val.namedetail[0].details]}
-    const { productsDetails, fadeImages } = this.props.data;
+    // const { productsDetails, fadeImages } = this.props.data;
     // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
     // React.useEffect(()=>{
     //     setcartcount({
@@ -745,7 +745,7 @@ class Checkoutcard extends React.Component {
   };
   applycoupon = (props) => {
     const { expanded } = this.state;
-    const { classes } = this.props;
+    // const { classes } = this.props;
     return (
       <Accordion
         elevation={3}
@@ -838,7 +838,7 @@ class Checkoutcard extends React.Component {
         );
       })
       .reduce(myFunc);
-    let path = window.location.pathname.split("/").pop();
+    // let path = window.location.pathname.split("/").pop();
     const { classes } = this.props;
 
     return (

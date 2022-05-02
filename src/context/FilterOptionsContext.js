@@ -84,14 +84,12 @@ const Provider = (props) => {
   const [{ filterLogic }, setFilterLogic] = React.useState({
     filterLogic: () => [],
   });
-  const [LoadingSeoQuery, setLoadingSeoQurey] = React.useState(true);
-  const [ErrorSeoQuery, setErrorSeoQuery] = React.useState(false);
   const [DataSeoQuery, setDataSeoQuery] = React.useState([]);
   const [paramsAo, setParamsAo] = React.useState([]);
   let [pricemin, setPriceMin] = React.useState(0);
   let [pricemax, setPriceMax] = React.useState(0);
   const [loadingfilters, setloadingfilters] = React.useState(false);
-  const [sortFilterCombo, setSortFilterCombo] = React.useState(true);
+
   useEffect(() => {
     setFilterLogic({ filterLogic: (d, t) => t });
   }, [filters]);
@@ -104,7 +102,6 @@ const Provider = (props) => {
 
   const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
 
-  const client = createApolloFetch({ uri });
 
   const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest("/filterlist", {}, false, {});
 
@@ -130,7 +127,6 @@ const Provider = (props) => {
   }, []);
   useEffect(() => {
     const fetch_data = async () => {
-      var len;
       //    if(window.location.pathname === "/jewellery"){
 
       // props.location.push(window.location.pathname)
@@ -270,29 +266,29 @@ const Provider = (props) => {
 
   var queries = [];
   const qtfArr = [];
-  const pathQueries = () => {
-    // var queries = []
-    if (window.location.search) {
-      Object.keys(filters).map((fk) => {
-        const filter = filters[fk];
-        const fv = Object.keys(filter);
-        if (fv.length > 0) {
-          if (filter[fv[0]]) {
-            const qt = `${fk}=${fv[0]}`;
-            const qtf = {};
-            qtf[`${fk}`] = `${fv[0]}`;
-            queries.push(qt);
-            // qtfArr.push(qtf);
-          }
-        }
-      });
-      // const query = encodeURI(queries.join("&"));
-      // props.history.push({
-      //     pathname: ntxdata.seo_url,
-      //     search: query,
-      // })
-    }
-  };
+  // const pathQueries = () => {
+  //   // var queries = []
+  //   if (window.location.search) {
+  //     Object.keys(filters).map((fk) => {
+  //       const filter = filters[fk];
+  //       const fv = Object.keys(filter);
+  //       if (fv.length > 0) {
+  //         if (filter[fv[0]]) {
+  //           const qt = `${fk}=${fv[0]}`;
+  //           const qtf = {};
+  //           qtf[`${fk}`] = `${fv[0]}`;
+  //           queries.push(qt);
+  //           // qtfArr.push(qtf);
+  //         }
+  //       }
+  //     });
+  //     // const query = encodeURI(queries.join("&"));
+  //     // props.history.push({
+  //     //     pathname: ntxdata.seo_url,
+  //     //     search: query,
+  //     // })
+  //   }
+  // };
   // const clearSortIfFiltersIsEmpty = () => {
   //   var showSortFilter = true
   //

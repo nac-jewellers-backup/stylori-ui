@@ -28,21 +28,19 @@ class LoginRegisterIndex extends React.Component {
 
 
   render() {
-    const { LogRegData } = this.props.data;
-    const { classes } = this.props;
     var obj_user = {};
     let user_id = localStorage.getItem("user_id")
       ? localStorage.getItem("user_id")
       : "";
-    let set_check = localStorage.getItem("set_check")
-      ? localStorage.getItem("set_check")
-      : "";
+    // let set_check = localStorage.getItem("set_check")
+    //   ? localStorage.getItem("set_check")
+    //   : "";
     const local_mail = localStorage.getItem("email")
       ? localStorage.getItem("email")
       : "";
-    const local_mail_id = localStorage.getItem("_mail_")
-      ? localStorage.getItem("_mail_")
-      : null;
+    // const local_mail_id = localStorage.getItem("_mail_")
+    //   ? localStorage.getItem("_mail_")
+    //   : null;
     return (
       <Grid container>
         {localStorage.getItem("_mail_") === null && local_mail ? (

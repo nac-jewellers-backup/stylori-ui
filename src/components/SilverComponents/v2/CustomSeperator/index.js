@@ -40,26 +40,26 @@ export default function CustomSeparator(props) {
   const tabs = localStorage.getItem("panel");
   const classes = useStyles()
 
-  const handleUrl = (data) => {
-    let dataurl = data.toLowerCase();
-    if (dataurl === "home") {
-      return (window.location.href = "/");
-    } else if (dataurl === "jewellery") {
-      return (window.location.href = "/jewellery");
-    } else if (dataurl === "bangles") {
-      return (window.location.href = "/bangles-jewellery");
-    } else if (dataurl === "earrings") {
-      return (window.location.href = "/earrings-jewellery");
-    } else if (dataurl === "pendants") {
-      return (window.location.href = "/pendants-jewellery");
-    } else if (dataurl === "bracelets") {
-      return (window.location.href = "/bracelets-jewellery");
-    } else if (dataurl === "rings") {
-      return (window.location.href = "/rings-jewellery");
-    } else if (dataurl === "nosepins") {
-      return (window.location.href = "/nose+pin+online-jewellery");
-    }
-  };
+  // const handleUrl = (data) => {
+  //   let dataurl = data.toLowerCase();
+  //   if (dataurl === "home") {
+  //     return (window.location.href = "/");
+  //   } else if (dataurl === "jewellery") {
+  //     return (window.location.href = "/jewellery");
+  //   } else if (dataurl === "bangles") {
+  //     return (window.location.href = "/bangles-jewellery");
+  //   } else if (dataurl === "earrings") {
+  //     return (window.location.href = "/earrings-jewellery");
+  //   } else if (dataurl === "pendants") {
+  //     return (window.location.href = "/pendants-jewellery");
+  //   } else if (dataurl === "bracelets") {
+  //     return (window.location.href = "/bracelets-jewellery");
+  //   } else if (dataurl === "rings") {
+  //     return (window.location.href = "/rings-jewellery");
+  //   } else if (dataurl === "nosepins") {
+  //     return (window.location.href = "/nose+pin+online-jewellery");
+  //   }
+  // };
   const activetabsclik = (data) => {
     if (data && data.title === "Shopping Bag") {
       return (window.location.href = "/cart");
@@ -125,7 +125,7 @@ export default function CustomSeparator(props) {
                 window.location.pathname === "/checkout" ? (
                   <ol class="breadCrumbs">
                     {props.data.map((data) => (
-                      <li onClick={() => activetabsclik(data)}>
+                      <li href="#" onClick={() => activetabsclik(data)}>
                         <a
                           className={
                             activetabs(data)

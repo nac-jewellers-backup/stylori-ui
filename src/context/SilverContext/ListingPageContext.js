@@ -6,9 +6,7 @@ import { withRouter } from 'react-router-dom';
 import productlist from 'mappers/productlist';
 import { CDN_URL } from 'config';
 import { matchPath } from "react-router";
-import { createApolloFetch } from 'apollo-fetch';
 import { NetworkContext } from 'context/NetworkContext';
-import { GlobalContext } from 'context/GlobalContext';
 
 // *****************************************************************
 
@@ -49,8 +47,6 @@ const Provider = (props) => {
     const [cartcount, setcartcount] = React.useState([])
     const [mappedFilters, setMappedFilters] = React.useState([])
     const [{ filterLogic }, setFilterLogic] = React.useState({ filterLogic: () => [] });
-    const [LoadingSeoQuery, setLoadingSeoQurey] = React.useState(true)
-    const [ErrorSeoQuery, setErrorSeoQuery] = React.useState(false)
     const [DataSeoQuery, setDataSeoQuery] = React.useState([])
     const [paramsAo, setParamsAo] = React.useState([])
     const [pricemin,setPriceMin] = React.useState(0)
@@ -59,8 +55,8 @@ const Provider = (props) => {
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [silverFilters])
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => [...d, ...t] }) }, [offset])
     const { NetworkCtx: { graphqlUrl: uri } } = React.useContext(NetworkContext);
-    const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
-    const client = createApolloFetch({ uri });
+
+    // const client = createApolloFetch({ uri });
 
    
     const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/filterlist', {},false, {})
@@ -68,7 +64,7 @@ const Provider = (props) => {
     useEffect(() => {
 
         const fetch_data = async () => {
-            var len;
+       
             //    if(window.location.pathname === "/jewellery"){
 
 
@@ -128,25 +124,24 @@ const Provider = (props) => {
                     //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
                     var a = {};
 
-                    var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
+                    // var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
 
-                        let attrName = val.attributeName.replace(/\s/g, '')
-                        let attrVal = val.attributeValue
-                        silverFilters[attrName] = { [attrVal]: true }
+                    //     let attrName = val.attributeName.replace(/\s/g, '')
+                    //     let attrVal = val.attributeValue
+                    //     silverFilters[attrName] = { [attrVal]: true }
 
-                        // setFilters(filters)
-                        var obj = {}
+                    //     var obj = {}
                         
-                        obj[val.attributeValue] = true
+                    //     obj[val.attributeValue] = true
                         
-                        a[val.attributeName.replace(/\s/g, '')] = obj
-                        return a
+                    //     a[val.attributeName.replace(/\s/g, '')] = obj
+                    //     return a
 
-                    })
+                    // })
 
                     Object.entries(a).map(val => {
-
                         setSilverFilters({ ...silverFilters, a })
+                        return 0;
                     })
                     updateFilters(silverFilters)
                     // alert(JSON.stringify(filters))
@@ -166,30 +161,31 @@ const Provider = (props) => {
 
     var queries = []
     const qtfArr = []
-    const pathQueries = () => {
+    // const pathQueries = () => {
 
-        // var queries = []
-        if (window.location.search) {
-            Object.keys(silverFilters).map(fk => {
-                const filter = silverFilters[fk];
-                const fv = Object.keys(filter);
-                if (fv.length > 0) {
-                    if (filter[fv[0]]) {
-                        const qt = `${fk}=${fv[0]}`;
-                        const qtf = {}
-                        qtf[`${fk}`] = `${fv[0]}`
-                        queries.push(qt);
-                        // qtfArr.push(qtf);
-                    }
-                }
-            })
-            // const query = encodeURI(queries.join("&"));
-            // props.history.push({
-            //     pathname: ntxdata.seo_url,
-            //     search: query,
-            // })
-        }
-    }
+    //     // var queries = []
+    //     if (window.location.search) {
+    //         Object.keys(silverFilters).map(fk => {
+    //             const filter = silverFilters[fk];
+    //             const fv = Object.keys(filter);
+    //             if (fv.length > 0) {
+    //                 if (filter[fv[0]]) {
+    //                     const qt = `${fk}=${fv[0]}`;
+    //                     const qtf = {}
+    //                     qtf[`${fk}`] = `${fv[0]}`
+    //                     queries.push(qt);
+    //                     // qtfArr.push(qtf);
+    //                 }
+    //             }
+    //             return 0;
+    //         })
+    //         // const query = encodeURI(queries.join("&"));
+    //         // props.history.push({
+    //         //     pathname: ntxdata.seo_url,
+    //         //     search: query,
+    //         // })
+    //     }
+    // }
 
     const paramObjects = (filtersparms) => {
         // Destructuring the query parameters from the URL

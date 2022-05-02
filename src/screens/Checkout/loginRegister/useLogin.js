@@ -27,7 +27,7 @@ const useLogin = (changePanel, props) => {
     password: false,
   });
 
-  const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest(
+  const { data, makeFetch } = useNetworkRequest(
     "/api/auth/signin",
     {},
     []
@@ -37,8 +37,6 @@ const useLogin = (changePanel, props) => {
   const pathnames = window.location.pathname === "/login";
 
   const {
-    loading: codloading,
-    error: coderror,
     data: addresData,
     makeRequestCod,
   } = useCheckForCod(ADDRESSDETAILS, () => {}, {});

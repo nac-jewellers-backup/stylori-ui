@@ -1,13 +1,11 @@
 import React from "react";
 import "./ordersummary.css";
 import {
-  Container,
   Button,
   Grid,
   ExpansionPanel,
   ExpansionPanelSummary,
   ExpansionPanelDetails,
-  Typography,
   Hidden
 } from "@material-ui/core";
 import { Input } from "../../../components/InputComponents/TextField/Input";
@@ -15,7 +13,7 @@ import { withStyles } from "@material-ui/core/styles";
 import useGift from "./usegift";
 import Promo from "./promocode";
 import { API_URL } from "../../../config";
-import { ALLGIFT, UPDATEGIFT } from "../../../queries/cart";
+import { UPDATEGIFT } from "../../../queries/cart";
 
 const styles = (theme) => ({
   cart: {
@@ -92,9 +90,6 @@ const ProductlistComponent = (props) => {
       });
   };
 
-  const display = () => {
-    setShow(!show);
-  };
 
   return (
     <Grid>

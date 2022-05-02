@@ -435,11 +435,11 @@ class ProductDetails extends React.Component {
     const { expanded } = this.state;
     const { data, isSilver } = this.props;
     const { classes } = this.props;
-    const _mapper =
-      data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
-        ? data[0].productsDetails
-        : [];
-    const _isSilver = isSilver ? true : false;
+    // const _mapper =
+    //   data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
+    //     ? data[0].productsDetails
+    //     : [];
+    // const _isSilver = isSilver ? true : false;
     return (
       <>
         {val.header !== "Price Breakup" ||

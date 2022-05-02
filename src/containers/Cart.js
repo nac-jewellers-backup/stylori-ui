@@ -37,6 +37,7 @@ class Cart extends React.Component {
         quantity: l?.qty ?? 1,
       };
       gData.push(data);
+      return 0;
     });
     const tagManagerArgs = {
       gtmId: "GTM-PW3ZXSF",
@@ -54,7 +55,7 @@ class Cart extends React.Component {
     TagManager.initialize(tagManagerArgs);
   }
   render() {
-    const { data, classes, isStateFilterContextQty } = this.props;
+    const { data, isStateFilterContextQty } = this.props;
 
     let path = window.location.pathname.split("/").pop();
     return (
@@ -167,7 +168,6 @@ class Cart extends React.Component {
 const Components = (props) => {
   let {
     CartCtx: {
-      cartFilters,
       data,
       loading,
       error,
@@ -178,9 +178,8 @@ const Components = (props) => {
   } = React.useContext(CartContext);
   const {
     ProductDetailCtx: { filters },
-    setFilters,
   } = React.useContext(ProductDetailContext);
-  let { quantity } = filters;
+  // let { quantity } = filters;
 
   let content, mapped;
   let _data = {};

@@ -84,23 +84,23 @@ class CustomerReviews extends React.Component {
     // if (rating_if !== prevProps.rating.CodData && rating.CodData.data) this.rat_map_message()
   }
   render() {
-    const { expanded } = this.state;
+    // const { expanded } = this.state;
 
-    const dataCarousel = {
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      infinite: true,
-      fade: false,
-      dots: false,
-      autoplaySpeed: 4000,
-      arrows: false,
-    };
+    // const dataCarousel = {
+    //   slidesToShow: 1,
+    //   slidesToScroll: 1,
+    //   autoplay: true,
+    //   infinite: true,
+    //   fade: false,
+    //   dots: false,
+    //   autoplaySpeed: 4000,
+    //   arrows: false,
+    // };
 
     // const { productsubHead } = this.props.data
-    const { classes, data, isSilver } = this.props;
+    const { classes} = this.props;
 
-    const { starsSelected } = this.state;
+    // const { starsSelected } = this.state;
     return (
       <div style={{ width: "100%", paddingLeft: "5%", paddingRight: "5%" }}>
         {this.props.isSilver ? (
