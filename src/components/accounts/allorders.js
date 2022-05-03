@@ -51,7 +51,7 @@ class Allorders extends React.Component {
     TData &&
       TData.map((l) => {
         let data = {
-          id: l?.transSkuListByProductSku?.generatedSku,
+          sku: l?.transSkuListByProductSku?.generatedSku,
           name: l?.transSkuListByProductSku?.productListByProductId
             ?.productName,
           list_name: "Search Results",
@@ -63,20 +63,34 @@ class Allorders extends React.Component {
         };
         gData.push(data);
       });
-    const tagManagerArgs = {
-      gtmId: "GTM-54JTMML",
-      events: {
-        purchase: "purchase",
-        transaction_id: this?.props?.allorderdata?.data?.allOrders?.nodes[0].id,
-        affiliation: "Google online store",
-        value:
-          this?.props?.allorderdata?.data?.allOrders?.nodes[0]
-            .shoppingCartByCartId.discountedPrice,
-        currency: "INR",
-        items: gData,
-      },
-    };
-    TData && TagManager.initialize(tagManagerArgs);
+    // const tagManagerArgs = {
+    //   gtmId: "GTM-54JTMML",
+    //   event: "ecomm_event",
+    //   events: {
+    //     transactionId: this?.props?.allorderdata?.data?.allOrders?.nodes[0].id,
+    //     transactionAffiliation: "Google online store",
+    //     transactionTotal:
+    //       this?.props?.allorderdata?.data?.allOrders?.nodes[0]
+    //         .shoppingCartByCartId.discountedPrice,
+    //     currency: "INR",
+    //     transactionProducts: gData,
+    //   },
+    // };
+    TData && TagManager.initialize({ gtmId: "GTM-54JTMML" });
+    TData &&
+      TagManager.dataLayer({
+        dataLayer: {
+          event: "ecomm_event",
+          transactionId:
+            this?.props?.allorderdata?.data?.allOrders?.nodes[0].id,
+          transactionAffiliation: "Google online store",
+          transactionTotal:
+            this?.props?.allorderdata?.data?.allOrders?.nodes[0]
+              .shoppingCartByCartId.discountedPrice,
+          currency: "INR",
+          transactionProducts: gData,
+        },
+      });
   }
 
   handleChange = (panel) => (event) => {
