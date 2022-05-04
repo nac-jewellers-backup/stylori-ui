@@ -487,7 +487,7 @@ class Header extends Component {
                           {localStorage.getItem("true") ? (
                             <div className="tooltip ">
                               <span
-                                class="MuiBadge-root"
+                                className="MuiBadge-root"
                                 aria-owns={openPopover ? "simple-popper" : ""}
                                 // onClick={this.handleClickPopover}
                                 onClick={() => {
@@ -496,7 +496,7 @@ class Header extends Component {
                               >
                                 <i
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
-                                  class={`fa fa-user  ${classes.iconFafa}`}
+                                  className={`fa fa-user  ${classes.iconFafa}`}
                                 ></i>
                                 <span className="tooltip-slog">
                                   {Boolean(localStorage.getItem("user_id")) &&
@@ -518,7 +518,7 @@ class Header extends Component {
                               >
                                 <i
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
-                                  class={`fa fa-user  ${classes.iconFafa}`}
+                                  className={`fa fa-user  ${classes.iconFafa}`}
                                 ></i>
                                 <span className="tooltip-slog">
                                   {Boolean(localStorage.getItem("user_id")) &&
@@ -552,7 +552,7 @@ class Header extends Component {
                             >
                               <i
                                 style={{ fontSize: "18px" }}
-                                class={classes.iconFafaheart}
+                                className={classes.iconFafaheart}
                                 onClick={() => {
                                   if (user_id.length > 0) {
                                     window.location.href = `/account${"-wishlist"}`;
@@ -591,10 +591,10 @@ class Header extends Component {
                               <a href="/cart" className="highlighter">
                                 <i
                                   style={{ fontSize: "20px" }}
-                                  class={classes.iconFafa}
+                                  className={classes.iconFafa}
                                 >
                                   <i
-                                    class="fa fa-shopping-cart"
+                                    className="fa fa-shopping-cart"
                                     aria-hidden="true"
                                   ></i>
                                   {/* <img src={cart} alt="icon"/> */}
@@ -671,10 +671,11 @@ class Header extends Component {
                       >
                         <Grid item xs={12} className="titleTop" id={"titleTop"}>
                           <nav>
-                            {menuListHeader.map((listName) => {
+                            {menuListHeader.map((listName,index) => {
                               return (
                                 <a
                                   href={listName.url}
+                                  key={index}
                                   className={
                                     window.location.pathname === listName.url
                                       ? classes.seletectedMenu
@@ -805,7 +806,7 @@ class Header extends Component {
                           {localStorage.getItem("true") ? (
                             <div className="tooltip ">
                               <span
-                                class="MuiBadge-root"
+                                className="MuiBadge-root"
                                 aria-owns={openPopover ? "simple-popper" : ""}
                                 // onClick={this.handleClickPopover}
                                 onClick={() => {
@@ -814,7 +815,7 @@ class Header extends Component {
                               >
                                 <i
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
-                                  class={`fa fa-user  ${classes.iconFafa}`}
+                                  className={`fa fa-user  ${classes.iconFafa}`}
                                 ></i>
                                 <span className="tooltip-slog">
                                   {Boolean(localStorage.getItem("user_id")) &&
@@ -836,7 +837,7 @@ class Header extends Component {
                               >
                                 <i
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
-                                  class={`fa fa-user  ${classes.iconFafa}`}
+                                  className={`fa fa-user  ${classes.iconFafa}`}
                                 ></i>
                                 <span className="tooltip-slog">
                                   {Boolean(localStorage.getItem("user_id")) &&
@@ -870,7 +871,7 @@ class Header extends Component {
                             >
                               <i
                                 style={{ fontSize: "18px" }}
-                                class={classes.iconFafaheart}
+                                className={classes.iconFafaheart}
                                 onClick={() => {
                                   if (user_id.length > 0) {
                                     window.location.href = `/account${"-wishlist"}`;
@@ -909,10 +910,10 @@ class Header extends Component {
                               <a href="/cart" className="highlighter">
                                 <i
                                   style={{ fontSize: "20px" }}
-                                  class={classes.iconFafa}
+                                  className={classes.iconFafa}
                                 >
                                   <i
-                                    class="fa fa-shopping-cart"
+                                    className="fa fa-shopping-cart"
                                     aria-hidden="true"
                                   ></i>
                                   {/* <img src={cart} alt="icon"/>  */}
@@ -1049,7 +1050,7 @@ class Header extends Component {
                                 }}
                               >
                                 <i
-                                  class={`fa fa-user  ${classes.iconFafa}`}
+                                  className={`fa fa-user  ${classes.iconFafa}`}
                                   style={{
                                     display: "flex",
                                     color: "#6D6E71",
@@ -1065,7 +1066,7 @@ class Header extends Component {
                                 }
                               >
                                 <i
-                                  class={`fa fa-user  ${classes.iconFafa}`}
+                                  className={`fa fa-user  ${classes.iconFafa}`}
                                   style={{
                                     display: "flex",
                                     color: "#6D6E71",
@@ -1133,7 +1134,7 @@ class Header extends Component {
                               color="secondary"
                             >
                               <i
-                                class={classes.iconFafaheart}
+                                className={classes.iconFafaheart}
                                 onClick={() => {
                                   if (user_id.length > 0) {
                                     window.location.href = `/account${"-wishlist"}`;
@@ -1175,7 +1176,7 @@ class Header extends Component {
                                     fontSize: "15px !important",
                                     zIndex: 1000,
                                   }}
-                                  class={classes.iconFafa}
+                                  className={classes.iconFafa}
                                 >
                                   <img src={cart} alt="icon" loading="lazy" />
                                 </i>
@@ -1210,7 +1211,7 @@ class Header extends Component {
                       style={{ float: "right" }}
                       className={classes.iconbuttons}
                     >
-                      <i class="fa fa-times closebus"></i>
+                      <i className="fa fa-times closebus"></i>
                     </IconButton>
                   </div>
                 )}
@@ -1235,7 +1236,7 @@ class Header extends Component {
                                 : classes.iconbuttons
                             }
                           >
-                            <i class="fa fa-times closebus"></i>
+                            <i className="fa fa-times closebus"></i>
                           </IconButton>
                         </div>
                         <Typography
@@ -1290,13 +1291,13 @@ class Header extends Component {
                           {Jewellery[row.name] !== undefined ? (
                             row.name === selected ? (
                               <i
-                                class={`fa fa-caret-up drawer-arrow ${
+                                className={`fa fa-caret-up drawer-arrow ${
                                   isSilver ? classes.drawerArrowSilver : ""
                                 }`}
                               ></i>
                             ) : (
                               <i
-                                class={`fa fa-caret-down drawer-arrow ${
+                                className={`fa fa-caret-down drawer-arrow ${
                                   isSilver ? classes.drawerArrowSilver : ""
                                 }`}
                               ></i>
@@ -1370,7 +1371,7 @@ class Header extends Component {
                                       Jewellery[selected][row2].name !==
                                         "Gift Voucher" && (
                                         <i
-                                          class={`fa fa-caret-up drawer-arrow ${
+                                          className={`fa fa-caret-up drawer-arrow ${
                                             isSilver
                                               ? classes.drawerArrowSilver
                                               : ""
@@ -1405,7 +1406,7 @@ class Header extends Component {
                                       Jewellery[selected][row2].name !==
                                         "Gift Voucher" && (
                                         <i
-                                          class={`fa fa-caret-down drawer-arrow ${
+                                          className={`fa fa-caret-down drawer-arrow ${
                                             isSilver
                                               ? classes.drawerArrowSilver
                                               : ""
@@ -1719,7 +1720,7 @@ class Header extends Component {
                           className="follow_us_a_tag"
                         >
                           <i
-                            class="fa fa-facebook"
+                            className="fa fa-facebook"
                             aria-hidden="true"
                             style={{ fontSize: "18px" }}
                           ></i>
@@ -1731,7 +1732,7 @@ class Header extends Component {
                         >
                           {" "}
                           <i
-                            class="fa fa-instagram"
+                            className="fa fa-instagram"
                             aria-hidden="true"
                             style={{ fontSize: "18px" }}
                           ></i>

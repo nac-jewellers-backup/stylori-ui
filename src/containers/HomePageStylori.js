@@ -271,8 +271,7 @@ class HomeStylori extends React.Component {
             <Grid
               item
               xs={12}
-              alignItems="center"
-              style={{ paddingTop: "6px" }}
+              style={{ paddingTop: "6px",display:"flex",alignItems:"center" }}
             >
               <Typography style={{ width: "100%", textAlign: "center" }}>
                 <Slideshow dataCarousel={dataCarousel}>
@@ -280,6 +279,7 @@ class HomeStylori extends React.Component {
                     <>
                       <Grid
                         container
+                        
                         style={{
                           display: "flex !important",
                         }}
@@ -289,6 +289,7 @@ class HomeStylori extends React.Component {
                         <Grid
                           item
                           container
+                          key={index}
                           style={{
                             justifyContent: "center",
                             alignItems: "center",
@@ -358,7 +359,7 @@ class HomeStylori extends React.Component {
           carosolData={storyData.storiesData}
         />
 
-        <Grid item xs={12}  style={{ marginTop: 20,width:'100%' }}>
+        <Grid item xs={12} style={{ marginTop: 20,width:'100%' }}>
           <Footer />
         </Grid>
         <>
