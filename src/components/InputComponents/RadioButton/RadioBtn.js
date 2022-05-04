@@ -56,7 +56,6 @@ export default function RadioBtn(props) {
   //   setValue({...value, values:event.target.value, helperText: !Boolean((event.target.value != null && event.target.value !== ""))});
   // }
   // console.log(value);
-  console.info("objectvaluesobjectvalues", props.values.values);
   return (
     <div
       style={{ alignItems: "flex-end", padding: "6px" }}

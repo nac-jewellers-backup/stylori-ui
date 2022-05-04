@@ -118,8 +118,7 @@ const Productprice = (
 
   const { classes } = props;
   var wishlist = props.wishlist;
-  const isSilver = globalContext.Globalctx.pathName ? true : false;
-
+  const isSilver = globalContext?.Globalctx?.pathName ? true : false;
   const isactive = props?.data[0]?.isactive ?? "";
 
   return (
@@ -664,7 +663,7 @@ class Component extends React.Component {
   render() {
     const { anchorEl } = this.state;
     const context = this.context;
-    const { snacksBar } = this.state;
+
     return (
       <div>
         <Hidden smDown>

@@ -16,7 +16,7 @@ const TwitterContainer = () => {
           <section className="twitterContainer">
             <div className="twitter-embed">
               <a
-                class="twitter-timeline"
+                className="twitter-timeline"
                 data-height="420px"
                 href="https://twitter.com/StyloriLove?ref_src=twsrc%5Etfw"
               >
@@ -31,7 +31,7 @@ const TwitterContainer = () => {
           <section className="twitterContainer">
             <div className="twitter-embed">
               <a
-                class="twitter-timeline"
+                className="twitter-timeline"
                 data-height="420px"
                 href="https://twitter.com/StyloriSilver?ref_src=twsrc%5Etfw"
               >

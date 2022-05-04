@@ -387,7 +387,7 @@ export default function Footer(props) {
                 item
                 style={{ marginBottom: "-5.5%", zIndex: 12 }}
               >
-                <Grid item xs="12">
+                <Grid item xs={12}>
                   <img
                     src={cartoonFooter}
                     width="100%"
@@ -476,7 +476,7 @@ export default function Footer(props) {
                             style={{ width: "100%", textAlign: "end" }}
                           >
                             <a
-                              class="twitter"
+                              className="twitter"
                               style={{ textDecoration: "none" }}
                               target="_blank"
                               href={`http://www.twitter.com/share?url=${window.location.href}`}
@@ -493,7 +493,7 @@ export default function Footer(props) {
                               </i>{" "}
                             </a>
                             <a
-                              class="facebook"
+                              className="facebook"
                               target="_blank"
                               href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
                             >
@@ -509,7 +509,7 @@ export default function Footer(props) {
                               </i>
                             </a>
                             <a
-                              class="facebook"
+                              className="facebook"
                               target="_blank"
                               href="https://in.pinterest.com/stylori2015/"
                             >
@@ -525,7 +525,7 @@ export default function Footer(props) {
                               </i>
                             </a>
                             <a
-                              class="facebook"
+                              className="facebook"
                               target="_blank"
                               href="https://instagram.com/stylorilove"
                             >
@@ -541,7 +541,7 @@ export default function Footer(props) {
                               </i>
                             </a>
                             <a
-                              class="facebook"
+                              className="facebook"
                               target="_blank"
                               href="https://www.youtube.com/c/stylori"
                             >
@@ -671,7 +671,7 @@ export default function Footer(props) {
                   style={{ paddingTop: "6px" }}
                 >
                   <a
-                    class="twitter"
+                    className="twitter"
                     style={{ textDecoration: "none" }}
                     target="_blank"
                     href={`http://www.twitter.com/share?url=${window.location.href}`}
@@ -688,7 +688,7 @@ export default function Footer(props) {
                     </i>{" "}
                   </a>
                   <a
-                    class="facebook"
+                    className="facebook"
                     target="_blank"
                     href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
                   >
@@ -704,7 +704,7 @@ export default function Footer(props) {
                     </i>
                   </a>
                   <a
-                    class="facebook"
+                    className="facebook"
                     target="_blank"
                     href="https://in.pinterest.com/stylori2015/"
                   >
@@ -720,7 +720,7 @@ export default function Footer(props) {
                     </i>
                   </a>
                   <a
-                    class="facebook"
+                    className="facebook"
                     target="_blank"
                     href="https://instagram.com/stylorilove"
                   >
@@ -736,7 +736,7 @@ export default function Footer(props) {
                     </i>
                   </a>
                   <a
-                    class="facebook"
+                    className="facebook"
                     target="_blank"
                     href="https://www.youtube.com/c/stylori"
                   >
@@ -1016,12 +1016,12 @@ export default function Footer(props) {
                     </Grid>
                     <Grid container item xs={12} className="footer-icons">
                       <Grid
-                        class="contantf"
+                        className="contantf"
                         onClick={() => {
                           window.location.href = "mailto: hello@stylori.com";
                         }}
                       >
-                        <i class="iTags fa">&#xf003;</i>
+                        <i className="iTags fa">&#xf003;</i>
                         <span
                           className={classes.spanSizeColor}
                           style={{
@@ -1031,8 +1031,8 @@ export default function Footer(props) {
                           hello@stylori.com
                         </span>
                       </Grid>
-                      <Grid class="contantf">
-                        <i class="iTags fa">&#xf0e6;</i>
+                      <Grid className="contantf">
+                        <i className="iTags fa">&#xf0e6;</i>
                         <span
                           className={classes.spanSizeColor}
                           style={{
@@ -1042,9 +1042,9 @@ export default function Footer(props) {
                           chat
                         </span>
                       </Grid>
-                      <Grid class="contantf">
+                      <Grid className="contantf">
                         {" "}
-                        <i class="iTags fa">&#xf095;</i>
+                        <i className="iTags fa">&#xf095;</i>
                         <span
                           className={classes.spanSizeColor}
                           style={{
@@ -1054,8 +1054,8 @@ export default function Footer(props) {
                           1800 102 0330
                         </span>
                       </Grid>
-                      <Grid class="contantf">
-                        <i class="iTags fa">&#xf232;</i>
+                      <Grid className="contantf">
+                        <i className="iTags fa">&#xf232;</i>
                         <span
                           className={classes.spanSizeColor}
                           style={{
@@ -1172,13 +1172,13 @@ export default function Footer(props) {
           >
             <Hidden mdUp>
               <Grid container style={{ marginBottom: "10px" }}>
-                <Grid container item xs={4} justify="flex-start">
+                <Grid container item xs={4} justifyContent="flex-start">
                   <span className="lockSymbol"></span>
                 </Grid>
-                <Grid container item xs={4} justify="center">
+                <Grid container item xs={4} justifyContent="center">
                   <span className="netbank"></span>
                 </Grid>
-                <Grid container item xs={4} justify="flex-end">
+                <Grid container item xs={4} justifyContent="flex-end">
                   <span className="cashBack"></span>
                 </Grid>
               </Grid>
