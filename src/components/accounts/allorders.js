@@ -252,8 +252,6 @@ class Allorders extends React.Component {
       ? JSON.parse(localStorage.getItem("gut_lg"))
       : {};
 
-    console.log(allorderdata, "data");
-
     const expanded_ = expanded.map((val) => {
       return val;
     });
@@ -274,7 +272,6 @@ class Allorders extends React.Component {
       ? JSON.parse(localStorage.getItem("quantity"))
       : 1;
 
-      console.log(allorderdata.data.allOrders.nodes,"mainn")
 
     return (
       <>

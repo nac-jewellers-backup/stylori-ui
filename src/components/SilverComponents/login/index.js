@@ -332,9 +332,6 @@ function Login(props) {
     []
   );
 
-  useEffect(() => {
-    console.log(status, error, data, "ssss");
-  }, [status, error]);
 
   useEffect(() => {
     if (data?.accessToken) {
