@@ -183,7 +183,7 @@ export default function NeedHelp(props) {
                     Help
                     <i
                       style={{ fontSize: "1.2rem", paddingLeft: 3 }}
-                      class="fa"
+                      className="fa"
                     >
                       &#xf128;
                     </i>

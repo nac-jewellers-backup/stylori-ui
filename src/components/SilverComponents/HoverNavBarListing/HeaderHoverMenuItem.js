@@ -37,7 +37,6 @@ function HeaderHoverMenuItem(props) {
     setTarget(props.targetopened);
   });
 
-  console.log(props.chips,";;;;")
   // top: '18px !important',
   return (
     <Grid container className={classes.root}>
