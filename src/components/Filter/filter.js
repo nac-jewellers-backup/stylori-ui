@@ -125,7 +125,7 @@ class Component extends React.Component {
     };
   }
   componentDidMount() {
-    var { checked, chipData, numOne, numTwo, selected } = this.state;
+    var { checked, chipData, selected,numOne,numTwo } = this.state;
     if (
       this.props.data &&
       this.props.data.length > 0 &&
@@ -177,6 +177,7 @@ class Component extends React.Component {
               numTwo = Number(equalSplit[1]);
             }
           }
+          return 0;
         });
 
         const price_min = Number(price_one);
@@ -343,8 +344,7 @@ class Component extends React.Component {
   delete_val_chips = (value) =>
     Object.entries(this.state.checked).map((val) => {
       const { checked } = this.state;
-      // Coded by Legendary Jaya Soory - Samir🛐🛐🛐
-      var obj = {};
+      // Coded by Legendary Jaya Soorya - Samir🛐🛐🛐
       var mm;
       var bz;
       var valx;
@@ -384,6 +384,7 @@ class Component extends React.Component {
             }
           }
         }
+        return 0;
       });
       let loc = window.location.pathname.split("?")[0];
       if (!showSortFilter) {
@@ -449,6 +450,7 @@ class Component extends React.Component {
             },
             () => this.props.setFilters(checked)
           );
+          return 0;
         });
       paramsMapUrlSetState();
     }
@@ -458,11 +460,13 @@ class Component extends React.Component {
       if (val.title === title) {
         checkTitle = false;
       }
+      return 0;
     });
     chipData.map((val) => {
       if (val.label === value) {
         checkTitle = false;
       }
+      return 0;
     });
     if (BoolName === true) {
       if (checkTitle) {
@@ -560,6 +564,7 @@ class Component extends React.Component {
           }
         }
       }
+      return 0;
     });
     return valus;
   };

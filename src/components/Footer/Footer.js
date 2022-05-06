@@ -15,7 +15,7 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import DesktopFooter from "components/SilverComponents/DesktopFooter";
 import { API_URL } from "config";
 import { SnackBar } from "components/snackbarAlert/SnackBar";
-import { useLocation } from "react-router-dom";
+
 
 
 const useStyles = makeStyles((theme) => ({

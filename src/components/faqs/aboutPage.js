@@ -6,12 +6,9 @@ import Footer from "components/Footer/Footer";
 import '../../containers/index.css'
 import { aboutus } from '../../containers/dummydatafaqs';
 
-const useStyles = makeStyles(theme => ({
 
-}));
 
 export default function AboutPage(props) {
-    const classes = useStyles();
 
     return (
         <Grid container>

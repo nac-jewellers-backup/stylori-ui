@@ -249,13 +249,13 @@ export const conditions = {
   }),
   generateFilters: (filters) => {
     let filter = {};
-    const filterKeys = filters.map(val => String(Object.keys(val)));
 
     filters.map(k => {
       const fkey = String(Object.keys(k));
       const fval = String(Object.values(k));
       const fquery = filterProductMatrix(fkey, AvailabilityVal(fval), filter);
       filter = { ...filter, ...fquery };
+      return 0;
     })
 
     if (Object.keys(filter).length > 0) {
@@ -274,6 +274,7 @@ export const conditions = {
       
       const fquery = filterTransSkuMatrix(fkey, AvailabilityVal(fval));
       filterTransSku = { ...filterTransSku, ...fquery };
+      return 0;
     })
 
     if (Object.keys(filterTransSku).length > 0) {

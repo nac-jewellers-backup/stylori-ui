@@ -25,9 +25,6 @@ const Provider = (props) => {
     const [filters, setFilters] = React.useState(initialCtx.FilterOptionsCtx.filters);
     const { loading, error, data, makeRequest } = useGraphql(PRODUCTLIST, () => { }, {});
 
-
-
-    var offers = [];
     var queries = []
     const pathQueries = () => {
 
@@ -43,6 +40,7 @@ const Provider = (props) => {
                 }
 
             }
+            return 0;
         })
         // console.info('queries', queries);
         const query = encodeURI(queries.join("&"));

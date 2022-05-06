@@ -87,7 +87,7 @@ export default function (data) {
 
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
     Product_name.map((contain_img, index) => {
-      if ((2 * index_) == index) {
+      if ((2 * index_) === index) {
         data.Product_name = contain_img
       }
       return Product_name;
@@ -96,7 +96,7 @@ export default function (data) {
   })
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
     Product_name.map((contain_img, index) => {
-      if ((2 * index_) + 1 == index) {
+      if ((2 * index_) + 1 === index) {
         data.Product_name1 = contain_img
       }
       return Product_name;
@@ -106,7 +106,7 @@ export default function (data) {
 
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
     primaryNavigateUrl.map((contain_img, index) => {
-      if ((2 * index_) == index) {
+      if ((2 * index_) === index) {
         data.primaryNavigateUrl = contain_img
       }
       return primaryNavigateUrl;
@@ -116,7 +116,7 @@ export default function (data) {
 
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
     primaryNavigateUrl.map((contain_img, index) => {
-      if ((2 * index_) + 1 == index) {
+      if ((2 * index_) + 1 === index) {
         data.primaryNavigateUrl_sec = contain_img
       }
       return primaryNavigateUrl;
@@ -128,7 +128,7 @@ export default function (data) {
 
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
     primaryImage.map((contain_img, index) => {
-      if ((2 * index_) == index) {
+      if ((2 * index_) === index) {
         data.primaryImage = contain_img
       }
       return primaryImage;
@@ -137,7 +137,7 @@ export default function (data) {
   })
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
     primaryImage.map((contain_img, index) => {
-      if ((2 * index_) + 1 == index) {
+      if ((2 * index_) + 1 === index) {
         data.secondaryImage = contain_img
       }
       return primaryImage;
@@ -196,6 +196,7 @@ export default function (data) {
             price: Product_price(val.trans_sku_lists[0]),
             buttonName: "Shop Now"
           })
+          return 0;
         })
         data.allProductLists__primary = CarouselData_primary;
         // alert(JSON.stringify(CarouselData_primary))
@@ -291,6 +292,7 @@ export default function (data) {
       secondaryCarouselDetails: _collo_.allProductLists__secondary,
     })
     // }
+    return 0;
   })
   // alert(JSON.stringify(CollectionPage))
   CollectionPageStylori.Testimony.carousel.data = CollectionPage;

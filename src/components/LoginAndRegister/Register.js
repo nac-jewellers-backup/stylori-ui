@@ -16,17 +16,17 @@ const UserRegister = (props) => {
 
 const RegisterComponent = (props) => {
     const { classes } = props;
-    const { values, handlers } = useRegister();
+    const { } = useRegister();
     return (
         <Grid container  >
             <Header />
             <Grid spacing={12} container lg={12} style={{ padding: "3%" }}>
-                <Grid item xs={6} lg={6} xs={12}>
+                <Grid item xs={6} lg={6}>
                     <div >
                         <img width="100%" height="100%" src="https://assets.stylori.com/images/static/inner-page/banner.png" loading="lazy" alt="...." />
                     </div>
                 </Grid>
-                <Grid item xs={6} lg={6} xs={12}>
+                <Grid item xs={6} lg={6}>
                     <Container>
                         {/* <div className='pt-sm' style={{ width: "90%", float: "right" }}>
                         <form action="javascript:void(0)" onSubmit={(e) => {

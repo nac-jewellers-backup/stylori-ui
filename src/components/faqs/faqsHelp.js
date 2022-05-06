@@ -4,9 +4,6 @@ import './faqs.css'
 import Typography from '@material-ui/core/Typography';
 
 class faqsHelp extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <Grid>

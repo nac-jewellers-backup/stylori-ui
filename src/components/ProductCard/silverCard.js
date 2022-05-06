@@ -19,7 +19,6 @@ import Wishlist from "components/wishlist/wishlist";
 export const SilverImgMediaCard = (props) => {
   const { ProductDetailCtx, setFilters } =
     React.useContext(ProductDetailContext);
-  const loc = window.location.search;
   const classes = styles();
 
   return (
@@ -368,7 +367,6 @@ const useStyles = makeStyles((theme) => ({
       padding: "0 !important",
       paddingTop: "4px !important",
       paddingBottom: "4px !important",
-      padding: 5,
     },
   },
   youSave: {
@@ -459,7 +457,7 @@ function Component(props) {
     dataLoaded: true,
     image: { hoverImage: null, placeImage: null },
   });
-  const _height = props.data.imageResolution.img_res;
+  // const _height = props.data.imageResolution.img_res;
   const callmouseover = () => {
     setCardState({ ...cardstate, hovered: !cardstate.hovered });
   };

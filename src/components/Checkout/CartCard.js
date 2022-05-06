@@ -704,16 +704,17 @@ class Checkoutcard extends React.Component {
     let productIsActive = true;
     let productURL;
     this.props.data.map((val) => {
-      if (val?.isActive == false) {
+      if (val?.isActive === false) {
         productIsActive = val?.isActive;
         productURL = val?.skuUrl;
       }
+      return 0;
     });
     let path = window.location.pathname.split("/").pop();
 
     return (
       <div style={{ width: "100%",marginTop:"20px" }}>
-        {path == "checkout" ? (
+        {path === "checkout" ? (
           ""
         ) : (
           <div
@@ -1051,14 +1052,7 @@ class Checkoutcard extends React.Component {
   
 
   render() {
-    const dataCarousel = {
-      slidesToShow: 1,
-      arrows: false,
-    };
-
-    const { classes } = this.props;
     // alert(discounted_price)
-    let path = window.location.pathname.split("/").pop();
 
     return (
       <Grid>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles} from "@material-ui/core/styles";
 import { Grid } from '@material-ui/core';
 const useStyles = makeStyles(theme => ({
     containItems: {
@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
         borderRight: "1px solid #eeeeee"
     },
     image1: {
-        backgroundImage: 'url(' + 'https://assets.stylori.com/images/static/sprite-images.png' + ')',
+        backgroundImage: `url(https://assets.stylori.com/images/static/sprite-images.png)`,
         backgroundPosition: "-520px 52px",
         width: "28px",
         height: "20px",
@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
         minHeight: '30px'
     },
     image2: {
-        backgroundImage: 'url(' + 'https://assets.stylori.com/images/static/sprite-images.png' + ')',
+        backgroundImage: `url(https://assets.stylori.com/images/static/sprite-images.png)`,
         backgroundPosition: "-602px 52px",
         width: "28px",
         height: "20px",
@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
         minHeight: '30px'
     },
     image3: {
-        backgroundImage: 'url(' + 'https://assets.stylori.com/images/static/sprite-images.png' + ')',
+        backgroundImage: `url(https://assets.stylori.com/images/static/sprite-images.png)`,
         backgroundPosition: "-107px 52px",
         width: "28px",
         height: "20px",
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
         minHeight: '30px'
     },
     image4: {
-        backgroundImage: 'url(' + 'https://assets.stylori.com/images/static/sprite-images.png' + ')',
+        backgroundImage: `url(https://assets.stylori.com/images/static/sprite-images.png)`,
         backgroundPosition: "-273px 52px",
         width: "28px",
         height: "20px",
@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
         minHeight: '30px'
     },
     image5: {
-        backgroundImage: 'url(' + 'https://assets.stylori.com/images/static/sprite-images.png' + ')',
+        backgroundImage: `url(https://assets.stylori.com/images/static/sprite-images.png)`,
         backgroundPosition: "-190px 52px",
         width: "28px",
         height: "20px",
@@ -70,7 +70,6 @@ const useStyles = makeStyles(theme => ({
         width: "100%",
         margin: "3px 0px auto",
         float: "left",
-        width: "100%",
         color: "#394578",
         fontSize: "11px"
     },
@@ -89,7 +88,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function StaticView() {
     const classes = useStyles();
-    const theme = useTheme();
     const path = window.location.pathname === "/home";
     return (
         <Grid container className={classes.containItems}>

@@ -132,6 +132,7 @@ const Quantity = (props) => {
           if (val.sku_id === props.data[0].skuId) {
             localStorageCartDetails.products[i].qty = state.qty;
           }
+          return 0;
         });
         localStorage.setItem("cartDetails", JSON.stringify(localStorageCartDetails));
       }

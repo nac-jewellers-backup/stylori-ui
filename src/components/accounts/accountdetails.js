@@ -64,7 +64,7 @@ class Accountdetails extends Component {
     }
     render() {
         
-        let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
+        // let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
         // console.log(this.props)
         // const { wishlistdata } = this.props.wishlistdata;
         const currencies = [
@@ -100,16 +100,16 @@ class Accountdetails extends Component {
                         <Grid container spacing={12} style={{ width: "100%", margin: "auto" }}  >
                             <Grid item xs={3}  >
                                 <List className="pay-index-subhed" style={{ width: "100%" }}>
-                                    <p className={this?.state?.isActive == 'profile' ? "backgrund" : ""}
+                                    <p className={this?.state?.isActive === 'profile' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('profile')}
                                     > Personal Information</p>
-                                    <p className={this?.state?.isActive == 'addresses' ? "backgrund" : ""}
+                                    <p className={this?.state?.isActive === 'addresses' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('addresses')}
                                     >Address Book </p>
-                                    <p className={this?.state?.isActive == 'shoppingcart' ? "backgrund" : ""}
+                                    <p className={this?.state?.isActive === 'shoppingcart' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('shoppingcart')}
                                     >Shopping Bag ({this.props.data.length ? this.props.data.length : "0"}) </p>
-                                    <p className={this?.state?.isActive == 'wishlist' ? "backgrund" : ""}
+                                    <p className={this?.state?.isActive === 'wishlist' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('wishlist')}
                                     >
                                         Wishlist ({this.props.wishlistdata &&
@@ -118,7 +118,7 @@ class Accountdetails extends Component {
                                             this.props.wishlistdata.wishlistdata &&
                                             this.props.wishlistdata.wishlistdata.nodes.length : "0"
                                         })</p>
-                                    <p className={this.state.isActive == 'allorders' ? "backgrund" : ""}
+                                    <p className={this.state.isActive === 'allorders' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('allorders')}
                                     >
                                         All Orders</p>

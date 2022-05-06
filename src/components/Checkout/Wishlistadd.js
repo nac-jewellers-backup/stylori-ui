@@ -151,7 +151,7 @@ export default function WishlistButton(props) {
             whiteSpace: "nowrap",
             fontWeight: "bold",
             marginTop:
-              window.location.pathname == "/account-shoppingcart"
+              window.location.pathname === "/account-shoppingcart"
                 ? " "
                 : "10px",
           }}
@@ -175,7 +175,7 @@ export default function WishlistButton(props) {
             width: "95%",
             whiteSpace: "nowrap",
             marginTop:
-              window.location.pathname == "/account-shoppingcart"
+              window.location.pathname === "/account-shoppingcart"
                 ? " "
                 : "10px",
           }}

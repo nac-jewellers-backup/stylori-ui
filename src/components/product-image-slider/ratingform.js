@@ -23,8 +23,8 @@ const RatingComponent = (props) => {
     // const clear1 = () => {
     //     props && props.clear_rating_onchange && props.clear_rating_onchange(true)
     // }
-    const { values, handlers, setValues } = useRating(props);
-    const newLocal = 250;
+    const { values, handlers } = useRating(props);
+    // const newLocal = 250;
     const isSilver = props.isSilver ? true : false
 
     return (

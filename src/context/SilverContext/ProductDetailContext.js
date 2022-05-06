@@ -51,12 +51,10 @@ export const TabsProvider = (props) => {
   const [registerurl, setregisterurl] = React.useState("");
   const [ratingcounts, setratingcounts] = React.useState([]);
   const [price, setPrice] = React.useState(0);
-  let queries = [];
   const pathQueries = () => {
     setFilters(filters);
   };
   useEffect(() => {
-    let a = props;
     pathQueries();
   }, [filters]);
   let variables;
@@ -140,11 +138,6 @@ export const TabsProvider = (props) => {
         arr = _sessionStorage.split(",");
         arr.push(filters.skuId);
         var uniqueArray = [...new Set(arr)];
-        var removingCurrentProduct = uniqueArray?.filter((val) => {
-          if (window.location.search.split("=")[1] !== val) {
-            return val;
-          }
-        });
         sessionStorage.setItem("skuId", uniqueArray);
       } else {
         sessionStorage.setItem("skuId", filters.skuId);
@@ -171,8 +164,6 @@ export const TabsProvider = (props) => {
         };
       }
       let variableslike = {};
-      let recommended_products = window.location.pathname.split("/");
-
       variableslike["imgcondition"] = {
         imagePosition: 1,
         isdefault: true,

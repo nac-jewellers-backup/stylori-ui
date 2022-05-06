@@ -12,9 +12,9 @@ import { CDN_URL } from '../../config';
 
 const Slideshow = (props) => {
   let {
-    CartCtx: { allorderdata, wishlistdata, setratingcountsclear },
+    CartCtx: {  wishlistdata },
   } = React.useContext(CartContext);
-  const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
+  const { Globalctx} = React.useContext(GlobalContext);
   return <Component Globalctx={Globalctx} wishlist={wishlistdata} {...props} />;
 };
 
@@ -177,7 +177,7 @@ class Component extends React.Component {
   };
 
   imagehoverchildrens = (hoverlist, globalContext, isInjectUrl) => {
-    let { hover, hovereffect, TopPic, imagecra, isSilver, collectionDataSilverSEO, Homepagefont } = this.props;
+    let { hover, hovereffect, TopPic, isSilver, collectionDataSilverSEO, Homepagefont } = this.props;
     const collectiondatacheck = (val) => collectionDataSilverSEO ? collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText && collectionDataSilverSEO[val.title].seoText.replace(/ /g, '').length > 0 ? collectionDataSilverSEO[val.title].seoText : false : val.description
     // debugger
     if (TopPic) {
@@ -433,6 +433,7 @@ class Component extends React.Component {
         } else {
           vals = 0;
         }
+        return 0;
       });
     return vals;
   };

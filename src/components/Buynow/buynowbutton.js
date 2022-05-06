@@ -15,8 +15,6 @@ class Buynowbutton extends React.Component {
 
   valus = (props) => {
     var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : "";
-
-    var vals;
     // return valus_locl && valus_locl.map(val => {
     //     const vlx = this.props && this.props.sku
     //     if (vlx === val.sku_id) {

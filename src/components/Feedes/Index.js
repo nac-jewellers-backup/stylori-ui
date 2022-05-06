@@ -187,7 +187,6 @@ export default function StaticView(props) {
                       style={{
                         border: "none",
                         overflow: "hidden",
-                        paddingTop: "-200px",
                         paddingTop: "60px",
                         marginTop: "-131px",
                         height: "512px",
@@ -204,7 +203,6 @@ export default function StaticView(props) {
                       style={{
                         border: "none",
                         overflow: "hidden",
-                        paddingTop: "-200px",
                         paddingTop: "60px",
                         marginTop: "-131px",
                         height: "512px",

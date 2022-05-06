@@ -28,7 +28,7 @@ const dataCarousel = {
 };
 
 const mobilecarousel = (props, val, wishlist) => {
-  const { data, classes } = props;
+  const { data } = props;
   return (
     <div>
       {data.map((data_map) => (

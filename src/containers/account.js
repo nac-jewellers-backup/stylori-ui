@@ -59,11 +59,10 @@ class Accounts extends React.Component {
 }
 const Components = (props) => {
   let {
-    CartCtx: { cartFilters, data, loading, error, allorderdata, wishlistdata, NewUser },
+    CartCtx: { data, loading, error, allorderdata, wishlistdata, NewUser },
   } = React.useContext(CartContext);
   const {
     ProductDetailCtx: { filters },
-    setFilters,
   } = React.useContext(ProductDetailContext);
 
   let content, mapped;

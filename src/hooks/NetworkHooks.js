@@ -1,7 +1,5 @@
 import React from "react";
 import { NetworkContext } from "../context/NetworkContext";
-import { FieldsOnCorrectType } from "graphql/validation/rules/FieldsOnCorrectType";
-import { circIn } from "@popmotion/easing";
 let accessTokens;
 
 export const useDummyRequest = (mapper) => {
@@ -9,7 +7,7 @@ export const useDummyRequest = (mapper) => {
   const [error, setError] = React.useState(false);
   const [data, setData] = React.useState({});
   const [mapped, setMapped] = React.useState({});
-  const [status, setStatus] = React.useState({ status: null, statusText: "" });
+  const [status] = React.useState({ status: null, statusText: "" });
 
   React.useEffect(() => {
     setLoading(true);
@@ -40,7 +38,7 @@ export const useNetworkRequest = (
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [data, setData] = React.useState({});
-  const [mapped, setMapped] = React.useState({});
+  const [mapped] = React.useState({});
   const [status, setStatus] = React.useState({ status: null, statusText: "" });
 
   // PARSE FOR NETWORK REQUEST

@@ -223,7 +223,7 @@ export default function ImageGridList(props) {
                                         </Typography>
                                     </Grid>
                                     <Grid container>
-                                        <Grid item item xs={12} alignItems="center">
+                                        <Grid item xs={12} alignItems="center">
                                             <Grid container>
                                                 <Grid item className={classes.testimonialRight}>
                                                     <Grid item >
@@ -261,7 +261,7 @@ export default function ImageGridList(props) {
                         </Grid>
                         <Grid item style={{ marginBottom: "15px", width: "89%" }}>
                             <Grid container justify="center">
-                                <Grid item  xs={12} md={3} lg={3} sm={6} xs={12} alignItems="center">
+                                <Grid item  xs={12} md={3} lg={3} sm={6} alignItems="center">
                                     <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
                                         {props.carosolData.map((val, index) => <>
                                             <Grid container justify="center">
