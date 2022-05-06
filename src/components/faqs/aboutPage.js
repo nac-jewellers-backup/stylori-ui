@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles';
 import Header from "components/SilverComponents/Header";
 import Footer from "components/Footer/Footer";
 import '../../containers/index.css'

@@ -5,7 +5,6 @@ import { Grid, Container } from '@material-ui/core';
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 // import useRegister from './useregister';
-import useRegister from '../../screens/Checkout/loginRegister/useregister';
 import Header from 'components/SilverComponents/Header'
 import Footer from "components/Footer/Footer"
 import Register from 'screens/Checkout/loginRegister/register';
@@ -16,7 +15,6 @@ const UserRegister = (props) => {
 
 const RegisterComponent = (props) => {
     const { classes } = props;
-    const { } = useRegister();
     return (
         <Grid container  >
             <Header />

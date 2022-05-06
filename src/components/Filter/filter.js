@@ -365,6 +365,7 @@ class Component extends React.Component {
             }
             return false;
           }
+          return 0;
         });
       }
       return bz;
@@ -544,6 +545,7 @@ class Component extends React.Component {
           this.props.setFilters(checked);
         }
       }
+      return 0;
     });
   };
   handlebye = () => {};
@@ -593,6 +595,7 @@ class Component extends React.Component {
       if (val !== undefined && val !== null) {
         return val;
       }
+      return 0;
     });
     if (map.indexOf(name) > -1) {
       arr1 = selected?.filter((val) => {
@@ -601,6 +604,7 @@ class Component extends React.Component {
             return val;
           }
         }
+        return 0;
       });
       selected = arr1;
       this.setState({ selected });

@@ -124,6 +124,7 @@ const Components = (props) => {
                     obj[val.attributeValue]["seoUrl"] = val.seoUrl
                       ? val.seoUrl
                       : " ";
+                      return 0;
                   });
                   return obj;
                 };

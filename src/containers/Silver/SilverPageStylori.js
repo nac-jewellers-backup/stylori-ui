@@ -146,6 +146,7 @@ const Components = (props) => {
           _obj["name"] = val.customerName ? val.customerName : "-STYLORI";
           _obj["location"] = "Chennai";
           _arrData.push(_obj);
+          return 0;
         });
 
         // console.log('@reviews', data)
@@ -218,6 +219,7 @@ const Components = (props) => {
                     obj[val.attributeValue]["seoUrl"] = val.seoUrl
                       ? val.seoUrl
                       : " ";
+                      return 0;
                   });
                   return obj;
                 };

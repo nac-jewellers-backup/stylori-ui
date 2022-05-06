@@ -93,12 +93,14 @@ class Allorders extends React.Component {
       arr?.shoppingCartByCartId?.shoppingCartItemsByShoppingCartId?.nodes?.filter(
         (val) => {
           if (val.transSkuListByProductSku) return val;
+          return 0;
         }
       );
     if (_val.length > 0) {
       a = _val
         .filter((val) => {
           if (val.transSkuListByProductSku) return val;
+          return 0;
         })
         .map((cart) => {
           if (
@@ -1086,6 +1088,7 @@ class Allorders extends React.Component {
                                       </>
                                     );
                                 }
+                                
                               )}
 
                             {/* <div style={{ float: "right", fontSize: "18px" }}>
@@ -1644,8 +1647,8 @@ class Allorders extends React.Component {
                                                     src="https://assets.stylori.com/images/static/icon-ship.png"
                                                   />{" "}
                                                   <a  href="/#"
-                          target="_blank"
-                          el="noopener noreferrer">
+                                                  target="_blank"
+                                                 el="noopener noreferrer">
                                                     {this.generateShipsBy(
                                                       cart
                                                         .transSkuListByProductSku
@@ -1781,6 +1784,7 @@ class Allorders extends React.Component {
                                       </>
                                     );
                                 }
+                                
                               )}
 
                             {/* <div style={{ float: "right", fontSize: "18px" }}>

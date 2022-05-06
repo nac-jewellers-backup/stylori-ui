@@ -238,6 +238,7 @@ class Component extends React.Component {
       if (val?.isActive === false) {
         ProductIsActive = false;
       }
+      return 0;
     });
     return (
       <Grid>

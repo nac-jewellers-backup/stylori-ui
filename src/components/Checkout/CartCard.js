@@ -97,6 +97,7 @@ class Checkoutcard extends React.Component {
       if (currentValue !== val.sku_id) {
         return val;
       }
+      return 0;
     });
 
     function status(response) {
@@ -151,7 +152,10 @@ class Checkoutcard extends React.Component {
       var _products = JSON.parse(
         localStorage.getItem("cartDetails")
       )?.products?.filter((val) => {
-        if (val.sku_id !== currentValue) return val;
+        if (val.sku_id !== currentValue){
+          return val;
+        }  
+        return 0;
       });
       var cartId = JSON.parse(localStorage.getItem("cartDetails")).cart_id;
       var userId = JSON.parse(localStorage.getItem("cartDetails")).user_id;

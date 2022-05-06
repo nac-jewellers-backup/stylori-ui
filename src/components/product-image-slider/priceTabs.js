@@ -45,9 +45,6 @@ const PriceTabs = (props) => {
 };
 
 class Component extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     value: 1,
     values: "",

@@ -53,11 +53,13 @@ class ProductDetails extends React.Component {
                 Number(val.details[1].replace("₹", "").replace(/,/g, ""))
             )
               return true;
+              return 0;
           })
           ?.filter((val) => {
             if (val) {
               return true;
             }
+            return 0;
           });
         // alert(checked)
         if (_gst.length > 0) {

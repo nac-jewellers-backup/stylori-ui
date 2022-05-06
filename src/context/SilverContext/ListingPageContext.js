@@ -322,6 +322,7 @@ const Provider = (props) => {
                         qtfArr.push(qtf);
                     }
                 }
+                return 0;
             })
             var k = qtfArr.map(val => Object.values(val));
             var keyy = qtfArr.map(val => Object.keys(val))
@@ -419,6 +420,7 @@ const Provider = (props) => {
                     }
 
                 }
+                return 0;
             })
             const query = encodeURI(queries.join("&"));
 

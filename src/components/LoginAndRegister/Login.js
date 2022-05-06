@@ -3,7 +3,6 @@ import React from 'react';
 import { Grid, Container } from '@material-ui/core'; 
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
-import useLogin from '../../screens/Checkout/loginRegister/useLogin';
 import Header from 'components/SilverComponents/Header'
 import Footer from "components/Footer/Footer"
 import { withRouter } from "react-router";
@@ -20,7 +19,6 @@ const LoginComponent = (props) => {
     let { CartCtx: { wishlistdata} } = React.useContext(CartContext);
   let { FilterOptionsCtx: { cartcount }, setloadingfilters } = React.useContext(FilterOptionsContext);
   const { classes } = props;
-    const {} = useLogin(() => props.changePanel(3));
     // const vl = data && data.message
     // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
     // var prof = data.userprofile ? data.userprofile.email : ""
