@@ -34,7 +34,8 @@ export const filterGenerator = (
   clause = "equalTo"
 ) => {
   var _obj = Object.keys(filter).filter((val) => {
-    if (val === "transSkuListsByProductId") return true;
+    if (val === "transSkuListsByProductId") 
+    return true;
   });
   if (table.length > 0) {
     if (_obj[0] === table) {
@@ -113,10 +114,6 @@ export const lambda_func_front_end = async () => {
   var window_width = Math.max(
     document.documentElement.clientWidth,
     window.innerWidth || 0
-  );
-  var h = Math.max(
-    document.documentElement.clientHeight,
-    window.innerHeight || 0
   );
 
   // (async () => {

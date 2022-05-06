@@ -160,12 +160,6 @@ export const styles = makeStyles((theme) => ({
       top: 0,
     },
   },
-  filtersLabel: {
-    [theme.breakpoints.only("md")]: {
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-    },
-  },
   menuListCursorfiltersLabel: {
     fontWeight: "unset !important",
   },

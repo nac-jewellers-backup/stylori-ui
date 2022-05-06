@@ -163,7 +163,7 @@ const Components = (props) => {
     CartCtx: { allorderdata, wishlistdata },
   } = React.useContext(CartContext);
   let {
-    FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters, wishlist_count },
+    FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters},
     setloadingfilters,
   } = React.useContext(FilterOptionsContext);
   let content,

@@ -53,11 +53,13 @@ class ProductDetails extends React.Component {
                 Number(val.details[1].replace("₹", "").replace(/,/g, ""))
             )
               return true;
+              return 0;
           })
           ?.filter((val) => {
             if (val) {
               return true;
             }
+            return 0;
           });
         // alert(checked)
         if (_gst.length > 0) {
@@ -433,7 +435,7 @@ class ProductDetails extends React.Component {
   };
   withExpandCollapse = (val) => {
     const { expanded } = this.state;
-    const { data, isSilver } = this.props;
+    const { isSilver } = this.props;
     const { classes } = this.props;
     // const _mapper =
     //   data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
@@ -599,13 +601,13 @@ class ProductDetails extends React.Component {
     );
   };
   withoutExpandCollapse = (val) => {
-    const { expanded } = this.state;
+    // const { expanded } = this.state;
     const { data, isSilver } = this.props;
     const { classes } = this.props;
-    const _mapper =
-      data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
-        ? data[0].productsDetails
-        : [];
+    // const _mapper =
+    //   data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
+    //     ? data[0].productsDetails
+    //     : [];
     const _isSilver = isSilver ? true : false;
     return (
       <>

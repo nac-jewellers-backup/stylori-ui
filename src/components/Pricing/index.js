@@ -17,7 +17,7 @@ export default function Pricing(props) {
         <Typography
           className={`pricing  ${
             (props.title != null) & (props.title !== "") ? "" : "shine"
-          } ${path == "stylori" && "pricingTitle"}`}
+          } ${path === "stylori" && "pricingTitle"}`}
         >
           {props.title}
         </Typography>

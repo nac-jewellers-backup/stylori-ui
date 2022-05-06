@@ -4,9 +4,6 @@ import './faqs.css'
 import Typography from '@material-ui/core/Typography';
 
 class faqsHelp extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <Grid>
@@ -34,7 +31,9 @@ class faqsHelp extends React.Component {
                 <Grid item xs={12} container alignItems="center" style={{ padding: "6px 0px 0px 2px" }}>
                     <span item xs={3} class="chat">
                     </span>
-                    <a href="#" style={{ color: "#394578", fontSize: "13px", paddingLeft: "6px", textDecoration: "none" }}>Start live chat </a>
+                    <a  href="/#"
+                          target="_blank"
+                          el="noopener noreferrer" style={{ color: "#394578", fontSize: "13px", paddingLeft: "6px", textDecoration: "none" }}>Start live chat </a>
                 </Grid>
 
             </Grid>

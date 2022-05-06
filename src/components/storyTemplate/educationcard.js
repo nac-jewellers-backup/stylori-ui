@@ -92,7 +92,8 @@ export default function MediaCard(props) {
 
                   <a  style={{ color: "inherit", textDecoration: "none" }} href={`http://www.twitter.com/share?url=${window.location.href}`} className="fa fa-twitter twitter iconic"></a>
                   {/* <a className="fa fa-google-plus google iconic"></a> */}
-                  <a className={classes.cardReadLink}>read more</a>
+                  <a className={classes.cardReadLink} target="_blank"
+                          el="noopener noreferrer" href="/#">read more</a>
                 </Grid>
               </Grid>
             </CardContent>

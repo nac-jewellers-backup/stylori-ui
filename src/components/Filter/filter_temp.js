@@ -462,7 +462,7 @@ class PersistentDrawerLeft extends React.Component {
                     variant=""
                     className={`filter-mbl-font ${classes.colorMain}`}
                   >
-                    <i className="filter-icon" className="fa fa-filter"></i>{" "}
+                    <i  className="fa fa-filter filter-icon"></i>{" "}
                     &nbsp; Filter
                   </Typography>
                 </IconButton>
@@ -480,7 +480,7 @@ class PersistentDrawerLeft extends React.Component {
                     variant=""
                     className={`filter-mbl-font ${classes.colorMain}`}
                   >
-                    <i className="filter-icon" className="fa fa-sort"></i>&nbsp;
+                    <i className="fa fa-sort filter-icon"></i>&nbsp;
                     Sort
                   </Typography>
                 </IconButton>

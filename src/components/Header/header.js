@@ -154,7 +154,7 @@ class Header extends Component {
 
                     {localStorage.getItem("true") ? (
                       <span aria-owns={openPopover ? "simple-popper" : ""} onClick={this.handleClickPopover} loading="lazy" alt="....">
-                        <img className="icons-header-sizes" src={usershape} />
+                        <img className="icons-header-sizes" src={usershape} loading="lazy" alt="...."/>
                       </span>
                     ) : (
                       // <img className="icons-header-sizes" src={usershape}/>
@@ -197,6 +197,9 @@ class Header extends Component {
                             window.location.reload();
                             window.location.pathname = "/login";
                           }}
+                          href="/#"
+                          target="_blank"
+                          el="noopener noreferrer"
                         >
                           <img className="icons-header-sizes" src={logout} loading="lazy" alt="...."/>
                           &nbsp;Logout
@@ -234,7 +237,7 @@ class Header extends Component {
                   </div>
                 </Grid>
               </Grid>
-              {path == "cart" || path == "checkout" ? (
+              {path === "cart" || path === "checkout" ? (
                 ""
               ) : (
                 <Grid container spacing={12}>
@@ -366,7 +369,7 @@ class Header extends Component {
               {mainlist.map((row) => (
                 <>
                   <ListItem button key={row.name} className="drawer-list">
-                    <img className="submenu-icons" src={row.icon} alt={row.icon} loading="lazy" alt="...."></img>
+                    <img className="submenu-icons" src={row.icon} alt={row.icon} loading="lazy"></img>
                     <ListItemText onClick={() => (Jewellery[row.name] !== undefined ? this.selectItem(row.name) : "")}>
                       <Typography className="list-items" variant="">
                         {row.name}

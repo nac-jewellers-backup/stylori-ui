@@ -22,11 +22,7 @@ import { Helmet } from "react-helmet";
 import TagManager from "react-gtm-module";
 import ReactPixel from "react-facebook-pixel";
 
-const order_id = localStorage.getItem("order_id")
-  ? JSON.parse(localStorage.getItem("order_id"))
-  : "";
-var img_res;
-var img_res_X_2 = null;
+
 const width = window.innerWidth;
 function myFunc(total, num) {
   return Math.round(total + num);
@@ -63,6 +59,7 @@ class Allorders extends React.Component {
         price: l?.transSkuListByProductSku?.markupPrice,
       };
       gData.push(data);
+      return 0;
     });
     const tagManagerArgs = {
       gtmId: "GTM-PW3ZXSF",
@@ -96,12 +93,14 @@ class Allorders extends React.Component {
       arr?.shoppingCartByCartId?.shoppingCartItemsByShoppingCartId?.nodes?.filter(
         (val) => {
           if (val.transSkuListByProductSku) return val;
+          return 0;
         }
       );
     if (_val.length > 0) {
       a = _val
         .filter((val) => {
           if (val.transSkuListByProductSku) return val;
+          return 0;
         })
         .map((cart) => {
           if (
@@ -127,18 +126,18 @@ class Allorders extends React.Component {
     var date = moment().format(" h a");
     if (isReadytoShip) {
       if (JSON.stringify(date) > " 1 pm") {
-        return "Ships by" + " " + moment().add(1, "days").format("MMM Do YYYY");
+        return `Ships by  ${moment().add(1, "days").format("MMM Do YYYY")}`;
       }
     } else {
       return (
-        "Ships by" +
-        " " +
-        moment().add(numberOfDays, "days").format("MMM Do YYYY")
+        `Ships by
+        
+        ${moment().add(numberOfDays, "days").format("MMM Do YYYY")}`
       );
     }
   };
 
-  ImageUrl = (imgs, sku, metal, paymentsuccess) => {
+  ImageUrl = (imgs, metal, paymentsuccess) => {
     var check_img;
     var ppp;
     if (paymentsuccess) {
@@ -166,7 +165,7 @@ class Allorders extends React.Component {
             .concat(`${browser_type && browser_type.browser_type}`);
         url_split[url_split && url_split.length - 1] = browser_type_append;
         url_split.splice(2, 0, _resolutions);
-        var url_construct = url_split.join().replace(/\,/g, "/");
+        var url_construct = url_split.join().replace(/\,/g, "/"); //eslint-disable-line
         // var img_url = `${baseUi}${url_construct}`
         ppp = `${CDN_URL}${url_construct}`;
         // alert(this.state.check_img)
@@ -180,65 +179,62 @@ class Allorders extends React.Component {
         this.props.allorderdata.allorderdata &&
         this.props.allorderdata.allorderdata.nodes.length > 0
       ) {
-        var vera = this.props.allorderdata.allorderdata.nodes.map((val) => {
-          if (val !== undefined && val !== null) {
-            var inside =
-              val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(
-                (cart) => {
-                  if (cart !== undefined && cart !== null) {
-                    if (cart !== undefined && cart !== null) {
-                      var metalColor_ = metal;
-                      var cnt =
-                        imgs[0]?.transSkuListByProductSku?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl.split(
-                          "/"
-                        );
-                      var cnt_b = cnt[2].split("-");
-                      var cnt_c = cnt_b[1];
+        // var vera = this.props.allorderdata.allorderdata.nodes.map((val) => {
+        //   if (val !== undefined && val !== null) {
+        //     var inside =
+        //       val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(
+        //         (cart) => {
+        //           if (cart !== undefined && cart !== null) {
+        //             if (cart !== undefined && cart !== null) {
+        //               var metalColor_ = metal;
+        //               var cnt =
+        //                 imgs[0]?.transSkuListByProductSku?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl.split(
+        //                   "/"
+        //                 );
+        //               var cnt_b = cnt[2].split("-");
+        //               var cnt_c = cnt_b[1];
 
-                      var browser_type = JSON.parse(
-                        localStorage.getItem("browserDetails")
-                      );
+        //               var browser_type = JSON.parse(
+        //                 localStorage.getItem("browserDetails")
+        //               );
 
-                      if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
-                        check_img = true;
+        //               if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
+        //                 check_img = true;
 
-                        var resolution = 500;
-                        var _resolutions =
-                          width < 960
-                            ? `${resolution * 2}X${resolution * 2}`
-                            : `${resolution}X${resolution}`;
-                        var url_split =
-                          imgs &&
-                          imgs[0]?.transSkuListByProductSku?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl.split(
-                            "/"
-                          );
-                        var extension_split =
-                          url_split && url_split[url_split.length - 1];
-                        var browser_type_append =
-                          extension_split &&
-                          extension_split
-                            .split(".")[0]
-                            .concat(
-                              `${browser_type && browser_type.browser_type}`
-                            );
-                        url_split[url_split && url_split.length - 1] =
-                          browser_type_append;
-                        url_split.splice(2, 0, _resolutions);
-                        var url_construct = url_split
-                          .join()
-                          .replace(/\,/g, "/");
-                        // var img_url = `${baseUi}${url_construct}`
-                        ppp = `${CDN_URL}${url_construct}`;
-                        // alert(this.state.check_img)
-                      }
-                      // }
-                    }
-                  }
-                }
-              );
-            // return inside[0]
-          }
-        });
+        //                 var resolution = 500;
+        //                 var _resolutions =
+        //                   width < 960
+        //                     ? `${resolution * 2}X${resolution * 2}`
+        //                     : `${resolution}X${resolution}`;
+        //                 var url_split =
+        //                   imgs &&
+        //                   imgs[0]?.transSkuListByProductSku?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl.split(
+        //                     "/"
+        //                   );
+        //                 var extension_split =
+        //                   url_split && url_split[url_split.length - 1];
+        //                 var browser_type_append =
+        //                   extension_split &&
+        //                   extension_split
+        //                     .split(".")[0]
+        //                     .concat(
+        //                       `${browser_type && browser_type.browser_type}`
+        //                     );
+        //                 url_split[url_split && url_split.length - 1] =
+        //                   browser_type_append;
+        //                 url_split.splice(2, 0, _resolutions);
+        //                 var url_construct = url_split
+        //                   .join()
+        //                   .replace(/\,/g, "/");
+        //                 ppp = `${CDN_URL}${url_construct}`;
+                        
+        //               }
+        //             }
+        //           }
+        //         }
+        //       );
+        //   }
+        // });
 
         return ppp;
       }
@@ -246,15 +242,15 @@ class Allorders extends React.Component {
   };
 
   render() {
-    const { expanded, mailId, expandedlimit } = this.state;
+    // const { expanded} = this.state;
     const { allorderdata } = this.props;
     let gut_lg = localStorage.getItem("gut_lg")
       ? JSON.parse(localStorage.getItem("gut_lg"))
       : {};
 
-    const expanded_ = expanded.map((val) => {
-      return val;
-    });
+    // const expanded_ = expanded.map((val) => {
+    //   return val;
+    // });
     // var check_img = null
     const allDatas = () => {
       if (
@@ -268,9 +264,9 @@ class Allorders extends React.Component {
     };
     const paymentsuccess = true;
 
-    const _localStorageQTY = localStorage.getItem("quantity")
-      ? JSON.parse(localStorage.getItem("quantity"))
-      : 1;
+    // const _localStorageQTY = localStorage.getItem("quantity")
+    //   ? JSON.parse(localStorage.getItem("quantity"))
+    //   : 1;
 
 
     return (
@@ -290,7 +286,6 @@ class Allorders extends React.Component {
                     <ExpansionPanel
                       square
                       style={{
-                        boxShadow: "none",
                         boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px",
                         marginBottom: "10px"
                       }}
@@ -568,7 +563,7 @@ class Allorders extends React.Component {
                                               .skuWeight !== null
                                               ? cart.transSkuListByProductSku
                                                   .productListByProductId
-                                                  .productType == "Kada"
+                                                  .productType === "Kada"
                                                 ? "Weight (Gm)"
                                                 : "Gold Weight (Gm)"
                                               : null}
@@ -706,7 +701,9 @@ class Allorders extends React.Component {
                                               loading="lazy"
                                               src="https://assets.stylori.com/images/static/icon-ship.png"
                                             />{" "}
-                                            <a>
+                                            <a  href="/#"
+                          target="_blank"
+                          el="noopener noreferrer">
                                               {this.generateShipsBy(
                                                 cart.transSkuListByProductSku
                                                   .readytoship,
@@ -947,7 +944,9 @@ class Allorders extends React.Component {
                                                     loading="lazy"
                                                     src="https://assets.stylori.com/images/static/icon-ship.png"
                                                   />{" "}
-                                                  <a>
+                                                  <a  href="/#"
+                                                      target="_blank"
+                                                      el="noopener noreferrer">
                                                     {this.generateShipsBy(
                                                       cart
                                                         .transSkuListByProductSku
@@ -1089,6 +1088,7 @@ class Allorders extends React.Component {
                                       </>
                                     );
                                 }
+                                
                               )}
 
                             {/* <div style={{ float: "right", fontSize: "18px" }}>
@@ -1646,7 +1646,9 @@ class Allorders extends React.Component {
                                                     loading="lazy"
                                                     src="https://assets.stylori.com/images/static/icon-ship.png"
                                                   />{" "}
-                                                  <a>
+                                                  <a  href="/#"
+                                                  target="_blank"
+                                                 el="noopener noreferrer">
                                                     {this.generateShipsBy(
                                                       cart
                                                         .transSkuListByProductSku
@@ -1782,6 +1784,7 @@ class Allorders extends React.Component {
                                       </>
                                     );
                                 }
+                                
                               )}
 
                             {/* <div style={{ float: "right", fontSize: "18px" }}>

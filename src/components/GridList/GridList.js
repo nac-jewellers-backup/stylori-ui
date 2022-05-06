@@ -48,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
       float: "left",
       // marginRight: "2.66% !important",
       padding: "0px !important",
-      padding: "0px 8px 0px 0px !important",
     },
     marginAuto: {
       padding: "0px 0px 0px 0px !important",
@@ -152,56 +151,56 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-function FormRow(props) {
-  const classes = useStyles();
-  return (
-    <React.Fragment>
-      <Grid
-        item
-        xs={6}
-        className={`${classes.isHoverGrid} hovereffectSilvertoppicks`}
-        onClick={() => (window.location.href = props.linkone)}
-      >
-        <div className={classes.navlist}>
-          <img
-            alt="...."
-            loading="lazy"
-            src={props.imageOne}
-            style={{ width: "100%", height: "100%" }}
-          />
-        </div>
-        <div className={`${classes.navlist} overlay1`}>
-          <div className={"collectionDataSilverSEOflex"}>
-            <div style={{ margin: "auto" }}>
-              <h2 className="next-price">{"".toUpperCase()}</h2>
-            </div>
-          </div>
-        </div>
-      </Grid>
-      <Grid
-        item
-        xs={6}
-        className={`${classes.isHoverGrid} hovereffectSilvertoppicks`}
-        onClick={() => (window.location.href = props.linktwo)}
-      >
-        <div className={classes.navlist}>
-          <img
-            loading="lazy" alt="...."
-            src={props.imageTwo}
-            style={{ width: "100%", height: "100%" }}
-          />
-        </div>
-        <div className={`${classes.navlist} overlay1`}>
-          <div className={"collectionDataSilverSEOflex"}>
-            <div style={{ margin: "auto" }}>
-              <h2 className="next-price">{"".toUpperCase()}</h2>
-            </div>
-          </div>
-        </div>
-      </Grid>
-    </React.Fragment>
-  );
-}
+// function FormRow(props) {
+//   const classes = useStyles();
+//   return (
+//     <React.Fragment>
+//       <Grid
+//         item
+//         xs={6}
+//         className={`${classes.isHoverGrid} hovereffectSilvertoppicks`}
+//         onClick={() => (window.location.href = props.linkone)}
+//       >
+//         <div className={classes.navlist}>
+//           <img
+//             alt="...."
+//             loading="lazy"
+//             src={props.imageOne}
+//             style={{ width: "100%", height: "100%" }}
+//           />
+//         </div>
+//         <div className={`${classes.navlist} overlay1`}>
+//           <div className={"collectionDataSilverSEOflex"}>
+//             <div style={{ margin: "auto" }}>
+//               <h2 className="next-price">{"".toUpperCase()}</h2>
+//             </div>
+//           </div>
+//         </div>
+//       </Grid>
+//       <Grid
+//         item
+//         xs={6}
+//         className={`${classes.isHoverGrid} hovereffectSilvertoppicks`}
+//         onClick={() => (window.location.href = props.linktwo)}
+//       >
+//         <div className={classes.navlist}>
+//           <img
+//             loading="lazy" alt="...."
+//             src={props.imageTwo}
+//             style={{ width: "100%", height: "100%" }}
+//           />
+//         </div>
+//         <div className={`${classes.navlist} overlay1`}>
+//           <div className={"collectionDataSilverSEOflex"}>
+//             <div style={{ margin: "auto" }}>
+//               <h2 className="next-price">{"".toUpperCase()}</h2>
+//             </div>
+//           </div>
+//         </div>
+//       </Grid>
+//     </React.Fragment>
+//   );
+// }
 
 export default function ImageGridList(props) {
   const tileData = props.GridImage;

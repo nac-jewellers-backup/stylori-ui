@@ -136,7 +136,7 @@ class ProductImageZoom extends React.Component {
     ];
     if (url) {
       if (url.length > 0) {
-        var array_split = url.split(/\.(?=[^\.]+$)/);
+        var array_split = url.split(/\.(?=[^\.]+$)/); //eslint-disable-line
         const found = extensionVideoLists.find(
           (element) => element.toLowerCase() === array_split[1]
         );
@@ -198,19 +198,19 @@ class ProductImageZoom extends React.Component {
       arrows: false,
     };
     // alert(JSON.stringify(data.image_resolution))
-    const props = {
-      width: data[0]?.image_resolution ?? "",
-      height: data[0]?.image_resolution ?? "",
-      zoomWidth: data[0]?.image_resolution ?? "",
-      img: `${showimage}`,
-      zoomStyle: "z-index:2",
-    };
+    // const props = {
+    //   width: data[0]?.image_resolution ?? "",
+    //   height: data[0]?.image_resolution ?? "",
+    //   zoomWidth: data[0]?.image_resolution ?? "",
+    //   img: `${showimage}`,
+    //   zoomStyle: "z-index:2",
+    // };
 
     var a = showimage && showimage;
     // alert(JSON.stringify(this.props.data[0]))
     var b = a.length > 0 && a.split("/");
     // var c = a.replace(b[5], data[0].image_resolution_two + 'X' + data[0].image_resolution_two)
-    var c = a.length > 0 && a.replace(b[5], "1000X1000");
+    // var c = a.length > 0 && a.replace(b[5], "1000X1000");
 
     return (
       <div>
@@ -342,7 +342,7 @@ class ProductImageZoom extends React.Component {
                     </span>
                   ) : null;
                 })}
-                {data[0]?.ProductContactNum[0]?.isReadyToShip == true ? (
+                {data[0]?.ProductContactNum[0]?.isReadyToShip === true ? (
                   this?.props?.isSilver ? (
                     <div class={"one-day-ship_only_silver"}>
                       <img

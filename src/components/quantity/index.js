@@ -132,6 +132,7 @@ const Quantity = (props) => {
           if (val.sku_id === props.data[0].skuId) {
             localStorageCartDetails.products[i].qty = state.qty;
           }
+          return 0;
         });
         localStorage.setItem("cartDetails", JSON.stringify(localStorageCartDetails));
       }
@@ -140,7 +141,7 @@ const Quantity = (props) => {
       }
     };
     _funcUpdate();
-    // _updateQuantityApi()
+    // eslint-disable-next-line
   }, [state.qty]);
   React.useEffect(() => {
     let quantity = filters.quantity;
@@ -153,8 +154,7 @@ const Quantity = (props) => {
       localStorage.setItem("quantity", JSON.stringify(_obj));
       quantity[props.data[0].skuId] = state.qty;
     }
-
-    // _updateQuantityApi()
+   // eslint-disable-next-line
   }, []);
 
   const { classes, cart, pdpage } = props;

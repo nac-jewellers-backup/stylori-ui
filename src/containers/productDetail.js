@@ -344,7 +344,7 @@ class ProductDetail extends Component {
       {
         title: "Description",
         data:
-          jewelData.dis != "" ? (
+          jewelData.dis !== "" ? (
             <Typography className="no-data-desc">{jewelData.dis}</Typography>
           ) : (
             <Typography className="no-data">No Data Found</Typography>
@@ -747,7 +747,7 @@ class ProductDetail extends Component {
               </Typography>
 
               <JewelDetailAccordion title="Description">
-                {jewelData.dis != "" ? (
+                {jewelData.dis !== "" ? (
                   <Typography className="no-data-desc">
                     {jewelData.dis}
                   </Typography>
@@ -905,8 +905,10 @@ const Components = (props) => {
         val1.map((val2) => {
           if (val2.imagePosition === 2) return _arr.push(val2);
         });
+        return 0;
       });
       _obj[val] = { label: val, images: _arr };
+      return 0;
     });
     _shopsProductss(_obj);
   };
@@ -995,7 +997,9 @@ const Components = (props) => {
           data.data.allTransSkuLists.nodes[0].productListByProductId.productMaterialsByProductSku.nodes.map(
             (val) => {
               _silverArr.push(val.materialName.toLowerCase());
+              return 0;
             }
+            
           );
           if (_silverArr.indexOf("silver") > -1)
             setGlobalCtx({ ...Globalctx, pathName: true });

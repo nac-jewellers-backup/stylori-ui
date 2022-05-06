@@ -126,14 +126,14 @@ class ProductDescription extends Component {
       this.props.data && this.props.data[0] && this.props.data[0].seoText;
     const renderTitle = () => {
       var a = window.location.pathname.split("/");
-      var b = a[1].split(/\-/g).map((val) => {
-        return val.replace(/\+/g, " ");
+      var b = a[1].split(/\-/g).map((val) => { //eslint-disable-line
+        return val.replace(/\+/g, " "); //eslint-disable-line
       });
       var c = b.map((val) => {
         return b + " ";
       });
       var d;
-      return (d = c[0].replace(/\,/g, " "));
+      return (d = c[0].replace(/\,/g, " ")); //eslint-disable-line
     };
     return (
       <>

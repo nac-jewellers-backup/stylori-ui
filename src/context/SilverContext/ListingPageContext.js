@@ -155,6 +155,7 @@ const Provider = (props) => {
             // }
         }
         fetch_data()
+        // eslint-disable-next-line
     }, [])
 
 
@@ -237,7 +238,7 @@ const Provider = (props) => {
             if (loading) setloadingfilters(true)
             else setloadingfilters(false)
         }
-
+     // eslint-disable-next-line
     }, [loading, error, data])
     const seoUrlFetch = () => {
 
@@ -293,6 +294,7 @@ const Provider = (props) => {
 
 
         }
+        // eslint-disable-next-line
     }, [data, error, loading]);
 
 
@@ -320,6 +322,7 @@ const Provider = (props) => {
                         qtfArr.push(qtf);
                     }
                 }
+                return 0;
             })
             var k = qtfArr.map(val => Object.values(val));
             var keyy = qtfArr.map(val => Object.keys(val))
@@ -349,7 +352,7 @@ const Provider = (props) => {
                 if(Object.keys(silverFilters)?.filter(val=>{if(val === "a") return val}).length === 0) updatefiltersSort()
             }
         }
-
+      // eslint-disable-next-line
     }, [silverFilters])
     useEffect(() => {
 
@@ -357,7 +360,7 @@ const Provider = (props) => {
         if (pricemin) {
             updatefiltersSort()
         }
-
+     // eslint-disable-next-line
     }, [pricemin])
     useEffect(() => {
 
@@ -365,7 +368,7 @@ const Provider = (props) => {
         if (pricemax) {
             updatefiltersSort()
         }
-
+      // eslint-disable-next-line
     }, [pricemax])
     useEffect(() => {
 
@@ -373,7 +376,7 @@ const Provider = (props) => {
         if (sort) {
             updatefiltersSort()
         }
-
+     // eslint-disable-next-line
     }, [sort])
 
     useEffect(() => {
@@ -382,7 +385,7 @@ const Provider = (props) => {
         if (offset &&offset !== 0 ) {
             updatefiltersSort()
         }
-
+      // eslint-disable-next-line
     }, [offset])
     // useEffect(() => {
 
@@ -417,6 +420,7 @@ const Provider = (props) => {
                     }
 
                 }
+                return 0;
             })
             const query = encodeURI(queries.join("&"));
 
@@ -469,6 +473,7 @@ const Provider = (props) => {
 
             // }
         }
+        // eslint-disable-next-line
     }, [mappedFilters, offset])
 
     useEffect(() => {
@@ -491,6 +496,7 @@ const Provider = (props) => {
 
             updatefiltersSort()
         }
+        // eslint-disable-next-line
     }, [sort, pricemin, pricemax])
     useEffect(() => {
 

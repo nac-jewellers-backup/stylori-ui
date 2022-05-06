@@ -47,6 +47,7 @@ export default function WishlistButton(props) {
         if (currentValue !== val.sku_id) {
           return val;
         }
+        return 0;
       });
 
       function status(response) {
@@ -104,6 +105,7 @@ export default function WishlistButton(props) {
           localStorage.getItem("cartDetails")
         ).products.filter((val) => {
           if (val.sku_id !== currentValue) return val;
+          return 0;
         });
         var cartId = JSON.parse(localStorage.getItem("cartDetails")).cart_id;
         var userId = JSON.parse(localStorage.getItem("cartDetails")).user_id;
@@ -130,7 +132,8 @@ export default function WishlistButton(props) {
     values["product_id"] = props.productId;
     values["product_sku"] = props.sku;
     setValues({ values, ...values });
-  });
+    // eslint-disable-next-line
+  },[]);
   return (
     <>
       <Hidden smDown>
@@ -151,7 +154,7 @@ export default function WishlistButton(props) {
             whiteSpace: "nowrap",
             fontWeight: "bold",
             marginTop:
-              window.location.pathname == "/account-shoppingcart"
+              window.location.pathname === "/account-shoppingcart"
                 ? " "
                 : "10px",
           }}
@@ -175,7 +178,7 @@ export default function WishlistButton(props) {
             width: "95%",
             whiteSpace: "nowrap",
             marginTop:
-              window.location.pathname == "/account-shoppingcart"
+              window.location.pathname === "/account-shoppingcart"
                 ? " "
                 : "10px",
           }}

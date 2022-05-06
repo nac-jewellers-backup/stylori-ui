@@ -109,7 +109,7 @@
     "deploy_staging": "npm run build && git add . && git commit -m `Updated to the latest version` && git push origin stagingnew && git push aws stagingnew",
     "deploy_samirChanges_staging": "npm run build && git add . && git commit -m `Updated from branch samirChanges` && git push origin stagingnew && git push aws stagingnew",
     "deploy_prod": "npm run build && git add . && git commit -m `Updated to the latest version` && git push origin prod",
-    "lint": "eslint src/*.js",
+    "lint": "eslint src/**/*/*.js",
     "hint": "hint http://localhost:8080",
     "generate-report": "lighthouse --chrome-flags=\"--headless --no-sandbox\" http://localhost:8080 --output html --output-path ./report.html",
     "pm2-serve": "pm2 delete nac-ecom || pm2 serve --spa build --name nac-ecom",

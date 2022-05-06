@@ -1,4 +1,3 @@
-import { resolutions } from "utils";
 import { CDN_URL } from "config";
 import moment from "moment";
 
@@ -165,14 +164,10 @@ const handleVideoCheck = (url) => {
   }
 };
 
-const injectUrl = (url, baseUi) =>
-  resolutions.map((k) => ({ ...k, img: `${baseUi}${k.res}${url}` }));
 const generateImgurls = (PD, val, screen_res, tabsChange) => {
   var arrOfurls = [];
   var arrOfurls_2X = [];
   var imgurlsplit = null;
-  var metalcolor = null;
-  var metalcolor2 = null;
   var largeImageZoom = true;
   if (val.length > 0 && PD.metalColor) {
     val.map((imgurl) => {
@@ -199,6 +194,8 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
           if (PD.metalColor.split(" ").length > 1) {
             var colorOne = PD.metalColor.split(" ")[0].charAt(0);
             var colorTwo = PD.metalColor.split(" ")[1].charAt(0);
+            var metalcolor;
+            var metalcolor2;
             metalcolor = colorOne.concat(colorTwo);
             metalcolor2 = colorTwo.concat(colorOne);
           } else {
@@ -298,6 +295,7 @@ const gemstoneType = (PD, valGemstoneType, type) => {
       }
       return arrOfGemstoneType;
     });
+    return 0
   });
   return arrOfGemstoneType;
 };
@@ -315,13 +313,12 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
   var date = moment().format(" h a");
   if (isReadytoShip) {
     if (JSON.stringify(date) > " 1 pm") {
-      return "Ships by" + " " + moment().add(1, "days").format("Do MMMM YYYY");
+      return `Ships by   ${moment().add(1, "days").format("Do MMMM YYYY")}`;
     }
   } else {
     return (
-      "Ships by" +
-      " " +
-      moment().add(numberOfDays, "days").format("Do MMMM YYYY")
+      `Ships by 
+      ${moment().add(numberOfDays, "days").format("Do MMMM YYYY")}`
     );
   }
 };
@@ -1117,6 +1114,7 @@ const calculatetotal = (arr, name) => {
         minimumFractionDigits: 0,
       }).format(Math.round(a + val.discountPrice));
     }
+    return 0;
   });
   return a;
 };
@@ -1130,6 +1128,7 @@ const calculatetotals = (arr, name) => {
         minimumFractionDigits: 0,
       }).format(Math.round(a + val.markup));
     }
+    return 0;
   });
   return a;
 };
@@ -1143,6 +1142,7 @@ const calculatetotalm = (arr, name) => {
         minimumFractionDigits: 0,
       }).format(Math.round(a + val.discountPrice));
     }
+    return 0;
   });
   return a;
 };
@@ -1156,6 +1156,7 @@ const calculatetotalss = (arr, name) => {
         minimumFractionDigits: 0,
       }).format(Math.round(a + val.markup));
     }
+    return 0;
   });
   return a;
 };

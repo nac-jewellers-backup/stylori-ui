@@ -50,7 +50,7 @@ export class Form extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    let { confirmMail, confirmPassword, ...rest } = this.state.values;
+    let { confirmMail, confirmPassword } = this.state.values;
   };
 
   handleChange = e => {

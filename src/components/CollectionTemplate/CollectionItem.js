@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
 export default function CollectionItem(props) {
   // var arr_data;
   var data_ = [];
-  var data_con = {};
   let img_url = [
     "/gemstone-jewellery?sort=latest",
     "/jewellery-from+the+renaissance+collection",
@@ -37,13 +36,13 @@ export default function CollectionItem(props) {
   } = React.useContext(NetworkContext);
   const classes = useStyles();
   // const { loading, error, data: CollectionData, makeFetch: fetchproducts } = useNetworkRequest('/fetchproducts', {}, false, {})
-  const slider = React.createRef();
+
   const [values, setValues] = React.useState({
     onViewMoreCollection: false,
     arr_data: [],
     primaryNavigateUrl: null,
   });
-  const [loading, setLoading] = React.useState(false);
+ 
   const viewMoreCollections = () => {
     setValues({ onViewMoreCollection: true });
   };
@@ -60,7 +59,7 @@ export default function CollectionItem(props) {
     return response.json();
   }
   let arr_data1;
-  const promiseDta = (Collectionz, img_url) => {
+  const promiseDta = (Collectionz) => {
     return new Promise(async (resolve, reject) => {
       await fetch(`${ApiUrl}/fetchproducts`, {
         method: "post",
@@ -106,16 +105,16 @@ export default function CollectionItem(props) {
         .then(async (data) => {
           var Collectionz = {};
           // alert(JSON.stringify(conditionfiltersSeo))
-          var paramsfilter =
-            Object.entries(data).length !== 0 &&
-            data.constructor === Object &&
-            data.data.allSeoUrlPriorities &&
-            data.data.allSeoUrlPriorities.nodes.map((val) => {
-              let attrName = val.attributeName.toLowerCase();
-              let attrVal = val.attributeValue;
-              Collectionz[attrName] = attrVal;
-              Collectionz["offset"] = 0;
-            });
+          // var paramsfilter =
+          //   Object.entries(data).length !== 0 &&
+          //   data.constructor === Object &&
+          //   data.data.allSeoUrlPriorities &&
+          //   data.data.allSeoUrlPriorities.nodes.map((val) => {
+          //     let attrName = val.attributeName.toLowerCase();
+          //     let attrVal = val.attributeValue;
+          //     Collectionz[attrName] = attrVal;
+          //     Collectionz["offset"] = 0;
+          //   });
           resolve(await promiseDta(Collectionz, img_url));
         })
         .catch(function (error) {
@@ -162,6 +161,7 @@ export default function CollectionItem(props) {
   };
   React.useEffect(() => {
     getAlldata(img_url);
+    // eslint-disable-next-line
   }, []);
 
   let onViewMoreCollect = values && values.onViewMoreCollection;
@@ -169,6 +169,7 @@ export default function CollectionItem(props) {
     if (values.onViewMoreCollection === true) {
       getAlldata(img_url);
     }
+    // eslint-disable-next-line
   }, [onViewMoreCollect]);
   return (
     <>

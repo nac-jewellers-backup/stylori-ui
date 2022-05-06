@@ -10,13 +10,9 @@ import CollectionItem from '../components/CollectionTemplate/CollectionItem';
 
 
 class CollectionBlock extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
-
+ 
   render() {
-    const { classes } = this.props;
+ 
     return (
       <Grid container>
         <Header />

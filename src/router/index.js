@@ -47,19 +47,11 @@ browserHistory.listen(() => {
 });
 export const RouterApp = (props) => {
   const { Globalctx } = React.useContext(GlobalContext);
-  const func_location_silver = () => {
-    var loc = window.location.pathname
-      .split("/")[1]
-      .split("-")
-      .filter((val) => {
-        if (val === "silver") return val;
-      });
-    return loc[0];
-  };
-
+ 
   const paths = ["/:params1/:params2", "/:params1/:params2/:params3", "/:params1/:params2/:params3/:params4"];
   var loc_PD = window.location.pathname.split("/").filter((val) => {
-    if (val === "silverjewellery") return val;
+    if (val === "silverjewellery") 
+    return val;
   });
   // condition()
   // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)

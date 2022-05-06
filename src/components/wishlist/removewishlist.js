@@ -15,7 +15,7 @@ const RemoveWishlistComponent = (props) => {
                 values["product_sku"] = props.sku
                 values["product_id"] = props.productId
                 values["add"] = props.add
-                values["datas"] = props?.datas?.filter(val=>{if(val.generatedSku === props.sku) return val})
+                values["datas"] = props?.datas?.filter(val=>{if(val.generatedSku === props.sku) return val; return 0;})
                 setValues({ values, ...values  });
                 handlers.handelRemove(1)
             }}>

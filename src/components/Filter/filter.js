@@ -125,7 +125,7 @@ class Component extends React.Component {
     };
   }
   componentDidMount() {
-    var { checked, chipData, numOne, numTwo, selected } = this.state;
+    var { checked, chipData, selected,numOne,numTwo } = this.state;
     if (
       this.props.data &&
       this.props.data.length > 0 &&
@@ -177,6 +177,7 @@ class Component extends React.Component {
               numTwo = Number(equalSplit[1]);
             }
           }
+          return 0;
         });
 
         const price_min = Number(price_one);
@@ -343,8 +344,7 @@ class Component extends React.Component {
   delete_val_chips = (value) =>
     Object.entries(this.state.checked).map((val) => {
       const { checked } = this.state;
-      // Coded by Legendary Jaya Soory - Samir🛐🛐🛐
-      var obj = {};
+      // Coded by Legendary Jaya Soorya - Samir🛐🛐🛐
       var mm;
       var bz;
       var valx;
@@ -365,6 +365,7 @@ class Component extends React.Component {
             }
             return false;
           }
+          return 0;
         });
       }
       return bz;
@@ -384,6 +385,7 @@ class Component extends React.Component {
             }
           }
         }
+        return 0;
       });
       let loc = window.location.pathname.split("?")[0];
       if (!showSortFilter) {
@@ -449,6 +451,7 @@ class Component extends React.Component {
             },
             () => this.props.setFilters(checked)
           );
+          return 0;
         });
       paramsMapUrlSetState();
     }
@@ -458,11 +461,13 @@ class Component extends React.Component {
       if (val.title === title) {
         checkTitle = false;
       }
+      return 0;
     });
     chipData.map((val) => {
       if (val.label === value) {
         checkTitle = false;
       }
+      return 0;
     });
     if (BoolName === true) {
       if (checkTitle) {
@@ -540,6 +545,7 @@ class Component extends React.Component {
           this.props.setFilters(checked);
         }
       }
+      return 0;
     });
   };
   handlebye = () => {};
@@ -560,6 +566,7 @@ class Component extends React.Component {
           }
         }
       }
+      return 0;
     });
     return valus;
   };
@@ -588,6 +595,7 @@ class Component extends React.Component {
       if (val !== undefined && val !== null) {
         return val;
       }
+      return 0;
     });
     if (map.indexOf(name) > -1) {
       arr1 = selected?.filter((val) => {
@@ -596,6 +604,7 @@ class Component extends React.Component {
             return val;
           }
         }
+        return 0;
       });
       selected = arr1;
       this.setState({ selected });
@@ -661,16 +670,16 @@ class Component extends React.Component {
       var pricemin =
         price_min.indexOf(",") > -1
           ? price_min.indexOf(" ") > -1
-            ? Number(price_min.substr(2).replace(/\,/g, ""))
-            : Number(price_min.substr(1).replace(/\,/g, ""))
+            ? Number(price_min.substr(2).replace(/\,/g, "")) //eslint-disable-line
+            : Number(price_min.substr(1).replace(/\,/g, "")) //eslint-disable-line
           : price_min.indexOf(" ") > -1
           ? Number(price_min.substr(2))
           : Number(price_min.substr(1));
       var pricemax =
         price_max.indexOf(",") > -1
           ? price_max.indexOf(" ") > -1
-            ? Number(price_max.substr(2).replace(/\,/g, ""))
-            : Number(price_max.substr(1).replace(/\,/g, ""))
+            ? Number(price_max.substr(2).replace(/\,/g, "")) //eslint-disable-line
+            : Number(price_max.substr(1).replace(/\,/g, "")) //eslint-disable-line
           : price_max.indexOf(" ") > -1
           ? Number(price_max.substr(2))
           : Number(price_max.substr(1));

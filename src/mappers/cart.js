@@ -109,10 +109,10 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
   var date = moment().format(" h a");
   if (isReadytoShip) {
     if (JSON.stringify(date) > " 1 pm") {
-      return "Ships by" + " " + moment().add(1, "days").format("Do MMMM YYYY");
+      return `Ships by  ${moment().add(1, "days").format("Do MMMM YYYY")}`;
     }
   } else {
-    return "Ships by" + " " + moment().add(numberOfDays, "days").format("Do MMMM YYYY");
+    return `Ships by ${moment().add(numberOfDays, "days").format("Do MMMM YYYY")}`;
   }
 };
 
@@ -185,7 +185,7 @@ export default function (data) {
                 details: k.purity + " " + k.metalColor,
               },
               {
-                name: k.productListByProductId.productType == "Kada" ? "Metal Weight (Gm)" : "Gold Weight (Gm)",
+                name: k.productListByProductId.productType === "Kada" ? "Metal Weight (Gm)" : "Gold Weight (Gm)",
                 details: k.skuWeight,
               },
               {

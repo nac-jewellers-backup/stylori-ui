@@ -294,7 +294,7 @@ export default function ImageGridList(props) {
                                                     </Typography>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
                                                         <Slideshow>
-                                                            {val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl ? <img className={classes.imgcoin} alt="" src={imageslice(val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)} /> : <img className={classes.imgcoin} src={`${CDN_URL}product/1000X1000/productnotfound.webp`} />}
+                                                            {val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl ? <img className={classes.imgcoin} alt="" src={imageslice(val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)} /> : <img className={classes.imgcoin} src={`${CDN_URL}product/1000X1000/productnotfound.webp`} loading="lazy" alt="...."/>}
                                                         </Slideshow>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>

@@ -124,6 +124,7 @@ const Components = (props) => {
                     obj[val.attributeValue]["seoUrl"] = val.seoUrl
                       ? val.seoUrl
                       : " ";
+                      return 0;
                   });
                   return obj;
                 };
@@ -134,6 +135,7 @@ const Components = (props) => {
               });
           });
       });
+      // eslint-disable-next-line
   }, []);
   let content = <HomeStylori data={state.data} allSeo={state.allSeo} />;
   return content;

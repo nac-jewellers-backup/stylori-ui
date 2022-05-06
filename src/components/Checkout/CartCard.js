@@ -97,6 +97,7 @@ class Checkoutcard extends React.Component {
       if (currentValue !== val.sku_id) {
         return val;
       }
+      return 0;
     });
 
     function status(response) {
@@ -151,7 +152,10 @@ class Checkoutcard extends React.Component {
       var _products = JSON.parse(
         localStorage.getItem("cartDetails")
       )?.products?.filter((val) => {
-        if (val.sku_id !== currentValue) return val;
+        if (val.sku_id !== currentValue){
+          return val;
+        }  
+        return 0;
       });
       var cartId = JSON.parse(localStorage.getItem("cartDetails")).cart_id;
       var userId = JSON.parse(localStorage.getItem("cartDetails")).user_id;
@@ -237,7 +241,7 @@ class Checkoutcard extends React.Component {
                 .concat(`${browser_type && browser_type.browser_type}`);
             url_split[url_split && url_split.length - 1] = browser_type_append;
             url_split.splice(2, 0, _resolutions);
-            var url_construct = url_split.join().replace(/\,/g, "/");
+            var url_construct = url_split.join().replace(/\,/g, "/"); //eslint-disable-line
             image_urls = `${CDN_URL}${url_construct}`;
             return [image_urls];
           }
@@ -704,16 +708,17 @@ class Checkoutcard extends React.Component {
     let productIsActive = true;
     let productURL;
     this.props.data.map((val) => {
-      if (val?.isActive == false) {
+      if (val?.isActive === false) {
         productIsActive = val?.isActive;
         productURL = val?.skuUrl;
       }
+      return 0;
     });
     let path = window.location.pathname.split("/").pop();
 
     return (
       <div style={{ width: "100%",marginTop:"20px" }}>
-        {path == "checkout" ? (
+        {path === "checkout" ? (
           ""
         ) : (
           <div
@@ -1051,14 +1056,7 @@ class Checkoutcard extends React.Component {
   
 
   render() {
-    const dataCarousel = {
-      slidesToShow: 1,
-      arrows: false,
-    };
-
-    const { classes } = this.props;
     // alert(discounted_price)
-    let path = window.location.pathname.split("/").pop();
 
     return (
       <Grid>

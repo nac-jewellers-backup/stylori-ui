@@ -28,6 +28,7 @@ const WishlistComponent = (props) => {
             return 0;
           });
       }
+      // eslint-disable-next-line
   }, []);
   // alert(JSON.stringify(props.wishlist))
   let a = props.isSilverbool ? "fa fa-heart overall-icons" : "fa fa-heart-o overall-icons";

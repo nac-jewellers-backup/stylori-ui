@@ -69,20 +69,20 @@ class ProductDescription extends Component {
           ];
 
     fadeImages.sort((a, b) => 0.5 - Math.random());
-    const title = this.props.title;
+    // const title = this.props.title;
     const datadescription =
       this.props.data && this.props.data[0] && this.props.data[0].seoText;
     const renderTitle = () => {
-      var pathname_split_hyphen = path[1].split("-");
+      // var pathname_split_hyphen = path[1].split("-");
       var a = window.location.pathname.split("/");
-      var b = a[1].split(/\-/g).map((val) => {
-        return val.replace(/\+/g, " ");
+      var b = a[1].split(/\-/g).map((val) => { //eslint-disable-line
+        return val.replace(/\+/g, " "); //eslint-disable-line
       });
       var c = b.map((val) => {
         return b + " ";
       });
       var d;
-      return (d = c[0].replace(/\,/g, " "));
+      return (d = c[0].replace(/\,/g, " ")); //eslint-disable-line
     };
     return (
       <>

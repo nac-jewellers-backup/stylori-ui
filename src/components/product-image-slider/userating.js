@@ -57,7 +57,7 @@ const useRating = (props) => {
             },
         })
     }
-    const count = localStorage.getItem("count") ? localStorage.getItem("count") : ""
+    // const count = localStorage.getItem("count") ? localStorage.getItem("count") : ""
     // variab['productSku'] = values.product_sku
     // var rat_sate = values.error&&values.error.rateerr
     useEffect(() => {
@@ -83,6 +83,7 @@ const useRating = (props) => {
                 alert(data && data.message)
             }
         }
+        // eslint-disable-next-line
     }, [data])
 
     useEffect(() => {
@@ -90,6 +91,7 @@ const useRating = (props) => {
         if (rating.length > 0) {
             setrating({ CodData })
         }
+        // eslint-disable-next-line
     }, [CodData])
 
     useEffect(() => {
@@ -100,6 +102,7 @@ const useRating = (props) => {
                 username: username
             })
         }
+        // eslint-disable-next-line
     }, [CodDataLisen])
 
     useEffect(() => {
@@ -130,8 +133,7 @@ const useRating = (props) => {
             ...values,
             values
         })
-        // })
-        // }
+        // eslint-disable-next-line
     }, [])
     var check = props.ratingcounts.ratingcounts
     useEffect(() => {
@@ -143,6 +145,7 @@ const useRating = (props) => {
                 values
             })
         }
+        // eslint-disable-next-line
     }, [check])
     const handleInvalid = (type, status) => {
         setInvalids({
@@ -175,11 +178,10 @@ const useRating = (props) => {
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
             if (user_id.length > 0) {
                 // alert(JSON.stringify(data.message))
-                var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
                 if (window.location.search) {
                     values['product_sku'] = props.data && props.data[0] && props.data[0].skuId
                     values['user_id'] = user_id
-                    values['username'] = values.username
+                    values['username'] = values['username']
                     values['product_id'] = props.data && props.data[0] && props.data[0].productId
                     if (props.data && props.data[0] && props.data[0].skuId.length > 0) {
                         variab['productSku'] = props.data && props.data[0] && props.data[0].skuId

@@ -132,8 +132,7 @@ export default function CustomizedInputs() {
                 alert(error)
             }
         }
-
-
+      // eslint-disable-next-line
     }, [ntxdata])
 
     return (

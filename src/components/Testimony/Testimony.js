@@ -40,7 +40,7 @@ export default function Testimony(props) {
                     setState(data)
                 )
             })
-            // Aos.init({duration:2000});
+           // eslint-disable-next-line
     }, [])
 
 

@@ -279,7 +279,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                     <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
                                                                         <i class="fa fa-angle-left" onClick={() => previous1()}></i>
                                                                     </Grid>
-                                                                    <Grid item item xs={10} sm={10} md={10} alignItems="center">
+                                                                    <Grid item  xs={10} sm={10} md={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider1}>
                                                                             {data.primaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container className={classes.cardMargin}>
@@ -338,7 +338,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                     <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
                                                                         <i class="fa fa-angle-left" onClick={() => previous2()}></i>
                                                                     </Grid>
-                                                                    <Grid item item xs={10} sm={10} md={10} alignItems="center">
+                                                                    <Grid item  xs={10} sm={10} md={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider2}>
                                                                             {data && data.primaryCarouselDetails && data.primaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container className={classes.cardMargin}>
@@ -400,7 +400,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                     <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
                                                                         <i class="fa fa-angle-left" onClick={() => previous3()}></i>
                                                                     </Grid>
-                                                                    <Grid item item xs={10} sm={10} md={10} lg={10} xl={10} alignItems="center">
+                                                                    <Grid item  xs={10} sm={10} md={10} lg={10} xl={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider3}>
                                                                             {data && data.secondaryCarouselDetails && data.secondaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container style={{ display: "flex", justifyContent: "center" }}>
@@ -483,7 +483,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                     <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
                                                                         <i class="fa fa-angle-left" onClick={() => previous4()}></i>
                                                                     </Grid>
-                                                                    <Grid item item xs={10} sm={10} md={10} lg={10} xl={10} alignItems="center">
+                                                                    <Grid item  xs={10} sm={10} md={10} lg={10} xl={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider4}>
                                                                             {data && data.primaryCarouselDetails && data.primaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container style={{ display: "flex", justifyContent: "center", marginTop: "54px" }}>
@@ -545,7 +545,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                     <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
                                                                         <i class="fa fa-angle-left" onClick={() => previous5()}></i>
                                                                     </Grid>
-                                                                    <Grid item item xs={10} sm={10} md={10} alignItems="center">
+                                                                    <Grid item  xs={10} sm={10} md={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider5}>
                                                                             {data && data.secondaryCarouselDetails && data.secondaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container style={{ display: "flex", justifyContent: "center" }}>

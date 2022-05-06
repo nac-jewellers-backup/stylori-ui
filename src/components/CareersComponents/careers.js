@@ -82,8 +82,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function CustomizedInputs() {
-  const [open, setOpen] = React.useState(true);
-  
+
   const classes = useStyles();
   return (
     <Grid container className={classes.root}>

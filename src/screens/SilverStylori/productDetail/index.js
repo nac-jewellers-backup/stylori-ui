@@ -5,14 +5,7 @@ import { withRouter } from "react-router-dom";
 import { CartProvider } from "context";
 
 class Stylori extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   productId: (props.location.state && props.location.state.data !== undefined) ? props.location.state.data : '',
-    //   // ringSize:
-    // }
-  }
-
+ 
   render() {
     let productId = window.location.search.replace("?", "");
     return (
