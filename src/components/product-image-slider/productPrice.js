@@ -220,6 +220,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                             <a
                               class="facebook"
                               target="_blank"
+                              rel="noopener noreferrer" 
                               href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
                             >
                               <img
@@ -231,7 +232,8 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                             &nbsp;
                             <a
                               className="twitter"
-                              target="_blank"
+                              target="_blank" 
+                              rel="noopener noreferrer"
                               href={`http://www.twitter.com/share?url=${window.location.href}`}
                             >
                               <img

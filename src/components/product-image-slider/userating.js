@@ -83,6 +83,7 @@ const useRating = (props) => {
                 alert(data && data.message)
             }
         }
+        // eslint-disable-next-line
     }, [data])
 
     useEffect(() => {
@@ -90,6 +91,7 @@ const useRating = (props) => {
         if (rating.length > 0) {
             setrating({ CodData })
         }
+        // eslint-disable-next-line
     }, [CodData])
 
     useEffect(() => {
@@ -100,6 +102,7 @@ const useRating = (props) => {
                 username: username
             })
         }
+        // eslint-disable-next-line
     }, [CodDataLisen])
 
     useEffect(() => {
@@ -130,8 +133,7 @@ const useRating = (props) => {
             ...values,
             values
         })
-        // })
-        // }
+        // eslint-disable-next-line
     }, [])
     var check = props.ratingcounts.ratingcounts
     useEffect(() => {
@@ -143,6 +145,7 @@ const useRating = (props) => {
                 values
             })
         }
+        // eslint-disable-next-line
     }, [check])
     const handleInvalid = (type, status) => {
         setInvalids({

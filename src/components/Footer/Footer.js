@@ -330,7 +330,7 @@ export default function Footer(props) {
     element_input.classList.remove("error");
     element.classList.remove("error");
     var emailvld =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; //eslint-disable-line
     if (!document.getElementById("_input").value.length > 0) {
       element_input.classList.add("error");
       element.classList.add("error");
@@ -479,6 +479,7 @@ export default function Footer(props) {
                               className="twitter"
                               style={{ textDecoration: "none" }}
                               target="_blank"
+                              rel="noopener noreferrer"
                               href={`http://www.twitter.com/share?url=${window.location.href}`}
                             >
                               <i
@@ -495,6 +496,7 @@ export default function Footer(props) {
                             <a
                               className="facebook"
                               target="_blank"
+                              rel="noopener noreferrer"
                               href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
                             >
                               <i
@@ -511,6 +513,7 @@ export default function Footer(props) {
                             <a
                               className="facebook"
                               target="_blank"
+                              rel="noopener noreferrer"
                               href="https://in.pinterest.com/stylori2015/"
                             >
                               <i
@@ -527,6 +530,7 @@ export default function Footer(props) {
                             <a
                               className="facebook"
                               target="_blank"
+                              rel="noopener noreferrer"
                               href="https://instagram.com/stylorilove"
                             >
                               <i
@@ -543,6 +547,7 @@ export default function Footer(props) {
                             <a
                               className="facebook"
                               target="_blank"
+                              rel="noopener noreferrer"
                               href="https://www.youtube.com/c/stylori"
                             >
                               <i
@@ -674,6 +679,7 @@ export default function Footer(props) {
                     className="twitter"
                     style={{ textDecoration: "none" }}
                     target="_blank"
+                    rel="noopener noreferrer"
                     href={`http://www.twitter.com/share?url=${window.location.href}`}
                   >
                     <i
@@ -690,6 +696,7 @@ export default function Footer(props) {
                   <a
                     className="facebook"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
                   >
                     <i
@@ -706,6 +713,7 @@ export default function Footer(props) {
                   <a
                     className="facebook"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://in.pinterest.com/stylori2015/"
                   >
                     <i
@@ -722,6 +730,7 @@ export default function Footer(props) {
                   <a
                     className="facebook"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://instagram.com/stylorilove"
                   >
                     <i
@@ -738,6 +747,7 @@ export default function Footer(props) {
                   <a
                     className="facebook"
                     target="_blank"
+                    rel="noopener noreferrer"
                     href="https://www.youtube.com/c/stylori"
                   >
                     <i

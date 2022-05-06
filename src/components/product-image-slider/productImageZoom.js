@@ -136,7 +136,7 @@ class ProductImageZoom extends React.Component {
     ];
     if (url) {
       if (url.length > 0) {
-        var array_split = url.split(/\.(?=[^\.]+$)/);
+        var array_split = url.split(/\.(?=[^\.]+$)/); //eslint-disable-line
         const found = extensionVideoLists.find(
           (element) => element.toLowerCase() === array_split[1]
         );

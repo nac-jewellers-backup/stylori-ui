@@ -161,6 +161,7 @@ export default function CollectionItem(props) {
   };
   React.useEffect(() => {
     getAlldata(img_url);
+    // eslint-disable-next-line
   }, []);
 
   let onViewMoreCollect = values && values.onViewMoreCollection;
@@ -168,6 +169,7 @@ export default function CollectionItem(props) {
     if (values.onViewMoreCollection === true) {
       getAlldata(img_url);
     }
+    // eslint-disable-next-line
   }, [onViewMoreCollect]);
   return (
     <>

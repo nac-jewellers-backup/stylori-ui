@@ -287,7 +287,8 @@ class Component extends React.Component {
                           : val.tab1.headerBangle}
                         &nbsp;
                         {data[0].size_guide && (
-                          <a onClick={this.handleOpen} className="my-ringsize">
+                          <a onClick={this.handleOpen} className="my-ringsize" target="_blank"
+                          el="noopener noreferrer" href="/#">
                             Size Guide{" "}
                           </a>
                         )}

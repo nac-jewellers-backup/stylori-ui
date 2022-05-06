@@ -70,7 +70,7 @@ const LoginComponent = (props) => {
                 // console.log(error)
             }
         }
-
+       // eslint-disable-next-line
     }, [data])
     return (
         <Grid container>

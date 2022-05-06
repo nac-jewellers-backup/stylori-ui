@@ -114,8 +114,9 @@ export default function CustomSeparator(props) {
                 window.location.pathname === "/checkout" ? (
                   <ol class="breadCrumbs">
                     {props.data.map((data) => (
-                      <li onClick={() => activetabsclik(data)}>
+                      <li onClick={() => activetabsclik(data)}>  
                         <a
+                          href="/#"
                           className={
                             activetabs(data)
                               ? ` isactives ${props?.list}`

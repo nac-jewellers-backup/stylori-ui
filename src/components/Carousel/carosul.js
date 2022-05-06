@@ -49,7 +49,7 @@ class Component extends React.Component {
     ];
 
     if (url.length > 0) {
-      var array_split = url.split(/\.(?=[^\.]+$)/);
+      var array_split = url.split(/\.(?=[^\.]+$)/); //eslint-disable-line
       const found = extensionVideoLists.find(
         (element) => element.toLowerCase() === array_split[1]
       );
@@ -109,7 +109,7 @@ class Component extends React.Component {
     const urlCheck = (size) => {
       var current_url = url.split('/')
       current_url.splice(current_url.length - 2, 1, size)
-      _url = current_url.join().replace(/\,/g, '/');
+      _url = current_url.join().replace(/\,/g, '/'); //eslint-disable-line
       return _url
     }
     // let _url_2400X2400 = res.url_1000x1000; 
@@ -394,8 +394,9 @@ class Component extends React.Component {
           })
           :
           <a
-            href={hoverlist?.url}
-          >
+            onClick={hoverlist?.url}
+            href="/#"
+          > 
             <img
               src={isInjectUrl ? injectUrl_url_construct(hoverlist.img) : hoverlist.img}
               className="subslider-carousel-img-Silver img-responsive"

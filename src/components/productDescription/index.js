@@ -75,14 +75,14 @@ class ProductDescription extends Component {
     const renderTitle = () => {
       // var pathname_split_hyphen = path[1].split("-");
       var a = window.location.pathname.split("/");
-      var b = a[1].split(/\-/g).map((val) => {
-        return val.replace(/\+/g, " ");
+      var b = a[1].split(/\-/g).map((val) => { //eslint-disable-line
+        return val.replace(/\+/g, " "); //eslint-disable-line
       });
       var c = b.map((val) => {
         return b + " ";
       });
       var d;
-      return (d = c[0].replace(/\,/g, " "));
+      return (d = c[0].replace(/\,/g, " ")); //eslint-disable-line
     };
     return (
       <>

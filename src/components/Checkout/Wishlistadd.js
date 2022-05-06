@@ -130,7 +130,8 @@ export default function WishlistButton(props) {
     values["product_id"] = props.productId;
     values["product_sku"] = props.sku;
     setValues({ values, ...values });
-  });
+    // eslint-disable-next-line
+  },[]);
   return (
     <>
       <Hidden smDown>

@@ -77,7 +77,7 @@ let _url = ""
 const urlCheck = (size) =>{
   var current_url = url.split('/')
 current_url.splice(current_url.length-2, 1 , size)
- _url = current_url.join().replace(/\,/g, '/');
+ _url = current_url.join().replace(/\,/g, '/'); //eslint-disable-line
  return _url
 } 
 // let _url_2400X2400 = res.url_1000x1000; 

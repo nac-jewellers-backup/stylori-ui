@@ -134,6 +134,7 @@ const Components = (props) => {
               });
           });
       });
+      // eslint-disable-next-line
   }, []);
   let content = <HomeStylori data={state.data} allSeo={state.allSeo} />;
   return content;

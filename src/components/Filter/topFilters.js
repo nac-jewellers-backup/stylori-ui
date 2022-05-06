@@ -114,7 +114,8 @@ export const TopFilters = (props) => {
                     className={classes.spacingfilterdiv}
                   >
                     <Grid item xs={6} className={classes.filtersLabel}>
-                      <a>
+                      <a  href="/#" el="noopener noreferrer"
+                  target="_blank">
                         {"Price"} (<i class="fa">&#xf156;</i>)
                       </a>
                     </Grid>

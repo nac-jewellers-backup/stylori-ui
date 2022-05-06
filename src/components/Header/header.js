@@ -197,6 +197,9 @@ class Header extends Component {
                             window.location.reload();
                             window.location.pathname = "/login";
                           }}
+                          href="/#"
+                          target="_blank"
+                          el="noopener noreferrer"
                         >
                           <img className="icons-header-sizes" src={logout} loading="lazy" alt="...."/>
                           &nbsp;Logout

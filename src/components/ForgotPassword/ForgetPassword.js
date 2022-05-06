@@ -62,7 +62,7 @@ const LoginComponent = (props) => {
                 // console.log(error)
             }
         }
-
+      // eslint-disable-next-line
     }, [ntxdata])
     const handleChange = (name, value) => {
         setValues({ ...values, [name]: value, error: false, errorText: "" })

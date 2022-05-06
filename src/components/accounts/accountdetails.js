@@ -136,7 +136,7 @@ class Accountdetails extends Component {
                             <Grid item xs={12} sm={12} md={9} lg={9} xl={9} >
                                 <div className="pay-index-subhed_da">
                                     {
-                                        this?.state?.isActive == 'profile' &&
+                                        this?.state?.isActive === 'profile' &&
                                         <>
                                             <div style={{ PaddingLeft: "30px" }}></div>
                                             {/* {c_k_l !== true ? */}
@@ -151,22 +151,22 @@ class Accountdetails extends Component {
 
                                     }
                                     {
-                                        this?.state?.isActive == 'addresses' && <Addressform />
+                                        this?.state?.isActive === 'addresses' && <Addressform />
                                     }
                                     {
-                                        this?.state?.isActive == 'shoppingcart' && <>
+                                        this?.state?.isActive === 'shoppingcart' && <>
 
                                             {this.props.data.length > 0 ? <CartCard data={this.props.data} isStateFilterContextQty={this.props.isdatafromstate}/> :
                                                 <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
                                     }
                                     {
-                                        this?.state?.isActive == 'wishlist' && < Grid >
+                                        this?.state?.isActive === 'wishlist' && < Grid >
                                             <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
                                             {/* {JSON.stringify(this.props.wishlistdata)} */}
                                         </Grid>
                                     }
                                     {
-                                        this?.state?.isActive == 'allorders' && <>
+                                        this?.state?.isActive === 'allorders' && <>
                                             <Allorders allorderdata={this.props.allorderdata} data={this.props.data} />
 
                                             {/* {JSON.stringify(this.props.allorderdata)} */}
@@ -217,7 +217,7 @@ class Accountdetails extends Component {
                     <Grid item xs={12} className="topPadding">
                         <div className="pay-index-subhed_da">
                             {
-                                this?.state?.isActive == 'profile' &&
+                                this?.state?.isActive === 'profile' &&
                                 <>
 
                                     {/* {c_k_l !== true ? */}
@@ -229,20 +229,20 @@ class Accountdetails extends Component {
 
                             }
                             {
-                                this?.state?.isActive == 'addresses' && <Addressform />
+                                this?.state?.isActive === 'addresses' && <Addressform />
                             }
                             {
-                                this?.state?.isActive == 'shoppingcart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} isStateFilterContextQty={this.props.isdatafromstate}/> :
+                                this?.state?.isActive === 'shoppingcart' && <>{this.props.data.length > 0 ? <CartCard data={this.props.data} isStateFilterContextQty={this.props.isdatafromstate}/> :
                                     <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
                             }
                             {
-                                this?.state?.isActive == 'wishlist' && <Grid style={{ margin: "20px 0px 0px 0px" }}>
+                                this?.state?.isActive === 'wishlist' && <Grid style={{ margin: "20px 0px 0px 0px" }}>
                                     <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
                                     {/* {JSON.stringify(this.props.wishlistdata)} */}
                                 </Grid>
                             }
                             {
-                                this?.state?.isActive == 'allorders' && <>
+                                this?.state?.isActive === 'allorders' && <>
                                     <Allorders allorderdata={this.props.allorderdata} data={this.props.data} />
 
                                     {/* {JSON.stringify(this.props.allorderdata)} */}

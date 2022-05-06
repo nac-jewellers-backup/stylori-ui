@@ -162,7 +162,9 @@ class Component extends React.Component {
                                       <>
                                         <Hidden smDown>
                                           <Grid container>
-                                            <a style={{ width: "100%" }}>
+                                            <a style={{ width: "100%" }}  href="/#"
+                          target="_blank"
+                          el="noopener noreferrer">
                                               <img
                                                 src={
                                                   this.state?.bannerData[
@@ -185,7 +187,9 @@ class Component extends React.Component {
                                         </Hidden>
                                         <Hidden mdUp>
                                           <Grid container>
-                                            <a>
+                                            <a  href="/#"
+                          target="_blank"
+                          el="noopener noreferrer">
                                               <img
                                                 src={
                                                   this.state?.bannerData[

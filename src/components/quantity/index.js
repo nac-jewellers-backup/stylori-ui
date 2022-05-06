@@ -141,7 +141,7 @@ const Quantity = (props) => {
       }
     };
     _funcUpdate();
-    // _updateQuantityApi()
+    // eslint-disable-next-line
   }, [state.qty]);
   React.useEffect(() => {
     let quantity = filters.quantity;
@@ -154,8 +154,7 @@ const Quantity = (props) => {
       localStorage.setItem("quantity", JSON.stringify(_obj));
       quantity[props.data[0].skuId] = state.qty;
     }
-
-    // _updateQuantityApi()
+   // eslint-disable-next-line
   }, []);
 
   const { classes, cart, pdpage } = props;

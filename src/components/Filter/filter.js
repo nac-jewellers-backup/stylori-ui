@@ -666,16 +666,16 @@ class Component extends React.Component {
       var pricemin =
         price_min.indexOf(",") > -1
           ? price_min.indexOf(" ") > -1
-            ? Number(price_min.substr(2).replace(/\,/g, ""))
-            : Number(price_min.substr(1).replace(/\,/g, ""))
+            ? Number(price_min.substr(2).replace(/\,/g, "")) //eslint-disable-line
+            : Number(price_min.substr(1).replace(/\,/g, "")) //eslint-disable-line
           : price_min.indexOf(" ") > -1
           ? Number(price_min.substr(2))
           : Number(price_min.substr(1));
       var pricemax =
         price_max.indexOf(",") > -1
           ? price_max.indexOf(" ") > -1
-            ? Number(price_max.substr(2).replace(/\,/g, ""))
-            : Number(price_max.substr(1).replace(/\,/g, ""))
+            ? Number(price_max.substr(2).replace(/\,/g, "")) //eslint-disable-line
+            : Number(price_max.substr(1).replace(/\,/g, "")) //eslint-disable-line
           : price_max.indexOf(" ") > -1
           ? Number(price_max.substr(2))
           : Number(price_max.substr(1));
