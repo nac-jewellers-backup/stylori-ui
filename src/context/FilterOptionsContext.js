@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom";
 import productlist from "mappers/productlist";
 import { CDN_URL } from "config";
 import { matchPath } from "react-router";
+import { createApolloFetch } from "apollo-fetch";
 import { NetworkContext } from "context/NetworkContext";
 import { GlobalContext } from "context/GlobalContext";
 
@@ -181,23 +182,23 @@ const Provider = (props) => {
           //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
           var a = {};
 
-          // var paramsfilter =
-          //   Object.entries(data).length !== 0 &&
-          //   data.constructor === Object &&
-          //   data.data.allSeoUrlPriorities &&
-          //   data.data.allSeoUrlPriorities.nodes.map((val) => {
-          //     let attrName = val.attributeName.replace(/\s/g, "");
-          //     let attrVal = val.attributeValue;
-          //     filters[attrName] = { [attrVal]: true };
+          var paramsfilter =
+            Object.entries(data).length !== 0 &&
+            data.constructor === Object &&
+            data.data.allSeoUrlPriorities &&
+            data.data.allSeoUrlPriorities.nodes.map((val) => {
+              let attrName = val.attributeName.replace(/\s/g, "");
+              let attrVal = val.attributeValue;
+              filters[attrName] = { [attrVal]: true };
 
-          //     // setFilters(filters)
-          //     var obj = {};
+              // setFilters(filters)
+              var obj = {};
 
-          //     obj[val.attributeValue] = true;
+              obj[val.attributeValue] = true;
 
-          //     a[val.attributeName.replace(/\s/g, "")] = obj;
-          //     return a;
-          //   });
+              a[val.attributeName.replace(/\s/g, "")] = obj;
+              return a;
+            });
 
           //  ****STARTS****  setting state search parameters ....
 
@@ -218,7 +219,6 @@ const Provider = (props) => {
                   if (equalSplit[0] === "endprice") {
                     pricemax = Number(equalSplit[1]);
                   }
-                  return 0;
                 });
                 setSort(sort);
                 setPriceMin(pricemin);
@@ -237,7 +237,6 @@ const Provider = (props) => {
                   if (equalSplit[0] === "endprice") {
                     pricemax = Number(equalSplit[1]);
                   }
-                  return 0;
                 });
                 setSort(sort);
                 setPriceMin(pricemin);
@@ -250,7 +249,6 @@ const Provider = (props) => {
 
           Object.entries(a).map((val) => {
             setFilters({ ...filters, a });
-            return 0;
           });
           updateFilters(filters);
           // alert(JSON.stringify(filters))
@@ -432,7 +430,6 @@ const Provider = (props) => {
             qtfArr.push(qtf);
           }
         }
-        return 0;
       });
       var k = qtfArr.map((val) => Object.values(val));
       var keyy = qtfArr.map((val) => Object.keys(val));
@@ -594,7 +591,9 @@ const Provider = (props) => {
     setloadingfilters(true);
 
     // setloadingfilters(true)
-    var len; 
+    var len;
+    let bodyvar;
+    bodyvar = paramObjects();
     // else {
     try {
       Object.keys(filters).map((fk) => {
@@ -609,9 +608,8 @@ const Provider = (props) => {
             qtfArr.push(qtf);
           }
         }
-        return 0;
       });
-      // const query = encodeURI(queries.join("&"));
+      const query = encodeURI(queries.join("&"));
 
       // bodyvar = paramObjects();
     } catch (error) {

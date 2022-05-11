@@ -56,7 +56,6 @@ export const TabsProvider = (props) => {
   };
   useEffect(() => {
     pathQueries();
-    // eslint-disable-next-line
   }, [filters]);
   let variables;
   const { loading, error, data, makeRequest } = useGraphql(
@@ -129,7 +128,6 @@ export const TabsProvider = (props) => {
         handleProductDetatiContext();
       }
     }
-    // eslint-disable-next-line
   }, [filters]);
   useEffect(() => {
     if (filters.skuId) {
@@ -300,7 +298,6 @@ export const TabsProvider = (props) => {
         viewmakeRequest(variablesviewed);
       }
     }
-    // eslint-disable-next-line
   }, [price, filters, data]);
   useEffect(() => {
     if (
@@ -379,7 +376,6 @@ export const TabsProvider = (props) => {
         setFilters(filters);
       }
     }
-    // eslint-disable-next-line
   }, [loading, error, data]);
   useEffect(() => {
     if (window.location.search.length > 0) {
@@ -390,13 +386,12 @@ export const TabsProvider = (props) => {
           `${props.location.pathname}?${`skuId=${filters["skuId"]}`}`
         );
     }
-    // eslint-disable-next-line
   }, [data, loading, error]);
   useEffect(() => {
     setFilters(filters);
     pathQueries();
     updateProductList();
-    // eslint-disable-next-line
+    // window.location.search=`${`skuId=${filters['skuId']}`}`
   }, [filters]);
   useEffect(() => {
     if (window.location.search.length > 0) {
@@ -407,7 +402,6 @@ export const TabsProvider = (props) => {
           `${props.location.pathname}?${`skuId=${filters["skuId"]}`}`
         );
     }
-    // eslint-disable-next-line
   }, [data, loading, error]);
   useEffect(() => {}, [
     likedata,
