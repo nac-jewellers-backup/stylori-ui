@@ -319,7 +319,7 @@ class Checkoutcard extends React.Component {
                       marginBottom: "25px",
                       // boxShadow: "1px 2px 13px 7px #DEDADA",
                       padding: "10px",
-                      height:"fit-content",
+                      height:"200px",
                       // height: "180px",
                       backgroundColor: this.props.checkout ? "" : "#fff",
                     }}
@@ -390,7 +390,7 @@ class Checkoutcard extends React.Component {
                           to={dataval.skuUrl}
                           style={{ textDecoration: "none" }}
                         >
-                          <h3
+                          <h4
                             className={
                               this.props.checkout
                                 ? `${classes.normalfontsCheck}`
@@ -398,7 +398,7 @@ class Checkoutcard extends React.Component {
                             }
                           >
                             {val.pro_header}
-                          </h3>
+                          </h4>
                         </NavLink>
                       ) : (
                         <h3
@@ -425,7 +425,7 @@ class Checkoutcard extends React.Component {
                           </Typography>
                         
                           <Typography
-                            style={{ marginTop: "8px",lineHeight:4.5}}
+                            style={{ marginTop: "8px",lineHeight:3.5}}
                             className={
                               this.props.checkout
                                 ? `${classes.normalfontsCheck}`
@@ -460,7 +460,7 @@ class Checkoutcard extends React.Component {
                                   }
                                   style={{
                                     lineHeight:this.props.checkout ? 1.5 : 0.5,
-                                   
+                                     marginTop:this.props.checkout ? '0px' : '13px'
                                   }}
                                 >
                                   {val.shipby}
@@ -547,7 +547,7 @@ class Checkoutcard extends React.Component {
                         ))} */}
 
                           {window.location.pathname !== "/checkout" ? (
-                            <div style={{lineHeight:3.5}}>
+                            <div style={{lineHeight:3.2}}>
                               <Button
                                 // className="highlighter"
                                 // className={`subhesder hov ${classes.normalfonts}`}
@@ -900,7 +900,7 @@ class Checkoutcard extends React.Component {
                     }
                     style={{lineHeight:2}}
                   >
-                    {this.props.checkout ? "CART DISCOUNT" : "You Save"}
+                    {this.props.checkout ? "CART DISCOUNT" : "You Saved"}
                   </Typography>
                 ) : null}
 
@@ -958,9 +958,18 @@ class Checkoutcard extends React.Component {
                   }
                   style={{lineHeight:2}}
                 >
-                  {props.cartFilters.gross_amount
-                    ? Math.round(props.cartFilters.gross_amount)
-                    : Math.round(dataCard1)}
+                  {props.cartFilters.gross_amount ?
+                  new Intl.NumberFormat("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                      minimumFractionDigits: 0,
+                    }).format(Math.round(props.cartFilters.gross_amount))
+                   :  new Intl.NumberFormat("en-IN", {
+                    style: "currency",
+                    currency: "INR",
+                    minimumFractionDigits: 0,
+                  }).format(Math.round(dataCard1))
+                  }
 
                 </Typography>
                 {yousave !== 0 || props.cartFilters.tax_price ? (
@@ -972,9 +981,20 @@ class Checkoutcard extends React.Component {
                     }
                     style={{ paddingTop: this.props.checkout ? "20px" : "",lineHeight:2}}
                   >
+
+                
                     {props.cartFilters.tax_price
-                      ? Math.round(yousave) + props.cartFilters.tax_price
-                      : Math.round(yousave)}
+                      ? `- ${new Intl.NumberFormat("en-IN", {
+                        style: "currency",
+                        currency: "INR",
+                        minimumFractionDigits: 0,
+                      }).format(Math.round(yousave) + props.cartFilters.tax_price)}`
+                      :  `- ${new Intl.NumberFormat("en-IN", {
+                        style: "currency",
+                        currency: "INR",
+                        minimumFractionDigits: 0,
+                      }).format(Math.round(yousave))}`}
+
                   </Typography>
                 ) : null}
                 {
@@ -1021,9 +1041,19 @@ class Checkoutcard extends React.Component {
                     lineHeight:2 
                   }}
                 >
+                    
+            
                   {props.cartFilters.discounted_amount
-                    ? Math.round(props.cartFilters.discounted_amount)
-                    : Math.round(dataCard1 - discounted_price)}
+                    ?    new Intl.NumberFormat("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                      minimumFractionDigits: 0,
+                    }).format(Math.round(props.cartFilters.discounted_amount))
+                    : new Intl.NumberFormat("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                      minimumFractionDigits: 0,
+                    }).format(Math.round(dataCard1 - discounted_price))}
                 </Typography>
               </Grid>
               {/* // )}  */}

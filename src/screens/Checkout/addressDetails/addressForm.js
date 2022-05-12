@@ -3,6 +3,7 @@ import "./address.css";
 import {
   Grid,
   Button,
+  Typography,
 } from "@material-ui/core";
 import { Input } from "../../../components/InputComponents/TextField/Input";
 // import Checkboxes from '../../../components/InputComponents/CheckBox/CheckBox';
@@ -89,13 +90,16 @@ const AddressComponent = (props) => {
                   )}
 
                   {props.isCheck ? (
-                    <Grid
+                    <div>
+                      <h5 className="title" style={{color:"#6D6E71",marginBottom:"0px",height:"30px"}}>Shipping Address</h5>
+                   <Grid
                       container
                       style={{ display: "flex", flexDirection: "row" }}
-                      spacing={2}
+                      spacing={3}
                     >
+                
                       <Grid item container xs={6}>
-                        <Grid item container xs={12}>
+                        <Grid item xs={12}>
                           {/* <Grid item xs={4}>
                                            <SimpleSelect
                                                val={'1'}
@@ -104,7 +108,7 @@ const AddressComponent = (props) => {
                           {/* <Grid xs={8}> */}
                           <Input
                             name="firstname"
-                            //    className='text-f'
+                            className='text-ad'    
                             type="text"
                             value={values.addressOne.firstname}
                             placeholder="First name"
@@ -122,7 +126,7 @@ const AddressComponent = (props) => {
                         </Grid>
                         <Grid item xs={12}>
                           <Input
-                            //    className='text-f'
+                            className='text-ad'   
                             type="text"
                             name="lastname"
                             value={values.addressOne.lastname}
@@ -142,6 +146,7 @@ const AddressComponent = (props) => {
                           <Input
                             type="text"
                             name="state"
+                            className='text-ad'   
                             placeholder="State"
                             onChange={(event) =>
                               handle.handleChange(
@@ -160,7 +165,7 @@ const AddressComponent = (props) => {
                         </Grid>
                         <Grid item xs={12}>
                           <Input
-                            //    className='text-f'
+                            className='text-ad'   
                             type="text"
                             name="city"
                             placeholder="City"
@@ -189,7 +194,7 @@ const AddressComponent = (props) => {
                                            </Grid> */}
                           {/* <Grid item xs={8}> */}
                           <Input
-                            //    className='text-f'
+                            className='text-ad'   
                             type="tel"
                             name="pincode"
                             maxLength="6"
@@ -222,6 +227,7 @@ const AddressComponent = (props) => {
                             type="text"
                             placeholder="Address"
                             name="addressline1"
+                            className='text-ad'   
                             onChange={(event) =>
                               handle.handleChange(
                                 "addressOne",
@@ -242,7 +248,7 @@ const AddressComponent = (props) => {
                                            </Grid> */}
                           {/* <Grid item xs={8}> */}
                           <Input
-                            //    className='text-f'
+                             className='text-ad'   
                             type="tel"
                             name="contactno"
                             onKeyPress={(e) =>
@@ -266,7 +272,7 @@ const AddressComponent = (props) => {
                         </Grid>
                         <Grid item xs={12}>
                           <Input
-                            // className='text-f'
+                            className='text-ad'   
                             type="text"
                             name="country"
                             placeholder="Country"
@@ -287,6 +293,9 @@ const AddressComponent = (props) => {
                         </Grid>
                       </Grid>
                     </Grid>
+
+                    </div>
+                   
                   ) : (
                     <div>
                       <Grid container spacing={12}>

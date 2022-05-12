@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, Grid } from "@material-ui/core";
+import { TextField, Grid, Typography } from "@material-ui/core";
 import propTypes from "prop-types";
 
 // NOTABLE POINTS
@@ -66,11 +66,14 @@ export const Input = props => {
           rows={rowsMax}
           style={{ width: "100%",backgroundColor:"#fff",marginTop:10}}
           disabled={props.disabled}
-          helperText={invalid && <b>{helperText}</b>}
+          // helperText={invalid && <b>{helperText}</b>}
           onKeyPress={handleKeyPress}
           onChange={handleChange}
           {...rest}
         />
+        {invalid &&
+        <Typography style={{fontSize:"10px",color:"red"}}>{helperText}</Typography>
+        }
       {/* <TextField
         autoComplete={props && props.autoComplete && props.autoComplete}
         inputProps={{ pattern, maxLength, minLength }}

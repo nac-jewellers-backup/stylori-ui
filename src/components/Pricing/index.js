@@ -176,7 +176,7 @@ export default function Pricing(props) {
                               minimumFractionDigits: 0,
                             }).format(
                               Math.round(product_quantity * props.price)
-                            )}
+                            ) .replace(/^(\D+)/, "$1 ")}
                             `
                                 : ""}
                             </del>
@@ -227,7 +227,11 @@ export default function Pricing(props) {
                         ""
                       ) : (
                         <del>
-                          ₹&nbsp;{Math.round(product_quantity * props.price)}
+                         {new Intl.NumberFormat("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                      minimumFractionDigits: 0,
+                    }).format(Math.round(product_quantity * props.price))}
                         </del>
                       )}
                     </Typography>
@@ -239,7 +243,7 @@ export default function Pricing(props) {
             )}
           </Grid>
         ) : (      
-          <div style={{display:"flex",flexDirection:"row",alignItems:"center"}}>
+          <div style={{display:"flex",flexDirection:"row",alignItems:"center",height:"25px"}}>
             <Grid
               item
               xs={12}
@@ -265,7 +269,12 @@ export default function Pricing(props) {
                       ""
                     ) : (
                       <del>
-                        ₹&nbsp;{Math.round(product_quantity * props.price)}
+                        {new Intl.NumberFormat("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                      minimumFractionDigits: 0,
+                    }).format(Math.round(product_quantity * props.price))}
+                      
                       </del>
                     )}
                   </Typography>
