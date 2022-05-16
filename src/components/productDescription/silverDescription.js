@@ -14,6 +14,7 @@ const styles = (theme) => ({
     color: "#6D6E71",
     textTransform: "capitalize",
     fontSize: "1.1rem",
+    fontWeight:400
   },
   TypoDark: {
     color: theme.palette.primary.dark,
@@ -271,7 +272,10 @@ class ProductDescription extends Component {
                     style={{ textAlign: "center", marginTop: "10px" }}
                     className={` DescriptionTitleSmallScreen `}
                   >
-                    <Typography className={`${classes.colorDark}`}>
+                    <Typography className={`${classes.colorDark}`}
+                      variant="h1"
+                      component="h1"
+                    >
                       {renderTitle()}
                     </Typography>
                   </Grid>

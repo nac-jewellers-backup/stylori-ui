@@ -30,6 +30,7 @@
   /* z-index: 2; */
   position: absolute;
   top: 15px;
+  font-family: 'FontAwesome' !important;
   /* background-image: url('https://alpha-assets.stylori.com/images/static/product-details-icons.png'); */
   /* top: 5px; */
   background-position: -102px -37px;
@@ -37,6 +38,8 @@
   cursor: pointer;
   /* color: #ed1165 !important; */
 }
+
+
 
 .one-day-ship-listing-page-label {
   display: none;

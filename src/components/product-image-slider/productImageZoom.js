@@ -264,6 +264,7 @@ class ProductImageZoom extends React.Component {
                     </Button>
                   </span>
                 ) : null}
+
                 <Slideshow
                   sliderRef={this.slider}
                   height={70}

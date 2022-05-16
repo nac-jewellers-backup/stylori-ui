@@ -10,7 +10,7 @@ export default function Pricing(props) {
   const { globalContext, quantity } = props;
   const product_quantity = quantity ? quantity : 1;
 
-  const isSilver = globalContext && globalContext.pathName ? true : false;
+  const isSilver = globalContext && globalContext.pathName ? false : true;
   return (
     <div>
       {props.title ? (
@@ -107,7 +107,7 @@ export default function Pricing(props) {
                             ""
                           ) : (
                             <del
-                              style={{ fontSize: "20px", fontWeight: "bold" }}
+                              style={{ fontSize: "14px", fontWeight: "bold" }}
                             >
                               {isSilver
                                 ? `
@@ -129,7 +129,7 @@ export default function Pricing(props) {
                             style={{
                               color: "#06A296",
                               fontWeight: "bold",
-                              fontSize: "1.2rem",
+                              fontSize: "14px",
                               // marginTop: 8,
                               // position: "absolute",
                             }}

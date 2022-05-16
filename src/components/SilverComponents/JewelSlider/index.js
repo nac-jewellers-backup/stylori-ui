@@ -17,18 +17,31 @@ export default class JewelSlider extends Component {
       arrows: false,
     };
 
-    console.log(this.props);
+    console.log(this.props.data[0].ProductContactNum[0].isReadyToShip,"jwelll slides");
     return (
       <div>
         <Slider {...settings}>
           {arrOfurls.map((slide) => (
-            <img
+            <div>
+              {this.props.data[0].ProductContactNum[0].isReadyToShip ? 
+              <div class={"one-day-ship_only_silver_mobile"}>
+                <img
+                  src={require("assets/StyloriSilver-truckIcon.svg")}
+                  loading="lazy" alt="...."
+                />
+              </div>
+               :""
+              }
+              
+             <img
               src={slide}
               alt={"Product Image"}
               loading="lazy" 
               onError={() => {}}
               style={{ width: "100vw" }}
             />
+            </div>
+           
           ))}
         </Slider>
       </div>

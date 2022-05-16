@@ -717,7 +717,8 @@ class ProductDetail extends Component {
 
           {/* Product Slider */}
           {isSilver ? (
-            <JewelSlider slides={jewelData?.fadeImages} />
+            <JewelSlider slides={jewelData?.fadeImages} isSilver={isSilver}  data={this?.props?.data}
+            wishlist={this?.props?.wishlistdata}/>
           ) : (
             <PriceBuynow
               data={this?.props?.data}

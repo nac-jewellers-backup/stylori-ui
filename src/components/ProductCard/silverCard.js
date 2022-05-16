@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import CardActions from "@material-ui/core/CardActions";
@@ -15,6 +15,7 @@ import {
 } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import Wishlist from "components/wishlist/wishlist";
+import { Hidden } from "@material-ui/core";
 
 export const SilverImgMediaCard = (props) => {
   const { ProductDetailCtx, setFilters } =
@@ -132,10 +133,19 @@ const Gallery = (
           className={`one-day-ship-listing-page-withoutTop`}
           style={{ zIndex: 2 }}
         >
-          <i class="fa fa-truck" style={{ fontSize: "22px",marginLeft:'10px' }}></i>
-          <span
-            className={`one-day-ship-listing-page-label`}
-          >
+          <i
+            class="fa fa-truck"
+            style={{ 
+            fontSize: "20px",
+            fontFamily: 'FontAwesome !important',
+            position: 'absolute',
+            zIndex: 500,
+            left: '20px',
+            margin: '10px',
+            color:"rgb(58,69,120)"
+            }}
+          ></i>
+          <span className={`one-day-ship-listing-page-label`}>
             1 day shipping
           </span>
         </div>
@@ -293,7 +303,7 @@ const useStyles = makeStyles((theme) => ({
   priceClass: {
     // boxShadow: "0px 0px 5px #F699A3 inset",
     padding: "10px",
-    paddingLeft:"0px",
+    paddingLeft: "0px",
     height: "75px",
     display: "flex",
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
@@ -420,8 +430,8 @@ const useStyles = makeStyles((theme) => ({
     // whiteSpace: "nowrap",
     // flex: 0.6,
     // color: "rgb(109,110,112)",
-    color:"#959598",
-    fontWeight:"500",
+    color: "#959598",
+    fontWeight: "500",
     overflow: "hidden",
     // textOverflow: "ellipsis",
     width: "90%",
@@ -601,25 +611,22 @@ sizes="(max-width: 320px) 320w,
                     minimumFractionDigits: 0,
                   }).format(Math.round(props.data.offerPrice))}
                   <span
-                    // variant="h6"
-                    // component="h6"
+                   
                     className={classes.offerMainPriceStrike}
                     style={{
-                      // width: "100%",
                       fontSize: "22px",
                       paddingLeft: "5px",
                       display: "flex",
                       alignItems: "flex-end",
                       marginBottom: "1px",
-
                     }}
                   >
                     {/* <i
         
-        className="fa"
-      >
-        &#xf156;
-      </i> */}
+                     className="fa"
+                      >
+                      &#xf156;
+                             </i> */}
                     {/* {Math.round(props.data.offerPrice)} */}
 
                     {new Intl.NumberFormat("en-IN", {
@@ -652,7 +659,6 @@ sizes="(max-width: 320px) 320w,
                 </span>
 
                 <Grid container xs={12}>
-                  {/* <Grid item xs={12} className={`${classes.titles}`}> */}
                   <Typography
                     variant="body1"
                     component="span"
@@ -662,7 +668,6 @@ sizes="(max-width: 320px) 320w,
                     {props.data.title}
                   </Typography>
                 </Grid>
-                {/* </Grid> */}
                 {/* </Hidden> */}
               </Grid>
             </CardContent>
@@ -678,6 +683,7 @@ sizes="(max-width: 320px) 320w,
                 {/* <Hidden smDown> */}
 
                 {/* </Hidden> */}
+                <Hidden smDown>
                 <Grid
                   container
                   item
@@ -710,15 +716,15 @@ sizes="(max-width: 320px) 320w,
                         paddingLeft: "5px",
                         display: "flex",
                         alignItems: "flex-end",
-                        marginBottom: "1px"
+                        marginBottom: "1px",
                       }}
                     >
                       {/* <i
         
-        className="fa"
-      >
-        &#xf156;
-      </i> */}
+                       className="fa"
+                         >
+                           &#xf156;
+                              </i> */}
                       {/* {Math.round(props.data.offerPrice)} */}
 
                       {new Intl.NumberFormat("en-IN", {
@@ -735,8 +741,8 @@ sizes="(max-width: 320px) 320w,
                         justifyContent: "flex-start",
                         width: "100%",
                         paddingRight: "5px",
-                        marginTop:"2px",
-                        marginLeft:"5px",
+                        marginTop: "2px",
+                        marginLeft: "5px",
                         color: "rgb(6, 171, 159)",
                       }}
                     >
@@ -780,7 +786,7 @@ sizes="(max-width: 320px) 320w,
                   <Typography
                     variant="body1"
                     component="span"
-                    style={{ color:"#959598" }}
+                    style={{ color: "#959598" }}
                     className={`${classes.titles}`}
                   >
                     {props.data.title}
@@ -788,6 +794,122 @@ sizes="(max-width: 320px) 320w,
 
                   {/* </Grid> */}
                 </Grid>
+                </Hidden>
+                <Hidden mdUp>
+                <Grid
+                  container
+                  item
+                  xs={12}
+                  sm={12}
+                  className={`${classes.priceClassMain}`}
+                >
+                    <Grid container xs={12}>
+                  {/* <Grid item xs={12} className={`${classes.titles}`}> */}
+                  <Typography
+                    variant="body1"
+                    component="span"
+                    style={{ color: "#959598"}}
+                    className={`${classes.titles}`}
+                  >
+                    {props.data.title}
+                  </Typography>
+
+                  {/* </Grid> */}
+                </Grid>
+
+                  <span
+                    variant="h4"
+                    component="h4"
+                    className={classes.offerMainPrice}
+                    style={{
+                      // paddingLeft: "5px",
+                      display: "flex",
+                      width: "100%",
+                    }}
+                  >
+                    {new Intl.NumberFormat("en-IN", {
+                      style: "currency",
+                      currency: "INR",
+                      minimumFractionDigits: 0,
+                    }).format(Math.round(props.data.offerPrice))}
+                    <span
+                      // variant="h6"
+                      // component="h6"
+                      className={classes.offerMainPriceStrike}
+                      style={{
+                        // width: "100%",
+                        fontSize: "12px",
+                        paddingLeft: "5px",
+                        display: "flex",
+                        alignItems: "flex-end",
+                        marginBottom: "1px",
+                      }}
+                    >
+                      {/* <i
+        
+                       className="fa"
+                         >
+                           &#xf156;
+                              </i> */}
+                      {/* {Math.round(props.data.offerPrice)} */}
+
+                      {new Intl.NumberFormat("en-IN", {
+                        style: "currency",
+                        currency: "INR",
+                        minimumFractionDigits: 0,
+                      }).format(Math.round(props.data.price))}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "13px",
+                        display: "flex",
+                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
+                        width: "100%",
+                        paddingRight: "5px",
+                        marginTop: "2px",
+                        marginLeft: "5px",
+                        color: "rgb(6, 171, 159)",
+                      }}
+                    >
+                      (
+                      {Math.round(props.data.price) === 0
+                        ? 0
+                        : Math.round(
+                            ((props.data.price - props.data.offerPrice) /
+                              props.data.price) *
+                              100
+                          )}
+                      % off)
+                    </span>
+                  </span>
+
+                  {/* <Typography
+                      style={{
+                        width: "100%",
+                        justifyContent: "flex-start",
+                        display: "flex",
+                        marginTop: "4px"
+                      }}
+                      gutterBottom
+                      variant="body1"
+                      component="span"
+                      className={classes.offerPrice}
+                    >
+
+
+
+                      <del>
+
+                        {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
+                      </del>
+
+
+                    </Typography> */}
+                </Grid>
+              
+                </Hidden>
+               
 
                 {/*  */}
                 {/* <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={`${classes.priceOffGrid}`}>

@@ -118,7 +118,7 @@ const Productprice = (
 
   const { classes } = props;
   var wishlist = props.wishlist;
-  const isSilver = globalContext?.Globalctx?.pathName ? true : false;
+  const isSilver = globalContext?.Globalctx?.pathName ? false : true;
   const isactive = props?.data[0]?.isactive ?? "";
 
   return (
@@ -157,15 +157,15 @@ const Productprice = (
                   <Hidden mdUp>
                     <Grid container spacing={12} xs={12}>
                       {isSilver ? 
-                      <Grid container item xs={12} style={{display:"flex",justifyContent:"center"}}>
+                       <Grid container item xs={12} style={{display:"flex",justifyContent:"center"}}>
                          <div className={`pdp-title  ${classes.titleSilverMobile}`}>
                          {val?.title ?? ""}
                          </div>
                          <div className={`pdp-title  ${classes.skuIdSilverMobile}`}>
                           {val?.skuId ?? ""}
                           </div> 
-                      </Grid>
-                      : <Grid container item xs={12}>
+                         </Grid>
+                       : <Grid container item xs={12}>
                           <Grid item xs={10}>
                            <h1
                            className={`pdp-title ${classes.title} ${classes.titlesmScreen}`}
@@ -192,7 +192,7 @@ const Productprice = (
                         alignItems="center"
                       >
                         <Hidden mdUp>
-                          <div className={`${isSilver ? "" : classes.width}`}>
+                          <div className={`${isSilver ? "" : classes.width}`} style={{width:"100%"}}>
                             <Pricing
                               offerPrice={data[0]?.offerPrice}
                               price={data[0]?.price}
@@ -203,9 +203,9 @@ const Productprice = (
                              <PriceBuynow data={props?.data} isSilver={isSilver} isRequired={true}/>
 
                               <div onClick={isactive ? deletechecklists : ""} style={{marginTop:10}}>
-                             {isactive ? (
-                               <>
-                                 {" "}
+                               {isactive ? (
+                                   <>
+                                    {" "}
                                  <Buynowbutton
                                    sku={data[0].skuId}
                                    style={{   
@@ -231,7 +231,7 @@ const Productprice = (
                                ""
                              )}
                               </div>
-                             <div onClick={isactive ? deletechecklists : ""} style={{marginTop:10}}>
+                           <div onClick={isactive ? deletechecklists : ""} style={{marginTop:10}}>
                              <Buynowbutton
                                sku={data[0].skuId}
                                style={{    
