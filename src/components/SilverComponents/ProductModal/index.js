@@ -160,7 +160,7 @@ const ProductModal = (props) => {
   let ___data = [
     {
       img:
-        "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-jewellery-stylori-Everyday.jpg",
+        "https://assets.stylori.com/banners/web/Silver-jewellery-stylori-Everyday.webp",
       title: "Everyday",
       url: "silver-jewellery-everyday",
       description:
@@ -168,7 +168,7 @@ const ProductModal = (props) => {
     },
     {
       img:
-        "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-jewellery-stylori-Folklore.jpg",
+        "https://assets.stylori.com/banners/web/Silver-jewellery-stylori-Folklore.webp",
       title: "Folklore",
       url: "silver-jewellery-folklore",
       description:
@@ -176,7 +176,7 @@ const ProductModal = (props) => {
     },
     {
       img:
-        "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-jewellery-stylori-Contemporary.jpg",
+        "https://assets.stylori.com/banners/web/Silver-jewellery-stylori-Contemporary.webp",
       title: "Contemporary",
       url: "silver-jewellery-contemporary",
       description:
@@ -184,7 +184,7 @@ const ProductModal = (props) => {
     },
     {
       img:
-        "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Silver-jewellery-stylori-Traditional.jpg",
+        "https://assets.stylori.com/banners/web/Silver-jewellery-stylori-Traditional.webp",
       title: "Traditional",
       url: "silver-jewellery-traditional",
       description:

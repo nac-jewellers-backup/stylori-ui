@@ -9,7 +9,6 @@ import {
   Input,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import cartoonFooter from "../../assets/cartoonFooter.png";
 import "./Footer.css";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import DesktopFooter from "components/SilverComponents/DesktopFooter";
@@ -389,7 +388,7 @@ export default function Footer(props) {
               >
                 <Grid item xs={12}>
                   <img
-                    src={cartoonFooter}
+                    src={"https://assets.stylori.com/banners/web/cartoonFooter.webp"}
                     width="100%"
                     height="auto"
                     alt="noImage"
