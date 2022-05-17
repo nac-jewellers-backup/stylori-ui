@@ -19,7 +19,8 @@ const styles = theme => ({
         margin: "auto",
         display: "flex",
         marginBottom: "15px",
-        boxShadow: "rgb(222, 218, 218) 1px 2px 13px 7px"
+        boxShadow: "rgb(222, 218, 218) 1px 2px 13px 7px",
+        backgroundColor:"#fff"
     },
     details: {
         display: "flex",
@@ -45,6 +46,7 @@ const styles = theme => ({
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
+        paddingRight:"150px",
         "& button": {
             padding: "2.1px 13.8px"
         },
@@ -81,7 +83,7 @@ const styles = theme => ({
         color: theme.palette.overallButoon.contrastText
     },
     normalfonts: {
-        color: theme.palette.text.primary,
+        color:"#6D6E71",
     },
     normalfontsCheck:{
        color:"#6D6E71",

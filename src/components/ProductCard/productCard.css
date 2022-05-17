@@ -6,6 +6,13 @@
   background-position: center;
 }
 
+.wishListStyle{
+  position: absolute;
+  z-index: 500;
+  right: 5px;
+  margin: 10px;
+}
+
 .one-day-ship-listing-page__ {
   font-weight: 600;
   z-index: 5 !important;

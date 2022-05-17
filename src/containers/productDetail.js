@@ -16,6 +16,7 @@ import "components/product-image-slider/product-images.css";
 import { withRouter } from "react-router-dom";
 import productDetails from "mappers/productDetails";
 import MainCard from "components/SilverComponents/mainSlider";
+import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 
 import { ProductDetailContext } from "context/ProductDetailContext";
 import { API_URL } from "config";
@@ -129,7 +130,7 @@ const styles = (theme) => ({
     padding: theme.spacing(3, 2),
     background: "#F8E3C0",
     textAlign: "center",
-    margin: "-20px 16px",
+    margin: "-20px 26px",
     maxWidth: 320,
     "& #title": {
       fontFamily: `'Playfair Display', serif !important`,
@@ -313,27 +314,33 @@ class ProductDetail extends Component {
     const { classes } = this.props;
     const jewelData = this.props?.data?.[0];
 
+    console.log(jewelData,"jewelldata")
+
     var brand_card = [
       {
         title: "MURAL COLLECTIONS",
+        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Mural.jpg",
         url: "https://www.stylori.com/silver-jewellery-mural+collection",
       },
       {
         title: "STAR STRUCK",
+        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Starstruck.jpg",
         url: "https://www.stylori.com/silver-jewellery-starstruck+collection",
       },
       {
         title: "ELEMENTAL",
+        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Elemental.jpg",
         url: "https://www.stylori.com/silver-jewellery-elemental+collection",
       },
       {
         title: "CONCENTRIC",
+        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Concentric.jpg",
         url: "https://www.stylori.com/silver-jewellery-concentric+collection",
@@ -747,6 +754,15 @@ class ProductDetail extends Component {
                 Shipping Calculated at Checkout
               </Typography>
 
+              <Grid container>
+                <Grid item>
+                   <ShareOutlinedIcon/>
+                </Grid>
+                <Grid item>
+
+                </Grid>
+              </Grid>
+
               <JewelDetailAccordion title="Description">
                 {jewelData.dis !== "" ? (
                   <Typography className="no-data-desc">
@@ -837,16 +853,16 @@ class ProductDetail extends Component {
             <div className={classes.sliderWithHeadingContainer}>
               <SliderWithHeading
                 heading="Recently Viewed"
-                products={jewelData?.fadeImages?.arrOfurls}
+                products={jewelData?.fadeImageSublistRecentlyViewed}
               />
             </div>
           )}
 
           {isSilver && (
             <div className={classes.sliderWithHeadingContainer}>
-              <SliderWithHeading
+             <SliderWithHeading
                 heading="You may also like"
-                products={jewelData?.fadeImages?.arrOfurls}
+                products={jewelData?.fadeImageSublist}
               />
             </div>
           )}

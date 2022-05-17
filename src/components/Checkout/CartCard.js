@@ -278,11 +278,7 @@ class Checkoutcard extends React.Component {
 
     return (
       <div style={{ marginTop: this.props?.checkout ? "" : "50px" }}>
-        <Grid container>
-          <Grid xs={12} />
-          {/* <Grid xs={12}>{this.checkoutbutton()}</Grid> */}
-        </Grid>
-        <Grid
+          <Grid
           container
           style={{
             display: "flex",
@@ -698,7 +694,7 @@ class Checkoutcard extends React.Component {
           <Grid item xs={this.props?.checkout ? 12 : 4}>
             {this.subtotals(props)}
           </Grid>
-        </Grid>
+          </Grid>
       </div>
     );
   };
@@ -1063,6 +1059,44 @@ class Checkoutcard extends React.Component {
           <Grid item container xs={12}>
             {this.checkoutbutton()}
           </Grid>
+          <Hidden mdUp>
+          {!this.props.checkout ? (
+              <Grid item container spacing={1} style={{margin:10}}>
+                <Grid item style={{ display: "flex", alignItems: "center" }}>
+                  <ArrowLeftIcon fontSize="small" />
+
+                  <div>
+                    Go Back to{" "}
+                    <span
+                      style={{
+                        borderBottom: "2px solid #f14880",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => window.location.replace("/stylori")}
+                    >
+                      Stylori
+                    </span>
+                  </div>
+                </Grid>
+                <Grid item style={{ display: "flex", alignItems: "center" }}>
+                  <ArrowLeftIcon fontSize="small" />
+                  <div>
+                    Go Back to{" "}
+                    <span
+                      style={{
+                        borderBottom: "2px solid #06ab9f",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => window.location.replace("/styloriSilver")}
+                    >
+                      Stylori Silver
+                    </span>
+                  </div>
+                </Grid>
+              </Grid>
+            ) :null}
+          </Hidden>
+         
         </Grid>
 
         {/* <Grid container style={{display:"flex",justifyContent:"center"}}>
@@ -1083,21 +1117,21 @@ class Checkoutcard extends React.Component {
     );
   };
 
-  
-
   render() {
     // alert(discounted_price)
 
     return (
-      <Grid>
-        <Hidden smDown>
-          {window.location.pathname === "/cart" ||
+      <Grid style={{marginLeft:"-16px",marginRight:"-16px"}}>
+         <Hidden smDown>
+         {window.location.pathname === "/cart" ||
           window.location.pathname === "/checkout" ? (
             <Container style={{maxWidth:"100%"}}>{this.row(this.props)}</Container>
           ) : (
             <>{this.row(this.props)}</>
           )}
-        </Hidden>
+         </Hidden>
+         
+   
         <Hidden mdUp>
           <CardSmallScreen
             data={this.props.data}

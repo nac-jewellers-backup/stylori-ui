@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import { Button, Divider } from "@material-ui/core";
+import { Box, Button, Divider } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 // import { productsDetails } from '../product-image-slider/producthoverData';
 // import { dataCard1 } from '../ProductCard/ProductData';
@@ -174,7 +174,7 @@ function MediaControlCard(props) {
       {props.data.map((dataval) =>
         dataval.productsDetails.map((val) => {
           return (
-            <Card className={classes.card}>
+            <Box className={classes.card}>
               {dataval.productsDetails[0].namedetail.map((val) =>
                 dataval.fadeImages.map((val_imgUrl) => {
                   return filter_image(val_imgUrl, val.name, val.details) &&
@@ -320,7 +320,7 @@ function MediaControlCard(props) {
                           <del>{val.offerPrice }</del>
                         </Typography>
                         &nbsp;
-    <Typography
+                        <Typography
                           variant="subtitle1"
                           style={{ color: "#ED1165" }}
                           className={classes.labelPriceOff}
@@ -339,20 +339,9 @@ function MediaControlCard(props) {
                   ))}
                 </CardContent>
                 <div className={classes.controls}>
-                  {/* <NavLink to="/checkout" style={{ textDecoration: 'none' }}>
-          <Button
-            className={`btn-cart-resp ${classes.buttons}`}
-            variant="contained"
-            style={{
-              color: "white",
-              fontSize: "0.7rem"
-            }}
-          >
-            Buy Now
-  </Button>
-        </NavLink> */}
+                 
                   {window.location.pathname !== "/checkout" ? (
-                            <div style={{lineHeight:3.5,marginLeft:"-125px"}}>
+                            <div style={{lineHeight:3.5}}>
                               <Button
                                 // className="highlighter"
                                 // className={`subhesder hov ${classes.normalfonts}`}
@@ -369,8 +358,7 @@ function MediaControlCard(props) {
                                   backgroundColor: "white",
                                   borderRadius: "0px",
                                   boxShadow: "none",
-                                  paddingRight: "40px",
-                                  paddingLeft: "40px",
+                                  padding:"5px 40px 5px 40px"
                                 }}
                               >
                                 &nbsp;Remove
@@ -466,7 +454,7 @@ function MediaControlCard(props) {
 
                 </div>
               </div>
-            </Card>
+            </Box>
           );
         })
       )}

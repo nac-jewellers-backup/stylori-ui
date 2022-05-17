@@ -133,6 +133,8 @@ const Gallery = (
           className={`one-day-ship-listing-page-withoutTop`}
           style={{ zIndex: 2 }}
         >
+
+          
           <i
             class="fa fa-truck"
             style={{ 
@@ -140,9 +142,9 @@ const Gallery = (
             fontFamily: 'FontAwesome !important',
             position: 'absolute',
             zIndex: 500,
-            left: '20px',
+            left: '16px',
             margin: '10px',
-            color:"rgb(58,69,120)"
+            color:"#111"
             }}
           ></i>
           <span className={`one-day-ship-listing-page-label`}>

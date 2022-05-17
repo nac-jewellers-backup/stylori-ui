@@ -137,6 +137,7 @@ const SliderWithHeading = (props) => {
     sliderInstance.slickNext();
   };
 
+ 
   return (
     <div>  
         <div className={classes.headingContainer}>
@@ -149,18 +150,24 @@ const SliderWithHeading = (props) => {
          {products.map((product) => (
            <div
              className={classes.imageContainer}
-           >
+           >     
+           {product.url !== "" &&
+           <div>
              <img
-               src={product.img}
+               src={product?.img}
                alt={"Product Image"}
                loading="lazy" 
-               onClick={() => { window.open(`/${product.url}`)}}
+               onClick={() => { window.open(`/${product?.url}`)}}
                style={{ cursor:"pointer" }}
              />
              <div style={{width:'220px'}}>
-             <Typography>{product.title}</Typography>
-             <Typography>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(product.price))}</Typography>
-             </div>
+             <Typography>{product?.title}</Typography>
+             <Typography>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(product?.price))}</Typography>
+           </div>
+           </div>
+           }
+           
+             
              
            </div>
          ))}

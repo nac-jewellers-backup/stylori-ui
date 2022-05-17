@@ -17,13 +17,15 @@ const useStyles = makeStyles((theme) => ({
   imageContainer: {
     display: "flex",
     flexDirection: "row",  
+    marginBottom:"15px",
     "& img": {
       height:280,
+      width:"100%"
       // width:400,
     },
     [theme.breakpoints.down('sm')]:{
       "& img": {
-        height:200,
+        height:240,
         // width:400,
       },
     },
@@ -72,7 +74,14 @@ const useStyles = makeStyles((theme) => ({
     color:"#fff",
   },
   title:{
-    display:"flex",justifyContent:"center"
+    display:"flex",
+    justifyContent:"center",
+    flexDirection:"column",
+    textAlign:"center",
+    alignItems:"center",
+    [theme.breakpoints.down("sm")]: {
+      width: "95%",
+    },
   }
 }));
 
@@ -93,7 +102,7 @@ const MainCard = (props) => {
     slidesToScroll: 1,
     adaptiveHeight: false,
     centerMode: false,
-    centerPadding: "60px",
+    centerPadding: "10px",
     autoplay: true,
     autoplaySpeed: 2000,
     cssEase: "linear",
@@ -131,10 +140,10 @@ const MainCard = (props) => {
                onClick={() => { window.open(`/${product.url}`)}}
                style={{ cursor:"pointer" }}
              />
-             <div className={classes.title}>
-             <Typography>{product.title}</Typography>
-             </div>
-             
+             <div className={classes.title}> 
+                <Typography>{product.title}</Typography>
+                <Typography>{product.description}</Typography>    
+             </div>   
            </div>
          ))}
        </Slider>

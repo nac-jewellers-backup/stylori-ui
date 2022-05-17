@@ -107,9 +107,13 @@ const mobilecarousel = (props, val, wishlist, isSilver) => {
 
 const Productprice = (
   props,
+  state,
   anchorEl,
+  handleClick,
+  handleClose,
   globalContext,
   handleLocalStorage,
+  canceldeletechecklist,
   deletechecklists
 ) => {
   const {
@@ -118,8 +122,9 @@ const Productprice = (
 
   const { classes } = props;
   var wishlist = props.wishlist;
-  const isSilver = globalContext?.Globalctx?.pathName ? false : true;
+  const isSilver = globalContext?.Globalctx?.pathName ? true : false;
   const isactive = props?.data[0]?.isactive ?? "";
+
 
   return (
     <div>
@@ -584,6 +589,7 @@ class Component extends React.Component {
     }
     return vals;
   };
+
   handleLocalStorage = () => {
     if (this.valus(this.props.data[0].skuId) === 1) {
       window.location.pathname = "/cart";

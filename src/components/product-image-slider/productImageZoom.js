@@ -10,6 +10,7 @@ import { CDN_URL } from "config";
 import {
   GlassMagnifier,
 } from "react-image-magnifiers";
+import Wishlist from "components/wishlist/wishlist";
 
 class ProductImageZoom extends React.Component {
   constructor(props) {
@@ -343,13 +344,27 @@ class ProductImageZoom extends React.Component {
                     </span>
                   ) : null;
                 })}
+
                 {data[0]?.ProductContactNum[0]?.isReadyToShip === true ? (
                   this?.props?.isSilver ? (
                     <div class={"one-day-ship_only_silver"}>
-                      <img
+                      <i
+            class="fa fa-truck"
+            style={{ 
+            fontSize: "20px",
+            fontFamily: 'FontAwesome !important',
+            position: 'absolute',
+            zIndex: 500,
+            left: '10px',
+            margin: '10px',
+            color:"#111",
+            paddingTop: '7px'
+            }}
+          ></i>
+                      {/* <img
                         src={require("assets/StyloriSilver-truckIcon.svg")}
                         loading="lazy" alt="...."
-                      />
+                      /> */}
                     </div>
                   ) : (
                     <div
@@ -363,6 +378,16 @@ class ProductImageZoom extends React.Component {
                 ) : (
                   ""
                 )}
+
+             <div class="wishListStyle" style={{right: '650px',
+                paddingTop: '7px'}}>
+                <Wishlist
+                  sku={this.props.data[0].skuId}
+                  productId={this.props.data[0].productId}
+                  wishlist={this.props.wishlist}
+                  isSilver
+                />
+              </div>
 
                 {this.handleVideoCheck(showimage) ? (
                   <video

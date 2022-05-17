@@ -42,6 +42,20 @@ const styles = (theme) => ({
     fontSize: "14px !important",
     color: "#6D6E71",
     textAlign: "center",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    display: "-webkit-box",
+    "-webkit-line-clamp": 3,
+    "-webkit-box-orient": "vertical",
+    [theme.breakpoints.down('md')]: {
+      fontSize: "10px !important",
+    },
+    // textAlign: "center                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
+  },
+  descriptionTextLine: {
+    fontSize: "14px !important",
+    color: "#6D6E71",
+    textAlign: "center",
     [theme.breakpoints.down('md')]: {
       fontSize: "10px !important",
     },
@@ -57,6 +71,7 @@ class ProductDescription extends Component {
       bannerData: [],
     };
   }
+
   handleReadMore = () => {
     this.setState({ showLess: !this.state.showLess });
   };
@@ -293,12 +308,10 @@ class ProductDescription extends Component {
               >
                 <p>
                   <div className="DescriptionContent DescriptionContentsilver">
-                    <Grid container>
+              
                       <Grid
                         container
-                        item
-                        xs={12}
-                        style={{ justifyContent: "center" }}
+                        style={{ justifyContent: "center",flexDirection:"column",alignItems:"center" }}
                       >
                         <Grid
                           item
@@ -307,12 +320,17 @@ class ProductDescription extends Component {
                           md={12}
                           lg={10}
                           xl={10}
-                          className={classes.descriptionText}
+                          className={this.state.showLess ? classes.descriptionText : classes.descriptionTextLine}
                         >
-                          {datadescription}
+                          {datadescription}         
+                        </Grid>
+                        <Grid item>
+                        <span onClick={this.handleReadMore} style={{cursor:"pointer"}}>
+                          {this.state.showLess ? 'Show More' : 'Show Less'}
+                        </span>
                         </Grid>
                       </Grid>
-                    </Grid>
+                 
                   </div>
                 </p>
               </Grid>

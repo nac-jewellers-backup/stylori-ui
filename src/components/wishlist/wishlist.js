@@ -8,7 +8,6 @@ const Wishlist = (props) => {
 
 const WishlistComponent = (props) => {
   const classes = styles();
-
   const { values, setValues, handlers } = useWishlists(props);
 
   const isSilver = props.isSilver ? true : false;

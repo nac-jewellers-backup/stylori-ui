@@ -10,7 +10,7 @@ export default function Pricing(props) {
   const { globalContext, quantity } = props;
   const product_quantity = quantity ? quantity : 1;
 
-  const isSilver = globalContext && globalContext.pathName ? false : true;
+  const isSilver = globalContext && globalContext.pathName ? true : false;
   return (
     <div>
       {props.title ? (
