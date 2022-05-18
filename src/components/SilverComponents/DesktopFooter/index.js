@@ -114,7 +114,7 @@ function DesktopFooter() {
         <ContactStylori />
         <div className={classes.paymentModeContainer}>
           <img
-            src={"https://assets.stylori.com/images/static/footer.png"}
+            src={"https://assets.stylori.com/banners/web/footer.webp"}
             alt="Payment Modes"
             loading="lazy"
           />

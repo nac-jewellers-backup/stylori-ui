@@ -91,7 +91,7 @@ function SilverFooter() {
         <img src={DinersClub} alt="DinersClub" />
         <img src={Netbanking} alt="Netbanking" /> */}
         <img
-          src={"https://assets.stylori.com/images/static/footer.png"}
+          src={"https://assets.stylori.com/banners/web/footer.webp"}
           alt="Payment Modes"
           loading="lazy" 
         />

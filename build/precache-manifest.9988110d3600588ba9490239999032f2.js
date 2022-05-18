@@ -4,19 +4,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "8caa05e7ebd9a8c18c5f",
+    "revision": "01b6b82638639d9eb4bf",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "a299ef96cfa82a6fca52",
+    "revision": "1e529ed1181d9495e210",
     "url": "/static/css/4.css"
   },
   {
-    "revision": "443491d27c4b8efff8f5",
+    "revision": "42cbbd36b6686a44b6ce",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "8caa05e7ebd9a8c18c5f",
+    "revision": "01b6b82638639d9eb4bf",
     "url": "/static/js/2.js"
   },
   {
@@ -24,11 +24,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/3.js"
   },
   {
-    "revision": "a299ef96cfa82a6fca52",
+    "revision": "1e529ed1181d9495e210",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "443491d27c4b8efff8f5",
+    "revision": "42cbbd36b6686a44b6ce",
     "url": "/static/js/main.js"
   },
   {
@@ -46,10 +46,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "6b86cbd34f394490947d73306194fe13",
     "url": "/static/media/cartGrey.svg"
-  },
-  {
-    "revision": "c3f7641ef11bd405cfe12138f25f089f",
-    "url": "/static/media/cartoonFooter.png"
   },
   {
     "revision": "2b3d63f761a61e5c65a4773359c4eb40",

@@ -287,7 +287,7 @@ export default function ImageGridList(props) {
                 <img
                 loading="lazy" alt="...."
                   className={classes.imagefulllong}
-                  src="https://assets.stylori.com/product/SNSC4270/1000X1000/SNSC4270-2G.jpg"
+                  src="https://assets.stylori.com/banners/web/SNSC4270-2G.webp"
                 />
               </a>
             </Grid>
@@ -314,7 +314,7 @@ export default function ImageGridList(props) {
                         <img
                         loading="lazy" alt="...."
                           className={classes.imagefull}
-                          src="https://assets.stylori.com/product/SE3391/1000X1000/SE3391-2S.jpg"
+                          src="https://assets.stylori.com/banners/web/SE3391-2S.webp"
                         />
                       </a>
                     </div>
@@ -328,7 +328,7 @@ export default function ImageGridList(props) {
                         <img
                         loading="lazy" alt="...."
                           className={classes.imagefull}
-                          src="https://assets.stylori.com/product/SNLC4195/1000X1000/SNLC4195-2D.jpg"
+                          src="https://assets.stylori.com/banners/web/SNLC4195-2D.webp"
                         />
                       </a>
                     </div>
@@ -349,7 +349,7 @@ export default function ImageGridList(props) {
                         <img
                         loading="lazy" alt="...."
                           className={classes.imagefull}
-                          src="https://assets.stylori.com/product/SBA4093/1000X1000/SBA4093-2G.jpg"
+                          src="https://assets.stylori.com/banners/web/SBA4093-2G.webp"
                         />
                       </a>
                     </div>
@@ -363,7 +363,7 @@ export default function ImageGridList(props) {
                         <img
                         loading="lazy" alt="...."
                           className={classes.imagefull}
-                          src="https://assets.stylori.com/product/SR3976/1000X1000/SR3976-2LS.jpg"
+                          src="https://assets.stylori.com/banners/web/SR3976-2LS.webp"
                         />
                       </a>
                     </div>

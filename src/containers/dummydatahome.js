@@ -289,23 +289,23 @@ export const homePageStylori = {
   //-------------Grid 5 images ----------
   collectionGrid: [
     {
-      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Monsoon-tile.webp",
+      img: "https://assets.stylori.com/banners/web/Stylori-Monsoon-tile.webp",
       navigateUrl: "/jewellery-from+monsoon+collection",
     },
     {
-      img: "https://assets.stylori.com/images/Static+Pages/Home+Page/mangocollection.webp",
+      img: "https://assets.stylori.com/banners/web/mangocollection.webp",
       navigateUrl: "/jewellery-from+the+summer+collection?sort=latest",
     },
     {
-      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-tile-image.webp",
+      img: "https://assets.stylori.com/banners/web/Stylori-Butterfly-tile-image.webp",
       navigateUrl: "/jewellery-butterfly?sort=latest&amp;startprice=0&amp;endprice=0",
     },
     {
-      img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori_+Daisy+Days.webp",
+      img: "https://assets.stylori.com/banners/web/Stylori_-Daisy-Days.webp",
       navigateUrl: "/jewellery-from+daisy+days+collection?sort=latest&page=4",
     },
     {
-      img: "https://assets.stylori.com/images/Static+Pages/Home+Page/blush+3.webp",
+      img: "https://assets.stylori.com/banners/web/blush-3.webp",
       navigateUrl: "/jewellery-blush",
     },
   ],
