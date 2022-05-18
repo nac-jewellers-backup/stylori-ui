@@ -10,7 +10,7 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "./style";
 import { NavLink } from "react-router-dom";
 import "./Cart.css";
-import {CDN_URL } from "config";
+import {CDN_URL,API_URL } from "config";
 import Quantity from "../quantity/index";
 import { Slideshow } from "components";
 import WishlistButton from "./Wishlistadd";
@@ -18,79 +18,80 @@ import WishlistButton from "./Wishlistadd";
 function MediaControlCard(props) {
   const { classes } = props;
 
-  // const handleDeleteLocalStorage = (e, val) => {
-  //   var local_storage = JSON.parse(localStorage.getItem("cartDetails"));
-  //   var currentValue =
-  //     e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id;
-  //   // console.clear()
-  //   // console.log("e-clear",e.target.id)
-  //   var a = local_storage?.products?.filter((val) => {
-  //     if (currentValue !== val.sku_id) {
-  //       return val;
-  //     }
-  //   });
-  //   function status(response) {
-  //     if (response.status >= 200 && response.status < 300) {
-  //       return Promise.resolve(response);
-  //     } else {
-  //       return Promise.reject(new Error(response.statusText));
-  //     }
-  //   }
-  //   function json(response) {
-  //     return response.json();
-  //   }
-  //   if (JSON.parse(localStorage.getItem("cart_id"))) {
-  //     let cart_id = JSON.parse(localStorage.getItem("cart_id")).cart_id;
-  //     let bodyVariableRemoveCartItem = {
-  //       cart_id: cart_id,
-  //       product_id: currentValue,
-  //     };
-  //     fetch(`${API_URL}/removecartitem`, {
-  //       method: "post",
-  //       // body: {query:seoUrlResult,variables:splitHiphen()}
-  //       // body: JSON.stringify({query:seoUrlResult}),
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         ...bodyVariableRemoveCartItem,
-  //       }),
-  //     })
-  //       .then(status)
-  //       .then(json)
-  //       .then((val) => {
-  //         sessionStorage.removeItem("updatedProduct");
-  //         alert(val.message);
-  //         var cartId = JSON.parse(localStorage.getItem("cartDetails")).cart_id;
-  //         var userId = JSON.parse(localStorage.getItem("cartDetails")).user_id;
-  //         var localstorage = JSON.stringify({
-  //           cart_id: `${cartId}`,
-  //           user_id: `${userId}`,
-  //           products: a,
-  //         });
-  //         localStorage.setItem("cartDetails", localstorage);
-  //         window.location.reload();
-  //       });
-  //   } else {
-  //     var _products = JSON.parse(
-  //       localStorage.getItem("cartDetails")
-  //     )?.products?.filter((val) => {
-  //       if (val.sku_id !== currentValue) return val;
-  //     });
-  //     var cartId = JSON.parse(localStorage.getItem("cartDetails")).cart_id;
-  //     var userId = JSON.parse(localStorage.getItem("cartDetails")).user_id;
-  //     var _obj = { cart_id: cartId, user_id: userId, products: _products };
-  //     if (_products.length > 0) {
-  //       localStorage.setItem("cartDetails", JSON.stringify(_obj));
-  //       alert("You removed this product successfully");
-  //       window.location.reload();
-  //     } else {
-  //       localStorage.removeItem("cartDetails", _products);
-  //       alert("You removed this product successfully");
-  //       window.location.reload();
-  //     }
-  //   }
-  // };
+  const handleDeleteLocalStorage = (e, val) => {
+    var local_storage = JSON.parse(localStorage.getItem("cartDetails"));
+    var currentValue =
+      e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id;
+    // console.clear()
+    // console.log("e-clear",e.target.id)
+    var a = local_storage?.products?.filter((val) => {
+      if (currentValue !== val.sku_id) {
+        return val;
+      }
+    });
+    function status(response) {
+      if (response.status >= 200 && response.status < 300) {
+        return Promise.resolve(response);
+      } else {
+        return Promise.reject(new Error(response.statusText));
+      }
+    }
+    function json(response) {
+      return response.json();
+    }
+    if (JSON.parse(localStorage.getItem("cart_id"))) {
+      let cart_id = JSON.parse(localStorage.getItem("cart_id")).cart_id;
+      let bodyVariableRemoveCartItem = {
+        cart_id: cart_id,
+        product_id: currentValue,
+      };
+      fetch(`${API_URL}/removecartitem`, {
+        method: "post",
+        // body: {query:seoUrlResult,variables:splitHiphen()}
+        // body: JSON.stringify({query:seoUrlResult}),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...bodyVariableRemoveCartItem,
+        }),
+      })
+        .then(status)
+        .then(json)
+        .then((val) => {
+          sessionStorage.removeItem("updatedProduct");
+          alert(val.message);
+          var cartId = JSON.parse(localStorage.getItem("cartDetails")).cart_id;
+          var userId = JSON.parse(localStorage.getItem("cartDetails")).user_id;
+          var localstorage = JSON.stringify({
+            cart_id: `${cartId}`,
+            user_id: `${userId}`,
+            products: a,
+          });
+          localStorage.setItem("cartDetails", localstorage);
+          window.location.reload();
+        });
+    } else {
+      var _products = JSON.parse(
+        localStorage.getItem("cartDetails")
+      )?.products?.filter((val) => {
+        if (val.sku_id !== currentValue) return val;
+      });
+      var cartId = JSON.parse(localStorage.getItem("cartDetails")).cart_id;
+      var userId = JSON.parse(localStorage.getItem("cartDetails")).user_id;
+      var _obj = { cart_id: cartId, user_id: userId, products: _products };
+      if (_products.length > 0) {
+        localStorage.setItem("cartDetails", JSON.stringify(_obj));
+        alert("You removed this product successfully");
+        window.location.reload();
+      } else {
+        localStorage.removeItem("cartDetails", _products);
+        alert("You removed this product successfully");
+        window.location.reload();
+      }
+    }
+  };
+
   const filter_image = (imges__val, name, details) => {
     var image_urls;
     const width = window.innerWidth;
@@ -151,6 +152,7 @@ function MediaControlCard(props) {
     slidesToShow: 1,
     arrows: false,
   };
+
   return (
     <div style={{ paddingTop: "10px" }}>
       {/* <Grid container>
@@ -347,7 +349,7 @@ function MediaControlCard(props) {
                                 // className={`subhesder hov ${classes.normalfonts}`}
                                 id={dataval.generatedSku}
                                 onClick={(event) =>
-                                  this.handleDeleteLocalStorage(event)
+                                  handleDeleteLocalStorage(event)
                                 }
                                 fullWidth
                                 variant="contained"

@@ -16,7 +16,9 @@ import "components/product-image-slider/product-images.css";
 import { withRouter } from "react-router-dom";
 import productDetails from "mappers/productDetails";
 import MainCard from "components/SilverComponents/mainSlider";
-import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
+import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import { Snackbar } from "@material-ui/core";
 
 import { ProductDetailContext } from "context/ProductDetailContext";
 import { API_URL } from "config";
@@ -64,6 +66,17 @@ const styles = (theme) => ({
     fontFamily: `'Playfair Display', serif`,
     fontWeight: 500,
     marginTop: 8,
+  },
+  share: {
+    borderRadius: "50%",
+    backgroundColor: "#6D6E71",
+    width: "41.56px",
+    height: "41.56px",
+    padding: "10px",
+    margin: "10px",
+  },
+  icon: {
+    fill: "#fff !important",
   },
   name: {
     fontSize: 15,
@@ -209,6 +222,7 @@ class ProductDetail extends Component {
       data: null,
       isActive: false,
       Index: "",
+      tooltip: false,
     };
   }
 
@@ -259,6 +273,39 @@ class ProductDetail extends Component {
       document.title = this?.props?.data[0]?.title;
     }
   };
+
+  handleClick = () => {
+    navigator.clipboard.writeText(window.location.href).then(
+      () => {
+        this.setState({
+          tooltip: true,
+        });
+      },
+      function (err) {
+        console.log(err);
+      }
+    );
+  };
+
+  handleFacebook =()=>{
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`
+    )
+  }
+
+ shareFb = () => {
+
+    window.FB.ui(
+      {
+        
+        display: 'popup',
+        method: 'feed',
+        href: 'https://developers.facebook.com/docs/'
+      },
+      function (response) {}
+    );
+  };
+
   renderUrl = () => {
     var loc = this?.props?.location?.pathname;
     var path = loc.split("/");
@@ -291,11 +338,12 @@ class ProductDetail extends Component {
     ];
 
     const enquireLink = () => {
+     debugger
       window.open(
         `https://wa.me/919952625252?text=Hi - ${window.location.href}`
       );
     };
-    console.log(this.props);
+
     const clear_rating = (bool) => {
       if (bool === false) {
         this.setState({
@@ -314,33 +362,35 @@ class ProductDetail extends Component {
     const { classes } = this.props;
     const jewelData = this.props?.data?.[0];
 
-    console.log(jewelData,"jewelldata")
-
     var brand_card = [
       {
         title: "MURAL COLLECTIONS",
-        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Mural.jpg",
         url: "https://www.stylori.com/silver-jewellery-mural+collection",
       },
       {
         title: "STAR STRUCK",
-        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Starstruck.jpg",
         url: "https://www.stylori.com/silver-jewellery-starstruck+collection",
       },
       {
         title: "ELEMENTAL",
-        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Elemental.jpg",
         url: "https://www.stylori.com/silver-jewellery-elemental+collection",
       },
       {
         title: "CONCENTRIC",
-        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        description:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Concentric.jpg",
         url: "https://www.stylori.com/silver-jewellery-concentric+collection",
@@ -571,10 +621,7 @@ class ProductDetail extends Component {
                 )}
                 {isSilver && (
                   <div className={classes.getInTouchButtonContainer}>
-                    <SilverButton
-                      variant="outlined"
-                      onClick={() => enquireLink}
-                    >
+                    <SilverButton variant="outlined" onClick={enquireLink}>
                       Get in Touch
                     </SilverButton>
                   </div>
@@ -724,8 +771,12 @@ class ProductDetail extends Component {
 
           {/* Product Slider */}
           {isSilver ? (
-            <JewelSlider slides={jewelData?.fadeImages} isSilver={isSilver}  data={this?.props?.data}
-            wishlist={this?.props?.wishlistdata}/>
+            <JewelSlider
+              slides={jewelData?.fadeImages}
+              isSilver={isSilver}
+              data={this?.props?.data}
+              wishlist={this?.props?.wishlistdata}
+            />
           ) : (
             <PriceBuynow
               data={this?.props?.data}
@@ -754,14 +805,26 @@ class ProductDetail extends Component {
                 Shipping Calculated at Checkout
               </Typography>
 
-              <Grid container>
+              <Grid container alignItems="center" justifyContent="center">
                 <Grid item>
-                   <ShareOutlinedIcon/>
+                  <div className={classes.share} onClick={this.handleFacebook}>
+                    <FacebookIcon className={classes.icon} />
+                  </div>
                 </Grid>
                 <Grid item>
-
+                  <div className={classes.share} onClick={this.handleClick}>
+                    <ShareOutlinedIcon className={classes.icon} />
+                  </div>
                 </Grid>
               </Grid>
+
+              <Snackbar
+                message="Copied to Clipboard"
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                autoHideDuration={2000}
+                onClose={() => this.setState({ tooltip: false })}
+                open={this.state.tooltip}
+              />
 
               <JewelDetailAccordion title="Description">
                 {jewelData.dis !== "" ? (
@@ -793,7 +856,7 @@ class ProductDetail extends Component {
               </JewelDetailAccordion>
 
               <div className={classes.getInTouchButtonContainer}>
-                <SilverButton variant="outlined">Get in Touch</SilverButton>
+                <SilverButton variant="outlined" onClick={enquireLink}>Get in Touch</SilverButton>
               </div>
             </Wrapper>
           ) : (
@@ -817,7 +880,7 @@ class ProductDetail extends Component {
               ${HouseOfNac3x} 3x`}
                 src={HouseOfNac}
                 alt="House of NAC"
-                loading="lazy" 
+                loading="lazy"
               />
 
               <div className={classes.nacDescription}>
@@ -860,7 +923,7 @@ class ProductDetail extends Component {
 
           {isSilver && (
             <div className={classes.sliderWithHeadingContainer}>
-             <SliderWithHeading
+              <SliderWithHeading
                 heading="You may also like"
                 products={jewelData?.fadeImageSublist}
               />
@@ -1016,7 +1079,6 @@ const Components = (props) => {
               _silverArr.push(val.materialName.toLowerCase());
               return 0;
             }
-            
           );
           if (_silverArr.indexOf("silver") > -1)
             setGlobalCtx({ ...Globalctx, pathName: true });
