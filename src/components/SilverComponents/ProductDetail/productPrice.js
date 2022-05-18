@@ -178,7 +178,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                 >
                   <Hidden smDown>
                     <div className="starts product-icons" style={{ fontFamily: "fontawesome" }}>
-                      <div className="row social-shares" className={classes.icon}>
+                      <div className="row social-shares">
                         <i
                           class="fa fa-share-alt overall-icons"
                           aria-owns={open ? "simple-popper" : ""}
@@ -187,7 +187,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                         &nbsp;
                         {/* {JSON.stringify(val.productId)} */}
                         {/* <Wishlist sku={val.skuId} productId={val.productId} /> */}
-                        <Wishlist sku={val.skuId} productId={val.productId} wishlist={wishlist} />
+                        {/* <Wishlist sku={val.skuId} productId={val.productId} wishlist={wishlist} /> */}
                         <Popover
                           id="simple-popper"
                           open={open}

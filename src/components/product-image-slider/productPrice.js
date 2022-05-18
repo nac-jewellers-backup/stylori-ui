@@ -196,11 +196,11 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                           onClick={handleClick}
                         ></i>{" "}
                         &nbsp;
-                        <Wishlist
+                        {/* <Wishlist
                           sku={val?.skuId}
                           productId={val?.productId}
                           wishlist={wishlist}
-                        />
+                        /> */}
                         <Popover
                           id="simple-popper"
                           open={open}

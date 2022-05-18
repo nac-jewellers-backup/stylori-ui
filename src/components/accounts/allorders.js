@@ -1538,7 +1538,7 @@ class Allorders extends React.Component {
                       >
                         <Grid item container xs={12} lg={6}>
                           <Typography
-                            style={{ color: "#6D6E71", fontWeight: 700 }}
+                            style={{ color: "#6D6E71", fontWeight: 700,lineHeight:3 }}
                           >
                             Order Summary
                           </Typography>
@@ -1565,12 +1565,12 @@ class Allorders extends React.Component {
                                           style={{
                                             overflow: "hidden",
                                             outline: "none",
-                                            padding: "10px",
+                                            // padding: "10px",
                                             // boxShadow:
                                             //   " 1px 2px 13px 7px #DEDADA",
-                                            marginBottom: "20px",
+                                            // marginBottom: "20px",
                                             // borderBottom:"1px solid grey",
-                                            marginTop: "12px",
+                                            // marginTop: "12px",
                                             color: "#394578",
                                           }}
                                         >
@@ -1750,12 +1750,6 @@ class Allorders extends React.Component {
                                               </Grid>
                                             </Grid> */}
                                           <Grid
-                                            style={{
-                                              padding: "10px",
-                                              justifyContent: "center",
-                                              display: "flex",
-                                              alignItems: "center",
-                                            }}
                                             className="rups"
                                             item
                                             lg={3}

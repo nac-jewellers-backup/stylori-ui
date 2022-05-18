@@ -270,9 +270,9 @@ export default function ImageGridList(props) {
     const imageslice = (image) => {
         let val = image.split('/')
         return (`${CDN_URL}${val[0]}/${val[1]}/275X275/${val[2]}`)
-
-
     }
+
+    console.log(props,carosolData,"//dataa")
 
     return (
         <Grid container className={classes.root}>
@@ -280,13 +280,13 @@ export default function ImageGridList(props) {
                 <Grid item className={classes.containerRoot}>
                     <Grid container className={classes.container}>
                         <Grid item md={1} lg={1} sm={1} xs={1} className={classes.imgleftGrid}>
-                            <img onClick={() => previous()} className={classes.imgleft} loading="lazy" alt="...."/>
+                            <img onClick={() => previous()} className={classes.imgleft} loading="lazy"/>
                         </Grid>
                         <Grid item md={10} lg={10} sm={10} xs={10}  >
                             <Grid container>
                                 <Grid item  xs={12} style={{display:"flex",alignItems:"center"}}>
                                     <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
-                                        {carosolData && carosolData.map((val, index) => <>
+                                        {Array.isArray(carosolData) && carosolData.map((val, index) => <>
                                             <Grid container>
                                                 <Grid item md={3} lg={3} sm={6} xs={12} className={classes.testimonialRight}>
                                                     <Typography className={classes.testimonyTitle}>
@@ -327,7 +327,7 @@ export default function ImageGridList(props) {
                             </Grid>
                         </Grid>
                         <Grid item md={1} lg={1} sm={1} xs={1} className={classes.imgRightGrid}>
-                            <img onClick={() => next()} className={classes.imgRight} loading="lazy" alt="...."/>
+                            <img onClick={() => next()} className={classes.imgRight} loading="lazy"/>
                         </Grid>
                     </Grid>
                 </Grid>

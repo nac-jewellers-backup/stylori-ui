@@ -208,7 +208,7 @@ export default function Pricing(props) {
               <Grid
                 item
                 style={{ display: "flex", alignItems: "center" }}
-                className={classes.alignval}
+                className={classes.alignval}  
               >
                 {props.price ? (
                   <Typography
