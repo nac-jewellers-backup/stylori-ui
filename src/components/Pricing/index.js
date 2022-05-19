@@ -65,7 +65,7 @@ export default function Pricing(props) {
                           {isSilver
                             ? ""
                             : `
-                          ₹&nbsp;${Math.round(product_quantity * props.price)}
+                          ${CurrencyConversion(product_quantity * props.price)}
                             
                             `}
                         </del>
