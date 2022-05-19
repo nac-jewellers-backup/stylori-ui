@@ -1,5 +1,6 @@
 import { CDN_URL } from "config";
 import moment from "moment";
+import CurrencyConversion from "utils/CurrencyConversion";
 
 var colSize = null;
 var colSize_like_view = null;
@@ -270,11 +271,7 @@ const calculatetotalms = (arr, name, price) => {
   });
 
   a = filtering.reduce((a, b) => a + b, 0);
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    minimumFractionDigits: 0,
-  }).format(Math.round(a));
+  return CurrencyConversion(a);
 };
 const generatedDiamondType = (PD, valProductDiamond, type) => {
   var arrOfdiamondType = [];
@@ -879,31 +876,15 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
               {
                 name: "GST",
                 details: [
-                  new Intl.NumberFormat("en-IN", {
-                    style: "currency",
-                    currency: "INR",
-                    minimumFractionDigits: 0,
-                  }).format(Math.round(PD?.discountPriceTax)),
-                  new Intl.NumberFormat("en-IN", {
-                    style: "currency",
-                    currency: "INR",
-                    minimumFractionDigits: 0,
-                  }).format(Math.round(PD?.markupPriceTax)),
+                  CurrencyConversion(PD?.discountPriceTax),
+                  CurrencyConversion(PD?.markupPriceTax),
                 ],
               },
               {
                 name: "Total",
                 details: [
-                  new Intl.NumberFormat("en-IN", {
-                    style: "currency",
-                    currency: "INR",
-                    minimumFractionDigits: 0,
-                  }).format(Math.round(PD?.discountPrice)),
-                  new Intl.NumberFormat("en-IN", {
-                    style: "currency",
-                    currency: "INR",
-                    minimumFractionDigits: 0,
-                  }).format(Math.round(PD?.markupPrice)),
+                CurrencyConversion(PD?.discountPrice),
+                CurrencyConversion(PD?.markupPrice),
                 ],
               },
             ],
@@ -1108,11 +1089,7 @@ const calculatetotal = (arr, name) => {
   var a = 0;
   arr.map((val) => {
     if (val.materialName === name || name === undefined) {
-      a = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(a + val.discountPrice));
+      a = CurrencyConversion(a + val.discountPrice);
     }
     return 0;
   });
@@ -1122,11 +1099,7 @@ const calculatetotals = (arr, name) => {
   var a = 0;
   arr.map((val) => {
     if (val.materialName === name || name === undefined) {
-      a = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(a + val.markup));
+      a = CurrencyConversion (a + val.markup);
     }
     return 0;
   });
@@ -1136,11 +1109,7 @@ const calculatetotalm = (arr, name) => {
   var a = 0;
   arr.map((val) => {
     if (val.materialName === name || name === undefined) {
-      a = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(a + val.discountPrice));
+      a = CurrencyConversion(a + val.discountPrice);
     }
     return 0;
   });
@@ -1150,11 +1119,7 @@ const calculatetotalss = (arr, name) => {
   var a = 0;
   arr.map((val) => {
     if (val.materialName === name || name === undefined) {
-      a = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(a + val.markup));
+      a = CurrencyConversion (a + val.markup);
     }
     return 0;
   });

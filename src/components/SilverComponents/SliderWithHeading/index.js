@@ -13,6 +13,7 @@ import {
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import CurrencyConversion from "utils/CurrencyConversion";
 
 const useStyles = makeStyles((theme) => ({
   headingContainer: {
@@ -162,7 +163,7 @@ const SliderWithHeading = (props) => {
              />
              <div style={{width:'220px'}}>
              <Typography>{product?.title}</Typography>
-             <Typography>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(product?.price))}</Typography>
+             <Typography>{CurrencyConversion(product?.price)}</Typography>
            </div>
            </div>
            }

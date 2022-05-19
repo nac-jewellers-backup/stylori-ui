@@ -3,6 +3,7 @@ import { API_URL } from "../../../../src/config";
 import "./payment.css";
 import { Button, Grid } from "@material-ui/core";
 import { CartContext } from "context";
+import CurrencyConversion from "utils/CurrencyConversion";
 
 export default function PaymentHiddenForm(props) {
   let {
@@ -206,7 +207,7 @@ export default function PaymentHiddenForm(props) {
           style={{ cursor: "pointer",backgroundColor:"#D32564",color:"#fff",width:'inherit' }}
           variant="contained"
         >
-          {` Pay ${Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", minimumFractionDigits: 0 }).format(
+          {` Pay ${ CurrencyConversion(
                    props.data
                   )}`}
         </Button>

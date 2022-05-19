@@ -37,6 +37,8 @@ import { withRouter } from "react-router-dom";
 import { TopFilters } from "./topFilters";
 import ProductLayoutSilver from "../ProductCard/ProductLayoutSilver";
 import { filtersLabelMapperStylori } from "utils";
+import CurrencyConversion from "utils/CurrencyConversion";
+
 const PersistentDrawerLeft = (props) => {
   const {
     setSort,
@@ -134,16 +136,8 @@ class Component extends React.Component {
     ) {
       var price_min = Number(this.props.data[0].subFilter["Price Range"].min);
       var price_max = Number(this.props.data[0].subFilter["Price Range"].max);
-      var _price_min = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(price_min));
-      var _price_max = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(price_max));
+      var _price_min = CurrencyConversion(price_min);
+      var _price_max = CurrencyConversion (price_max);
 
       this.setState(checked);
       this.setState({ numOne: _price_min, numTwo: _price_max });
@@ -182,16 +176,8 @@ class Component extends React.Component {
 
         const price_min = Number(price_one);
         const price_max = Number(price_two);
-        const _price_min = new Intl.NumberFormat("en-IN", {
-          style: "currency",
-          currency: "INR",
-          minimumFractionDigits: 0,
-        }).format(Math.round(price_min));
-        const _price_max = new Intl.NumberFormat("en-IN", {
-          style: "currency",
-          currency: "INR",
-          minimumFractionDigits: 0,
-        }).format(Math.round(price_max));
+        const _price_min = CurrencyConversion(price_min);
+        const _price_max = CurrencyConversion(price_max);
         this.setState({ numOne: _price_min, numTwo: _price_max });
       }
     }
@@ -326,16 +312,8 @@ class Component extends React.Component {
       var numberTwo = this.props.data[0].subFilter["Price Range"][0]
         ? this.props.data[0].subFilter["Price Range"][0].max
         : 0;
-      var numOne = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(numberOne));
-      var numTwo = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(numberTwo));
+      var numOne = CurrencyConversion(numberOne);
+      var numTwo = CurrencyConversion(numberTwo);
       this.state.Price_button_click === false &&
         this.setState({ numOne: numOne, numTwo: numTwo });
     }
@@ -656,16 +634,8 @@ class Component extends React.Component {
           document.getElementById("num2").value.replace(/,/g, "")
         );
       }
-      var price_min = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(_price_min));
-      var price_max = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(_price_max));
+      var price_min = CurrencyConversion( _price_min);
+      var price_max = CurrencyConversion(_price_max);
 
       var pricemin =
         price_min.indexOf(",") > -1

@@ -28,6 +28,7 @@ import Promo from "screens/Checkout/orderSummary/promocode";
 import { API_URL, CDN_URL } from "config";
 import Quantity from "../quantity/index";
 import axios from "axios";
+import CurrencyConversion from "utils/CurrencyConversion";
 
 class Checkoutcard extends React.Component {
   constructor(props) {
@@ -290,17 +291,12 @@ class Checkoutcard extends React.Component {
               <Grid item>
                 <Typography className="total">{`Total ( ${
                   this.props.data.length
-                } items) :   ${new Intl.NumberFormat("en-IN", {
-                  style: "currency",
-                  currency: "INR",
-                  minimumFractionDigits: 0,
-                }).format(
-                  Math.round(
+                } items) :   ${ CurrencyConversion(
                     props.cartFilters.discounted_amount
                       ? Math.round(props.cartFilters.discounted_amount)
                       : Math.round(dataCard1 - discounted_price)
                   )
-                )}`}</Typography>
+                }`}</Typography>
               </Grid>
             ) :null}
             {this.props.data.map((dataval) =>
@@ -955,16 +951,8 @@ class Checkoutcard extends React.Component {
                   style={{lineHeight:2}}
                 >
                   {props.cartFilters.gross_amount ?
-                  new Intl.NumberFormat("en-IN", {
-                      style: "currency",
-                      currency: "INR",
-                      minimumFractionDigits: 0,
-                    }).format(Math.round(props.cartFilters.gross_amount))
-                   :  new Intl.NumberFormat("en-IN", {
-                    style: "currency",
-                    currency: "INR",
-                    minimumFractionDigits: 0,
-                  }).format(Math.round(dataCard1))
+                CurrencyConversion(props.cartFilters.gross_amount)
+                   :  CurrencyConversion(dataCard1)
                   }
 
                 </Typography>
@@ -980,16 +968,8 @@ class Checkoutcard extends React.Component {
 
                 
                     {props.cartFilters.tax_price
-                      ? `- ${new Intl.NumberFormat("en-IN", {
-                        style: "currency",
-                        currency: "INR",
-                        minimumFractionDigits: 0,
-                      }).format(Math.round(yousave) + props.cartFilters.tax_price)}`
-                      :  `- ${new Intl.NumberFormat("en-IN", {
-                        style: "currency",
-                        currency: "INR",
-                        minimumFractionDigits: 0,
-                      }).format(Math.round(yousave))}`}
+                      ? `- ${CurrencyConversion(yousave + props.cartFilters.tax_price)}`
+                      :  `- ${CurrencyConversion(yousave)}`}
 
                   </Typography>
                 ) : null}
@@ -1040,16 +1020,8 @@ class Checkoutcard extends React.Component {
                     
             
                   {props.cartFilters.discounted_amount
-                    ?    new Intl.NumberFormat("en-IN", {
-                      style: "currency",
-                      currency: "INR",
-                      minimumFractionDigits: 0,
-                    }).format(Math.round(props.cartFilters.discounted_amount))
-                    : new Intl.NumberFormat("en-IN", {
-                      style: "currency",
-                      currency: "INR",
-                      minimumFractionDigits: 0,
-                    }).format(Math.round(dataCard1 - discounted_price))}
+                    ?  CurrencyConversion(props.cartFilters.discounted_amount)
+                    : CurrencyConversion(dataCard1 - discounted_price)}
                 </Typography>
               </Grid>
               {/* // )}  */}

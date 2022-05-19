@@ -71,6 +71,27 @@
   font-size: 11px;
 }
 
+.one-day-ship-listing-page-withoutTop {
+  width: 24px;
+  height: 22px;
+  margin-left: 4px;
+  margin-top: 2px;
+  /* z-index: 2; */
+  position: absolute;
+  top: 15px;
+  font-family: 'FontAwesome' !important;
+  /* background-image: url('https://alpha-assets.stylori.com/images/static/product-details-icons.png'); */
+  /* top: 5px; */
+  background-position: -102px -37px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  /* color: #ed1165 !important; */
+}
+
+.one-day-ship-listing-page-withoutTop-label {
+  display: none;
+}
+
 .overall-loaders {
   display: flex;
 }
