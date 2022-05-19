@@ -3,6 +3,20 @@ var regExp = /[a-zA-Z]/g;
 
 const CurrencyConversion = (price) => {
   // Check if price value contains "free" string
+  if (price == "") {
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      minimumFractionDigits: 0,
+    }).format(Math.round(parseFloat(0)));
+  }
+  if (Number.isNaN(price)) {
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      minimumFractionDigits: 0,
+    }).format(Math.round(parseFloat(0)));
+  }
   if (regExp.test(price)) {
     if (typeof price === "number") {
       return new Intl.NumberFormat("en-IN", {
@@ -34,6 +48,7 @@ const CurrencyConversion = (price) => {
             minimumFractionDigits: 0,
           }).format(Math.round(parseFloat(price)));
         }
+    
         return new Intl.NumberFormat("en-IN", {
           style: "currency",
           currency: Country.currencyAlias,

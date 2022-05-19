@@ -142,7 +142,6 @@ const Gallery = (
             position: 'absolute',
             zIndex: 500,
             left: '16px',
-            margin: '10px',
             color:"#111"
             }}
           ></i>
