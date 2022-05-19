@@ -1,4 +1,5 @@
-import { CDN_URL } from 'config'
+import { CDN_URL } from 'config';
+import CurrencyConversion from 'utils/CurrencyConversion';
 
 export const primaryImage = [
   "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Collection+Page/Alpha-Page-tile-01+(1).jpg",
@@ -57,7 +58,7 @@ const ImageUrl = (image) => {
 const Product_price = (price) => {
   // price && price.map(val => {
   //   if (val !== undefined && val !== null) {
-  return  new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price.markupPrice))
+  return  CurrencyConversion(price.markupPrice)
   // Math.round(price.markupPrice)
   //   }
   // })

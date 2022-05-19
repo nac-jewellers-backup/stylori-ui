@@ -5,7 +5,8 @@ import {
 import "./accounts.css";
 import { CartContext } from 'context'
 import RemoveWishlist from 'components/wishlist/removewishlist';
-import { CDN_URL } from "config"
+import { CDN_URL } from "config";
+import CurrencyConversion from 'utils/CurrencyConversion';
 
 // props.setCartFilters({ skuId: data[0].skuId, qty: 1, price: data[0].offerPrice })
 const Wishlists = (props) => {
@@ -101,7 +102,7 @@ class Component extends React.Component {
                                     <div>
                                         <div className="wislist_title">{first_map.productListByProductId.productName}</div>
 
-                                        <div className="wislist_price">{Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(first_map?.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice))}</div>
+                                        <div className="wislist_price">{CurrencyConversion(first_map?.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice)}</div>
                                         <div className="add-bag">
                                             <>
                                                 <RemoveWishlist

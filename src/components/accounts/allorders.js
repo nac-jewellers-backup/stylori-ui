@@ -14,6 +14,7 @@ import "./accounts.css";
 import "../Checkout/Cart.css";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ArrowLeft from "@material-ui/icons/ArrowLeft";
+import CurrencyConversion from 'utils/CurrencyConversion';
 import moment from "moment";
 import Pricing from "../Pricing/index";
 import { CDN_URL } from "config";
@@ -114,11 +115,7 @@ class Allorders extends React.Component {
         .reduce(myFunc);
     }
 
-    return new Intl.NumberFormat("en-IN", {
-      style: "currency",
-      currency: "INR",
-      minimumFractionDigits: 0,
-    }).format(Math.round(a));
+    return CurrencyConversion(a);
   };
   generateShipsBy = (readytoship, vendorDeliveryTime) => {
     var isReadytoShip = readytoship;
@@ -442,15 +439,10 @@ class Allorders extends React.Component {
                             <span
                               style={{ color: "#ed1165", fontSize: "18px" }}
                             >
-                              {new Intl.NumberFormat("en-IN", {
-                                style: "currency",
-                                currency: "INR",
-                                minimumFractionDigits: 0,
-                              }).format(
-                                Math.round(
+                              { CurrencyConversion(
                                   val.shoppingCartByCartId.discountedPrice
                                 )
-                              )}
+                              }
                             </span>
                           </div>
                           {val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(
@@ -789,15 +781,10 @@ class Allorders extends React.Component {
                               <span
                                 style={{ color: "#ed1165", fontSize: "18px" }}
                               >
-                                {new Intl.NumberFormat("en-IN", {
-                                  style: "currency",
-                                  currency: "INR",
-                                  minimumFractionDigits: 0,
-                                }).format(
-                                  Math.round(
+                                { CurrencyConversion(
                                     val.shoppingCartByCartId.discountedPrice
                                   )
-                                )}
+                                }
                               </span>
                             </div>
                           </div>
@@ -1218,15 +1205,10 @@ class Allorders extends React.Component {
                                   fontWeight: 700,
                                 }}
                               >
-                                {new Intl.NumberFormat("en-IN", {
-                                  style: "currency",
-                                  currency: "INR",
-                                  minimumFractionDigits: 0,
-                                }).format(
-                                  Math.round(
+                                { CurrencyConversion(
                                     val.shoppingCartByCartId.discountedPrice
                                   )
-                                )}
+                                }
                               </span>
                             </Grid>
                           </Grid>
@@ -1910,15 +1892,10 @@ class Allorders extends React.Component {
                                   fontWeight: 700,
                                 }}
                               >
-                                {new Intl.NumberFormat("en-IN", {
-                                  style: "currency",
-                                  currency: "INR",
-                                  minimumFractionDigits: 0,
-                                }).format(
-                                  Math.round(
+                                { CurrencyConversion(
                                     val.shoppingCartByCartId.discountedPrice
                                   )
-                                )}
+                                }
                               </span>
                             </Grid>
                           </Grid>

@@ -11,6 +11,7 @@ import "./accounts.css";
 import '../Checkout/Cart.css'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import moment from "moment";
+import CurrencyConversion from 'utils/CurrencyConversion';
 
 function myFunc(total, num) {
     return Math.round(total + num);
@@ -45,7 +46,7 @@ class Allorders extends React.Component {
             }
             return dis_price
         }).reduce(myFunc);
-        return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a))
+        return CurrencyConversion(a)
     }
     generateShipsBy = (readytoship, vendorDeliveryTime) => {
         var isReadytoShip = readytoship
@@ -163,9 +164,9 @@ class Allorders extends React.Component {
 
                                                         <Grid style={{ padding: "30px" }} className="rups" item lg={2}>
                                                             {(Math.round(cart.transSkuListByProductSku.markupPrice)) < (Math.round(cart.price)) ?
-                                                                <del style={{ color: "rgba(0, 0, 0, 0.54)", fontSize: "18px" }}>{(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.markupPrice)))}</del>
+                                                                <del style={{ color: "rgba(0, 0, 0, 0.54)", fontSize: "18px" }}>{(CurrencyConversion(cart.transSkuListByProductSku.markupPrice))}</del>
                                                                 : ""}<br />
-                                                            {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.discountPrice))}
+                                                            {CurrencyConversion(cart.transSkuListByProductSku.discountPrice)}
                                                         </Grid>
                                                     </Grid></>
                                             ))}

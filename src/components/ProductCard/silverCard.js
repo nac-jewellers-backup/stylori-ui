@@ -15,6 +15,7 @@ import {
 } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import Wishlist from "components/wishlist/wishlist";
+import CurrencyConversion from 'utils/CurrencyConversion';
 import { Hidden } from "@material-ui/core";
 
 export const SilverImgMediaCard = (props) => {
@@ -132,9 +133,7 @@ const Gallery = (
         <div
           className={`one-day-ship-listing-page-withoutTop`}
           style={{ zIndex: 2 }}
-        >
-
-          
+        >      
           <i
             class="fa fa-truck"
             style={{ 
@@ -607,11 +606,7 @@ sizes="(max-width: 320px) 320w,
                     width: "100%",
                   }}
                 >
-                  {new Intl.NumberFormat("en-IN", {
-                    style: "currency",
-                    currency: "INR",
-                    minimumFractionDigits: 0,
-                  }).format(Math.round(props.data.offerPrice))}
+                  {CurrencyConversion(props.data.offerPrice)}
                   <span
                    
                     className={classes.offerMainPriceStrike}
@@ -631,11 +626,7 @@ sizes="(max-width: 320px) 320w,
                              </i> */}
                     {/* {Math.round(props.data.offerPrice)} */}
 
-                    {new Intl.NumberFormat("en-IN", {
-                      style: "currency",
-                      currency: "INR",
-                      minimumFractionDigits: 0,
-                    }).format(Math.round(props.data.price))}
+                    {CurrencyConversion(props.data.price)}
                   </span>
                   <span
                     style={{
@@ -703,11 +694,7 @@ sizes="(max-width: 320px) 320w,
                       width: "100%",
                     }}
                   >
-                    {new Intl.NumberFormat("en-IN", {
-                      style: "currency",
-                      currency: "INR",
-                      minimumFractionDigits: 0,
-                    }).format(Math.round(props.data.offerPrice))}
+                    {CurrencyConversion(props.data.offerPrice)}
                     <span
                       // variant="h6"
                       // component="h6"
@@ -729,11 +716,7 @@ sizes="(max-width: 320px) 320w,
                               </i> */}
                       {/* {Math.round(props.data.offerPrice)} */}
 
-                      {new Intl.NumberFormat("en-IN", {
-                        style: "currency",
-                        currency: "INR",
-                        minimumFractionDigits: 0,
-                      }).format(Math.round(props.data.price))}
+                      {CurrencyConversion(props.data.price)}
                     </span>
                     <span
                       style={{
@@ -829,11 +812,7 @@ sizes="(max-width: 320px) 320w,
                       width: "100%",
                     }}
                   >
-                    {new Intl.NumberFormat("en-IN", {
-                      style: "currency",
-                      currency: "INR",
-                      minimumFractionDigits: 0,
-                    }).format(Math.round(props.data.offerPrice))}
+                    {CurrencyConversion(props.data.offerPrice)}
                     <span
                       // variant="h6"
                       // component="h6"
@@ -855,11 +834,7 @@ sizes="(max-width: 320px) 320w,
                               </i> */}
                       {/* {Math.round(props.data.offerPrice)} */}
 
-                      {new Intl.NumberFormat("en-IN", {
-                        style: "currency",
-                        currency: "INR",
-                        minimumFractionDigits: 0,
-                      }).format(Math.round(props.data.price))}
+                      {CurrencyConversion(props.data.price)}
                     </span>
                     <span
                       style={{

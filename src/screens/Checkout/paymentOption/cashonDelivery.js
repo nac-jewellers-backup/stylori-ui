@@ -5,6 +5,7 @@ import "./payment.css";
 import { CartContext } from "context";
 import cart from "mappers/cart";
 import { API_URL } from "../../../config";
+import CurrencyConversion from "utils/CurrencyConversion";
 // import { CartContext } from 'context'
 
 var obj = {};
@@ -167,7 +168,7 @@ class Component extends React.Component {
               }}
               variant="contained"
             >
-              {` Pay ${Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(dataCard1 - discounted_price))}`}
+              {` Pay ${CurrencyConversion(dataCard1 - discounted_price)}`}
             </Button>
           </Grid>
           <div className="code-btn-top">

@@ -3,6 +3,7 @@ import { Typography, Grid, Hidden } from "@material-ui/core";
 import "../product-image-slider/product-images.css";
 import styles from "./style";
 import "./pricing.css";
+import CurrencyConversion from "utils/CurrencyConversion";
 
 export default function Pricing(props) {
   const classes = styles();
@@ -90,15 +91,7 @@ export default function Pricing(props) {
                           classes.offerPricePadding
                         } ${isSilver ? classes.pricesilver : ""}`}
                       >
-                        {new Intl.NumberFormat("en-IN", {
-                          style: "currency",
-                          currency: "INR",
-                          minimumFractionDigits: 0,
-                        })
-                          .format(
-                            Math.round(product_quantity * props.offerPrice)
-                          )
-                          .replace(/^(\D+)/, "$1 ")}
+                        { CurrencyConversion(product_quantity * props.offerPrice)}
                         &nbsp; &nbsp;
                       </Typography>
                       <div style={{ marginTop: "-10px" }}>
@@ -111,13 +104,8 @@ export default function Pricing(props) {
                             >
                               {isSilver
                                 ? `
-                            ${new Intl.NumberFormat("en-IN", {
-                              style: "currency",
-                              currency: "INR",
-                              minimumFractionDigits: 0,
-                            }).format(
-                              Math.round(product_quantity * props.price)
-                            )}
+                            ${CurrencyConversion (product_quantity * props.price)
+                            }
                             `
                                 : ""}
                             </del>
@@ -151,15 +139,7 @@ export default function Pricing(props) {
                           classes.offerPricePadding
                         } ${isSilver ? classes.pricesilver : ""}`}
                       >
-                        {new Intl.NumberFormat("en-IN", {
-                          style: "currency",
-                          currency: "INR",
-                          minimumFractionDigits: 0,
-                        })
-                          .format(
-                            Math.round(product_quantity * props.offerPrice)
-                          )
-                          .replace(/^(\D+)/, "$1 ")}
+                        { CurrencyConversion(product_quantity * props.offerPrice)}
                         &nbsp;
                         <span>
                           {props.offerPrice === props.price ? (
@@ -170,13 +150,7 @@ export default function Pricing(props) {
                             >
                               {isSilver
                                 ? `
-                            ${new Intl.NumberFormat("en-IN", {
-                              style: "currency",
-                              currency: "INR",
-                              minimumFractionDigits: 0,
-                            }).format(
-                              Math.round(product_quantity * props.price)
-                            ) .replace(/^(\D+)/, "$1 ")}
+                            ${ CurrencyConversion(product_quantity * props.price)}
                             `
                                 : ""}
                             </del>
@@ -227,11 +201,7 @@ export default function Pricing(props) {
                         ""
                       ) : (
                         <del>
-                         {new Intl.NumberFormat("en-IN", {
-                      style: "currency",
-                      currency: "INR",
-                      minimumFractionDigits: 0,
-                    }).format(Math.round(product_quantity * props.price))}
+                         {CurrencyConversion(product_quantity * props.price)}
                         </del>
                       )}
                     </Typography>
@@ -269,11 +239,7 @@ export default function Pricing(props) {
                       ""
                     ) : (
                       <del>
-                        {new Intl.NumberFormat("en-IN", {
-                      style: "currency",
-                      currency: "INR",
-                      minimumFractionDigits: 0,
-                    }).format(Math.round(product_quantity * props.price))}
+                        {CurrencyConversion(product_quantity * props.price)}
                       
                       </del>
                     )}
@@ -305,11 +271,7 @@ export default function Pricing(props) {
                       classes.offerPricePadding
                     } `}
                   >
-                    {new Intl.NumberFormat("en-IN", {
-                      style: "currency",
-                      currency: "INR",
-                      minimumFractionDigits: 0,
-                    }).format(Math.round(product_quantity * props.offerPrice))}
+                    {CurrencyConversion(product_quantity * props.offerPrice)}
                   </Typography>
                 </Typography>
               ) : (
