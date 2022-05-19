@@ -216,7 +216,7 @@ export default function Pricing(props) {
                     className={classes.resetpadd}
                   >
                     <Typography
-                      style={{ fontSize: "0.9rem" }}
+                      style={{ fontSize: "0.9rem",marginTop: props.isMobile ? '-19px' :'0'}}
                       className={`pricing-p${
                         (props.price != null) & (props.price !== "")
                           ? ""
