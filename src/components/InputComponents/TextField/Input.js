@@ -1,6 +1,7 @@
 import React from "react";
 import { TextField, Grid, Typography } from "@material-ui/core";
 import propTypes from "prop-types";
+import { makeStyles } from "@material-ui/styles";
 
 // NOTABLE POINTS
 //  Min and Max
@@ -14,6 +15,29 @@ import propTypes from "prop-types";
 // On Moving Out
 // Live
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: "100%",
+    backgroundColor:"#fff",
+    marginTop:10,
+    "& .MuiInputBase-input":{
+      padding: '6px 5px 7px',
+    }
+  },
+  root1: {
+    width: "85%",
+    [theme.breakpoints.down("sm")]: {
+     width:"95%"
+    },
+    backgroundColor:"#fff",
+    marginTop:10,
+    "& .MuiInputBase-input":{
+      padding: '6px 5px 7px',
+    }
+  },
+}));
+
+
 export const Input = props => {
   let {
     isNumber = false,
@@ -23,6 +47,7 @@ export const Input = props => {
     helperText,
     onChange,
     rowsMax,
+    short,
     multiline,
     onInvalid,
 
@@ -35,6 +60,7 @@ export const Input = props => {
   };
 
   const [invalid, setInvalid] = React.useState(false);
+  const classes = useStyles();
 
   // INTEGRATE THEME HERE
 
@@ -64,7 +90,7 @@ export const Input = props => {
           error={invalid}
           multiline={multiline}
           rows={rowsMax}
-          style={{ width: "100%",backgroundColor:"#fff",marginTop:10}}
+          className={short ? classes.root1 : classes.root }
           disabled={props.disabled}
           // helperText={invalid && <b>{helperText}</b>}
           onKeyPress={handleKeyPress}

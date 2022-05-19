@@ -201,7 +201,8 @@ export default function ImageGridList(props) {
     const previous = () => {
         slider.current.slickPrev();
     }
-    
+
+
     useEffect(()=>{
     // Aos.init({duration:2000});
      },[])
@@ -213,11 +214,11 @@ export default function ImageGridList(props) {
                  >
                     <Grid container className={classes.container}>
                         <Grid item style={{ width: "3%" }} className={classes.imgleftGrid}>
-                            <img onClick={() => previous()} className={classes.imgleft} loading="lazy" alt="...."/>
+                            <img onClick={() => previous()} className={classes.imgleft} loading="lazy"/>
                         </Grid>
                         <Grid item style={{ width: "94%", padding: "0px 15px" }}  >
                             <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
-                                {props.carosolData.map((val, index) => <>
+                                {props?.carosolData?.map((val, index) => <>
                                     <Grid item className={classes.Titlehead}>
                                         <Typography variant="h3" className={classes.titleTypo}>{val.title}
                                         </Typography>
@@ -228,13 +229,14 @@ export default function ImageGridList(props) {
                                                 <Grid item className={classes.testimonialRight}>
                                                     <Grid item >
                                                         {/* <a href={val.navigateUrl}> */}
-                                                        <img className={classes.imgcoin} src={val.image} loading="lazy" alt="...."/>
+                                                        <img className={classes.imgcoin} src={val?.image} loading="lazy" alt="...."/>
                                                         {/* </a> */}
                                                     </Grid>
                                                 </Grid>
                                                 <Grid item style={{ width: "75%" }} className={classes.testimonialInner}>
                                                     <Grid item >
-                                                        <Typography className={classes.textInner}>{val.cardContent}
+                                                        <Typography className={classes.textInner}>
+                                                            {val.cardContent}
                                                         </Typography>
                                                         {/* <a href={val.navigateUrl} style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a> */}
                                                     </Grid>
@@ -246,7 +248,7 @@ export default function ImageGridList(props) {
                             </Slideshow>
                         </Grid>
                         <Grid item style={{ width: "3%" }} className={classes.imgRightGrid} >
-                            <img onClick={() => next()} className={classes.imgRight} loading="lazy" alt="...."/>
+                            <img onClick={() => next()} className={classes.imgRight} loading="lazy"/>
                         </Grid>
                     </Grid>
                 </Grid>

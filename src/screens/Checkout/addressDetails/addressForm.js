@@ -108,10 +108,11 @@ const AddressComponent = (props) => {
                           {/* <Grid xs={8}> */}
                           <Input
                             name="firstname"
-                            className='text-ad'    
+                            // className='text-ad'    
                             type="text"
                             value={values.addressOne.firstname}
                             placeholder="First name"
+                            short
                             required
                             onChange={(event) =>
                               handle.handleChange(
@@ -126,12 +127,13 @@ const AddressComponent = (props) => {
                         </Grid>
                         <Grid item xs={12}>
                           <Input
-                            className='text-ad'   
+                            // className='text-ad'   
                             type="text"
                             name="lastname"
                             value={values.addressOne.lastname}
                             placeholder="Last name"
                             required
+                            short
                             onChange={(event) =>
                               handle.handleChange(
                                 "addressOne",
@@ -146,7 +148,8 @@ const AddressComponent = (props) => {
                           <Input
                             type="text"
                             name="state"
-                            className='text-ad'   
+                            short
+                            // className='text-ad'   
                             placeholder="State"
                             onChange={(event) =>
                               handle.handleChange(
@@ -165,9 +168,10 @@ const AddressComponent = (props) => {
                         </Grid>
                         <Grid item xs={12}>
                           <Input
-                            className='text-ad'   
+                            // className='text-ad'   
                             type="text"
                             name="city"
+                            short
                             placeholder="City"
                             onChange={(event) =>
                               handle.handleChange(
@@ -194,9 +198,10 @@ const AddressComponent = (props) => {
                                            </Grid> */}
                           {/* <Grid item xs={8}> */}
                           <Input
-                            className='text-ad'   
+                            // className='text-ad'   
                             type="tel"
                             name="pincode"
+                            short
                             maxLength="6"
                             placeholder="Pin code/Zip code"
                             onChange={(event) =>
@@ -227,7 +232,8 @@ const AddressComponent = (props) => {
                             type="text"
                             placeholder="Address"
                             name="addressline1"
-                            className='text-ad'   
+                            short
+                            // className='text-ad'   
                             onChange={(event) =>
                               handle.handleChange(
                                 "addressOne",
@@ -248,9 +254,10 @@ const AddressComponent = (props) => {
                                            </Grid> */}
                           {/* <Grid item xs={8}> */}
                           <Input
-                             className='text-ad'   
+                            //  className='text-ad'   
                             type="tel"
                             name="contactno"
+                            short
                             onKeyPress={(e) =>
                               handle.handleKeyPress(e, "contactno")
                             }
@@ -272,8 +279,9 @@ const AddressComponent = (props) => {
                         </Grid>
                         <Grid item xs={12}>
                           <Input
-                            className='text-ad'   
+                            // className='text-ad'   
                             type="text"
+                            short
                             name="country"
                             placeholder="Country"
                             onChange={(event) =>
@@ -325,7 +333,7 @@ const AddressComponent = (props) => {
                         <Grid item xs={4} lg={4}>
                           <Input
                             name="firstname"
-                            className="text-f"
+                            // className="text-f"
                             type="text"
                             value={values.addressOne.firstname}
                             placeholder="First name"
@@ -342,7 +350,7 @@ const AddressComponent = (props) => {
                         </Grid>
                         <Grid item xs={4} lg={4}>
                           <Input
-                            className="text-f"
+                            // className="text-f"
                             type="text"
                             name="lastname"
                             value={values.addressOne.lastname}
@@ -373,7 +381,7 @@ const AddressComponent = (props) => {
                         </Grid>
                         <Grid item xs={6} lg={6}>
                           <Input
-                            className="text-f"
+                            // className="text-f"
                             type="tel"
                             name="pincode"
                             maxLength="6"

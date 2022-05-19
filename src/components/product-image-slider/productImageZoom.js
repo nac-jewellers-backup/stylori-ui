@@ -7,9 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "../Header/styles";
 import Gagetstylori from "./Gagetstylori/Gagetstylori";
 import { CDN_URL } from "config";
-import {
-  GlassMagnifier,
-} from "react-image-magnifiers";
+import { GlassMagnifier } from "react-image-magnifiers";
 import Wishlist from "components/wishlist/wishlist";
 
 class ProductImageZoom extends React.Component {
@@ -349,18 +347,18 @@ class ProductImageZoom extends React.Component {
                   this?.props?.isSilver ? (
                     <div class={"one-day-ship_only_silver"}>
                       <i
-            class="fa fa-truck"
-            style={{ 
-            fontSize: "20px",
-            fontFamily: 'FontAwesome !important',
-            position: 'absolute',
-            zIndex: 500,
-            left: '10px',
-            margin: '10px',
-            color:"#111",
-            paddingTop: '7px'
-            }}
-          ></i>
+                        class="fa fa-truck"
+                        style={{
+                          fontSize: "20px",
+                          fontFamily: "FontAwesome !important",
+                          position: "absolute",
+                          zIndex: 500,
+                          left: "10px",
+                          margin: "10px",
+                          color: "#111",
+                          paddingTop: "7px",
+                        }}
+                      ></i>
                       {/* <img
                         src={require("assets/StyloriSilver-truckIcon.svg")}
                         loading="lazy" alt="...."
@@ -379,15 +377,19 @@ class ProductImageZoom extends React.Component {
                   ""
                 )}
 
-             <div class="wishListStyle" style={{right: '650px',
-                paddingTop: '7px'}}>
-                <Wishlist
-                  sku={this.props.data[0].skuId}
-                  productId={this.props.data[0].productId}
-                  wishlist={this.props.wishlist}
-                  isSilver
-                />
-              </div>
+              
+                  <div
+                    class="wishListStyle"
+                    style={{ right: "660px", paddingTop: "7px" }}
+                  >
+                    <Wishlist
+                      sku={this.props.data[0].skuId}
+                      productId={this.props.data[0].productId}
+                      wishlist={this.props.wishlist}
+                      isSilver={_isSilver ? true : false}
+                    />
+                  </div>
+               
 
                 {this.handleVideoCheck(showimage) ? (
                   <video

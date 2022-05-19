@@ -138,19 +138,23 @@ class Allorders extends React.Component {
   };
 
   ImageUrl = (imgs, metal, paymentsuccess) => {
+ 
     var check_img;
     var ppp;
     if (paymentsuccess) {
+
       var metalColor_ = metal;
       var cnt = imgs?.imageUrl.split("/");
       var cnt_b = cnt[2].split("-");
       var cnt_c = cnt_b[1];
 
+      console.log(metalColor_[0],cnt_c[1],"///")
+
       var browser_type = JSON.parse(localStorage.getItem("browserDetails"));
 
-      if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
+      // if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
+        
         check_img = true;
-
         var resolution = 500;
         var _resolutions =
           width < 960
@@ -166,78 +170,75 @@ class Allorders extends React.Component {
         url_split[url_split && url_split.length - 1] = browser_type_append;
         url_split.splice(2, 0, _resolutions);
         var url_construct = url_split.join().replace(/\,/g, "/"); //eslint-disable-line
+        
         // var img_url = `${baseUi}${url_construct}`
         ppp = `${CDN_URL}${url_construct}`;
-        // alert(this.state.check_img)
-      }
-
+      // }
       return ppp;
-    } else {
-      if (
-        this.props &&
-        this.props.allorderdata &&
-        this.props.allorderdata.allorderdata &&
-        this.props.allorderdata.allorderdata.nodes.length > 0
-      ) {
-        // var vera = this.props.allorderdata.allorderdata.nodes.map((val) => {
-        //   if (val !== undefined && val !== null) {
-        //     var inside =
-        //       val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(
-        //         (cart) => {
-        //           if (cart !== undefined && cart !== null) {
-        //             if (cart !== undefined && cart !== null) {
-        //               var metalColor_ = metal;
-        //               var cnt =
-        //                 imgs[0]?.transSkuListByProductSku?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl.split(
-        //                   "/"
-        //                 );
-        //               var cnt_b = cnt[2].split("-");
-        //               var cnt_c = cnt_b[1];
+    } else if( this.props &&
+      this.props.allorderdata &&
+      this.props.allorderdata.allorderdata &&
+      this.props.allorderdata.allorderdata.nodes.length > 0) {
 
-        //               var browser_type = JSON.parse(
-        //                 localStorage.getItem("browserDetails")
-        //               );
+        var vera = this.props.allorderdata.allorderdata.nodes.map((val) => {
+          if (val !== undefined && val !== null) {
+            var inside =
+              val.shoppingCartByCartId.shoppingCartItemsByShoppingCartId.nodes.map(
+                (cart) => {
+                  if (cart !== undefined && cart !== null) {
+                    if (cart !== undefined && cart !== null) {
+                      var metalColor_ = metal;
+                      var cnt =
+                        imgs[0]?.transSkuListByProductSku?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl.split(
+                          "/"
+                        );
+                      var cnt_b = cnt[2].split("-");
+                      var cnt_c = cnt_b[1];
 
-        //               if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
-        //                 check_img = true;
+                      var browser_type = JSON.parse(
+                        localStorage.getItem("browserDetails")
+                      );
 
-        //                 var resolution = 500;
-        //                 var _resolutions =
-        //                   width < 960
-        //                     ? `${resolution * 2}X${resolution * 2}`
-        //                     : `${resolution}X${resolution}`;
-        //                 var url_split =
-        //                   imgs &&
-        //                   imgs[0]?.transSkuListByProductSku?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl.split(
-        //                     "/"
-        //                   );
-        //                 var extension_split =
-        //                   url_split && url_split[url_split.length - 1];
-        //                 var browser_type_append =
-        //                   extension_split &&
-        //                   extension_split
-        //                     .split(".")[0]
-        //                     .concat(
-        //                       `${browser_type && browser_type.browser_type}`
-        //                     );
-        //                 url_split[url_split && url_split.length - 1] =
-        //                   browser_type_append;
-        //                 url_split.splice(2, 0, _resolutions);
-        //                 var url_construct = url_split
-        //                   .join()
-        //                   .replace(/\,/g, "/");
-        //                 ppp = `${CDN_URL}${url_construct}`;
+                      if ((metalColor_ && metalColor_[0]) === cnt_c[1]) {
+                        check_img = true;
+
+                        var resolution = 500;
+                        var _resolutions =
+                          width < 960
+                            ? `${resolution * 2}X${resolution * 2}`
+                            : `${resolution}X${resolution}`;
+                        var url_split =
+                          imgs &&
+                          imgs[0]?.transSkuListByProductSku?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl.split(
+                            "/"
+                          );
+                        var extension_split =
+                          url_split && url_split[url_split.length - 1];
+                        var browser_type_append =
+                          extension_split &&
+                          extension_split
+                            .split(".")[0]
+                            .concat(
+                              `${browser_type && browser_type.browser_type}`
+                            );
+                        url_split[url_split && url_split.length - 1] =
+                          browser_type_append;
+                        url_split.splice(2, 0, _resolutions);
+                        var url_construct = url_split
+                          .join()
+                          .replace(/\,/g, "/");
+                        ppp = `${CDN_URL}${url_construct}`;
                         
-        //               }
-        //             }
-        //           }
-        //         }
-        //       );
-        //   }
-        // });
+                      }
+                    }
+                  }
+                }
+              );
+          }
+        });
 
         return ppp;
-      }
+      
     }
   };
 
@@ -826,7 +827,7 @@ class Allorders extends React.Component {
                   allorderdata.data.allOrders.nodes.map((val) => {
                     return (
                       <div>
-                         <Hidden smDown>
+                      <Hidden smDown>
                              <div
                         style={{
                           display: "flex",
@@ -1527,8 +1528,8 @@ class Allorders extends React.Component {
                           </Grid>
                         </Grid>
                       </div>
-                          </Hidden>
-                          <Hidden mdUp>
+                       </Hidden>
+                      <Hidden mdUp>
                              <div
                         style={{
                           display: "flex",
@@ -1538,7 +1539,7 @@ class Allorders extends React.Component {
                       >
                         <Grid item container xs={12} lg={6}>
                           <Typography
-                            style={{ color: "#6D6E71", fontWeight: 700 }}
+                            style={{ color: "#6D6E71", fontWeight: 700,lineHeight:3 }}
                           >
                             Order Summary
                           </Typography>
@@ -1565,12 +1566,12 @@ class Allorders extends React.Component {
                                           style={{
                                             overflow: "hidden",
                                             outline: "none",
-                                            padding: "10px",
+                                            // padding: "10px",
                                             // boxShadow:
                                             //   " 1px 2px 13px 7px #DEDADA",
-                                            marginBottom: "20px",
+                                            // marginBottom: "20px",
                                             // borderBottom:"1px solid grey",
-                                            marginTop: "12px",
+                                            // marginTop: "12px",
                                             color: "#394578",
                                           }}
                                         >
@@ -1750,12 +1751,6 @@ class Allorders extends React.Component {
                                               </Grid>
                                             </Grid> */}
                                           <Grid
-                                            style={{
-                                              padding: "10px",
-                                              justifyContent: "center",
-                                              display: "flex",
-                                              alignItems: "center",
-                                            }}
                                             className="rups"
                                             item
                                             lg={3}
@@ -1770,6 +1765,7 @@ class Allorders extends React.Component {
                                                 cart.transSkuListByProductSku
                                                   .markupPrice
                                               }
+                                              isMobile
                                             ></Pricing>
 
                                             <br />
@@ -2199,10 +2195,8 @@ class Allorders extends React.Component {
                           </Grid>
                         </Grid>
                       </div>
-                          </Hidden>
-                      </div>
-                     
-                       
+                      </Hidden>
+                      </div> 
                     );
                   })}
               </Grid>
