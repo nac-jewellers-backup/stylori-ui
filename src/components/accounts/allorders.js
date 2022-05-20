@@ -145,7 +145,6 @@ class Allorders extends React.Component {
       var cnt_b = cnt[2].split("-");
       var cnt_c = cnt_b[1];
 
-      console.log(metalColor_[0],cnt_c[1],"///")
 
       var browser_type = JSON.parse(localStorage.getItem("browserDetails"));
 

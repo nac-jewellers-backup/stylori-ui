@@ -18,7 +18,6 @@ export default class JewelSlider extends Component {
       arrows: false,
     };
 
-    console.log(this.props.data[0], "jwelll slides");
     return (
       <div>
         <Slider {...settings}>
