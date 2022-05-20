@@ -23,6 +23,37 @@ export const testimonials = `query testimonials {
     }
   }`;
 
+  export const GOLD_PRICE_AND_CURRENCY_CONVO = `
+  query {
+    allDailyMetalPrices(condition: { isActive: true }, orderBy: ID_ASC) {
+      nodes {
+        id
+        metalName
+        displayName
+        displayPrice
+        isActive
+        createdAt
+        updatedAt
+      }
+    }
+    allMasterCountries(condition: { isActive: true }) {
+      nodes {
+        currency
+        currencyAlias
+        currencySymbol
+        fxConversionRate
+        id
+        isActive
+        iso
+        iso3
+        name
+        nicename
+        numcode
+        phonecode
+      }
+    }
+  }`;
+
 export const silverStyloriHomepage = `query styloriSilverTestimonials {
     allCustomerReviews(condition: {isPublish: true}, orderBy: IS_PUBLISH_DESC) {
       nodes {

@@ -163,7 +163,7 @@ const useLogin = (changePanel, props) => {
   };
 
   const handelSubmit = (e, history) => {
-    console.log(values);
+    
     if (values.email === "" && values["error"] && values["errortext"]) {
       values["error"]["emerr"] = true;
       values["errortext"]["emerr"] = "Email is required";

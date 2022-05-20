@@ -233,8 +233,6 @@ function Login2(props) {
   };
 
   const responseGoogle = (response) => {
-    console.log(response);
-    debugger;
     if (response) {
       let body = {
         type: "google",

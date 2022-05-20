@@ -337,8 +337,7 @@ class ProductDetail extends Component {
       },
     ];
 
-    const enquireLink = () => {
-     debugger
+    const enquireLink = () => {     
       window.open(
         `https://wa.me/919952625252?text=Hi - ${window.location.href}`
       );

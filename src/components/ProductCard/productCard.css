@@ -185,6 +185,19 @@
 
 .imageHeight {
   min-height: 144px;
+  transition: all 2s;
+    -moz-transition: all 2s;
+    -webkit-transition: all 2s;
+    -o-transition: all 2s;
+    -ms-transition: all 2s;
+}
+
+.imageHeight :hover{
+  transform : scale(1.05);
+  -moz-transform : scale(1.05);
+  -webkit-transform : scale(1.05);
+  -o-transform : scale(1.05);
+  -ms-transform : scale(1.05);
 }
 
 @media only screen and (max-width: 375px) and (min-width: 320px) {

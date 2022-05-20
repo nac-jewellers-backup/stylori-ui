@@ -272,7 +272,7 @@ export default function ImageGridList(props) {
         return (`${CDN_URL}${val[0]}/${val[1]}/275X275/${val[2]}`)
     }
 
-    console.log(props,carosolData,"//dataa")
+
 
     return (
         <Grid container className={classes.root}>
