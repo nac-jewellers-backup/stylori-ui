@@ -18,7 +18,9 @@ import {
   Divider,
   ListItemAvatar,
   Avatar,
+  TextField
 } from "@material-ui/core";
+import { Autocomplete } from "@material-ui/lab";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Hidden } from "@material-ui/core";
 import HeaderHoverMenuItem from "./HoverNavBarListing/HeaderHoverMenuItem";
@@ -36,10 +38,26 @@ import styloriLogo from "../../assets/Stylorilogo.svg";
 import ElasticSearch from "components/ElasticSearch/ElasticSearch";
 import { CartContext, GlobalContext } from "context";
 import silverOpenLinkImage from "../../assets/silverOpenLink.png";
+import { GOLD_PRICE_AND_CURRENCY_CONVO } from "../../queries/home";
+import { API_URL } from "../../config";
 
 let user_id = localStorage.getItem("user_id")
   ? localStorage.getItem("user_id")
   : {};
+let selected_price = localStorage.getItem("selected_price")
+  ? JSON.parse(localStorage.getItem("selected_price"))
+  : null;
+
+  function countryToFlag(isoCode) {
+  return typeof String.fromCodePoint !== "undefined"
+    ? isoCode
+        .toUpperCase()
+        .replace(/./g, (char) =>
+          String.fromCodePoint(char.charCodeAt(0) + 127397)
+        )
+    : isoCode;
+}
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -61,13 +79,19 @@ class Header extends Component {
       subTitleData: null,
       subTitleAllData: null,
       subMenuTarget: null,
+      goldPrice: null,
+      currencyConvo: null,
+      selected_currency: null,
+      livePrice: null,
       anchorEl: false,
       opened: false,
     };
     this.topZero = React.createRef();
+    this.handleCurrencyConvo = this.handleCurrencyConvo.bind(this);
   }
   componentDidMount() {
     var _pathname = window.location.pathname.split("/");
+    this.getGoldPrice();
     if (
       window.location.pathname === "/cart" ||
       window.location.pathname === "/checkout" ||
@@ -88,6 +112,29 @@ class Header extends Component {
       }
     }
   }
+
+  getGoldPrice = () => {
+    fetch(`${API_URL}/graphql`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: GOLD_PRICE_AND_CURRENCY_CONVO,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          goldPrice: data?.data?.allDailyMetalPrices?.nodes ?? null,
+          currencyConvo: data?.data?.allMasterCountries?.nodes ?? null,
+          selected_currency: selected_price
+            ? selected_price
+            : data?.data?.allMasterCountries?.nodes[0] ?? null,
+          livePrice: `${data?.data?.allDailyMetalPrices?.nodes[0]?.displayName} - ₹${data?.data?.allDailyMetalPrices?.nodes[0]?.displayPrice}`,
+        });
+      });
+  };
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -164,6 +211,9 @@ class Header extends Component {
       }
     }
   };
+
+  
+
   submenuDetails = (data, target, alldata) => {
     this.setState({
       subMenuTarget: target,
@@ -174,6 +224,11 @@ class Header extends Component {
   };
   handleExpandClickClose = () => {
     this.setState({ open: false });
+  };
+  handleCurrencyConvo = (e, value) => {
+    localStorage.setItem("selected_price", JSON.stringify(value));
+    this.setState({ selected_currency: value });
+    window.location.reload();
   };
 
   render() {
@@ -208,6 +263,7 @@ class Header extends Component {
             : "headerTop"
         }
       >
+                 
         <Hidden smDown>
           {/* <HeaderNotification headerTransition={() => { this.headerTransitions() }} /> */}
 
@@ -327,7 +383,8 @@ class Header extends Component {
                             src={isSilver ? stylorisilverlogo : styloriLogo}
                             onLoad={() => this.setState({ load: true })}
                             onLoadedData={() => this.setState({ load: false })}
-                            loading="lazy" alt="...."
+                            loading="lazy"
+                            alt="...."
                             style={{
                               transition: "height 0.2s",
                               height: isSilver ? 60 : 60,
@@ -388,7 +445,7 @@ class Header extends Component {
                                       width="25px"
                                       height="25px"
                                       alt="stylori"
-                                      loading="lazy" 
+                                      loading="lazy"
                                     />
                                   ) : listName.title === "STYLORISILVER" ? (
                                     <img
@@ -478,7 +535,11 @@ class Header extends Component {
                                 style={{ width: "25px" }}
                               >
                                 {" "}
-                                <img src={searchIcon} alt="icon" loading="lazy" />
+                                <img
+                                  src={searchIcon}
+                                  alt="icon"
+                                  loading="lazy"
+                                />
                                 {/* <Seach className={"searchsvg"} /> */}
                               </div>
                             </Grid>
@@ -645,7 +706,8 @@ class Header extends Component {
                             src={isSilver ? stylorisilverlogo : styloriLogo}
                             onLoad={() => this.setState({ load: true })}
                             onLoadedData={() => this.setState({ load: false })}
-                            loading="lazy" alt="...."
+                            loading="lazy"
+                            alt="...."
                             style={{
                               transition: "height 0.2s",
                               height: isSilver ? 60 : 60,
@@ -671,7 +733,7 @@ class Header extends Component {
                       >
                         <Grid item xs={12} className="titleTop" id={"titleTop"}>
                           <nav>
-                            {menuListHeader.map((listName,index) => {
+                            {menuListHeader.map((listName, index) => {
                               return (
                                 <a
                                   href={listName.url}
@@ -707,13 +769,13 @@ class Header extends Component {
                                       width="25px"
                                       height="25px"
                                       alt="stylori"
-                                      loading="lazy" 
+                                      loading="lazy"
                                     />
                                   ) : listName.title === "STYLORISILVER" ? (
                                     <img
                                       src={silverOpenLinkImage}
                                       alt="stylori"
-                                      loading="lazy" 
+                                      loading="lazy"
                                       style={{ width: "25px", height: "25px" }}
                                     />
                                   ) : (
@@ -797,7 +859,11 @@ class Header extends Component {
                                 style={{ width: "25px" }}
                               >
                                 {" "}
-                                <img src={searchIcon} alt="icon" loading="lazy"/>
+                                <img
+                                  src={searchIcon}
+                                  alt="icon"
+                                  loading="lazy"
+                                />
                                 {/* <Seach className={"searchsvg"} /> */}
                               </div>
                             </Grid>
@@ -950,6 +1016,7 @@ class Header extends Component {
           <ElasticSearch handleClose={this.handleClose} />
         </Modal>
         <Hidden mdUp>
+                 
           <Grid>
             <Grid
               style={{
@@ -1024,7 +1091,7 @@ class Header extends Component {
                               onClick={this.handleClose}
                               className={classes.searchcontainTop}
                             >
-                              <img src={searchIcon} alt="icon" loading="lazy"/>
+                              <img src={searchIcon} alt="icon" loading="lazy" />
                               {/* <Seach className={"searchsvgmobile"} /> */}
                             </div>
                             {/* {localStorage.getItem("true") ?
@@ -1143,7 +1210,7 @@ class Header extends Component {
                                   }
                                 }}
                               >
-                                <img src={heart} alt="icon" loading="lazy"  />
+                                <img src={heart} alt="icon" loading="lazy" />
                               </i>
                             </Badge>
                             <Badge
@@ -1186,9 +1253,12 @@ class Header extends Component {
                         </Grid>
                       </div>
                     </Grid>
+                    
                   </Toolbar>
+                 
                 </AppBar>
               </div>
+                  
             </Grid>
           </Grid>
           <Drawer
@@ -1472,7 +1542,7 @@ class Header extends Component {
                                                     height: "100%",
                                                   }}
                                                   src={row.img}
-                                                  loading="lazy" 
+                                                  loading="lazy"
                                                 />
                                               </Grid>
                                               <Grid
@@ -1918,7 +1988,58 @@ class Header extends Component {
               </div>
             </ClickAwayListener>
           </Drawer>
+                  
         </Hidden>
+
+                  <Grid
+                       xs={3}
+                       lg={3}
+                       md={3}
+                      style={{
+                        position: 'fixed',
+                        bottom: 50,
+                        left: 10,
+                        zIndex: 20,
+                        width:"45%"
+                      }}
+                    >
+                      <Autocomplete
+                        id="country-select-demo"
+                        size="small"
+                        style={{
+                          color: "#000 !important",
+                          backgroundColor: "#fff",
+                          border: "0px",
+                          width:"45%",
+                          borderColor: "#fff",
+                          boxShadow: "6px 7px 6px #bebfbf",
+                        }}
+                        options={this.state.currencyConvo}
+                        value={this.state?.selected_currency ?? null}
+                        onChange={this.handleCurrencyConvo}
+                        defaultValue={selected_price ?? null}
+                        getOptionLabel={(option) =>
+                          `${countryToFlag(option.iso)}  ${
+                            option.currencyAlias
+                          }`
+                        }
+                        renderOption={(option) => (
+                          <React.Fragment>
+                            {`${countryToFlag(option.iso)}  ${
+                              option.currencyAlias
+                            }`}
+                          </React.Fragment>
+                        )}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            label={""}
+                            variant="outlined"
+                            style={{color: "#000 !important"}}
+                          />
+                        )}
+                      />
+                    </Grid>
       </div>
     );
   }
