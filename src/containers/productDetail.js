@@ -359,7 +359,8 @@ class ProductDetail extends Component {
     const isSilver = Globalctx.pathName ? true : false;
 
     const { classes } = this.props;
-    const jewelData = this.props?.data?.[0];
+    const jewelData = this.props?.data?.[0] ;
+  
 
     var brand_card = [
       {
@@ -400,8 +401,8 @@ class ProductDetail extends Component {
       {
         title: "Description",
         data:
-          jewelData.dis !== "" ? (
-            <Typography className="no-data-desc">{jewelData.dis}</Typography>
+          jewelData?.dis !== "" ? (
+            <Typography className="no-data-desc">{jewelData?.dis}</Typography>
           ) : (
             <Typography className="no-data">No Data Found</Typography>
           ),
@@ -826,9 +827,9 @@ class ProductDetail extends Component {
               />
 
               <JewelDetailAccordion title="Description">
-                {jewelData.dis !== "" ? (
+                {jewelData?.dis !== "" ? (
                   <Typography className="no-data-desc">
-                    {jewelData.dis}
+                    {jewelData.dis ?? ""}
                   </Typography>
                 ) : (
                   <Typography className="no-data">No Data Found</Typography>
@@ -1094,9 +1095,10 @@ const Components = (props) => {
       likedatas,
       viewedddatas,
       rating,
-      Globalctx.tabsChange
+      Globalctx?.tabsChange
     );
   }
+  console.log(mapped,"???????")
 
   if (Object.keys(mapped).length === 0) {
     if (window.location.href.toLowerCase().includes("silver")) {
