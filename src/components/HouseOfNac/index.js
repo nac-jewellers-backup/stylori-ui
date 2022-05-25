@@ -1,5 +1,5 @@
 import React from "react";
-import HouseOfNac from "assets/houseOfNAC.png";
+import HouseOfNac from "assets/Stylori-NAC-View.jpg";
 import { makeStyles, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -59,10 +59,9 @@ function NACSection() {
           House of Nac
         </Typography>
         <Typography className={classes.description}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget. malesuada
-          lacus ex, sit amet blandit leo lobortis
+        NAC has a journey that began almost hundred years ago in 1973, 
+        where a small store has now transformed into a chain of jewellery houses, 
+        with 7 stores across Tamilnadu and Vijayawada.
         </Typography>
       </div>
     </div>

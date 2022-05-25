@@ -21,16 +21,17 @@ class PaymentIndex extends React.Component {
   constructor() {
     super();
     this.state = {
-      isActive: "CashonDelivey",
+      isActive: "NetBanking",
       disabledCOD: false,
     };
   }
 
   
   toggleCollapsed = (name) => {
-    if (name == "CashonDelivey" && this.state.disabledCOD) {
-      return false;
-    } else this.setState({ isActive: [name] });
+    this.setState({ isActive: [name] })
+    // if (name == "CashonDelivey" && this.state.disabledCOD) {
+    //   return false;
+    // } else this.setState({ isActive: [name] });
   };
 
   componentDidMount() { 
@@ -75,7 +76,7 @@ class PaymentIndex extends React.Component {
                         <FormGroup column>
                           <FormControlLabel
                                control={<GreenCheckbox
-                                checked={this?.state?.isActive == "Netbanking"
+                                checked={this?.state?.isActive == "Netbanking" || "CashonDelivey" || "Creditform" || "Debitform"
                                 ? true
                                 : false}
                                  onClick={() => this.toggleCollapsed("Netbanking")}
@@ -85,7 +86,7 @@ class PaymentIndex extends React.Component {
                                   style={{color:"#6D6E71",backgroundColor:"#fff",marginTop:10}}
                                  label="Pay Online"
                                  />
-                            <FormControlLabel
+                            {/* <FormControlLabel
                              control={
                                  <GreenCheckbox
                                    checked={ this?.state?.isActive == "CashonDelivey"
@@ -123,7 +124,7 @@ class PaymentIndex extends React.Component {
                                        }
                                        style={{color:"#6D6E71",backgroundColor:"#fff",marginTop:10}}
                                      label="Debit Card"
-                                        />
+                                        /> */}
                           </FormGroup>
                           
               {/* <div className="pay-index-subhed" style={{width:"100%"}}>
@@ -174,14 +175,14 @@ class PaymentIndex extends React.Component {
                 style={{ marginTop: "20px",marginLeft:"-10px" }}
                 // className="pay-index-subhed_datas "
               >
-                {this?.state?.isActive == "Creditform" && <Netbanking />}
+
+             <Netbanking />
+                {/* {this?.state?.isActive == "Creditform" && <Netbanking />}
                 {this?.state?.isActive == "Debitform" && <Netbanking />}
                 {this?.state?.isActive == "Netbanking" && <Netbanking />}
                 {
-                  // !dataCard1.length > 0 ?
                   this?.state?.isActive == "CashonDelivey" && <CashonDelivey />
-                  // :"cash on delivery is not available"
-                }
+                } */}
               </div>
             </Grid>
           </Grid>

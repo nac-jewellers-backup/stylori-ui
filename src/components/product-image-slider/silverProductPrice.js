@@ -162,12 +162,12 @@ const Productprice = (
                   <Hidden mdUp>
                     <Grid container spacing={12} xs={12}>
                       {isSilver ? 
-                       <Grid container item xs={12} style={{display:"flex",justifyContent:"center"}}>
+                       <Grid container item xs={12} style={{display:"flex",justifyContent:"center",flexDirection:"column",alignItems:"center"}}>
                          <div className={`pdp-title  ${classes.titleSilverMobile}`}>
                          {val?.title ?? ""}
                          </div>
                          <div className={`pdp-title  ${classes.skuIdSilverMobile}`}>
-                          {val?.skuId ?? ""}
+                          {val?.skuId.slice(0,-9) ?? ""}
                           </div> 
                          </Grid>
                        : <Grid container item xs={12}>
@@ -272,7 +272,7 @@ const Productprice = (
                     <div style={{ marginTop: 8 }}>
                       {isSilver ? (
                         <div className={`pdp-title  ${classes.skuIdSilver}`}>
-                          {val?.skuId ?? ""}
+                          {val?.skuId.slice(0,-9) ?? ""}
                         </div>
                       ) : (
                          ""

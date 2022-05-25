@@ -307,9 +307,7 @@ class Header extends Component {
                         color: "white",
                       }}
                     >
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy
+                      Sitewide SALE | Shop from over 5000 designs and get upto 10 % OFF
                     </Typography>
                   ) : null}
                   {/* <Grid
@@ -1992,7 +1990,7 @@ class Header extends Component {
         </Hidden>
 
                   <Grid
-                       xs={3}
+                       xs={12}
                        lg={3}
                        md={3}
                       style={{
@@ -2000,7 +1998,6 @@ class Header extends Component {
                         bottom: 50,
                         left: 10,
                         zIndex: 20,
-                        width:"45%"
                       }}
                     >
                       <Autocomplete
@@ -2010,7 +2007,7 @@ class Header extends Component {
                           color: "#000 !important",
                           backgroundColor: "#fff",
                           border: "0px",
-                          width:"45%",
+                          width:"50%",
                           borderColor: "#fff",
                           boxShadow: "6px 7px 6px #bebfbf",
                         }}

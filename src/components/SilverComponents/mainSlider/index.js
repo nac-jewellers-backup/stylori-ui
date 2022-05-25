@@ -141,8 +141,8 @@ const MainCard = (props) => {
                style={{ cursor:"pointer" }}
              />
              <div className={classes.title}> 
-                <Typography>{product.title}</Typography>
-                <Typography>{product.description}</Typography>    
+                <Typography style={{fontWeight:700}}>{product.title}</Typography>
+                <Typography style={{fontSize:"14px",fontWeight:400}}>{product.description}</Typography>    
              </div>   
            </div>
          ))}

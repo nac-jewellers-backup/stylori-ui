@@ -43,7 +43,7 @@ import JewelSlider from "components/SilverComponents/JewelSlider";
 import Typography from "@material-ui/core/Typography";
 
 import JewelDetailAccordion from "components/SilverComponents/JewelDetailAccordion";
-import HouseOfNac from "assets/houseOfNAC.png";
+import HouseOfNac from "assets/Stylori-NAC-View.jpg";
 import HouseOfNac2x from "assets/houseOfNAC@2x.png";
 import HouseOfNac3x from "assets/houseOfNAC@3x.png";
 import { SilverButton } from "components/SilverComponents/SilverButton";
@@ -144,6 +144,10 @@ const styles = (theme) => ({
     background: "#F8E3C0",
     textAlign: "center",
     margin: "-20px 26px",
+    [theme.breakpoints.down('sm')]: {
+      margin: "-30px 26px",
+      padding: theme.spacing(2, 2),
+    },
     maxWidth: 320,
     "& #title": {
       fontFamily: `'Playfair Display', serif !important`,
@@ -287,20 +291,18 @@ class ProductDetail extends Component {
     );
   };
 
-  handleFacebook =()=>{
+  handleFacebook = () => {
     window.open(
       `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`
-    )
-  }
+    );
+  };
 
- shareFb = () => {
-
+  shareFb = () => {
     window.FB.ui(
       {
-        
-        display: 'popup',
-        method: 'feed',
-        href: 'https://developers.facebook.com/docs/'
+        display: "popup",
+        method: "feed",
+        href: "https://developers.facebook.com/docs/",
       },
       function (response) {}
     );
@@ -337,7 +339,7 @@ class ProductDetail extends Component {
       },
     ];
 
-    const enquireLink = () => {     
+    const enquireLink = () => {
       window.open(
         `https://wa.me/919952625252?text=Hi - ${window.location.href}`
       );
@@ -359,12 +361,11 @@ class ProductDetail extends Component {
     const isSilver = Globalctx.pathName ? true : false;
 
     const { classes } = this.props;
-    const jewelData = this.props?.data?.[0] ;
-  
+    const jewelData = this.props?.data?.[0];
 
     var brand_card = [
       {
-        title: "MURAL COLLECTIONS",
+        title: "MURAL COLLECTION",
         description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         image:
@@ -372,7 +373,7 @@ class ProductDetail extends Component {
         url: "https://www.stylori.com/silver-jewellery-mural+collection",
       },
       {
-        title: "STAR STRUCK",
+        title: "STAR STRUCK COLLECTION",
         description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         image:
@@ -380,7 +381,7 @@ class ProductDetail extends Component {
         url: "https://www.stylori.com/silver-jewellery-starstruck+collection",
       },
       {
-        title: "ELEMENTAL",
+        title: "ELEMENTAL COLLECTION",
         description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         image:
@@ -388,7 +389,7 @@ class ProductDetail extends Component {
         url: "https://www.stylori.com/silver-jewellery-elemental+collection",
       },
       {
-        title: "CONCENTRIC",
+        title: "CONCENTRIC COLLECTION",
         description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
         image:
@@ -423,12 +424,19 @@ class ProductDetail extends Component {
         title: "Jewellery Care",
         data: (
           <div>
-            <Typography className="detailTitle">{jewelData?.dis}</Typography>
-            <ProductDetails
-              data={this?.props?.data}
-              isSilver={isSilver}
-              isActive={this.state.isActive}
-            />
+            <Typography className="detailTitle">
+              <b>Do's-</b>
+              <br/>
+              Store your jewellery in zip lock bag or air tight plastic box
+              Wipe gently after use Use Frangrance 30 before wearing 
+              </Typography>
+              <Typography className="detailTitle">
+              <b>Dont's-</b>
+              <br/>
+              Dont use soap, tooth paste or detergent to clean your jewellery Dont
+              store jewellery in velvet linedor velvet box Dont roll or place
+              the jewellery in clothes
+             </Typography>
           </div>
         ),
       },
@@ -621,7 +629,7 @@ class ProductDetail extends Component {
                 )}
                 {isSilver && (
                   <div className={classes.getInTouchButtonContainer}>
-                    <SilverButton variant="outlined" onClick={enquireLink}>
+                    <SilverButton variant="outlined" onClick={enquireLink} style={{border:"3px solid rgb(166, 168, 171)"}}>
                       Get in Touch
                     </SilverButton>
                   </div>
@@ -726,7 +734,7 @@ class ProductDetail extends Component {
             <div className={classes.sliderWithHeadingContainer}>
               <SliderWithHeading
                 heading="Recently Viewed"
-                products={jewelData?.fadeImageSublistRecentlyViewed}
+                products={jewelData?.fadeImageSublistRecentlyViewed.length > 0 ? jewelData?.fadeImageSublistRecentlyViewed : jewelData?.fadeImageSublist }
               />
             </div>
           )}
@@ -844,19 +852,26 @@ class ProductDetail extends Component {
               </JewelDetailAccordion>
               <JewelDetailAccordion title="Jewellery Care">
                 <div>
-                  <Typography className="detailTitle">
-                    {jewelData?.dis}
-                  </Typography>
-                  <ProductDetails
-                    data={this?.props?.data}
-                    isSilver={isSilver}
-                    isActive={true}
-                  />
+                <Typography className="detailTitle">
+              <b>Do's-</b>
+              <br/>
+              Store your jewellery in zip lock bag or air tight plastic box
+              Wipe gently after use Use Frangrance 30 before wearing 
+              </Typography>
+              <Typography className="detailTitle">
+              <b>Dont's-</b>
+              <br/>
+              Dont use soap, tooth paste or detergent to clean your jewellery Dont
+              store jewellery in velvet linedor velvet box Dont roll or place
+              the jewellery in clothes
+             </Typography>
                 </div>
               </JewelDetailAccordion>
 
               <div className={classes.getInTouchButtonContainer}>
-                <SilverButton variant="outlined" onClick={enquireLink}>Get in Touch</SilverButton>
+                <SilverButton variant="outlined" onClick={enquireLink} style={{border:"3px solid rgb(166, 168, 171)"}}>
+                  Get in Touch
+                </SilverButton>
               </div>
             </Wrapper>
           ) : (
@@ -875,9 +890,6 @@ class ProductDetail extends Component {
           {isSilver && (
             <div className={classes.houseOfNacContainer}>
               <img
-                srcset={`${HouseOfNac},
-              ${HouseOfNac2x} 2x,
-              ${HouseOfNac3x} 3x`}
                 src={HouseOfNac}
                 alt="House of NAC"
                 loading="lazy"
@@ -886,9 +898,9 @@ class ProductDetail extends Component {
               <div className={classes.nacDescription}>
                 <Typography id="title">From the House of Nac</Typography>
                 <Typography id="desc">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                  eget.
+                NAC has a journey that began almost hundred years ago in 1973,
+                where a small store has now transformed into a chain of jewellery houses, 
+                with 7 stores across Tamilnadu and Vijayawada.
                 </Typography>
               </div>
             </div>
@@ -916,7 +928,7 @@ class ProductDetail extends Component {
             <div className={classes.sliderWithHeadingContainer}>
               <SliderWithHeading
                 heading="Recently Viewed"
-                products={jewelData?.fadeImageSublistRecentlyViewed}
+                products={jewelData?.fadeImageSublistRecentlyViewed.length > 0 ? jewelData?.fadeImageSublistRecentlyViewed : jewelData?.fadeImageSublist }
               />
             </div>
           )}
@@ -1098,7 +1110,7 @@ const Components = (props) => {
       Globalctx?.tabsChange
     );
   }
-  console.log(mapped,"???????")
+  console.log(mapped, "???????");
 
   if (Object.keys(mapped).length === 0) {
     if (window.location.href.toLowerCase().includes("silver")) {

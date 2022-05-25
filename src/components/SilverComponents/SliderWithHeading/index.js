@@ -14,6 +14,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import CurrencyConversion from "utils/CurrencyConversion";
+import PlaceHolder from 'assets/topPicksThree.jpg'
 
 const useStyles = makeStyles((theme) => ({
   headingContainer: {
@@ -129,7 +130,7 @@ const SliderWithHeading = (props) => {
 
   const {  products = [] } = props;
 
-  
+  console.log(products,"???")
 
   const handlePrevClick = () => {
     sliderInstance.slickPrev();
@@ -145,17 +146,16 @@ const SliderWithHeading = (props) => {
        <hr />
        <Typography>{props.heading}</Typography>
      </div>
-     {products.length > 0 ? 
+    {products.length > 0 ? 
      <div className={classes.sliderContainer}> 
        <Slider ref={(s) => setSliderInstance(s)} {...settings}>
          {products.map((product) => (
            <div
              className={classes.imageContainer}
-           >     
-           {product.url !== "" &&
+           >       
            <div>
              <img
-               src={product?.img}
+               src={product?.img.slice(0,9) === "undefined" ? 'https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SP3517/275X275/SP3517-1Y.webp?_=1653487514503' : product?.img}
                alt={"Product Image"}
                loading="lazy" 
                onClick={() => { window.open(`/${product?.url}`)}}
@@ -165,11 +165,7 @@ const SliderWithHeading = (props) => {
              <Typography>{product?.title}</Typography>
              <Typography>{CurrencyConversion(product?.price)}</Typography>
            </div>
-           </div>
-           }
-           
-             
-             
+           </div>  
            </div>
          ))}
        </Slider>

@@ -4,7 +4,7 @@ import { styled } from "@material-ui/core/styles";
 
 export const SilverButton = styled(Button)(
   ({ theme, variant, color, htmlColor, size, weight }) => ({
-    borderRadius: "0px",
+    borderRadius: "2px",
     width: "100%",
     fontSize: "12px",
     letterSpacing: "1.5px",
