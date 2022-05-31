@@ -13,6 +13,16 @@ export const styles = (theme) => ({
     alignItems: "center",
     justifyContent: "flex-end",
   },
+  flag:{
+    color: "#000 !important",
+    backgroundColor: "#FFFFFF",
+    '-webkit-tap-highlight-color': 'transparent',
+    border: '1px solid #e8e8e8',
+    border: "0px",
+    width:"50%",
+    borderColor: "#fff",
+    cursor:"pointer"
+  },
   searchcontainer: {
     padding: "3px 2px 2px 2px",
     marginTop: "-1px",

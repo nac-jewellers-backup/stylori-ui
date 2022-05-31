@@ -18,7 +18,7 @@ import {
   Divider,
   ListItemAvatar,
   Avatar,
-  TextField
+  TextField,Select
 } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -2003,14 +2003,7 @@ class Header extends Component {
                       <Autocomplete
                         id="country-select-demo"
                         size="small"
-                        style={{
-                          color: "#000 !important",
-                          backgroundColor: "#fff",
-                          border: "0px",
-                          width:"50%",
-                          borderColor: "#fff",
-                          boxShadow: "6px 7px 6px #bebfbf",
-                        }}
+                        className={classes.flag}
                         options={this.state.currencyConvo}
                         value={this.state?.selected_currency ?? null}
                         onChange={this.handleCurrencyConvo}

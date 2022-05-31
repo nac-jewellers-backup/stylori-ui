@@ -245,7 +245,7 @@ class Component extends React.Component {
         <Header wishlist={this.props.wishlistdata} />
 
         <Hidden smDown>
-          <Grid container style={{ height: "100vh", marginTop: "-20px" }}>
+          <Grid container style={{ height: "100vh", marginTop: "-20px",overflowX:"hidden" }}>
             <Grid item container xs={6} style={{ backgroundColor: "#E6E7E8" }}>
               <div style={{ width: "100%", marginLeft: 30 }}>
                 <div className="">
