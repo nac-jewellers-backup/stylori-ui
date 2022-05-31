@@ -36,7 +36,7 @@ export const testimonials = `query testimonials {
         updatedAt
       }
     }
-    allMasterCountries(condition: { isActive: true }) {
+    allMasterCountries(condition: { isActive: true }, orderBy: ID_ASC) {
       nodes {
         currency
         currencyAlias
