@@ -6,13 +6,11 @@ import {
     ExpansionPanelSummary,
     ExpansionPanel,
     Typography,
-    TextField
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 import './product-images.css'
 import { Input } from '../InputComponents/TextField/Input'
-import { Form } from '../Form/Form'
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -52,10 +50,15 @@ class Request extends React.Component {
         let name = event.target.name;
         let value = event.target.value;
         event.preventDefault();
-        let errors = this.state.errors;
-        let errorMessage = this.state.errorMessage;
+        // let errors = this.state.errors;
+        // let errorMessage = this.state.errorMessage;
         // if (name === "" && this.state['errors'] && this.state['errorMessage']) {
-        this.state['errors'][name] = false
+        let { errors } = this.state;
+        errors = {
+            ...errors,
+            [name]: true,
+        }
+        this.setState({ errors })
         this.setState((state) => ({ state, [name]: value }))
         // }
         // this.setState({ [name]: value }, () => {
@@ -82,19 +85,39 @@ class Request extends React.Component {
     }
     handleSubmit = async (e) => {
         if (this.state.names === "" && this.state['errors'] && this.state['errorMessage']) {
-            this.state['errors']['names'] = true
+            let { errors } = this.state;
+            errors = {
+                ...errors,
+                names: true,
+            }
+            this.setState({ errors })
             this.setState((state) => ({ state }))
         }
         if (this.state.mailId === "" && this.state['errors'] && this.state['errorMessage']) {
-            this.state['errors']['mailId'] = true
+            let { errors } = this.state;
+            errors = {
+                ...errors,
+                mailId: true,
+            }
+            this.setState({ errors })
             this.setState((state) => ({ state }))
         }
         if (this.state.mobileNo === "" && this.state['errors'] && this.state['errorMessage']) {
-            this.state['errors']['mobileNo'] = true
+            let { errors } = this.state;
+            errors = {
+                ...errors,
+                mobileNo: true,
+            }
+            this.setState({ errors })
             this.setState((state) => ({ state }))
         }
         if (this.state.request === "" && this.state['errors'] && this.state['errorMessage']) {
-            this.state['errors']['request'] = true
+            let { errors } = this.state;
+            errors = {
+                ...errors,
+                request: true,
+            }
+            this.setState({ errors })
             this.setState((state) => ({ state }))
         }
         else {

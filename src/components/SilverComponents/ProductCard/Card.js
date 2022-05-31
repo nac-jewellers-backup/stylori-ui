@@ -2,17 +2,12 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import { Hidden } from "@material-ui/core";
 import "./productCard.css";
-import { CDN_URL } from "config";
-
 import { ProductDetailContext } from "context";
 import {
   LazyLoadImage,
@@ -20,6 +15,7 @@ import {
 } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import Wishlist from "components/wishlist/wishlist";
+import CurrencyConversion from "utils/CurrencyConversion";
 // import SilverLazyLoadImage from "../../../assets/Shopping Bag Icon - svg.svg"; 
 
 export const ImgMediaCard = (props) => {
@@ -476,11 +472,7 @@ sizes="(max-width: 320px) 320w,
                     &#xf156;
                   </i> */}
                     {/* {Math.round(props.data.offerPrice)} */}
-                    {new Intl.NumberFormat("en-IN", {
-                      style: "currency",
-                      currency: "INR",
-                      minimumFractionDigits: 0,
-                    }).format(Math.round(props.data.offerPrice))}
+                    {CurrencyConversion(props.data.offerPrice)}
                   </Typography>
                 </Grid>
                 {/*  */}
@@ -508,18 +500,10 @@ sizes="(max-width: 320px) 320w,
                     >
                       {Math.round(props.data.offerPrice) ===
                       Math.round(props.data.price) ? (
-                        new Intl.NumberFormat("en-IN", {
-                          style: "currency",
-                          currency: "INR",
-                          minimumFractionDigits: 0,
-                        }).format(Math.round(props.data.price))
+                      CurrencyConversion(props.data.price)
                       ) : (
                         <del>
-                          {new Intl.NumberFormat("en-IN", {
-                            style: "currency",
-                            currency: "INR",
-                            minimumFractionDigits: 0,
-                          }).format(Math.round(props.data.price))}
+                          {CurrencyConversion(props.data.price)}
                         </del>
                       )}
                     </Typography>

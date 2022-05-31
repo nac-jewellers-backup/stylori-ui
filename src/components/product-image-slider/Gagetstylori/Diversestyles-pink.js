@@ -1,8 +1,10 @@
 import React from "react";
+import SvgIcon from "@material-ui/core/SvgIcon";
+import PropTypes from "prop-types";
 
 export const Diversestyles = (props) => {
   return (
-    <svg
+    <SvgIcon
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width="500"
@@ -12,6 +14,7 @@ export const Diversestyles = (props) => {
     version="1.1"
     viewBox="0 0 500 500"
     xmlSpace="preserve"
+    style={{ fontSize: props.size }}
   >
     <circle cx="250" cy="258.705" r="164.253" fill={props.color}></circle>
     <g fill="#606262">
@@ -33,6 +36,14 @@ export const Diversestyles = (props) => {
       clip-path="url(#SVGID_2_)"
       transform="scale(-1) rotate(-42.678 -642.58 635.914)"
     ></path>
-  </svg>
+  </SvgIcon>
   );
 };
+
+Diversestyles.propTypes = {
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
+
+Diversestyles.defaultProps = {
+  size: 78
+}

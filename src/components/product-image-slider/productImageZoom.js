@@ -1,24 +1,14 @@
-import { Grid, Hidden, Container, Button } from "@material-ui/core";
-import { withRouter } from "react-router-dom";
+import { Grid, Hidden, Button } from "@material-ui/core";
 import Slideshow from "../Carousel/carosul";
 import React from "react";
 import PropTypes from "prop-types";
 import "./product-images.css";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../Header/styles";
-import ReactImageZoom from "react-image-zoom";
-import StaticView from "components/CarouselLazyer/StaticView";
 import Gagetstylori from "./Gagetstylori/Gagetstylori";
 import { CDN_URL } from "config";
-import {
-  Magnifier,
-  GlassMagnifier,
-  SideBySideMagnifier,
-  PictureInPictureMagnifier,
-  MOUSE_ACTIVATION,
-  TOUCH_ACTIVATION,
-} from "react-image-magnifiers";
-
+import { GlassMagnifier } from "react-image-magnifiers";
+import Wishlist from "components/wishlist/wishlist";
 
 class ProductImageZoom extends React.Component {
   constructor(props) {
@@ -145,7 +135,7 @@ class ProductImageZoom extends React.Component {
     ];
     if (url) {
       if (url.length > 0) {
-        var array_split = url.split(/\.(?=[^\.]+$)/);
+        var array_split = url.split(/\.(?=[^\.]+$)/); //eslint-disable-line
         const found = extensionVideoLists.find(
           (element) => element.toLowerCase() === array_split[1]
         );
@@ -207,19 +197,19 @@ class ProductImageZoom extends React.Component {
       arrows: false,
     };
     // alert(JSON.stringify(data.image_resolution))
-    const props = {
-      width: data[0]?.image_resolution ?? "",
-      height: data[0]?.image_resolution ?? "",
-      zoomWidth: data[0]?.image_resolution ?? "",
-      img: `${showimage}`,
-      zoomStyle: "z-index:2",
-    };
+    // const props = {
+    //   width: data[0]?.image_resolution ?? "",
+    //   height: data[0]?.image_resolution ?? "",
+    //   zoomWidth: data[0]?.image_resolution ?? "",
+    //   img: `${showimage}`,
+    //   zoomStyle: "z-index:2",
+    // };
 
     var a = showimage && showimage;
     // alert(JSON.stringify(this.props.data[0]))
     var b = a.length > 0 && a.split("/");
     // var c = a.replace(b[5], data[0].image_resolution_two + 'X' + data[0].image_resolution_two)
-    var c = a.length > 0 && a.replace(b[5], "1000X1000");
+    // var c = a.length > 0 && a.replace(b[5], "1000X1000");
 
     return (
       <div>
@@ -273,6 +263,7 @@ class ProductImageZoom extends React.Component {
                     </Button>
                   </span>
                 ) : null}
+
                 <Slideshow
                   sliderRef={this.slider}
                   height={70}
@@ -327,25 +318,23 @@ class ProductImageZoom extends React.Component {
           </Grid>
 
           <Grid item xs={_isSilver ? 9 : 10}>
-         
             <div>
               <div
                 className={_isSilver ? "imagecardSilver" : "imagecard"}
                 id="divs"
                 style={{
-                  height:
-                    window.innerWidth > 2250
-                      ? _isSilver
-                        ? "500px"
-                        : "800px"
-                      : _isSilver
-                      ? this.props.data[0].size - 100
-                      : this.props.data[0].size,
+                  // height:
+                  //   window.innerWidth > 2250
+                  //     ? _isSilver
+                  //       ? "500px"
+                  //       : "800px"
+                  //     : _isSilver
+                  //     ? this.props.data[0].size - 100
+                  //     : this.props.data[0].size,
                   display: "flex",
                   alignItem: "center",
                 }}
               >
-             
                 {data.map((val) => {
                   return !this?.props?.isSilver && val?.offerDiscount ? (
                     <span style={{ color: "#fff" }} className="overlayCss11">
@@ -353,13 +342,27 @@ class ProductImageZoom extends React.Component {
                     </span>
                   ) : null;
                 })}
-                {data[0]?.ProductContactNum[0]?.isReadyToShip == true ? (
+
+                {data[0]?.ProductContactNum[0]?.isReadyToShip === true ? (
                   this?.props?.isSilver ? (
                     <div class={"one-day-ship_only_silver"}>
-                      <img
+                      <i
+                        class="fa fa-truck"
+                        style={{
+                          fontSize: "20px",
+                          fontFamily: "FontAwesome !important",
+                          position: "absolute",
+                          zIndex: 500,
+                          left: "10px",
+                          margin: "10px",
+                          color: "#111",
+                          paddingTop: "7px",
+                        }}
+                      ></i>
+                      {/* <img
                         src={require("assets/StyloriSilver-truckIcon.svg")}
-                        alt=""
-                      />
+                        loading="lazy" alt="...."
+                      /> */}
                     </div>
                   ) : (
                     <div
@@ -373,6 +376,20 @@ class ProductImageZoom extends React.Component {
                 ) : (
                   ""
                 )}
+
+              
+                  <div
+                    class="wishListStyle"
+                    style={{ right: "660px", paddingTop: "7px" }}
+                  >
+                    <Wishlist
+                      sku={this.props.data[0].skuId}
+                      productId={this.props.data[0].productId}
+                      wishlist={this.props.wishlist}
+                      isSilver={_isSilver ? true : false}
+                    />
+                  </div>
+               
 
                 {this.handleVideoCheck(showimage) ? (
                   <video
@@ -407,7 +424,6 @@ class ProductImageZoom extends React.Component {
                 )}
               </div>
 
-             
               <div></div>
             </div>
             <Grid container>

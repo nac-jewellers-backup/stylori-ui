@@ -2,11 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from 'react-router-dom'
 import { Hidden } from "@material-ui/core";
@@ -18,11 +15,11 @@ import { LazyLoadImage, trackWindowScroll }
   from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Wishlist from "components/wishlist/wishlist";
+import CurrencyConversion from "utils/CurrencyConversion";
 
 
 export const ImgMediaCard = (props) => {
   const { ProductDetailCtx, setFilters } = React.useContext(ProductDetailContext);
-  const loc = window.location.search
   const classes = styles();
 
   return <Component filters={ProductDetailCtx.filters} setFilters={setFilters} classes={classes} {...props} />
@@ -81,7 +78,7 @@ let _url = ""
 const urlCheck = (size) =>{
   var current_url = url.split('/')
 current_url.splice(current_url.length-2, 1 , size)
- _url = current_url.join().replace(/\,/g, '/');
+ _url = current_url.join().replace(/\,/g, '/'); //eslint-disable-line
  return _url
 } 
 // let _url_2400X2400 = res.url_1000x1000; 
@@ -104,7 +101,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, loadAndSaveError
 
   return (
     <div className="imageHeight">
-      {props.data.oneDayShipping ? <div className={`${Math.round(props.data.offerPrice) === Math.round(props.data.price) ? "one-day-ship-listing-page-withoutTop" : "one-day-ship-listing-page"} ${props.classes.colorTheme}`} style={{ zIndex: 2 }}>
+      {props.data.oneDayShipping ? <div className={`${ Math.round(props.data.offerPrice) === Math.round(props.data.price) ? "one-day-ship-listing-page-withoutTop" : "one-day-ship-listing-page"} ${props.classes.colorTheme}`} style={{ zIndex: 2 }}>
         <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
         <span className={`one-day-ship-listing-page-label ${props.classes.colorTheme}`}>1 day shipping</span>
 
@@ -306,7 +303,6 @@ const useStyles = makeStyles(theme => ({
       padding: '0 !important',
       paddingTop: '4px !important',
       paddingBottom: '4px !important',
-      padding: 5,
     },
   },
   youSave: {
@@ -399,7 +395,7 @@ function Component(props) {
     dataLoaded: true,
     image:{hoverImage:null, placeImage:null}
   });
-  const _height = props.data.imageResolution.img_res
+  // const _height = props.data.imageResolution.img_res
   const callmouseover = () => {
     
     setCardState({ ...cardstate, hovered: !cardstate.hovered });
@@ -507,7 +503,7 @@ sizes="(max-width: 320px) 320w,
                        &#xf156;
                      </i> */}
                       {/* {Math.round(props.data.offerPrice)} */}
-                      {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
+                      {CurrencyConversion(props.data.offerPrice)}
                     </Typography>
 
 
@@ -559,7 +555,7 @@ sizes="(max-width: 320px) 320w,
         &#xf156;
       </i> */}
                       {/* {Math.round(props.data.offerPrice)} */}
-                      {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.offerPrice))}
+                      {CurrencyConversion(props.data.offerPrice)}
                     </Typography>
                     <Typography
                       style={{
@@ -578,7 +574,7 @@ sizes="(max-width: 320px) 320w,
 
                       <del>
 
-                        {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
+                        {CurrencyConversion(props.data.price)}
                       </del>
 
 

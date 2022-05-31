@@ -19,7 +19,8 @@ const styles = theme => ({
         margin: "auto",
         display: "flex",
         marginBottom: "15px",
-        boxShadow: "rgb(222, 218, 218) 1px 2px 13px 7px"
+        boxShadow: "rgb(222, 218, 218) 1px 2px 13px 7px",
+        backgroundColor:"#fff"
     },
     details: {
         display: "flex",
@@ -34,10 +35,18 @@ const styles = theme => ({
     cover: {
         width: "30vw"
     },
+    cartTitle:{
+        color: "#666", 
+        fontSize: "14px", 
+        margin: "0px 0px 10px",
+        display:"flex",
+        justifyContent:"center"
+    },
     controls: {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
+        paddingRight:"150px",
         "& button": {
             padding: "2.1px 13.8px"
         },
@@ -47,6 +56,9 @@ const styles = theme => ({
             }
         }
     },
+    mainRoot: {
+        backgroundColor:"#E6E7E8",height:"55vw",marginTop:"-15px" 
+      },
 
     playIcon: {
         height: 38,
@@ -71,7 +83,11 @@ const styles = theme => ({
         color: theme.palette.overallButoon.contrastText
     },
     normalfonts: {
-        color: theme.palette.text.primary,
+        color:"#6D6E71",
+    },
+    normalfontsCheck:{
+       color:"#6D6E71",
+       fontSize:"14px"
     },
     backgsecondary: {
         background: theme.palette.secondary.dark,

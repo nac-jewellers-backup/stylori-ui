@@ -15,8 +15,6 @@ class Buynowbutton extends React.Component {
 
   valus = (props) => {
     var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : "";
-
-    var vals;
     // return valus_locl && valus_locl.map(val => {
     //     const vlx = this.props && this.props.sku
     //     if (vlx === val.sku_id) {
@@ -54,10 +52,12 @@ class Buynowbutton extends React.Component {
       }
     };
     return (
-      <div>
+      <div className={this.props.isCart ? "" :""}>
         <Button
           className={this.props.class}
           style={{ borderRadius: "5px", ...this.props.style }}
+          variant= {this.props.addtoCartToBuyNow ? "outlined" :"contained"}
+          fullWidth
           // disabled={productIsActive ? false : true}
         >
           {window.location.pathname.split("/").pop() !== "cart" &&
@@ -96,12 +96,15 @@ class Buynowbutton extends React.Component {
                       fontSize: "8px !important",
                     }}
                   >
-                    <i class="fa fa-shopping-bag buynow-icon"></i> Add to Cart
+                    ADD TO CART
+                    {/* <i class="fa fa-shopping-bag buynow-icon"></i> Add to Cart */}
                   </span>
                 ) : (
                   <>
                     {productIsActive ? (
-                      <span className={this.props.button}>Buy Now</span>
+                      <span className={this.props.button}>
+                        {this.props.isCart ? "Checkout Securely" : "Buy Now"}
+                        </span>
                     ) : (
                       <span
                         className={this.props.button}

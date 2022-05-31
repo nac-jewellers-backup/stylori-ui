@@ -62,7 +62,7 @@ class NotificationMessage extends React.Component {
                     <Grid item xs={2} style={{ textAlign: 'center', fontSize: '18px' }}>
                         <span
                         onClick={() => { this.setState({ isVisible: false });this.props.headerTransition() }}
-                        ><img className="icons-header-size-snot-hover" src={close}/></span>
+                        ><img className="icons-header-size-snot-hover" src={close} loading="lazy" alt="...."/></span>
                         {/* <i className=' fa fa-times-circle top-close' ></i> */}
                     </Grid>
                 </Grid>

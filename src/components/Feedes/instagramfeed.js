@@ -43,6 +43,7 @@ export const InstagramFeed = () => {
                   width: "100%",
                 }}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 {" "}
                 <div
@@ -253,6 +254,7 @@ export const InstagramFeed = () => {
                     textDecoration: "none",
                     wordWrap: "break-word",
                   }}
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   Jewellery for your EveryDay Wear Get Flat 25% OFF To explore
@@ -289,6 +291,7 @@ export const InstagramFeed = () => {
                     fontWeight: "normal",
                     lineHeight: "17px",
                   }}
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   {" "}
@@ -342,6 +345,7 @@ export const InstagramFeed = () => {
                   textDecoration: "none",
                   width: "100%",
                 }}
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 {" "}
@@ -595,6 +599,7 @@ export const InstagramFeed = () => {
                     lineHeight: "17px",
                     textDecoration: "none",
                   }}
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   A post shared by Stylori (@stylorilove)

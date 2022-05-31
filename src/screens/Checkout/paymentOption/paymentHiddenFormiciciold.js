@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { API_URL } from "../../../config";
 import "./payment.css";
 import { Grid } from "@material-ui/core";

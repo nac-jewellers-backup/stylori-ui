@@ -1,16 +1,10 @@
 import {
-  AppBar,
   Grid,
   Hidden,
   ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
-  Tabs,
-  Tab,
   Typography,
   Container,
   Modal,
-  Button,
 } from "@material-ui/core";
 import React from "react";
 import "./product-images.css";
@@ -24,13 +18,13 @@ import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import Quantity from "../quantity";
 
-function TabContainer({ children, dir }) {
-  return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
-      {children}
-    </Typography>
-  );
-}
+// function TabContainer({ children, dir }) {
+//   return (
+//     <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+//       {children}
+//     </Typography>
+//   );
+// }
 
 const PriceTabs = (props) => {
   const {
@@ -51,9 +45,6 @@ const PriceTabs = (props) => {
 };
 
 class Component extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     value: 1,
     values: "",
@@ -102,9 +93,9 @@ class Component extends React.Component {
     if (key === "purity") {
       var kv = event.target.id;
       var objVal = kv.split(" ");
-      var _multipleColor = objVal.filter((val) => {
-        if (val === "And") return val;
-      }); // example : 18k Yellow And White
+      // var _multipleColor = objVal?.filter((val) => {
+      //   if (val === "And") return val;
+      // }); // example : 18k Yellow And White
       var arrPurity;
       var arrColor;
    
@@ -138,35 +129,35 @@ class Component extends React.Component {
   };
 
   imageRender = (val) => {
-    if (val == "18K Yellow") {
+    if (val === "18K Yellow") {
       return "#EAC97D";
     }
-    if (val == "22K Yellow") {
+    if (val === "22K Yellow") {
       return "#EAC97D";
     }
-    if (val == "14K Yellow") {
+    if (val === "14K Yellow") {
       return " #EAC97D";
     }
-    if (val == "24K Yellow") {
+    if (val === "24K Yellow") {
       return "#EAC97D";
     }
-    if (val == "14K White") {
+    if (val === "14K White") {
       return "#CDD0DD";
     }
-    if (val == "18K White") {
+    if (val === "18K White") {
       return "#CDD0DD";
     }
-    if (val == "14K Rose_White") {
+    if (val === "14K Rose_White") {
       return "#E2A497";
     }
-    if (val == "18K Rose_White") {
+    if (val === "18K Rose_White") {
       return "#E2A497";
     }
-    if (val == "14K Rose") {
+    if (val === "14K Rose") {
       return "#E2A497";
     }
 
-    if (val == "18K Rose") {
+    if (val === "18K Rose") {
       return "#E2A497";
     }
   };
@@ -174,8 +165,6 @@ class Component extends React.Component {
   TabsComponent = (_isSilver) => {
     const { classes } = this.props;
     const data = this.props.data;
-
-    const { value } = this.state;
     const kadasize =
       this.props &&
       this.props.data &&
@@ -189,7 +178,7 @@ class Component extends React.Component {
       this.props.data[0].productsDetails[0].namedetail[3] &&
       this.props.data[0].productsDetails[0].namedetail[3].details &&
       this.props.data[0].productsDetails[0].namedetail[3].details;
-    const limit = 8;
+    // const limit = 8;
     const settings = {
       className: "center",
       infinite: false,
@@ -262,7 +251,7 @@ class Component extends React.Component {
     };
     // data[0].productTabs[0].tab2.Children
 
-    return Boolean(_isSilver && data[0].productTabs[0].tab1.Children) ||
+    return Boolean(_isSilver && data[0]?.productTabs[0]?.tab1?.Children) ||
       !_isSilver ? (
       <div className={_isSilver ? classes.silverMarginBottom : ""}>
         {data[0]?.productTabs &&
@@ -295,7 +284,8 @@ class Component extends React.Component {
                           : val.tab1.headerBangle}
                         &nbsp;
                         {data[0].size_guide && (
-                          <a onClick={this.handleOpen} className="my-ringsize">
+                          <a onClick={this.handleOpen} className="my-ringsize" target="_blank"
+                          el="noopener noreferrer" href="/#">
                             Size Guide{" "}
                           </a>
                         )}
@@ -306,9 +296,8 @@ class Component extends React.Component {
                         <>
                           <Grid
                             container
-                            style={{ width: "100%" }}
                             className={classes.pagination}
-                            style={{ overflow: "hidden" }}
+                            style={{ overflow: "hidden",width:"100%" }}
                           >
                             {arr.length > 8 && (
                               <Hidden smDown>
@@ -494,6 +483,8 @@ class Component extends React.Component {
                                       height="auto"
                                       width="100%"
                                       src={data[0]?.size_guide}
+                                      alt="...."
+                                      loading="lazy"
                                     />
                                   </div>
                                 )}
@@ -505,6 +496,7 @@ class Component extends React.Component {
                
                                     <iframe
                                       className="document_iframe"
+                                      title="...."
                                       src={data[0].size_guide}
                                       width="100%"
                                       height="100%"
@@ -596,9 +588,9 @@ class Component extends React.Component {
                           var kv = val;
                           var objVal = kv.split(" ");
 
-                          var _multipleColor = objVal.filter((val) => {
-                            if (val === "And") return val;
-                          }); // example : 18k Yellow And White
+                          // var _multipleColor = objVal?.filter((val) => {
+                          //   if (val === "And") return val;
+                          // }); // example : 18k Yellow And White
                           var arrPurity;
                           var arrColor;
                        

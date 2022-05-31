@@ -79,7 +79,7 @@ const Subheader = () => {
                                 {HomeSlider.map(row =>
                                     <Grid spacing={4} key={row.name}>
                                         <img height="33px"
-                                            src={row.icon} alt="" />
+                                            src={row.icon} loading="lazy" alt="...." />
                                         <p style={{ marginTop: "-1px" }} className="contents">{row.name}</p>
                                     </Grid>
                                 )}
@@ -101,24 +101,24 @@ const Subheader = () => {
                                 <Grid container xs={12} spacing={2}>
 
                                     <Grid item xs={8}>
-                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/552x276/images/homepage/Stylori-ring-tile.jpg' alt="" />
+                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/552x276/images/homepage/Stylori-ring-tile.jpg' loading="lazy" alt="...." />
                                     </Grid>
                                     <Grid item xs={4}>
-                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/276x276/images/homepage/276X276 PIXELS MANGO COLLECTIONS TILE-01 (1).jpg' alt="" />
+                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/276x276/images/homepage/276X276 PIXELS MANGO COLLECTIONS TILE-01 (1).jpg' loading="lazy" alt="...." />
                                     </Grid>
                                 </Grid>
                                 <Grid container xs={12} spacing={2} style={{ marginTop: "6px" }}>
 
                                     <Grid item xs={4}>
-                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/276x276/images/homepage/-11.jpg' alt="" />
+                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/276x276/images/homepage/-11.jpg' loading="lazy" alt="...." />
                                     </Grid>
                                     <Grid item xs={8}>
-                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/552x276/images/homepage/Stylori_ Daisy Days.jpg' alt="" />
+                                        <img height="100%" width="100%" src='https://assets-cdn.stylori.com/552x276/images/homepage/Stylori_ Daisy Days.jpg' loading="lazy" alt="...." />
                                     </Grid>
                                 </Grid>
                             </Grid>
                             <Grid item xs={3} spacing={2} style={{ height: "650px" }}>
-                                <img height="100%" width="100%" src='https://assets-cdn.stylori.com/276x567/images/homepage/blush 3.jpg' alt="" /></Grid>
+                                <img height="100%" width="100%" src='https://assets-cdn.stylori.com/276x567/images/homepage/blush 3.jpg' loading="lazy" alt="...." /></Grid>
                         </Grid>
                     </Container>
                 </div>

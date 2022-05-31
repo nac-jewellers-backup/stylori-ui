@@ -16,6 +16,7 @@ export default function SocialLinkFrame() {
                         src="https://assets-cdn.stylori.com/assets/7b4c4135f67d8ee467c80ebc286cd3c3bad477ad.html"
                         width="100%"
                         height="430px"
+                        title='...'
                         frameBorder={0}>
                     </iframe>
                 </Grid>
@@ -29,6 +30,7 @@ export default function SocialLinkFrame() {
                         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fstylori&tabs=timeline&width=340&height=500&small_header=true&hide_cta=false&adapt_container_width=false&hide_cover=true&show_facepile=false&appId/embed"
                         width="100%"
                         height="350px"
+                        title='.....'
                         frameBorder={0}
                     ></iframe>
                 </Grid>

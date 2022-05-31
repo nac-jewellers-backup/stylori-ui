@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Grid, Hidden } from "@material-ui/core";
 import Title from "../ProductTitle";
-import { TopPicksGridComponent } from "../TopPicksGridComponent/index";
 import { useDummyRequest } from "../../../hooks";
 import { HomedataSilver } from "../../../mappers";
 import { FeaturedGridComponent } from "../FeaturedGridComponent";

@@ -1,19 +1,18 @@
 import React from 'react';
 import {
-    Container,
     ExpansionPanel,
     ExpansionPanelSummary,
     ExpansionPanelDetails,
     Typography,
-    Avatar,
     Grid,
     Button
 } from '@material-ui/core';
-// import "../../components/Checkout/Cart.css";
 import "./accounts.css";
 import '../Checkout/Cart.css'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import moment from "moment";
+import CurrencyConversion from 'utils/CurrencyConversion';
+
 function myFunc(total, num) {
     return Math.round(total + num);
 }
@@ -47,7 +46,7 @@ class Allorders extends React.Component {
             }
             return dis_price
         }).reduce(myFunc);
-        return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(a))
+        return CurrencyConversion(a)
     }
     generateShipsBy = (readytoship, vendorDeliveryTime) => {
         var isReadytoShip = readytoship
@@ -126,7 +125,7 @@ class Allorders extends React.Component {
                                                         <Grid item lg={2}>
                                                             {cart.transSkuListByProductSku.productListByProductId.productImagesByProductId.nodes.map(imgs => (
                                                                 <div className="wishlist_img">
-                                                                    <img className="viewport-img" src={`https://assets.stylori.net/base_images/${imgs.imageUrl}`}
+                                                                    <img className="viewport-img" loading="lazy" alt="...." src={`https://assets.stylori.net/base_images/${imgs?.imageUrl}`}
                                                                     />
                                                                 </div>
                                                             ))}
@@ -157,7 +156,7 @@ class Allorders extends React.Component {
                                                             <Grid container spacing={12} lg={12}>
                                                                 <Typography className="subhesder">Quantity 1</Typography>
                                                                 <Typography className="subhesder">
-                                                                    <img alt="" src="https://assets.stylori.com/images/static/icon-ship.png" /> <a>
+                                                                    <img  loading="lazy" alt="...." src="https://assets.stylori.com/images/static/icon-ship.png" /> <a>
                                                                         {this.generateShipsBy(cart.transSkuListByProductSku.readytoship, cart.transSkuListByProductSku.vendorDeliveryTime)}</a></Typography>
                                                             </Grid>
                                                         </Grid>
@@ -165,9 +164,9 @@ class Allorders extends React.Component {
 
                                                         <Grid style={{ padding: "30px" }} className="rups" item lg={2}>
                                                             {(Math.round(cart.transSkuListByProductSku.markupPrice)) < (Math.round(cart.price)) ?
-                                                                <del style={{ color: "rgba(0, 0, 0, 0.54)", fontSize: "18px" }}>{(Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.markupPrice)))}</del>
+                                                                <del style={{ color: "rgba(0, 0, 0, 0.54)", fontSize: "18px" }}>{(CurrencyConversion(cart.transSkuListByProductSku.markupPrice))}</del>
                                                                 : ""}<br />
-                                                            {Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(cart.transSkuListByProductSku.discountPrice))}
+                                                            {CurrencyConversion(cart.transSkuListByProductSku.discountPrice)}
                                                         </Grid>
                                                     </Grid></>
                                             ))}

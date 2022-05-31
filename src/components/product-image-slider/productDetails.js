@@ -53,11 +53,13 @@ class ProductDetails extends React.Component {
                 Number(val.details[1].replace("₹", "").replace(/,/g, ""))
             )
               return true;
+              return 0;
           })
-          .filter((val) => {
+          ?.filter((val) => {
             if (val) {
               return true;
             }
+            return 0;
           });
         // alert(checked)
         if (_gst.length > 0) {
@@ -73,7 +75,7 @@ class ProductDetails extends React.Component {
   };
 
   productsDetails = (data) => {
-    const { classes, isSilver } = this.props;
+    const { classes, isSilver} = this.props;
     // debugger
 
     const _mapper =
@@ -122,9 +124,13 @@ class ProductDetails extends React.Component {
                             style={{ marginBottom: 4 }}
                           >
                             {" "}
-                            <span className={_isSilver && "pd_details"}>
-                              {valueofproductdetail?.header}
-                            </span>
+                            {this?.props?.isActive ? 
+                             ""
+                           :<span className={_isSilver && "pd_details"}>
+                           {valueofproductdetail?.header}
+                         </span>
+                            }
+                            
                           </div>
                          
                         </>
@@ -171,10 +177,11 @@ class ProductDetails extends React.Component {
                                           valueofproductdetail.header,
                                           res?.details
                                         ) ? (
-                                        <Grid container item xs={12}>
+                                        <Grid container xs={12} spacing={1}>
                                           <Grid
-                                            xs={4}
-                                            lg={4}
+                                            item
+                                            xs={9}
+                                            lg={5}
                                             className={`${classes.margindek} ${classes.pds}`}
                                           >
                                             <ListItemText
@@ -188,7 +195,8 @@ class ProductDetails extends React.Component {
                                             >
                                               <span
                                                 style={{
-                                                  fontSize: "12px",
+                                                  fontSize: "16px",
+                                                  fontWeight:700
                                                 }}
                                               >
                                                 {_isSilver ? (
@@ -207,9 +215,9 @@ class ProductDetails extends React.Component {
                                             </ListItemText>
                                           </Grid>
                                           <Grid
-                                            container
                                             item
-                                            xs={8}
+                                            xs={3}
+                                            lg={7}
                                             style={{ alignItems: "center" }}
                                           >
                                             {
@@ -331,7 +339,7 @@ class ProductDetails extends React.Component {
                                                       : ""
                                                   }`}
                                                 >
-                                                  {/* {data[0].productsDetails[3].namedetail[1].length > 0} */}
+                                                   {/* data[0].productsDetails[3].namedetail[1].length > 0  */}
                                                   {
                                                     <span
                                                       style={{
@@ -427,13 +435,13 @@ class ProductDetails extends React.Component {
   };
   withExpandCollapse = (val) => {
     const { expanded } = this.state;
-    const { data, isSilver } = this.props;
+    const { isSilver } = this.props;
     const { classes } = this.props;
-    const _mapper =
-      data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
-        ? data[0].productsDetails
-        : [];
-    const _isSilver = isSilver ? true : false;
+    // const _mapper =
+    //   data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
+    //     ? data[0].productsDetails
+    //     : [];
+    // const _isSilver = isSilver ? true : false;
     return (
       <>
         {val.header !== "Price Breakup" ||
@@ -593,13 +601,13 @@ class ProductDetails extends React.Component {
     );
   };
   withoutExpandCollapse = (val) => {
-    const { expanded } = this.state;
+    // const { expanded } = this.state;
     const { data, isSilver } = this.props;
     const { classes } = this.props;
-    const _mapper =
-      data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
-        ? data[0].productsDetails
-        : [];
+    // const _mapper =
+    //   data && data.length > 0 && data[0] && data[0].productsDetails.length > 0
+    //     ? data[0].productsDetails
+    //     : [];
     const _isSilver = isSilver ? true : false;
     return (
       <>
@@ -811,12 +819,16 @@ class ProductDetails extends React.Component {
     });
   };
   render() {
-    const { data } = this.props;
+    const { data,isSilver } = this.props;
     return (
       <div>
         <Hidden smDown>{this.productsDetails(data)}</Hidden>
-
+        {isSilver ? 
+        <Hidden mdUp>{this.productsDetails(data)}</Hidden>
+        :
         <Hidden mdUp>{this.mobileproductsDetails()}</Hidden>
+        }
+        
       </div>
     );
   }

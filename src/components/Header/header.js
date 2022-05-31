@@ -29,12 +29,10 @@ import styles from "./styles";
 import { NavLink } from "react-router-dom";
 import usershape from "../../assets/Icons/user-shape.svg";
 import logout from "../../assets/Icons/logout.svg";
-import love from "../../assets/Icons/love.svg";
 import shopping from "../../assets/Icons/shopping.svg";
-import delivery from "../../assets/Icons/delivery.svg";
 import telephone from "../../assets/Icons/telephone.svg";
-import Button from "@material-ui/core/Button";
 import Popover from "@material-ui/core/Popover";
+
 let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : {};
 class Header extends Component {
   constructor(props) {
@@ -104,17 +102,6 @@ class Header extends Component {
       subheader,
       menuListHeader,
       menuLists,
-      earings,
-      rings,
-      pendants,
-      nosepins,
-      banglesbracelets,
-      valayal,
-      kammal,
-      koluse,
-      Price,
-      Collection,
-      Material,
     } = this.props.data;
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
@@ -138,7 +125,7 @@ class Header extends Component {
                     {/* <span><img className="icons-header-sizes" src={delivery} /></span> */}
                     <i class="track-icon icon-truck"></i>
                     <span>
-                      <img className="icons-header-sizes" src={telephone} />
+                      <img className="icons-header-sizes" src={telephone} loading="lazy" alt="...."/>
                     </span>
                   </div>
                 </Grid>
@@ -149,7 +136,7 @@ class Header extends Component {
                       src="https://assets.stylori.com/images/static/stylori-logo.svg"
                       onLoad={() => this.setState({ load: true })}
                       onLoadedData={() => this.setState({ load: false })}
-                      alt=""
+                      loading="lazy" alt="...."
                     />
                   </div>
                 </Grid>
@@ -166,13 +153,13 @@ class Header extends Component {
         </Button> */}
 
                     {localStorage.getItem("true") ? (
-                      <span aria-owns={openPopover ? "simple-popper" : ""} onClick={this.handleClickPopover}>
-                        <img className="icons-header-sizes" src={usershape} />
+                      <span aria-owns={openPopover ? "simple-popper" : ""} onClick={this.handleClickPopover} loading="lazy" alt="....">
+                        <img className="icons-header-sizes" src={usershape} loading="lazy" alt="...."/>
                       </span>
                     ) : (
                       // <img className="icons-header-sizes" src={usershape}/>
                       <span onClick={() => (window.location.pathname = "/login")}>
-                        <img className="icons-header-sizes" src={usershape} />
+                        <img className="icons-header-sizes" src={usershape} loading="lazy" alt="...." />
                       </span>
                     )}
                     {/* </NavLink> */}
@@ -210,8 +197,11 @@ class Header extends Component {
                             window.location.reload();
                             window.location.pathname = "/login";
                           }}
+                          href="/#"
+                          target="_blank"
+                          el="noopener noreferrer"
                         >
-                          <img className="icons-header-sizes" src={logout} />
+                          <img className="icons-header-sizes" src={logout} loading="lazy" alt="...."/>
                           &nbsp;Logout
                         </a>
                         &nbsp;/&nbsp;
@@ -223,7 +213,6 @@ class Header extends Component {
                     <Badge
                       color="secondary"
                       badgeContent={localStorage.getItem("a__w_l") ? localStorage.getItem("a__w_l") : "0"}
-                      color="secondary"
                       // wishlist_count
                       // badgeContent={this.props.wishlist_count && this.props.wishlist_count.length > 0 ? this.props.wishlist_count : "0"}
                     >
@@ -241,13 +230,14 @@ class Header extends Component {
                     <Badge badgeContent={localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"} color="secondary">
                       <NavLink to="/cart">
                         {" "}
-                        <img className="icons-header-sizes" src={shopping} />
+                        
+                        <img className="icons-header-sizes" src={shopping} loading="lazy" alt="...."/>
                       </NavLink>{" "}
                     </Badge>
                   </div>
                 </Grid>
               </Grid>
-              {path == "cart" || path == "checkout" ? (
+              {path === "cart" || path === "checkout" ? (
                 ""
               ) : (
                 <Grid container spacing={12}>
@@ -333,7 +323,7 @@ class Header extends Component {
                 </Grid>
                 <Grid item xs={4}>
                   <div>
-                    <img className="mobile-img" src="https://assets.stylori.com/images/static/stylori-logo.svg" alt="" />
+                    <img className="mobile-img" src="https://assets.stylori.com/images/static/stylori-logo.svg" loading="lazy" alt="...." />
                   </div>
                 </Grid>
                 <Grid item xs={6}>
@@ -379,7 +369,7 @@ class Header extends Component {
               {mainlist.map((row) => (
                 <>
                   <ListItem button key={row.name} className="drawer-list">
-                    <img className="submenu-icons" src={row.icon} alt={row.icon}></img>
+                    <img className="submenu-icons" src={row.icon} alt={row.icon} loading="lazy"></img>
                     <ListItemText onClick={() => (Jewellery[row.name] !== undefined ? this.selectItem(row.name) : "")}>
                       <Typography className="list-items" variant="">
                         {row.name}
@@ -399,7 +389,7 @@ class Header extends Component {
                     Object.keys(Jewellery[selected]).map((row2) => (
                       <>
                         <ListItem button key={Jewellery[selected][row2].name} className="drawer-list">
-                          <img className="submenu-icons" src={row2.icon} alt=""></img>
+                          <img className="submenu-icons" src={row2.icon} loading="lazy" alt="...."></img>
                           <ListItemText onClick={() => this.selectItem1(Jewellery[selected][row2].name)}>
                             <Typography className="Jew-mbl-head-list" variant="">
                               {Jewellery[selected][row2].name}

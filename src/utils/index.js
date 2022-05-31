@@ -34,7 +34,8 @@ export const filterGenerator = (
   clause = "equalTo"
 ) => {
   var _obj = Object.keys(filter).filter((val) => {
-    if (val === "transSkuListsByProductId") return true;
+    if (val === "transSkuListsByProductId") 
+    return true;
   });
   if (table.length > 0) {
     if (_obj[0] === table) {
@@ -95,17 +96,17 @@ async function supportsWebp() {
 
 //  const { GlobalCtx, setGlobaCtx } = React.useContext(GlobalContext);
 
-function status(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return Promise.resolve(response);
-  } else {
-    return Promise.reject(new Error(response.statusText));
-  }
-}
+// function status(response) {
+//   if (response.status >= 200 && response.status < 300) {
+//     return Promise.resolve(response);
+//   } else {
+//     return Promise.reject(new Error(response.statusText));
+//   }
+// }
 
-function json(response) {
-  return response.json();
-}
+// function json(response) {
+//   return response.json();
+// }
 
 export const lambda_func_front_end = async () => {
   // const { GlobalCtx, setGlobaCtx } = React.useContext(GlobalContext);
@@ -113,10 +114,6 @@ export const lambda_func_front_end = async () => {
   var window_width = Math.max(
     document.documentElement.clientWidth,
     window.innerWidth || 0
-  );
-  var h = Math.max(
-    document.documentElement.clientHeight,
-    window.innerHeight || 0
   );
 
   // (async () => {
@@ -183,10 +180,10 @@ export const filtersLabelMapperStylori = (filterName) => {
       mappedFilterName = filterName;
       break;
     default:
-    mappedFilterName = filterName
+      mappedFilterName = filterName;
   }
 
-  return mappedFilterName
+  return mappedFilterName;
 };
 
 // export const filtersLabelMapperStyloriSilver = (filterName) => {
@@ -201,3 +198,75 @@ export const filtersLabelMapperStylori = (filterName) => {
 //     // code block
 //   }
 // };
+
+export const shopByCategory = [
+  {
+    url: "#",
+    title: "Jewellery",
+  },
+  {
+    url: "#",
+    title: "Style",
+  },
+  {
+    url: "#",
+    title: "Collections",
+  },
+  {
+    url: "#",
+    title: "Finish",
+  },
+  {
+    url: "#",
+    title: "Ready to ship",
+  },
+  {
+    url: "#",
+    title: "CSK Merchandise",
+  },
+];
+
+export const aboutUs = [
+  {
+    url: "#",
+    title: "NAC Jewellers",
+  },
+  {
+    url: "#",
+    title: "Stylori",
+  },
+  {
+    url: "#",
+    title: "Press & Media",
+  },
+];
+
+export const customerService = [
+  {
+    url: "#",
+    title: "My Account",
+  },
+  {
+    url: "#",
+    title: "Shipping & Return",
+  },
+  {
+    url: "#",
+    title: "FAQs",
+  },
+];
+
+export const contactUs = [
+  {
+    url: "#",
+    title: "Whatsapp:- +91 99526 25252",
+  },
+  {
+    url: "#",
+    title: "Email:- hello@stylori.com",
+  },
+  {
+    url: "#",
+    title: "Customer Care:- 1800 102 0330",
+  },
+];

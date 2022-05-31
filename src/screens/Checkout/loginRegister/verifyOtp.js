@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNetworkRequest } from 'hooks/index';
 import { GlobalContext } from 'context';
 import { CartContext } from 'context'

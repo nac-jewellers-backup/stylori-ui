@@ -27,19 +27,18 @@ import FilterHeader from "./FilterHeader";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CardRadioButton from "../InputComponents/RadioButton/index";
-import { useDummyRequest } from "hooks/index";
-import { filterParams } from "mappers/index";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import styles from "./styles";
 import { FilterOptionsContext, GlobalContext } from "context";
 import { NetworkContext } from "context/NetworkContext";
-import { PRODUCTLIST, conditions, seoUrlResult } from "queries/productListing";
+import { seoUrlResult } from "queries/productListing";
 import { withRouter } from "react-router-dom";
 import { TopFilters } from "./topFilters";
 import ProductLayoutSilver from "../ProductCard/ProductLayoutSilver";
-import { TempTest } from "./TempTest";
 import { filtersLabelMapperStylori } from "utils";
+import CurrencyConversion from "utils/CurrencyConversion";
+
 const PersistentDrawerLeft = (props) => {
   const {
     setSort,
@@ -51,7 +50,6 @@ const PersistentDrawerLeft = (props) => {
     setdelete_fil,
   } = React.useContext(FilterOptionsContext);
 
-  const loc = window.location.search;
   const { NetworkCtx } = React.useContext(NetworkContext);
   const { Globalctx } = React.useContext(GlobalContext);
 
@@ -73,15 +71,6 @@ const PersistentDrawerLeft = (props) => {
     />
   );
 };
-
-// const mapperLabelCustomizer = (val) =>{
-//   if(val === "Product Type"){
-//     return "Dinesh"
-//   }
-//   else {
-//     return val
-//   }
-// }
 
 class Component extends React.Component {
   constructor(props) {
@@ -138,7 +127,7 @@ class Component extends React.Component {
     };
   }
   componentDidMount() {
-    var { checked, chipData, numOne, numTwo, selected } = this.state;
+    var { checked, chipData, selected,numOne,numTwo } = this.state;
     if (
       this.props.data &&
       this.props.data.length > 0 &&
@@ -147,19 +136,9 @@ class Component extends React.Component {
     ) {
       var price_min = Number(this.props.data[0].subFilter["Price Range"].min);
       var price_max = Number(this.props.data[0].subFilter["Price Range"].max);
-      var _price_min = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(price_min));
-      var _price_max = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(price_max));
+      var _price_min = CurrencyConversion(price_min);
+      var _price_max = CurrencyConversion (price_max);
 
-      // checked['pricemax'] = _price_max
-      // checked['pricemin'] = _price_min
       this.setState(checked);
       this.setState({ numOne: _price_min, numTwo: _price_max });
     }
@@ -171,7 +150,6 @@ class Component extends React.Component {
       let price_two;
       let splitSearchParamers = window.location.search.split("&");
       if (splitSearchParamers.length > 0) {
-        // if (splitSearchParamers.length > 2) {
         splitSearchParamers.map((val) => {
           let equalSplit = val.split("=");
           if (splitSearchParamers.length > 2) {
@@ -193,50 +171,20 @@ class Component extends React.Component {
               numTwo = Number(equalSplit[1]);
             }
           }
+          return 0;
         });
 
-        // if(numOne !== price_one && numTwo !== price_two){
         const price_min = Number(price_one);
         const price_max = Number(price_two);
-        const _price_min = new Intl.NumberFormat("en-IN", {
-          style: "currency",
-          currency: "INR",
-          minimumFractionDigits: 0,
-        }).format(Math.round(price_min));
-        const _price_max = new Intl.NumberFormat("en-IN", {
-          style: "currency",
-          currency: "INR",
-          minimumFractionDigits: 0,
-        }).format(Math.round(price_max));
+        const _price_min = CurrencyConversion(price_min);
+        const _price_max = CurrencyConversion(price_max);
         this.setState({ numOne: _price_min, numTwo: _price_max });
-        // }
-        // }
       }
     }
 
-    //    ****ENDS**** setting state search parameters ....
-
-    // This is used for checking the check boxes if we copy and pasted the url to new tab or new window
-    // if (window.location.search) {
-
-    //   let urlSearchparams = window.location.search;
-
-    //   let urlSearchparamsDecode = decodeURI(urlSearchparams)
-
-    //   let urlSearchparamsReplace = urlSearchparamsDecode.replace('?', '')
-
-    //   let urlSearchparamsSplitAmpersand = urlSearchparamsReplace.split('&')
-
-    //   let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
-    //   let mapUrlParamsSplitEqual = urlSplitparamsEqual();
-    //   this.handleChange(() => { }, true, () => { }, mapUrlParamsSplitEqual)
-
-    // }
-    // This is used for checking the check boxes if we copy and pasted the url to new tab or new window
-    // *****Ends*****
     var paramsfilter;
-    var abcd;
-    const filters_checked = () => {
+
+    const filters_checked = () => { 
       const { checked } = this.state;
       if (window.location.pathname.split("/")[1] !== "jewellery") {
         function status(response) {
@@ -261,11 +209,8 @@ class Component extends React.Component {
         var conditionfiltersSeo = {
           seofilter: { seoUrl: { in: splitHiphen() } },
         };
-        //  alert(JSON.stringify(this.state.checked))
         fetch(this.props.uri, {
           method: "post",
-          // body: {query:seoUrlResult,variables:splitHiphen()}
-          // body: JSON.stringify({query:seoUrlResult}),
 
           headers: {
             "Content-Type": "application/json",
@@ -278,21 +223,6 @@ class Component extends React.Component {
           .then(status)
           .then(json)
           .then(async function (data) {
-            // alert(data)
-            // var {checked} = this.state
-            //    data.data.allSeoUrlPriorities.nodes.map(val => {
-            //     alert(JSON.stringify(data))
-            //     let attrName = val.attributeName.replace(/\s/g, '')
-            //     let attrVal = val.attributeValue
-            //     checked[attrName] = {[attrVal]:true}
-            //     data.allSeoUrlPriorities.nodes.map(val =>{return val})
-            //     this.setState({checked},()=>{alert(JSON.stringify(checked))})
-            //     return abcd = a
-
-            //     // this.handleChange(()=>{}, true, ()=>{}, {}, paramsfilter)
-
-            // })
-
             paramsfilter =
               data &&
               data.data &&
@@ -309,12 +239,9 @@ class Component extends React.Component {
                   }
                 }
                 a[attrName] = { [attrVal]: true };
-                // checked[attrName] = a
-                // alert(JSON.stringify(attrName))
+
                 return a;
-                // return val
               });
-            // this.setState(checked)
 
             Object.entries(paramsfilter[0]).map((val) => {
               var keys = val[0];
@@ -353,7 +280,7 @@ class Component extends React.Component {
                 chipData.push({ label: a[0], title: keys });
               }
             });
-
+           
             this.setState(chipData, selected, checked);
           })
           .catch(function (error) {});
@@ -372,9 +299,7 @@ class Component extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // Typical usage (don't forget to compare props):
     if (this.state.checked !== prevState.checked) {
-      // this.myRef.scrollTop()
       window.scrollTo(0, this.myRef.scrollTop);
     }
     if (
@@ -387,28 +312,17 @@ class Component extends React.Component {
       var numberTwo = this.props.data[0].subFilter["Price Range"][0]
         ? this.props.data[0].subFilter["Price Range"][0].max
         : 0;
-      var numOne = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(numberOne));
-      var numTwo = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(numberTwo));
+      var numOne = CurrencyConversion(numberOne);
+      var numTwo = CurrencyConversion(numberTwo);
       this.state.Price_button_click === false &&
         this.setState({ numOne: numOne, numTwo: numTwo });
-      // if( this.props.data[0].subFilter['Price Range'].length > 0 && this.props.data[0].subFilter['Price Range'][0] !== undefined){
-      //   this.props.setFilters({pricemax:numberTwo, pricemin:numberOne})}
     }
   }
 
   delete_val_chips = (value) =>
     Object.entries(this.state.checked).map((val) => {
       const { checked } = this.state;
-
-      var obj = {};
+      // Coded by Legendary Jaya Soorya - Samir🛐🛐🛐
       var mm;
       var bz;
       var valx;
@@ -427,9 +341,9 @@ class Component extends React.Component {
               checked[val[0]] = { [mm]: false };
               this.setState(checked);
             }
-            // alert(JSON.stringify(checked))
             return false;
           }
+          return 0;
         });
       }
       return bz;
@@ -439,7 +353,7 @@ class Component extends React.Component {
 
     if (window.location.search) {
       Object.keys(this.state.checked).map((fk) => {
-        const filter = this.state.checked[fk];
+        const filter = this?.state?.checked[fk];
         const fv = Object.keys(filter);
         if (fk !== "Category" && fk !== "category" && fk !== "filters") {
           if (fv.length > 0) {
@@ -449,6 +363,7 @@ class Component extends React.Component {
             }
           }
         }
+        return 0;
       });
       let loc = window.location.pathname.split("?")[0];
       if (!showSortFilter) {
@@ -463,30 +378,13 @@ class Component extends React.Component {
     e,
     title,
     TargetName,
-    topfilterstate,
     selectedfiltertop
   ) => {
-    // window.scrollTo(0,2)
-    // debugger
+    
     let mystate = this.state;
     let { chipData } = this.state;
+    // let { filterData } = this.state;
     let checked = { ...this.state.checked };
-    var queries = [{}];
-    let pathnameSplit = window.location.pathname.split("/");
-
-    // if (Object.entries(this.state.category).length === 0 && this.state.category.constructor === Object) {
-    //   const splitHiphen = () => {
-    //     if (pathnameSplit[1].indexOf('-')) {
-    //       return pathnameSplit[1].split('-')
-    //     }
-    //   }
-    //   var _category_capital_letter = splitHiphen()[0].charAt(0).toUpperCase() + splitHiphen()[0].slice(1)
-    //
-    //   var _category_obj = {}
-    //   _category_obj[_category_capital_letter] = true
-    //   checked['category'] = _category_obj
-    //   this.setState(checked)
-    // }
 
     if (TargetName === undefined) {
       this.clearSortIfFiltersIsEmpty();
@@ -505,6 +403,11 @@ class Component extends React.Component {
 
       checked[e && e.target.name ? e.target.name : selectedfiltertop] =
         checkedvalue;
+
+        // this.setState({
+        //   filterData : value,
+        // })
+
       this.setState(
         {
           checked,
@@ -512,7 +415,6 @@ class Component extends React.Component {
         () => this.props.setFilters(checked)
       );
     } else {
-      let arr1 = [];
       let paramsMapUrlSetState = () =>
         TargetName.map((val) => {
           var nameFilter = val[0];
@@ -520,15 +422,14 @@ class Component extends React.Component {
           let checkedvalue = {};
           checkedvalue[keyNameFilter] = true;
           checked[nameFilter] = checkedvalue;
-          // arr.push({  label: nameFilter, title: title });
-          // chipData = arr;
+
           this.setState(
             {
-              // chipData,
               checked,
             },
             () => this.props.setFilters(checked)
           );
+          return 0;
         });
       paramsMapUrlSetState();
     }
@@ -538,30 +439,29 @@ class Component extends React.Component {
       if (val.title === title) {
         checkTitle = false;
       }
+      return 0;
     });
     chipData.map((val) => {
       if (val.label === value) {
         checkTitle = false;
       }
+      return 0;
     });
     if (BoolName === true) {
-      // chipData.push({ key: chipData[chipData.length - 1].key, label: value });
       if (checkTitle) {
         chipData.push({ label: value, title: title });
       } else {
-        arr = chipData.filter((val) => val.title !== title);
+        arr = chipData?.filter((val) => val.title !== title);
         arr.push({ label: value, title: title });
         chipData = arr;
       }
     } else {
-      arr = chipData.filter((val) => val.label !== value);
+      arr = chipData?.filter((val) => val.label !== value);
       chipData = arr;
     }
     this.setState({
       chipData,
     });
-    // , () => this.props.setFilters(checked)
-    // alert(JSON.stringify(this.state.checked))
   };
 
   handleDelete = (value) => {
@@ -581,9 +481,9 @@ class Component extends React.Component {
           }
           let arr = [],
             arr1 = [];
-          arr = chipData.filter((val) => val.label !== value);
+          arr = chipData?.filter((val) => val.label !== value);
           if (checked) {
-            arr1 = this.delete_val_chips(value).filter((val) => {
+            arr1 = this.delete_val_chips(value)?.filter((val) => {
               var dlt;
               if (val !== undefined && val !== null) {
                 dlt = Object.values(val) === -1;
@@ -603,9 +503,9 @@ class Component extends React.Component {
         } else {
           let arr = [],
             arr1 = [];
-          arr = chipData.filter((val) => val.label !== value);
+          arr = chipData?.filter((val) => val.label !== value);
           if (checked) {
-            arr1 = this.delete_val_chips(value).filter((val) => {
+            arr1 = this.delete_val_chips(value)?.filter((val) => {
               var dlt;
               if (val !== undefined && val !== null) {
                 dlt = Object.values(val) === -1;
@@ -623,19 +523,8 @@ class Component extends React.Component {
           this.props.setFilters(checked);
         }
       }
+      return 0;
     });
-
-    // var bb = {}
-    // bb["delete_fil"] = "12345"
-    // this.props && this.props.setdelete_fil && this.props.setdelete_fil(bb)
-
-    // alert(JSON.stringify(data))
-    // this.setState(state => {
-    //   const chipData = [...state.chipData];
-    //   const chipToDelete = chipData.indexOf(data);
-    //   chipData.splice(chipToDelete, 1);
-    //   return { chipData };
-    // });
   };
   handlebye = () => {};
   check_goldCoins = (values_) => {
@@ -655,6 +544,7 @@ class Component extends React.Component {
           }
         }
       }
+      return 0;
     });
     return valus;
   };
@@ -683,29 +573,26 @@ class Component extends React.Component {
       if (val !== undefined && val !== null) {
         return val;
       }
+      return 0;
     });
     if (map.indexOf(name) > -1) {
-      arr1 = selected.filter((val) => {
+      arr1 = selected?.filter((val) => {
         if (val !== undefined && val !== null) {
           if (val !== name) {
             return val;
           }
         }
+        return 0;
       });
       selected = arr1;
       this.setState({ selected });
     } else {
-      // var same =map.indexOf(name)
       selected.push(name);
       this.setState({ selected });
     }
   };
   filterValue = (filtercheck) => {
-    // if (filtercheck === this.state.filtercheck) {
-    //   this.setState({ filtercheck: '' })
-    // } else {
     this.setState({ filtercheck });
-    // }
   };
 
   handleChangeDrawer = () => {
@@ -747,37 +634,26 @@ class Component extends React.Component {
           document.getElementById("num2").value.replace(/,/g, "")
         );
       }
-      var price_min = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(_price_min));
-      var price_max = new Intl.NumberFormat("en-IN", {
-        style: "currency",
-        currency: "INR",
-        minimumFractionDigits: 0,
-      }).format(Math.round(_price_max));
+      var price_min = CurrencyConversion( _price_min);
+      var price_max = CurrencyConversion(_price_max);
 
       var pricemin =
         price_min.indexOf(",") > -1
           ? price_min.indexOf(" ") > -1
-            ? Number(price_min.substr(2).replace(/\,/g, ""))
-            : Number(price_min.substr(1).replace(/\,/g, ""))
+            ? Number(price_min.substr(2).replace(/\,/g, "")) //eslint-disable-line
+            : Number(price_min.substr(1).replace(/\,/g, "")) //eslint-disable-line
           : price_min.indexOf(" ") > -1
           ? Number(price_min.substr(2))
           : Number(price_min.substr(1));
       var pricemax =
         price_max.indexOf(",") > -1
           ? price_max.indexOf(" ") > -1
-            ? Number(price_max.substr(2).replace(/\,/g, ""))
-            : Number(price_max.substr(1).replace(/\,/g, ""))
+            ? Number(price_max.substr(2).replace(/\,/g, "")) //eslint-disable-line
+            : Number(price_max.substr(1).replace(/\,/g, "")) //eslint-disable-line
           : price_max.indexOf(" ") > -1
           ? Number(price_max.substr(2))
           : Number(price_max.substr(1));
-      // alert("came in ")
-      //
-      // alert(pricemin)
-      // alert(pricemax)
+
       if (pricemin > pricemax) {
         this.setState({ errorPriceMessage: true });
       } else if (pricemin === 0 && pricemax === 0) {
@@ -793,8 +669,6 @@ class Component extends React.Component {
   };
   txtFieldChange(e) {
     if (!(e.which >= 48 && e.which <= 57)) e.preventDefault();
-
-    // this.setState({[e.target.name]:e.target.value})
   }
   handleChangesort = (event) => {
     if (this.props.offset > 0) this.props.setOffset(0);
@@ -804,31 +678,17 @@ class Component extends React.Component {
 
     this.setState({ productDisplay: true });
   };
-  // chck_res = () => this.state.chipData.map(data => {
-  //
-  //   var value;
-  //   if (data.label.length > 0 && data.label !== "" && data.label !== undefined) {
-  //     value = <>{data.label}</>
-  //   }
-  //   return value
-  // })
 
   render() {
     const found = window.location.pathname
       .split(/-/g)
       .find((element) => element === "/goldcoins" || element === "goldcoins");
-    const { classes, data, loading } = this.props;
+    const { classes } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
 
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
     const isTopFilter = this.props.globalcontext.pathName ? true : false;
-    //  const chck_res =  this.state.chipData.map(data => {
-    //   return (
-    //     data.label
-    //   );
-    // })
-    // alert(JSON.stringify(this.state.selected))
 
     return (
       <>
@@ -849,7 +709,6 @@ class Component extends React.Component {
             />
           </Hidden>
         )}
-        {/* <TempTest onchangefunc={this.handleChange}/> */}
 
         {!isTopFilter && (
           <Hidden smDown>
@@ -860,13 +719,11 @@ class Component extends React.Component {
               check={this.state.check}
               checked={this.state.checked}
             />
-            {/*  handleDrawerOpen={this.handleDrawerOpen.bind(this)} */}
           </Hidden>
         )}
         <div className={classes.root}>
           {!isTopFilter && (
             <Hidden smDown>
-              {/* <CssBaseline /> */}
               <div>
                 <Slide
                   direction="right"
@@ -888,9 +745,6 @@ class Component extends React.Component {
                       variant="persistent"
                       anchor="left"
                       open={open}
-                      // classes={{
-                      //   paper: classes.drawerPaper,
-                      // }}
                     >
                       <Divider />
                       <List className="fil-main-list">
@@ -968,12 +822,12 @@ class Component extends React.Component {
                             </label>
                           ) : null}
                         </div>
-                        {/* filter */}
+
                         <div>
                           {
                             <>
-                              {filter && filter.length > 0 ? (
-                                filter.map((row, i) => {
+                              {filter && filter?.length > 0 ? (
+                                filter?.map((row, i) => {
                                   return (
                                     <>
                                       {subFilter &&
@@ -1029,7 +883,6 @@ class Component extends React.Component {
                                                   {filtersLabelMapperStylori(
                                                     row
                                                   )}
-                                                  {/* {mapperLabelCustomizer(row)} */}
                                                 </Typography>
                                               </ListItemText>
                                               {selected.indexOf(row) !== -1 ? (
@@ -1045,11 +898,10 @@ class Component extends React.Component {
                                       )}
 
                                       <>
-                                        {/* {JSON.stringify()} */}
                                         {selected.indexOf(row) !== -1 && (
                                           <>
                                             {subFilter[row]
-                                              .filter(
+                                              ?.filter(
                                                 (row12, i) =>
                                                   i <
                                                   (this.state[`li_${row}`]
@@ -1184,7 +1036,6 @@ class Component extends React.Component {
                                                                     ? true
                                                                     : false
                                                                 }
-                                                                // disabled = {handledisabled}
                                                                 checked={
                                                                   this.state
                                                                     .checked[
@@ -1416,7 +1267,6 @@ class Component extends React.Component {
                             </>
                           }
                         </div>
-                        {/* filter Ends */}
                       </List>
                     </Paper>
                   </div>
@@ -1426,7 +1276,6 @@ class Component extends React.Component {
           )}
           {this.state.productDisplay && (
             <div
-              // className="filter_page_layout"
               className={`${
                 check
                   ? `filter_page_layout ${classes.productCardscheck}`
@@ -1470,6 +1319,7 @@ class Component extends React.Component {
                 display: openMobile ? "none" : "block",
                 position: "sticky",
                 top: "0px",
+                marginTop: "15px"
               }}
               className={`${classes.colorMain}`}
             >
@@ -1479,27 +1329,56 @@ class Component extends React.Component {
                   background: "none",
                   border: "none",
                   fontWeight: "600",
-                  color: "rgba(58, 69, 120, 1)",
+                  color: "#747578",
                   padding: "6px 8px",
                 }}
               >
-                <i className={`fa fa-times ${classes.colorMain}`}></i>&nbsp;
+                <i className={`fa fa-times ${classes.cross}`}></i>&nbsp;
                 Filter
               </button>
               <Button
                 onClick={this.handleClearAllData}
                 style={{
                   float: "right",
-                  border: "1px solid #ececec",
+                  border: "none",
                   lineHeight: "15px",
                   fontSize: "0.775rem",
                 }}
-                className={`${classes.colorMain}`}
+                className={`${classes.clearall}`}
               >
                 Clear All
               </Button>
+              {this.state.chipData.length > 0 ? (
+                    
+                    <div>
+                      {this.state.chipData.map((data) =>{
+                        return data.label === "Silver" ? null :(
+                      <Chip
+                      size="small"
+                      variant="outlined"
+                      label={data.label}
+                      style={{
+                        padding: "14px",
+                        marginRight: 14,
+                        borderRadius: "0px",
+                        color: "#6D6E71",
+                        borderColor: "#777878",
+                        fontSize: "14px",
+                      }} 
+                      onDelete={()=> this.handleDelete(data.label)}
+                      deleteIcon={
+                        data.label ? (
+                          <i
+                            className="search-choice-close"
+                            class="fa fa-times"
+                          ></i>
+                        ) : (
+                          ""
+                        )
+                      } />
+                    )})}
+                    </div>) : (<div>No Filter Applied</div>) }
             </div>
-
             <Grid
               container
               xs={12}
@@ -1512,16 +1391,9 @@ class Component extends React.Component {
             >
               <Grid container item xs={12}>
                 <Grid item xs={6} className={classes.filterMain}>
-                  {/* {chck_res ?
-                    <ListItemText
-                      className='filter-mbl-font filter-mbl-fonts'
-                    >
-                      llllccc
-                        </ListItemText>
-                    : ""} */}
                   <List className="mbl-filter-list">
                     {filter &&
-                      filter.map((row) => {
+                      filter?.map((row) => {
                         return subFilter &&
                           subFilter[row] &&
                           subFilter[row].length > 0 ? (
@@ -1572,27 +1444,10 @@ class Component extends React.Component {
                   <Grid
                     item
                     xs={6}
-                    style={{ overflow: "scroll", height: "73vh" }}
+                    style={{ overflow: "scroll", height: "73vh",backgroundColor:"#E5E6E7" }}
                   >
-                    {/* <>
-                      <div className="header-chips Chip">
-                        {this.state.chipData.map(data => {
-                          return (
-                            <Chip
-                              className="header-chips-text"
-                              key={data.key}
-                              label={data.label}
-                              onClick={() => this.handleDelete}
-                              avatar={data.label ?
-                                <i className="search-choice-close" class="fa fa-times"></i>
-                                : ""}
-                            />
-                          );
-                        })}
-                      </div>
-                    </> */}
                     <>
-                      {subFilter[
+                    {subFilter[
                         this.state.filtercheck && this.state.filtercheck
                       ] !== undefined
                         ? subFilter[
@@ -1616,8 +1471,6 @@ class Component extends React.Component {
                                         value="checked"
                                         color="primary"
                                         className={`${classes.sublistMobile}`}
-                                        // checked={this.state.checked && this.state.filtercheck && this.state.filtercheck[this.state.filtercheck] && this.state.filtercheck[this.state.filtercheck.replace(/\s/g, "")][row.value] ? this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row.value] : false}
-
                                         onChange={(e) =>
                                           this.handleChange(
                                             row.value,
@@ -1639,7 +1492,6 @@ class Component extends React.Component {
                                             e
                                           )
                                         }
-                                        // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
                                         icon={
                                           <CheckBoxOutlineBlankIcon fontSize="small" />
                                         }
@@ -1671,7 +1523,6 @@ class Component extends React.Component {
                                           className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}
                                         >
                                           <div
-                                            // onClick={this.handleDrawerCloseMobile}
                                             onClick={(e) =>
                                               this.handleChange(
                                                 row.value,
@@ -1705,8 +1556,6 @@ class Component extends React.Component {
                                         value="checked"
                                         color="primary"
                                         className={`${classes.sublistMobile}`}
-                                        // checked={this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row] !== undefined ? this.state.checked[this.state.filtercheck && this.state.filtercheck.replace(/\s/g, "")][row] : false}
-
                                         onChange={(e) =>
                                           this.handleChange(
                                             row,
@@ -1728,7 +1577,6 @@ class Component extends React.Component {
                                             e
                                           )
                                         }
-                                        // onChange={(e) => this.handleChange(row12, this.state.checked[row.replace(/\s/g, "")][row12] !== undefined ? !this.state.checked[row.replace(/\s/g, "")][row12] : true, e)}
                                         icon={
                                           <CheckBoxOutlineBlankIcon fontSize="small" />
                                         }
@@ -1757,10 +1605,9 @@ class Component extends React.Component {
                                       <ListItemText>
                                         <Typography
                                           variant=""
-                                          className={`filter-mbl-font fnts ${classes.colorMainSecondary}`}
+                                          className={`filter-mbl-font fnts ${classes.colorMainSecondary2}`}
                                         >
                                           <div
-                                            // onClick={this.handleDrawerCloseMobile}
                                             onClick={(e) =>
                                               this.handleChange(
                                                 row,
@@ -1801,24 +1648,6 @@ class Component extends React.Component {
                   </Grid>
                 )}
               </Grid>
-              {/* <Grid container item xs={12} className="filterButtonMobile" justify="flex-end">
-                <Paper>
-                    <Button variant="contained" style={{backgroundColor:'rgba(58, 69, 120, 1)', color:'white'}}>
-                      Apply
-                    </Button>
-                </Paper>    
-              </Grid> */}
-              {/* <AppBar color="primary" className="filter-fixed header" >
-                <Grid container item xs={12} justify="flex-end" alignItems="center" style={{ padding: '2%' }}>
-                  <Grid item xs={6}>
-
-                    <Button variant='contained' className={`filterBtnMobile`}>
-                      Apply
-                    </Button>
-                  </Grid>
-                </Grid>
-
-              </AppBar> */}
             </Grid>
 
             <AppBar
@@ -1892,8 +1721,3 @@ Component.propTypes = {
 export default withRouter(
   withStyles(styles, { withTheme: true })(PersistentDrawerLeft)
 );
-// (props => {
-//   const { mapped } = useDummyRequest(filterParams);
-//   if (Object.keys(mapped).length === 0) return ''
-//   return < PersistentDrawerLeft {...props} data={mapped} />
-// });

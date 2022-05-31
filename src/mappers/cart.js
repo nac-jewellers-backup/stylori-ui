@@ -1,6 +1,4 @@
 import moment from "moment";
-import axios from "axios";
-import { API_URL } from "../config";
 // export const productsDetails = [
 //     {
 //         header: "Product Details",
@@ -111,10 +109,10 @@ const generateShipsBy = (readytoship, vendorDeliveryTime) => {
   var date = moment().format(" h a");
   if (isReadytoShip) {
     if (JSON.stringify(date) > " 1 pm") {
-      return "Ships by" + " " + moment().add(1, "days").format("Do MMMM YYYY");
+      return `Ships by  ${moment().add(1, "days").format("Do MMMM YYYY")}`;
     }
   } else {
-    return "Ships by" + " " + moment().add(numberOfDays, "days").format("Do MMMM YYYY");
+    return `Ships by ${moment().add(numberOfDays, "days").format("Do MMMM YYYY")}`;
   }
 };
 
@@ -148,26 +146,26 @@ export default function (data) {
 
     try {
       _d = {
-        generatedSku: k.generatedSku,
-        skuId: k.generatedSku,
-        skuUrl: k.skuUrl,
-        productSkuId: k.skuId,
+        generatedSku: k?.generatedSku,
+        skuId: k?.generatedSku,
+        skuUrl: k?.skuUrl,
+        productSkuId: k?.skuId,
 
         materialName:
-          k.productListByProductId.productMaterialsByProductSku.nodes === undefined
+          k?.productListByProductId?.productMaterialsByProductSku?.nodes === undefined
             ? ""
-            : k.productListByProductId.productMaterialsByProductSku.nodes.map((val) => {
-                return val.materialName;
+            : k?.productListByProductId?.productMaterialsByProductSku?.nodes.map((val) => {
+                return val?.materialName;
               }),
         // materialName: k.productMaterialsByProductSku.nodes[0].materialName,
-        productType: k.productListByProductId.productType,
-        prdheader: k.productListByProductId.productName,
+        productType: k?.productListByProductId?.productType,
+        prdheader: k?.productListByProductId?.productName,
         // allorderdata: allorderdata,
-        productId: k.productListByProductId && k.productListByProductId.productId,
-        shipby: generateShipsBy(k.isReadyToShip, k.vendorDeliveryTime),
-        isReadyToShip: k.isReadyToShip,
-        minOrderQty: k.minOrderQty,
-        maxOrderQty: k.maxOrderQty,
+        productId: k?.productListByProductId && k?.productListByProductId?.productId,
+        shipby: generateShipsBy(k?.isReadyToShip, k?.vendorDeliveryTime),
+        isReadyToShip: k?.isReadyToShip,
+        minOrderQty: k?.minOrderQty,
+        maxOrderQty: k?.maxOrderQty,
         isActive: k?.productListByProductId?.isactive ?? "",
         productsDetails: [
           //                     Quality
@@ -187,7 +185,7 @@ export default function (data) {
                 details: k.purity + " " + k.metalColor,
               },
               {
-                name: k.productListByProductId.productType == "Kada" ? "Metal Weight (Gm)" : "Gold Weight (Gm)",
+                name: k.productListByProductId.productType === "Kada" ? "Metal Weight (Gm)" : "Gold Weight (Gm)",
                 details: k.skuWeight,
               },
               {

@@ -1,6 +1,3 @@
-/* generate-build-version.js */
-
-// const packageJson = require('./package.json');
 
 var fs = require('fs');
 fs.readFile('./public/meta.json',function(err,content){

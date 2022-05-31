@@ -3,26 +3,32 @@ import Typography from "@material-ui/core/Typography";
 import "./Cart.css";
 import {
   Grid,
-  CardHeader,
   Card,
-  IconButton,
   Hidden,
   Container,
   Button,
+  Divider,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails
 } from "@material-ui/core";
+import percentage from "../../assets/percentage.svg";
 import Slideshow from "../Carousel/carosul";
 import { withStyles } from "@material-ui/core/styles";
 import Buynowbutton from "../Buynow/buynowbutton";
-
 import CardSmallScreen from "./CartCardSmallScreen.js";
+import WishlistButton from "./Wishlistadd";
 import Pricing from "../Pricing/index";
 import styles from "./style";
 import { NavLink } from "react-router-dom";
-import { CartContext, ProductDetailContext } from "context";
-
+import { CartContext } from "context";
+import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
+import Promo from "screens/Checkout/orderSummary/promocode";
 import { API_URL, CDN_URL } from "config";
 import Quantity from "../quantity/index";
 import axios from "axios";
+import CurrencyConversion from "utils/CurrencyConversion";
 
 class Checkoutcard extends React.Component {
   constructor(props) {
@@ -30,8 +36,10 @@ class Checkoutcard extends React.Component {
     this.state = {
       cart: true,
       shipby_arr: [],
+      expanded: false,
     };
   }
+
   async componentDidMount() {
     let skuId_arr = this.props?.data;
     let shipby_arr_object = [];
@@ -61,7 +69,7 @@ class Checkoutcard extends React.Component {
         });
       });
       this.setState({
-        ...this.state.shipby_arr, 
+        ...this.state.shipby_arr,
         shipby_arr: shipby_arr_object,
       });
     }
@@ -86,10 +94,11 @@ class Checkoutcard extends React.Component {
     var currentValue =
       e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id;
 
-    var a = local_storage.products.filter((val) => {
+    var a = local_storage?.products?.filter((val) => {
       if (currentValue !== val.sku_id) {
         return val;
       }
+      return 0;
     });
 
     function status(response) {
@@ -143,8 +152,11 @@ class Checkoutcard extends React.Component {
     } else {
       var _products = JSON.parse(
         localStorage.getItem("cartDetails")
-      ).products.filter((val) => {
-        if (val.sku_id !== currentValue) return val;
+      )?.products?.filter((val) => {
+        if (val.sku_id !== currentValue){
+          return val;
+        }  
+        return 0;
       });
       var cartId = JSON.parse(localStorage.getItem("cartDetails")).cart_id;
       var userId = JSON.parse(localStorage.getItem("cartDetails")).user_id;
@@ -185,9 +197,10 @@ class Checkoutcard extends React.Component {
       slidesToShow: 1,
       arrows: false,
     };
-    const { classes, data } = this.props;
+    const { classes } = this.props;
+
     // Quantity {JSON.parse(localStorage.getItem('quantity'))[val.namedetail[0].details]}
-    const { productsDetails, fadeImages, dataCard1 } = this.props.data;
+    // const { productsDetails, fadeImages } = this.props.data;
     // const { FilterOptionsCtx: { setcartcount } } = React.useContext(FilterOptionsContext);
     // React.useEffect(()=>{
     //     setcartcount({
@@ -197,7 +210,7 @@ class Checkoutcard extends React.Component {
     const filter_image = (imges__val, name, details) => {
       var image_urls;
       const width = window.innerWidth;
-      if (imges__val.imageUrl && imges__val.imageUrl.length > 0) {
+      if (imges__val?.imageUrl && imges__val?.imageUrl.length > 0) {
         // this.props.data.map(dataval => {
         //     if (dataval !== undefined && dataval !== null) {
         //         dataval.productsDetails.map(val => {
@@ -208,7 +221,7 @@ class Checkoutcard extends React.Component {
           var valu1 = valu[1];
           var valu2 = valu1[0];
           //  imges__val && imges__val.map(img => {
-          var cnt = imges__val && imges__val.imageUrl.split("/");
+          var cnt = imges__val && imges__val?.imageUrl.split("/");
           var cnt_b = cnt[2].split("-");
           var cnt_c = cnt_b[1];
           if ((cnt_c && cnt_c[1]) === valu2) {
@@ -220,7 +233,7 @@ class Checkoutcard extends React.Component {
               width < 960
                 ? `${resolution * 2}X${resolution * 2}`
                 : `${resolution}X${resolution}`;
-            var url_split = imges__val && imges__val.imageUrl.split("/");
+            var url_split = imges__val && imges__val?.imageUrl.split("/");
             var extension_split = url_split && url_split[url_split.length - 1];
             var browser_type_append =
               extension_split &&
@@ -229,7 +242,7 @@ class Checkoutcard extends React.Component {
                 .concat(`${browser_type && browser_type.browser_type}`);
             url_split[url_split && url_split.length - 1] = browser_type_append;
             url_split.splice(2, 0, _resolutions);
-            var url_construct = url_split.join().replace(/\,/g, "/");
+            var url_construct = url_split.join().replace(/\,/g, "/"); //eslint-disable-line
             image_urls = `${CDN_URL}${url_construct}`;
             return [image_urls];
           }
@@ -241,220 +254,443 @@ class Checkoutcard extends React.Component {
       if (_data.indexOf("silver") > -1) return false;
       else return true;
     };
+    var discounted_price = this.props.cartFilters.discounted_price
+      ? this.props.cartFilters.discounted_price
+      : "";
+    const dataCard1 = this.props.data
+      .map((val) => {
+        return (
+          val.dataCard1[0].offerPrice *
+          JSON.parse(localStorage.getItem("quantity"))[val.generatedSku]
+        );
+      })
+      .reduce(myFunc);
+
+    function myFunc(total, num) {
+      var cart_price;
+      if (discounted_price.length > 0) {
+        var a = Math.round(total + num);
+        cart_price = a - discounted_price;
+      } else {
+        cart_price = Math.round(total + num);
+      }
+      return cart_price;
+    }
 
     return (
-      <div style={{ marginTop: "10px" }}>
-        <Grid container>
-          <Grid xs={12} />
-          <Grid xs={12}>{this.checkoutbutton()}</Grid>
-        </Grid>
-        <br />
-        {this.props.data.map((dataval) =>
-          dataval.productsDetails.map((val) => (
-            <div
-              style={{
-                outline: "none",
-                marginBottom: "25px",
-                boxShadow: "1px 2px 13px 7px #DEDADA",
-                padding: "10px",
-              }}
-              className={classes.cart}
-            >
-              <Grid container spacing={12} xs={12}>
-                <Grid
-                  item
-                  xs={3}
-                  sm={3}
-                  style={{
-                    display: "flex",
-                    alignContent: "center",
-                    alignItems: "center",
-                    padding: "1px",
-                  }}
-                >
-                  <Card className="product-image-thumb">
-                    {val.namedetail !== undefined &&
-                      val.namedetail.map((val) =>
-                        dataval.fadeImages.map((im_) => {
-                          return (
-                            <>
-                              {filter_image(im_, val.name, val.details) &&
-                              filter_image(im_, val.name, val.details).length >
-                                0 ? (
+      <div style={{ marginTop: this.props?.checkout ? "" : "50px" }}>
+          <Grid
+          container
+          style={{
+            display: "flex",
+            flexDirection: this.props?.checkout ? "column" : "row",
+          }}
+        >
+          <Grid item container xs={this.props?.checkout ? 12 : 7}>
+            {!this.props.checkout ? (
+              <Grid item>
+                <Typography className="total">{`Total ( ${
+                  this.props.data.length
+                } items) :   ${ CurrencyConversion(
+                    props.cartFilters.discounted_amount
+                      ? Math.round(props.cartFilters.discounted_amount)
+                      : Math.round(dataCard1 - discounted_price)
+                  )
+                }`}</Typography>
+              </Grid>
+            ) :null}
+            {this.props.data.map((dataval) =>
+              dataval.productsDetails.map((val) => {
+                return (
+                  <Grid
+                    item
+                    container
+                    xs={12}
+                    style={{
+                      outline: "none",
+                      marginBottom: "25px",
+                      // boxShadow: "1px 2px 13px 7px #DEDADA",
+                      padding: "10px",
+                      height:"200px",
+                      // height: "180px",
+                      backgroundColor: this.props.checkout ? "" : "#fff",
+                    }}
+                    // className={classes.cart}
+                  >
+                    <Grid
+                      item
+                      xs={3}
+                      sm={3}
+                      style={{
+                        display: "flex",
+                        alignContent: "center",
+                        alignItems: "center",
+                        padding: "1px",
+                      }}
+                    >
+                      <Card className= {this.props.checkout ? "product-image-thumb-check" :"product-image-thumb"}>
+                        {val.namedetail !== undefined &&
+                          val.namedetail.map((val) =>
+                            dataval.fadeImages.map((im_) => {
+                              return (
                                 <>
-                                  {window.location.pathname !== "/checkout" ? (
-                                    <NavLink
-                                      to={dataval.skuUrl}
-                                      style={{ textDecoration: "none" }}
-                                    >
-                                      <Slideshow
-                                        className="image"
-                                        fadeImages={filter_image(
-                                          im_,
-                                          val.name,
-                                          val.details
-                                        )}
-                                        dataCarousel={dataCarousel}
-                                      />
-                                    </NavLink>
-                                  ) : (
-                                    <Slideshow
-                                      className="image"
-                                      fadeImages={filter_image(
-                                        im_,
-                                        val.name,
-                                        val.details
+                                  {filter_image(im_, val.name, val.details) &&
+                                  filter_image(im_, val.name, val.details)
+                                    .length > 0 ? (
+                                    <>
+                                      {window.location.pathname !==
+                                      "/checkout" ? (
+                                        <NavLink
+                                          to={dataval.skuUrl}
+                                          style={{ textDecoration: "none" }}
+                                        >
+                                          <Slideshow
+                                            className="image"
+                                            fadeImages={filter_image(
+                                              im_,
+                                              val.name,
+                                              val.details
+                                            )}
+                                            dataCarousel={dataCarousel}
+                                          />
+                                        </NavLink>
+                                      ) : (
+                                        <Slideshow
+                                          className="image"
+                                          fadeImages={filter_image(
+                                            im_,
+                                            val.name,
+                                            val.details
+                                          )}
+                                          dataCarousel={dataCarousel}
+                                        />
                                       )}
-                                      dataCarousel={dataCarousel}
-                                    />
+                                    </>
+                                  ) : (
+                                    ""
                                   )}
                                 </>
+                              );
+                            })
+                          )}
+                      </Card>
+                    </Grid>
+
+                    <Grid item xs={5} sm={7} lg={9} style={{ padding: "13px" }}>
+                      {window.location.pathname !== "/checkout" ? (
+                        <NavLink
+                          to={dataval.skuUrl}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <h4
+                            className={
+                              this.props.checkout
+                                ? `${classes.normalfontsCheck}`
+                                : `title-cart ${classes.normalfonts}`
+                            }
+                          >
+                            {val.pro_header}
+                          </h4>
+                        </NavLink>
+                      ) : (
+                        <h3
+                          className={
+                            this.props.checkout
+                              ? `${classes.normalfontsCheck}`
+                              : `title-cart ${classes.normalfonts}`
+                          }
+                        >
+                          {val.pro_header}
+                        </h3>
+                      )}
+                      <Grid container>
+                        <Grid item xs={8} lg={7}>
+                          <Typography
+                            className={
+                              this.props.checkout
+                                ? `${classes.normalfontsCheck}`
+                                : `title-cart ${classes.normalfonts}`
+                            }
+                            style={{lineHeight:0.5}}
+                          >
+                            {val.namedetail[0].details}
+                          </Typography>
+                        
+                          <Typography
+                            style={{ marginTop: "8px",lineHeight:3.5}}
+                            className={
+                              this.props.checkout
+                                ? `${classes.normalfontsCheck}`
+                                : `subhesder ${classes.normalfonts}`
+                            }
+                          >
+                          {!this.props.checkout ?
+                            <div>
+                           {window.location.pathname === "/checkout" ||
+                            checkMaterial(dataval.materialName) ||
+                            !Boolean(dataval?.[0]?.maxOrderQty) ||
+                            dataval?.[0]?.maxOrderQty < 2 ? (
+                              `Quantity : ${
+                                this.props.isdatafromstate[dataval.generatedSku]
+                              }`
+                            ) : (
+                              <Quantity data={[dataval]} cart={true} />
+                            )}
+                            </div>
+                            :""
+                            }
+                          
+                          </Typography>
+                          {this.state.shipby_arr.map((val) => (
+                            <>
+                              {val?.skuId === dataval.productSkuId ? (
+                                <Typography
+                                  className={
+                                    this.props.checkout
+                                      ? `${classes.normalfontsCheck}`
+                                      : `subhesder ${classes.normalfonts}`
+                                  }
+                                  style={{
+                                    lineHeight:this.props.checkout ? 1.5 : 0.5,
+                                     marginTop:this.props.checkout ? '0px' : '13px'
+                                  }}
+                                >
+                                  {val.shipby}
+                                </Typography>
                               ) : (
                                 ""
                               )}
                             </>
-                          );
-                        })
-                      )}
-                  </Card>
-                </Grid>
-
-                <Grid item xs={5} sm={7} lg={6} style={{ padding: "13px" }}>
-                  {window.location.pathname !== "/checkout" ? (
-                    <NavLink
-                      to={dataval.skuUrl}
-                      style={{ textDecoration: "none" }}
-                    >
-                      <h3 className={`title ${classes.normalfonts}`}>
-                        {val.pro_header}
-                      </h3>
-                    </NavLink>
-                  ) : (
-                    <h3 className={`title ${classes.normalfonts}`}>
-                      {val.pro_header}
-                    </h3>
-                  )}
-                  <Grid container spacing={12}>
-                    <Grid item xs={8}>
-                      {val.namedetail !== undefined &&
-                        val.namedetail.map((val) => {
-                          return (
-                            <>
-                              {val.name || val.detail ? (
-                                <Grid container spacing={12}>
-                                  <Grid item xs={6}>
-                                    <Typography
-                                      className={`subhesder ${classes.normalfonts}`}
-                                    >
-                                      {val.name}
-                                    </Typography>
+                          ))}
+                          {dataval.dataCard1.map((val) => {
+                            return (
+                              <Pricing
+                                detail={dataval}
+                                check={this.props.checkout}
+                                offerDiscount={
+                                  val.discount ? `${val.discount}% - OFF` : null
+                                }
+                                price={val.price}
+                                offerPrice={val.offerPrice}
+                                quantity={
+                                  this.props.isdatafromstate[
+                                    dataval.generatedSku
+                                  ]
+                                }
+                              ></Pricing>
+                            );
+                          })}
+                          {/* {val.namedetail !== undefined &&
+                          val.namedetail.map((val) => {
+                            return (
+                              <>
+                                {val.name || val.detail ? (
+                                  <Grid container>
+                                    <Grid item xs={6}>
+                                      <Typography
+                                        className={`subhesder ${classes.normalfonts}`}
+                                      >
+                                        {val.name}
+                                      </Typography>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                      <Typography
+                                        className={`subhesder ${classes.normalfonts}`}
+                                      >
+                                        {val.details}
+                                      </Typography>
+                                    </Grid>
                                   </Grid>
-                                  <Grid item xs={6}>
-                                    <Typography
-                                      className={`subhesder ${classes.normalfonts}`}
-                                    >
-                                      {val.details}
-                                    </Typography>
-                                  </Grid>
-                                </Grid>
-                              ) : null}
-                            </>
-                          );
-                        })}
-                    </Grid>
+                                ) : null}
+                              </>
+                            );
+                          })} */}
+                        </Grid>
 
-                    <Grid item xs={4}>
-                      <Typography
-                        style={{ marginTop: "8px" }}
-                        className={`subhesder ${classes.normalfonts}`}
-                      >
-                        {window.location.pathname === "/checkout" ||
-                        checkMaterial(dataval.materialName) ||
-                        !Boolean(dataval?.[0]?.maxOrderQty) ||
-                        dataval?.[0]?.maxOrderQty < 2 ? (
-                          `Quantity ${
-                            this.props.isdatafromstate[dataval.generatedSku]
-                          }`
-                        ) : (
-                          <Quantity data={[dataval]} cart={true} />
-                        )}
-                      </Typography>
+                        <Grid item xs={4} lg={5} style={{marginTop:"27px"}}>
+                          {/* <Typography
+                          style={{ marginTop: "8px" }}
+                          className={`subhesder ${classes.normalfonts}`}
+                        >
+                          {window.location.pathname === "/checkout" ||
+                          checkMaterial(dataval.materialName) ||
+                          !Boolean(dataval?.[0]?.maxOrderQty) ||
+                          dataval?.[0]?.maxOrderQty < 2 ? (
+                            `Quantity ${
+                              this.props.isdatafromstate[dataval.generatedSku]
+                            }`
+                          ) : (
+                            <Quantity data={[dataval]} cart={true} />
+                          )}
+                        </Typography>
 
-                      {this.state.shipby_arr.map((val) => (
-                        <>
-                          {val.skuId === dataval.productSkuId ? (
-                            <Typography
-                              className={`subhesder ${classes.normalfonts}`}
-                            >
-                              {val.shipby}
-                            </Typography>
+                        {this.state.shipby_arr.map((val) => (
+                          <>
+                            {val?.skuId === dataval.productSkuId ? (
+                              <Typography
+                                className={`subhesder ${classes.normalfonts}`}
+                              >
+                                {val.shipby}
+                              </Typography>
+                            ) : (
+                              ""
+                            )}
+                          </>
+                        ))} */}
+
+                          {window.location.pathname !== "/checkout" ? (
+                            <div style={{lineHeight:3.2}}>
+                              <Button
+                                // className="highlighter"
+                                // className={`subhesder hov ${classes.normalfonts}`}
+                                id={dataval.generatedSku}
+                                onClick={(event) =>
+                                  this.handleDeleteLocalStorage(event)
+                                }
+                                fullWidth
+                                variant="contained"
+                                style={{
+                                  color: "gray",
+                                  width: "96%",
+                                  border: "1.46px solid #919396",
+                                  backgroundColor: "white",
+                                  borderRadius: "0px",
+                                  boxShadow: "none",
+                                  paddingRight: "40px",
+                                  paddingLeft: "40px",
+                                }}
+                              >
+                                &nbsp;Remove
+                              </Button>
+                              <span>&nbsp;</span>
+                              {!dataval?.isActive ? (
+                                <span
+                                  style={{
+                                    backgroundColor: "red",
+                                    fontSize: "10px",
+                                    color: "white",
+                                    padding: "2px 4px",
+                                    borderRadius: "2px",
+                                  }}
+                                >
+                                  Sold Out
+                                </span>
+                              ) : (
+                                ""
+                              )}
+                            </div>
                           ) : (
                             ""
                           )}
-                        </>
-                      ))}
 
-                      {window.location.pathname !== "/checkout" ? (
-                        <div>
-                          <span
-                            className="highlighter"
-                            className={`subhesder hov ${classes.normalfonts}`}
-                            id={dataval.generatedSku}
-                            onClick={(event) =>
-                              this.handleDeleteLocalStorage(event)
+                          {window.location.pathname !== "/checkout" ? (
+                            <div>
+                              <WishlistButton
+                                sku={dataval.generatedSku}
+                                productId={dataval.productId}
+                              />
+
+                              {!dataval.isActive ? (
+                                <span
+                                  style={{
+                                    backgroundColor: "red",
+                                    fontSize: "10px",
+                                    color: "white",
+                                    padding: "2px 4px",
+                                    borderRadius: "2px",
+                                  }}
+                                >
+                                  Sold Out
+                                </span>
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          ) : (
+                            ""
+                          )}
+
+                        </Grid>
+                      </Grid>
+                    </Grid>
+
+                    {/* <Grid item xs={4} sm={2} lg={3}>
+                    <div style={{ marginTop: "15%" }}>
+                      {dataval.dataCard1.map((val) => {
+                        return (
+                          <Pricing
+                            detail={dataval}
+                            offerDiscount={
+                              val.discount ? `${val.discount}% - OFF` : null
                             }
-                          >
-                            <i class="fa fa-trash"></i>
-                            &nbsp;Remove
-                          </span>
-                          <span>&nbsp;</span>
-                          {!dataval?.isActive ? (
-                            <span
-                              style={{
-                                backgroundColor: "red",
-                                fontSize: "10px",
-                                color: "white",
-                                padding: "2px 4px",
-                                borderRadius: "2px",
-                              }}
-                            >
-                              Sold Out
-                            </span>
-                          ) : (
-                            ""
-                          )}
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                    </Grid>
+                            price={val.price}
+                            offerPrice={val.offerPrice}
+                            quantity={
+                              this.props.isdatafromstate[dataval.generatedSku]
+                            }
+                          ></Pricing>
+                        );
+                      })}
+                    </div>
+                  </Grid> */}
+                    {this.props.checkout ? (
+                      <Divider style={{ width: "100%",border:"1px solid #DEDFE0"}} />
+                    ) :null}
                   </Grid>
-                </Grid>
+                );
+              })
+            )}
+            {!this.props.checkout ? (
+              <Grid item container spacing={1}>
+                <Grid item style={{ display: "flex", alignItems: "center" }}>
+                  <ArrowLeftIcon fontSize="small" />
 
-                <Grid item xs={4} sm={2} lg={3}>
-                  <div style={{ marginTop: "15%" }}>
-                    {dataval.dataCard1.map((val) => {
-                      return (
-                        <Pricing
-                          detail={dataval}
-                          offerDiscount={
-                            val.discount ? `${val.discount}% - OFF` : null
-                          }
-                          price={val.price}
-                          offerPrice={val.offerPrice}
-                          quantity={
-                            this.props.isdatafromstate[dataval.generatedSku]
-                          }
-                        ></Pricing>
-                      );
-                    })}
+                  <div>
+                    Go Back to{" "}
+                    <span
+                      style={{
+                        borderBottom: "2px solid #f14880",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => window.location.replace("/stylori")}
+                    >
+                      Stylori
+                    </span>
+                  </div>
+                </Grid>
+                <Grid item style={{ display: "flex", alignItems: "center" }}>
+                  <ArrowLeftIcon fontSize="small" />
+                  <div>
+                    Go Back to{" "}
+                    <span
+                      style={{
+                        borderBottom: "2px solid #06ab9f",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => window.location.replace("/styloriSilver")}
+                    >
+                      Stylori Silver
+                    </span>
                   </div>
                 </Grid>
               </Grid>
-            </div>
-          ))
-        )}
-        {this.subtotals(props)}
+            ) :null}
+          </Grid>
+          {!this.props.checkout ? (
+            <Grid
+              item
+              xs={1}
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <Divider variant="vertical" />
+            </Grid>
+          )
+        : null}
+
+          <Grid item xs={this.props?.checkout ? 12 : 4}>
+            {this.subtotals(props)}
+          </Grid>
+          </Grid>
       </div>
     );
   };
@@ -464,40 +700,106 @@ class Checkoutcard extends React.Component {
     let productIsActive = true;
     let productURL;
     this.props.data.map((val) => {
-      if (val?.isActive == false) {
+      if (val?.isActive === false) {
         productIsActive = val?.isActive;
         productURL = val?.skuUrl;
       }
+      return 0;
     });
     let path = window.location.pathname.split("/").pop();
 
     return (
-      <div>
-        {path == "checkout" ? (
+      <div style={{ width: "100%",marginTop:"20px" }}>
+        {path === "checkout" ? (
           ""
         ) : (
-          <div className="ckeckout-top">
-            <div
-              style={{ textDecoration: "none" }}
-              onClick={() => {
-                if (productIsActive) {
-                  localStorage.removeItem("bil_isactive");
-                  localStorage.removeItem("ship_isactive");
-                  localStorage.setItem("panel", 1);
-                  localStorage.removeItem("select_addres");
-                  window.location.href = "/checkout";
-                }
+          <div
+            onClick={() => {
+              if (productIsActive) {
+                localStorage.removeItem("bil_isactive");
+                localStorage.removeItem("ship_isactive");
+                localStorage.setItem("panel", 1);
+                localStorage.removeItem("select_addres");
+                window.location.href = "/checkout";
+              }
+            }}
+          >
+            <Buynowbutton
+              style={{
+                background: "#d51f63",
+                padding: 10,
+                borderRadius:'0px'
               }}
-            >
-              <Buynowbutton
-                productURL={productURL}
-                productIsActive={productIsActive ?? ""}
-                class={`chckout-page-buynow ${classes.buttons}`}
-              />
-            </div>
+              isCart={true}
+              productURL={productURL}
+              productIsActive={productIsActive ?? ""}
+              class={`${classes.buttons}`}
+            />
           </div>
         )}
       </div>
+    );
+  };
+  applycoupon = (props) => {
+    const { expanded } = this.state;
+    // const { classes } = this.props;
+    return (
+      <Accordion
+        elevation={3}
+        style={{
+          border: "0px",
+          outline: "0px",
+          borderRadius: "0px",
+          padding: "0px",
+          minHeight: "40px",
+          backgroundColor:"#D3D4D5",
+          boxShadow:"none",
+          color:"#7E7F82"
+        }}
+      >
+        <AccordionSummary
+          expandIcon={
+            expanded ? (
+              <ArrowLeftIcon fontSize="14px" />
+            ) : (
+              <ArrowRightIcon fontSize="14px" />
+            )
+          }
+        >
+          <Hidden smDown>
+            <Typography
+              // className={classes.cartheader}
+              noWrap
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "14px",
+              }}
+            >
+               <img src={percentage} loading="lazy" alt="...."></img>
+              &nbsp;&nbsp;&nbsp;<b>Apply Coupon</b>
+            </Typography>
+          </Hidden>
+          <Hidden mdUp>
+            <Typography
+              // className={classes.cartheader}
+              noWrap
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                fontSize: "14px",
+              }}
+            >
+               <img  loading="lazy" alt="...." src={percentage}></img>
+              &nbsp;&nbsp;&nbsp;<b>Apply Coupon</b>
+            </Typography>
+          </Hidden>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Promo />
+        </AccordionDetails>
+      </Accordion>
     );
   };
   subtotals = (props) => {
@@ -533,52 +835,142 @@ class Checkoutcard extends React.Component {
         );
       })
       .reduce(myFunc);
-    let path = window.location.pathname.split("/").pop();
+    // let path = window.location.pathname.split("/").pop();
     const { classes } = this.props;
+
     return (
-      <div style={{ marginTop: "10px" }}>
-        <Grid container spacing={12}>
-          <Grid item xs={6} />
-          <Grid item xs={6}>
-            {/* {dataCard1.map(val => */}
-            <Grid container>
-              <Grid xs={7}>
-                <Typography className={`subhesder ${classes.normalfonts}`}>
-                  Subtotal
+      <div>
+        <Grid container xs={12} lg={12}>
+          {!props.checkout ? (        
+              <div style={{width:"100%"}}>
+                 {this.applycoupon()}
+                 {/* <img src={percentage}></img>
+                <Typography
+                  style={{ color: "#6D6E71", marginLeft: 5, fontWeight: 700 }}
+                >
+                  Apply Coupon
+                </Typography> */}
+             
+              {/* <Grid item xs={1}>
+                <ArrowRightIcon className="arrow" fontSize="medium" />
+              </Grid> */}
+              </div>
+          ) :null}
+
+          {!props.checkout ? (
+            <Grid item container className="summary" xs={12}>
+              <Typography className="summaryText">Order Summary</Typography>
+            </Grid>
+          ) :null}
+
+          <Grid
+            item
+            container
+            style={{ display: "flex", backgroundColor: "#fff",padding:10}}
+            xs={12}
+          >
+            <Grid item xs={6} />
+            <Grid item container xs={12} spacing={12}>
+              {/* {dataCard1.map(val => */}
+              <Grid item xs={9} lg={8}>
+                <Typography
+                  className={
+                    this.props.checkout
+                      ? `${classes.normalfontsCheck}`
+                      : `subhesder ${classes.normalfonts}`
+                  }
+                  style={{ paddingBottom: this.props.checkout ? "20px" : "",lineHeight:2}}
+                >
+                  {this.props.checkout ? "SUBTOTAL" : "Subtotal"}
                 </Typography>
                 {yousave !== 0 || props.cartFilters.tax_price ? (
-                  <Typography className={`subhesder ${classes.normalfonts}`}>
-                    You Saved
+                  <Typography
+                    className={
+                      this.props.checkout
+                        ? `${classes.normalfontsCheck}`
+                        : `subhesder ${classes.normalfonts}`
+                    }
+                    style={{lineHeight:2}}
+                  >
+                    {this.props.checkout ? "CART DISCOUNT" : "You Saved"}
                   </Typography>
                 ) : null}
 
                 {props.cartFilters.tax_price ? (
-                  <Typography className={`subhesder ${classes.normalfonts}`}>
+                  <Typography
+                    className={
+                      this.props.checkout
+                        ? `${classes.normalfontsCheck}`
+                        : `subhesder ${classes.normalfonts}`
+                    }
+                    style={{lineHeight:2}}
+                  >
                     {props.cartFilters.coupon_type}
                   </Typography>
                 ) : (
                   ""
                 )}
-                <Typography className={`subhesder ${classes.normalfonts}`}>
-                  Shipping
-                </Typography>
                 <Typography
-                  className={`subhesder-totsl-size ${classes.normalfonts}`}
+                  className={
+                    this.props.checkout
+                      ? `${classes.normalfontsCheck}`
+                      : `subhesder ${classes.normalfonts}`
+                  }
+                  style={{lineHeight:2,
+                    marginBottom: this.props.checkout ? '20px' : ''
+                  }}
                 >
-                  Grand Total
+                  {this.props.checkout
+                    ? "SHIPPING CHARGES(Standard)"
+                    : "Delivery Chargers(Standard)"}
+                </Typography>
+
+                <Typography
+                  className={
+                    this.props.checkout
+                      ? `${classes.normalfontsCheck}`
+                      : `subhesder ${classes.normalfonts}`
+                  }
+                  style={{
+                    paddingTop: this.props.checkout ? 20 : "",
+                    fontWeight: 700,
+                    lineHeight:2,
+                    borderTop: this.props.checkout ? '2px solid #DEDFE0' : '',
+                  }}
+                >
+                  {this.props.checkout ? "TOTAL COST" : "TOTAL COST"}
                 </Typography>
               </Grid>
-              <Grid xs={5}>
-                <Typography className={`subhesder ${classes.normalfonts}`}>
-                  {props.cartFilters.gross_amount
-                    ? Math.round(props.cartFilters.gross_amount)
-                    : Math.round(dataCard1)}
+              <Grid item xs={3} lg={4} style={{ textAlign: "end" }}>
+                <Typography
+                  className={
+                    this.props.checkout
+                      ? `${classes.normalfontsCheck}`
+                      : `subhesder ${classes.normalfonts}`
+                  }
+                  style={{lineHeight:2}}
+                >
+                  {props.cartFilters.gross_amount ?
+                CurrencyConversion(props.cartFilters.gross_amount)
+                   :  CurrencyConversion(dataCard1)
+                  }
+
                 </Typography>
                 {yousave !== 0 || props.cartFilters.tax_price ? (
-                  <Typography className={`subhesder ${classes.normalfonts}`}>
+                  <Typography
+                    className={
+                      this.props.checkout
+                        ? `${classes.normalfontsCheck}`
+                        : `subhesder ${classes.normalfonts}`
+                    }
+                    style={{ paddingTop: this.props.checkout ? "20px" : "",lineHeight:2}}
+                  >
+
+                
                     {props.cartFilters.tax_price
-                      ? Math.round(yousave) + props.cartFilters.tax_price
-                      : Math.round(yousave)}
+                      ? `- ${CurrencyConversion(yousave + props.cartFilters.tax_price)}`
+                      :  `- ${CurrencyConversion(yousave)}`}
+
                   </Typography>
                 ) : null}
                 {
@@ -586,67 +978,136 @@ class Checkoutcard extends React.Component {
                 }
 
                 {props.cartFilters.tax_price ? (
-                  <Typography className={`subhesder ${classes.normalfonts}`}>
+                  <Typography
+                    className={
+                      this.props.checkout
+                        ? `${classes.normalfontsCheck}`
+                        : `subhesder ${classes.normalfonts}`
+                    }
+                    style={{lineHeight:2}}
+                  >
                     {props.cartFilters.tax_price}
                   </Typography>
                 ) : null}
-                <Typography className={`subhesder ${classes.normalfonts}`}>
+
+                <Typography
+                  className={
+                    this.props.checkout
+                      ? `${classes.normalfontsCheck}`
+                      : `subhesder ${classes.normalfonts}`
+                  }
+                  style={{lineHeight:2,
+                    marginBottom: this.props.checkout ? '20px' : ''
+                  }}
+                >
                   {props.shipping_charge}{" "}
                 </Typography>
+
                 <Typography
-                  className={`subhesder-totsl-size ${classes.normalfonts}`}
+                  className={
+                    this.props.checkout
+                      ? `${classes.normalfontsCheck}`
+                      : `subhesder ${classes.normalfonts}`
+                  }
+                  style={{
+                    paddingTop: this.props.checkout ? 14 : "",
+                    fontWeight: this.props.checkout ? 900 : 700,
+                    fontSize: this.props.checkout ? '20px' : '14px',
+                    borderTop: this.props.checkout ? '2px solid #DEDFE0' : '',
+                    lineHeight:2 
+                  }}
                 >
+                    
+            
                   {props.cartFilters.discounted_amount
-                    ? Math.round(props.cartFilters.discounted_amount)
-                    : Math.round(dataCard1 - discounted_price)}
+                    ?  CurrencyConversion(props.cartFilters.discounted_amount)
+                    : CurrencyConversion(dataCard1 - discounted_price)}
                 </Typography>
               </Grid>
+              {/* // )}  */}
             </Grid>
-            {/* // )}  */}
           </Grid>
+
+          <Grid item container xs={12}>
+            {this.checkoutbutton()}
+          </Grid>
+          <Hidden mdUp>
+          {!this.props.checkout ? (
+              <Grid item container spacing={1} style={{margin:10}}>
+                <Grid item style={{ display: "flex", alignItems: "center" }}>
+                  <ArrowLeftIcon fontSize="small" />
+
+                  <div>
+                    Go Back to{" "}
+                    <span
+                      style={{
+                        borderBottom: "2px solid #f14880",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => window.location.replace("/stylori")}
+                    >
+                      Stylori
+                    </span>
+                  </div>
+                </Grid>
+                <Grid item style={{ display: "flex", alignItems: "center" }}>
+                  <ArrowLeftIcon fontSize="small" />
+                  <div>
+                    Go Back to{" "}
+                    <span
+                      style={{
+                        borderBottom: "2px solid #06ab9f",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => window.location.replace("/styloriSilver")}
+                    >
+                      Stylori Silver
+                    </span>
+                  </div>
+                </Grid>
+              </Grid>
+            ) :null}
+          </Hidden>
+         
         </Grid>
-        <Grid container>
-          {path == "checkout" ? (
+
+        {/* <Grid container style={{display:"flex",justifyContent:"center"}}>
+          {/* {path == "checkout" ? (
             ""
           ) : (
             <>
-              <Grid xs={12}>
+              <Grid item xs={12}>
                 <NavLink to="/jewellery">
                   <div className="btn-plain"> Continue shopping</div>
                 </NavLink>
               </Grid>
             </>
-          )}
-          <Grid xs={12}>{this.checkoutbutton()}</Grid>
-        </Grid>
+          )} */}
+        {/* <Grid item xs={12}>{this.checkoutbutton()}</Grid>
+        </Grid> */}
       </div>
     );
   };
 
   render() {
-    const dataCarousel = {
-      slidesToShow: 1,
-      arrows: false,
-    };
-    var data = this.props.data;
-
-    const { classes } = this.props;
     // alert(discounted_price)
-    let path = window.location.pathname.split("/").pop();
 
     return (
-      <Grid>
-        <Hidden smDown>
-          {window.location.pathname === "/cart" ||
+      <Grid style={{marginLeft:"-16px",marginRight:"-16px"}}>
+         <Hidden smDown>
+         {window.location.pathname === "/cart" ||
           window.location.pathname === "/checkout" ? (
-            <Container>{this.row(this.props)}</Container>
+            <Container style={{maxWidth:"100%"}}>{this.row(this.props)}</Container>
           ) : (
             <>{this.row(this.props)}</>
           )}
-        </Hidden>
+         </Hidden>
+         
+   
         <Hidden mdUp>
           <CardSmallScreen
             data={this.props.data}
+            checkout={this.props.checkout}
             handleDeleteLocalStorage={(event) =>
               this.handleDeleteLocalStorage(event)
             }

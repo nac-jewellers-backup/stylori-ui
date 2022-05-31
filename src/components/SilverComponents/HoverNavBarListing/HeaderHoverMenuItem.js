@@ -1,9 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { Grid, Popper, List, ListItem, ListItemText, Typography, RadioGroup, FormControlLabel, Radio } from "@material-ui/core";
+import React, { useEffect } from "react";
+import {
+  Grid,
+  Popper,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+} from "@material-ui/core";
 import { useStyles } from "../styles";
 import PropTypes from "prop-types";
+import DoneOutlinedIcon from '@material-ui/icons/DoneOutlined';
 
-import "./../header.css";
+// import "./../header.css";
 
 function HeaderHoverMenuItem(props) {
   const [activetab, setActivetab] = React.useState("earings");
@@ -11,10 +22,14 @@ function HeaderHoverMenuItem(props) {
   const [target, setTarget] = React.useState(props.targetopened);
   const { onMouseLeave, onMouseOver, onClick } = props;
   const classes = useStyles(props);
-  const mapper = props.filters ? props.listHoverItem : props.listHoverItem["menuOne"];
+  const mapper = props.filters
+    ? props.listHoverItem
+    : props.listHoverItem["menuOne"];
   const mapperSort = props.sort ? props.tabdata : "";
   // const mapper_menu2 = props.filters ? props.listHoverItem : props.listHoverItem['menuOne']
-  const classHover = props.filters ? classes.mouseOverPopoverfilters : classes.mouseOverPopoverHeader;
+  const classHover = props.filters
+    ? classes.mouseOverPopoverfilters
+    : classes.mouseOverPopoverHeader;
   // onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}
   // listHoverItem
   useEffect(() => {
@@ -31,7 +46,11 @@ function HeaderHoverMenuItem(props) {
           id={props.id}
           anchorEl={target}
           transition
-          className={`${props.filters || props.sort ? classes.mouseOverPopoverfilters : classes.mouseOverPopover} ${classHover}`}
+          className={`${
+            props.filters || props.sort
+              ? classes.mouseOverPopoverfilters
+              : classes.mouseOverPopover
+          } ${classHover}`}
           modifiers={{
             flip: {
               enabled: false,
@@ -39,8 +58,15 @@ function HeaderHoverMenuItem(props) {
           }}
           placement="bottom"
         >
-          <List component="nav" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
-            <Grid className={classes.subtopic1} style={{ width: `${props._width}` }}>
+          <List
+            component="nav"
+            onMouseOver={onMouseOver}
+            onMouseLeave={onMouseLeave}
+          >
+            <Grid
+              className={classes.subtopic1}
+              style={{ width: `${props._width}` }}
+            >
               {!props.filters &&
                 !props.sort &&
                 props.listHoverItem &&
@@ -50,7 +76,11 @@ function HeaderHoverMenuItem(props) {
                     onMouseOver={
                       props.submenuDetails
                         ? (event) => {
-                            props.submenuDetails(menuList.imgContainer, event.currentTarget, menuList);
+                            props.submenuDetails(
+                              menuList.imgContainer,
+                              event.currentTarget,
+                              menuList
+                            );
                           }
                         : () => {}
                     }
@@ -62,8 +92,9 @@ function HeaderHoverMenuItem(props) {
                   >
                     <ListItemText variant>
                       <Typography className={classes.listedItemsvalue}>
-                        {/* {menuList.title.toUpperCase()} */}
-                        {menuList.title ? menuList.title.toUpperCase() : menuList}
+                        {menuList.title
+                          ? menuList.title.toUpperCase()
+                          : menuList}
                       </Typography>
                     </ListItemText>
                   </ListItem>
@@ -72,6 +103,7 @@ function HeaderHoverMenuItem(props) {
                 props.filters &&
                 mapper &&
                 mapper.map((menuList) => {
+                  console.log(menuList,props.chips,"sadasd")
                   return menuList.constructor === Object ? (
                     <ListItem
                       component="li"
@@ -80,19 +112,21 @@ function HeaderHoverMenuItem(props) {
                         props.onchoosetypeprice(e, menuList);
                       }}
                       className={`${
-                        props.state && props.state.numTwo === menuList.max ? classes.mouseOverPopoverfiltersselected : ""
+                        props.state && props.state.numTwo === menuList.max
+                          ? classes.mouseOverPopoverfiltersselected
+                          : ""
                       } ${classes.mouseOverPopoverfilterslist}`}
                     >
                       <ListItemText
                         variant
-                        className={`${props.filters ? classes.filtersListtopfilters : classes.filtersList}`}
-                        style={{ fontSize: "0.9rem" }}
+                        className={`${
+                          props.filters
+                            ? classes.filtersListtopfilters
+                            : classes.filtersList
+                        }`}
+                        style={{ fontSize: "0.9rem", }}
                       >
                         {menuList.label ? menuList.label : menuList}
-                        {/* {props.filtercheck === 'price' && 
-                      (<span> &nbsp;
-                        (<i style={{fontSize:'14px'}} class="fa">&#xf156;</i>)
-                      </span>)} */}
                       </ListItemText>
                     </ListItem>
                   ) : (
@@ -102,33 +136,59 @@ function HeaderHoverMenuItem(props) {
                       onClick={(e) => {
                         props.onchoosetype(
                           menuList,
-                          props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList] !== undefined
-                            ? !props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList]
+                          props.checked[
+                            props.filtercheck &&
+                              props.filtercheck.replace(/\s/g, "")
+                          ][menuList] !== undefined
+                            ? !props.checked[
+                                props.filtercheck &&
+                                  props.filtercheck.replace(/\s/g, "")
+                              ][menuList]
                             : true,
                           e,
-                          props.filtercheck ? props.filtercheck.replace(/\s/g, "") : "",
+                          props.filtercheck
+                            ? props.filtercheck.replace(/\s/g, "")
+                            : "",
                           undefined,
                           props.state,
-                          props.filtercheck ? props.filtercheck.replace(/\s/g, "") : ""
+                          props.filtercheck
+                            ? props.filtercheck.replace(/\s/g, "")
+                            : ""
                         );
                       }}
                       className={`${
-                        props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList]
-                          ? classes.mouseOverPopoverfiltersselected
-                          : ""
-                      } ${classes.mouseOverPopoverfilterslist}`}
-                      className={`${
-                        props.checked[props.filtercheck && props.filtercheck.replace(/\s/g, "")][menuList]
+                        props.checked[
+                          props.filtercheck &&
+                            props.filtercheck.replace(/\s/g, "")
+                        ][menuList]
                           ? classes.mouseOverPopoverfiltersselected
                           : ""
                       } ${classes.mouseOverPopoverfilterslist}`}
                     >
                       <ListItemText
                         variant
-                        className={`${props.filters ? classes.filtersListtopfilters : classes.filtersList}`}
+                        className={`${
+                          props.filters
+                            ? classes.filtersListtopfilters
+                            : classes.filtersList
+                        }`}
                         style={{ fontSize: "0.9rem" }}
                       >
-                        {menuList.title ? menuList.title : menuList}
+                        <div className={classes.filtersListTick}>
+                        <Typography>{menuList.title ? menuList.title : menuList}</Typography>
+                         
+
+                         {props.chips.map(data =>{
+                          if(data.label === menuList){
+                            return(
+                              <DoneOutlinedIcon className={classes.ListTick}/>
+                            )
+                          }
+                          else return;
+                         })}
+                      
+                        </div>
+                       
                       </ListItemText>
                     </ListItem>
                   );
@@ -143,14 +203,27 @@ function HeaderHoverMenuItem(props) {
                   }}
                 >
                   {mapperSort.map((menuList) => (
-                    <ListItem component="li" name={menuList} style={{ paddingTop: "0px", paddingBottom: "0px" }}>
+                    <ListItem
+                      component="li"
+                      name={menuList}
+                      style={{ paddingTop: "0px", paddingBottom: "0px" }}
+                    >
                       <ListItemText
                         variant
-                        className={`${props.sort ? classes.filtersListtopfilters : classes.filtersList} ${classes.sortSilver}`}
+                        className={`${
+                          props.sort
+                            ? classes.filtersListtopfilters
+                            : classes.filtersList
+                        } ${classes.sortSilver}`}
                       >
                         <FormControlLabel
                           value={menuList}
-                          control={<Radio className={classes.radioBtnsort} style={{ visibility: "hidden" }} />}
+                          control={
+                            <Radio
+                              className={classes.radioBtnsort}
+                              style={{ visibility: "hidden" }}
+                            />
+                          }
                           label={menuList}
                         />
                       </ListItemText>
@@ -168,7 +241,10 @@ function HeaderHoverMenuItem(props) {
                       onMouseOver={
                         props.submenuDetails
                           ? (event) => {
-                              props.submenuDetails(menuList.imgContainer, event.currentTarget);
+                              props.submenuDetails(
+                                menuList.imgContainer,
+                                event.currentTarget
+                              );
                             }
                           : () => {}
                       }
@@ -180,8 +256,10 @@ function HeaderHoverMenuItem(props) {
                     >
                       <ListItemText variant>
                         <Typography className={classes.listedItemsvalue}>
-                          {/* {menuList.title.toUpperCase()} */}
-                          {menuList.title ? menuList.title.toUpperCase() : menuList}
+
+                          {menuList.title
+                            ? menuList.title.toUpperCase()
+                            : menuList}
                         </Typography>
                       </ListItemText>
                     </ListItem>

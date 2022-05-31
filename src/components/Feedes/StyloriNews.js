@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import Slideshow from "../../components/Carousel/carosul";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   containItems: {
@@ -79,7 +79,6 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
     float: "left",
     padding: "3px 10px",
-    marginLeft: "-1px",
     lineHeight: 1.42857143,
     color: "#3a4578",
     textDecoration: "none",
@@ -125,6 +124,7 @@ export default function StyloriNews(props) {
                   <img
                     src={val.img}
                     style={{ width: "60px", height: "60px" }}
+                    loading="lazy" alt="...."
                   />
                 </Grid>
                 <Grid item className={classes.newstop}>
@@ -163,6 +163,7 @@ export default function StyloriNews(props) {
                         height: "12px",
                         fill: "rgb(58, 69, 120)"
                       }}
+                      loading="lazy" alt="...."
                       src={
                         "https://image.flaticon.com/icons/svg/2089/2089720.svg"
                       }
@@ -180,6 +181,7 @@ export default function StyloriNews(props) {
                         height: "12px",
                         fill: "rgb(58, 69, 120)"
                       }}
+                      loading="lazy" alt="...."
                       src={
                         "https://image.flaticon.com/icons/svg/2089/2089724.svg"
                       }

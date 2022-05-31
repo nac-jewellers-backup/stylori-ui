@@ -5,17 +5,13 @@ import SilverProductDescription from "components/productDescription/silverDescri
 import { Grid, Hidden } from "@material-ui/core";
 import Filter from "components/Filter/filter";
 import Footer from "components/Footer/Footer";
-import { ChatHelp } from "components/ChatHelp";
 import { FilterOptionsContext } from "context";
 import productList from "mappers/productlist";
 import { CDN_URL } from "config";
 import { withRouter } from "react-router";
 import "screens/screens.css";
 import filterData from "mappers/filterData";
-import { async } from "q";
-import MetaTags from "react-meta-tags";
 import { CartContext, GlobalContext } from "context";
-import LiveChat from "react-livechat";
 import NeedHelp from "../components/needHelp";
 import { Helmet } from "react-helmet";
 import ReactPixel from "react-facebook-pixel";
@@ -64,7 +60,7 @@ class Stylori extends React.Component {
             <title>{replaceValue}</title>
             <meta property="og:title" id="fb-title" content={this.props.mappedFilters.seo_url} />
             <meta name="description" content={this.props.mappedFilters.seo_text} />
-            <meta name="keywords" content={this.props.dataFilter[0].filter} />
+            <meta name="keywords" content={this?.props?.dataFilter[0]?.filter ?? ""} />
             <meta property="og:site_name" content="Stylori" />
             <meta property="og:description" content={this.props.mappedFilters.seo_text} />
             <meta property="og:type" content="website" />
@@ -167,7 +163,7 @@ const Components = (props) => {
     CartCtx: { allorderdata, wishlistdata },
   } = React.useContext(CartContext);
   let {
-    FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters, wishlist_count },
+    FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters},
     setloadingfilters,
   } = React.useContext(FilterOptionsContext);
   let content,

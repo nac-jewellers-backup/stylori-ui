@@ -28,7 +28,7 @@ class Buynowfixed extends React.Component {
   };
   render() {
     const { data, isSilver, classes } = this.props;
-    const _isSilver = this.isSilver ? true : false;
+    // const _isSilver = this.isSilver ? true : false;
     const canceldeletechecklist = () => {
       this.setState({
         modelOpen: false,
@@ -44,23 +44,23 @@ class Buynowfixed extends React.Component {
         });
       }
     };
-    const deletechecklists = () => {
-      var skuId = this.props.data[0].skuId;
-      var products = [];
-      var cartId = "";
-      var userId = "";
-      var obj = { sku_id: "", qty: "", price: "" };
-      obj["sku_id"] = skuId;
-      obj["qty"] = 1;
-      obj["price"] = this.props.data[0].offerPrice[0];
-      products.push(obj);
-      var skuObj = { cart_id: cartId, user_id: userId, products: products };
-      localStorage.setItem("cartDetails", JSON.stringify(skuObj));
-      window.location.href = "/cart";
-      this.setState({
-        modelOpen: false,
-      });
-    };
+    // const deletechecklists = () => {
+    //   var skuId = this.props.data[0].skuId;
+    //   var products = [];
+    //   var cartId = "";
+    //   var userId = "";
+    //   var obj = { sku_id: "", qty: "", price: "" };
+    //   obj["sku_id"] = skuId;
+    //   obj["qty"] = 1;
+    //   obj["price"] = this.props.data[0].offerPrice[0];
+    //   products.push(obj);
+    //   var skuObj = { cart_id: cartId, user_id: userId, products: products };
+    //   localStorage.setItem("cartDetails", JSON.stringify(skuObj));
+    //   window.location.href = "/cart";
+    //   this.setState({
+    //     modelOpen: false,
+    //   });
+    // };
   
     let productIsActive = this.props.productIsActive ?? "";
 

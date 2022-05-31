@@ -1,17 +1,13 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles';
 import Header from "components/SilverComponents/Header";
 import Footer from "components/Footer/Footer";
 import '../../containers/index.css'
 import { aboutus } from '../../containers/dummydatafaqs';
 
-const useStyles = makeStyles(theme => ({
 
-}));
 
 export default function AboutPage(props) {
-    const classes = useStyles();
 
     return (
         <Grid container>
@@ -21,7 +17,7 @@ export default function AboutPage(props) {
                 <Grid container className="aboutMargin">
                     <Grid container className="aboutFifty">
                         <Grid item style={{ padding: "10px" }}>
-                            <img style={{ width: "100%" }} src={aboutus.data.img} />
+                            <img style={{ width: "100%" }} src={aboutus.data.img} loading="lazy" alt="...."/>
                         </Grid>
                     </Grid>
                     <Grid container className="aboutFifty">

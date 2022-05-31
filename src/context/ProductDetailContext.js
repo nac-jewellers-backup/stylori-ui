@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useGraphql } from "hooks/GraphqlHook";
 import {
   PRODUCTDETAILS,
-  conditions,
   YouMayAlsoLike,
   youRecentlyViewed,
 } from "queries/productdetail";
@@ -175,7 +174,7 @@ export const TabsProvider = (props) => {
         arr = _sessionStorage.split(",");
         arr.push(filters.skuId);
         var uniqueArray = [...new Set(arr)];
-        var removingCurrentProduct = uniqueArray.filter((val) => {
+        var removingCurrentProduct = uniqueArray?.filter((val) => {
           if (window.location.search.split("=")[1] !== val) {
             return val;
           }

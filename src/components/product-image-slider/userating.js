@@ -2,13 +2,12 @@ import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CUSTOMERREVIEWS, USERPROFILES } from 'queries/productdetail';
-import { useGraphql } from 'hooks/GraphqlHook';
 // const { setGlobalCtx } = React.useContext(GlobalContext);
 import { ProductDetailContext } from 'context/ProductDetailContext';
 
 const useRating = (props) => {
     // console.log(props.data)
-    const { setrating, ratingcounts, setratingcounts, setratingcountsclear } = React.useContext(ProductDetailContext);
+    const { setrating,setratingcounts } = React.useContext(ProductDetailContext);
     const [values, setValues] = React.useState({
         user_id: "",
         rate: "",
@@ -30,11 +29,11 @@ const useRating = (props) => {
         },
     });
     const [invalids, setInvalids] = React.useState({ username: false, password: false });
-    const { data, error, loading, makeFetch, mapped, status } = useNetworkRequest('/addproductreview', {}, false);
+    const { data, makeFetch} = useNetworkRequest('/addproductreview', {}, false);
     var variab = {}
     // const { setratingcounts } = React.useContext(ProductDetailContext);
-    const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CUSTOMERREVIEWS, () => { }, {});
-    const { loading: codloadings, error: coderrors, data: CodDataLisen, makeRequestCod: makeRequest } = useCheckForCod(USERPROFILES, () => { }, {});
+    const { data: CodData, makeRequestCod } = useCheckForCod(CUSTOMERREVIEWS, () => { }, {});
+    const { data: CodDataLisen, makeRequestCod: makeRequest } = useCheckForCod(USERPROFILES, () => { }, {});
     const clear = () => {
         props && props.clear_rating_onchange && props.clear_rating_onchange(true)
         setratingcounts({ ratingcounts: [] })
@@ -58,7 +57,7 @@ const useRating = (props) => {
             },
         })
     }
-    const count = localStorage.getItem("count") ? localStorage.getItem("count") : ""
+    // const count = localStorage.getItem("count") ? localStorage.getItem("count") : ""
     // variab['productSku'] = values.product_sku
     // var rat_sate = values.error&&values.error.rateerr
     useEffect(() => {
@@ -84,6 +83,7 @@ const useRating = (props) => {
                 alert(data && data.message)
             }
         }
+        // eslint-disable-next-line
     }, [data])
 
     useEffect(() => {
@@ -91,6 +91,7 @@ const useRating = (props) => {
         if (rating.length > 0) {
             setrating({ CodData })
         }
+        // eslint-disable-next-line
     }, [CodData])
 
     useEffect(() => {
@@ -101,6 +102,7 @@ const useRating = (props) => {
                 username: username
             })
         }
+        // eslint-disable-next-line
     }, [CodDataLisen])
 
     useEffect(() => {
@@ -131,8 +133,7 @@ const useRating = (props) => {
             ...values,
             values
         })
-        // })
-        // }
+        // eslint-disable-next-line
     }, [])
     var check = props.ratingcounts.ratingcounts
     useEffect(() => {
@@ -144,6 +145,7 @@ const useRating = (props) => {
                 values
             })
         }
+        // eslint-disable-next-line
     }, [check])
     const handleInvalid = (type, status) => {
         setInvalids({
@@ -176,11 +178,10 @@ const useRating = (props) => {
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
             if (user_id.length > 0) {
                 // alert(JSON.stringify(data.message))
-                var rats = props.ratingcounts.ratingcounts ? props.ratingcounts.ratingcounts : ""
                 if (window.location.search) {
                     values['product_sku'] = props.data && props.data[0] && props.data[0].skuId
                     values['user_id'] = user_id
-                    values['username'] = values.username
+                    values['username'] = values['username']
                     values['product_id'] = props.data && props.data[0] && props.data[0].productId
                     if (props.data && props.data[0] && props.data[0].skuId.length > 0) {
                         variab['productSku'] = props.data && props.data[0] && props.data[0].skuId

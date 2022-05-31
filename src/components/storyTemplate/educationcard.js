@@ -88,11 +88,12 @@ export default function MediaCard(props) {
                   <span className="spanstories"></span>
                 </Grid>
                 <Grid item xs={9} className={classes.socialMediaTag}>
-                  <a target="_blank" style={{ color: "inherit", textDecoration: "none" }} href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} className="fa fa-facebook iconic" ></a>
+                  <a  style={{ color: "inherit", textDecoration: "none" }} href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} className="fa fa-facebook iconic" ></a>
 
-                  <a target="_blank" style={{ color: "inherit", textDecoration: "none" }} href={`http://www.twitter.com/share?url=${window.location.href}`} className="fa fa-twitter twitter iconic"></a>
+                  <a  style={{ color: "inherit", textDecoration: "none" }} href={`http://www.twitter.com/share?url=${window.location.href}`} className="fa fa-twitter twitter iconic"></a>
                   {/* <a className="fa fa-google-plus google iconic"></a> */}
-                  <a className={classes.cardReadLink}>read more</a>
+                  <a className={classes.cardReadLink} target="_blank"
+                          el="noopener noreferrer" href="/#">read more</a>
                 </Grid>
               </Grid>
             </CardContent>

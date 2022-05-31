@@ -1,15 +1,7 @@
 import React, { useEffect } from "react";
-import Aos from "aos";
 import "aos/dist/aos.css";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography } from "@material-ui/core";
-import Slideshow from "../../components/Carousel/carosul";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
-import StyloriNews from "./StyloriNews";
 import Tweeterfeed from "../../components/storyTemplate/tweeterEmbedded";
 import { Helmet } from "react-helmet";
 import { InstagramFeed } from "./instagramfeed";
@@ -101,7 +93,6 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     backgroundColor: "#fff",
     border: "1px solid #ddd",
-    marginLeft: 0,
     borderTopLeftRadius: "4px",
     borderBottomLeftRadius: "4px",
   },
@@ -196,12 +187,12 @@ export default function StaticView(props) {
                       style={{
                         border: "none",
                         overflow: "hidden",
-                        paddingTop: "-200px",
                         paddingTop: "60px",
                         marginTop: "-131px",
                         height: "512px",
                         width: "345px",
                       }}
+                      title="...."
                     ></iframe>{" "}
                   </>
                 ) : (
@@ -212,12 +203,12 @@ export default function StaticView(props) {
                       style={{
                         border: "none",
                         overflow: "hidden",
-                        paddingTop: "-200px",
                         paddingTop: "60px",
                         marginTop: "-131px",
                         height: "512px",
                         width: "345px",
                       }}
+                      title="...2"
                     ></iframe>{" "}
                   </>
                 )}

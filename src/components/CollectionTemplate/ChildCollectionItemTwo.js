@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid, Typography, Button, Hidden } from "@material-ui/core";
-import CollectionPageStylori from './CollectionData';
 import Slideshow from '../../components/Carousel/carosul';
 import { makeStyles } from '@material-ui/styles';
 import './Collection.css';
@@ -244,6 +243,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                     <a href={val.navigateUrl}>
                                                                         <img
                                                                             src={val.img}
+                                                                            loading="lazy" alt="...."
                                                                             style={{ width: "100%", height: "auto", cursor: "pointer" }}
                                                                         />
                                                                     </a>
@@ -260,7 +260,9 @@ export default function ChildCollectionItemTwo(props) {
                                                                 <Grid >
                                                                     <a href={data.primaryNavigateUrl}>
                                                                         <img style={{ cursor: "pointer" }} src={data.primaryImage}
-                                                                            className={classes.imageResolution}></img>
+                                                                            className={classes.imageResolution}
+                                                                            loading="lazy" alt="...."
+                                                                            ></img>
                                                                     </a>
                                                                 </Grid>
                                                                 <Grid style={{ margin: "0px 0px 10px 0px " }}>
@@ -277,7 +279,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                     <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
                                                                         <i class="fa fa-angle-left" onClick={() => previous1()}></i>
                                                                     </Grid>
-                                                                    <Grid item item xs={10} sm={10} md={10} alignItems="center">
+                                                                    <Grid item  xs={10} sm={10} md={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider1}>
                                                                             {data.primaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container className={classes.cardMargin}>
@@ -288,7 +290,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         </Typography>
                                                                                         <Grid item style={{ display: "flex", justifyContent: 'center' }}>
                                                                                             <a href={val.navigateUrl}>
-                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} loading="lazy" alt="...."/>
                                                                                             </a>
                                                                                         </Grid>
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
@@ -319,7 +321,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                 <Grid >
                                                                     <a href={data.primaryNavigateUrl}>
                                                                         <img style={{ cursor: "pointer" }} src={data.primaryImage}
-                                                                            className={classes.imageResolution}></img>
+                                                                            className={classes.imageResolution} loading="lazy" alt="...." ></img>
                                                                     </a>
                                                                 </Grid>
                                                                 <Grid style={{ margin: "0px 0px 10px 0px " }}>
@@ -336,7 +338,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                     <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
                                                                         <i class="fa fa-angle-left" onClick={() => previous2()}></i>
                                                                     </Grid>
-                                                                    <Grid item item xs={10} sm={10} md={10} alignItems="center">
+                                                                    <Grid item  xs={10} sm={10} md={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider2}>
                                                                             {data && data.primaryCarouselDetails && data.primaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container className={classes.cardMargin}>
@@ -348,7 +350,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         <Grid item style={{ display: "flex", justifyContent: 'center' }}
                                                                                             onClick={() => { window.location.pathname = `${val.navigateUrl}` }}>
                                                                                             <a href={val.navigateUrl}>
-                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} loading="lazy" alt="...." />
                                                                                             </a>
                                                                                         </Grid>
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
@@ -380,7 +382,7 @@ export default function ChildCollectionItemTwo(props) {
                                                             <Grid >
                                                                 <a href={data.secondaryNavigateUrl}>
                                                                     <img style={{ cursor: "pointer" }} src={data.secondaryImage}
-                                                                        className={classes.imageResolution}></img>
+                                                                        className={classes.imageResolution} loading="lazy" alt="...."></img>
                                                                 </a>
                                                             </Grid>
                                                             <Grid style={{ margin: "0px 0px 10px 0px " }}>
@@ -398,7 +400,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                     <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
                                                                         <i class="fa fa-angle-left" onClick={() => previous3()}></i>
                                                                     </Grid>
-                                                                    <Grid item item xs={10} sm={10} md={10} lg={10} xl={10} alignItems="center">
+                                                                    <Grid item  xs={10} sm={10} md={10} lg={10} xl={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider3}>
                                                                             {data && data.secondaryCarouselDetails && data.secondaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container style={{ display: "flex", justifyContent: "center" }}>
@@ -410,7 +412,7 @@ export default function ChildCollectionItemTwo(props) {
 
                                                                                         <Grid item style={{ display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}
                                                                                             onClick={() => { window.location.pathname = `${val.navigateUrl}` }}>
-                                                                                            <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                            <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} loading="lazy" alt="...."/>
                                                                                         </Grid>
 
                                                                                         <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
@@ -449,6 +451,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                             <img
                                                                                 src={val.img}
                                                                                 style={{ width: "100%", height: "auto", cursor: "pointer" }}
+                                                                                loading="lazy" alt="...."
                                                                             />
                                                                         </a>
 
@@ -463,7 +466,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                 <Grid item >
                                                                     <a href={data.primaryNavigateUrl}>
                                                                         <img style={{ cursor: "pointer" }} src={data.primaryImage}
-                                                                            className={classes.imageResolution}></img>
+                                                                            className={classes.imageResolution} loading="lazy" alt="...."></img>
                                                                     </a>
                                                                 </Grid>
                                                                 <Grid style={{ margin: "0px 0px 10px 0px " }}>
@@ -480,7 +483,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                     <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
                                                                         <i class="fa fa-angle-left" onClick={() => previous4()}></i>
                                                                     </Grid>
-                                                                    <Grid item item xs={10} sm={10} md={10} lg={10} xl={10} alignItems="center">
+                                                                    <Grid item  xs={10} sm={10} md={10} lg={10} xl={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider4}>
                                                                             {data && data.primaryCarouselDetails && data.primaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container style={{ display: "flex", justifyContent: "center", marginTop: "54px" }}>
@@ -493,7 +496,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         <Grid item style={{ display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}
                                                                                             onClick={() => { window.location.pathname = `${val.navigateUrl}` }}>
                                                                                             <a href={val.navigateUrl}>
-                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} loading="lazy" alt="...."/>
                                                                                             </a>
                                                                                         </Grid>
 
@@ -525,7 +528,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                 <Grid >
                                                                     <a href={data.secondaryNavigateUrl}>
                                                                         <img style={{ cursor: "pointer" }} src={data.secondaryImage}
-                                                                            className={classes.imageResolution}></img>
+                                                                            className={classes.imageResolution} loading="lazy" alt="...."></img>
                                                                     </a>
                                                                 </Grid>
                                                                 <Grid style={{ margin: "0px 0px 10px 0px " }}>
@@ -542,7 +545,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                     <Grid xs={1} sm={1} md={1} lg={1} xl={1} className={classes.arrowIconLeft}>
                                                                         <i class="fa fa-angle-left" onClick={() => previous5()}></i>
                                                                     </Grid>
-                                                                    <Grid item item xs={10} sm={10} md={10} alignItems="center">
+                                                                    <Grid item  xs={10} sm={10} md={10} alignItems="center">
                                                                         <Slideshow dataCarousel={props.CollectionPageStylori.Testimony.carousel.setting} sliderRef={slider5}>
                                                                             {data && data.secondaryCarouselDetails && data.secondaryCarouselDetails.map((val, index) => <>
                                                                                 <Grid container style={{ display: "flex", justifyContent: "center" }}>
@@ -555,7 +558,7 @@ export default function ChildCollectionItemTwo(props) {
                                                                                         <Grid item style={{ display: "flex", justifyContent: 'center', width: "100%", height: "auto" }}
                                                                                             onClick={() => { window.location.pathname = `${val.navigateUrl}` }}>
                                                                                             <a href={val.navigateUrl}>
-                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} />
+                                                                                                <img style={{ cursor: "pointer" }} className={classes.imgcoin} src={val.img} loading="lazy" alt="...."/>
                                                                                             </a>
                                                                                         </Grid>
 

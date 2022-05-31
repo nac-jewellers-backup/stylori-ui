@@ -3,7 +3,6 @@ import { Grid, Hidden } from "@material-ui/core";
 import { useStyles } from "./style";
 import Slideshow from "../../Carousel/carosul";
 import "./index.css";
-import NacGagets from "../../../components/NacGagets/NacGagets";
 import Gadgets from "components/product-image-slider/Gagetstylori/Gagetstylori";
 
 export const FeaturedGridComponent = (props) => {
@@ -29,6 +28,7 @@ export const FeaturedGridComponent = (props) => {
                   style={{ cursor: "pointer" }}
                   src={val.mob}
                   className={`${classes.img}`}
+                  loading="lazy" alt="...."
                 />
               );
             })}
@@ -39,16 +39,21 @@ export const FeaturedGridComponent = (props) => {
             {props.data[0].images.map((val, Index) => {
               return (
                 <a
-                  onClick={() =>
-                    (window.location.href =
-                      props.imgs && "/silver-jewellery-dmudra")
-                  }
+                 href={() =>
+                  (window.location.href =
+                    props.imgs && "/silver-jewellery-dmudra")
+                 }
+                  // onClick={() =>
+                  //   (window.location.href =
+                  //     props.imgs && "/silver-jewellery-dmudra")
+                  // }
                   style={{ cursor: "pointer" }}
                 >
                   <img
                     src={val.web}
                     className={`${classes.img}`}
                     style={{ cursor: "pointer", width: "100%" }}
+                    loading="lazy" alt="...."
                   />
                 </a>
               );

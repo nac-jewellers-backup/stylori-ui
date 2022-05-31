@@ -1,6 +1,4 @@
-import FlowerDimon from "../assets/FlowerDimon.jpg";
-import closeheart from "../assets/closeheart.jpg";
-import nosepin from "../assets/nosepin.gif";
+
 
 export const homePageStylori = {
   //------------- banner image ---------------
@@ -87,20 +85,20 @@ export const homePageStylori = {
       //
 
       {
-        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-jewellery-w.jpg	",
-        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-jewellery-m.jpg	",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-jewellery-w.webp	",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-jewellery-m.webp	",
         navigateUrl: "https://www.stylori.com/jewellery-butterfly?sort=New%20to%20Stylori&startprice=0&endprice=0",
       },
       {
-        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-one-day-shipping-jewellery-W.jpg	",
-        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-one-day-shipping-jewellery-m.jpg	",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-one-day-shipping-jewellery-W.webp	",
+        mobileImg: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-one-day-shipping-jewellery-m.webp	",
         navigateUrl: "https://www.stylori.com/jewellery-shipping+in+1+day",
       },
 
       {
-        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-web-banner.jpg	",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-web-banner.webp	",
         mobileImg:
-          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-mob-banner.jpg	",
+          "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Stylori-Silver-jewellery-mob-banner.webp	",
         navigateUrl: "https://www.stylori.com/styloriSilver",
       },
       // {
@@ -291,23 +289,23 @@ export const homePageStylori = {
   //-------------Grid 5 images ----------
   collectionGrid: [
     {
-      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Monsoon-tile.jpg",
+      img: "https://assets.stylori.com/banners/web/Stylori-Monsoon-tile.webp",
       navigateUrl: "/jewellery-from+monsoon+collection",
     },
     {
-      img: "https://assets.stylori.com/images/Static+Pages/Home+Page/mangocollection.png",
+      img: "https://assets.stylori.com/banners/web/mangocollection.webp",
       navigateUrl: "/jewellery-from+the+summer+collection?sort=latest",
     },
     {
-      img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori-Butterfly-tile-image.jpg",
+      img: "https://assets.stylori.com/banners/web/Stylori-Butterfly-tile-image.webp",
       navigateUrl: "/jewellery-butterfly?sort=latest&amp;startprice=0&amp;endprice=0",
     },
     {
-      img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori_+Daisy+Days.png",
+      img: "https://assets.stylori.com/banners/web/Stylori_-Daisy-Days.webp",
       navigateUrl: "/jewellery-from+daisy+days+collection?sort=latest&page=4",
     },
     {
-      img: "https://assets.stylori.com/images/Static+Pages/Home+Page/blush+3.png",
+      img: "https://assets.stylori.com/banners/web/blush-3.webp",
       navigateUrl: "/jewellery-blush",
     },
   ],
@@ -384,23 +382,23 @@ export const homePageStylori = {
     //------testimony images section --------------
     bangleGrid: [
       {
-        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/PendantVertical.png",
+        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/PendantVertical.webp",
         navigateUrl: "/pendants-jewellery?sort=latest",
       },
       {
-        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/BangleSquare.png",
+        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/BangleSquare.webp",
         navigateUrl: "/bangles-jewellery?sort=latest",
       },
       {
-        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/EarringRectangle.png",
+        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/EarringRectangle.webp",
         navigateUrl: "/earrings-jewellery?sort=latest",
       },
       {
-        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/RingRectangle.png",
+        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/RingRectangle.webp",
         navigateUrl: "/rings-jewellery?sort=latest",
       },
       {
-        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/nosepinSquare.png",
+        img: "https://assets.stylori.com/images/Static+Pages/Home+Page/nosepinSquare.webp",
         navigateUrl: "/nose+pin+online-jewellery?sort=featured",
       },
     ],

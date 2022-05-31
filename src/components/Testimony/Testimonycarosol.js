@@ -270,9 +270,9 @@ export default function ImageGridList(props) {
     const imageslice = (image) => {
         let val = image.split('/')
         return (`${CDN_URL}${val[0]}/${val[1]}/275X275/${val[2]}`)
-
-
     }
+
+
 
     return (
         <Grid container className={classes.root}>
@@ -280,21 +280,21 @@ export default function ImageGridList(props) {
                 <Grid item className={classes.containerRoot}>
                     <Grid container className={classes.container}>
                         <Grid item md={1} lg={1} sm={1} xs={1} className={classes.imgleftGrid}>
-                            <img onClick={() => previous()} className={classes.imgleft} />
+                            <img onClick={() => previous()} className={classes.imgleft} loading="lazy"/>
                         </Grid>
                         <Grid item md={10} lg={10} sm={10} xs={10}  >
                             <Grid container>
-                                <Grid item item xs={12} alignItems="center">
+                                <Grid item  xs={12} style={{display:"flex",alignItems:"center"}}>
                                     <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
-                                        {carosolData && carosolData.map((val, index) => <>
+                                        {Array.isArray(carosolData) && carosolData.map((val, index) => <>
                                             <Grid container>
-                                                <Grid item md={3} lg={3} sm={6} xs={12} classNmae={classes.testimonialRight}>
+                                                <Grid item md={3} lg={3} sm={6} xs={12} className={classes.testimonialRight}>
                                                     <Typography className={classes.testimonyTitle}>
                                                         {val.title}
                                                     </Typography>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
                                                         <Slideshow>
-                                                            {val.productListByProductId.productImagesByProductId.nodes[0].imageUrl ? <img className={classes.imgcoin} src={imageslice(val.productListByProductId.productImagesByProductId.nodes[0].imageUrl)} /> : <img className={classes.imgcoin} src={`${CDN_URL}product/1000X1000/productnotfound.webp`} />}
+                                                            {val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl ? <img className={classes.imgcoin} alt="" src={imageslice(val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)} /> : <img className={classes.imgcoin} src={`${CDN_URL}product/1000X1000/productnotfound.webp`} loading="lazy" alt="...."/>}
                                                         </Slideshow>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
@@ -327,7 +327,7 @@ export default function ImageGridList(props) {
                             </Grid>
                         </Grid>
                         <Grid item md={1} lg={1} sm={1} xs={1} className={classes.imgRightGrid}>
-                            <img onClick={() => next()} className={classes.imgRight} />
+                            <img onClick={() => next()} className={classes.imgRight} loading="lazy"/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -336,7 +336,7 @@ export default function ImageGridList(props) {
                 <Grid item className={classes.containerRoot}>
                     <Grid container className={classes.container}>
                         <Grid item md={1} lg={1} sm={1} xs={1} className={classes.smleftGrid}>
-                            <img onClick={() => previous()} className={classes.leftIc} />
+                            <img onClick={() => previous()} className={classes.leftIc} loading="lazy" alt="...." />
                         </Grid>
                         <Grid item md={10} lg={10} sm={10} xs={10} style={{ marginBottom: "8px", minHeight: "250px" }}>
                             <Grid container >
@@ -344,14 +344,14 @@ export default function ImageGridList(props) {
                                     <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
                                         {carosolData && carosolData.map((val, index) => <>
                                             <Grid container >
-                                                <Grid item xs={12} md={3} lg={3} sm={6} xs={12} className={classes.middlecontainersm} >
+                                                <Grid item xs={12} md={3} lg={3} sm={6} className={classes.middlecontainersm} >
                                                     <Typography className={classes.testimonyTitle}>
                                                         {val.title}
                                                     </Typography>
                                                     <Grid container>
                                                         <Grid item xs={6} sm={6} style={{ textAlign: 'center' }}>
                                                             <Grid>
-                                                                <img className={classes.imgcoinsm} src={imageslice(val.productListByProductId.productImagesByProductId.nodes[0].imageUrl)} />
+                                                                <img className={classes.imgcoinsm} src={imageslice(val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)} loading="lazy" alt="...." />
                                                             </Grid>
                                                         </Grid>
                                                         <Grid container item xs={6} sm={6} className={classes.buttonTypo}>
@@ -388,7 +388,7 @@ export default function ImageGridList(props) {
                             </Grid>
                         </Grid>
                         <Grid item md={1} lg={1} sm={1} xs={1} style={{ justifyContent: "flex-end" }} className={classes.smleftGrid}>
-                            <img onClick={() => next()} className={classes.rightIc} />
+                            <img onClick={() => next()} className={classes.rightIc} loading="lazy" alt="...."/>
                         </Grid>
                     </Grid>
                 </Grid>

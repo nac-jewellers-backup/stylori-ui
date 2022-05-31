@@ -9,6 +9,7 @@ body {
 
 }
 
+
 #modalElementSizeGuide {
     overflow: hidden;
 }
@@ -27,6 +28,89 @@ body {
     color: #394578;
     line-height: 1.42857143 !important;
     /* padding: 0 10px !important; */
+}
+
+.accordion-title {
+    display: flex;
+    justify-content: space-between;
+    margin:10px;
+    color:#06a296;
+    font-size: 20px;
+}
+
+.accordion-title-check {
+    display: flex;
+    justify-content: space-between;
+    margin:10px;
+    color:#A6A8AB;
+    font-size: 20px;
+}
+
+.button{
+    width: 330px;
+    
+}
+@media only screen and (max-width: 321px) {
+    .button {
+       width: 281px;
+    }
+}
+
+
+.accordion-title2{
+    color: #606161 !important;
+    font-size: 20px !important;
+    margin-top: 0 !important;
+    font-family: 'Playfair Display', serif !important;
+    line-height: 28px;
+    margin-bottom: 0 !important;
+}
+
+.accordion-title2-check{
+    color: #606161 !important;
+    font-size: 16px !important;
+    margin-top: 0 !important;
+    font-family: 'Playfair Display', serif !important;
+    line-height: 28px;
+    margin-bottom: 0 !important;
+}
+
+.card-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif !important;
+    color: #606161 !important;
+    font-size: 20px !important;
+}
+
+.footer-above{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif !important;
+    color: #606161 !important;
+    font-size: 12px !important;
+}
+.desc-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif !important;
+    color: #606161 !important;
+    font-size: 12px !important;
+    text-align: center;
+}
+
+.accordian-item{
+    border-bottom: 1px solid #06a296;
+}
+.no-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #606161 !important;
 }
 
 .containbev {
@@ -969,13 +1053,23 @@ body {
     width: 152px !important;
     height: 60px ! important;
     background-position: 3px -29px !important;
-    /* background-image: url(https://assets.stylori.com/images/static/product-details-icons.png); */
-    /* margin-top: -30px !important; */
     position: absolute;
     background-repeat: no-repeat !important;
     margin-left: 0px;
     cursor: pointer !important;
     /* margin-left: -36.1px !important; */
+}
+
+.one-day-ship_only_silver_mobile { 
+    z-index: 999 !important;
+    width: 70px !important;
+    height: 60px ! important;
+    /* background-position: 3px -14px !important; */
+    position: absolute;
+    background-repeat: no-repeat !important;
+    margin-left: 0px;
+    cursor: pointer !important;
+    /* margin-left: -12.1px !important; */
 }
 
 .overly-img {
@@ -1716,10 +1810,10 @@ body {
 
 .pricing-loctn-silver {
     color: #6e6d72 !important;
-    font-size: 14px !important;
+    font-size: 12px !important;
     text-transform: capitalize;
     font-family: roboto;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .pricing-loctn-head {
@@ -1853,3 +1947,13 @@ body {
 .imagecardSilver div {
     display: flex !important;
 }
+
+.detailTitle {
+    color: #606161 !important;
+    font-size: 16px !important;
+    margin-top: 0 !important;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif !important;
+    line-height: 28px;
+    margin-bottom: 0 !important;
+  }

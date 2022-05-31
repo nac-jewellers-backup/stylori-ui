@@ -1,11 +1,7 @@
 import {
   Grid,
   Hidden,
-  ExpansionPanel,
   Container,
-  Popover,
-  paper,
-  Paper,
   Button,
   Typography,
 } from "@material-ui/core";
@@ -13,24 +9,22 @@ import Slideshow from "../Carousel/carosul";
 import React from "react";
 import PropTypes from "prop-types";
 import "./product-images.css";
-import Ratings from "../rating/rating";
 import { withStyles } from "@material-ui/core/styles";
 import Pricing from "../Pricing/index";
 import styles from "./style";
 import Wishlist from "components/wishlist/wishlist";
 import Buynowbutton from "../Buynow/buynowbutton";
-import CommenDialog from "../Common/Dialogmodel";
 // import { Button } from '';
 import { GlobalContext, CartContext } from "context";
 import PriceTabs from "components/product-image-slider/priceTabs";
-import Quantity from "../quantity";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import { ProductDetailContext } from "context/ProductDetailContext";
-import LocalMallIcon from "@material-ui/icons/LocalMall";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import PriceBuynow from "components/product-image-slider/buyNow"
+
 const dataCarousel = {
   dots: true,
   infinite: false,
@@ -96,9 +90,7 @@ const mobilecarousel = (props, val, wishlist, isSilver) => {
           ))
         : null}
 
-      {/* <div style={{background:"red"}}>Earrings in 18K Yellow Gold and Peridot for Kids</div> */}
       <>
-        {/* <ArrowLeftIcon onClick={next}/> */}
         <Slideshow
           zindex="1000"
           class="middle"
@@ -108,7 +100,6 @@ const mobilecarousel = (props, val, wishlist, isSilver) => {
           dataCarousel={isSilver ? dataCarouselSilver : dataCarousel}
           videoControls={true}
         />
-        {/* <ArrowRightIcon/> */}
       </>
     </div>
   );
@@ -127,26 +118,19 @@ const Productprice = (
 ) => {
   const {
     data,
-    allProps,
-    allState,
-    handleChanges,
-    handleCodChange,
-
-    pincode,
   } = props;
 
   const { classes } = props;
-
-  const open = anchorEl;
-  // const snackBarOpen = snacksBar;
   var wishlist = props.wishlist;
-  const isSilver = globalContext.Globalctx.pathName ? true : false;
-
+  const isSilver = globalContext?.Globalctx?.pathName ? true : false;
   const isactive = props?.data[0]?.isactive ?? "";
+
+
   return (
     <div>
       {data.map((val) => (
         <>
+      
           <Grid
             container
             spacing={12}
@@ -155,78 +139,143 @@ const Productprice = (
               isSilver ? classes.silverpricedetails : classes.pricedetails
             }
           >
-            <Hidden mdUp>
-              <Container>
-                <div
-                  className={`resp ${
-                    isSilver
-                      ? `${`respSilver ${classes.carouselCustomArrow}`}`
-                      : ""
-                  }`}
-                >
-                  {mobilecarousel(props, val, wishlist, isSilver)}
-                </div>
-              </Container>
-            </Hidden>
+            {!isSilver && 
+             <Hidden mdUp>
+             <Container>
+               <div
+                 className={`resp ${
+                   isSilver
+                     ? `${`respSilver ${classes.carouselCustomArrow}`}`
+                     : ""
+                 }`}
+               >
+                 {mobilecarousel(props, val, wishlist, isSilver)}
+               </div>
+             </Container>
+              </Hidden>
+            }
+           
 
             <Grid container className="containbev_silver">
               <Grid item xs={12} lg={9} md={9}>
                 <div className={`price-div ${classes.Pricediv}`}>
                   <Hidden mdUp>
                     <Grid container spacing={12} xs={12}>
-                      <Grid container item xs={12} alignItems="center">
-                        <Grid item xs={10}>
-                          <h1
-                            className={`pdp-title ${classes.title} ${classes.titlesmScreen}`}
-                            style={{ width: "90%" }}
-                          >
-                            {val?.title ?? ""}
-                          </h1>
-                        </Grid>
-                        <Grid container item xs={2} justify="flex-end">
-                          <Wishlist
-                            sku={val?.skuId}
-                            productId={val?.productId}
-                            wishlist={wishlist}
-                            globalContext={globalContext?.Globalctx}
-                          />
-                        </Grid>
+                      {isSilver ? 
+                       <Grid container item xs={12} style={{display:"flex",justifyContent:"center",flexDirection:"column",alignItems:"center"}}>
+                         <div className={`pdp-title  ${classes.titleSilverMobile}`}>
+                         {val?.title ?? ""}
+                         </div>
+                         <div className={`pdp-title  ${classes.skuIdSilverMobile}`}>
+                          {val?.skuId.slice(0,-9) ?? ""}
+                          </div> 
+                         </Grid>
+                       : <Grid container item xs={12}>
+                          <Grid item xs={10}>
+                           <h1
+                           className={`pdp-title ${classes.title} ${classes.titlesmScreen}`}
+                           style={{ width: "90%" }}
+                           >
+                             {val?.title ?? ""}
+                           </h1>
+                          </Grid>
+                          <Grid container item xs={2} justify="flex-end">
+                             <Wishlist
+                             sku={val?.skuId}
+                              productId={val?.productId}
+                             wishlist={wishlist}
+                             globalContext={globalContext?.Globalctx}
+                              />
+                            </Grid>
                       </Grid>
+                      }
                       <Grid
                         container
                         item
                         xs={12}
-                        alignContent="center"
+                        justifyContent="center"
                         alignItems="center"
                       >
                         <Hidden mdUp>
-                          <div className={`${isSilver ? "" : classes.width}`}>
+                          <div className={`${isSilver ? "" : classes.width}`} style={{width:"100%"}}>
                             <Pricing
                               offerPrice={data[0]?.offerPrice}
                               price={data[0]?.price}
                               offerDiscount={val?.offerDiscount}
                               globalContext={globalContext?.Globalctx}
-                            ></Pricing>
+                            ></Pricing> 
+
+                             <PriceBuynow data={props?.data} isSilver={isSilver} isRequired={true}/>
+
+                              <div onClick={isactive ? deletechecklists : ""} style={{marginTop:10}}>
+                               {isactive ? (
+                                   <>
+                                    {" "}
+                                 <Buynowbutton
+                                   sku={data[0].skuId}
+                                   style={{   
+                                   borderColor:"#06A296",
+                                   color:"#06A296",
+                                   padding:10
+                                   }}
+                                   button="buynow-btn-cont"
+                                   id="silverButton"
+                                   withoutBag={true}
+                                   addtoCartToBuyNow={true}
+                                   productIsActive={isactive ?? ""}
+                                   onClick={
+                                     isactive
+                                       ? handleLocalStorage.bind(this)
+                                       : ""
+                                   }
+                                 />
+                                 
+                                 {" "}
+                               </>
+                             ) : (
+                               ""
+                             )}
+                              </div>
+                           <div onClick={isactive ? deletechecklists : ""} style={{marginTop:10}}>
+                             <Buynowbutton
+                               sku={data[0].skuId}
+                               style={{    
+                                 backgroundColor:"#06A296",
+                                 color:"#fff",
+                                 padding:10
+                               }}
+                               // button="buynow-btn-cont"
+                               id="silverButton"
+                               withoutBag={true}
+                               productIsActive={isactive ?? ""}
+                               onClick={
+                                 isactive ? handleLocalStorage.bind(this) : ""
+                               }
+                             />
+                             </div>        
                           </div>
+                            
                         </Hidden>
-                      </Grid>
-                      <Grid
-                        container
-                        item
-                        xs={12}
-                        alignContent="center"
-                        alignItems="center"
-                      ></Grid>
+                      </Grid> 
                     </Grid>
                   </Hidden>
                   <Hidden smDown>
-                    <div style={{ marginTop: 8 }}>
+                    <div>
                       {isSilver ? (
                         <div className={`pdp-title  ${classes.titleSilver}`}>
                           {val?.title ?? ""}
                         </div>
                       ) : (
                         <h5 className={`pdp-title`}>{val?.title ?? ""}</h5>
+                      )}
+                    </div>
+                    <div style={{ marginTop: 8 }}>
+                      {isSilver ? (
+                        <div className={`pdp-title  ${classes.skuIdSilver}`}>
+                          {val?.skuId.slice(0,-9) ?? ""}
+                        </div>
+                      ) : (
+                         ""
                       )}
                     </div>
                   </Hidden>
@@ -248,14 +297,13 @@ const Productprice = (
                   }}
                 >
                   <Pricing
-                    // globalContext={globalContext.Globalctx}
-                    // offerPrice={data[0].offerPrice}
                     offerPrice={data[0]?.offerPrice}
                     price={data[0]?.price}
                     offerDiscount={data[0]?.offerDiscount}
                     withOffer={true}
                     globalContext={globalContext?.Globalctx}
                   />
+                  <PriceBuynow data={props?.data} isSilver={isSilver}/>
                 </Grid>
               </Hidden>
 
@@ -278,8 +326,8 @@ const Productprice = (
                       ) || !isSilver ? (
                         <Grid item xs={12}>
                           <div className="overall-box ">
-                            <PriceTabs data={props?.data} isSilver={isSilver} />
-                          </div>
+                            <PriceTabs data={props?.data} isSilver={isSilver} /> 
+                          </div>      
                         </Grid>
                       ) : null}
 
@@ -287,52 +335,106 @@ const Productprice = (
                         <Grid
                           item
                           xs={12}
-                          style={{ padding: "10px 0px 20px 0px" }}
+                          style={{ padding: "20px 0px 20px 0px",display:"flex"}}
                         >
-                          <Grid item xs={3} sm={4} md={4} lg={3}>
+                          {isactive ?
+                           <Grid item xs={3} sm={4} md={4} lg={6}>   
+                           <div onClick={isactive ? deletechecklists : ""}>
+                             {isactive ? (
+                               <>
+                                 {" "}
+                                 <Buynowbutton
+                                   sku={data[0].skuId}
+                                   style={{   
+                                   borderColor:"#06A296",
+                                   color:"#06A296",
+                                   padding:10
+                                   }}
+                                   button="buynow-btn-cont"
+                                   id="silverButton"
+                                   withoutBag={true}
+                                   addtoCartToBuyNow={true}
+                                   productIsActive={isactive ?? ""}
+                                   onClick={
+                                     isactive
+                                       ? handleLocalStorage.bind(this)
+                                       : ""
+                                   }
+                                 />
+                                 
+                                 {" "}
+                               </>
+                             ) : (
+                               ""
+                             )}
+                           </div>
+                            </Grid>
+                           :  <Grid item xs={3} sm={4} md={4} lg={12}>    
                             <div onClick={isactive ? deletechecklists : ""}>
-                              {isactive ? (
-                                <>
-                                  {" "}
-                                  <Buynowbutton
-                                    sku={data[0].skuId}
-                                    class={`${classes.buttonsilverAddToCart} ${classes.buttonHeightAddToCart} ${classes.robotoBoldFont} ${classes.add_to_cart_text}`}
-                                    button="buynow-btn-cont"
-                                    id="silverButton"
-                                    withoutBag={true}
-                                    addtoCartToBuyNow={true}
-                                    productIsActive={isactive ?? ""}
-                                    onClick={
-                                      isactive
-                                        ? handleLocalStorage.bind(this)
-                                        : ""
-                                    }
-                                  />{" "}
-                                </>
-                              ) : (
-                                ""
-                              )}
+                           {isactive ? (
+                             <>
+                               {" "}
+                               <Buynowbutton
+                                 sku={data[0].skuId}
+                                 style={{   
+                                 borderColor:"#06A296",
+                                 color:"#06A296",
+                                 padding:10
+                                 }}
+                                 button="buynow-btn-cont"
+                                 id="silverButton"
+                                 withoutBag={true}
+                                 addtoCartToBuyNow={true}
+                                 productIsActive={isactive ?? ""}
+                                 onClick={
+                                   isactive
+                                     ? handleLocalStorage.bind(this)
+                                     : ""
+                                 }
+                               />
+                               
+                               {" "}
+                             </>
+                           ) : (
+                             ""
+                           )}
                             </div>
                           </Grid>
+                           }
+                          {isactive ? 
+                           <Grid item xs={3} sm={4} md={5} lg={6} style={{marginLeft:10}}>
+                           <div onClick={isactive ? deletechecklists : ""}>
+                             <Buynowbutton
+                               sku={data[0].skuId}
+                               style={{    
+                                 backgroundColor:"#06A296",
+                                 color:"#fff",
+                                 padding:10
+                               }}
+                               // button="buynow-btn-cont"
+                               id="silverButton"
+                               withoutBag={true}
+                               productIsActive={isactive ?? ""}
+                               onClick={
+                                 isactive ? handleLocalStorage.bind(this) : ""
+                               }
+                             />
+                           </div>
+                            </Grid>
+                            : null
+                          }
+                         
                         </Grid>
                       )}
+
+
                       <Grid container item xs={12}>
-                        <Grid item xs={3} sm={4} md={5} lg={4}>
-                          <div onClick={isactive ? deletechecklists : ""}>
-                            <Buynowbutton
-                              sku={data[0].skuId}
-                              class={`${classes.buynowButtonSilver} ${classes.buttonsilver} ${classes.robotoBoldFont}`}
-                              button="buynow-btn-cont"
-                              id="silverButton"
-                              withoutBag={true}
-                              productIsActive={isactive ?? ""}
-                              onClick={
-                                isactive ? handleLocalStorage.bind(this) : ""
-                              }
-                            />
-                          </div>
-                        </Grid>
-                        <Grid
+                        <Typography
+                        style={{
+                          color:"#06A296"
+                        }}
+                        >Shipping Calculated at Checkout</Typography>
+                        {/* <Grid
                           container
                           item
                           xs={4}
@@ -371,8 +473,6 @@ const Productprice = (
                                   onClick={handleClick}
                                 ></i>{" "}
                                 &nbsp;
-                                {/* {JSON.stringify(val.productId)} */}
-                                {/* <Wishlist sku={val.skuId} productId={val.productId} /> */}
                                 <Popover
                                   id="simple-popper"
                                   open={open}
@@ -418,17 +518,13 @@ const Productprice = (
                               </div>
                             </div>
                           </Grid>
-                        </Grid>
+                        </Grid> */}
                       </Grid>
                     </Grid>
                   </Grid>
                 </Hidden>
               </Grid>
             </Grid>
-            {/* </Paper> */}
-            {/* <Hidden smDown>
-                            <hr class="bottom-line product-inform-ation"></hr>
-                        </Hidden> */}
           </Grid>
         </>
       ))}
@@ -462,7 +558,6 @@ class Component extends React.Component {
       heart: false,
       anchorEl: false,
       modelOpen: false,
-      // snacksBar: false,
     };
   }
 
@@ -478,21 +573,7 @@ class Component extends React.Component {
       anchorEl: false,
     });
   };
-  // handleSnackBarClick = () => {
-  //   debugger;
-  //   console.log("hello");
-  //   alert("hello");
-  //   this.setState({
-  //     snacksBar: true,
-  //   });
-  // };
-  // handleSnackBarClose = () => {
-  //   debugger;
 
-  //   this.setState({
-  //     snacksBar: false,
-  //   });
-  // };
   valus = (valueId) => {
     var valus_locl = localStorage.getItem("cartDetails")
       ? JSON.parse(localStorage.getItem("cartDetails")).products
@@ -508,10 +589,9 @@ class Component extends React.Component {
     }
     return vals;
   };
+
   handleLocalStorage = () => {
     if (this.valus(this.props.data[0].skuId) === 1) {
-      // this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
-      // sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
       window.location.pathname = "/cart";
     } else {
       this.setState({
@@ -589,8 +669,7 @@ class Component extends React.Component {
   render() {
     const { anchorEl } = this.state;
     const context = this.context;
-    const { snacksBar } = this.state;
-    // alert(JSON.stringify(this.props.wishlist))
+
     return (
       <div>
         <Hidden smDown>
@@ -605,14 +684,11 @@ class Component extends React.Component {
             this.canceldeletechecklistCancel,
             this.deletechecklists,
             this.handletest
-            // snacksBar,
-            // this.handleSnackBarClick,
-            // this.handleSnackBarClose
           )}
         </Hidden>
 
         <Hidden mdUp>
-          <Container style={{ paddingBottom: "6px" }}>
+     
             {Productprice(
               this.props,
               this.state,
@@ -624,11 +700,8 @@ class Component extends React.Component {
               this.canceldeletechecklistCancel,
               this.deletechecklists,
               this.handletest
-              // snacksBar,
-              // this.handleSnackBarClick,
-              // this.handleSnackBarClose
             )}
-          </Container>
+    
         </Hidden>
       </div>
     );

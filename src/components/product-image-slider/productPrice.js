@@ -1,10 +1,8 @@
 import {
   Grid,
   Hidden,
-  ExpansionPanel,
   Container,
   Popover,
-  paper,
   Paper,
 } from "@material-ui/core";
 import Slideshow from "../Carousel/carosul";
@@ -16,9 +14,9 @@ import { withStyles } from "@material-ui/core/styles";
 import Pricing from "../Pricing/index";
 import styles from "./style";
 import Wishlist from "components/wishlist/wishlist";
-import { Button } from "semantic-ui-react";
 import axios from "axios";
-import { API_URL, CDN_URL } from "config";
+import { API_URL} from "config";
+
 const dataCarousel = {
   dots: true,
   infinite: false,
@@ -30,7 +28,7 @@ const dataCarousel = {
 };
 
 const mobilecarousel = (props, val, wishlist) => {
-  const { data, classes } = props;
+  const { data } = props;
   return (
     <div>
       {data.map((data_map) => (
@@ -96,12 +94,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
         <>
           <Grid container spacing={12} sm={12} className={classes.pricedetails}>
             <Hidden mdUp>
-              <div className="resp">
-           
-                {mobilecarousel(props, val, wishlist)}
-
-          
-              </div>
+              <div className="resp">{mobilecarousel(props, val, wishlist)}</div>
             </Hidden>
             <Paper
               elevation={0}
@@ -196,7 +189,6 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                     >
                       <div
                         className="row social-shares"
-                        className={classes.icon}
                       >
                         <i
                           class="fa fa-share-alt overall-icons"
@@ -204,12 +196,11 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                           onClick={handleClick}
                         ></i>{" "}
                         &nbsp;
-                    
-                        <Wishlist
+                        {/* <Wishlist
                           sku={val?.skuId}
                           productId={val?.productId}
                           wishlist={wishlist}
-                        />
+                        /> */}
                         <Popover
                           id="simple-popper"
                           open={open}
@@ -229,10 +220,11 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                             <a
                               class="facebook"
                               target="_blank"
+                              rel="noopener noreferrer" 
                               href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
                             >
                               <img
-                              alt=""
+                               loading="lazy" alt="...."
                                 class="lazyload"
                                 src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg"
                               />
@@ -240,17 +232,17 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                             &nbsp;
                             <a
                               className="twitter"
-                              target="_blank"
+                              target="_blank" 
+                              rel="noopener noreferrer"
                               href={`http://www.twitter.com/share?url=${window.location.href}`}
                             >
                               <img
-                              alt=""
+                                loading="lazy" alt="...."
                                 class="lazyload"
                                 src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg"
                               />
                             </a>
                             &nbsp;
-                           
                           </div>
                         </Popover>
                         <div onClick={() => window.scrollTo(0, 1800)}>
@@ -265,7 +257,6 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
                 </Grid>
               </Grid>
             </Paper>
-          
           </Grid>
 
           <Hidden smDown>
@@ -274,14 +265,11 @@ const Productprice = (props, anchorEl, handleClick, handleClose, state) => {
               style={{ padding: "0px 10px  0px 10px " }}
             >
               {data[0].price === data[0].offerPrice ? (
-                <Pricing offerPrice={data[0]?.offerPrice}>
-           
-                </Pricing>
+                <Pricing offerPrice={data[0]?.offerPrice}></Pricing>
               ) : (
                 <Pricing
                   offerPrice={data[0]?.offerPrice}
                   price={data[0]?.price}
-
                 ></Pricing>
               )}
             </div>

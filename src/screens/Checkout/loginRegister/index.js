@@ -1,14 +1,11 @@
 import React from "react";
 import "./loginRegisters.css";
-import { Container, Grid, Button, Card, CardContent } from "@material-ui/core";
-import Login from "./login";
-import Register from "./register";
-import Continues from "./continues";
+import { Grid, Button} from "@material-ui/core";
+import Login2 from "./login2";
 import { useDummyRequest } from "../../../hooks";
 import { checkoutloginRegs } from "../../../mappers";
 import styles from "./style";
 import { withStyles } from "@material-ui/core/styles";
-import { fontWeight } from "@material-ui/system";
 import { CartContext } from "../../../context/CartContext";
 
 class LoginRegisterIndex extends React.Component {
@@ -31,21 +28,19 @@ class LoginRegisterIndex extends React.Component {
 
 
   render() {
-    const { LogRegData } = this.props.data;
-    const { classes } = this.props;
     var obj_user = {};
     let user_id = localStorage.getItem("user_id")
       ? localStorage.getItem("user_id")
       : "";
-    let set_check = localStorage.getItem("set_check")
-      ? localStorage.getItem("set_check")
-      : "";
+    // let set_check = localStorage.getItem("set_check")
+    //   ? localStorage.getItem("set_check")
+    //   : "";
     const local_mail = localStorage.getItem("email")
       ? localStorage.getItem("email")
       : "";
-    const local_mail_id = localStorage.getItem("_mail_")
-      ? localStorage.getItem("_mail_")
-      : null;
+    // const local_mail_id = localStorage.getItem("_mail_")
+    //   ? localStorage.getItem("_mail_")
+    //   : null;
     return (
       <Grid container>
         {localStorage.getItem("_mail_") === null && local_mail ? (
@@ -75,7 +70,7 @@ class LoginRegisterIndex extends React.Component {
               style={{
                 height: "42px",
                 color: "#fff",
-                background: "#394578",
+                background: "#d51f63",
                 borderLeft: "none !important",
                 border: "0px !important",
                 borderRadius: "0px",
@@ -89,7 +84,11 @@ class LoginRegisterIndex extends React.Component {
           </div>
         ) : (
           <div style={{ width: "100%" }}>
-            <div
+            <Login2
+            changePanel={this.props.changePanel}
+            isGuest={true}
+            />
+            {/* <div
               className="pt-sm"
               style={{ display: this.state.show == true ? "block" : "none" }}
             >
@@ -172,7 +171,7 @@ class LoginRegisterIndex extends React.Component {
                   });
                 }}
               />
-            </div>
+            </div> */}
           </div>
         )}
       </Grid>

@@ -3,9 +3,7 @@ import { Grid } from '@material-ui/core'
 import './faqs.css'
 import Typography from '@material-ui/core/Typography';
 class FaqsCustomer extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+
 
     render(){
         return(

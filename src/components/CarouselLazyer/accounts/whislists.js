@@ -1,17 +1,11 @@
 import React from 'react';
 import {
-    Container,
-    ExpansionPanel,
-    ExpansionPanelSummary,
-    ExpansionPanelDetails,
-    Typography,
-    Avatar,
     Grid,
-    Button
 } from '@material-ui/core';
 import "./accounts.css";
 import { CartContext } from 'context'
 import RemoveWishlist from 'components/wishlist/removewishlist';
+import CurrencyConversion from 'utils/CurrencyConversion';
 // props.setCartFilters({ skuId: data[0].skuId, qty: 1, price: data[0].offerPrice })
 const Wishlists = (props) => {
     const { setCartFilters, CartCtx, setLoadingWishlist } = React.useContext(CartContext);
@@ -67,24 +61,24 @@ class Component extends React.Component {
                                     <Grid item  style={{width:"50%"}} >
                                     <Grid item className="topPaddingwish" style={{paddingRight:"4px",float:"left"}} >
                                           <div className="remove-product" >
-                                            <RemoveWishlist sku={first_map.skuId} productId={first_map.productId} />
+                                            <RemoveWishlist sku={first_map?.skuId} productId={first_map?.productId} />
                                         </div>
                                     </Grid>
                                         <div className="wishlist_img" style={{float:"left"}}>
-                                            <img className="viewport-img" src={`https://assets.stylori.net/base_images/${first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl}`
+                                            <img className="viewport-img" loading="lazy" alt="...." src={`https://assets.stylori.net/base_images/${first_map?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl}`
                                             } />
                                          </div></Grid>
                                     <Grid  style={{width:"50%"}}>
                                         <div>
                                             <div className="wislist_title">{first_map.productListByProductId.productName}</div>
 
-                                            <div className="wislist_price">{Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice))}</div>
+                                            <div className="wislist_price">{CurrencyConversion(first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice)}</div>
                                             <div className="add-bag">
                                                 <>
                                                     <RemoveWishlist
-                                                        sku={first_map.skuId}
+                                                        sku={first_map?.skuId}
                                                         productId={first_map.productId}
-                                                        add={first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice}
+                                                        add={first_map?.transSkuListBySkuId && first_map?.transSkuListBySkuId.markupPrice}
                                                     />
                                                 <i className="fa fa-shopping-bag"></i>&nbsp;Add to Bag
                                                     </>

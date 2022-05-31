@@ -1,162 +1,491 @@
-import React from 'react';
-import './address.css'
-import { Container, Grid, Button, OutlinedInput, Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
-import { Input } from '../../../components/InputComponents/TextField/Input'
+import React from "react";
+import "./address.css";
+import {
+  Grid,
+  Button,
+  Typography,
+} from "@material-ui/core";
+import { Input } from "../../../components/InputComponents/TextField/Input";
 // import Checkboxes from '../../../components/InputComponents/CheckBox/CheckBox';
-import SimpleSelect from '../../../components/InputComponents/Select/Select'
-import Addressdetails from './addressDetails';
-import Addressforms from './Addressforms'
-let namesOf_first = localStorage.getItem("name_Of_1") ? localStorage.getItem("name_Of_1") : ""
-let namesOf_last = localStorage.getItem("name_Of_2") ? localStorage.getItem("name_Of_2") : ""
+import SimpleSelect from "../../../components/InputComponents/Select/Select";
+import Addressdetails from "./addressDetails";
+import Addressforms from "./Addressforms";
+
 const Addressform = (props) => {
-    return <AddressComponent   {...props} />
-}
+  return <AddressComponent {...props} />;
+};
 
 const AddressComponent = (props) => {
-    const { values, handle, setValues } = Addressforms(() => props.changePanel(3, values.selest_my_address));
-    const cl = <input onChange={() => setValues({
-        values, ...values,
-        checkValue: !values.checkValue
-    })} type='checkbox' checked={values.checkValue} />
-    var isedit = (localStorage.getItem("isedit"));
-    const aa = localStorage.getItem("m") ? localStorage.getItem("m") : values.addressOne.salutation
-    return (
-        <Grid>
-            <div>
-                {(isedit === '1' ? true : false) && values.addrs === true ?
-                    <div className='pt-sm'>
-                        <form onSubmit={(e) => {
-                            handle.handleSubmit(e)
+  const { values, handle, setValues } = Addressforms(() =>
+    props.changePanel(4, values.selest_my_address)
+  );
+  const cl = (
+    <input
+      onChange={() =>
+        setValues({
+          values,
+          ...values,
+          checkValue: !values.checkValue,
+        })
+      }
+      type="checkbox"
+      checked={values.checkValue}
+    />
+  );
+  var isedit = localStorage.getItem("isedit");
+  const aa = localStorage.getItem("m")
+    ? localStorage.getItem("m")
+    : values.addressOne.salutation;
+  return (
+    <Grid>
+      <div>
+        {(isedit === "1" ? true : false) && values.addrs === true ? (
+          <div className="pt-sm">
+            <form
+              onSubmit={(e) => {
+                handle.handleSubmit(e);
+              }}
+              action="javascript:void(0)"
+            >
+              {localStorage.getItem("valuessetdata") ||
+              localStorage.getItem("vals") ? (
+                <h5 className="title"> Edit Address</h5>
+              ) : (
+                ""
+              )}
+              <p class="form-group tp" style={{ width: "480px" }}>
+                {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <>{cl}</>} */}
+                {window.location.pathname.split("-")[0] === "/account" ||
+                values.edit_addresId === true ? (
+                  ""
+                ) : (
+                  <>{cl}</>
+                )}
+                {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
+              </p>{" "}
+              <Grid container xs={12} lg={12}>
+                <Grid
+                  item
+                  xs={12}
+                  lg={
+                    window.location.pathname.split("-")[0] === "/account"
+                      ? 12
+                      : 12
+                  }
+                >
+                  {window.location.pathname.split("-")[0] === "/account" ||
+                  values.hidebilling === true ||
+                  values.addrs === true ? (
+                    ""
+                  ) : (
+                    <>
+                      <h5 className="title">Shipping Address</h5>
+                      <>
+                        {!values.checkValue &&
+                          "If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form."}
+                        {values.checkValue &&
+                          "If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form."}
+                      </>
+                    </>
+                  )}
 
-                        }} action="javascript:void(0)">
-                            {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? <h5 className='title'> Edit Address</h5> : ""}
-                            <p class="form-group tp" style={{ width: "480px" }}>
-                                {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <>{cl}</>} */}
-                                {window.location.pathname.split("-")[0] === "/account" || values.edit_addresId === true ? "" : <>{cl}</>}
-                                {/* {JSON.stringify(values.errortext && values.errortext.pinerr)} */}
-                            </p>  <Grid container item xs={12} lg={12} >
-                                <Grid item xs={12} lg={window.location.pathname.split("-")[0] === "/account" ? 12 : 5}>
-                                    {window.location.pathname.split("-")[0] === "/account" || values.hidebilling === true || values.addrs === true ? "" : <>
-                                        <h5 className='title'>Shipping Address</h5>
-                                        <>
-                                            {!values.checkValue && 'If your Billing address is same as your shipping address, please check the box and fill up the shipping address in the form.'}
-                                            {values.checkValue && 'If your Billing address is different from your shipping address, please uncheck the box to the left and fill up the billing address in the form.'}
-                                        </></>}
-                                    <Grid container spacing={12}>
-                                        <Grid item xs={4} lg={4}>
-                                            {/* <FormControl variant="outlined" className={classes.formControl}>
-        <Select
-          labelId="demo-simple-select-outlined-label"
-          id="demo-simple-select-outlined"
-          value={values.addressOne.salutation}
-          onChange={(e)=>handle.handleChange_selsect(e)}
-        //   labelWidth={labelWidth}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select> */}
-                                            {/* </FormControl> */}
-                                            <SimpleSelect
-                                                // val={'1'}
-                                                name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
-                                        </Grid>
-                                        <Grid item xs={4} lg={4}>
-                                            <Input
-                                                name="firstname"
-                                                className='text-f'
-                                                type="text"
-                                                value={values.addressOne.firstname}
-                                                placeholder="First name"
-                                                required
-                                                onChange={(event) => handle.handleChange('addressOne', 'firstname', event.target.value)}
-                                                helperText="First name is required"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={4} lg={4}>
-                                            <Input
-                                                className='text-f'
-                                                type="text"
-                                                name="lastname"
-                                                value={values.addressOne.lastname}
-                                                placeholder="Last name"
-                                                required onChange={(event) => handle.handleChange('addressOne', 'lastname', event.target.value)}
-                                                helperText="Last name is required"
-                                            />
-                                        </Grid>
-                                    </Grid>
-                                    <Grid container spacing={12}>
-                                        <Grid item xs={6} lg={6}>
-                                            <SimpleSelect name={values.addressOne.country ? values.addressOne.country : ""} selectData={['India']}
-                                                disabled={'disabled'} />
-                                        </Grid>
-                                        <Grid item xs={6} lg={6}>
-                                            <Input
-                                                className='text-f'
-                                                type="tel"
-                                                name='pincode'
-                                                maxLength="6"
-                                                placeholder="Pin code/Zip code"
-                                                onChange={(event) => handle.handleChange('addressOne', 'pincode', event.target.value, "pincode1")}
-                                                value={values.addressOne.pincode}
-                                                onKeyPress={(e) => handle.handleKeyPress(e, "pincode")}
-                                            // helperText="Pin Code is required"
-                                            // required 
-                                            />
-                                            <label className='errtext'> {values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr}</label>
-                                        </Grid>
-                                    </Grid>
-                                    <Grid container spacing={12}>
-                                        <Grid item xs={12} lg={12}>
-                                            <Input
-                                                type="text"
-                                                placeholder="Address"
-                                                name='addressline1'
-                                                onChange={(event) => handle.handleChange('addressOne', 'addressline1', event.target.value)}
-                                                value={values.addressOne.addressline1}
-                                                helperText="Address is required"
-                                                required />
-                                        </Grid>
-                                    </Grid>
-                                    <Grid container spacing={12}>
-                                        <Grid item xs={6} lg={6}>
-                                            <Input
-                                                style={{ float: "left", width: "99%", background: "rgba(192, 192, 192, 0.41)" }}
-                                                type="text"
-                                                name='state'
-                                                placeholder="State"
-                                                onChange={(event) => handle.handleChange('addressOne', 'state', event.target.value)}
-                                                value={values.addressOne.state}
-                                                helperText="State is required"
-                                                InputProps={{
-                                                    readOnly: true,
-                                                }} required />
-                                        </Grid>
-                                        <Grid item xs={6} lg={6}>
-                                            <Input
-                                                className='text-f'
-                                                type="text"
-                                                name='city'
-                                                placeholder="City"
-                                                style={{ background: "rgba(192, 192, 192, 0.41)" }}
-                                                onChange={(event) => handle.handleChange('addressOne', 'city', event.target.value)}
-                                                value={values.addressOne.city}
-                                                helperText="City is required"
-                                                InputProps={{
-                                                    readOnly: true,
-                                                }} required />
-                                        </Grid>
-                                    </Grid>
+                  {props.isCheck ? (
+                    <div>
+                      <h5 className="title" style={{color:"#6D6E71",marginBottom:"0px",height:"30px"}}>Shipping Address</h5>
+                   <Grid
+                      container
+                      style={{ display: "flex", flexDirection: "row" }}
+                      spacing={3}
+                    >
+                
+                      <Grid item container xs={6}>
+                        <Grid item xs={12}>
+                          {/* <Grid item xs={4}>
+                                           <SimpleSelect
+                                               val={'1'}
+                                               name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                           </Grid> */}
+                          {/* <Grid xs={8}> */}
+                          <Input
+                            name="firstname"
+                            // className='text-ad'    
+                            type="text"
+                            value={values.addressOne.firstname}
+                            placeholder="First name"
+                            short
+                            required
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "firstname",
+                                event.target.value
+                              )
+                            }
+                            helperText="First name is required"
+                          />
+                          {/* </Grid> */}
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Input
+                            // className='text-ad'   
+                            type="text"
+                            name="lastname"
+                            value={values.addressOne.lastname}
+                            placeholder="Last name"
+                            required
+                            short
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "lastname",
+                                event.target.value
+                              )
+                            }
+                            helperText="Last name is required"
+                          />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Input
+                            type="text"
+                            name="state"
+                            short
+                            // className='text-ad'   
+                            placeholder="State"
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "state",
+                                event.target.value
+                              )
+                            }
+                            value={values.addressOne.state}
+                            helperText="State is required"
+                            InputProps={{
+                              readOnly: true,
+                            }}
+                            required
+                          />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Input
+                            // className='text-ad'   
+                            type="text"
+                            name="city"
+                            short
+                            placeholder="City"
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "city",
+                                event.target.value
+                              )
+                            }
+                            value={values.addressOne.city}
+                            helperText="City is required"
+                            InputProps={{
+                              readOnly: true,
+                            }}
+                            required
+                          />
+                        </Grid>
+                      </Grid>
 
-                                    <Grid container spacing={12}>
-                                        <Grid item xs={3} lg={3}>
-                                            <SimpleSelect name={['+91']} selectData={['+91']}
-                                                disabled={'disabled'}
-                                                value={values.addressOne.country_code} />
-                                            {/* <Input
+                      <Grid item container xs={6}>
+                        <Grid item container xs={12}>
+                          {/* <Grid item xs={4}>
+                                           <SimpleSelect name={values.addressOne.country ? values.addressOne.country : ""} selectData={['India']}
+                                               disabled={'disabled'} />
+                                           </Grid> */}
+                          {/* <Grid item xs={8}> */}
+                          <Input
+                            // className='text-ad'   
+                            type="tel"
+                            name="pincode"
+                            short
+                            maxLength="6"
+                            placeholder="Pin code/Zip code"
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "pincode",
+                                event.target.value,
+                                "pincode1"
+                              )
+                            }
+                            value={values.addressOne.pincode}
+                            onKeyPress={(e) =>
+                              handle.handleKeyPress(e, "pincode")
+                            }
+                            // helperText="Pin Code is required"
+                            // required
+                          />
+                          <label className="errtext">
+                            {" "}
+                            {values.addressOne &&
+                              values.addressOne.errortext &&
+                              values.addressOne.errortext.pinerr}
+                          </label>
+                          {/* </Grid> */}
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Input
+                            type="text"
+                            placeholder="Address"
+                            name="addressline1"
+                            short
+                            // className='text-ad'   
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "addressline1",
+                                event.target.value
+                              )
+                            }
+                            value={values.addressOne.addressline1}
+                            helperText="Address is required"
+                            required
+                          />
+                        </Grid>
+                        <Grid item container xs={12}>
+                          {/* <Grid item xs={4}>
+                                           <SimpleSelect name={['+91']} selectData={['+91']}
+                                               disabled={'disabled'}
+                                               value={values.addressOne.country_code} />
+                                           </Grid> */}
+                          {/* <Grid item xs={8}> */}
+                          <Input
+                            //  className='text-ad'   
+                            type="tel"
+                            name="contactno"
+                            short
+                            onKeyPress={(e) =>
+                              handle.handleKeyPress(e, "contactno")
+                            }
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "contactno",
+                                event.target.value
+                              )
+                            }
+                            placeholder="Mobile number"
+                            value={values.addressOne.contactno}
+                            helperText="Please enter yout 10 digit mobile number"
+                            maxLength={10}
+                            minLength={10}
+                            required
+                          />
+                          {/* </Grid> */}
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Input
+                            // className='text-ad'   
+                            type="text"
+                            short
+                            name="country"
+                            placeholder="Country"
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "country",
+                                event.target.value
+                              )
+                            }
+                            value={values.addressOne.country}
+                            helperText="Country is required"
+                            InputProps={{
+                              readOnly: true,
+                            }}
+                            required
+                          />
+                        </Grid>
+                      </Grid>
+                    </Grid>
+
+                    </div>
+                   
+                  ) : (
+                    <div>
+                      <Grid container spacing={12}>
+                        <Grid item xs={4} lg={4}>
+                          {/* <FormControl variant="outlined" className={classes.formControl}>
+                                                <Select
+                                                  labelId="demo-simple-select-outlined-label"
+                                                    id="demo-simple-select-outlined"
+                                                       value={values.addressOne.salutation}
+                                                     onChange={(e)=>handle.handleChange_selsect(e)}
+                                                       //   labelWidth={labelWidth}
+                                                  >
+                                                     <MenuItem value="">
+                                                        <em>None</em>
+                                                         </MenuItem>
+                                                      <MenuItem value={10}>Ten</MenuItem>
+                                                      <MenuItem value={20}>Twenty</MenuItem>
+                                                      <MenuItem value={30}>Thirty</MenuItem>
+                                                      </Select> */}
+                          {/* </FormControl> */}
+                          <SimpleSelect
+                            // val={'1'}
+                            name={aa ? [aa] : ["Select"]}
+                            selectData={["Mr", "Mrs", "Ms"]}
+                          />
+                        </Grid>
+                        <Grid item xs={4} lg={4}>
+                          <Input
+                            name="firstname"
+                            // className="text-f"
+                            type="text"
+                            value={values.addressOne.firstname}
+                            placeholder="First name"
+                            required
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "firstname",
+                                event.target.value
+                              )
+                            }
+                            helperText="First name is required"
+                          />
+                        </Grid>
+                        <Grid item xs={4} lg={4}>
+                          <Input
+                            // className="text-f"
+                            type="text"
+                            name="lastname"
+                            value={values.addressOne.lastname}
+                            placeholder="Last name"
+                            required
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "lastname",
+                                event.target.value
+                              )
+                            }
+                            helperText="Last name is required"
+                          />
+                        </Grid>
+                      </Grid>
+                      <Grid container spacing={12}>
+                        <Grid item xs={6} lg={6}>
+                          <SimpleSelect
+                            name={
+                              values.addressOne.country
+                                ? values.addressOne.country
+                                : ""
+                            }
+                            selectData={["India"]}
+                            disabled={"disabled"}
+                          />
+                        </Grid>
+                        <Grid item xs={6} lg={6}>
+                          <Input
+                            // className="text-f"
+                            type="tel"
+                            name="pincode"
+                            maxLength="6"
+                            placeholder="Pin code/Zip code"
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "pincode",
+                                event.target.value,
+                                "pincode1"
+                              )
+                            }
+                            value={values.addressOne.pincode}
+                            onKeyPress={(e) =>
+                              handle.handleKeyPress(e, "pincode")
+                            }
+                            // helperText="Pin Code is required"
+                            // required
+                          />
+                          <label className="errtext">
+                            {" "}
+                            {values.addressOne &&
+                              values.addressOne.errortext &&
+                              values.addressOne.errortext.pinerr}
+                          </label>
+                        </Grid>
+                      </Grid>
+                      <Grid container spacing={12}>
+                        <Grid item xs={12} lg={12}>
+                          <Input
+                            type="text"
+                            placeholder="Address"
+                            name="addressline1"
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "addressline1",
+                                event.target.value
+                              )
+                            }
+                            value={values.addressOne.addressline1}
+                            helperText="Address is required"
+                            required
+                          />
+                        </Grid>
+                      </Grid>
+                      <Grid container spacing={12}>
+                        <Grid item xs={6} lg={6}>
+                          <Input
+                            style={{
+                              float: "left",
+                              width: "99%",
+                              background: "rgba(192, 192, 192, 0.41)",
+                            }}
+                            type="text"
+                            name="state"
+                            placeholder="State"
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "state",
+                                event.target.value
+                              )
+                            }
+                            value={values.addressOne.state}
+                            helperText="State is required"
+                            InputProps={{
+                              readOnly: true,
+                            }}
+                            required
+                          />
+                        </Grid>
+                        <Grid item xs={6} lg={6}>
+                          <Input
+                            className="text-f"
+                            type="text"
+                            name="city"
+                            placeholder="City"
+                            style={{ background: "rgba(192, 192, 192, 0.41)" }}
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "city",
+                                event.target.value
+                              )
+                            }
+                            value={values.addressOne.city}
+                            helperText="City is required"
+                            InputProps={{
+                              readOnly: true,
+                            }}
+                            required
+                          />
+                        </Grid>
+                      </Grid>
+                      <Grid container spacing={12}>
+                        <Grid item xs={3} lg={3}>
+                          <SimpleSelect
+                            name={["+91"]}
+                            selectData={["+91"]}
+                            disabled={"disabled"}
+                            value={values.addressOne.country_code}
+                          />
+                          {/* <Input
                                                 className='text-f'
                                                 type="text"
                                                 name="country_code"
@@ -168,34 +497,248 @@ const AddressComponent = (props) => {
                                                 minLength={2}
                                                 required
                                             /> */}
-                                        </Grid>
-                                        <Grid item xs={9} lg={9}>
-                                            <Input
-                                                className='text-f'
-                                                type="tel"
-                                                name='contactno'
-                                                onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
-                                                onChange={(event) => handle.handleChange('addressOne', 'contactno', event.target.value)}
-                                                placeholder="Mobile number"
-                                                value={values.addressOne.contactno}
-                                                helperText="Please enter yout 10 digit mobile number"
-                                                maxLength={10}
-                                                minLength={10}
-                                                required />
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
+                        </Grid>
+                        <Grid item xs={9} lg={9}>
+                          <Input
+                            className="text-f"
+                            type="tel"
+                            name="contactno"
+                            onKeyPress={(e) =>
+                              handle.handleKeyPress(e, "contactno")
+                            }
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "contactno",
+                                event.target.value
+                              )
+                            }
+                            placeholder="Mobile number"
+                            value={values.addressOne.contactno}
+                            helperText="Please enter yout 10 digit mobile number"
+                            maxLength={10}
+                            minLength={10}
+                            required
+                          />
+                        </Grid>
+                      </Grid>
+                    </div>
+                  )}
+                </Grid>
 
-                                {/*  */}
-                                {/*  */}
-                                {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <> */}
-                                {window.location.pathname.split("-")[0] === "/account" || values.edit_addresId === true ? "" : <>
-                                    <Grid container item lg={1} />
-                                    {!values.checkValue &&
-                                        <Grid item xs={12} lg={5}>
-                                            <br /><br />
-                                            <h5 className='title'> Billing Address</h5>
-                                            <Grid container spacing={12}>
+                {/*  */}
+                {/*  */}
+                {/* {localStorage.getItem("valuessetdata") || localStorage.getItem("vals") ? "" : <> */}
+                {window.location.pathname.split("-")[0] === "/account" ||
+                values.edit_addresId === true ? (
+                  ""
+                ) : (
+                  <>
+                    <Grid container item lg={1} />
+                    {!values.checkValue ? (
+                      <Grid item xs={12} lg={12}>
+                        <br />
+                        <br />
+                        <h5 className="title"> Billing Address</h5>
+                        <Grid
+                          container
+                          style={{ display: "flex", flexDirection: "row" }}
+                          spacing={2}
+                        >
+                          <Grid item container xs={6}>
+                            <Grid item container xs={12}>
+                              {/* <Grid item xs={4}>
+                                           <SimpleSelect
+                                               val={'1'}
+                                               name={aa ? [aa] : ['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
+                                           </Grid> */}
+                              {/* <Grid xs={8}> */}
+                              <Input
+                                name="firstname"
+                                //    className='text-f'
+                                type="text"
+                                value={values.addressOne.firstname}
+                                placeholder="First name"
+                                required
+                                onChange={(event) =>
+                                  handle.handleChange(
+                                    "addressOne",
+                                    "firstname",
+                                    event.target.value
+                                  )
+                                }
+                                helperText="First name is required"
+                              />
+                              {/* </Grid> */}
+                            </Grid>
+                            <Grid item xs={12}>
+                              <Input
+                                //    className='text-f'
+                                type="text"
+                                name="lastname"
+                                value={values.addressOne.lastname}
+                                placeholder="Last name"
+                                required
+                                onChange={(event) =>
+                                  handle.handleChange(
+                                    "addressOne",
+                                    "lastname",
+                                    event.target.value
+                                  )
+                                }
+                                helperText="Last name is required"
+                              />
+                            </Grid>
+                            <Grid item xs={12}>
+                              <Input
+                                type="text"
+                                name="state"
+                                placeholder="State"
+                                onChange={(event) =>
+                                  handle.handleChange(
+                                    "addressOne",
+                                    "state",
+                                    event.target.value
+                                  )
+                                }
+                                value={values.addressOne.state}
+                                helperText="State is required"
+                                InputProps={{
+                                  readOnly: true,
+                                }}
+                                required
+                              />
+                            </Grid>
+                            <Grid item xs={12}>
+                              <Input
+                                //    className='text-f'
+                                type="text"
+                                name="city"
+                                placeholder="City"
+                                onChange={(event) =>
+                                  handle.handleChange(
+                                    "addressOne",
+                                    "city",
+                                    event.target.value
+                                  )
+                                }
+                                value={values.addressOne.city}
+                                helperText="City is required"
+                                InputProps={{
+                                  readOnly: true,
+                                }}
+                                required
+                              />
+                            </Grid>
+                          </Grid>
+
+                          <Grid item container xs={6}>
+                            <Grid item container xs={12}>
+                              {/* <Grid item xs={4}>
+                                           <SimpleSelect name={values.addressOne.country ? values.addressOne.country : ""} selectData={['India']}
+                                               disabled={'disabled'} />
+                                           </Grid> */}
+                              {/* <Grid item xs={8}> */}
+                              <Input
+                                //    className='text-f'
+                                type="tel"
+                                name="pincode"
+                                maxLength="6"
+                                placeholder="Pin code/Zip code"
+                                onChange={(event) =>
+                                  handle.handleChange(
+                                    "addressOne",
+                                    "pincode",
+                                    event.target.value,
+                                    "pincode1"
+                                  )
+                                }
+                                value={values.addressOne.pincode}
+                                onKeyPress={(e) =>
+                                  handle.handleKeyPress(e, "pincode")
+                                }
+                                // helperText="Pin Code is required"
+                                // required
+                              />
+                              <label className="errtext">
+                                {" "}
+                                {values.addressOne &&
+                                  values.addressOne.errortext &&
+                                  values.addressOne.errortext.pinerr}
+                              </label>
+                              {/* </Grid> */}
+                            </Grid>
+                            <Grid item xs={12}>
+                              <Input
+                                type="text"
+                                placeholder="Address"
+                                name="addressline1"
+                                onChange={(event) =>
+                                  handle.handleChange(
+                                    "addressOne",
+                                    "addressline1",
+                                    event.target.value
+                                  )
+                                }
+                                value={values.addressOne.addressline1}
+                                helperText="Address is required"
+                                required
+                              />
+                            </Grid>
+                            <Grid item container xs={12}>
+                              {/* <Grid item xs={4}>
+                                           <SimpleSelect name={['+91']} selectData={['+91']}
+                                               disabled={'disabled'}
+                                               value={values.addressOne.country_code} />
+                                           </Grid> */}
+                              {/* <Grid item xs={8}> */}
+                              <Input
+                                //    className='text-f'
+                                type="tel"
+                                name="contactno"
+                                onKeyPress={(e) =>
+                                  handle.handleKeyPress(e, "contactno")
+                                }
+                                onChange={(event) =>
+                                  handle.handleChange(
+                                    "addressOne",
+                                    "contactno",
+                                    event.target.value
+                                  )
+                                }
+                                placeholder="Mobile number"
+                                value={values.addressOne.contactno}
+                                helperText="Please enter yout 10 digit mobile number"
+                                maxLength={10}
+                                minLength={10}
+                                required
+                              />
+                              {/* </Grid> */}
+                            </Grid>
+                            <Grid item xs={12}>
+                              <Input
+                                // className='text-f'
+                                type="text"
+                                name="country"
+                                placeholder="Country"
+                                onChange={(event) =>
+                                  handle.handleChange(
+                                    "addressOne",
+                                    "country",
+                                    event.target.value
+                                  )
+                                }
+                                value={values.addressOne.country}
+                                helperText="Country is required"
+                                InputProps={{
+                                  readOnly: true,
+                                }}
+                                required
+                              />
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                        {/* <Grid container spacing={12}>
                                                 <Grid item xs={4} lg={4}>
                                                     <SimpleSelect val={"2"} name={['Select']} selectData={['Mr', 'Mrs', 'Ms']} />
                                                 </Grid>
@@ -284,12 +827,11 @@ const AddressComponent = (props) => {
                                                         }} required />
                                                 </Grid>
                                             </Grid>
-
                                             <Grid container spacing={12}>
                                                 <Grid item xs={3} lg={3}>
                                                     <SimpleSelect name={['+91']} selectData={['+91']}
                                                         disabled={'disabled'} />
-                                                    {/* <Input
+                                                    <Input
                                                     className='text-f'
                                                     type="text"
                                                     name="bill_country_code"
@@ -301,7 +843,7 @@ const AddressComponent = (props) => {
                                                     maxLength={2}
                                                     minLength={2}
                                                     required
-                                                 /> */}
+                                                 />
                                                 </Grid>
                                                 <Grid item xs={9} lg={9}>
                                                     <Input
@@ -318,25 +860,71 @@ const AddressComponent = (props) => {
                                                         minLength={10}
                                                         required />
                                                 </Grid>
-                                            </Grid>
-                                        </Grid>
-                                    }</>}
-                                {/* </>} */}
-                            </Grid>
-
-                            {/* <div style={{float:"right"}}>
+                                            </Grid> */}
+                      </Grid>
+                    ) :null}
+                  </>
+                )}
+                {/* </>} */}
+              </Grid>
+              {/* <div style={{float:"right"}}>
                                 
                             </div> */}
-                            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                {values.edit_addresId === true ? <Button onClick={() => handle.redirectFormss()} style={{ borderRadius: "0px", padding: "6px 8px", lineHeight: "1.75", border: "1px solid #394578" }}
-                                    className=''>Cancel</Button> : ""} &nbsp;
-                                <Button type="submit" className='apply-b'>Add</Button>
-                            </div>
-                        </form>
-                    </div>
-                    : <Addressdetails open={values.open} setOpen={values.setOpen} handleClose={handle.handleClose} handleOpen={handle.handleOpen} Delete_address={handle.Delete_address} selectaddreses={handle.selectaddreses} values={values} setValues={setValues} changevalue={props.changePanel} redirectForm1={handle.redirectForm1} redirectForm={handle.redirectForm} />}
-            </div>
-        </Grid>
-    )
-}
-export default Addressform; 
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  marginTop: 10,
+                }}
+              >
+                {values.edit_addresId === true ? (
+                  <Button
+                    onClick={() => handle.redirectFormss()}
+                    style={{
+                      borderRadius: "0px",
+                      padding: "6px 8px",
+                      lineHeight: "1.75",
+                      border: "1px solid #394578",
+                    }}
+                    className=""
+                  >
+                    Cancel
+                  </Button>
+                ) : (
+                  ""
+                )}{" "}
+                &nbsp;
+                <Button
+                  type="submit"
+                  className="apply-b"
+                  style={{
+                    background: props.isCheck ? "#d51f63" : "",
+                    border: props.isCheck ? "1px solid #d51f63" : "",
+                  }}
+                >
+                  Add
+                </Button>
+              </div>
+            </form>
+          </div>
+        ) : (
+          <Addressdetails
+            open={values.open}
+            setOpen={values.setOpen}
+            handleClose={handle.handleClose}
+            handleOpen={handle.handleOpen}
+            Delete_address={handle.Delete_address}
+            selectaddreses={handle.selectaddreses}
+            values={values}
+            setValues={setValues}
+            changevalue={props.changePanel}
+            redirectForm1={handle.redirectForm1}
+            redirectForm={handle.redirectForm}
+            isCheck={props?.isCheck}
+          />
+        )}
+      </div>
+    </Grid>
+  );
+};
+export default Addressform;

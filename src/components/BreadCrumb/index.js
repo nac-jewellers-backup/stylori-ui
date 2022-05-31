@@ -1,12 +1,9 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import {
   Paper,
   Breadcrumbs,
-  Link,
   Container,
   Grid,
-  Typography,
 } from "@material-ui/core/";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import "./breadcrumb.css";
@@ -21,10 +18,14 @@ export default function CustomSeparator(props) {
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAAAmJLR0QA/4ePzL8AAABTSURBVFjD7dfBDYAgFARRqkBCi1ouEa1mbMJPIMw08JK9bUpm9lOclGjiAnowQ6YBL1VGRkZGZjKm0IGbvDbCQQOewLkkJCQkNicGXYchJ8hs8z7oGPzdOrNn/QAAAABJRU5ErkJggg=="
         className={props.arrowicon}
         alt=""
+        loading="lazy"
       />
+    ) : props.isSilver ? (
+      <span>&nbsp;/&nbsp;</span>
     ) : (
       <NavigateNextIcon />
     );
+
   const tabs = localStorage.getItem("panel");
 
   const handleUrl = (data) => {
@@ -76,16 +77,16 @@ export default function CustomSeparator(props) {
           return data && data.title === "Shopping Bag";
         }
       }
-      if (tabs == "1") {
+      if (tabs === "1") {
         return data && data.title === "Login/ Register";
       }
-      if (tabs == "2") {
+      if (tabs === "2") {
         return data && data.title === "Address Detail";
       }
-      if (tabs == "3") {
+      if (tabs === "3") {
         return data && data.title === "Order Confirmation";
       }
-      if (tabs == "4") {
+      if (tabs === "4") {
         return data && data.title === "Payment Options";
       }
     }
@@ -105,7 +106,7 @@ export default function CustomSeparator(props) {
     >
       <div className={props.className}>
         <Paper elevation={0} className={props.classsubhed}>
-          <Container>
+          <Container style={{ padding: props.isSilver && "0px" }}>
             <Grid container>
               <Grid item lg={7}>
                 {window.location.pathname === "/cart" ||
@@ -113,8 +114,9 @@ export default function CustomSeparator(props) {
                 window.location.pathname === "/checkout" ? (
                   <ol class="breadCrumbs">
                     {props.data.map((data) => (
-                      <li onClick={() => activetabsclik(data)}>
+                      <li onClick={() => activetabsclik(data)}>  
                         <a
+                          href="/#"
                           className={
                             activetabs(data)
                               ? ` isactives ${props?.list}`
@@ -159,6 +161,7 @@ export default function CustomSeparator(props) {
                             <img
                               src={subdata.icon}
                               alt=""
+                              loading="lazy"
                               style={{
                                 width: "25px",
                                 height: "25px",

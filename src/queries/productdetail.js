@@ -270,7 +270,7 @@ export const youRecentlyViewed = `query youRecentlyViewed($filtersku:  TransSkuL
   `;
 export const shopByStyloriSilver = (data) => {
   return `query MyQuery {
- ${data.map((val) => {
+ ${data?.map((val) => {
    return `${val}: allProductMaterials(filter: {and: {materialName: {includes: "Silver"}, productListByProductSku: {isactive: {equalTo: true}, productType: {equalTo: "${val}"}}}} first: 3) {
       nodes {
         materialName

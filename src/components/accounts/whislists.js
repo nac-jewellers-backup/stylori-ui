@@ -1,18 +1,12 @@
 import React from 'react';
 import {
-    Container,
-    ExpansionPanel,
-    ExpansionPanelSummary,
-    ExpansionPanelDetails,
-    Typography,
-    Avatar,
     Grid,
-    Button
 } from '@material-ui/core';
 import "./accounts.css";
 import { CartContext } from 'context'
 import RemoveWishlist from 'components/wishlist/removewishlist';
-import { API_URL, CDN_URL } from "config"
+import { CDN_URL } from "config";
+import CurrencyConversion from 'utils/CurrencyConversion';
 
 // props.setCartFilters({ skuId: data[0].skuId, qty: 1, price: data[0].offerPrice })
 const Wishlists = (props) => {
@@ -54,10 +48,10 @@ class Component extends React.Component {
             var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
             var url_split = imges && imges.split('/')
             var extension_split = url_split && url_split[url_split.length - 1]
-            var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
+            var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`) //eslint-disable-line
             url_split[url_split && url_split.length - 1] = browser_type_append
             url_split.splice(2, 0, _resolutions);
-            var url_construct = url_split.join().replace(/\,/g, '/')
+            var url_construct = url_split.join().replace(/\,/g, '/') //eslint-disable-line
             image_urls = `${CDN_URL}${url_construct}`
             return image_urls
         }
@@ -84,7 +78,7 @@ class Component extends React.Component {
                             <Grid container spacing={12} xs={12} style={{ paddingBottom: "10px"}} >
                                 {/* <Grid  xs={12}> */}
                                 <Grid sm={2} lg={2} item class="topPaddingwish" style={{ paddingRight: "4px", marginBottom: "12px", float: "left" }} onClick={()=>this.props.setLoadingWishlist(true)}>
-                                    <RemoveWishlist sku={first_map.skuId} productId={first_map.productId}
+                                    <RemoveWishlist sku={first_map?.skuId} productId={first_map.productId}
                                         data={
                                             <>
                                                 <div className="remove-product" >
@@ -95,8 +89,8 @@ class Component extends React.Component {
                                     />
                                 </Grid>
                                 <Grid item xs={5} sm={3} lg={3}>
-                                    <div className={this.check_img(first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl) ?"shine box" : `shine box`} >
-                                        <img className="viewport-img" src={this.check_img(first_map.productListByProductId.productImagesByProductId.nodes[0].imageUrl)
+                                    <div className={this.check_img(first_map?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl) ?"shine box" : `shine box`} >
+                                        <img className="viewport-img"  loading="lazy" src={this.check_img(first_map?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)
                                         } 
                                         alt="Stylori"
                                         onError={(e)=>{e.target.src=`${CDN_URL}product/575X575/productnotfound.jpg`}}
@@ -108,13 +102,13 @@ class Component extends React.Component {
                                     <div>
                                         <div className="wislist_title">{first_map.productListByProductId.productName}</div>
 
-                                        <div className="wislist_price">{Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice))}</div>
+                                        <div className="wislist_price">{CurrencyConversion(first_map?.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice)}</div>
                                         <div className="add-bag">
                                             <>
                                                 <RemoveWishlist
-                                                    sku={first_map.skuId}
-                                                    productId={first_map.productId}
-                                                    add={first_map.transSkuListBySkuId && first_map.transSkuListBySkuId.markupPrice}
+                                                    sku={first_map?.skuId}
+                                                    productId={first_map?.productId}
+                                                    add={first_map?.transSkuListBySkuId && first_map?.transSkuListBySkuId?.markupPrice}
                                                     data={
                                                         <><i class="fa fa-shopping-bag"></i>&nbsp;Add to Bag</>
                                                     }

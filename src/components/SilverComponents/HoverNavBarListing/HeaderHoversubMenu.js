@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   Grid,
   List,
@@ -83,6 +83,7 @@ function HeaderHoverMenuItem(props) {
                                 height: "100%",
                               }}
                               src={val.img}
+                              loading="lazy" alt="...."
                             />
                           )}
                         </Grid>
@@ -103,6 +104,7 @@ function HeaderHoverMenuItem(props) {
                     <img
                       style={{ width: "100%", margin: "auto", height: "auto" }}
                       src={props?.allData?.imgContainer?.bigImage?.img}
+                      loading="lazy" alt="...."
                     />
                   )}
                 </Grid>

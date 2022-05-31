@@ -48,7 +48,7 @@ class Sublistcarousel extends React.Component {
     this.slider.current.slickPrev();
   };
   withExpandCollapse = (data, mobiledataCarousel) => {
-    const { expanded, expanded1 } = this.state;
+    const { expanded } = this.state;
     return (
       <ExpansionPanel
         style={{
@@ -108,7 +108,7 @@ class Sublistcarousel extends React.Component {
   };
   render() {
     const limit = 4;
-    const { expanded, expanded1 } = this.state;
+    const { expanded1 } = this.state;
     const { data, classes, customLimit } = this.props;
     const mobiledataCarousel = {
       dots: false,
@@ -473,7 +473,7 @@ class Sublistcarousel extends React.Component {
                                         display: "flex",
                                       }}
                                     >
-                                      <img style={{ width: "60px" }} src={val.icon} />
+                                      <img style={{ width: "60px" }} src={val.icon} loading="lazy" alt="...."/>
                                     </Grid>
                                   </Grid>
                                 </>

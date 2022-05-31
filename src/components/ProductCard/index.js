@@ -1,13 +1,10 @@
 import React from "react";
 import {ImgMediaCard} from "./Card.js";
 import {SilverImgMediaCard} from "./silverCard";
-import { useGraphql } from "../../hooks/GraphqlHook.js";
-import productlistmapper from "../../mappers/productlist.js";
-import { productlist as productlistquery } from "../../queries/index.js";
 import {GlobalContext } from 'context'
 // import  {ProductCard}  from "./ProductCard";
 function Card(props) {
-  const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext)
+  const { Globalctx } = React.useContext(GlobalContext)
   // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
   // 
   // console.info('GRAQPH',loading, errro, data, mappedData);

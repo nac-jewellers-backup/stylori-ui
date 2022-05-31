@@ -1,42 +1,40 @@
 import React from "react";
 import {
-  Container,
   Grid,
-  Hidden,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
-  Typography,
+  Checkbox,
+  FormGroup,
+  FormControlLabel
 } from "@material-ui/core";
 import "./payment.css";
-import Creditform from "./creditForm";
-import Debitform from "./debitForm";
+import { withStyles } from '@material-ui/core/styles';
 import CashonDelivey from "./cashonDelivery";
 import Netbanking from "./netBanking";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CartContext } from "context";
 import cart from "mappers/cart";
-import { useCheckForCod } from "hooks/CheckForCodHook";
 import { CheckForCod } from "queries/productdetail";
 import { cartCodPincode } from "queries/pincode";
 import { API_URL } from "config";
 var va = {};
+
+
 class PaymentIndex extends React.Component {
   constructor() {
     super();
     this.state = {
-      isActive: "CashonDelivey",
+      isActive: "NetBanking",
       disabledCOD: false,
     };
   }
 
+  
   toggleCollapsed = (name) => {
-    if (name == "CashonDelivey" && this.state.disabledCOD) {
-      return false;
-    } else this.setState({ isActive: [name] });
+    this.setState({ isActive: [name] })
+    // if (name == "CashonDelivey" && this.state.disabledCOD) {
+    //   return false;
+    // } else this.setState({ isActive: [name] });
   };
-  componentDidMount() {
-   
+
+  componentDidMount() { 
     if (!this.props.isCodAvailable) {
       this.setState({ isActive: "Netbanking", disabledCOD: true });
     }
@@ -47,18 +45,90 @@ class PaymentIndex extends React.Component {
         this.setState({ isActive: "Netbanking", disabledCOD: true });
       }
   }
+
+
   render() {
     var a = 1;
 
     const dataCard1 = this.props.data ? this.props.data : [];
 
+    const GreenCheckbox = withStyles({
+      root: {
+        color: "#D32564",
+        '&$checked': {
+          color: "#D32564",
+          fill:"#D32564 !important",
+        },
+        '& .MuiSvgIcon-root':{
+          color: "#D32564",
+          fill:"#D32564 !important",
+        }
+      },
+      checked: {},
+    })((props) => <Checkbox color="default" {...props} />);
+   
+
     return (
       <div className="payment-div" style={{ width: "100%" }}>
-        <Hidden smDown>
-          <Grid container spacing={12} lg={12} className="panel-body">
-            <Grid item lg={3}>
-              <div className="pay-index-subhed">
-                {/* <p style={{ background: this.state.isActive == "Creditform" ? "#dfdfdf" : "" }}
+        
+          <Grid container  lg={12} spacing={2} style={{display:"flex",flexDirection:"column"}}>
+            <Grid item lg={6}>
+                        <FormGroup column>
+                          <FormControlLabel
+                               control={<GreenCheckbox
+                                checked={this?.state?.isActive == "Netbanking" || "CashonDelivey" || "Creditform" || "Debitform"
+                                ? true
+                                : false}
+                                 onClick={() => this.toggleCollapsed("Netbanking")}
+                                 name="Netbanking"
+                             
+                                  />}
+                                  style={{color:"#6D6E71",backgroundColor:"#fff",marginTop:10}}
+                                 label="Pay Online"
+                                 />
+                            {/* <FormControlLabel
+                             control={
+                                 <GreenCheckbox
+                                   checked={ this?.state?.isActive == "CashonDelivey"
+                                    ? true
+                                     : false}
+                                     name="CashonDelivey"  
+                                     onClick={() => this.toggleCollapsed("CashonDelivey")}
+                                       />
+                                       }
+                                       style={{color:"#6D6E71",backgroundColor:"#fff",marginTop:10}}
+                                     label="Cash on Delivery (COD)"
+                                        />
+                                        <FormControlLabel
+                             control={
+                                 <GreenCheckbox
+                                   checked={ this?.state?.isActive == "Creditform"
+                                    ? true
+                                     : false}
+                                     name="Creditform"  
+                                     onClick={() => this.toggleCollapsed("Creditform")}
+                                       />
+                                       }
+                                       style={{color:"#6D6E71",backgroundColor:"#fff",marginTop:10}}
+                                     label="Credit Card"
+                                        />
+                                         <FormControlLabel
+                             control={
+                                 <GreenCheckbox
+                                   checked={ this?.state?.isActive == "Debitform"
+                                    ? true
+                                     : false}
+                                     name="Debitform"  
+                                     onClick={() => this.toggleCollapsed("Debitform")}
+                                       />
+                                       }
+                                       style={{color:"#6D6E71",backgroundColor:"#fff",marginTop:10}}
+                                     label="Debit Card"
+                                        /> */}
+                          </FormGroup>
+                          
+              {/* <div className="pay-index-subhed" style={{width:"100%"}}>
+                <p style={{ background: this.state.isActive == "Creditform" ? "#dfdfdf" : "" }}
                                     style={{ background: "#a8a1a1" }}
                                 onClick={() => this.toggleCollapsed('Creditform')}
                                 >
@@ -68,7 +138,9 @@ class PaymentIndex extends React.Component {
                                     style={{ background: "#a8a1a1" }}
 
                                 >
-                                    <div className="dc-icon"></div> &nbsp; Debit card </p> */}
+                          
+                          <div className="dc-icon"></div> &nbsp; Debit card </p>
+                        
                 <p
                   className={
                     this?.state?.isActive == "Netbanking"
@@ -76,7 +148,7 @@ class PaymentIndex extends React.Component {
                       : "unselected"
                   }
                   onClick={() => this.toggleCollapsed("Netbanking")}
-                  // style={{ background: "#dfdfdf" }}
+                  style={{ background: "#dfdfdf" }}
                 >
                   <div className="net-bnk-icon"></div> &nbsp; Pay Online{" "}
                 </p>
@@ -96,28 +168,28 @@ class PaymentIndex extends React.Component {
                 >
                   <div className="code-icon"></div>&nbsp; Cash on Delivery (COD)
                 </p>
-              </div>
+              </div> */}
             </Grid>
-            <Grid item lg={7}>
+            <Grid item lg={6}>
               <div
-                style={{ marginTop: "20px" }}
-                className="pay-index-subhed_datas "
+                style={{ marginTop: "20px",marginLeft:"-10px" }}
+                // className="pay-index-subhed_datas "
               >
-                {this?.state?.isActive == "Creditform" && <Creditform />}
-                {this?.state?.isActive == "Debitform" && <Debitform />}
+
+             <Netbanking />
+                {/* {this?.state?.isActive == "Creditform" && <Netbanking />}
+                {this?.state?.isActive == "Debitform" && <Netbanking />}
                 {this?.state?.isActive == "Netbanking" && <Netbanking />}
                 {
-                  // !dataCard1.length > 0 ?
                   this?.state?.isActive == "CashonDelivey" && <CashonDelivey />
-                  // :"cash on delivery is not available"
-                }
+                } */}
               </div>
             </Grid>
           </Grid>
-        </Hidden>
+   
 
-        <Hidden mdUp>
-          {/* <ExpansionPanel className="respone-div div_DARK"
+        {/* <Hidden mdUp>
+          <ExpansionPanel className="respone-div div_DARK"
                     >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className="py-head"><div className="cc-icon">&nbsp;</div>Credit card  </Typography>
@@ -125,9 +197,9 @@ class PaymentIndex extends React.Component {
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Creditform data={this.props.data} dataCard1={dataCard1}/>
                         </ExpansionPanelDetails> 
-                    </ExpansionPanel> */}
+                    </ExpansionPanel>
 
-          {/* <ExpansionPanel className="respone-div div_DARK"
+          <ExpansionPanel className="respone-div div_DARK"
                     >
                         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                             <Typography className="py-head">  <div className="dc-icon"></div> &nbsp; Debit card </Typography>
@@ -135,7 +207,7 @@ class PaymentIndex extends React.Component {
                         <ExpansionPanelDetails style={{ padding: "0px" }}>
                             <Debitform data={this.props.data} dataCard1={dataCard1}/>
                         </ExpansionPanelDetails>
-                    </ExpansionPanel>  */}
+                    </ExpansionPanel> 
 
           <ExpansionPanel className="respone-div">
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
@@ -163,7 +235,7 @@ class PaymentIndex extends React.Component {
               <CashonDelivey data={this.props.data} dataCard1={dataCard1} />
             </ExpansionPanelDetails>
           </ExpansionPanel>
-        </Hidden>
+        </Hidden> */}
       </div>
     );
   }
@@ -181,6 +253,7 @@ const Components = (props) => {
     : JSON.parse(localStorage.getItem("cart_id"))
     ? JSON.parse(localStorage.getItem("cart_id")).cart_id
     : null;
+    
   const status = (response) => {
     if (response.status >= 200 && response.status < 300) {
       return Promise.resolve(response);

@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { Stylori } from "screens";
 import PricingPage from "screens/Stylori/PricingPage";
-
 import Cart from "screens/Stylori/Cart";
 import Account from "screens/Stylori/accounts";
 import Checkout from "screens/Stylori/Checkout";
@@ -25,7 +24,6 @@ import Success from "../screens/Stylori/success";
 import Fail from "../screens/Stylori/fail";
 import Contactus from "../screens/Stylori/contactUs";
 import Careers from "../screens/Stylori/careers";
-import { Helmet } from "react-helmet";
 import ReactPixel from "react-facebook-pixel";
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
@@ -33,10 +31,8 @@ import ReactPixel from "react-facebook-pixel";
 // SILVER SCREENS
 
 import Silver from "screens/SilverStylori";
-import SilverListingPage from "screens/SilverStylori/listingpage";
 import SilverProductDetail from "screens/SilverStylori/productDetail";
 import ChangePassword from "screens/Checkout/loginRegister/ChangePassword";
-import SilverCollection from "screens/SilverStylori/silverCollections";
 
 // SILVER SCREENS ENDS
 
@@ -50,23 +46,11 @@ browserHistory.listen(() => {
 });
 export const RouterApp = (props) => {
   const { Globalctx } = React.useContext(GlobalContext);
-  const func_location_silver = () => {
-    var loc = window.location.pathname
-      .split("/")[1]
-      .split("-")
-      .filter((val) => {
-        if (val === "silver") return val;
-      });
-    return loc[0];
-  };
-
-  const paths = [
-    "/:params1/:params2",
-    "/:params1/:params2/:params3",
-    "/:params1/:params2/:params3/:params4",
-  ];
+ 
+  const paths = ["/:params1/:params2", "/:params1/:params2/:params3", "/:params1/:params2/:params3/:params4"];
   var loc_PD = window.location.pathname.split("/").filter((val) => {
-    if (val === "silverjewellery") return val;
+    if (val === "silverjewellery") 
+    return val;
   });
   // condition()
   // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)

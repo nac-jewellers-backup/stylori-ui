@@ -1,18 +1,13 @@
 import React from 'react';
 // import './product-image-slider/loginRegisters.css'
 import { Grid, Button, Container, TextField } from '@material-ui/core';
-import { Input } from 'components/InputComponents/TextField/Input'
 import Header from 'components/SilverComponents/Header'
 import Footer from "components/Footer/Footer"
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom'
-import {
-    Checkbox
-} from '@material-ui/core';
 import { useNetworkRequest } from 'hooks/NetworkHooks'
-import { async } from 'q';
 import CommenDialog from 'components/Common/Dialogmodel'
 
 
@@ -87,7 +82,7 @@ const LoginComponent = (props) => {
             <Grid spacing={12} container style={{ padding: "3%" }}>
                 <Grid item xs={6} lg={6} xs={12}>
                     <div >
-                        <img width="100%" height="100%" src="https://assets.stylori.com/login_image.png" />
+                        <img  loading="lazy" alt="...." width="100%" height="100%" src="https://assets.stylori.com/login_image.png" />
                     </div>
                 </Grid>
 

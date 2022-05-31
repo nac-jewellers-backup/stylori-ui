@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
 import { CartContext } from 'context'
-import { SnackBar } from "components/snackbarAlert/SnackBar"
 
 const usePromo = (props) => {
     

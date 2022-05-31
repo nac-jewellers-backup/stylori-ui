@@ -69,15 +69,24 @@ const styles = theme => ({
   colorMain: {
     color: theme.palette.primary.main
   },
+  cross:{
+    color:"#757679"
+  },
+  clearall:{
+    color:"#06AB9F",
+    border:"none"
+  },
   colorMainSecondary: {
     color: theme.palette.secondary.main
+  },
+  colorMainSecondary2:{
+    color:"#6D6E71"
   },
   li_item_filter: {
     [theme.breakpoints.only('xl')]: {
       paddingTop: '15px',
       paddingBottom: '15px'
     },
-
   },
   borderBottomList: {
     borderBottom: '1px solid #efeeee',
@@ -104,7 +113,8 @@ const styles = theme => ({
     backgroundColor: 'white',
 
     '&:hover': {
-      backgroundImage: `linear-gradient(to left, ${theme.palette.secondary.light}, ${theme.palette.secondary.main})`,
+      // backgroundImage: `linear-gradient(to left, ${theme.palette.secondary.light}, ${theme.palette.secondary.main})`,
+      backgroundColor: '#fff'
     }
   },
   colorMainBackground: {

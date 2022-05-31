@@ -1,4 +1,4 @@
-import { Grid, Hidden, ExpansionPanel, Container, Popover, paper, Paper } from "@material-ui/core";
+import { Grid, Hidden, Container, Popover, Paper } from "@material-ui/core";
 import Slideshow from "../../Carousel/carosul";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
@@ -8,7 +8,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Pricing from "../../Pricing/index";
 import styles from "./style";
 import Wishlist from "components/wishlist/wishlist";
-import { Button } from "semantic-ui-react";
 
 const dataCarousel = {
   dots: true,
@@ -179,7 +178,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                 >
                   <Hidden smDown>
                     <div className="starts product-icons" style={{ fontFamily: "fontawesome" }}>
-                      <div className="row social-shares" className={classes.icon}>
+                      <div className="row social-shares">
                         <i
                           class="fa fa-share-alt overall-icons"
                           aria-owns={open ? "simple-popper" : ""}
@@ -188,7 +187,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                         &nbsp;
                         {/* {JSON.stringify(val.productId)} */}
                         {/* <Wishlist sku={val.skuId} productId={val.productId} /> */}
-                        <Wishlist sku={val.skuId} productId={val.productId} wishlist={wishlist} />
+                        {/* <Wishlist sku={val.skuId} productId={val.productId} wishlist={wishlist} /> */}
                         <Popover
                           id="simple-popper"
                           open={open}
@@ -212,6 +211,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                             >
                               <img
                                 class="lazyload"
+                                loading="lazy" alt="...."
                                 src="https://assets.stylori.com/images/static/newsprite/iconmonstr-facebook-5-share.svg"
                               />
                             </a>
@@ -219,6 +219,7 @@ const Productprice = (props, anchorEl, handleClick, handleClose) => {
                             <a class="twitter" target="_blank" href={`http://www.twitter.com/share?url=${window.location.href}`}>
                               <img
                                 class="lazyload"
+                                loading="lazy" alt="...."
                                 src="https://assets.stylori.com/images/static/newsprite/iconmonstr-twitter-5-share.svg"
                               />
                             </a>

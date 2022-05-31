@@ -2,18 +2,11 @@ import React from "react";
 import {
     Grid,
     Button,
-    Hidden,
     Container,
-    ExpansionPanelSummary,
-    ExpansionPanel,
-    Typography,
-    TextField
 } from '@material-ui/core';
 import './payment.css'
-import { Input } from '../../../components/InputComponents/TextField/Input'
-import Buynowbutton from "../../../components/Buynow/buynowbutton";
-import { CartContext } from 'context'
-import cart from 'mappers/cart'
+import { Input } from '../../../components/InputComponents/TextField/Input';
+
 class Creditform extends React.Component {
     constructor(props) {
         super(props)
@@ -46,7 +39,7 @@ class Creditform extends React.Component {
             <div>
                 <Container>
                     <form onSubmit={(e) => this.handleSubmit()}>
-                        <Grid spacing={12} lg={12} container>
+                        <Grid  lg={12} container>
                             <Grid item lg={12} xs={12}>
                                 <Input
                                     name="card_num"
@@ -65,18 +58,16 @@ class Creditform extends React.Component {
                                     required
                                     onChange={(event) => this.handleChange(event, "card_holder")}
                                 />
+                                  <Input
+                                    name="expiry"
+                                    type="text"
+                                    value={this.state.expiry}
+                                    placeholder="Expiry MM/YY"
+                                    onChange={(event) => this.handleChange(event, "expiry")}
+                                    onKeyPress={(e) => this.handleKeyPress(e, "expiry")}
+                                    />
                                 <Grid container lg={12} xs={12}>
-                                    <Grid item lg={4} xs={12}>
-                                        <Input
-                                            name="expiry"
-                                            type="text"
-                                            value={this.state.expiry}
-                                            placeholder="Expiry MM/YY"
-                                            onChange={(event) => this.handleChange(event, "expiry")}
-                                            onKeyPress={(e) => this.handleKeyPress(e, "expiry")}
-                                        />
-                                    </Grid>
-                                    <Grid item lg={4} xs={12}>
+                                    <Grid item lg={8} xs={12}>
                                         <Input
                                             name="cv"
                                             type="text"
@@ -86,24 +77,20 @@ class Creditform extends React.Component {
                                             onKeyPress={(e) => this.handleKeyPress(e, "cv")}
                                         />
                                     </Grid>
-                                    <Grid item lg={4} xs={12}>
-                                        <Grid spacing={12} container>
-                                            <Grid item lg={6} xs={4}>
-                                                <div className="credit-img">
-                                                    <img className="imd-credit" src="https://assets.stylori.com/images/static/icons/cvv.png" />
+                                    <Grid item lg={4} xs={12}>  
+                                                <div className="credit-img" style={{margin:10}}>
+                                                    <img className="imd-credit" src="https://assets.stylori.com/images/static/icons/cvv.png" loading="lazy" alt="...." />
                                                 </div>
-                                            </Grid>
-                                            <Grid item lg={6} xs={8}>
-                                                <div className="credit-contnt">
+                                    </Grid>
+                                    <Grid item>
+                                    <div className="credit-contnt">
                                                     Last 3 digits printed on the back of the card.
                                         </div>
-                                            </Grid>
-                                        </Grid>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                    <Button className="credit-button" type="submit" style={{width:"100%"}}>Pay Now</Button>    
                                     </Grid>
                                 </Grid>
-                                <div className="credit-btn-div">
-                                    <Button className="credit-button" type="submit">Pay Now</Button>
-                                </div>
                             </Grid>
                         </Grid>
                     </form>

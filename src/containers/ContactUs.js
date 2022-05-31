@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "components/SilverComponents/Header";
-import { Grid, Hidden, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Footer from "components/Footer/Footer";
 import { withRouter } from "react-router";
 import "index.css";
@@ -44,6 +44,7 @@ function FaqsBlock(props) {
                             <img
                                 src={val.img}
                                 style={{ width: "100%", height: "100%" }}
+                                loading="lazy" alt="...."
                             />
                         </Grid>
                     ))}

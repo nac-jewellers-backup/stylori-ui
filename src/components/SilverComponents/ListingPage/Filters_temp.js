@@ -32,7 +32,7 @@ const Filters = (props) => {
         {
            <>
 
-  {          props.data[0].filter.map(val=>{
+  {          props?.data[0]?.filter?.map(val=>{
 
                 return(
                     <Grid item xs={2} container className={classes.Filters} onMouseOver={(event) => { setState({Menuopen: true,targetopen: event.currentTarget, listHoverItem:val }) }}>

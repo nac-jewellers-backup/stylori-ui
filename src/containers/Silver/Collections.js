@@ -1,12 +1,11 @@
 import React from "react";
 import Header from "components/SilverComponents/Header";
-import { Grid, Container, Hidden } from "@material-ui/core";
+import { Grid, Hidden } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 import ProductModal from "components/SilverComponents/ProductModal";
-import MultipleSections from "components/SilverComponents/MultipleSections";
 import Footer from "components/Footer/Footer";
 import CarosolTop from "components/SilverComponents/SilvercarosolPhoto";
-import { CDN_URL, API_URL } from "config";
+import { API_URL } from "config";
 import {
   silverStyloriCollections,
   silverStyloriAllMasterCollections,
@@ -125,6 +124,7 @@ const Components = (props) => {
                     obj[val.attributeValue]["seoUrl"] = val.seoUrl
                       ? val.seoUrl
                       : " ";
+                      return 0;
                   });
                   return obj;
                 };
@@ -135,6 +135,7 @@ const Components = (props) => {
               });
           });
       });
+      // eslint-disable-next-line
   }, []);
   let content = <HomeStylori data={state.data} allSeo={state.allSeo} />;
   return content;

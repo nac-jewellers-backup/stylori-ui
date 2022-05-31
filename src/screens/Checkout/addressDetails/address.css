@@ -5,6 +5,10 @@
     cursor: pointer !important;
 }
 
+.text-ad{
+    width: 85% !important;
+}
+
 .MuiInputBase-input {
     border: none !important;
 }
@@ -18,7 +22,7 @@
 }
 
 .title {
-    color: #394578 !important;
+    color: #394578 ;
 }
 
 .card-title {

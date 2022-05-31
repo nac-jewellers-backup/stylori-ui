@@ -1,19 +1,14 @@
-  import React from "react";
-
-import { Grid, Container, Popper, ClickAwayListener, Grow, Paper, Chip } from "@material-ui/core";
+import React from "react";
+import { Grid, Container, Chip } from "@material-ui/core";
 import HeaderHoverMenuItem from "../SilverComponents/HoverNavBarListing/HeaderHoverMenuItem";
-import HeaderHoversubMenu from "../SilverComponents/HoverNavBarListing/HeaderHoverMenuItem";
 import { filterParams } from "../../mappers";
 import { useDummyRequest } from "../../hooks";
 import { styles } from "./topFilterStyles";
 import MorefiltersOpen from "./moreFilters";
-import CardRadioButton from "../InputComponents/RadioButton/index";
 import { FilterOptionsContext } from "context";
-import ExpandLess from "@material-ui/icons/ExpandLess";
-import ExpandMore from "@material-ui/icons/ExpandMore";
-import AddBoxIcon from "@material-ui/icons/AddBox";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+
 export const TopFilters = (props) => {
   const [state, setState] = React.useState({
     open: false,
@@ -39,57 +34,37 @@ export const TopFilters = (props) => {
     sortOpen: null,
   });
   const { mapped } = useDummyRequest(filterParams);
-  const { setSort, setOffset, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
-  // console.clear();
-  // console.log(props.chips, "checkeditems");
-  const submenuDetails = (data, target) => {
-    setState({
-      ...state,
-      subMenuTarget: target,
-      subTitleData: data,
-      submenuOpen: true,
-    });
-  };
+  const { setSort, FilterOptionsCtx } =
+    React.useContext(FilterOptionsContext);
+
+  // const submenuDetails = (data, target) => {
+  //   setState({
+  //     ...state,
+  //     subMenuTarget: target,
+  //     subTitleData: data,
+  //     submenuOpen: true,
+  //   });
+  // };
   const { sortOptions } = mapped;
 
   const classes = styles();
-  // props.checked['material'] = 'silver'
   const handleMoreFilters = () => {
     setState({ ...state, morefiltersOpen: !state.morefiltersOpen });
   };
-  const handleExpandClick = () => {
-    setState({ ...state, expanded: !state.expanded });
-  };
+  // const handleExpandClick = () => {
+  //   setState({ ...state, expanded: !state.expanded });
+  // };
   const handleChange = (event) => {
     if (FilterOptionsCtx.offset > 0) FilterOptionsCtx.setOffset(0);
-    // console.log(this.props.offset)
     setSort({ values: event.target.value });
     setState({ ...state, expanded: false });
     window.scrollTo(0, 0);
   };
-
-  // window.addEventListener('scroll', function() {
-  //   scrollDiv()
-  // });
-
-  // const scrollDiv = () =>{
-  //   var topFilter = document.getElementById('topfilter');
-  //
-  //     if(topFilter.scrollTop === 68){
-  //   //     if(!topFilter.hasClass(classes.topfiltersSticky)){
-  //   //         topFilter.addClass(classes.topfiltersSticky);
-  //   //     }
-  //   // }else{
-  //   //     topFilter.removeClass(classes.topfiltersSticky);
-  //   // }
-  //     }
-  // }
-
   return Object.keys(mapped).length === 0 ? (
     <div>loading...</div>
   ) : (
     <div className={classes.filtersHeaderTop} id="topfilter">
-      <Container style={{ marginTop: "25px" }}>
+      <Container style={{ marginTop: "45px" }}>
         <Grid container item xs={12}>
           <Grid
             container
@@ -110,10 +85,13 @@ export const TopFilters = (props) => {
             }}
           >
             <Grid container item xs={12} className="titleTop" id={"titleTop"}>
-              <Grid container item xs={12} justify="space-between" style={{ paddingBottom: 20 }}>
-                {/* <nav
-            // style={{height:"35px", display:"flex"}}
-            > */}
+              <Grid
+                container
+                item
+                xs={12}
+                justify="space-between"
+                style={{ paddingBottom: 20 }}
+              >
                 <Grid
                   item
                   xs={2}
@@ -129,13 +107,22 @@ export const TopFilters = (props) => {
                     });
                   }}
                 >
-                  <Grid container item xs={12} className={classes.spacingfilterdiv}>
+                  <Grid
+                    container
+                    item
+                    xs={12}
+                    className={classes.spacingfilterdiv}
+                  >
                     <Grid item xs={6} className={classes.filtersLabel}>
-                      <a>
+                      <p>
                         {"Price"} (<i class="fa">&#xf156;</i>)
-                      </a>
+                      </p>
                     </Grid>
-                    <Grid item xs={6} style={{ display: "flex", justifyContent: "flex-end" }}>
+                    <Grid
+                      item
+                      xs={6}
+                      style={{ display: "flex" }}
+                    >
                       {state.listHoverItem === "price" ? (
                         <ArrowDropUpIcon color="primary" />
                       ) : (
@@ -144,11 +131,13 @@ export const TopFilters = (props) => {
                     </Grid>
                   </Grid>
                 </Grid>
-                {props.filter.map((listName, i) => {
-                  // let urlsmall = listName.title.toLowerCase()
-                  // debugger
-                  // console.log(i)
-                  if (i < 6 && listName !== "Material" && listName !== "Theme" && listName !== "Occasion")
+                {props?.filter?.map((listName, i) => {
+                  if (
+                    i < 6 &&
+                    listName !== "Material" &&
+                    listName !== "Theme" &&
+                    listName !== "Occasion"
+                  )
                     return (
                       <Grid
                         item
@@ -165,12 +154,17 @@ export const TopFilters = (props) => {
                           });
                         }}
                       >
-                        <Grid container item xs={12} className={classes.spacingfilterdiv}>
+                        <Grid
+                          container
+                          item
+                          xs={12}
+                          className={classes.spacingfilterdiv}
+                        >
                           <Grid item xs={6} className={classes.filtersLabel}>
                             <a href={listName.url}>
-                              {/* {alert(listName)} */}
-                              {listName === "Style" ? "PRODUCT STYLE" : listName}
-                              {/* {listName} */}
+                              {listName === "Style"
+                                ? "PRODUCT STYLE"
+                                : listName}
                             </a>
                           </Grid>
                           <Grid
@@ -204,13 +198,29 @@ export const TopFilters = (props) => {
                     handleMoreFilters();
                   }}
                 >
-                  <Grid container item xs={12} className={classes.spacingfilterdiv}>
+                  <Grid
+                    container
+                    item
+                    xs={12}
+                    className={classes.spacingfilterdiv}
+                  >
                     <Grid item xs={6}>
-                      More
+                      More Filters
                     </Grid>
-                    <Grid item xs={6} style={{ display: "flex", justifyContent: "flex-end" }}>
-                      <AddBoxIcon color="primary" />
-                    </Grid>
+                    <Grid
+                      item
+                      xs={6}
+                      style={{
+                      display: "flex",
+                      justifyContent: "flex-end",
+                      }}
+                          >
+                            {state.Menuopen ? (
+                              <ArrowDropUpIcon color="primary" />
+                            ) : (
+                              <ArrowDropDownIcon color="primary" />
+                            )}
+                          </Grid>
                   </Grid>
                 </Grid>
                 {/* </nav> */}
@@ -219,13 +229,12 @@ export const TopFilters = (props) => {
                 <HeaderHoverMenuItem
                   tabdata={props.subFilter}
                   listHoverItem={props.subFilter[state.listHoverItem]}
-                  // onMouseOver={(event) => { setState({ Menuopen: true }) }}
                   filters={true}
                   opened={state.Menuopen}
                   targetopened={state.targetopen}
-                  // submenuDetails={()=>submenuDetails()}
                   filtercheck={state.listHoverItem}
                   checked={props.checked}
+                  chips= {props.chips}
                   onchoosetype={props.onchangefunc}
                   state={props.state}
                   onchoosetypeprice={props.onpricechange}
@@ -246,7 +255,13 @@ export const TopFilters = (props) => {
               setState({ ...state, expanded: false, targetopen: null });
             }}
           >
-            <Grid container item xs={12} justify="flex-end" style={{ paddingBottom: 20 }}>
+            <Grid
+              container
+              item
+              xs={12}
+              justify="flex-end"
+              style={{ paddingBottom: 20 }}
+            >
               <Grid
                 container
                 item
@@ -260,44 +275,39 @@ export const TopFilters = (props) => {
                   });
                 }}
               >
-                <Grid container item xs={12} className={classes.spacingfilterdiv}>
+                <Grid
+                  container
+                  item
+                  xs={12}
+                  className={classes.spacingfilterdiv}
+                >
                   <Grid container item xs={12} justify="space-between">
                     <Grid item xs={6} style={{ margin: "auto" }}>
                       Sort by
                     </Grid>
-                    <Grid item xs={6} style={{ display: "flex", justifyContent: "flex-end" }}>
-                      {state.expanded ? <ArrowDropUpIcon color="primary" /> : <ArrowDropDownIcon color="primary" />}
+                    <Grid
+                      item
+                      xs={6}
+                      style={{ display: "flex", justifyContent: "flex-end" }}
+                    >
+                      {state.expanded ? (
+                        <ArrowDropUpIcon color="primary" />
+                      ) : (
+                        <ArrowDropDownIcon color="primary" />
+                      )}
                     </Grid>
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
-            {/* <div className={"testMenu"} style={{
-                          position: "absolute", width: "215px",
-                          right: "15px", top: "65px", boxShadow: 'rgba(0, 0, 0, 0.1) 0px 2px 7px'
-                        }}>
-                            <Popper open={state.expanded} transition disablePortal style={{ position: 'absolute', right: '141px', zIndex:15}}>
-                                {({ TransitionProps }) => (
-                                    <Grow {...TransitionProps} >
-                                        <ClickAwayListener onClickAway={(e) => handleExpandClick(e)}>
-                                            <Grid>
-                                                <CardRadioButton data={sortOptions} onChange={handleChange} values={FilterOptionsCtx.sort} />
-                                            </Grid>
-                                        </ClickAwayListener>
-                                    </Grow>
-                                )}
-                            </Popper>
-                        </div> */}
+
             {state.expanded ? (
               <HeaderHoverMenuItem
                 tabdata={sortOptions}
                 listHoverItem={sortOptions}
-                // onMouseOver={(event) => { setState({ Menuopen: true }) }}
                 sort={true}
                 opened={state.expanded}
                 targetopened={state.targetopen}
-                // submenuDetails={()=>submenuDetails()}
-                // filtercheck={state.listHoverItem}
                 values={FilterOptionsCtx.sort}
                 onchoosetype={handleChange}
                 onMouseLeave={() => {
@@ -314,14 +324,41 @@ export const TopFilters = (props) => {
           open={state.morefiltersOpen}
           state={props.state}
           onpricechange={props.onpricechange}
-          filter={props.filter}
+          filter={props?.filter}
           onchoosetype={props.onchangefunc}
           checked={props.checked}
           subFilter={props.subFilter}
           handleClose={handleMoreFilters}
         />
         <Grid container item xs={12} style={{ margin: "0px 17px" }}>
-          {/* <div className="header-chips Chip"> */}
+          <>
+            {props?.chips.length > 1 ? (
+              <Chip
+                size="small"
+                label={"Clear All Filters"}
+                style={{
+                  padding: "14px 14px",
+                  marginRight: 14,
+                  backgroundColor: "#FFFFFF",
+                  border: "1px solid #777878",
+                  color: "#06AA9E",
+                  borderRadius: "0px",
+                  textTransform: "uppercase",
+
+                  fontFamily: "notoSerif-regular",
+                  cursor: "pointer",
+                }}
+                deleteIcon={false}
+                onClick={() => {
+                  props.history.push("/jewellery");
+                  window.location.reload();
+                }}
+              />
+            ) : (
+              ""
+            )}
+          </>
+          
           {props?.chips.length > 0 ? (
             props?.chips.map((data) => {
               return data.label === "Silver" ? null : (
@@ -329,9 +366,25 @@ export const TopFilters = (props) => {
                   size="small"
                   variant="outlined"
                   label={data.label}
-                  style={{ padding: "5px", marginRight: 5 }}
+                  style={{
+                    padding: "14px",
+                    marginRight: 14,
+                    borderRadius: "0px",
+                    color: "#6D6E71",
+                    borderColor: "#777878",
+                    fontSize: "14px",
+                  }}
                   onDelete={() => props.click(data.label)}
-                  deleteIcon={data.label ? <i className="search-choice-close" class="fa fa-times"></i> : ""}
+                  deleteIcon={
+                    data.label ? (
+                      <i
+                        className="search-choice-close"
+                        class="fa fa-times"
+                      ></i>
+                    ) : (
+                      ""
+                    )
+                  }
                   color="secondary"
                 />
               );
@@ -339,7 +392,6 @@ export const TopFilters = (props) => {
           ) : (
             <div>No filters applied</div>
           )}
-          {/* </div> */}
         </Grid>
       </Container>
     </div>

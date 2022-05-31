@@ -12,7 +12,7 @@ import ProductModal from "components/SilverComponents/ProductModal";
 import MultipleSections from "components/SilverComponents/MultipleSections";
 import Footer from "components/Footer/Footer";
 import CarosolTop from "components/SilverComponents/SilvercarosolPhoto";
-import { CDN_URL, API_URL } from "config";
+import { API_URL } from "config";
 import {
   silverStyloriCollections,
   silverStyloriAllMasterCollections,
@@ -22,8 +22,7 @@ import {
 import Feedes from "components/Feedes/Index";
 import { InstagramFeed } from "components/Feedes/instagramfeed";
 import NeedHelp from "../../components/needHelp";
-import Tweeterfeed from "../../components/storyTemplate/tweeterEmbedded";
-import { Helmet } from "react-helmet";
+
 const styles = (theme) => ({
   instagramTitle: {
     color: "rgb(58,69,120)",
@@ -45,7 +44,6 @@ class HomeStylori extends React.Component {
     
     return (
       <Grid container>
-       
         <Header />
         <CarosolTop />
         <Container maxWidth={"lg"}>
@@ -74,7 +72,7 @@ class HomeStylori extends React.Component {
             </Grid>
           </Hidden>
         </Container>
-        <Grid item>
+        <Grid item xs={12}>
           <Footer silver={true} />
         </Grid>
 
@@ -148,6 +146,7 @@ const Components = (props) => {
           _obj["name"] = val.customerName ? val.customerName : "-STYLORI";
           _obj["location"] = "Chennai";
           _arrData.push(_obj);
+          return 0;
         });
 
         // console.log('@reviews', data)
@@ -171,8 +170,8 @@ const Components = (props) => {
       .then(status)
       .then(json)
       .then((data) => {
-        allCollections = data.data.allMasterCollections.nodes
-          .filter((val) => {
+        allCollections = data?.data?.allMasterCollections?.nodes
+          ?.filter((val) => {
             return Boolean(val.name);
           })
           .map((val) => {
@@ -220,6 +219,7 @@ const Components = (props) => {
                     obj[val.attributeValue]["seoUrl"] = val.seoUrl
                       ? val.seoUrl
                       : " ";
+                      return 0;
                   });
                   return obj;
                 };
@@ -237,6 +237,7 @@ const Components = (props) => {
               });
           });
       });
+      // eslint-disable-next-line
   }, []);
   let content = (
     <HomeStylori

@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {Card,CardHeader,CardMedia, CardContent, Typography} from "@material-ui/core";
+import {Card,CardHeader,CardMedia, CardContent} from "@material-ui/core";
 import './productCard.css'
 import IconButton from "@material-ui/core/IconButton";
 import PropTypes from "prop-types";

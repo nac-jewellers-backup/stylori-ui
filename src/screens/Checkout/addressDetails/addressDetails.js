@@ -3,8 +3,6 @@ import './address.css'
 import { Container, Grid, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import styles from "./style"
-import Typography from '@material-ui/core/Typography';
-import Modal from '@material-ui/core/Modal';
 import CommenDialog from "components/Common/Dialogmodel"
 
 // const panel_clear = JSON.parse(localStorage.getItem("panel")) ? JSON.parse(localStorage.getItem("panel")) : ""
@@ -89,8 +87,8 @@ class Addressdetails extends React.Component {
         sessionStorage.setItem("Ifcheck", false)
         const { classes } = props;
         var con_gust = localStorage.getItem('gut_lg') ? JSON.parse(localStorage.getItem('gut_lg')) : ""
-        const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
-        const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
+        // const aa = localStorage.getItem("m") ? localStorage.getItem("m") : ""
+        // const aa1 = localStorage.getItem("m1") ? localStorage.getItem("m1") : ""
         const delete_all_addresses = (val_addrs1, index) => {
             // alert(JSON.stringify(index))
             if (document.location.pathname === "/checkout") {
@@ -119,7 +117,7 @@ class Addressdetails extends React.Component {
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
-                    {window.location.pathname.split("-")[0] === "/account" ? "" : <h5 className='title'> Shipping Address</h5>}
+                    {window.location.pathname.split("-")[0] === "/account" ? "" : <h5 className='title' style={{color:"#6D6E71",marginBottom:"0px",height:"30px"}}> Choose Address</h5>}
                     {window.location.pathname.split("-")[0] === "/account" ? <>
                         {_add_data_addres() && _add_data_addres().map((val_addrs1, index) =>
                             <>
@@ -198,7 +196,7 @@ class Addressdetails extends React.Component {
                                                     <Button disabled
                                                         style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
                                                         }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
-                                                        <Button style={{ float: "right" }} className='apply-b' onClick={() => {
+                                                        <Button style={{ float: "center"}} className= {this.props.isCheck ? "apply-c" :"apply-b"} onClick={() => {
                                                             this.props.selectaddreses(val_addrs1, 1, index, "yes")
                                                         }}>Select to continue </Button></>}</>
                                                 : ""}
@@ -272,9 +270,9 @@ class Addressdetails extends React.Component {
                                                     {window.location.pathname.split("-")[0] !== "/account" ?
                                                         <>{JSON.parse(localStorage.getItem("ship_isactive")) === index || JSON.parse(localStorage.getItem("bil_isactive")) === index ? <>
                                                             <Button disabled
-                                                                style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
+                                                                style={{ float: "right" }} className= {this.props.isCheck ? 'apply-c address_card_disable' : 'apply-b address_card_disable'} onClick={() => {
                                                                 }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
-                                                                <Button style={{ float: "right" }} className='apply-b' onClick={() => {
+                                                                <Button style={{ float: "right",marginRight:'-10px' }} className= {this.props.isCheck ? "apply-c" :"apply-b"} onClick={() => {
                                                                     this.props.selectaddreses(val_addrs1, 1, index, "yes")
                                                                 }}>Select to continue </Button></>}</>
                                                         : ""}
@@ -371,11 +369,13 @@ class Addressdetails extends React.Component {
                                                                     style={{ float: "right" }} className='apply-b address_card_disabled' onClick={() => {
                                                                         // this.props.selectaddreses(val_addrs1, 1)
                                                                         // this.props.changevalue(3)
-                                                                    }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : <>
+                                                                    }}> <i class="fa fa-check-circle" style={{ color: "#fff" }}></i> &nbsp;Selected</Button></> : 
+                                                                    <>
                                                                     <Button style={{ float: "right" }} className='apply-b' onClick={() => {
                                                                         this.props.selectaddreses(val_addrs2, 2, index, "no")
                                                                         // this.props.changevalue(3)
-                                                                    }}>Select to continue </Button></>}</>
+                                                                    }}>Select to continue </Button>
+                                                                    </>}</>
 
                                                         </div>
                                                     </div>

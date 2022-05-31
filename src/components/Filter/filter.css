@@ -181,6 +181,7 @@
 } */
 .mbl-filter-list {
   border-bottom: '1px solid #efeeee';
+
 }
 
 .mbl-filter-list :hover {
@@ -192,7 +193,9 @@
 
   /* background-color: #394578 !important; */
   /* background-image: linear-gradient(to left, #f9e3e3, rgba(246, 153, 163, 1)); */
-  color: #fff !important;
+  color: #06AB9F !important;
+  background-color: #fff;
+  font-weight: 500
 }
 
 /* .mbl-filter-list :hover {

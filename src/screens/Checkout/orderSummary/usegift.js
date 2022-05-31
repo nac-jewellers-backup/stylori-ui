@@ -3,6 +3,10 @@ import { useNetworkRequest } from 'hooks/index';
 import { GIFTWRAPS } from 'queries/productdetail';
 import { useCheckForCod } from 'hooks/CheckForCodHook';
 const useGift = () => {
+    let email = localStorage.getItem("email")
+    ? localStorage.getItem("email")
+    : "";
+    
     const [values, setValues] = React.useState({
         gift_to: "",
         gift_from: "",
@@ -15,6 +19,7 @@ const useGift = () => {
         expanded2: 1,
         expanded3: 1,
     });
+    const [emailerr, setEmailerr] = React.useState("");
     const { data, error, loading, makeFetch } = useNetworkRequest('/addgiftwrap', {}, false);
     const { loading: codloading, errors: coderror, data: CodData, makeRequestCod } = useCheckForCod(GIFTWRAPS, () => { }, {});
     useEffect(() => {
@@ -32,11 +37,23 @@ const useGift = () => {
     }, [CodData])
 
     const handleChange = (type, value) => {
-        setValues({
+        if (type === "gift_to") {
+          if (value === email) {
+            setEmailerr("Please Enter Mail Id Not Equal to Registered Mail ");
+          } else {
+            setValues({
+              ...values,
+              [type]: value,
+            });
+          }
+        } else {
+          setValues({
             ...values,
-            [type]: value
-        })
-    }
+            [type]: value,
+          });
+        }
+      };
+
     const handleSubmit = (e) => {
         // e.preventDefault();
         const cart_id = { cart_id: JSON.parse(localStorage.getItem('cart_id')).cart_id }
@@ -48,7 +65,7 @@ const useGift = () => {
 
     const handlers = { handleSubmit, handleChange };
 
-    return { values, handlers, val, data, setval }
+    return { values, handlers, val, data, setval,emailerr }
 }
 
 export default useGift;

@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react';
 import { useGraphql } from 'hooks/GraphqlHook';
 import { useNetworkRequest } from 'hooks/NetworkHooks'
-import { PRODUCTLIST, conditions, seoUrlResult } from 'queries/productListing';
+import { seoUrlResult } from 'queries/productListing';
 import { withRouter } from 'react-router-dom';
 import productlist from 'mappers/productlist';
 import { CDN_URL } from 'config';
 import { matchPath } from "react-router";
-import { createApolloFetch } from 'apollo-fetch';
 import { NetworkContext } from 'context/NetworkContext';
-import { GlobalContext } from 'context/GlobalContext';
-import { bool } from 'prop-types';
-import { filterParams } from 'mappers';
 
 // *****************************************************************
 
@@ -51,8 +47,6 @@ const Provider = (props) => {
     const [cartcount, setcartcount] = React.useState([])
     const [mappedFilters, setMappedFilters] = React.useState([])
     const [{ filterLogic }, setFilterLogic] = React.useState({ filterLogic: () => [] });
-    const [LoadingSeoQuery, setLoadingSeoQurey] = React.useState(true)
-    const [ErrorSeoQuery, setErrorSeoQuery] = React.useState(false)
     const [DataSeoQuery, setDataSeoQuery] = React.useState([])
     const [paramsAo, setParamsAo] = React.useState([])
     const [pricemin,setPriceMin] = React.useState(0)
@@ -61,8 +55,8 @@ const Provider = (props) => {
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => t }) }, [silverFilters])
     useEffect(() => { setFilterLogic({ filterLogic: (d, t) => [...d, ...t] }) }, [offset])
     const { NetworkCtx: { graphqlUrl: uri } } = React.useContext(NetworkContext);
-    const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
-    const client = createApolloFetch({ uri });
+
+    // const client = createApolloFetch({ uri });
 
    
     const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/filterlist', {},false, {})
@@ -70,7 +64,7 @@ const Provider = (props) => {
     useEffect(() => {
 
         const fetch_data = async () => {
-            var len;
+       
             //    if(window.location.pathname === "/jewellery"){
 
 
@@ -130,25 +124,24 @@ const Provider = (props) => {
                     //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
                     var a = {};
 
-                    var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
+                    // var paramsfilter = (Object.entries(data).length !== 0 && data.constructor === Object && data.data.allSeoUrlPriorities) && data.data.allSeoUrlPriorities.nodes.map(val => {
 
-                        let attrName = val.attributeName.replace(/\s/g, '')
-                        let attrVal = val.attributeValue
-                        silverFilters[attrName] = { [attrVal]: true }
+                    //     let attrName = val.attributeName.replace(/\s/g, '')
+                    //     let attrVal = val.attributeValue
+                    //     silverFilters[attrName] = { [attrVal]: true }
 
-                        // setFilters(filters)
-                        var obj = {}
+                    //     var obj = {}
                         
-                        obj[val.attributeValue] = true
+                    //     obj[val.attributeValue] = true
                         
-                        a[val.attributeName.replace(/\s/g, '')] = obj
-                        return a
+                    //     a[val.attributeName.replace(/\s/g, '')] = obj
+                    //     return a
 
-                    })
+                    // })
 
                     Object.entries(a).map(val => {
-
                         setSilverFilters({ ...silverFilters, a })
+                        return 0;
                     })
                     updateFilters(silverFilters)
                     // alert(JSON.stringify(filters))
@@ -162,36 +155,38 @@ const Provider = (props) => {
             // }
         }
         fetch_data()
+        // eslint-disable-next-line
     }, [])
 
 
 
     var queries = []
     const qtfArr = []
-    const pathQueries = () => {
+    // const pathQueries = () => {
 
-        // var queries = []
-        if (window.location.search) {
-            Object.keys(silverFilters).map(fk => {
-                const filter = silverFilters[fk];
-                const fv = Object.keys(filter);
-                if (fv.length > 0) {
-                    if (filter[fv[0]]) {
-                        const qt = `${fk}=${fv[0]}`;
-                        const qtf = {}
-                        qtf[`${fk}`] = `${fv[0]}`
-                        queries.push(qt);
-                        // qtfArr.push(qtf);
-                    }
-                }
-            })
-            // const query = encodeURI(queries.join("&"));
-            // props.history.push({
-            //     pathname: ntxdata.seo_url,
-            //     search: query,
-            // })
-        }
-    }
+    //     // var queries = []
+    //     if (window.location.search) {
+    //         Object.keys(silverFilters).map(fk => {
+    //             const filter = silverFilters[fk];
+    //             const fv = Object.keys(filter);
+    //             if (fv.length > 0) {
+    //                 if (filter[fv[0]]) {
+    //                     const qt = `${fk}=${fv[0]}`;
+    //                     const qtf = {}
+    //                     qtf[`${fk}`] = `${fv[0]}`
+    //                     queries.push(qt);
+    //                     // qtfArr.push(qtf);
+    //                 }
+    //             }
+    //             return 0;
+    //         })
+    //         // const query = encodeURI(queries.join("&"));
+    //         // props.history.push({
+    //         //     pathname: ntxdata.seo_url,
+    //         //     search: query,
+    //         // })
+    //     }
+    // }
 
     const paramObjects = (filtersparms) => {
         // Destructuring the query parameters from the URL
@@ -243,7 +238,7 @@ const Provider = (props) => {
             if (loading) setloadingfilters(true)
             else setloadingfilters(false)
         }
-
+     // eslint-disable-next-line
     }, [loading, error, data])
     const seoUrlFetch = () => {
 
@@ -299,6 +294,7 @@ const Provider = (props) => {
 
 
         }
+        // eslint-disable-next-line
     }, [data, error, loading]);
 
 
@@ -341,7 +337,7 @@ const Provider = (props) => {
             // alert(JSON.stringify('filters',filters))
             // alert(JSON.stringify(newObj))
             // newObj['price'] = {'min_price':pricemin,'max_price':pricemax}
-            if (Object.keys(newObj).filter(val => { if (val === 'category') return val }).length !== 0) await fetchproducts(newObj)
+            if (Object.keys(newObj)?.filter(val => { if (val === 'category') return val }).length !== 0) await fetchproducts(newObj)
 
         }
     }
@@ -350,12 +346,12 @@ const Provider = (props) => {
 
         //    alert("filters")
         if (silverFilters && (Object.entries(silverFilters).length !== 0 && silverFilters.constructor === Object)) {
-            if(Object.values(silverFilters).filter(val=>{ if(Object.entries(val).length>0 && val.constructor === Object) {return val}}).length>0)
+            if(Object.values(silverFilters)?.filter(val=>{ if(Object.entries(val).length>0 && val.constructor === Object) {return val}}).length>0)
             {
-                if(Object.keys(silverFilters).filter(val=>{if(val === "a") return val}).length === 0) updatefiltersSort()
+                if(Object.keys(silverFilters)?.filter(val=>{if(val === "a") return val}).length === 0) updatefiltersSort()
             }
         }
-
+      // eslint-disable-next-line
     }, [silverFilters])
     useEffect(() => {
 
@@ -363,7 +359,7 @@ const Provider = (props) => {
         if (pricemin) {
             updatefiltersSort()
         }
-
+     // eslint-disable-next-line
     }, [pricemin])
     useEffect(() => {
 
@@ -371,7 +367,7 @@ const Provider = (props) => {
         if (pricemax) {
             updatefiltersSort()
         }
-
+      // eslint-disable-next-line
     }, [pricemax])
     useEffect(() => {
 
@@ -379,7 +375,7 @@ const Provider = (props) => {
         if (sort) {
             updatefiltersSort()
         }
-
+     // eslint-disable-next-line
     }, [sort])
 
     useEffect(() => {
@@ -388,7 +384,7 @@ const Provider = (props) => {
         if (offset &&offset !== 0 ) {
             updatefiltersSort()
         }
-
+      // eslint-disable-next-line
     }, [offset])
     // useEffect(() => {
 
@@ -475,6 +471,7 @@ const Provider = (props) => {
 
             // }
         }
+        // eslint-disable-next-line
     }, [mappedFilters, offset])
 
     useEffect(() => {
@@ -497,6 +494,7 @@ const Provider = (props) => {
 
             updatefiltersSort()
         }
+        // eslint-disable-next-line
     }, [sort, pricemin, pricemax])
     useEffect(() => {
 

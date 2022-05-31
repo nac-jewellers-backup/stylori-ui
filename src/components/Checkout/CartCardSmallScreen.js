@@ -1,31 +1,30 @@
 import React from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import { Button, Grid } from "@material-ui/core";
+import { Box, Button, Divider } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 // import { productsDetails } from '../product-image-slider/producthoverData';
 // import { dataCard1 } from '../ProductCard/ProductData';
-import { useDummyRequest } from "../../hooks";
 import Pricing from "../Pricing/index";
-import { productcarddatas } from "../../mappers";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./style";
 import { NavLink } from "react-router-dom";
-import Cart from "./Cart.css";
-import { API_URL, CDN_URL } from "config";
+import "./Cart.css";
+import {CDN_URL,API_URL } from "config";
 import Quantity from "../quantity/index";
 import { Slideshow } from "components";
+import WishlistButton from "./Wishlistadd";
+
 function MediaControlCard(props) {
   const { classes } = props;
-  const { dataCard1 } = props.data;
 
   const handleDeleteLocalStorage = (e, val) => {
     var local_storage = JSON.parse(localStorage.getItem("cartDetails"));
-    var currentValue = e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id;
+    var currentValue =
+      e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id;
     // console.clear()
     // console.log("e-clear",e.target.id)
-    var a = local_storage.products.filter((val) => {
+    var a = local_storage?.products?.filter((val) => {
       if (currentValue !== val.sku_id) {
         return val;
       }
@@ -73,7 +72,9 @@ function MediaControlCard(props) {
           window.location.reload();
         });
     } else {
-      var _products = JSON.parse(localStorage.getItem("cartDetails")).products.filter((val) => {
+      var _products = JSON.parse(
+        localStorage.getItem("cartDetails")
+      )?.products?.filter((val) => {
         if (val.sku_id !== currentValue) return val;
       });
       var cartId = JSON.parse(localStorage.getItem("cartDetails")).cart_id;
@@ -90,10 +91,11 @@ function MediaControlCard(props) {
       }
     }
   };
+
   const filter_image = (imges__val, name, details) => {
     var image_urls;
     const width = window.innerWidth;
-    if (imges__val.imageUrl && imges__val.imageUrl.length > 0) {
+    if (imges__val?.imageUrl && imges__val?.imageUrl.length > 0) {
       // this.props.data.map(dataval => {
       //     if (dataval !== undefined && dataval !== null) {
       //         dataval.productsDetails.map(val => {
@@ -104,20 +106,26 @@ function MediaControlCard(props) {
         var valu1 = valu[1];
         var valu2 = valu1[0];
         //  imges__val && imges__val.map(img => {
-        var cnt = imges__val && imges__val.imageUrl.split("/");
+        var cnt = imges__val && imges__val?.imageUrl.split("/");
         var cnt_b = cnt[2].split("-");
         var cnt_c = cnt_b[1];
         if ((cnt_c && cnt_c[1]) === valu2) {
           var browser_type = JSON.parse(localStorage.getItem("browserDetails"));
           var resolution = 500;
-          var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`;
-          var url_split = imges__val && imges__val.imageUrl.split("/");
+          var _resolutions =
+            width < 960
+              ? `${resolution * 2}X${resolution * 2}`
+              : `${resolution}X${resolution}`;
+          var url_split = imges__val && imges__val?.imageUrl.split("/");
           var extension_split = url_split && url_split[url_split.length - 1];
           var browser_type_append =
-            extension_split && extension_split.split(".")[0].concat(`${browser_type && browser_type.browser_type}`);
+            extension_split &&
+            extension_split
+              .split(".")[0]
+              .concat(`${browser_type && browser_type.browser_type}`);
           url_split[url_split && url_split.length - 1] = browser_type_append;
           url_split.splice(2, 0, _resolutions);
-          var url_construct = url_split.join().replace(/\,/g, "/");
+          var url_construct = url_split.join().replace(/\,/g, "/"); //eslint-disable-line
           image_urls = `${CDN_URL}${url_construct}`;
           return [image_urls];
         }
@@ -144,31 +152,42 @@ function MediaControlCard(props) {
     slidesToShow: 1,
     arrows: false,
   };
+
   return (
     <div style={{ paddingTop: "10px" }}>
       {/* <Grid container>
         <Grid xs={6} > */}
-      <span style={{ color: "#666", fontSize: "14px", margin: "0px 0px 10px" }}> Shopping cart </span> <br />
+      {props?.checkout ? null : (
+        <div>
+          <span className="cartTitle"> Shopping cart </span> <br />
+          <Divider className="cardBorderMobile" style={{ width: "none" }} />
+        </div>
+      )}
+
       {/* <div> <span style={{ color: "#394578", fontSize: "14px", fontWeight: "bold" }}>Item:</span> ({props.data.length})</div><br /> */}
       {/* </Grid>
         <Grid xs={6}  >
           jh</Grid>
       </Grid><br /> */}
-      {props.checkoutbutton}
+      {/* {props.checkoutbutton} */}
       <br />
       <br />
       <br />
       {props.data.map((dataval) =>
         dataval.productsDetails.map((val) => {
           return (
-            <Card className={classes.card}>
+            <Box className={classes.card}>
               {dataval.productsDetails[0].namedetail.map((val) =>
                 dataval.fadeImages.map((val_imgUrl) => {
                   return filter_image(val_imgUrl, val.name, val.details) &&
-                    filter_image(val_imgUrl, val.name, val.details).length > 0 ? (
+                    filter_image(val_imgUrl, val.name, val.details).length >
+                      0 ? (
                     window.location.pathname !== "/checkout" ? (
                       <div style={{ width: "195px" }}>
-                        <NavLink to={dataval.skuUrl} style={{ textDecoration: "none" }}>
+                        <NavLink
+                          to={dataval.skuUrl}
+                          style={{ textDecoration: "none" }}
+                        >
                           {/* <img
                         src={filter_image(val_imgUrl,val.name, val.details)}
                         width="100%"
@@ -177,7 +196,11 @@ function MediaControlCard(props) {
                       /> */}
                           <Slideshow
                             className="image"
-                            fadeImages={filter_image(val_imgUrl, val.name, val.details)}
+                            fadeImages={filter_image(
+                              val_imgUrl,
+                              val.name,
+                              val.details
+                            )}
                             dataCarousel={dataCarousel}
                           />
                         </NavLink>
@@ -192,7 +215,11 @@ function MediaControlCard(props) {
                     /> */}
                         <Slideshow
                           className="image"
-                          fadeImages={filter_image(val_imgUrl, val.name, val.details)}
+                          fadeImages={filter_image(
+                            val_imgUrl,
+                            val.name,
+                            val.details
+                          )}
                           dataCarousel={dataCarousel}
                         />
                       </div>
@@ -203,32 +230,88 @@ function MediaControlCard(props) {
               <div className={classes.details}>
                 <CardContent className={classes.content}>
                   {window.location.pathname !== "/checkout" ? (
-                    <NavLink to={dataval.skuUrl} style={{ textDecoration: "none" }}>
-                      <Typography component="div" variant="subtitle1" className={`${classes.contents} ${classes.normalfonts}`}>
+                    <NavLink
+                      to={dataval.skuUrl}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <Typography
+                        component="div"
+                        variant="h6"
+                        className={
+                          props.checkout
+                            ? `${classes.contents} ${classes.normalfontsCheck}`
+                            : `${classes.contents} ${classes.normalfonts}`
+                        }
+                      >
                         {val.pro_header}
                       </Typography>
                     </NavLink>
                   ) : (
-                    <Typography component="div" variant="subtitle1" className={`${classes.contents} ${classes.normalfonts}`}>
+                    <Typography
+                      component="div"
+                      variant="h6"
+                      className={
+                        props.checkout
+                          ? `${classes.contents} ${classes.normalfontsCheck}`
+                          : `${classes.contents} ${classes.normalfonts}`
+                      }
+                    >
                       {val.pro_header}
                     </Typography>
                   )}
-                  <Typography className={`subhesder ${classes.normalfonts}`}>
+
+                  <Typography
+                    className={
+                      props.checkout
+                        ? `${classes.normalfontsCheck}`
+                        : `title ${classes.normalfonts}`
+                    }
+                  >
+                    {val.namedetail[0].details}
+                  </Typography>
+                  <Typography
+                    className={
+                      props.checkout
+                        ? `${classes.normalfontsCheck}`
+                        : `subhesder ${classes.normalfonts}`
+                    }
+                  >
                     {window.location.pathname === "/checkout" ||
                     checkMaterial(dataval.materialName) ||
                     !Boolean(dataval?.[0]?.maxOrderQty) ||
                     dataval?.[0]?.maxOrderQty < 2 ? (
-                      `Quantity ${JSON.parse(localStorage.getItem("quantity"))[dataval.generatedSku]}`
+                      `Quantity ${
+                        JSON.parse(localStorage.getItem("quantity"))[
+                          dataval.generatedSku
+                        ]
+                      }`
                     ) : (
                       <Quantity data={[dataval]} cart={true} />
                     )}
                   </Typography>
+                  {val?.skuId === dataval.productSkuId ? (
+                    <Typography
+                      className={
+                        props.checkout
+                          ? `${classes.normalfontsCheck}`
+                          : `subhesder ${classes.normalfonts}`
+                      }
+                    >
+                      {val.shipby}
+                    </Typography>
+                  ) : (
+                    ""
+                  )}
                   {dataval.dataCard1.map((val) => (
                     <Pricing
                       price={val.price}
                       offerPrice={val.offerPrice}
                       offerDiscount={"25% - OFF"}
-                      quantity={JSON.parse(localStorage.getItem("quantity"))[dataval.generatedSku]}
+                      quantity={
+                        JSON.parse(localStorage.getItem("quantity"))[
+                          dataval.generatedSku
+                        ]
+                      }
                     >
                       {/* <label className={classes.labelPrice}>
                         <Typography
@@ -239,7 +322,7 @@ function MediaControlCard(props) {
                           <del>{val.offerPrice }</del>
                         </Typography>
                         &nbsp;
-    <Typography
+                        <Typography
                           variant="subtitle1"
                           style={{ color: "#ED1165" }}
                           className={classes.labelPriceOff}
@@ -258,24 +341,84 @@ function MediaControlCard(props) {
                   ))}
                 </CardContent>
                 <div className={classes.controls}>
-                  {/* <NavLink to="/checkout" style={{ textDecoration: 'none' }}>
-          <Button
-            className={`btn-cart-resp ${classes.buttons}`}
-            variant="contained"
-            style={{
-              color: "white",
-              fontSize: "0.7rem"
-            }}
-          >
-            Buy Now
-  </Button>
-        </NavLink> */}
+                 
                   {window.location.pathname !== "/checkout" ? (
+                            <div style={{lineHeight:3.5}}>
+                              <Button
+                                // className="highlighter"
+                                // className={`subhesder hov ${classes.normalfonts}`}
+                                id={dataval.generatedSku}
+                                onClick={(event) =>
+                                  handleDeleteLocalStorage(event)
+                                }
+                                fullWidth
+                                variant="contained"
+                                style={{
+                                  color: "gray",
+                                  width: "96%",
+                                  border: "1.46px solid #919396",
+                                  backgroundColor: "white",
+                                  borderRadius: "0px",
+                                  boxShadow: "none",
+                                  padding:"5px 40px 5px 40px"
+                                }}
+                              >
+                                &nbsp;Remove
+                              </Button>
+                              <span>&nbsp;</span>
+                              {!dataval?.isActive ? (
+                                <span
+                                  style={{
+                                    backgroundColor: "red",
+                                    fontSize: "10px",
+                                    color: "white",
+                                    padding: "2px 4px",
+                                    borderRadius: "2px",
+                                  }}
+                                >
+                                  Sold Out
+                                </span>
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          ) : (
+                            ""
+                          )}
+
+                          {window.location.pathname !== "/checkout" ? (
+                            <div style={{marginTop:'-7px'}}>
+                              <WishlistButton
+                                sku={dataval.generatedSku}
+                                productId={dataval.productId}
+                                style={{marginTop:0}}
+                              />
+
+                              {!dataval.isActive ? (
+                                <span
+                                  style={{
+                                    backgroundColor: "red",
+                                    fontSize: "10px",
+                                    color: "white",
+                                    padding: "2px 4px",
+                                    borderRadius: "2px",
+                                  }}
+                                >
+                                  Sold Out
+                                </span>
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                  {/* {window.location.pathname !== "/checkout" ? (
                     <div
                       variant="contained"
                       style={{ cursor: "pointer", fontSize: "0.9rem" }}
                       className={`${classes.normalfonts} ${classes.controls}`}
-                      className="highliter"
+                      // className="highliter"
                     >
                       &nbsp;
                       <div
@@ -309,10 +452,11 @@ function MediaControlCard(props) {
                     </div>
                   ) : (
                     ""
-                  )}{" "}
+                  )}{" "} */}
+
                 </div>
               </div>
-            </Card>
+            </Box>
           );
         })
       )}

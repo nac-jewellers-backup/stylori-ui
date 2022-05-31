@@ -1,10 +1,8 @@
 import React from "react";
 import ShopByCard from "./ShopByCard";
-import { Grid, Container, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
-import { shopByStyloriSilver } from "../../queries/productdetail";
-import { API_URL, CDN_URL } from "../../config";
 
 let _shopsProducts = []
 

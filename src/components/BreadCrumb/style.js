@@ -22,6 +22,9 @@ const styles = theme => ({
     normalfonts: {
         color: theme.palette.text.primary,
     },
+    normalfontsCheck:{
+      color:"#6D6E71"
+    },
     backgsecondary: {
         background: theme.palette.secondary.dark,
     },

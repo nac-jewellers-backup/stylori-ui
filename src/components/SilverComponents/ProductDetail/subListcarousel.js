@@ -81,7 +81,7 @@ class Sublistcarousel extends React.Component {
                   :
                   <Grid container style={{ width: "100%" }} >
                     <Grid item style={{ width: "6%", alignItems: "center", justifyContent: "center", display: "flex" }}>
-                      <img onClick={() => this.previous()} className={"icon-leftcaro"} />
+                      <img onClick={() => this.previous()} className={"icon-leftcaro"} loading="lazy" alt="...."/>
 
                     </Grid>
                     <Grid item style={{ width: "88%" }}>
@@ -92,7 +92,7 @@ class Sublistcarousel extends React.Component {
                       </Slideshow>
                     </Grid>
                     <Grid item style={{ width: "6%", alignItems: "center", justifyContent: "center", display: "flex" }}>
-                      <img onClick={() => this.next()} className={"icon-rightcaro"} />
+                      <img onClick={() => this.next()} className={"icon-rightcaro"} loading="lazy" alt="...." />
 
                     </Grid>
                   </Grid>

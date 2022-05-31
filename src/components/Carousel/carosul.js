@@ -7,15 +7,14 @@ import "../product-image-slider/product-images.css";
 import PropTypes from "prop-types";
 import Wishlist from "components/wishlist/wishlist";
 import { GlobalContext, CartContext } from "context";
-import Buynowbutton from "../Buynow/buynowbutton";
-import CommenDialog from "../Common/Dialogmodel";
 import { injectUrl_url_construct } from 'common/index'
-import { CDN_URL } from '../../config'
+import { CDN_URL } from '../../config';
+
 const Slideshow = (props) => {
   let {
-    CartCtx: { allorderdata, wishlistdata, setratingcountsclear },
+    CartCtx: {  wishlistdata },
   } = React.useContext(CartContext);
-  const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
+  const { Globalctx} = React.useContext(GlobalContext);
   return <Component Globalctx={Globalctx} wishlist={wishlistdata} {...props} />;
 };
 
@@ -50,7 +49,7 @@ class Component extends React.Component {
     ];
 
     if (url.length > 0) {
-      var array_split = url.split(/\.(?=[^\.]+$)/);
+      var array_split = url.split(/\.(?=[^\.]+$)/); //eslint-disable-line
       const found = extensionVideoLists.find(
         (element) => element.toLowerCase() === array_split[1]
       );
@@ -110,7 +109,7 @@ class Component extends React.Component {
     const urlCheck = (size) => {
       var current_url = url.split('/')
       current_url.splice(current_url.length - 2, 1, size)
-      _url = current_url.join().replace(/\,/g, '/');
+      _url = current_url.join().replace(/\,/g, '/'); //eslint-disable-line
       return _url
     }
     // let _url_2400X2400 = res.url_1000x1000; 
@@ -159,9 +158,8 @@ class Component extends React.Component {
                     : ""
                   }`}
                 src={imgs}
-                loading="auto"
+                loading="lazy"
                 alt="..."
-
                 onError={(e) => {
 
                   this.imageOnError(e, imgs)
@@ -179,7 +177,7 @@ class Component extends React.Component {
   };
 
   imagehoverchildrens = (hoverlist, globalContext, isInjectUrl) => {
-    let { hover, hovereffect, TopPic, imagecra, isSilver, collectionDataSilverSEO, Homepagefont } = this.props;
+    let { hover, hovereffect, TopPic, isSilver, collectionDataSilverSEO, Homepagefont } = this.props;
     const collectiondatacheck = (val) => collectionDataSilverSEO ? collectionDataSilverSEO[val.title] && collectionDataSilverSEO[val.title].seoText && collectionDataSilverSEO[val.title].seoText.replace(/ /g, '').length > 0 ? collectionDataSilverSEO[val.title].seoText : false : val.description
     // debugger
     if (TopPic) {
@@ -191,7 +189,8 @@ class Component extends React.Component {
             src={val.img}
             className="subslider-carousel-img img-responsive"
             style={{ width: "100%", height: "auto" }}
-            alt=""
+            alt="...."
+            loading="lazy"
             onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
           />
           <div className="overlay1">
@@ -216,7 +215,8 @@ class Component extends React.Component {
               src={isInjectUrl ? injectUrl_url_construct(val.img) : val.img}
               className="subslider-carousel-img img-responsive"
               style={{ width: "100%", height: "auto" }}
-              alt=""
+              alt="....."
+              loading="lazy"
               onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
             />
             <div className="overlay1"
@@ -263,7 +263,8 @@ class Component extends React.Component {
               <img
                 src={val.img}
                 className="subslider-carousel-img img-responsive"
-                alt=""
+                alt="..."
+                loading="lazy"
                 onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
               />
               <div className="overlay1silver" >
@@ -323,9 +324,9 @@ class Component extends React.Component {
                   >
                     {" "}
                     <Wishlist
-                      sku={val.skuId}
-                      productId={val.productId}
-                      wishlist={this.props.wishlist}
+                      sku={val?.skuId}
+                      productId={val?.productId}
+                      wishlist={this?.props.wishlist}
                       globalContext={globalContext}
                       // isSilver={isSilver}
                       // label = {<b>SAVE</b>}
@@ -344,7 +345,8 @@ class Component extends React.Component {
                   <img
                     src={val.img}
                     className="subslider-carousel-img img-responsive"
-                    alt=""
+                    alt="..."
+                    loading="lazy"
                     onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
                   />
                   <div className="overlay1">
@@ -384,15 +386,17 @@ class Component extends React.Component {
                   height: "auto",
                   display: "block !important  ",
                 }}
-                alt=""
+                alt="..."
+                loading="lazy"
                 onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
               />
             )
           })
           :
           <a
-            href={hoverlist?.url}
-          >
+            onClick={hoverlist?.url}
+            href="/#"
+          > 
             <img
               src={isInjectUrl ? injectUrl_url_construct(hoverlist.img) : hoverlist.img}
               className="subslider-carousel-img-Silver img-responsive"
@@ -401,7 +405,8 @@ class Component extends React.Component {
                 height: "auto",
                 display: "block !important  ",
               }}
-              alt=""
+              alt="..."
+              loading="lazy"
               onError={(e) => { e.target.src = `${CDN_URL}product/575X575/productnotfound.jpg` }}
             /></a>}
         {/* <div class="overlay1">
@@ -429,11 +434,12 @@ class Component extends React.Component {
         } else {
           vals = 0;
         }
+        return 0;
       });
     return vals;
   };
   handleLocalStorage = () => {
-    if (this.valus(this.props.data[0].skuId) === 1) {
+    if (this.valus(this?.props?.data[0]?.skuId) === 1) {
       // this.props.setCartFilters({ skuId: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice })
       // sessionStorage.setItem('updatedProduct', JSON.stringify({ sku_id: this.props.data[0].skuId, qty: 1, price: this.props.data[0].offerPrice }));
       window.location.pathname = "/cart";
@@ -453,17 +459,17 @@ class Component extends React.Component {
 
   deletechecklists = () => {
     this.props.setCartFilters({
-      skuId: this.props.data[0].skuId,
+      skuId: this?.props?.data[0]?.skuId,
       qty: 1,
-      price: this.props.data[0].offerPrice,
+      price: this?.props?.data[0]?.offerPrice,
     });
 
     sessionStorage.setItem(
       "updatedProduct",
       JSON.stringify({
-        sku_id: this.props.data[0].skuId,
+        sku_id: this?.props?.data[0]?.skuId,
         qty: 1,
-        price: this.props.data[0].offerPrice,
+        price: this?.props?.data[0]?.offerPrice,
       })
     );
     window.location.pathname = "/cart";

@@ -4,7 +4,6 @@ import {
     Grid,
     Button,
     Container,
-    Hidden,
     TextField
 } from '@material-ui/core';
 import Ratings from "../rating/rating";
@@ -14,6 +13,7 @@ import styles from './style';
 import useRating from "./userating"
 import { withRouter } from "react-router";
 import { ProductDetailContext } from 'context/ProductDetailContext';
+
 const RatingForm = (props) => {
     return <RatingComponent  {...props} />
 }
@@ -23,8 +23,8 @@ const RatingComponent = (props) => {
     // const clear1 = () => {
     //     props && props.clear_rating_onchange && props.clear_rating_onchange(true)
     // }
-    const { values, handlers, setValues } = useRating(props);
-    const newLocal = 250;
+    const { values, handlers } = useRating(props);
+    // const newLocal = 250;
     const isSilver = props.isSilver ? true : false
 
     return (

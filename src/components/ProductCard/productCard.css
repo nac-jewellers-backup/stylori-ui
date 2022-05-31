@@ -6,6 +6,13 @@
   background-position: center;
 }
 
+.wishListStyle{
+  position: absolute;
+  z-index: 500;
+  right: 5px;
+  margin: 10px;
+}
+
 .one-day-ship-listing-page__ {
   font-weight: 600;
   z-index: 5 !important;
@@ -44,9 +51,9 @@
   width: 24px;
   height: 22px;
   /* z-index: 2; */
-  position: relative;
-  left: 10px;
-  top: 10px;
+  position: absolute;
+  left: 20px;
+  top: 46px;
   /* background-image: url('https://alpha-assets.stylori.com/images/static/product-details-icons.png'); */
   /* top: 5px; */
   background-position: -102px -37px;
@@ -62,6 +69,27 @@
   display: block;
   color: #F699A3;
   font-size: 11px;
+}
+
+.one-day-ship-listing-page-withoutTop {
+  width: 24px;
+  height: 22px;
+  margin-left: 4px;
+  margin-top: 2px;
+  /* z-index: 2; */
+  position: absolute;
+  top: 15px;
+  font-family: 'FontAwesome' !important;
+  /* background-image: url('https://alpha-assets.stylori.com/images/static/product-details-icons.png'); */
+  /* top: 5px; */
+  background-position: -102px -37px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  /* color: #ed1165 !important; */
+}
+
+.one-day-ship-listing-page-withoutTop-label {
+  display: none;
 }
 
 .overall-loaders {
@@ -157,6 +185,19 @@
 
 .imageHeight {
   min-height: 144px;
+  transition: all 2s;
+    -moz-transition: all 2s;
+    -webkit-transition: all 2s;
+    -o-transition: all 2s;
+    -ms-transition: all 2s;
+}
+
+.imageHeight :hover{
+  transform : scale(1.05);
+  -moz-transform : scale(1.05);
+  -webkit-transform : scale(1.05);
+  -o-transform : scale(1.05);
+  -ms-transform : scale(1.05);
 }
 
 @media only screen and (max-width: 375px) and (min-width: 320px) {

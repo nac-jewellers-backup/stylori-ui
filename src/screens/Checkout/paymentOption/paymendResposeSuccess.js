@@ -1,22 +1,16 @@
-import React, { useEffect, useRef } from "react";
-import { Redirect } from "react-router-dom";
-import { Grid, Button, Hidden } from "@material-ui/core";
+import React from "react";
+import { Grid,Hidden,Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import "./payment.css";
 import Divider from "@material-ui/core/Divider";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import { CartContext } from "context";
 import { withRouter } from "react-router-dom";
 import cart from "mappers/cart";
 import Allorders from "components/accounts/allorders";
-import { API_URL, HOME_PAGE_URL, CDN_URL } from "../../../config";
+import { API_URL } from "../../../config";
 import Header from "components/SilverComponents/Header";
-import styles from "../../../components/Checkout/style";
-import CustomSeparator from "../../../components/BreadCrumb/index";
-import { withStyles } from "@material-ui/core/styles";
 import "../../../components/Checkout/Cart.css";
 import "../chckout.css";
-import Footer from "components/Footer/Footer";
 
 const order_id = localStorage.getItem("order_id")
   ? JSON.parse(localStorage.getItem("order_id"))
@@ -48,6 +42,7 @@ const cartsubdata = [
 ];
 var obj = {};
 obj["order_id"] = order_id;
+
 class PaymentResponseSuccess extends React.Component {
   makeFetch_resend_mail = async (props) => {
     await fetch(`${API_URL}/resendorderemail`, {
@@ -125,15 +120,50 @@ class PaymentResponseSuccess extends React.Component {
                 </Grid>
               </Grid>
             </Grid>
-          </Hidden>
-          <Grid container justify="center" className="smallScreenClass">
+          </Hidden> 
+          <Grid container justify="center" className="smallScreenClass" style={{display:"flex",flexDirection:"column",marginTop:30}}>
+              <Grid item  className="contant-center container-font-size">
+              
+                <Typography className="thank_you">A Big Thank You!</Typography>
+                <Divider className="divider_payment"/>
+                {/* {" "}
+                <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
+                &nbsp;&nbsp; A Big Thank you!&nbsp;&nbsp;Your order has been placed. */}
+              </Grid>
+              <Grid item  style={{marginTop:30}}> 
+              <Typography className="center_content">Welcome to <span style={{fontWeight:700,margin:5}}>Stylori</span> Family! We'll take it from here</Typography> 
+               </Grid>   
+               <Grid
+              item
+              className="contant-center"
+              style={{color:"#6D6E71"}}
+            >
+              We've send you an email confirmation.&nbsp;
+              <a
+                onClick={() => {
+                  this.makeFetch_resend_mail();
+                }}
+                style={{
+                  fontSize: "12px",
+                  color: "blue",
+                  textDecoration: "underline",
+                  cursor: "pointer",
+                }}
+              >
+                Resend Email
+              </a>
+              </Grid>
+          </Grid>
+          {/* <Grid container justify="center" >
             <Grid item xs={10} sm={10} md={6} className="contant-center">
               <Grid item className="container-font-size">
+              <Typography style={{color:"#6D6E71"}}>Welcome to <span style={{fontWeight:700}}>Stylori</span> Family! We'll takeit from here</Typography>
                 {" "}
                 <CheckCircleOutlineIcon className="svgiconsuccess"></CheckCircleOutlineIcon>
-                &nbsp;&nbsp;Thank you!&nbsp;&nbsp;Your order has been placed.
+                &nbsp;&nbsp; A Big Thank you!&nbsp;&nbsp;Your order has been placed.
+                
               </Grid>
-            </Grid>
+            </Grid> 
           </Grid>
           <Grid container justify="center">
             <Grid
@@ -142,7 +172,7 @@ class PaymentResponseSuccess extends React.Component {
               sm={12}
               md={6}
               className="contant-center"
-              style={{ paddingLeft: "10px" }}
+              style={{color:"#6D6E71"}}
             >
               We've send you an email confirmation.&nbsp;
               <a
@@ -159,12 +189,12 @@ class PaymentResponseSuccess extends React.Component {
                 Resend Email
               </a>
             </Grid>
-          </Grid>
+          </Grid> */}
 
           <Grid container>
             <Allorders allorderdata={this.props.allorderdata} />
           </Grid>
-          <Footer />
+          {/* <Footer /> */}
         </Grid>
       </>
     );

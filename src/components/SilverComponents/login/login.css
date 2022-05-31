@@ -1,0 +1,41 @@
+.divider{
+    width: 0.55px;
+    background-color: #c1c1c1;
+    height: 30px;
+    margin: 5px;
+  }
+  
+  .button{
+    text-align: center;
+    background-color: #fff !important;
+    text-transform: none !important;
+  }
+
+  
+  .textMain{
+    font-family: 'Playfair Display', serif !important
+  }
+  
+  .textSide{
+    font-family: 'Playfair Display', serif !important;
+    color:#D32564 !important;
+  }
+  
+  .forgotPassword{
+    float: right;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    color: #6D6E71 !important;
+  }
+  .signup{
+    text-align: center;
+    font-size: 12px;
+    color: #6D6E71 !important;
+  }
+  
+  .login{
+    margin-top: -10px;
+    opacity: 0.75;
+  }
+  

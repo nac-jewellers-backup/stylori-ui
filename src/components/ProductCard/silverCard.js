@@ -1,17 +1,12 @@
 import React from "react";
-import { makeStyles, rgbToHex } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
-import { Hidden } from "@material-ui/core";
 import "./productCard.css";
-import { CDN_URL } from "config";
 import styles from "./style";
 import { ProductDetailContext } from "context";
 import {
@@ -20,12 +15,12 @@ import {
 } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import Wishlist from "components/wishlist/wishlist";
+import CurrencyConversion from 'utils/CurrencyConversion';
+import { Hidden } from "@material-ui/core";
 
 export const SilverImgMediaCard = (props) => {
-  const { ProductDetailCtx, setFilters } = React.useContext(
-    ProductDetailContext
-  );
-  const loc = window.location.search;
+  const { ProductDetailCtx, setFilters } =
+    React.useContext(ProductDetailContext);
   const classes = styles();
 
   return (
@@ -100,9 +95,8 @@ const imageOnError = async (
   const urlCheck = (size) => {
     var current_url = url.split("/");
     current_url.splice(current_url.length - 2, 1, size);
-    _url = current_url.join().replace(/\,/g, "/");
+    _url = current_url.join().replace(/\,/g, "/"); //eslint-disable-line
     return _url;
-    
   };
   // let _url_2400X2400 = res.url_1000x1000;
   let _notFound =
@@ -137,13 +131,21 @@ const Gallery = (
     <div className="imageHeight">
       {props.data.oneDayShipping ? (
         <div
-          className={`one-day-ship-listing-page-withoutTop ${props.classes.colorTheme}`}
+          className={`one-day-ship-listing-page-withoutTop`}
           style={{ zIndex: 2 }}
-        >
-          <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
-          <span
-            className={`one-day-ship-listing-page-label ${props.classes.colorTheme}`}
-          >
+        >      
+          <i
+            class="fa fa-truck"
+            style={{ 
+            fontSize: "20px",
+            fontFamily: 'FontAwesome !important',
+            position: 'absolute',
+            zIndex: 500,
+            left: '16px',
+            color:"#111"
+            }}
+          ></i>
+          <span className={`one-day-ship-listing-page-label`}>
             1 day shipping
           </span>
         </div>
@@ -187,6 +189,7 @@ const Gallery = (
           sku={props.data.skuId}
           productId={props.data.productId}
           wishlist={props.wishlist}
+          isSilver
         />
       </div>
       <Link
@@ -285,8 +288,8 @@ const useStyles = makeStyles((theme) => ({
   card: {
     minWidth: "90%",
     maxWidth: "90%",
-    boxShadow:
-      "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important",
+    // boxShadow:
+    //   "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important",
     margin: "10px 0px ",
     borderRadius: "0 !important",
   },
@@ -300,6 +303,7 @@ const useStyles = makeStyles((theme) => ({
   priceClass: {
     // boxShadow: "0px 0px 5px #F699A3 inset",
     padding: "10px",
+    paddingLeft: "0px",
     height: "75px",
     display: "flex",
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
@@ -373,7 +377,6 @@ const useStyles = makeStyles((theme) => ({
       padding: "0 !important",
       paddingTop: "4px !important",
       paddingBottom: "4px !important",
-      padding: 5,
     },
   },
   youSave: {
@@ -426,7 +429,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.9rem",
     // whiteSpace: "nowrap",
     // flex: 0.6,
-    color: "rgb(109,110,112)",
+    // color: "rgb(109,110,112)",
+    color: "#959598",
+    fontWeight: "500",
     overflow: "hidden",
     // textOverflow: "ellipsis",
     width: "90%",
@@ -462,7 +467,7 @@ function Component(props) {
     dataLoaded: true,
     image: { hoverImage: null, placeImage: null },
   });
-  const _height = props.data.imageResolution.img_res;
+  // const _height = props.data.imageResolution.img_res;
   const callmouseover = () => {
     setCardState({ ...cardstate, hovered: !cardstate.hovered });
   };
@@ -475,7 +480,10 @@ function Component(props) {
   };
   return (
     <div className={classes.root} style={{ marginLeft: "0px !important" }}>
-      <Card className={classes.card} style={{ marginLeft: "0px !important" }}>
+      <Card
+        className={classes.card}
+        style={{ marginLeft: "0px !important", boxShadow: "none" }}
+      >
         {/* <CardActions className={classes.cardAtionspadding}>
           <Grid container xs={12}>
             <Grid container item xs={6} justify="flex-start">
@@ -597,36 +605,27 @@ sizes="(max-width: 320px) 320w,
                     width: "100%",
                   }}
                 >
-                  {new Intl.NumberFormat("en-IN", {
-                    style: "currency",
-                    currency: "INR",
-                    minimumFractionDigits: 0,
-                  }).format(Math.round(props.data.offerPrice))}
+                  {CurrencyConversion(props.data.offerPrice)}
                   <span
-                    // variant="h6"
-                    // component="h6"
+                   
                     className={classes.offerMainPriceStrike}
                     style={{
-                      // width: "100%",
-                      fontSize: "12px",
+                      fontSize: "22px",
                       paddingLeft: "5px",
                       display: "flex",
                       alignItems: "flex-end",
+                      marginBottom: "1px",
                     }}
                   >
                     {/* <i
         
-        className="fa"
-      >
-        &#xf156;
-      </i> */}
+                     className="fa"
+                      >
+                      &#xf156;
+                             </i> */}
                     {/* {Math.round(props.data.offerPrice)} */}
 
-                    {new Intl.NumberFormat("en-IN", {
-                      style: "currency",
-                      currency: "INR",
-                      minimumFractionDigits: 0,
-                    }).format(Math.round(props.data.price))}
+                    {CurrencyConversion(props.data.price)}
                   </span>
                   <span
                     style={{
@@ -652,7 +651,6 @@ sizes="(max-width: 320px) 320w,
                 </span>
 
                 <Grid container xs={12}>
-                  {/* <Grid item xs={12} className={`${classes.titles}`}> */}
                   <Typography
                     variant="body1"
                     component="span"
@@ -662,7 +660,6 @@ sizes="(max-width: 320px) 320w,
                     {props.data.title}
                   </Typography>
                 </Grid>
-                {/* </Grid> */}
                 {/* </Hidden> */}
               </Grid>
             </CardContent>
@@ -678,6 +675,7 @@ sizes="(max-width: 320px) 320w,
                 {/* <Hidden smDown> */}
 
                 {/* </Hidden> */}
+                <Hidden smDown>
                 <Grid
                   container
                   item
@@ -690,16 +688,12 @@ sizes="(max-width: 320px) 320w,
                     component="h4"
                     className={classes.offerMainPrice}
                     style={{
-                      paddingLeft: "5px",
+                      // paddingLeft: "5px",
                       display: "flex",
                       width: "100%",
                     }}
                   >
-                    {new Intl.NumberFormat("en-IN", {
-                      style: "currency",
-                      currency: "INR",
-                      minimumFractionDigits: 0,
-                    }).format(Math.round(props.data.offerPrice))}
+                    {CurrencyConversion(props.data.offerPrice)}
                     <span
                       // variant="h6"
                       // component="h6"
@@ -710,30 +704,29 @@ sizes="(max-width: 320px) 320w,
                         paddingLeft: "5px",
                         display: "flex",
                         alignItems: "flex-end",
+                        marginBottom: "1px",
                       }}
                     >
                       {/* <i
         
-        className="fa"
-      >
-        &#xf156;
-      </i> */}
+                       className="fa"
+                         >
+                           &#xf156;
+                              </i> */}
                       {/* {Math.round(props.data.offerPrice)} */}
 
-                      {new Intl.NumberFormat("en-IN", {
-                        style: "currency",
-                        currency: "INR",
-                        minimumFractionDigits: 0,
-                      }).format(Math.round(props.data.price))}
+                      {CurrencyConversion(props.data.price)}
                     </span>
                     <span
                       style={{
                         fontSize: "13px",
                         display: "flex",
-                        alignItems: "flex-end",
-                        justifyContent: "flex-end",
+                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
                         width: "100%",
                         paddingRight: "5px",
+                        marginTop: "2px",
+                        marginLeft: "5px",
                         color: "rgb(6, 171, 159)",
                       }}
                     >
@@ -777,7 +770,7 @@ sizes="(max-width: 320px) 320w,
                   <Typography
                     variant="body1"
                     component="span"
-                    style={{ paddingLeft: "5px" }}
+                    style={{ color: "#959598" }}
                     className={`${classes.titles}`}
                   >
                     {props.data.title}
@@ -785,6 +778,114 @@ sizes="(max-width: 320px) 320w,
 
                   {/* </Grid> */}
                 </Grid>
+                </Hidden>
+                <Hidden mdUp>
+                <Grid
+                  container
+                  item
+                  xs={12}
+                  sm={12}
+                  className={`${classes.priceClassMain}`}
+                >
+                    <Grid container xs={12}>
+                  {/* <Grid item xs={12} className={`${classes.titles}`}> */}
+                  <Typography
+                    variant="body1"
+                    component="span"
+                    style={{ color: "#959598"}}
+                    className={`${classes.titles}`}
+                  >
+                    {props.data.title}
+                  </Typography>
+
+                  {/* </Grid> */}
+                </Grid>
+
+                  <span
+                    variant="h4"
+                    component="h4"
+                    className={classes.offerMainPrice}
+                    style={{
+                      // paddingLeft: "5px",
+                      display: "flex",
+                      width: "100%",
+                    }}
+                  >
+                    {CurrencyConversion(props.data.offerPrice)}
+                    <span
+                      // variant="h6"
+                      // component="h6"
+                      className={classes.offerMainPriceStrike}
+                      style={{
+                        // width: "100%",
+                        fontSize: "12px",
+                        paddingLeft: "5px",
+                        display: "flex",
+                        alignItems: "flex-end",
+                        marginBottom: "1px",
+                      }}
+                    >
+                      {/* <i
+        
+                       className="fa"
+                         >
+                           &#xf156;
+                              </i> */}
+                      {/* {Math.round(props.data.offerPrice)} */}
+
+                      {CurrencyConversion(props.data.price)}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "13px",
+                        display: "flex",
+                        alignItems: "flex-start",
+                        justifyContent: "flex-start",
+                        width: "100%",
+                        paddingRight: "5px",
+                        marginTop: "2px",
+                        marginLeft: "5px",
+                        color: "rgb(6, 171, 159)",
+                      }}
+                    >
+                      (
+                      {Math.round(props.data.price) === 0
+                        ? 0
+                        : Math.round(
+                            ((props.data.price - props.data.offerPrice) /
+                              props.data.price) *
+                              100
+                          )}
+                      % off)
+                    </span>
+                  </span>
+
+                  {/* <Typography
+                      style={{
+                        width: "100%",
+                        justifyContent: "flex-start",
+                        display: "flex",
+                        marginTop: "4px"
+                      }}
+                      gutterBottom
+                      variant="body1"
+                      component="span"
+                      className={classes.offerPrice}
+                    >
+
+
+
+                      <del>
+
+                        {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(props.data.price))}
+                      </del>
+
+
+                    </Typography> */}
+                </Grid>
+              
+                </Hidden>
+               
 
                 {/*  */}
                 {/* <Grid item xs={12} sm={12} md={5} lg={5} xl={5} className={`${classes.priceOffGrid}`}>

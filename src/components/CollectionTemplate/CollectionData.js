@@ -1,5 +1,6 @@
-import { CDN_URL, API_URL } from 'config'
-import React from 'react';
+import { CDN_URL } from 'config';
+import CurrencyConversion from 'utils/CurrencyConversion';
+
 export const primaryImage = [
   "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Collection+Page/Alpha-Page-tile-01+(1).jpg",
   "https://styloriimages.s3.ap-south-1.amazonaws.com/images/Static+Pages/Collection+Page/Alpha-Page-tile-05+(1).jpg",
@@ -39,17 +40,17 @@ const ImageUrl = (image) => {
   // image && image.map(val => {
   //   if (val !== undefined && val !== null) {
   const width = window.innerWidth;
-  var vvv = image && image[0] && image[0].imageUrl
+  var vvv = image && image[0] && image[0]?.imageUrl
   // var vvv = "product/SR0260/SR0260-1Y.webp"
   var browser_type = JSON.parse(localStorage.getItem('browserDetails'))
   var resolution = 500
   var _resolutions = width < 960 ? `${resolution * 2}X${resolution * 2}` : `${resolution}X${resolution}`
   var url_split = vvv.split('/')
   var extension_split = url_split && url_split[url_split.length - 1]
-  var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`)
+  var browser_type_append = extension_split && extension_split.split('\.')[0].concat(`${browser_type && browser_type.browser_type}`) //eslint-disable-line
   url_split[url_split && url_split.length - 1] = browser_type_append
   url_split.splice(2, 0, _resolutions);
-  var url_construct = url_split.join().replace(/\,/g, '/')
+  var url_construct = url_split.join().replace(/\,/g, '/') //eslint-disable-line
   return `${CDN_URL}${url_construct}`
   //   }
   // })
@@ -57,7 +58,7 @@ const ImageUrl = (image) => {
 const Product_price = (price) => {
   // price && price.map(val => {
   //   if (val !== undefined && val !== null) {
-  return  new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(Math.round(price.markupPrice))
+  return  CurrencyConversion(price.markupPrice)
   // Math.round(price.markupPrice)
   //   }
   // })
@@ -87,7 +88,7 @@ export default function (data) {
 
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
     Product_name.map((contain_img, index) => {
-      if ((2 * index_) == index) {
+      if ((2 * index_) === index) {
         data.Product_name = contain_img
       }
       return Product_name;
@@ -96,7 +97,7 @@ export default function (data) {
   })
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
     Product_name.map((contain_img, index) => {
-      if ((2 * index_) + 1 == index) {
+      if ((2 * index_) + 1 === index) {
         data.Product_name1 = contain_img
       }
       return Product_name;
@@ -106,7 +107,7 @@ export default function (data) {
 
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
     primaryNavigateUrl.map((contain_img, index) => {
-      if ((2 * index_) == index) {
+      if ((2 * index_) === index) {
         data.primaryNavigateUrl = contain_img
       }
       return primaryNavigateUrl;
@@ -116,7 +117,7 @@ export default function (data) {
 
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
     primaryNavigateUrl.map((contain_img, index) => {
-      if ((2 * index_) + 1 == index) {
+      if ((2 * index_) + 1 === index) {
         data.primaryNavigateUrl_sec = contain_img
       }
       return primaryNavigateUrl;
@@ -128,7 +129,7 @@ export default function (data) {
 
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
     primaryImage.map((contain_img, index) => {
-      if ((2 * index_) == index) {
+      if ((2 * index_) === index) {
         data.primaryImage = contain_img
       }
       return primaryImage;
@@ -137,7 +138,7 @@ export default function (data) {
   })
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
     primaryImage.map((contain_img, index) => {
-      if ((2 * index_) + 1 == index) {
+      if ((2 * index_) + 1 === index) {
         data.secondaryImage = contain_img
       }
       return primaryImage;
@@ -196,6 +197,7 @@ export default function (data) {
             price: Product_price(val.trans_sku_lists[0]),
             buttonName: "Shop Now"
           })
+          return 0;
         })
         data.allProductLists__primary = CarouselData_primary;
         // alert(JSON.stringify(CarouselData_primary))
@@ -291,6 +293,7 @@ export default function (data) {
       secondaryCarouselDetails: _collo_.allProductLists__secondary,
     })
     // }
+    return 0;
   })
   // alert(JSON.stringify(CollectionPage))
   CollectionPageStylori.Testimony.carousel.data = CollectionPage;

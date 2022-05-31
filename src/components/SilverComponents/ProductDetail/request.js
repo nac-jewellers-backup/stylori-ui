@@ -6,7 +6,6 @@ import {
     ExpansionPanelSummary,
     ExpansionPanel,
     Typography,
-    TextField
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';

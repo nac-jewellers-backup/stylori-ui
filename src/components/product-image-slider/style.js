@@ -1,4 +1,3 @@
-import { Autorenew } from "@material-ui/icons";
 
 const styles = (theme) => ({
   searchCheck: {
@@ -47,10 +46,34 @@ const styles = (theme) => ({
     justifyContent: "center",
   },
   titleSilver: {
+    fontFamily: `'Playfair Display', serif !important`,
     marginTop: "0 !important",
     marginBottom: "0 !important",
-    fontSize: "0.9rem !important",
-    color: `${theme.palette.ternary.dark} !important`,
+    fontSize: "20px !important",
+    lineHeight: "28px",
+    color: `#606161 !important`,
+  },
+  titleSilverMobile:{
+    fontFamily: `'Playfair Display', serif !important`,
+    marginTop: "0 !important",
+    marginBottom: "0 !important",
+    fontSize: "16px !important",
+    lineHeight: "28px",
+    color: `#606161 !important`,
+  },
+  skuIdSilver: {
+    marginTop: "12px !important",
+    marginBottom: "0 !important",
+    fontSize: "16px !important",
+    lineHeight: "16px",
+    color: `#606161 !important`,
+  },
+  skuIdSilverMobile:{
+    marginBottom: "0 !important",
+    fontSize: "12px !important",
+    lineHeight: "16px",
+    color: `#606161 !important`,
+    textAlign:"center"
   },
   dis: {
     color: theme.palette.text.secondary,
@@ -309,12 +332,12 @@ const styles = (theme) => ({
   },
   buttonHeightAddToCart: {
     width: "100% !important",
-    height: "36px !important",
+    height: "42px !important",
     fontSize: "0.8rem",
     borderRadius: "unset !important",
     boxShadow: "8px 8px 5px rgba(208, 210, 211, 1)",
     textTransform: "uppercase",
-    letterSpacing: "1px !important",
+    // letterSpacing: "1px !important",
     fontWeight: "500 !important",
     border: "none",
     transition: "all 0.3s ease 0s",

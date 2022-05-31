@@ -1,12 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { API_URL } from "../../../../src/config";
 import "./payment.css";
-import { Grid } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import { CartContext } from "context";
+import CurrencyConversion from "utils/CurrencyConversion";
 
 export default function PaymentHiddenForm(props) {
   let {
-    CartCtx: { setCartFilters, cartFilters, data, loading, error },
+    CartCtx: {cartFilters },
   } = React.useContext(CartContext);
   const [hash, sethash] = useState({
     hashvalue: "",
@@ -28,14 +29,11 @@ export default function PaymentHiddenForm(props) {
     buyerPhone: "",
     buyerPinCode: "",
   });
+  
   const [orderId, setOrderId] = React.useState(null);
   const obj = {};
-  const order_idx = localStorage.getItem("order_id")
-    ? JSON.parse(localStorage.getItem("order_id"))
-    : "yourorder";
-  let cart_id_lo = localStorage.getItem("cart_id")
-    ? JSON.parse(localStorage.getItem("cart_id")).cart_id
-    : "";
+  // const order_idx = localStorage.getItem("order_id") ? JSON.parse(localStorage.getItem("order_id")) : "yourorder";
+  let cart_id_lo = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : "";
   let cart_id =
     cartFilters &&
     cartFilters._cart_id &&
@@ -320,14 +318,23 @@ export default function PaymentHiddenForm(props) {
         </div>
       </form>
       <Grid item container>
-        <input
+        <Button
+          onClick={generateOrderdId}
+          style={{ cursor: "pointer",backgroundColor:"#D32564",color:"#fff",width:'inherit' }}
+          variant="contained"
+        >
+          {` Pay ${ CurrencyConversion(
+                   props.data
+                  )}`}
+        </Button>
+        {/* <input
           style={{ cursor: "pointer" }}
           type="button"
           onClick={generateOrderdId}
           className="credit-button"
           name="submitBtn"
           value="Pay now"
-        />
+        /> */}
       </Grid>
     </div>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import {
     makeStyles,
 } from '@material-ui/core/styles';
-import { TextField, Grid, Typography, Button } from '@material-ui/core';
+import { Grid, Typography, Button } from '@material-ui/core';
 import { Input } from '../../components/InputComponents/TextField/Input'
 import HelpContact from "../../components/faqs/faqsHelp"
 import { SnackBar } from "components/snackbarAlert/SnackBar"
@@ -93,7 +93,7 @@ export default function CustomizedInputs() {
         open: false
     });
     const classes = useStyles();
-    const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/addquestion', {}, false, {})
+    const { data: ntxdata, makeFetch } = useNetworkRequest('/addquestion', {}, false, {})
     const handleChange = (name, value) => {
         setValues({ ...values, [name]: value, errorName: "", emailError: "", errorMessage: "", phoneError: "" })
     }
@@ -132,8 +132,7 @@ export default function CustomizedInputs() {
                 alert(error)
             }
         }
-
-
+      // eslint-disable-next-line
     }, [ntxdata])
 
     return (

@@ -17,18 +17,14 @@ import Buynowfixed from "components/product-image-slider/buynowfixed";
 import "components/product-image-slider/product-images.css";
 import { withRouter } from "react-router-dom";
 import productDetails from "mappers/productDetails";
-import { PRODUCTDETAILS, conditions } from "queries/productdetail";
-import { useGraphql } from "hooks/GraphqlHook";
+
 import { ProductDetailContext } from "context/SilverContext/ProductDetailContext";
-import { CDN_URL } from "config";
+
 import "screens/screens.css";
 import MetaTags from "react-meta-tags";
 import { CartContext } from "context";
 
 class ProductDetail extends Component {
-  constructor(props) {
-    super(props);
-  }
   renderUrl = () => {
     var loc = this.props.location.pathname;
     var path = loc.split("/");
@@ -42,49 +38,89 @@ class ProductDetail extends Component {
   render() {
     var loc = this.props.location.pathname;
     var path = loc.split("/");
-    var data_json = [{ title: "home", url: "/" }, { title: path[2], url: this.renderUrl() }, { title: path[4] }];
-    // alert(JSON.stringify(this.props.wishlistdata))
+    var data_json = [
+      { title: "home", url: "/" },
+      { title: path[2], url: this.renderUrl() },
+      { title: path[4] },
+    ];
     return (
       <div>
         <div>
           <MetaTags>
             <title>{this.props.data[0].title}</title>
             <meta name="description" content={this.props.data[0].dis} />
-            <meta name="keywords" content={this.props.data[0].productsPendants[0].name} />
+            <meta
+              name="keywords"
+              content={this.props.data[0].productsPendants[0].name}
+            />
 
-            <meta property="og:title" id="fb-title" content={this.props.data[0].title} />
+            <meta
+              property="og:title"
+              id="fb-title"
+              content={this.props.data[0].title}
+            />
             <meta property="og:description" content={this.props.data[0].dis} />
             <meta property="og:type" content="product" />
-            <meta property="og:url" id="fb-product-url" content={window.location.href} />
-            <meta property="og:image" id="fb_imageUrl" content={this?.props?.data[0]?.fadeImages ?? ""} />
+            <meta
+              property="og:url"
+              id="fb-product-url"
+              content={window.location.href}
+            />
+            <meta
+              property="og:image"
+              id="fb_imageUrl"
+              content={this?.props?.data[0]?.fadeImages ?? ""}
+            />
 
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@StyloriLove" />
-            <meta name="twitter:title" id="twitter-title" content={this.props.data[0].title} />
+            <meta
+              name="twitter:title"
+              id="twitter-title"
+              content={this.props.data[0].title}
+            />
             <meta name="twitter:description" content={this.props.data[0].dis} />
-            <meta name="twitter:image" id="twitter_imageUrl" content={this?.props?.data[0]?.fadeImages ?? ""} />
+            <meta
+              name="twitter:image"
+              id="twitter_imageUrl"
+              content={this?.props?.data[0]?.fadeImages ?? ""}
+            />
           </MetaTags>
         </div>
 
         <Hidden smDown>
           <Header wishlist={this.props.wishlistdata} />
 
-          <Grid Container spacing={12} style={{ maxWidth: "1600px", margin: "auto" }}>
+          <Grid
+            Container
+            spacing={12}
+            style={{ maxWidth: "1600px", margin: "auto" }}
+          >
             <Grid item xs={12}>
               <div className="pricing-breadcrums-media">
-                <CustomSeparator list="pricing-loctn" classsubhed="pricing-loctn-head" data={data_json} />
+                <CustomSeparator
+                  list="pricing-loctn"
+                  classsubhed="pricing-loctn-head"
+                  data={data_json}
+                />
               </div>
             </Grid>
           </Grid>
 
-          <div className="pricing-imgzom-media" style={{ maxWidth: "1600px", margin: "auto" }}>
+          <div
+            className="pricing-imgzom-media"
+            style={{ maxWidth: "1600px", margin: "auto" }}
+          >
             <Grid container spacing={12}>
               <Grid item xs={6}>
                 <ProductImageZoom data={this.props.data} />
               </Grid>
               <Grid item xs={6}>
                 <div className="overall-box priceecontainer">
-                  <ProductPrice data={this.props.data} wishlist={this.props.wishlistdata} />
+                  <ProductPrice
+                    data={this.props.data}
+                    wishlist={this.props.wishlistdata}
+                  />
                 </div>
                 <div className="overall-box priceecontainer">
                   <PriceTabs data={this.props.data} />
@@ -98,15 +134,26 @@ class ProductDetail extends Component {
           <br />
 
           <div
-            style={{ background: "whitesmoke" }}
+            style={{
+              background: "whitesmoke",
+              maxWidth: "1600px",
+              margin: "auto",
+            }}
             className="pricing-product-media"
-            style={{ maxWidth: "1600px", margin: "auto" }}
           >
             <Grid container spacing={12}>
-              <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
+              <Grid
+                item
+                xs={6}
+                style={{ marginBottom: "20px", marginTop: "20px" }}
+              >
                 <ProductDetails data={this.props.data} />
               </Grid>
-              <Grid item xs={6} style={{ marginBottom: "20px", marginTop: "20px" }}>
+              <Grid
+                item
+                xs={6}
+                style={{ marginBottom: "20px", marginTop: "20px" }}
+              >
                 <PriceCertification />
                 <Request data={this.props.data} />
               </Grid>
@@ -125,8 +172,21 @@ class ProductDetail extends Component {
 
         <Hidden mdUp>
           <div style={{ paddingBottom: "50px" }}>
-            <Grid container spacing={12} style={{ position: "sticky", top: "0", zIndex: "1000" }}>
-              <Grid item xs={12} style={{ position: "sticky", top: "0", zIndex: "1000", width: "100%" }}>
+            <Grid
+              container
+              spacing={12}
+              style={{ position: "sticky", top: "0", zIndex: "1000" }}
+            >
+              <Grid
+                item
+                xs={12}
+                style={{
+                  position: "sticky",
+                  top: "0",
+                  zIndex: "1000",
+                  width: "100%",
+                }}
+              >
                 <Header wishlist={this.props.wishlistdata} pdpage={true} />
               </Grid>
             </Grid>
@@ -135,7 +195,10 @@ class ProductDetail extends Component {
               <PriceBuynow data={this.props.data} />
             </Grid>
             <Grid item xs={12}>
-              <ProductDetails data={this.props.data} wishlist={this.props.wishlistdata} />
+              <ProductDetails
+                data={this.props.data}
+                wishlist={this.props.wishlistdata}
+              />
             </Grid>
 
             <Grid item xs={12}>
@@ -195,7 +258,15 @@ const Components = (props) => {
       );
     }
   } else {
-    return <ProductDetail {...props} data={mapped} rating={rating} allorderdata={allorderdata} wishlistdata={wishlistdata} />;
+    return (
+      <ProductDetail
+        {...props}
+        data={mapped}
+        rating={rating}
+        allorderdata={allorderdata}
+        wishlistdata={wishlistdata}
+      />
+    );
   }
 };
 

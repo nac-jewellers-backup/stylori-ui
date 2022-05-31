@@ -41,18 +41,18 @@ class PriceCertification extends React.Component {
                             <Grid container spacing={12} >
                                 <Grid item xs={6} style={{ padding: "0px 33px" }}>
                                     <Grid item xs={6} >
-                                        <img src={val.img1} alt="" />
+                                        <img src={val.img1} loading="lazy" alt="...." />
                                     </Grid>
                                     <Grid item xs={6} style={{ padding: "12px" }}>
-                                        <img src={val.img2} alt="" />
+                                        <img src={val.img2} loading="lazy" alt="...." />
                                     </Grid>
                                 </Grid>
                                 <Grid item xs={6} style={{ padding: "0px 33px" }}>
                                     <Grid item xs={6}>
-                                        <img src={val.img3} alt="" />
+                                        <img src={val.img3} loading="lazy" alt="...." />
                                     </Grid>
                                     <Grid item xs={6}>
-                                        <img src={val.img4} alt="" />
+                                        <img src={val.img4} loading="lazy" alt="...." />
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -79,24 +79,24 @@ class PriceCertification extends React.Component {
                             <Grid container spacing={12} >
                                 <Grid item xs={6} style={{ padding: "0px 33px" }}>
                                     <Grid item xs={6} >
-                                        <img src={val.img1} alt="" />
+                                        <img src={val.img1} loading="lazy" alt="...." />
                                     </Grid>
                                     <Grid item xs={6} style={{ padding: "12px" }}>
-                                        <img src={val.img2} alt="" />
+                                        <img src={val.img2} loading="lazy" alt="...." />
                                     </Grid>
                                 </Grid>
                                 <Grid item xs={6} style={{ padding: "0px 33px" }}>
                                     <Grid item xs={6}>
-                                        <img src={val.img3} alt="" />
+                                        <img src={val.img3} loading="lazy" alt="...." />
                                     </Grid>
                                     <Grid item xs={6}>
-                                        <img src={val.img4} alt="" />
+                                        <img src={val.img4} loading="lazy" alt="...." />
                                     </Grid>
                                 </Grid>
                             </Grid>
                             <Grid spacing={12}>
                                 <Grid item xs={12} className='certification-img'>
-                                    <img width='100%' height='100%' src={val.img5} alt="" />
+                                    <img width='100%' height='100%' src={val.img5} loading="lazy" alt="...." />
                                 </Grid>
                             </Grid>
                         </div>

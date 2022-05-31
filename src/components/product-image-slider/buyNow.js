@@ -1,4 +1,4 @@
-import { Button, Hidden, Container, Grid, Modal, Typography } from "@material-ui/core";
+import { Button, Hidden, Container, Grid, Typography } from "@material-ui/core";
 import React from "react";
 import "./product-images.css";
 import ProductPrice from "./productPrice";
@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 import Buynowbutton from "../Buynow/buynowbutton";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./style";
-import { NavLink } from "react-router-dom";
 import { ProductDetailContext } from "context/ProductDetailContext";
 import { useCheckForCod } from "hooks/CheckForCodHook";
 import { CheckForCod } from "queries/productdetail";
@@ -16,10 +15,16 @@ import { withRouter } from "react-router";
 import CommenDialog from "../Common/Dialogmodel";
 import Buynowfixed from "components/SilverComponents/ProductDetail/buynowfixed";
 import SilverProductPrice from "./silverProductPrice";
-import { useNetworkRequest } from "hooks/index";
 import axios from "axios";
 import { API_URL } from "../../config";
-const inputsearch = (props, state, handleChanges, handleCodChange, customstylingsmallscreen) => {
+
+const inputsearch = (
+  props,
+  state,
+  handleChanges,
+  handleCodChange,
+  customstylingsmallscreen
+) => {
   const { data, isSilver } = props;
   const { classes } = props;
   let { productShipBy } = state;
@@ -27,23 +32,38 @@ const inputsearch = (props, state, handleChanges, handleCodChange, customstyling
   let shipByDate = "";
   if (productShipBy) {
     dateObj = new Date(state.productShipBy);
-    shipByDate = `Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString("default", {
-      month: "long",
-    })} ${dateObj.getUTCFullYear()}`;
+    shipByDate = `Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString(
+      "default",
+      {
+        month: "long",
+      }
+    )} ${dateObj.getUTCFullYear()}`;
   }
 
   return (
-    <div className={isSilver ? classes.searchCheckSilver : classes.searchCheck} style={{}}>
+    <div
+      className={isSilver ? classes.searchCheckSilver : classes.searchCheck}
+      style={{}}
+    >
       {data[0].ProductContactNum.map((val) => (
-        <Grid container spacing={12} className={isSilver ? classes.shadowSilver : classes.shadow} item xs={12}>
+        <Grid
+          container
+          spacing={12}
+          className={isSilver ? classes.shadowSilver : classes.shadow}
+          item
+          xs={12}
+        >
           <Grid item xs={isSilver ? 6 : 7} lg={4} sm={7}>
-            
             <input
               onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
               type="tel"
               placeholder="Enter Pincode"
               maxLength={6}
-              className={`buynow-search ${isSilver ? `${"pincode-cust-silver"} ${classes.rating__}` : "pincode-cust"}`}
+              className={`buynow-search ${
+                isSilver
+                  ? `${"pincode-cust-silver"} ${classes.rating__}`
+                  : "pincode-cust"
+              }`}
               value={state?.values}
               onChange={(event) => {
                 handleChanges(event);
@@ -57,7 +77,8 @@ const inputsearch = (props, state, handleChanges, handleCodChange, customstyling
             <Button
               style={{ color: "#fff", marginLeft: props.isSilver ? 8 : 0 }}
               className={
-                state.pincodeNotFound || state.CheckForCodtitle === "COD Not Available"
+                state.pincodeNotFound ||
+                state.CheckForCodtitle === "COD Not Available"
                   ? "pincodeNotFound"
                   : state.CheckForCodtitle === "COD is Available"
                   ? "selectedGreen"
@@ -73,15 +94,29 @@ const inputsearch = (props, state, handleChanges, handleCodChange, customstyling
             >
               {state.pincodeNotFound ? (
                 <>
-                  <i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> Pincode not found
+                  <i
+                    class="fa fa-close"
+                    style={{ paddingRight: "3px" }}
+                    aria-hidden="true"
+                  ></i>{" "}
+                  Pincode not found
                 </>
               ) : state.CheckForCodtitle === "COD Not Available" ? (
                 <>
-                  <i class="fa fa-close" style={{ paddingRight: "3px" }} aria-hidden="true"></i> COD Not Available
+                  <i
+                    class="fa fa-close"
+                    style={{ paddingRight: "3px" }}
+                    aria-hidden="true"
+                  ></i>{" "}
+                  COD Not Available
                 </>
               ) : state.CheckForCodtitle === "COD is Available" ? (
                 <>
-                  <i class="fa fa-check" style={{ paddingRight: "3px" }} aria-hidden="true"></i>
+                  <i
+                    class="fa fa-check"
+                    style={{ paddingRight: "3px" }}
+                    aria-hidden="true"
+                  ></i>
                   {state.CheckForCodtitle}
                 </>
               ) : (
@@ -92,7 +127,16 @@ const inputsearch = (props, state, handleChanges, handleCodChange, customstyling
 
           {!props.isSilver && (
             <Hidden smDown>
-              <Grid container item justify="center" xs={12} sm={12} lg={5} className="content" style={{ margin: "auto" }}>
+              <Grid
+                container
+                item
+                justify="center"
+                xs={12}
+                sm={12}
+                lg={5}
+                className="content"
+                style={{ margin: "auto" }}
+              >
                 <b className={`ships-by ${classes.normalfonts}`}>
                   <span
                     style={{
@@ -109,7 +153,6 @@ const inputsearch = (props, state, handleChanges, handleCodChange, customstyling
               </Grid>
             </Hidden>
           )}
-          {/* <label style={{ fontWeight: 'bold', color: 'rgba(185, 74, 72, 1)' }}>{(state.isRequired && 'Please fill out this field') || (state.pincodeNotFound && 'Pincode not found')}</label> */}
         </Grid>
       ))}
     </div>
@@ -127,7 +170,7 @@ const Buydetails = (
 ) => {
   const { data } = props;
   const { classes } = props;
-  // debugger;
+
   const isactive = props?.data[0]?.isactive ?? "";
 
   return (
@@ -136,10 +179,7 @@ const Buydetails = (
         <>
           <Grid container spacing={12} style={{ padding: "0 10px" }}>
             <Grid item xs={12} lg={4} style={{}}>
-              <div
-              
-                onClick={isactive ? handleLocalStorage.bind(this) : ""}
-              >
+              <div onClick={isactive ? handleLocalStorage.bind(this) : ""}>
                 <Buynowbutton
                   sku={data[0]?.skuId}
                   productIsActive={isactive ?? ""}
@@ -147,7 +187,6 @@ const Buydetails = (
                   button="buynow-btn-cont"
                 />
               </div>
-              {/* </NavLink> */}
               <CommenDialog
                 isOpen={state.modelOpen}
                 content={`Verify selected product details before proceeding`}
@@ -159,7 +198,15 @@ const Buydetails = (
               />
             </Grid>
 
-            <Grid item container alignContent="center" alignItems="center" xs={12} lg={8} style={{ padding: "0px 0px 0px 25px" }}>
+            <Grid
+              item
+              container
+              alignContent="center"
+              alignItems="center"
+              xs={12}
+              lg={8}
+              style={{ padding: "0px 0px 0px 25px" }}
+            >
               <Grid>
                 <Grid
                   item
@@ -177,15 +224,22 @@ const Buydetails = (
                     <i class="fa fa-phone overall-icons" aria-hidden="true"></i>
                     &nbsp;
                   </Typography>
-                  <Typography className={classes.TypoListed}>{val?.telephone}</Typography>
+                  <Typography className={classes.TypoListed}>
+                    {val?.telephone}
+                  </Typography>
                 </Grid>
 
                 <Grid item className={`buy-subheaders ${classes.normalfonts}`}>
                   <Typography>
-                    <i class="fa fa-whatsapp overall-icons" aria-hidden="true"></i>
+                    <i
+                      class="fa fa-whatsapp overall-icons"
+                      aria-hidden="true"
+                    ></i>
                     &nbsp;
                   </Typography>
-                  <Typography className={classes.TypoListed}>{val?.phonenum}</Typography>
+                  <Typography className={classes.TypoListed}>
+                    {val?.phonenum}
+                  </Typography>
                 </Grid>
 
                 <Grid
@@ -195,10 +249,15 @@ const Buydetails = (
                   onClick={() => window.LC_API.open_chat_window()}
                 >
                   <Typography>
-                    <i class="fa fa-comments-o overall-icons" aria-hidden="true"></i>
+                    <i
+                      class="fa fa-comments-o overall-icons"
+                      aria-hidden="true"
+                    ></i>
                     &nbsp;
                   </Typography>
-                  <Typography className={classes.TypoListed}>{val?.chat}</Typography>
+                  <Typography className={classes.TypoListed}>
+                    {val?.chat}
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>
@@ -216,22 +275,21 @@ const BuydetailsSilverdetailpage = (
   props,
   state,
   handleChanges,
-  handleCodChange,
-  canceldeletechecklist,
-  deletechecklists,
-  handleLocalStorage
+  handleCodChange
 ) => {
-  const { data, isSilver } = props;
-  const { classes } = props;
+  const { data } = props;
   const isactive = props?.data[0]?.isactive ?? "";
   let { productShipBy } = state;
   let dateObj = "";
   let shipByDate = "";
   if (productShipBy) {
     dateObj = new Date(state.productShipBy);
-    shipByDate = `Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString("default", {
-      month: "long",
-    })} ${dateObj.getUTCFullYear()}`;
+    shipByDate = `Tax Included. Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString(
+      "default",
+      {
+        month: "long",
+      }
+    )} ${dateObj.getUTCFullYear()}.`;
   }
 
   return (
@@ -240,7 +298,16 @@ const BuydetailsSilverdetailpage = (
         data[0].ProductContactNum.map((val) => (
           <>
             <Grid container>
-              <Grid item xs={12} lg={4} style={{ fontSize: "0.8rem", color: "rgb(58,69,120)", fontWeight: "bold" }}>
+              <Grid
+                item
+                xs={12}
+                lg={6}
+                style={{
+                  fontSize: "0.9rem",
+                  color: "#606161",
+                  whiteSpace: "nowrap"
+                }}
+              >
                 {shipByDate}
               </Grid>
             </Grid>
@@ -253,7 +320,11 @@ const BuydetailsSilverdetailpage = (
 //
 
 const PriceBuynow = (props) => {
-  const { loading, error, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => {}, {});
+  const { data: CodData, makeRequestCod } = useCheckForCod(
+    CheckForCod,
+    () => {},
+    {}
+  );
   const {
     ProductDetailCtx: { filters },
     setFilters,
@@ -326,7 +397,9 @@ class Component extends React.Component {
   }
 
   valus = (valueId) => {
-    var valus_locl = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products : "";
+    var valus_locl = localStorage.getItem("cartDetails")
+      ? JSON.parse(localStorage.getItem("cartDetails")).products
+      : "";
 
     var vals;
 
@@ -339,16 +412,17 @@ class Component extends React.Component {
     return vals;
   };
   componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-
     var variab = {};
     variab["pincode"] = this?.state?.values;
     if (prevProps?.CodData !== this?.props?.CodData) {
-      // Here i have handeled the "check for COD" condition because the response is not setting to the props instantly
       if (this?.props?.CodData?.data?.allPincodeMasters?.nodes?.length > 0) {
         if (
-          this?.props?.data[0]?.price >= this?.props?.CodData?.data?.allPincodeMasters?.nodes[0]?.minCartvalue ||
-          this?.props?.data[0]?.price <= this?.props?.CodData?.data?.allPincodeMasters?.nodes[0]?.maxCartvalue
+          this?.props?.data[0]?.price >=
+            this?.props?.CodData?.data?.allPincodeMasters?.nodes[0]
+              ?.minCartvalue ||
+          this?.props?.data[0]?.price <=
+            this?.props?.CodData?.data?.allPincodeMasters?.nodes[0]
+              ?.maxCartvalue
         ) {
           this.setState({ CheckForCodtitle: "COD Not Available" });
         } else {
@@ -397,48 +471,59 @@ class Component extends React.Component {
     this.props.setCartFilters({
       skuId: this?.props?.data[0]?.skuId,
       qty:
-        this?.props?.quantity && this?.props?.data && this?.props?.quantity[this?.props?.data[0]?.skuId]
+        this?.props?.quantity &&
+        this?.props?.data &&
+        this?.props?.quantity[this?.props?.data[0]?.skuId]
           ? this?.props?.quantity[this?.props?.data[0]?.skuId]
           : 1,
       price: this?.props?.data[0]?.offerPrice,
     });
 
     const _qty =
-      this?.props?.quantity && this?.props?.data && this?.props?.quantity[this?.props?.data[0]?.skuId]
+      this?.props?.quantity &&
+      this?.props?.data &&
+      this?.props?.quantity[this?.props?.data[0]?.skuId]
         ? this?.props?.quantity[this?.props?.data[0]?.skuId]
         : 1;
     this.props.setFilters({
       ...this?.props?.filters,
       quantity: _qty,
     });
-    let localStorageQuantity = localStorage.getItem("quantity") ? JSON.parse(localStorage.getItem("quantity")) : null;
+    let localStorageQuantity = localStorage.getItem("quantity")
+      ? JSON.parse(localStorage.getItem("quantity"))
+      : null;
 
     if (!localStorageQuantity) {
-      if (localStorageQuantity && !localStorageQuantity[this.props.data[0].skuId]) {
-        let _obj = {};
+      if (
+        localStorageQuantity &&
+        !localStorageQuantity[this?.props?.data[0]?.skuId]
+      ) {
         localStorageQuantity[this?.props?.data[0]?.skuId] = _qty;
         localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
-        this.props.filters.quantity[this.props.data[0].skuId] = _qty;
+        this.props.filters.quantity[this?.props?.data[0]?.skuId] = _qty;
       } else {
         let _obj = {};
-        _obj[this.props.data[0].skuId] = _qty;
+        _obj[this?.props?.data[0]?.skuId] = _qty;
         localStorage.setItem("quantity", JSON.stringify(_obj));
-        this.props.filters.quantity[this.props.data[0].skuId] = _qty;
+        this.props.filters.quantity[this?.props?.data[0]?.skuId] = _qty;
       }
     } else {
-      localStorageQuantity[this.props.data[0].skuId] = _qty;
+      localStorageQuantity[this?.props?.data[0]?.skuId] = _qty;
       localStorage.setItem("quantity", JSON.stringify(localStorageQuantity));
-      this.props.filters.quantity[this.props.data[0].skuId] = localStorageQuantity[this.props.data[0].skuId];
+      this.props.filters.quantity[this?.props?.data[0]?.skuId] =
+        localStorageQuantity[this?.props?.data[0]?.skuId];
     }
     sessionStorage.setItem(
       "updatedProduct",
       JSON.stringify({
-        sku_id: this.props.data[0].skuId,
+        sku_id: this?.props?.data[0]?.skuId,
         qty:
-          this.props.quantity && this.props.data && this.props.quantity[this.props.data[0].skuId]
-            ? this.props.quantity[this.props.data[0].skuId]
+          this.props.quantity &&
+          this.props.data &&
+          this?.props?.quantity[this?.props?.data[0]?.skuId]
+            ? this.props?.quantity[this.props?.data[0]?.skuId]
             : 1,
-        price: this.props.data[0].offerPrice,
+        price: this?.props?.data[0]?.offerPrice,
       })
     );
     window.location.pathname = "/cart";
@@ -466,9 +551,11 @@ class Component extends React.Component {
       this.setState({ isRequired: false });
       var variab = {};
       variab["pincode"] = this.state.values;
-      if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
+      if (
+        Object.entries(variab).length !== 0 &&
+        variab.constructor === Object
+      ) {
         this.props.makeRequestCod(variab);
-
       } else {
         return {};
       }
@@ -477,16 +564,18 @@ class Component extends React.Component {
     }
   };
   render() {
-    let { showimage } = this.state;
-    const { classes, data, isSilver } = this.props;
+    const { isSilver } = this.props;
     const isactive = this?.props?.data[0]?.isactive ?? "";
     let dateObj = "";
     let shipByDate = "";
     if (this.state.productShipBy !== null && this.state.productShipBy !== "") {
       dateObj = new Date(this.state.productShipBy ?? "");
-      shipByDate = `Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString("default", {
-        month: "long",
-      })} ${dateObj.getUTCFullYear()}`;
+      shipByDate = `Ships by ${dateObj.getUTCDate()} ${dateObj.toLocaleString(
+        "default",
+        {
+          month: "long",
+        }
+      )} ${dateObj.getUTCFullYear()}`;
     }
 
     return (
@@ -512,8 +601,29 @@ class Component extends React.Component {
                 this.handleLocalStorage
               )}
         </Hidden>
-
-        <Hidden mdUp>
+        {this?.props?.isRequired ? 
+          <Hidden mdUp>
+          {isSilver
+            ? BuydetailsSilverdetailpage(
+                this.props,
+                this.state,
+                this.handleChanges,
+                this.handleCodChange,
+                this.canceldeletechecklist,
+                this.deletechecklists,
+                this.handleLocalStorage
+              )
+            : Buydetails(
+                this.props,
+                this.state,
+                this.handleChanges,
+                this.handleCodChange,
+                this.canceldeletechecklist,
+                this.deletechecklists,
+                this.handleLocalStorage
+              )}
+           </Hidden>:
+          <Hidden mdUp>
           <div style={{ marginTop: "10px" }}>
             {isSilver ? (
               <SilverProductPrice
@@ -526,14 +636,33 @@ class Component extends React.Component {
                 handleCodChange={this.handleCodChange}
               />
             ) : (
-              <ProductPrice data={this.props.data} wishlist={this.props.wishlist} isSilver={isSilver} />
+              <ProductPrice
+                data={this.props.data}
+                wishlist={this.props.wishlist}
+                isSilver={isSilver}
+              />
             )}
-            <PriceTabs data={this.props.data} wishlist={this.props.wishlist} isSilver={isSilver} />
-            {!isSilver && inputsearch(this.props, this.state, this.handleChanges, this.handleCodChange)}
+            <PriceTabs
+              data={this.props.data}
+              wishlist={this.props.wishlist}
+              isSilver={isSilver}
+            />
+            {!isSilver &&
+              inputsearch(
+                this.props,
+                this.state,
+                this.handleChanges,
+                this.handleCodChange
+              )}
             {isSilver && isactive && (
               <Container>
                 <Grid container style={{ padding: "0px 8px 0px 8px" }}>
-                  <Grid item xs={12} lg={4} style={{ fontSize: "0.8rem", color: "rgb(58,69,120)" }}>
+                  <Grid
+                    item
+                    xs={12}
+                    lg={4}
+                    style={{ fontSize: "0.8rem", color: "rgb(58,69,120)" }}
+                  >
                     {shipByDate}
                   </Grid>
                 </Grid>
@@ -547,7 +676,9 @@ class Component extends React.Component {
               productIsActive={isactive ?? ""}
             />
           </div>
-        </Hidden>
+           </Hidden>
+         }
+      
       </div>
     );
   }

@@ -87,7 +87,7 @@ const Filters = (props) => {
             {
               <>
 
-                {props.data[0].filter.map(val => {
+                {props?.data[0]?.filter?.map(val => {
 
                   return (
                     <Grid item xs={2} container className={classes.Filters} onMouseOver={(event) => { setState({ ...state, _width:event.currentTarget.offsetHeight, Menuopen: true, targetopen: event.currentTarget, listHoverItem: val }) }}
@@ -153,7 +153,7 @@ const Filters = (props) => {
                         </ListItemText>
                     : ""} */}
                 <List className="mbl-filter-list">
-                  {props.data[0].filter.map(row => (
+                  {props?.data[0]?.filter?.map(row => (
                     <ListItem key={row} className="mbl-filter-list"
                       onClick={() => filterValue(row)}
                     >

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import Aos from "aos";
 import "aos/dist/aos.css";
 import './Testimony.css';
 import { Grid } from '@material-ui/core';
 import Testimonycarosol from './Testimonycarosol';
 import TestimonyImage from './TestimonyImage';
 import { API_URL } from '../../config'
-import { testimonials } from 'queries/home'
+import { testimonials } from 'queries/home';
+
 export default function Testimony(props) {
     const [state, setState] = React.useState(false)
 
@@ -40,7 +40,7 @@ export default function Testimony(props) {
                     setState(data)
                 )
             })
-            // Aos.init({duration:2000});
+           // eslint-disable-next-line
     }, [])
 
 

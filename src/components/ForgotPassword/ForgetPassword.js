@@ -62,7 +62,7 @@ const LoginComponent = (props) => {
                 // console.log(error)
             }
         }
-
+      // eslint-disable-next-line
     }, [ntxdata])
     const handleChange = (name, value) => {
         setValues({ ...values, [name]: value, error: false, errorText: "" })
@@ -71,13 +71,13 @@ const LoginComponent = (props) => {
         <Grid container>
             <Header />
             <Grid spacing={12} container style={{ padding: "3%" }}>
-                <Grid item xs={6} lg={6} xs={12}>
+                <Grid item xs={6} lg={6}>
                     <div >
-                        <img width="100%" height="100%" src="https://assets.stylori.com/login_image.png" />
+                        <img  loading="lazy" alt="...." width="100%" height="100%" src="https://assets.stylori.com/login_image.png" />
                     </div>
                 </Grid>
 
-                <Grid item xs={6} lg={6} xs={12}>
+                <Grid item xs={6} lg={6}>
                     <Container className={classes._container}>
                         <div className='pt-sm' style={{ width: "100%", float: "right" }}>
                             <form action="javascript:void(0)" onSubmit={(e) => {

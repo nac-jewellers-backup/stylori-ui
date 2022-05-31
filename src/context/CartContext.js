@@ -6,8 +6,6 @@ import { ALLORDERS } from "queries/cart";
 import { ALLUSERWISHLISTS } from "queries/cart";
 import { withRouter } from "react-router-dom";
 import { useNetworkRequest } from "hooks/NetworkHooks";
-import { FilterOptionsContext } from "context/FilterOptionsContext";
-import { matchPath } from "react-router";
 import { API_URL } from "config";
 import axios from "axios";
 // import { productsPendants } from 'mappers/dummydata';
@@ -134,11 +132,11 @@ const Provider = (props) => {
     JSON.parse(localStorage.getItem("cartDetails")) &&
     JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 &&
     Object.keys(
-      JSON.parse(localStorage.getItem("cartDetails")).products.filter((val) => {
+      JSON.parse(localStorage.getItem("cartDetails"))?.products?.filter((val) => {
         if (Object.keys(val).length > 0) return val;
       })
     ).length > 0
-      ? JSON.parse(localStorage.getItem("cartDetails")).products.filter(
+      ? JSON.parse(localStorage.getItem("cartDetails"))?.products?.filter(
           (val) => {
             if (Object.keys(val).length > 0) return val;
           }
@@ -363,7 +361,7 @@ const Provider = (props) => {
         var addcart = { products, user_id };
         // alert("hgdhfdhg")
         if (
-          JSON.parse(localStorage.getItem("cartDetails")).products.filter(
+          JSON.parse(localStorage.getItem("cartDetails"))?.products?.filter(
             (val) => {
               if (Object.keys(val).length > 0) return val;
             }
@@ -461,7 +459,7 @@ const Provider = (props) => {
     localStorage.getItem("cartDetails") &&
     JSON.parse(localStorage.getItem("cartDetails")).products.length > 0
       ? JSON.parse(localStorage.getItem("cartDetails"))
-          .products.filter((val) => {
+          ?.products?.filter((val) => {
             if (Object.keys(val).length > 0) return val;
           })
           .map((val) => val.sku_id)
@@ -704,8 +702,8 @@ const Provider = (props) => {
                     data.data.allShoppingCartItems.nodes &&
                     data.data.allShoppingCartItems.nodes.length > 0
                   ) {
-                    var _data = data.data.allShoppingCartItems.nodes
-                      .filter((val) => {
+                    var _data = data?.data?.allShoppingCartItems?.nodes
+                      ?.filter((val) => {
                         if (val.transSkuListByProductSku) return val;
                       })
                       .map((val) => {
@@ -767,8 +765,8 @@ const Provider = (props) => {
                 .then(status)
                 .then(json)
                 .then(async function (data) {
-                  var _data = data.data.allShoppingCartItems.nodes
-                    .filter((val) => {
+                  var _data = data?.data?.allShoppingCartItems?.nodes
+                    ?.filter((val) => {
                       if (val.transSkuListByProductSku) return val;
                     })
                     .map((val) => {
@@ -815,8 +813,8 @@ const Provider = (props) => {
                         data.data.allShoppingCartItems.nodes &&
                         data.data.allShoppingCartItems.nodes.length > 0
                       ) {
-                        var _data = data.data.allShoppingCartItems.nodes
-                          .filter((val) => {
+                        var _data = data?.data?.allShoppingCartItems?.nodes
+                          ?.filter((val) => {
                             if (val.transSkuListByProductSku) return val;
                           })
                           .map((val) => {
@@ -869,7 +867,7 @@ const Provider = (props) => {
         var addcart = { products, user_id };
         // alert("hgdhfdhg")
         if (
-          JSON.parse(localStorage.getItem("cartDetails")).products.filter(
+          JSON.parse(localStorage.getItem("cartDetails"))?.products?.filter(
             (val) => {
               if (Object.keys(val).length > 0) return val;
             }
@@ -951,7 +949,7 @@ const Provider = (props) => {
       var _products = { products: [session_storage] };
       var _obj = { ..._user_id, ..._products, ..._cart_id };
       if (
-        JSON.parse(localStorage.getItem("cartDetails")).products.filter(
+        JSON.parse(localStorage.getItem("cartDetails"))?.products?.filter(
           (val) => {
             if (Object.keys(val).length > 0) return val;
           }

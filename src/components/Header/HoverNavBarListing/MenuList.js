@@ -3,9 +3,6 @@ import { List, ListItem, ListItemText } from "@material-ui/core";
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
-
-
-
 const styles = theme => ({
     colorDark: {
         backgroundColor: theme.palette.secondary.dark,

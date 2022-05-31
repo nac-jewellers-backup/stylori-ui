@@ -146,23 +146,23 @@ export const TopPicksimages = [
 ];
 export const collectionGrid = [
   {
-    img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori-ring-tile.png",
-    navigateUrl: "/rings-jewellery?sort=latest",
+    img: "https://assets.stylori.com/banners/web/Stylori-Monsoon-tile.webp",
+    navigateUrl: "/jewellery-from+monsoon+collection",
   },
   {
-    img: "https://assets.stylori.com/images/Static+Pages/Home+Page/mangocollection.png",
+    img: "https://assets.stylori.com/banners/web/mangocollection.webp",
     navigateUrl: "/jewellery-from+the+summer+collection?sort=latest",
   },
   {
-    img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Hallo+Collection_Website-01.png",
-    navigateUrl: "/jewellery-from+halo+collection",
+    img: "https://assets.stylori.com/banners/web/Stylori-Butterfly-tile-image.webp",
+    navigateUrl: "/jewellery-butterfly?sort=latest&amp;startprice=0&amp;endprice=0",
   },
   {
-    img: "https://assets.stylori.com/images/Static+Pages/Home+Page/Stylori_+Daisy+Days.png",
+    img: "https://assets.stylori.com/banners/web/Stylori_-Daisy-Days.webp",
     navigateUrl: "/jewellery-from+daisy+days+collection?sort=latest&page=4",
   },
   {
-    img: "https://assets.stylori.com/images/Static+Pages/Home+Page/blush+3.png",
+    img: "https://assets.stylori.com/banners/web/blush-3.webp",
     navigateUrl: "/jewellery-blush",
   },
 ];
@@ -180,8 +180,8 @@ export const FeaturedCarousel = [
     },
     images: [
       {
-        web: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/SIlver-Home-page-Featured.jpg",
-        mob: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/featured-banner-mudra.jpg",
+        web: "https://assets.stylori.com/banners/web/SIlver-Home-page-Featured--1-.webp",
+        mob: "https://assets.stylori.com/banners/web/featured-banner-mudra.webp",
         url: "/silver-jewellery-dmudra",
       },
       // "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGz1FUstJfK3dnfx9FyuLVnGMBLIuP49KwoYzp6DOuJZNzlAWr",

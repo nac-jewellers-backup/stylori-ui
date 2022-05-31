@@ -2,12 +2,6 @@ import React from 'react';
 import { GridList, GridListTile, Button } from '@material-ui/core';
 import ProductCards from './index';
 import { withStyles } from '@material-ui/core/styles';
-import { useDummyRequest } from 'hooks';
-import { productcarddatas } from 'mappers';
-import productlist from 'mappers/productlist';
-import { PRODUCTLIST } from 'queries';
-import { useGraphql } from 'hooks/GraphqlHook';
-import { CDN_URL } from 'config';
 import { FilterOptionsContext } from 'context'
 import { withRouter } from "react-router";
 
@@ -108,8 +102,8 @@ class Component extends React.Component {
 
   }
   render() {
-    const { classes, data, loading } = this.props;
-    const { disabledstate } = this.state;
+    const { classes, data } = this.props;
+    // const { disabledstate } = this.state;
     // const _height = (data && data.imageResolution) ? `${data.imageResolution.img_res + 120}px` : `350px`
     // const disabledstate = this.props.data.length < 24 ? 'disabled=true' : ''
     // console.log(dataCard)

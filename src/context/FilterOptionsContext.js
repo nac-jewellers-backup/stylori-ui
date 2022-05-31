@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useGraphql } from "hooks/GraphqlHook";
 import { useNetworkRequest } from "hooks/NetworkHooks";
-import { PRODUCTLIST, conditions, seoUrlResult } from "queries/productListing";
+import { seoUrlResult } from "queries/productListing";
 import { withRouter } from "react-router-dom";
 import productlist from "mappers/productlist";
 import { CDN_URL } from "config";
@@ -9,9 +9,6 @@ import { matchPath } from "react-router";
 import { createApolloFetch } from "apollo-fetch";
 import { NetworkContext } from "context/NetworkContext";
 import { GlobalContext } from "context/GlobalContext";
-import { bool } from "prop-types";
-import { filterParams } from "mappers";
-import { Redirect } from "react-router-dom";
 
 const initialCtx = {
   FilterOptionsCtx: {
@@ -87,14 +84,12 @@ const Provider = (props) => {
   const [{ filterLogic }, setFilterLogic] = React.useState({
     filterLogic: () => [],
   });
-  const [LoadingSeoQuery, setLoadingSeoQurey] = React.useState(true);
-  const [ErrorSeoQuery, setErrorSeoQuery] = React.useState(false);
   const [DataSeoQuery, setDataSeoQuery] = React.useState([]);
   const [paramsAo, setParamsAo] = React.useState([]);
   let [pricemin, setPriceMin] = React.useState(0);
   let [pricemax, setPriceMax] = React.useState(0);
   const [loadingfilters, setloadingfilters] = React.useState(false);
-  const [sortFilterCombo, setSortFilterCombo] = React.useState(true);
+
   useEffect(() => {
     setFilterLogic({ filterLogic: (d, t) => t });
   }, [filters]);
@@ -107,7 +102,6 @@ const Provider = (props) => {
 
   const { Globalctx, setGlobalCtx } = React.useContext(GlobalContext);
 
-  const client = createApolloFetch({ uri });
 
   const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest("/filterlist", {}, false, {});
 
@@ -133,7 +127,6 @@ const Provider = (props) => {
   }, []);
   useEffect(() => {
     const fetch_data = async () => {
-      var len;
       //    if(window.location.pathname === "/jewellery"){
 
       // props.location.push(window.location.pathname)
@@ -273,29 +266,29 @@ const Provider = (props) => {
 
   var queries = [];
   const qtfArr = [];
-  const pathQueries = () => {
-    // var queries = []
-    if (window.location.search) {
-      Object.keys(filters).map((fk) => {
-        const filter = filters[fk];
-        const fv = Object.keys(filter);
-        if (fv.length > 0) {
-          if (filter[fv[0]]) {
-            const qt = `${fk}=${fv[0]}`;
-            const qtf = {};
-            qtf[`${fk}`] = `${fv[0]}`;
-            queries.push(qt);
-            // qtfArr.push(qtf);
-          }
-        }
-      });
-      // const query = encodeURI(queries.join("&"));
-      // props.history.push({
-      //     pathname: ntxdata.seo_url,
-      //     search: query,
-      // })
-    }
-  };
+  // const pathQueries = () => {
+  //   // var queries = []
+  //   if (window.location.search) {
+  //     Object.keys(filters).map((fk) => {
+  //       const filter = filters[fk];
+  //       const fv = Object.keys(filter);
+  //       if (fv.length > 0) {
+  //         if (filter[fv[0]]) {
+  //           const qt = `${fk}=${fv[0]}`;
+  //           const qtf = {};
+  //           qtf[`${fk}`] = `${fv[0]}`;
+  //           queries.push(qt);
+  //           // qtfArr.push(qtf);
+  //         }
+  //       }
+  //     });
+  //     // const query = encodeURI(queries.join("&"));
+  //     // props.history.push({
+  //     //     pathname: ntxdata.seo_url,
+  //     //     search: query,
+  //     // })
+  //   }
+  // };
   // const clearSortIfFiltersIsEmpty = () => {
   //   var showSortFilter = true
   //
@@ -505,7 +498,7 @@ const Provider = (props) => {
         sessionStorage.setItem("category", JSON.stringify(filters.category));
       }
       if (
-        Object.keys(newObj).filter((val) => {
+        Object.keys(newObj)?.filter((val) => {
           if (val === "category") return val;
         }).length !== 0
       )
@@ -533,14 +526,14 @@ const Provider = (props) => {
     // if(!sortFilterCombo) setSort("")
     if (filters && Object.entries(filters).length !== 0 && filters.constructor === Object) {
       if (
-        Object.values(filters).filter((val) => {
+        Object.values(filters)?.filter((val) => {
           if (Object.entries(val).length > 0 && val.constructor === Object) {
             return val;
           }
         }).length > 0
       ) {
         if (
-          Object.keys(filters).filter((val) => {
+          Object.keys(filters)?.filter((val) => {
             if (val === "a") return val;
           }).length === 0
         )
@@ -659,14 +652,14 @@ const Provider = (props) => {
     }
       if (filters && Object.entries(filters).length !== 0 && filters.constructor === Object) {
         if (
-          Object.values(filters).filter((val) => {
+          Object.values(filters)?.filter((val) => {
             if (Object.entries(val).length > 0 && val.constructor === Object) {
               return val;
             }
           }).length > 0
         ) {
           if (
-            Object.keys(filters).filter((val) => {
+            Object.keys(filters)?.filter((val) => {
               if (val === "a") return val;
             }).length === 0
           )
@@ -701,9 +694,9 @@ const Provider = (props) => {
 
       seoUrlFetch();
       var loc = window.location.pathname
-        .split("/")[1]
-        .split("-")
-        .filter((val) => {
+        ?.split("/")[1]
+        ?.split("-")
+        ?.filter((val) => {
           if (val === "silver") return val;
         });
       if (loc.length === 0) setGlobalCtx({ ...Globalctx, pathName: false });

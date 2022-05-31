@@ -1,17 +1,11 @@
 import React from 'react';
 // import './product-image-slider/loginRegisters.css'
-import { Grid, Button, Container } from '@material-ui/core'; 
-import { Input } from '../../components/InputComponents/TextField/Input'
+import { Grid, Container } from '@material-ui/core'; 
 import styles from './style';
 import { withStyles } from '@material-ui/core/styles';
-import useLogin from '../../screens/Checkout/loginRegister/useLogin';
 import Header from 'components/SilverComponents/Header'
 import Footer from "components/Footer/Footer"
 import { withRouter } from "react-router";
-import {
-    Checkbox
-} from '@material-ui/core';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Login from 'screens/Checkout/loginRegister/login';
 import { CartContext } from 'context'
 import { FilterOptionsContext } from 'context'
@@ -22,10 +16,9 @@ const UserLogin = (props) => {
 
 const LoginComponent = (props) => {
     localStorage.setItem('navfblogin',true)
-    let { CartCtx: { allorderdata, wishlistdata,setratingcountsclear } } = React.useContext(CartContext);
-  let { FilterOptionsCtx: {  loading, error, dataArr, mappedFilters, cartcount, loadingfilters, wishlist_count }, setloadingfilters } = React.useContext(FilterOptionsContext);
+    let { CartCtx: { wishlistdata} } = React.useContext(CartContext);
+  let { FilterOptionsCtx: { cartcount }, setloadingfilters } = React.useContext(FilterOptionsContext);
   const { classes } = props;
-    const { values, handlers, data } = useLogin(() => props.changePanel(3));
     // const vl = data && data.message
     // var prof = data.allUserAddresses ? data.allUserAddresses.nodes[0] : ""
     // var prof = data.userprofile ? data.userprofile.email : ""
@@ -38,13 +31,13 @@ const LoginComponent = (props) => {
         <Grid container>
             <Header wishlist={wishlistdata} cartcount={cartcount}/>
             <Grid spacing={12} container style={{ padding: "3%" }}>
-                <Grid item xs={6} lg={6} xs={12}>
+                <Grid item xs={6} lg={6}>
                     <div >
-                        <img width="100%" height="100%" src="https://assets.stylori.com/login_image.png" />
+                        <img width="100%" height="100%" src="https://assets.stylori.com/login_image.png" loading="lazy" alt="...."/>
                     </div>
                 </Grid>
 
-                <Grid item xs={6} lg={6} xs={12}>
+                <Grid item xs={6} lg={6}>
                     <Container>
                         {/* <div className='pt-sm' style={{ width: "90%", float: "right" }}>
                             <form action="javascript:void(0)" onSubmit={(e) => {
