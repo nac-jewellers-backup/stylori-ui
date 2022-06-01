@@ -36,7 +36,7 @@ class Allorders extends React.Component {
   componentDidMount() {
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
     ReactPixel.fbq("track", "PageView");
-    ReactPixel.track("Purchase", {
+    window.location.href.includes("paymentsuccess") && ReactPixel.track("Purchase", {
       value:
         this.props?.allorderdata?.data?.allOrders?.nodes[0]
           ?.shoppingCartByCartId?.discountedPrice,
