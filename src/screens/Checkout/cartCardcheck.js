@@ -86,7 +86,6 @@ class Component extends React.Component {
     const tagManagerArgs = {
       gtmId: "GTM-54JTMML",
       event: "addToCart",
-
       dataLayer: {
         ecommerce: {
           currencyCode: "INR",

@@ -25,6 +25,7 @@ class Cart extends React.Component {
     ReactPixel.fbq("track", "PageView");
     ReactPixel.fbq("track", "AddToCart");
 
+
     let gData = [];
     let TData = this?.props?.data;
 

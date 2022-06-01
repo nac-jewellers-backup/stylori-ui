@@ -42,6 +42,7 @@ class Allorders extends React.Component {
           ?.shoppingCartByCartId?.discountedPrice,
       currency: "INR",
     });
+
     // GTM
     let gData = [];
     let TData =
@@ -63,7 +64,7 @@ class Allorders extends React.Component {
       return 0;
     });
     const tagManagerArgs = {
-      gtmId: "GTM-PW3ZXSF",
+      gtmId: "GTM-54JTMML",
       events: {
         purchase: "purchase",
         transaction_id: this?.props?.allorderdata?.data?.allOrders?.nodes[0].id,
