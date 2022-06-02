@@ -63,20 +63,37 @@ class Allorders extends React.Component {
       gData.push(data);
       return 0;
     });
-    const tagManagerArgs = {
-      gtmId: "GTM-54JTMML",
-      events: {
-        purchase: "purchase",
-        transaction_id: this?.props?.allorderdata?.data?.allOrders?.nodes[0].id,
-        affiliation: "Google online store",
-        value:
-          this?.props?.allorderdata?.data?.allOrders?.nodes[0]
-            .shoppingCartByCartId.discountedPrice,
-        currency: "INR",
-        items: gData,
-      },
-    };
-    TagManager.initialize(tagManagerArgs);
+
+    TData && TagManager.initialize({ gtmId: "GTM-54JTMML" });
+    TData &&
+      TagManager.dataLayer({
+        dataLayer: {
+          event: "ecomm_event",
+          transactionId:
+            this?.props?.allorderdata?.data?.allOrders?.nodes[0].id,
+          transactionAffiliation: "Google online store",
+          transactionTotal:
+            this?.props?.allorderdata?.data?.allOrders?.nodes[0]
+              .shoppingCartByCartId.discountedPrice,
+          currency: "INR",
+          transactionProducts: gData,
+        },
+      });
+
+    // const tagManagerArgs = {
+    //   gtmId: "GTM-54JTMML",
+    //   events: {
+    //     purchase: "purchase",
+    //     transaction_id: this?.props?.allorderdata?.data?.allOrders?.nodes[0].id,
+    //     affiliation: "Google online store",
+    //     value:
+    //       this?.props?.allorderdata?.data?.allOrders?.nodes[0]
+    //         .shoppingCartByCartId.discountedPrice,
+    //     currency: "INR",
+    //     items: gData,
+    //   },
+    // };
+    // TagManager.initialize(tagManagerArgs);
   }
 
   handleChange = (panel) => (event) => {
