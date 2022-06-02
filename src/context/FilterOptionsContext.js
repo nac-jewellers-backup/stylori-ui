@@ -463,7 +463,14 @@ const Provider = (props) => {
             default:
           }
         } else {
-          newObj[toLowerCase] = k[len][0];
+          if(toLowerCase === '[object object]'){
+            toLowerCase = 'producttype'
+            newObj[toLowerCase] = k[len][0];
+          }
+          else{
+            newObj[toLowerCase] = k[len][0];
+          }
+          
         }
       }
 
