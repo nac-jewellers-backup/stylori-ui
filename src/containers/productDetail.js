@@ -367,7 +367,7 @@ class ProductDetail extends Component {
       {
         title: "MURAL COLLECTION",
         description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+          "",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Mural.jpg",
         url: "https://www.stylori.com/silver-jewellery-mural+collection",
@@ -375,7 +375,7 @@ class ProductDetail extends Component {
       {
         title: "STAR STRUCK COLLECTION",
         description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+          "",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Starstruck.jpg",
         url: "https://www.stylori.com/silver-jewellery-starstruck+collection",
@@ -383,7 +383,7 @@ class ProductDetail extends Component {
       {
         title: "ELEMENTAL COLLECTION",
         description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+          "",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Elemental.jpg",
         url: "https://www.stylori.com/silver-jewellery-elemental+collection",
@@ -391,7 +391,7 @@ class ProductDetail extends Component {
       {
         title: "CONCENTRIC COLLECTION",
         description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+          "",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Concentric.jpg",
         url: "https://www.stylori.com/silver-jewellery-concentric+collection",
