@@ -372,6 +372,7 @@ class Component extends React.Component {
       }
     }
   };
+
   handleChange = (
     value,
     BoolName,
@@ -380,7 +381,6 @@ class Component extends React.Component {
     TargetName,
     selectedfiltertop
   ) => {
-    
     let mystate = this.state;
     let { chipData } = this.state;
     // let { filterData } = this.state;
@@ -401,13 +401,7 @@ class Component extends React.Component {
       let checkedvalue = {};
       checkedvalue[value] = BoolName;
 
-      checked[e && e.target.name ? e.target.name : selectedfiltertop] =
-        checkedvalue;
-
-        // this.setState({
-        //   filterData : value,
-        // })
-
+      checked[e && e.target.name ? e.target.name : title] = checkedvalue;
       this.setState(
         {
           checked,
@@ -439,13 +433,11 @@ class Component extends React.Component {
       if (val.title === title) {
         checkTitle = false;
       }
-      return 0;
     });
     chipData.map((val) => {
       if (val.label === value) {
         checkTitle = false;
       }
-      return 0;
     });
     if (BoolName === true) {
       if (checkTitle) {

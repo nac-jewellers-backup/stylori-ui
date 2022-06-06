@@ -408,21 +408,21 @@ const Provider = (props) => {
     }
   }, [data, error, loading]);
 
+ 
   useEffect(() => {}, [data, error, loading]);
-  const updatefiltersSort = async () => {
-   
+
+  const updatefiltersSort = async () => {  
     if (filters && filters.constructor === Object && Object.entries(filters).length !== 0 && filters.constructor === Object) {
       var newObj = {};
       var len;
       if (filters.constructor !== Object) {
         Object.assign(filters, {});
       }
-
       Object.keys(filters).map((fk) => {
         const filter = filters[fk];
-        const fv = filter && Object.keys(filter);
+        const fv = filter && Object.keys(filter)
         if (fv && fv.length > 0) {
-          if (filter[fv[0]]) {
+          if (filter[fv[0]]) {   
             const qt = `${fk}=${fv[0]}`;
             const qtf = {};
             qtf[`${fk}`] = `${fv[0]}`;
@@ -434,6 +434,7 @@ const Provider = (props) => {
       var k = qtfArr.map((val) => Object.values(val));
       var keyy = qtfArr.map((val) => Object.keys(val));
       len = keyy.length;
+
       while (len--) {
         var key = keyy[len];
 
@@ -463,14 +464,7 @@ const Provider = (props) => {
             default:
           }
         } else {
-          if(toLowerCase === '[object object]'){
-            toLowerCase = 'producttype'
-            newObj[toLowerCase] = k[len][0];
-          }
-          else{
-            newObj[toLowerCase] = k[len][0];
-          }
-          
+              newObj[toLowerCase] = k[len][0];
         }
       }
 
