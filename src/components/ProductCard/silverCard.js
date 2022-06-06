@@ -304,7 +304,7 @@ const useStyles = makeStyles((theme) => ({
     // boxShadow: "0px 0px 5px #F699A3 inset",
     padding: "10px",
     paddingLeft: "0px",
-    height: "75px",
+    height: "80px",
     display: "flex",
     boxShadow: " 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
     borderRadius: "0 !important",
@@ -317,7 +317,7 @@ const useStyles = makeStyles((theme) => ({
       // opacity: "2"
     },
     [theme.breakpoints.down("sm")]: {
-      height: "60px",
+      // height: "60px",
       padding: "0 !important",
       //   paddingLeft: '10px !important'
     },
