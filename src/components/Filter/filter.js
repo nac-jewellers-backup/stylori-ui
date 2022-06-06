@@ -401,7 +401,7 @@ class Component extends React.Component {
       let checkedvalue = {};
       checkedvalue[value] = BoolName;
 
-      checked[e && e.target.name ? e.target.name : selectedfiltertop] =
+      checked[e && e.target.name ? e.target.name : title] =
         checkedvalue;
 
         // this.setState({
