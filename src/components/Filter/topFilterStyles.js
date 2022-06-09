@@ -198,10 +198,10 @@ export const styles = makeStyles((theme) => ({
   filtersHeaderTop: {
     position: "sticky",
     top: "52px",
-    zIndex: 15,
+    zIndex: 532,
     background: "white",
     padding: "2px",
-    opacity:0.95
+    opacity:1
   },
   mobileNavIcon: {
     color: theme.palette.secondary.dark,

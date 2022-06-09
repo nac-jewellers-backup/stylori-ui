@@ -34,6 +34,7 @@
   font-size: 20px !important;
 }
 
+
 .menuListHoverDiv {
   width: 120px;
   height: 120px;
@@ -76,8 +77,8 @@
   line-height: 1.42857143;
   font-size: 12px;
   font-family: sans-serif;
-  box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.1),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important;
+  /* box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.1),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important; */
 }
 
 .header-navbar-list1 {
@@ -135,9 +136,9 @@
 @media screen and (max-width: 426px) {
   .MuiBadge-colorSecondary {
     /* background: #d51f63 !important; */
-    top: -6px !important;
+   margin-right: 2px;
+     top: -6px !important;
     margin-top: 7px;
-    margin-right: 2px;
   }
 }
 

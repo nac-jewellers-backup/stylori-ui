@@ -199,17 +199,184 @@ export const filtersLabelMapperStylori = (filterName) => {
 //   }
 // };
 
+const footerData = [
+  {
+    url: "aboutus",
+    Title: "About Stylori",
+  },
+  {
+    url: "/account-profile",
+    Title: "My Account",
+  },
+  {
+    url: "/productcare",
+    Title: "Product Care",
+  },
+  {
+    url: "/privacypolicy",
+    Title: "Privacy & Cookie Policy",
+  },
+  {
+    url: "/faqs",
+    Title: "FAQ",
+  },
+
+  {
+    url: "/deliveryreturns",
+    Title: "Shipping & Returns",
+  },
+  {
+    url: "/contactus",
+    Title: "Contact us",
+  },
+  {
+    url: "/termsconditions",
+    Title: "Terms & Conditions",
+  },
+  {
+    url: "/careers",
+    Title: "Careers",
+  },
+];
+const footerData1 = [
+  {
+    url: "/aboutus",
+    Title: "About Stylori",
+  },
+  // {
+  //     url: "",
+  //     Title: "Careers"
+  // },
+
+  // {
+  //     url: "",
+  //     Title: "Contact Us"
+  // },
+  {
+    url: "/account-profile",
+    Title: "My Account",
+  },
+  {
+    url: "/productcare",
+    Title: "Product Care",
+  },
+  // {
+  //     url: "/deliveryreturns",
+  //     Title: "Shopping & Returns"
+  // },
+];
+const footerData2 = [
+  // {
+  //     url: "/account-profile",
+  //     Title: "My Account"
+  // },
+  // {
+  //     url: "/faqs",
+  //     Title: "Frequently Asked Questions"
+  // },
+  {
+    url: "/faqs",
+    Title: "Frequently Asked Questions",
+  },
+  {
+    url: "/deliveryreturns",
+    Title: "Shipping & Returns",
+  },
+  {
+    url: "/privacypolicy",
+    Title: "Privacy & Cookie Policy",
+  },
+];
+const footerData3 = [
+  // {
+  //     url: "/productcare",
+  //     Title: "Product Care"
+  // },
+  // {
+  //     url: "/privacypolicy",
+  //     Title: "Privacy & Cookie Policy"
+  // },
+  {
+    url: "/termsconditions",
+    Title: "Terms & Conditions",
+  },
+  {
+    url: "/contactus",
+    Title: "Contact us",
+  },
+  {
+    url: "/careers",
+    Title: "Careers",
+  },
+];
+
+const silverFooterCat = [
+  {
+    url: "",
+    Title: "Jewellery",
+  },
+  {
+    url: "",
+    Title: "Style",
+  },
+  {
+    url: "",
+    Title: "Collections",
+  },
+  {
+    url: "",
+    Title: "Finish",
+  },
+  {
+    url: "",
+    Title: "Ready to Ship",
+  },
+  {
+    url: "",
+    Title: "CSK Merchandise",
+  },
+];
+const silverFooterUs = [
+  {
+    url: "",
+    Title: "NAC Jewellers",
+  },
+  {
+    url: "",
+    Title: "Stylori",
+  },
+  {
+    url: "",
+    Title: "Press & Media",
+  },
+];
+
+const silverFooterService = [
+  {
+    url: "",
+    Title: "My Account",
+  },
+  {
+    url: "",
+    Title: "Shipping & Return",
+  },
+  {
+    url: "",
+    Title: "FAQ's",
+  },
+];
+
 export const shopByCategory = [
   {
-    url: "#",
+    url: "/silver-jewellery",
     title: "Jewellery",
   },
   {
-    url: "#",
+    url: "/silver-cocktail-jewellery",
     title: "Style",
   },
   {
-    url: "#",
+    url: "/silver-jewellery-from+loops+collection",
     title: "Collections",
   },
   {
@@ -217,22 +384,18 @@ export const shopByCategory = [
     title: "Finish",
   },
   {
-    url: "#",
+    url: "/silver-jewellery-shipping+in+1+day",
     title: "Ready to ship",
-  },
-  {
-    url: "#",
-    title: "CSK Merchandise",
   },
 ];
 
 export const aboutUs = [
   {
-    url: "#",
+    url: "/aboutus",
     title: "NAC Jewellers",
   },
   {
-    url: "#",
+    url: "/aboutus",
     title: "Stylori",
   },
   {
@@ -243,15 +406,15 @@ export const aboutUs = [
 
 export const customerService = [
   {
-    url: "#",
+    url: "/account-profile",
     title: "My Account",
   },
   {
-    url: "#",
+    url: "/deliveryreturns",
     title: "Shipping & Return",
   },
   {
-    url: "#",
+    url: "/faqs",
     title: "FAQs",
   },
 ];
@@ -262,7 +425,7 @@ export const contactUs = [
     title: "Whatsapp:- +91 99526 25252",
   },
   {
-    url: "#",
+    url: "mailto: hello@stylori.com",
     title: "Email:- hello@stylori.com",
   },
   {

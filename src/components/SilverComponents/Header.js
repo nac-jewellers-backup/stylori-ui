@@ -652,11 +652,11 @@ class Header extends Component {
                                   style={{ fontSize: "20px" }}
                                   className={classes.iconFafa}
                                 >
-                                  <i
-                                    className="fa fa-shopping-cart"
+                                  {/* <i
+                                    className="fa fa-shopping-bag"
                                     aria-hidden="true"
-                                  ></i>
-                                  {/* <img src={cart} alt="icon"/> */}
+                                  ></i> */}
+                                  <img src={cart} alt="icon"/>
                                 </i>
 
                                 <span
@@ -976,11 +976,11 @@ class Header extends Component {
                                   style={{ fontSize: "20px" }}
                                   className={classes.iconFafa}
                                 >
-                                  <i
-                                    className="fa fa-shopping-cart"
+                                  {/* <i
+                                    className="fa fa-shopping-bag"
                                     aria-hidden="true"
-                                  ></i>
-                                  {/* <img src={cart} alt="icon"/>  */}
+                                  ></i> */}
+                                  <img src={cart} alt="icon"/> 
                                 </i>
                                 <span
                                   className="tooltip-s"
@@ -1999,6 +1999,7 @@ class Header extends Component {
                         left: 10,
                         zIndex: 20,
                       }}
+                      id="currency_select"
                     >
                       <Autocomplete
                         id="country-select-demo"

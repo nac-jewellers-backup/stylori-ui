@@ -59,9 +59,7 @@ class Cart extends React.Component {
 
     let path = window.location.pathname.split("/").pop();
     return (
-      <Grid container  style={{
-        backgroundColor: "#E6E7E8",
-      }}>
+      <Grid container  className="noproductsfound_container">
         <Hidden smDown>
           <Grid container spacing={12}>
             <Header wishlist={this.props.wishlistdata} />

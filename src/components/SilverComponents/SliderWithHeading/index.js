@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",  
     "& img": {
-      height:220,
+      height:230,
       width:"auto",
     },
     "& p": {

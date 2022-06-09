@@ -25,10 +25,10 @@ export const mainlist = [
         name: "Ready to ship",
         url: "/jewellery-shipping+in+1+day",
     },
-    {
-        name: "CSK MERCHANDISE",
-        url: "/silver-jewellery-csk+collection",
-    },
+    // {
+    //     name: "CSK MERCHANDISE",
+    //     url: "/silver-jewellery-csk+collection",
+    // },
     {
         name: "Visit Stylori Silver",
         url: "/styloriSilver",
@@ -451,7 +451,7 @@ export const menuListHeader =
         { title: 'GOLD COINS', url: "/goldcoins" },
         { title: 'COLLECTIONS', url: "/collections" },
         { title: 'READY TO SHIP', url: "/jewellery-shipping+in+1+day" },
-        { title: 'CSK MERCHANDISE', url: "/silver-jewellery-csk+collection" },
+        // { title: 'CSK MERCHANDISE', url: "/silver-jewellery-csk+collection" },
         { title: 'STYLORISILVER', url: "/styloriSilver" }
     ];
 
