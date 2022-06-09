@@ -550,6 +550,7 @@ class ProductDetail extends Component {
                   <ProductImageZoom
                     data={this?.props?.data}
                     isSilver={isSilver}
+                    wishlist={this?.props?.wishlistdata}
                   />
                 )}
               </Grid>
