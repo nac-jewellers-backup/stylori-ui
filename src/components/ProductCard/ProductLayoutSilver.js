@@ -99,7 +99,7 @@ class Component extends React.Component {
   screenWidth = () => {
     const width = window.innerWidth;
     if (width > 2555) {
-      this.setState({ colSize: 6 });
+      this.setState({ colSize: 3 });
     } else if (width > 1440) {
       this.setState({ colSize: 3 });
     } else if (width > 1024) {
@@ -119,7 +119,7 @@ class Component extends React.Component {
     }
   }
   handleOffset = () => {
-    const offsets = this.props.offset + 24;
+    const offsets = this.props.offset + 15;
     this.setState({ loadingtext: true });
     this.props.setOffset(offsets);
   };
@@ -141,7 +141,7 @@ class Component extends React.Component {
                   >
                     {data.map((tile, i) => {
                       return tile && Object.entries(tile).length > 0 ? (
-                        (i + 1) % 16 === 0 ? (
+                        (i + 1) % 15 === 0 ? (
                           [tile, homePageStylori].map((val) => {
                             return val.carouselTop ? (
                               data.length !== i + 1 ? (
@@ -266,11 +266,11 @@ class Component extends React.Component {
                               onClick={() => {
                                 this.handleOffset();
                               }}
-                              disabled={data && data.length < 24}
+                              disabled={data && data.length < 15}
                             >
                               {data && data.length === 0 && `No products found`}
                               {data &&
-                                data.length >= 24 &&
+                                data.length >= 15 &&
                                 ` View ${
                                   data && data.length > 0 && data[0]
                                     ? data[0].totalCount - data.length
@@ -278,7 +278,7 @@ class Component extends React.Component {
                                 } More Products`}
                               {data &&
                                 data.length > 0 &&
-                                data.length < 24 &&
+                                data.length < 15 &&
                                 `Only ${
                                   data && data.length > 0 && data[0]
                                     ? data[0].totalCount - data.length

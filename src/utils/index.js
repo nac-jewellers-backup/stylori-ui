@@ -399,7 +399,7 @@ export const aboutUs = [
     title: "Stylori",
   },
   {
-    url: "#",
+    url: "/privacypolicy",
     title: "Press & Media",
   },
 ];
@@ -421,7 +421,7 @@ export const customerService = [
 
 export const contactUs = [
   {
-    url: "#",
+    url: `https://wa.me/919952625252?text=Hi - ${window.location.href}`,
     title: "Whatsapp:- +91 99526 25252",
   },
   {
@@ -429,7 +429,7 @@ export const contactUs = [
     title: "Email:- hello@stylori.com",
   },
   {
-    url: "#",
+    url: "tel:18001020330",
     title: "Customer Care:- 1800 102 0330",
   },
 ];
