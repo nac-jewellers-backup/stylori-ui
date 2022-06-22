@@ -128,7 +128,7 @@ const Gallery = (
 ) => {
   const [loading, setLoading] = React.useState(false);
   return (
-    <div className="imageHeight">
+    <div className="imageHeight_silver">
       {props.data.oneDayShipping ? (
         <div
           className={`one-day-ship-listing-page-withoutTop`}
@@ -349,7 +349,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     textDecorationLine: "line-through",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "0.5rem !important",
+      fontSize: "0.7rem !important",
     },
     "& i": {
       fontSize: "20px !important",

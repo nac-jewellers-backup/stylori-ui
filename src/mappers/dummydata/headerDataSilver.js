@@ -3,34 +3,35 @@
 
 // MOBILE views menu - LAYER 1
 export const mainlist = [
-  {
-    name: "Jewellery",
-    url: "/jewellery",
-  },
-  // {
-  //     name: "Silver",
-  //     url: "/stylorisilver",
-  // },
-  {
-    name: "Gold Coins",
-    url: "/goldcoins",
-  },
-  {
-    name: "Collections",
-    url: "/collections",
-  },
-  {
-    name: "Ready to ship",
-    url: "/jewellery-shipping+in+1+day",
-  },
-  {
-    name: "CSK MERCHANDISE",
-    url: "/silver-jewellery-csk+collection",
-  },
-  {
-    name: "Visit Stylori Silver",
-    url: "/styloriSilver",
-  },
+
+    {
+        name: "Jewellery",
+        url: "/jewellery",
+    },
+    // {
+    //     name: "Silver",
+    //     url: "/stylorisilver",
+    // },
+    {
+        name: "Gold Coins",
+        url: "/goldcoins",
+    },
+    {
+        name: "Collections",
+        url: "/collections",
+    },
+    {
+        name: "Ready to ship",
+        url: "/jewellery-shipping+in+1+day",
+    },
+    // {
+    //     name: "CSK MERCHANDISE",
+    //     url: "/silver-jewellery-csk+collection",
+    // },
+    {
+        name: "Visit Stylori Silver",
+        url: "/styloriSilver",
+    },
 ];
 
 /// MOBILE views submenu - LAYER 3

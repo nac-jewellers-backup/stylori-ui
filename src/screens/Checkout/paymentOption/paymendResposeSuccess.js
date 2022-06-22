@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid,Hidden,Button } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import "./payment.css";
 import Divider from "@material-ui/core/Divider";
@@ -66,9 +66,9 @@ class PaymentResponseSuccess extends React.Component {
   componentDidMount() {
     if (localStorage.getItem("gut_lg") && localStorage.getItem("user_id"))
       localStorage.removeItem("user_id");
+      localStorage.removeItem("cartDetails");
+      localStorage.removeItem("quantity");
 
-    localStorage.removeItem("cartDetails");
-    localStorage.removeItem("quantity");
   }
   render() {
     let gut_lg = localStorage.getItem("gut_lg")
@@ -78,9 +78,8 @@ class PaymentResponseSuccess extends React.Component {
     return (
       <>
         <Header wishlist={this.props.wishlistdata} paymentSucces={true} />
-
-        <Grid container justify="center" style={{ paddingTop: "10px" }}>
-          <Hidden smDown>
+        <Grid container justify="center" className="main-container" style={{height:this.props.allorderdata.length >1 ? "70vw":"55vw"}}>
+          {/* <Hidden smDown>
             <Grid
               container
               justify="center"
@@ -120,7 +119,7 @@ class PaymentResponseSuccess extends React.Component {
                 </Grid>
               </Grid>
             </Grid>
-          </Hidden> 
+          </Hidden> */}
           <Grid container justify="center" className="smallScreenClass" style={{display:"flex",flexDirection:"column",marginTop:30}}>
               <Grid item  className="contant-center container-font-size">
               

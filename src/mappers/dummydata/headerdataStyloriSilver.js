@@ -27,10 +27,10 @@ export const mainlist = [
     name: "READY TO SHIP",
     url: "/silver-jewellery-shipping+in+1+day",
   },
-  {
-    name: "CSK MERCHANDISE",
-    url: "/silver-jewellery-csk+collection",
-  },
+  // {
+  //   name: "CSK MERCHANDISE",
+  //   url: "/silver-jewellery-csk+collection",
+  // },
   {
     name: "VISIT STYLORI.COM",
     url: "/",
@@ -1225,10 +1225,10 @@ export const menuListHeader = [
     title: "READY TO SHIP",
     url: "/silver-jewellery-shipping+in+1+day",
   },
-  {
-    title: "CSK MERCHANDISE",
-    url: "/silver-jewellery-csk+collection",
-  },
+  // {
+  //   title: "CSK MERCHANDISE",
+  //   url: "/silver-jewellery-csk+collection",
+  // },
   {
     title: "VISIT STYLORI.COM",
     url: "/",

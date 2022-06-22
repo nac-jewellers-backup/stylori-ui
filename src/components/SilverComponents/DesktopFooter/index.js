@@ -9,6 +9,8 @@ import { shopByCategory, aboutUs, customerService, contactUs } from "utils";
 import Input from "@material-ui/core/Input";
 import MailOutlineRoundedIcon from "@material-ui/icons/MailOutlineRounded";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import { API_URL } from "config";
+import { SnackBar } from "components/snackbarAlert/SnackBar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     fontSize: 12,
     opacity: 0.9,
+    cursor:"pointer"
   },
   paymentModeContainer: {
     position: "absolute",
@@ -73,7 +76,12 @@ function DesktopFooter() {
           </Typography>
           <div className={classes.categoryItemContainer}>
             {shopByCategory.map((item) => (
-              <Typography className={classes.categoryItem}>
+              <Typography className={classes.categoryItem}
+              onClick={() => {
+                window.location.href = item?.url;
+              }}
+              href="#"
+               >
                 {item.title}
               </Typography>
             ))}
@@ -83,7 +91,12 @@ function DesktopFooter() {
           <Typography className={classes.categoryTitle}>About Us</Typography>
           <div className={classes.categoryItemContainer}>
             {aboutUs.map((item) => (
-              <Typography className={classes.categoryItem}>
+              <Typography className={classes.categoryItem}
+              onClick={() => {
+                window.location.href = item?.url;
+              }}
+              href="#"
+              >
                 {item.title}
               </Typography>
             ))}
@@ -95,7 +108,12 @@ function DesktopFooter() {
           </Typography>
           <div className={classes.categoryItemContainer}>
             {customerService.map((item) => (
-              <Typography className={classes.categoryItem}>
+              <Typography className={classes.categoryItem}
+              
+              onClick={() => {
+                window.location.href = item?.url;
+              }}
+              href="#">
                 {item.title}
               </Typography>
             ))}
@@ -105,7 +123,11 @@ function DesktopFooter() {
           <Typography className={classes.categoryTitle}>Contact Us</Typography>
           <div className={classes.categoryItemContainer}>
             {contactUs.map((item) => (
-              <Typography className={classes.categoryItem}>
+              <Typography className={classes.categoryItem}
+              onClick={() => {
+                window.location.href = item?.url;
+              }}
+              href="#">
                 {item.title}
               </Typography>
             ))}
@@ -164,6 +186,64 @@ const theme = createTheme({
 const ContactStylori = () => {
   const classes = useContactEmailStyles();
   const [email, setEmail] = React.useState("");
+  const [open, setOpen] = React.useState(false);
+  const [message, setMessage] = React.useState("");
+  const [stateClassname, setStateClassname] = React.useState("snackBar");
+
+  const status = (response) => {
+    if (
+      (response.status >= 200 && response.status < 300) ||
+      response.status === 409
+    ) {
+      if (response.status === 409) setStateClassname("snackBarError");
+      else setStateClassname("snackBar");
+      return Promise.resolve(response);
+    } else {
+      return Promise.reject(new Error(response.statusText));
+    }
+  };
+
+  const json = (response) => {
+    return response.json();
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleEmail = () => {
+    var emailvld =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; //eslint-disable-line
+    
+      if(email.match(emailvld)){
+        fetch(`${API_URL}/addemailsubscription`, {
+          method: "post",
+          // body: {query:seoUrlResult,variables:splitHiphen()}
+          // body: JSON.stringify({query:seoUrlResult}),
+  
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+          }),
+        })
+          .then(status)
+          .then(json)
+          .then(async (val) => {
+            setMessage(val.message);
+            setOpen(true);
+          });
+      }
+      else{
+        status(409)
+        setOpen(true)
+        setMessage('Email is Invalid')
+      }
+    
+    
+  };
+
   return (
     <div className={classes.root}>
       <ThemeProvider theme={theme}>
@@ -175,7 +255,7 @@ const ContactStylori = () => {
           placeholder="Enter Email"
           endAdornment={
             <InputAdornment position="end">
-              <MailOutlineRoundedIcon />
+              <MailOutlineRoundedIcon onClick={()=>handleEmail()}/>
             </InputAdornment>
           }
           className={classes.input}
@@ -188,6 +268,19 @@ const ContactStylori = () => {
           }}
         />
       </ThemeProvider>
+
+      <SnackBar
+            handleClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            classNameCloseIcon={"closeIcon"}
+            classNames={stateClassname}
+            message={message}
+            open={open}
+          />
+
       <div></div>
     </div>
   );

@@ -6,6 +6,16 @@
   justify-content: center;
 }
 
+.noproductsfound_container{
+  background-color: #E6E7E8;
+}
+
+@media only screen and (min-width:325px) and (max-width:424px) {
+  .noproductsfound_container {
+    height: 100vh;
+  }
+}
+
 .smooth-image {
   transition: opacity 0.5s;
 }
