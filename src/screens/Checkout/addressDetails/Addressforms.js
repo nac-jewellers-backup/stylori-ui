@@ -188,12 +188,11 @@ const Addressforms = (changePanel) => {
             values[type]['pincode'] = value;
             const val = values.addressOne.pincode || values.addressTwo.pincode
             var variab = {}
-            variab["pincode"] = value
-            if (value.length > 5) {
-                // alert(JSON.stringify(value))
-                if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
-                    makeRequestCod(variab);
-                }
+            variab["pincode"] = value;
+            if(JSON.parse(localStorage.getItem('selected_price')).currencyAlias === "INR" && value.length > 5){
+                    if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
+                        makeRequestCod(variab);
+                    }
             }
         }
         pincods["pincod"] = pincod
@@ -219,7 +218,7 @@ const Addressforms = (changePanel) => {
         //     return false
         // }
 
-        if (values && values.addressOne && values.addressOne.pincode && values.addressOne.pincode.length < 6 ||
+        if (values && values.addressOne && values.addressOne.pincode && values.addressOne.pincode.length < 4 ||
             (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr'])) {
             // if (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr']) {
             values["addressOne"]['errortext']['pinerr'] = "Your pincode is Invalid!"
@@ -227,7 +226,7 @@ const Addressforms = (changePanel) => {
             // }
             return false
         }
-        if (values && values.addressTwo && values.addressTwo.pincode && values.addressTwo.pincode.length < 5 ||
+        if (values && values.addressTwo && values.addressTwo.pincode && values.addressTwo.pincode.length < 4 ||
             (values["addressTwo"] && values["addressTwo"]['errortext'] && values["addressTwo"]['errortext']['pinerr1'])) {
             // if (values["addressOne"] && values["addressOne"]['errortext'] && values["addressTwo"]['errortext']['pinerr1']) {
             values["addressTwo"]['errortext']['pinerr1'] = "Your pincode is Invalid!"

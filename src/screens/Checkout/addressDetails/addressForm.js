@@ -381,7 +381,6 @@ const AddressComponent = (props) => {
                         </Grid>
                         <Grid item xs={6} lg={6}>
                           <Input
-                            // className="text-f"
                             type="tel"
                             name="pincode"
                             maxLength="6"
