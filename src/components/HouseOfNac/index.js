@@ -59,9 +59,7 @@ function NACSection() {
           House of Nac
         </Typography>
         <Typography className={classes.description}>
-        NAC has a journey that began almost hundred years ago in 1973, 
-        where a small store has now transformed into a chain of jewellery houses, 
-        with 7 stores across Tamilnadu and Vijayawada.
+        NAC has a journey that began almost hundred years ago in 1917, where a small store has now transformed into a chain of jewellery houses, with 7 stores across Tamilnadu and Vijayawada.
         </Typography>
       </div>
     </div>

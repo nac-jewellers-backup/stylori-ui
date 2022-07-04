@@ -144,7 +144,7 @@ const styles = (theme) => ({
     background: "#F8E3C0",
     textAlign: "center",
     margin: "-20px 26px",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       margin: "-30px 26px",
       padding: theme.spacing(2, 2),
     },
@@ -366,32 +366,28 @@ class ProductDetail extends Component {
     var brand_card = [
       {
         title: "MURAL COLLECTION",
-        description:
-          "",
+        description: "",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Mural.jpg",
         url: "https://www.stylori.com/silver-jewellery-mural+collection",
       },
       {
         title: "STAR STRUCK COLLECTION",
-        description:
-          "",
+        description: "",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Starstruck.jpg",
         url: "https://www.stylori.com/silver-jewellery-starstruck+collection",
       },
       {
         title: "ELEMENTAL COLLECTION",
-        description:
-          "",
+        description: "",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Elemental.jpg",
         url: "https://www.stylori.com/silver-jewellery-elemental+collection",
       },
       {
         title: "CONCENTRIC COLLECTION",
-        description:
-          "",
+        description: "",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Concentric.jpg",
         url: "https://www.stylori.com/silver-jewellery-concentric+collection",
@@ -426,17 +422,17 @@ class ProductDetail extends Component {
           <div>
             <Typography className="detailTitle">
               <b>Do's-</b>
-              <br/>
-              Store your jewellery in zip lock bag or air tight plastic box
-              Wipe gently after use Use Frangrance 30 before wearing 
-              </Typography>
-              <Typography className="detailTitle">
+              <br />
+              Store your jewellery in zip lock bag or air tight plastic box Wipe
+              gently after use Use Frangrance 30 before wearing
+            </Typography>
+            <Typography className="detailTitle">
               <b>Dont's-</b>
-              <br/>
-              Dont use soap, tooth paste or detergent to clean your jewellery Dont
-              store jewellery in velvet linedor velvet box Dont roll or place
-              the jewellery in clothes
-             </Typography>
+              <br />
+              Dont use soap, tooth paste or detergent to clean your jewellery
+              Dont store jewellery in velvet linedor velvet box Dont roll or
+              place the jewellery in clothes
+            </Typography>
           </div>
         ),
       },
@@ -631,7 +627,11 @@ class ProductDetail extends Component {
                 )}
                 {isSilver && (
                   <div className={classes.getInTouchButtonContainer}>
-                    <SilverButton variant="outlined" onClick={enquireLink} style={{border:"3px solid rgb(166, 168, 171)"}}>
+                    <SilverButton
+                      variant="outlined"
+                      onClick={enquireLink}
+                      style={{ border: "3px solid rgb(166, 168, 171)" }}
+                    >
                       Get in Touch
                     </SilverButton>
                   </div>
@@ -736,7 +736,11 @@ class ProductDetail extends Component {
             <div className={classes.sliderWithHeadingContainer}>
               <SliderWithHeading
                 heading="Recently Viewed"
-                products={jewelData?.fadeImageSublistRecentlyViewed.length > 0 ? jewelData?.fadeImageSublistRecentlyViewed : jewelData?.fadeImageSublist }
+                products={
+                  jewelData?.fadeImageSublistRecentlyViewed.length > 0
+                    ? jewelData?.fadeImageSublistRecentlyViewed
+                    : jewelData?.fadeImageSublist
+                }
               />
             </div>
           )}
@@ -854,24 +858,28 @@ class ProductDetail extends Component {
               </JewelDetailAccordion>
               <JewelDetailAccordion title="Jewellery Care">
                 <div>
-                <Typography className="detailTitle">
-              <b>Do's-</b>
-              <br/>
-              Store your jewellery in zip lock bag or air tight plastic box
-              Wipe gently after use Use Frangrance 30 before wearing 
-              </Typography>
-              <Typography className="detailTitle">
-              <b>Dont's-</b>
-              <br/>
-              Dont use soap, tooth paste or detergent to clean your jewellery Dont
-              store jewellery in velvet linedor velvet box Dont roll or place
-              the jewellery in clothes
-             </Typography>
+                  <Typography className="detailTitle">
+                    <b>Do's-</b>
+                    <br />
+                    Store your jewellery in zip lock bag or air tight plastic
+                    box Wipe gently after use Use Frangrance 30 before wearing
+                  </Typography>
+                  <Typography className="detailTitle">
+                    <b>Dont's-</b>
+                    <br />
+                    Dont use soap, tooth paste or detergent to clean your
+                    jewellery Dont store jewellery in velvet linedor velvet box
+                    Dont roll or place the jewellery in clothes
+                  </Typography>
                 </div>
               </JewelDetailAccordion>
 
               <div className={classes.getInTouchButtonContainer}>
-                <SilverButton variant="outlined" onClick={enquireLink} style={{border:"3px solid rgb(166, 168, 171)"}}>
+                <SilverButton
+                  variant="outlined"
+                  onClick={enquireLink}
+                  style={{ border: "3px solid rgb(166, 168, 171)" }}
+                >
                   Get in Touch
                 </SilverButton>
               </div>
@@ -891,18 +899,15 @@ class ProductDetail extends Component {
           {/* House of NAC Section */}
           {isSilver && (
             <div className={classes.houseOfNacContainer}>
-              <img
-                src={HouseOfNac}
-                alt="House of NAC"
-                loading="lazy"
-              />
+              <img src={HouseOfNac} alt="House of NAC" loading="lazy" />
 
               <div className={classes.nacDescription}>
                 <Typography id="title">From the House of Nac</Typography>
                 <Typography id="desc">
-                NAC has a journey that began almost hundred years ago in 1973,
-                where a small store has now transformed into a chain of jewellery houses, 
-                with 7 stores across Tamilnadu and Vijayawada.
+                  NAC has a journey that began almost hundred years ago in 1917,
+                  where a small store has now transformed into a chain of
+                  jewellery houses, with 7 stores across Tamilnadu and
+                  Vijayawada.
                 </Typography>
               </div>
             </div>
@@ -930,7 +935,11 @@ class ProductDetail extends Component {
             <div className={classes.sliderWithHeadingContainer}>
               <SliderWithHeading
                 heading="Recently Viewed"
-                products={jewelData?.fadeImageSublistRecentlyViewed.length > 0 ? jewelData?.fadeImageSublistRecentlyViewed : jewelData?.fadeImageSublist }
+                products={
+                  jewelData?.fadeImageSublistRecentlyViewed.length > 0
+                    ? jewelData?.fadeImageSublistRecentlyViewed
+                    : jewelData?.fadeImageSublist
+                }
               />
             </div>
           )}
