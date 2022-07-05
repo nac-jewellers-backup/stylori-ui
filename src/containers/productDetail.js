@@ -225,6 +225,9 @@ class ProductDetail extends Component {
       clear: "",
       data: null,
       isActive: false,
+      "description":false,
+      "product details" :false,
+      "jewellery care" :false,
       Index: "",
       tooltip: false,
     };
@@ -415,7 +418,7 @@ class ProductDetail extends Component {
             <ProductDetails
               data={this?.props?.data}
               isSilver={isSilver}
-              isActive={this.state.isActive}
+              isActive={this.state['product details']}
             />
           </div>
         ),
@@ -607,19 +610,19 @@ class ProductDetail extends Component {
                             className="accordion-title"
                             onClick={() =>
                               this.setState({
-                                isActive: !this.state.isActive,
+                                [item.title.toLowerCase()]: !this.state[item.title.toLowerCase()],
                                 Index: index,
                               })
                             }
                           >
                             <div className="accordion-title2">{item.title}</div>
                             <div style={{ cursor: "pointer" }}>
-                              {this.state.isActive && this.state.Index === index
+                              {this.state[item.title.toLowerCase()]
                                 ? "-"
                                 : "+"}
                             </div>
                           </div>
-                          {this.state.isActive && this.state.Index === index ? (
+                          {this.state[item.title.toLowerCase()] ? (
                             <div className="" style={{ margin: 10 }}>
                               {item.data}
                             </div>

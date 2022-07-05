@@ -10,6 +10,20 @@ body {
 }
 
 
+.heart{
+    right: 660px;
+    padding-top: 7px;
+    position: absolute;
+    z-index: 500;
+    margin: 10px; 
+}
+
+@media only screen and (min-width: 1440px) and (max-width:2560px) {
+    .heart{
+        right: 750px;
+    }
+}
+
 #modalElementSizeGuide {
     overflow: hidden;
 }

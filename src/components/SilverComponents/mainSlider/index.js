@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useLocation,useHistory } from "react-router-dom";
 import {
+  Button,
   makeStyles,
   Typography,
   useMediaQuery,
@@ -82,6 +83,13 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       width: "95%",
     },
+  },
+  shop:{
+    border:"2.5px solid rgba(0, 0, 0, 0.54)",
+    color:"rgba(0, 0, 0, 0.54)",
+    fontSize:"12px",
+    padding:"2px",
+    textTransform:"capitalize"
   }
 }));
 
@@ -124,12 +132,15 @@ const MainCard = (props) => {
   const handleNextClick = () => {
     sliderInstance.slickNext();
   };
+  const shop=(url)=>{
+    window.location.href = url
+  }
 
   return (
     <div>  
      <div className={classes.sliderContainer}> 
        <Slider ref={(s) => setSliderInstance(s)} {...settings}>
-         {products.map((product) => (
+         {products?.map((product) => (
            <div
              className={classes.imageContainer}
            >
@@ -142,7 +153,8 @@ const MainCard = (props) => {
              />
              <div className={classes.title}> 
                 <Typography style={{fontWeight:700}}>{product.title}</Typography>
-                <Typography style={{fontSize:"14px",fontWeight:400}}>{product.description}</Typography>    
+                <Typography style={{fontSize:"14px",fontWeight:400}}>{product.description}</Typography>
+                <Button variant="outlined" className={classes.shop} onClick={()=>shop(product.url)}>Shop now</Button> 
              </div>   
            </div>
          ))}
