@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",  
     "& img": {
-      height:260,
+      height:280,
       width:"auto",
       [theme.breakpoints.down("sm")]: {
         width:320
