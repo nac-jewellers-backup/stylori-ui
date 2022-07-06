@@ -437,21 +437,10 @@ class Header extends Component {
                                       : ""
                                   }
                                 >
-                                  {listName.title === "VISIT STYLORI.COM" ? (
-                                    <img
-                                      src="https://assets.stylori.com/images/favicon.gif"
-                                      width="25px"
-                                      height="25px"
-                                      alt="stylori"
-                                      loading="lazy"
-                                    />
+                                 {listName.title === "VISIT STYLORI.COM" ? (
+                                    <a style={{color:"rgba(241, 72, 128, 1)",display:"contents"}}>{'STYLORI'}</a>
                                   ) : listName.title === "STYLORISILVER" ? (
-                                    <img
-                                      src={silverOpenLinkImage}
-                                      alt="stylori"
-                                      loading="lazy"
-                                      style={{ width: "25px", height: "25px" }}
-                                    />
+                                    <a className={classes.silver}>{'STYLORI SILVER'}</a>
                                   ) : (
                                     listName.title
                                   )}
@@ -552,6 +541,7 @@ class Header extends Component {
                                 onClick={() => {
                                   window.location.href = "/account-profile";
                                 }}
+                                style={{display:"flex",flexDirection:"column"}}
                               >
                                 <i
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
@@ -572,6 +562,7 @@ class Header extends Component {
                                 onClick={() =>
                                   (window.location.pathname = "/login")
                                 }
+                                style={{display:"flex",flexDirection:"column"}}
                               >
                                 <i
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
@@ -596,7 +587,6 @@ class Header extends Component {
                                this.props.wishlist.wishlistdata.nodes.length >
                                  0
                                  ? 
-                                 <div>
                                      <Badge
                                  className={`${
                                    isSilver && classes.badgeColorsilver
@@ -608,6 +598,7 @@ class Header extends Component {
                                        this.props.wishlist.wishlistdata.nodes
                                          .length
                                  }
+                                 style={{display:"flex",flexDirection:"column"}}
                                >
                                   <i
                                 style={{ fontSize: "18px" }}
@@ -624,7 +615,7 @@ class Header extends Component {
                               </i>
                               <span className="tooltip-w">Wishlist</span>
                                </Badge>
-                                  </div>
+                              
                                  : <div>
                                    <i
                                 style={{ fontSize: "18px" }}
@@ -653,7 +644,7 @@ class Header extends Component {
                                 this.props.cart_count.data.allTransSkuLists
                                   .nodes.length > 0
                                  ? 
-                                 <div>
+                                 
                                      <Badge
                                   className={`${
                                     isSilver && classes.badgeColorsilver
@@ -666,6 +657,7 @@ class Header extends Component {
                                   this.props.cart_count.data.allTransSkuLists
                                     .nodes.length
                                  }
+                                 style={{display:"flex",flexDirection:"column"}}
                                >
                                  <a href="/cart" className="highlighter" style={{textDecoration:"none"}}>
                                 <i
@@ -687,7 +679,7 @@ class Header extends Component {
                                 </span>
                               </a>{" "}
                                </Badge>
-                                  </div>
+                                
                                  : <div>
                                     <a href="/cart" className="highlighter" style={{textDecoration:"none"}}>
                                 <i
