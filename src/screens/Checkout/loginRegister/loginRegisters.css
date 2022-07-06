@@ -45,6 +45,17 @@
     color: #fff !important;
     text-transform: none !important;
 }
+.login{
+    border-radius: 0px !important;
+    text-align: center !important;
+    min-width: 100px !important;
+    font-size: 16px !important;
+    background: #394579 !important;
+    border: 1px solid #394579;
+    color: #fff !important;
+    text-transform: none !important;
+    cursor: pointer;
+}
 .apply-c {
     border-radius: 0px !important;
     text-align: center !important;

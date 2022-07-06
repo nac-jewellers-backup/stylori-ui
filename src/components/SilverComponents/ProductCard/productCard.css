@@ -56,6 +56,12 @@
   left: 330px;
 }
 
+@media only screen and  (min-width: 426px) and (max-width:768px){
+  .heart_mobile{
+      left: 690px;
+  }
+}
+
 .wishListStyle {
   margin-left: 4px;
   margin-top: 2px;

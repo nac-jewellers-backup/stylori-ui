@@ -118,6 +118,18 @@ export const styles = (theme) => ({
       borderBottom: "1px solid " + theme.palette.secondary.dark,
     },
   },
+  silver:{
+    cursor: "pointer",
+    fontFamily: "Roboto",
+    fontWeight: 600,
+    color:"rgb(6, 171, 159)",
+    display:"contents",
+    borderBottom: "1px solid #fff",
+    "&:hover": {
+      // paddingBottom: "2px",
+      borderBottom: "1px solid #d51f63",
+    },
+  },
   seletectedMenu: {
     color: theme.palette.secondary.dark,
     // paddingBottom: "2px",

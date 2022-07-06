@@ -557,7 +557,7 @@ class Header extends Component {
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
                                   className={`fa fa-user  ${classes.iconFafa}`}
                                 ></i>
-                                <span className="tooltip-slog">
+                                <span className={isSilver ? "tooltip-slog-silver" : "tootip-account"}>
                                   {Boolean(localStorage.getItem("user_id")) &&
                                   !Boolean(localStorage.getItem("gut_lg"))
                                     ? "Account"
@@ -566,8 +566,6 @@ class Header extends Component {
                               </span>
                             </div>
                           ) : (
-                            // <img className="icons-header-sizes" src={usershape}/>
-
                             <div className="tooltip ">
                               <span
                                 className={`MuiBadge-root ${classes.badgecolor}`}
@@ -579,7 +577,7 @@ class Header extends Component {
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
                                   className={`fa fa-user  ${classes.iconFafa}`}
                                 ></i>
-                                <span className="tooltip-slog">
+                                <span className= {isSilver ? "tooltip-slog-silver" : "tootip-account"}>
                                   {Boolean(localStorage.getItem("user_id")) &&
                                   !Boolean(localStorage.getItem("gut_lg"))
                                     ? "Account"
@@ -624,10 +622,25 @@ class Header extends Component {
                               >
                                 <img src={heart} alt="icon" loading="lazy" />
                               </i>
-                              <span className="tooltip-s">Wishlist</span>
+                              <span className="tooltip-w">Wishlist</span>
                                </Badge>
                                   </div>
-                                 : null)
+                                 : <div>
+                                   <i
+                                style={{ fontSize: "18px" }}
+                                className={classes.iconFafaheart}
+                                onClick={() => {
+                                  if (user_id.length > 0) {
+                                    window.location.href = `/account${"-wishlist"}`;
+                                  } else {
+                                    window.location.href = "/login";
+                                  }
+                                }}
+                              >
+                                <img src={heart} alt="icon" loading="lazy" />
+                              </i>
+                              <span className="tooltip-w">Wishlist</span>
+                                 </div>)
                             }
                           </div>
 
@@ -654,7 +667,7 @@ class Header extends Component {
                                     .nodes.length
                                  }
                                >
-                                 <a href="/cart" className="highlighter">
+                                 <a href="/cart" className="highlighter" style={{textDecoration:"none"}}>
                                 <i
                                   style={{ fontSize: "20px" }}
                                   className={classes.iconFafa}
@@ -668,7 +681,6 @@ class Header extends Component {
                                     color: isSilver
                                       ? "rgb(6, 171, 159)"
                                       : "#d51f63",
-                                    marginTop: 7,
                                   }}
                                 >
                                   Cart
@@ -676,33 +688,12 @@ class Header extends Component {
                               </a>{" "}
                                </Badge>
                                   </div>
-                                 : null)
-                            }
-                            {/* <Badge
-                              className={`${
-                                isSilver && classes.badgeColorsilver
-                              } ${!isSilver && classes.badgeColor}`}
-                              badgeContent={
-                                this.props.cart_count &&
-                                this.props.cart_count.data &&
-                                this.props.cart_count.data.allTransSkuLists &&
-                                this.props.cart_count.data.allTransSkuLists
-                                  .nodes.length > 0
-                                  ? this.props.cart_count &&
-                                    this.props.cart_count.data &&
-                                    this.props.cart_count.data
-                                      .allTransSkuLists &&
-                                    this.props.cart_count.data.allTransSkuLists
-                                      .nodes.length
-                                  : !isSilver && "0"
-                              }
-                            >
-                              <a href="/cart" className="highlighter">
+                                 : <div>
+                                    <a href="/cart" className="highlighter" style={{textDecoration:"none"}}>
                                 <i
                                   style={{ fontSize: "20px" }}
                                   className={classes.iconFafa}
                                 >
-                                 
                                   <img src={cart} alt="icon"/>
                                 </i>
 
@@ -712,13 +703,13 @@ class Header extends Component {
                                     color: isSilver
                                       ? "rgb(6, 171, 159)"
                                       : "#d51f63",
-                                    marginTop: 7,
                                   }}
                                 >
                                   Cart
                                 </span>
                               </a>{" "}
-                            </Badge> */}
+                                 </div>)
+                            }
                           </div>
                         </div>
                       </Grid>
@@ -811,7 +802,7 @@ class Header extends Component {
                                   {listName.title === "VISIT STYLORI.COM" ? (
                                     <a style={{color:"rgba(241, 72, 128, 1)",display:"contents"}}>{'STYLORI'}</a>
                                   ) : listName.title === "STYLORISILVER" ? (
-                                    <a style={{color:"rgb(6, 171, 159)",display:"contents"}}>{listName.title}</a>
+                                    <a className={classes.silver}>{'STYLORI SILVER'}</a>
                                   ) : (
                                     listName.title
                                   )}
@@ -904,20 +895,20 @@ class Header extends Component {
                           </Grid>
 
                           {localStorage.getItem("true") ? (
-                            <div className="tooltip ">
+                            <div className="tooltip">
                               <span
                                 className="MuiBadge-root"
                                 aria-owns={openPopover ? "simple-popper" : ""}
-                                // onClick={this.handleClickPopover}
                                 onClick={() => {
                                   window.location.href = "/account-profile";
                                 }}
+                                style={{display:"flex",flexDirection:"column"}}
                               >
                                 <i
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
                                   className={`fa fa-user  ${classes.iconFafa}`}
                                 ></i>
-                                <span className="tooltip-slog">
+                                <span className={isSilver ? "tooltip-slog-silver" : "tooltip-slog"}>
                                   {Boolean(localStorage.getItem("user_id")) &&
                                   !Boolean(localStorage.getItem("gut_lg"))
                                     ? "Account"
@@ -926,9 +917,7 @@ class Header extends Component {
                               </span>
                             </div>
                           ) : (
-                            // <img className="icons-header-sizes" src={usershape}/>
-
-                            <div className="tooltip ">
+                            <div className="tooltip">
                               <span
                                 className={`MuiBadge-root ${classes.badgecolor}`}
                                 onClick={() =>
@@ -939,7 +928,7 @@ class Header extends Component {
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
                                   className={`fa fa-user  ${classes.iconFafa}`}
                                 ></i>
-                                <span className="tooltip-slog">
+                                <span className={isSilver ? "tooltip-slog-silver" : "tooltip-slog"}>
                                   {Boolean(localStorage.getItem("user_id")) &&
                                   !Boolean(localStorage.getItem("gut_lg"))
                                     ? "Account"
@@ -948,7 +937,8 @@ class Header extends Component {
                               </span>
                             </div>
                           )}
-
+                           
+                           {/* Whishlist */}
                           <div className="tooltip">
                           {
                                !isSilver &&
@@ -957,8 +947,7 @@ class Header extends Component {
                                this.props.wishlist.wishlistdata.nodes &&
                                this.props.wishlist.wishlistdata.nodes.length >
                                  0
-                                 ? 
-                                 <div>
+                                 ?  
                                      <Badge
                                  className={`${
                                    isSilver && classes.badgeColorsilver
@@ -970,7 +959,8 @@ class Header extends Component {
                                        this.props.wishlist.wishlistdata.nodes
                                          .length
                                  }
-                               >
+                                   style={{display:"flex",flexDirection:"column"}}
+                                   >
                                   <i
                                 style={{ fontSize: "18px" }}
                                 className={classes.iconFafaheart}
@@ -984,13 +974,28 @@ class Header extends Component {
                               >
                                 <img src={heart} alt="icon" loading="lazy" />
                               </i>
-                              <span className="tooltip-s">Wishlist</span>
-                               </Badge>
-                                  </div>
-                                 : null)
+                              <span className="tooltip-w">Wishlist</span>
+                                     </Badge>
+                                 : <div>
+                                   <i
+                                style={{ fontSize: "18px" }}
+                                className={classes.iconFafaheart}
+                                onClick={() => {
+                                  if (user_id.length > 0) {
+                                    window.location.href = `/account${"-wishlist"}`;
+                                  } else {
+                                    window.location.href = "/login";
+                                  }
+                                }}
+                              >
+                                <img src={heart} alt="icon" loading="lazy" />
+                              </i>
+                              <span className="tooltip-w">Wishlist</span>
+                                 </div>)
                             }
                           </div>
 
+                            {/* Cart */}
                           <div className="tooltip">
                           {
                                !isSilver &&
@@ -999,9 +1004,8 @@ class Header extends Component {
                                 this.props.cart_count.data.allTransSkuLists &&
                                 this.props.cart_count.data.allTransSkuLists
                                   .nodes.length > 0
-                                 ? 
-                                 <div>
-                                     <Badge
+                                 ?         
+                               <Badge
                                   className={`${
                                     isSilver && classes.badgeColorsilver
                                   } ${!isSilver && classes.badgeColor}`}
@@ -1014,7 +1018,7 @@ class Header extends Component {
                                     .nodes.length
                                  }
                                >
-                                 <a href="/cart" className="highlighter">
+                                 <a href="/cart" className="highlighter" style={{textDecoration:"none"}}>
                                 <i
                                   style={{ fontSize: "20px" }}
                                   className={classes.iconFafa}
@@ -1028,18 +1032,38 @@ class Header extends Component {
                                     color: isSilver
                                       ? "rgb(6, 171, 159)"
                                       : "#d51f63",
-                                    marginTop: 7,
+                              
                                   }}
                                 >
                                   Cart
                                 </span>
                               </a>{" "}
                                </Badge>
-                                  </div>
-                                 : null)
+                                 : <div>
+                                   <a href="/cart" className="highlighter" style={{textDecoration:"none"}}>
+                                <i
+                                  style={{ fontSize: "20px" }}
+                                  className={classes.iconFafa}
+                                >
+                                  <img src={cart} alt="icon"/>
+                                </i>
+
+                                <span
+                                  className="tooltip-s"
+                                  style={{
+                                    color: isSilver
+                                      ? "rgb(6, 171, 159)"
+                                      : "#d51f63",
+                                  }}
+                                >
+                                  Cart
+                                </span>
+                              </a>{" "}
+                                 </div>)
                             }
                             
                           </div>
+
                         </div>
                       </Grid>
                     </Grid>
@@ -1058,6 +1082,7 @@ class Header extends Component {
         >
           <ElasticSearch handleClose={this.handleClose} />
         </Modal>
+
         <Hidden mdUp>
                  
           <Grid>
@@ -1256,7 +1281,20 @@ class Header extends Component {
                                    <img src={heart} alt="icon" loading="lazy" />
                                  </i>
                                </Badge>
-                                 : null)
+                                 : <div>
+                                   <i
+                                   className={classes.iconFafaheart}
+                                   onClick={() => {
+                                     if (user_id.length > 0) {
+                                       window.location.href = `/account${"-wishlist"}`;
+                                     } else {
+                                       window.location.href = "/login";
+                                     }
+                                   }}
+                                 >
+                                   <img src={heart} alt="icon" loading="lazy" />
+                                 </i>
+                                 </div>)
 
                             }
                            
@@ -1294,7 +1332,19 @@ class Header extends Component {
                                 </i>
                               </a>
                                </Badge>
-                                 : null)
+                                 : <div>
+                                   <a href="/cart">
+                                <i
+                                  style={{
+                                    fontSize: "15px !important",
+                                    zIndex: 1000,
+                                  }}
+                                  className={classes.iconFafa}
+                                >
+                                  <img src={cart} alt="icon" loading="lazy" />
+                                </i>
+                              </a>
+                                 </div>)
 
                             }
                           
@@ -2040,7 +2090,7 @@ class Header extends Component {
                   
         </Hidden>
 
-                  <Grid
+         <Grid
                        xs={12}
                        lg={3}
                        md={3}
@@ -2081,7 +2131,8 @@ class Header extends Component {
                           />
                         )}
                       />
-                    </Grid>
+          </Grid>
+          
       </div>
     );
   }
@@ -2095,9 +2146,9 @@ export default withStyles(styles)((props) => {
   let GLobalCtx = React.useContext(GlobalContext);
 
   const isSilver =
-    GLobalCtx.Globalctx &&
-    GLobalCtx.Globalctx.pathName &&
-    GLobalCtx.Globalctx.pathName
+    GLobalCtx?.Globalctx &&
+    GLobalCtx?.Globalctx.pathName &&
+    GLobalCtx?.Globalctx.pathName
       ? GLobalCtx.Globalctx.pathName
       : false;
 

@@ -25,6 +25,8 @@ import { ALLSTYLORILANDINGBANNERS } from "queries/home";
 import "aos/dist/aos.css";
 import ReactPixel from "react-facebook-pixel";
 import Login from "components/SilverComponents/login";
+import { CartContext } from 'context'
+import { FilterOptionsContext } from 'context'
 
 class HomeStylori extends React.Component {
   constructor(props) {
@@ -181,7 +183,10 @@ class HomeStylori extends React.Component {
             {/* <meta name="google-site-verification" content="6I1mw4ayVxUxw1AZYP_BK73mXUaajhhhYyYl3Qv0E60" /> */}
           </MetaTags>
         </div>
-        <Header />
+        <Header 
+         cartcount={this.props.cartcount}
+         wishlist={this.props.wishlistdata}
+        />
         {this.state.starting ? (
           <Grid item xs={12} style={{ backgroundColor: "#ebebeb" }}>
             <Hidden smDown>
@@ -402,7 +407,18 @@ class HomeStylori extends React.Component {
 }
 
 const Components = () => {
-  let content = <HomeStylori />;
+  
+  let {
+    CartCtx: { allorderdata, wishlistdata },
+  } = React.useContext(CartContext);
+  let {
+    FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters},
+    setloadingfilters,
+  } = React.useContext(FilterOptionsContext);
+
+  let content = <HomeStylori allorderdata={allorderdata}
+  wishlistdata={wishlistdata}
+  cartcount={cartcount} />;
   return content;
 };
 

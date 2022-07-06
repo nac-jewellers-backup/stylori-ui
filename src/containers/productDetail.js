@@ -605,7 +605,7 @@ class ProductDetail extends Component {
                   <div className="">
                     <div className="">
                       {detail_data.map((item, index) => (
-                        <div className="accordian-item">
+                        <div className="accordian-item" style={{cursor:"pointer"}}>
                           <div
                             className="accordion-title"
                             onClick={() =>
