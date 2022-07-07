@@ -89,7 +89,8 @@ const useStyles = makeStyles((theme) => ({
     color:"rgba(0, 0, 0, 0.54)",
     fontSize:"12px",
     padding:"2px",
-    textTransform:"capitalize"
+    textTransform:"capitalize",
+    width:"30%"
   }
 }));
 
