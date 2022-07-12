@@ -173,7 +173,7 @@ export default function WishlistButton(props) {
             borderRadius: "0px",
             boxShadow: "none",
             padding:"5px 5px 5px 5px",
-            width: "95%",
+            width: "170px",
             whiteSpace: "nowrap",
             marginTop:
               window.location.pathname === "/account-shoppingcart"

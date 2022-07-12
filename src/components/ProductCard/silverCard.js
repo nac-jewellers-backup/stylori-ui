@@ -349,7 +349,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     textDecorationLine: "line-through",
     [theme.breakpoints.down("sm")]: {
-      fontSize: "0.7rem !important",
+      fontSize: "0.6rem !important",
     },
     "& i": {
       fontSize: "20px !important",
@@ -435,6 +435,9 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     // textOverflow: "ellipsis",
     width: "90%",
+    [theme.breakpoints.down('sm')]: {
+      fontSize:'0.75rem'
+    },
   },
   iconColor: {
     color: theme.palette.secondary.light,
