@@ -225,9 +225,9 @@ class ProductDetail extends Component {
       clear: "",
       data: null,
       isActive: false,
-      "description":false,
-      "product details" :false,
-      "jewellery care" :false,
+      description: false,
+      "product details": false,
+      "jewellery care": false,
       Index: "",
       tooltip: false,
     };
@@ -369,32 +369,28 @@ class ProductDetail extends Component {
     var brand_card = [
       {
         title: "MURAL COLLECTION",
-        description:
-          "Mural collection",
+        description: "Mural collection",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Mural.jpg",
         url: "https://www.stylori.com/silver-jewellery-mural+collection",
       },
       {
         title: "STAR STRUCK COLLECTION",
-        description:
-          "Star struck collection",
+        description: "Star struck collection",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Starstruck.jpg",
         url: "https://www.stylori.com/silver-jewellery-starstruck+collection",
       },
       {
         title: "ELEMENTAL COLLECTION",
-        description:
-          "Elemental collection",
+        description: "Elemental collection",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Elemental.jpg",
         url: "https://www.stylori.com/silver-jewellery-elemental+collection",
       },
       {
         title: "CONCENTRIC COLLECTION",
-        description:
-          "Concentric collection",
+        description: "Concentric collection",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Concentric.jpg",
         url: "https://www.stylori.com/silver-jewellery-concentric+collection",
@@ -418,7 +414,7 @@ class ProductDetail extends Component {
             <ProductDetails
               data={this?.props?.data}
               isSilver={isSilver}
-              isActive={this.state['product details']}
+              isActive={this.state["product details"]}
             />
           </div>
         ),
@@ -605,21 +601,23 @@ class ProductDetail extends Component {
                   <div className="">
                     <div className="">
                       {detail_data.map((item, index) => (
-                        <div className="accordian-item" style={{cursor:"pointer"}}>
+                        <div
+                          className="accordian-item"
+                          style={{ cursor: "pointer" }}
+                        >
                           <div
                             className="accordion-title"
                             onClick={() =>
                               this.setState({
-                                [item.title.toLowerCase()]: !this.state[item.title.toLowerCase()],
+                                [item.title.toLowerCase()]:
+                                  !this.state[item.title.toLowerCase()],
                                 Index: index,
                               })
                             }
                           >
                             <div className="accordion-title2">{item.title}</div>
                             <div style={{ cursor: "pointer" }}>
-                              {this.state[item.title.toLowerCase()]
-                                ? "-"
-                                : "+"}
+                              {this.state[item.title.toLowerCase()] ? "-" : "+"}
                             </div>
                           </div>
                           {this.state[item.title.toLowerCase()] ? (
@@ -639,7 +637,10 @@ class ProductDetail extends Component {
                       onClick={enquireLink}
                       style={{ border: "3px solid rgb(166, 168, 171)" }}
                     >
-                      Get in Touch
+                      {Math.round(this?.props?.data?.[0]?.price) > 2000 &&
+                      Math.round(this?.props?.data?.[0]?.price) < 5000
+                        ? "Drop The Hint"
+                        : " Get in Touch"}
                     </SilverButton>
                   </div>
                 )}
@@ -887,7 +888,10 @@ class ProductDetail extends Component {
                   onClick={enquireLink}
                   style={{ border: "3px solid rgb(166, 168, 171)" }}
                 >
-                  Get in Touch
+                  {Math.round(this?.props?.data?.[0]?.price) > 2000 &&
+                  Math.round(this?.props?.data?.[0]?.price) < 5000
+                    ? "Drop The Hint"
+                    : " Get in Touch"}
                 </SilverButton>
               </div>
             </Wrapper>
@@ -1128,7 +1132,6 @@ const Components = (props) => {
       Globalctx?.tabsChange
     );
   }
-  console.log(mapped, "???????");
 
   if (Object.keys(mapped).length === 0) {
     if (window.location.href.toLowerCase().includes("silver")) {

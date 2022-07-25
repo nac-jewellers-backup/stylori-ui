@@ -103,7 +103,6 @@ function HeaderHoverMenuItem(props) {
                 props.filters &&
                 mapper &&
                 mapper.map((menuList) => {
-                  console.log(menuList,props.chips,"sadasd")
                   return menuList.constructor === Object ? (
                     <ListItem
                       component="li"

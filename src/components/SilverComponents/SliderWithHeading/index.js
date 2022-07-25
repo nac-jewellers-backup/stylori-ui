@@ -139,7 +139,7 @@ const SliderWithHeading = (props) => {
 
   const {  products = [] } = props;
 
-  console.log(products,"???")
+
 
   const handlePrevClick = () => {
     sliderInstance.slickPrev();
