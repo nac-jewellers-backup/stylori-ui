@@ -14,6 +14,11 @@ const styles = theme => ({
 
         },
     },
+    main:{
+        [theme.breakpoints.down('xs')]: {
+           marginTop:"-13px"
+        },
+    },
     card: {
         width: "100%",
         margin: "auto",
@@ -46,14 +51,16 @@ const styles = theme => ({
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
-        paddingRight:"150px",
+      
         "& button": {
             padding: "2.1px 13.8px"
         },
         [theme.breakpoints.down("sm")]: {
             "& button": {
                 padding: "1.1px 1.8px"
-            }
+            },
+            paddingRight:"120px",
+            gap:'10px',
         }
     },
     mainRoot: {

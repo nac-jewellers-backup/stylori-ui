@@ -380,14 +380,15 @@ class Component extends React.Component {
                   </div>
                 </div>
               </div>
-              <Grid item container style={{ padding: 20 }}>
+              <Grid item container style={{ padding: 20,display:"flex",justifyContent:"space-evenly" }}>
                 <Grid
                   item
                   style={{
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-around",
-                    marginLeft: "15px",
+                    marginLeft:"15px",
+                    padding:7
                   }}
                 >
                   <ArrowLeftIcon fontSize="small" />
@@ -410,7 +411,8 @@ class Component extends React.Component {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    marginLeft: "15px",
+                    marginLeft:"15px",
+                    padding:7
                   }}
                 >
                   <ArrowLeftIcon fontSize="small" />
@@ -506,12 +508,12 @@ class Component extends React.Component {
                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <div>
                       <Typography noWrap className="checkoutSummary_mobile">
-                        Order Summary
+                        Hide Order Summary
                       </Typography>
                     </div>
                   </AccordionSummary>
                   <AccordionDetails
-                    style={{ display: "block", marginTop: "-50px" }}
+                    style={{ display: "block", marginTop: "-70px" }}
                   >
                     <CartCard
                       data={data}
@@ -526,55 +528,22 @@ class Component extends React.Component {
             <Grid item container xs={12} style={{ backgroundColor: "#E6E7E8" }}>
               <div style={{ width: "100%" }}>
                 <div className="">
-                  <div className="">
-                    <div
-                      className="accordian-item"
-                      style={{
-                        paddingTop: "20px",
-                        borderBottom: "1px solid #6D6E71",
-                      }}
-                    >
-                      <div
-                        className="accordion-title-check"
-                        onClick={this.handleChange(1)}
-                      >
-                        <div className="accordion-title2-check">{`1. LOGIN`}</div>
-                        <div style={{ cursor: "pointer" }}>
-                          {expanded === "panel1" ? (
-                            <ExpandLess />
-                          ) : (
-                            <ExpandMore />
-                          )}
-                        </div>
-                      </div>
+                  <div className="">   
                       {expanded === "panel1" ? (
                         <div className="" style={{ margin: 10 }}>
+                          <div className="accordion-title2-check">{`1. LOGIN`}</div>
                           <LoginRegisterIndex changePanel={this.changePanel} />
                         </div>
                       ) : null}
-                    </div>
-                    <div
-                      className="accordian-item"
-                      style={{
-                        paddingTop: "20px",
-                        borderBottom: "1px solid #6D6E71",
-                      }}
-                    >
-                      <div
-                        className="accordion-title-check"
-                        onClick={this.handleChange(2)}
-                      >
-                        <div className="accordion-title2-check">{`2. ADD A GIFT MESSAGE`}</div>
-                        <div style={{ cursor: "pointer" }}>
-                          {expanded === "panel2" ? (
-                            <ExpandLess />
-                          ) : (
-                            <ExpandMore />
-                          )}
-                        </div>
-                      </div>
+                  
+                     
                       {expanded === "panel2" ? (
                         <div className="" style={{ margin: 10 }}>
+                           <div
+                            className="accordion-title-check"
+                            >
+                               <div className="accordion-title2-check">{`2. ADD A GIFT MESSAGE`}</div>
+                         </div>
                           <ProductList
                             onClickgift={() => this.pincodeapi()}
                             check={true}
@@ -589,58 +558,27 @@ class Component extends React.Component {
                           </Button>
                         </div>
                       ) : null}
-                    </div>
-                    <div
-                      className="accordian-item"
-                      style={{
-                        paddingTop: "20px",
-                        borderBottom: "1px solid #6D6E71",
-                      }}
-                    >
-                      <div
-                        className="accordion-title-check"
-                        onClick={this.handleChange(3)}
-                      >
-                        <div className="accordion-title2-check">{`3. DELIVERY/PICKUP INFORMATION`}</div>
-                        <div style={{ cursor: "pointer" }}>
-                          {expanded === "panel3" ? (
-                            <ExpandLess />
-                          ) : (
-                            <ExpandMore />
-                          )}
-                        </div>
-                      </div>
+                   
+                   
                       {expanded === "panel3" ? (
                         <div className="" style={{ margin: 10 }}>
+                            <div
+                        className="accordion-title-check"
+                        >
+                        <div className="accordion-title2-check">{`3. DELIVERY/PICKUP INFORMATION`}</div>
+                      </div>
                           <Addressform
                             changePanel={this.changePanel}
                             isCheck={true}
                           />
                         </div>
                       ) : null}
-                    </div>
-                    <div
-                      className="accordian-item"
-                      style={{
-                        paddingTop: "20px",
-                        borderBottom: "1px solid #6D6E71",
-                      }}
-                    >
-                      <div
-                        className="accordion-title-check"
-                        onClick={this.handleChange(4)}
-                      >
-                        <div className="accordion-title2-check">{`4. PAYMENT METHOD`}</div>
-                        <div style={{ cursor: "pointer" }}>
-                          {expanded === "panel4" ? (
-                            <ExpandLess />
-                          ) : (
-                            <ExpandMore />
-                          )}
-                        </div>
-                      </div>
+                 
+                    
+                      
                       {expanded === "panel4" ? (
                         <div className="" style={{ margin: 10 }}>
+                        <div className="accordion-title2-check">{`4. PAYMENT METHOD`}</div>
                           <PaymentIndex
                             data={data}
                             CodData={this.props.CodData}
@@ -653,18 +591,17 @@ class Component extends React.Component {
                           </div>
                         </div>
                       ) : null}
-                    </div>
+                
                   </div>
                 </div>
               </div>
-              <Grid item container spacing={2}>
+              <Grid item container spacing={2} style={{padding:10}}>
                 <Grid
                   item
                   style={{
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-around",
-                    marginLeft: "15px",
                   }}
                 >
                   <ArrowLeftIcon fontSize="small" />
@@ -687,7 +624,6 @@ class Component extends React.Component {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    marginLeft: "15px",
                   }}
                 >
                   <ArrowLeftIcon fontSize="small" />

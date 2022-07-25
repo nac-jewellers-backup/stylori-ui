@@ -77,8 +77,8 @@
   line-height: 1.42857143;
   font-size: 12px;
   font-family: sans-serif;
-  /* box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.1),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important; */
+  box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.01),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.01), 0px 1px 5px 0px rgba(0, 0, 0, 0.1) !important;
 }
 
 .header-navbar-list1 {
@@ -317,27 +317,55 @@ i {
 
 .tooltip-s {
   display: none;
-  position: absolute;
-  top: 15px;
+  top: 20px;
   left: 18px;
+}
+.tooltip:hover .tooltip-s {
+  display: block;
   font-size: 14px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.tooltip-w {
+  display: none;
+  top: 20px;
+  left: 10px;
+}
+
+.tooltip:hover .tooltip-w {
+  display: block;
+    font-size: 14px;
+    text-align: center;
+    margin-left: 10px;
 }
 
 .tooltip-slog {
   display: none;
-  position: absolute;
   top: 20px;
-  left: 18px;
-  font-size: 14px;
-}
-
-.tooltip:hover .tooltip-s {
-  display: block;
+  left: 10px;
 }
 
 .tooltip:hover .tooltip-slog {
   display: block;
+  font-size: 14px;
+  text-align: center;
+  margin-left: 10px;
 }
+
+.tooltip-slog-silver {
+  display: none;
+  position: absolute;
+  top: 65px;
+  right: 15px;
+  font-size: 14px;
+}
+
+.tooltip:hover .tooltip-slog-silver {
+  display: block;
+}
+
+
 
 .drawer-list1:hover {
   background-color: rgba(0, 0, 0, 0.08) !important;

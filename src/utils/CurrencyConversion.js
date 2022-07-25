@@ -25,7 +25,7 @@ const CurrencyConversion = (price) => {
         minimumFractionDigits: 0,
       }).format(Math.round(parseFloat(0)));
     }
-    price = price.replaceAll("Free", "");
+    price = price?.replaceAll("Free", "");
     if (price === "") {
       return new Intl.NumberFormat("en-IN", {
         style: "currency",

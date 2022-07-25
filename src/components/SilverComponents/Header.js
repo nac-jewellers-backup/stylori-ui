@@ -437,21 +437,10 @@ class Header extends Component {
                                       : ""
                                   }
                                 >
-                                  {listName.title === "VISIT STYLORI.COM" ? (
-                                    <img
-                                      src="https://assets.stylori.com/images/favicon.gif"
-                                      width="25px"
-                                      height="25px"
-                                      alt="stylori"
-                                      loading="lazy"
-                                    />
+                                 {listName.title === "VISIT STYLORI.COM" ? (
+                                    <a style={{color:"rgba(241, 72, 128, 1)",display:"contents"}}>{'STYLORI'}</a>
                                   ) : listName.title === "STYLORISILVER" ? (
-                                    <img
-                                      src={silverOpenLinkImage}
-                                      alt="stylori"
-                                      loading="lazy"
-                                      style={{ width: "25px", height: "25px" }}
-                                    />
+                                    <a className={classes.silver}>{'STYLORI SILVER'}</a>
                                   ) : (
                                     listName.title
                                   )}
@@ -552,12 +541,13 @@ class Header extends Component {
                                 onClick={() => {
                                   window.location.href = "/account-profile";
                                 }}
+                                style={{display:"flex",flexDirection:"column"}}
                               >
                                 <i
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
                                   className={`fa fa-user  ${classes.iconFafa}`}
                                 ></i>
-                                <span className="tooltip-slog">
+                                <span className={isSilver ? "tooltip-slog-silver" : "tootip-account"}>
                                   {Boolean(localStorage.getItem("user_id")) &&
                                   !Boolean(localStorage.getItem("gut_lg"))
                                     ? "Account"
@@ -566,20 +556,19 @@ class Header extends Component {
                               </span>
                             </div>
                           ) : (
-                            // <img className="icons-header-sizes" src={usershape}/>
-
                             <div className="tooltip ">
                               <span
                                 className={`MuiBadge-root ${classes.badgecolor}`}
                                 onClick={() =>
                                   (window.location.pathname = "/login")
                                 }
+                                style={{display:"flex",flexDirection:"column"}}
                               >
                                 <i
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
                                   className={`fa fa-user  ${classes.iconFafa}`}
                                 ></i>
-                                <span className="tooltip-slog">
+                                <span className= {isSilver ? "tooltip-slog-silver" : "tootip-account"}>
                                   {Boolean(localStorage.getItem("user_id")) &&
                                   !Boolean(localStorage.getItem("gut_lg"))
                                     ? "Account"
@@ -590,26 +579,28 @@ class Header extends Component {
                           )}
 
                           <div className="tooltip">
-                            <Badge
-                              className={`${
-                                isSilver && classes.badgeColorsilver
-                              } ${!isSilver && classes.badgeColor}`}
-                              badgeContent={
-                                !isSilver &&
-                                (this.props.wishlist &&
-                                this.props.wishlist.wishlistdata &&
-                                this.props.wishlist.wishlistdata.nodes &&
-                                this.props.wishlist.wishlistdata.nodes.length >
-                                  0
-                                  ? this.props.wishlist &&
-                                    this.props.wishlist.wishlistdata &&
-                                    this.props.wishlist.wishlistdata.nodes &&
-                                    this.props.wishlist.wishlistdata.nodes
-                                      .length
-                                  : "0")
-                              }
-                            >
-                              <i
+                            {
+                               !isSilver &&
+                               ( this.props.wishlist &&
+                               this.props.wishlist.wishlistdata &&
+                               this.props.wishlist.wishlistdata.nodes &&
+                               this.props.wishlist.wishlistdata.nodes.length >
+                                 0
+                                 ? 
+                                     <Badge
+                                 className={`${
+                                   isSilver && classes.badgeColorsilver
+                                 } ${!isSilver && classes.badgeColor}`}
+                                 badgeContent={
+                                    this.props.wishlist &&
+                                       this.props.wishlist.wishlistdata &&
+                                       this.props.wishlist.wishlistdata.nodes &&
+                                       this.props.wishlist.wishlistdata.nodes
+                                         .length
+                                 }
+                                 style={{display:"flex",flexDirection:"column"}}
+                               >
+                                  <i
                                 style={{ fontSize: "18px" }}
                                 className={classes.iconFafaheart}
                                 onClick={() => {
@@ -622,40 +613,57 @@ class Header extends Component {
                               >
                                 <img src={heart} alt="icon" loading="lazy" />
                               </i>
-                              <span className="tooltip-s">Wishlist</span>
-                            </Badge>
+                              <span className="tooltip-w">Wishlist</span>
+                               </Badge>
+                              
+                                 : <div>
+                                   <i
+                                style={{ fontSize: "18px" }}
+                                className={classes.iconFafaheart}
+                                onClick={() => {
+                                  if (user_id.length > 0) {
+                                    window.location.href = `/account${"-wishlist"}`;
+                                  } else {
+                                    window.location.href = "/login";
+                                  }
+                                }}
+                              >
+                                <img src={heart} alt="icon" loading="lazy" />
+                              </i>
+                              <span className="tooltip-w">Wishlist</span>
+                                 </div>)
+                            }
                           </div>
 
                           <div className="tooltip">
-                            <Badge
-                              className={`${
-                                isSilver && classes.badgeColorsilver
-                              } ${!isSilver && classes.badgeColor}`}
-                              badgeContent={
-                                this.props.cart_count &&
+                          {
+                               !isSilver &&
+                               ( this.props.cart_count &&
                                 this.props.cart_count.data &&
                                 this.props.cart_count.data.allTransSkuLists &&
                                 this.props.cart_count.data.allTransSkuLists
                                   .nodes.length > 0
-                                  ? this.props.cart_count &&
-                                    this.props.cart_count.data &&
-                                    this.props.cart_count.data
-                                      .allTransSkuLists &&
-                                    this.props.cart_count.data.allTransSkuLists
-                                      .nodes.length
-                                  : !isSilver && "0"
-                                // this.props && this.props.cart_count && this.props.cart_count.length
-                              }
-                            >
-                              <a href="/cart" className="highlighter">
+                                 ? 
+                                 
+                                     <Badge
+                                  className={`${
+                                    isSilver && classes.badgeColorsilver
+                                  } ${!isSilver && classes.badgeColor}`}
+                                 badgeContent={
+                                  this.props.cart_count &&
+                                  this.props.cart_count.data &&
+                                  this.props.cart_count.data
+                                    .allTransSkuLists &&
+                                  this.props.cart_count.data.allTransSkuLists
+                                    .nodes.length
+                                 }
+                                 style={{display:"flex",flexDirection:"column"}}
+                               >
+                                 <a href="/cart" className="highlighter" style={{textDecoration:"none"}}>
                                 <i
                                   style={{ fontSize: "20px" }}
                                   className={classes.iconFafa}
                                 >
-                                  {/* <i
-                                    className="fa fa-shopping-bag"
-                                    aria-hidden="true"
-                                  ></i> */}
                                   <img src={cart} alt="icon"/>
                                 </i>
 
@@ -665,13 +673,35 @@ class Header extends Component {
                                     color: isSilver
                                       ? "rgb(6, 171, 159)"
                                       : "#d51f63",
-                                    marginTop: 7,
                                   }}
                                 >
                                   Cart
                                 </span>
                               </a>{" "}
-                            </Badge>
+                               </Badge>
+                                
+                                 : <div>
+                                    <a href="/cart" className="highlighter" style={{textDecoration:"none"}}>
+                                <i
+                                  style={{ fontSize: "20px" }}
+                                  className={classes.iconFafa}
+                                >
+                                  <img src={cart} alt="icon"/>
+                                </i>
+
+                                <span
+                                  className="tooltip-s"
+                                  style={{
+                                    color: isSilver
+                                      ? "rgb(6, 171, 159)"
+                                      : "#d51f63",
+                                  }}
+                                >
+                                  Cart
+                                </span>
+                              </a>{" "}
+                                 </div>)
+                            }
                           </div>
                         </div>
                       </Grid>
@@ -762,20 +792,9 @@ class Header extends Component {
                                   }
                                 >
                                   {listName.title === "VISIT STYLORI.COM" ? (
-                                    <img
-                                      src="https://assets.stylori.com/images/favicon.gif"
-                                      width="25px"
-                                      height="25px"
-                                      alt="stylori"
-                                      loading="lazy"
-                                    />
+                                    <a style={{color:"rgba(241, 72, 128, 1)",display:"contents"}}>{'STYLORI'}</a>
                                   ) : listName.title === "STYLORISILVER" ? (
-                                    <img
-                                      src={silverOpenLinkImage}
-                                      alt="stylori"
-                                      loading="lazy"
-                                      style={{ width: "25px", height: "25px" }}
-                                    />
+                                    <a className={classes.silver}>{'STYLORI SILVER'}</a>
                                   ) : (
                                     listName.title
                                   )}
@@ -868,20 +887,20 @@ class Header extends Component {
                           </Grid>
 
                           {localStorage.getItem("true") ? (
-                            <div className="tooltip ">
+                            <div className="tooltip">
                               <span
                                 className="MuiBadge-root"
                                 aria-owns={openPopover ? "simple-popper" : ""}
-                                // onClick={this.handleClickPopover}
                                 onClick={() => {
                                   window.location.href = "/account-profile";
                                 }}
+                                style={{display:"flex",flexDirection:"column"}}
                               >
                                 <i
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
                                   className={`fa fa-user  ${classes.iconFafa}`}
                                 ></i>
-                                <span className="tooltip-slog">
+                                <span className={isSilver ? "tooltip-slog-silver" : "tooltip-slog"}>
                                   {Boolean(localStorage.getItem("user_id")) &&
                                   !Boolean(localStorage.getItem("gut_lg"))
                                     ? "Account"
@@ -890,9 +909,7 @@ class Header extends Component {
                               </span>
                             </div>
                           ) : (
-                            // <img className="icons-header-sizes" src={usershape}/>
-
-                            <div className="tooltip ">
+                            <div className="tooltip">
                               <span
                                 className={`MuiBadge-root ${classes.badgecolor}`}
                                 onClick={() =>
@@ -903,7 +920,7 @@ class Header extends Component {
                                   style={{ fontSize: "20px", color: "#6D6E71" }}
                                   className={`fa fa-user  ${classes.iconFafa}`}
                                 ></i>
-                                <span className="tooltip-slog">
+                                <span className={isSilver ? "tooltip-slog-silver" : "tooltip-slog"}>
                                   {Boolean(localStorage.getItem("user_id")) &&
                                   !Boolean(localStorage.getItem("gut_lg"))
                                     ? "Account"
@@ -912,28 +929,31 @@ class Header extends Component {
                               </span>
                             </div>
                           )}
-
+                           
+                           {/* Whishlist */}
                           <div className="tooltip">
-                            <Badge
-                              className={`${
-                                isSilver && classes.badgeColorsilver
-                              } ${!isSilver && classes.badgeColor}`}
-                              badgeContent={
-                                !isSilver &&
-                                (this.props.wishlist &&
-                                this.props.wishlist.wishlistdata &&
-                                this.props.wishlist.wishlistdata.nodes &&
-                                this.props.wishlist.wishlistdata.nodes.length >
-                                  0
-                                  ? this.props.wishlist &&
-                                    this.props.wishlist.wishlistdata &&
-                                    this.props.wishlist.wishlistdata.nodes &&
-                                    this.props.wishlist.wishlistdata.nodes
-                                      .length
-                                  : "0")
-                              }
-                            >
-                              <i
+                          {
+                               !isSilver &&
+                               ( this.props.wishlist &&
+                               this.props.wishlist.wishlistdata &&
+                               this.props.wishlist.wishlistdata.nodes &&
+                               this.props.wishlist.wishlistdata.nodes.length >
+                                 0
+                                 ?  
+                                     <Badge
+                                 className={`${
+                                   isSilver && classes.badgeColorsilver
+                                 } ${!isSilver && classes.badgeColor}`}
+                                 badgeContent={
+                                    this.props.wishlist &&
+                                       this.props.wishlist.wishlistdata &&
+                                       this.props.wishlist.wishlistdata.nodes &&
+                                       this.props.wishlist.wishlistdata.nodes
+                                         .length
+                                 }
+                                   style={{display:"flex",flexDirection:"column"}}
+                                   >
+                                  <i
                                 style={{ fontSize: "18px" }}
                                 className={classes.iconFafaheart}
                                 onClick={() => {
@@ -946,42 +966,80 @@ class Header extends Component {
                               >
                                 <img src={heart} alt="icon" loading="lazy" />
                               </i>
-                              <span className="tooltip-s">Wishlist</span>
-                            </Badge>
+                              <span className="tooltip-w">Wishlist</span>
+                                     </Badge>
+                                 : <div>
+                                   <i
+                                style={{ fontSize: "18px" }}
+                                className={classes.iconFafaheart}
+                                onClick={() => {
+                                  if (user_id.length > 0) {
+                                    window.location.href = `/account${"-wishlist"}`;
+                                  } else {
+                                    window.location.href = "/login";
+                                  }
+                                }}
+                              >
+                                <img src={heart} alt="icon" loading="lazy" />
+                              </i>
+                              <span className="tooltip-w">Wishlist</span>
+                                 </div>)
+                            }
                           </div>
 
+                            {/* Cart */}
                           <div className="tooltip">
-                            <Badge
-                              className={`${
-                                isSilver && classes.badgeColorsilver
-                              } ${!isSilver && classes.badgeColor}`}
-                              badgeContent={
-                                this.props.cart_count &&
+                          {
+                               !isSilver &&
+                               ( this.props.cart_count &&
                                 this.props.cart_count.data &&
                                 this.props.cart_count.data.allTransSkuLists &&
                                 this.props.cart_count.data.allTransSkuLists
                                   .nodes.length > 0
-                                  ? this.props.cart_count &&
-                                    this.props.cart_count.data &&
-                                    this.props.cart_count.data
-                                      .allTransSkuLists &&
-                                    this.props.cart_count.data.allTransSkuLists
-                                      .nodes.length
-                                  : !isSilver && "0"
-                                // this.props && this.props.cart_count && this.props.cart_count.length
-                              }
-                            >
-                              <a href="/cart" className="highlighter">
+                                 ?         
+                               <Badge
+                                  className={`${
+                                    isSilver && classes.badgeColorsilver
+                                  } ${!isSilver && classes.badgeColor}`}
+                                 badgeContent={
+                                  this.props.cart_count &&
+                                  this.props.cart_count.data &&
+                                  this.props.cart_count.data
+                                    .allTransSkuLists &&
+                                  this.props.cart_count.data.allTransSkuLists
+                                    .nodes.length
+                                 }
+                               >
+                                 <a href="/cart" className="highlighter" style={{textDecoration:"none"}}>
                                 <i
                                   style={{ fontSize: "20px" }}
                                   className={classes.iconFafa}
                                 >
-                                  {/* <i
-                                    className="fa fa-shopping-bag"
-                                    aria-hidden="true"
-                                  ></i> */}
-                                  <img src={cart} alt="icon"/> 
+                                  <img src={cart} alt="icon"/>
                                 </i>
+
+                                <span
+                                  className="tooltip-s"
+                                  style={{
+                                    color: isSilver
+                                      ? "rgb(6, 171, 159)"
+                                      : "#d51f63",
+                              
+                                  }}
+                                >
+                                  Cart
+                                </span>
+                              </a>{" "}
+                               </Badge>
+                                 : <div>
+                                   <a href="/cart" className="highlighter" style={{textDecoration:"none"}}>
+                                <i
+                                  style={{ fontSize: "20px" }}
+                                  className={classes.iconFafa}
+                                >
+                                  <img src={cart} alt="icon"/>
+                                </i>
+
                                 <span
                                   className="tooltip-s"
                                   style={{
@@ -993,8 +1051,11 @@ class Header extends Component {
                                   Cart
                                 </span>
                               </a>{" "}
-                            </Badge>
+                                 </div>)
+                            }
+                            
                           </div>
+
                         </div>
                       </Grid>
                     </Grid>
@@ -1013,6 +1074,7 @@ class Header extends Component {
         >
           <ElasticSearch handleClose={this.handleClose} />
         </Modal>
+
         <Hidden mdUp>
                  
           <Grid>
@@ -1178,64 +1240,79 @@ class Header extends Component {
                             {/* </NavLink> */}
                             {/* </div>
                                                         </Popover> */}
-                            <Badge
-                              className={`${
-                                isSilver && classes.badgeColorsilver
-                              }`}
-                              badgeContent={
-                                !isSilver &&
-                                (this.props.wishlist &&
-                                this.props.wishlist.wishlistdata &&
-                                this.props.wishlist.wishlistdata.nodes &&
-                                this.props.wishlist.wishlistdata.nodes.length >
-                                  0
-                                  ? this.props.wishlist &&
-                                    this.props.wishlist.wishlistdata &&
-                                    this.props.wishlist.wishlistdata.nodes &&
-                                    this.props.wishlist.wishlistdata.nodes
-                                      .length
-                                  : "0")
-                              }
-                              color="secondary"
-                            >
-                              <i
-                                className={classes.iconFafaheart}
-                                onClick={() => {
-                                  if (user_id.length > 0) {
-                                    window.location.href = `/account${"-wishlist"}`;
-                                  } else {
-                                    window.location.href = "/login";
-                                  }
-                                }}
-                              >
-                                <img src={heart} alt="icon" loading="lazy" />
-                              </i>
-                            </Badge>
-                            <Badge
-                              className={`${
-                                isSilver && classes.badgeColorsilver
-                              }`}
-                              style={{ fontSize: "9px", marginTop: "5px" }}
-                              badgeContent={
-                                this.props.cart_count &&
+                            {
+                               !isSilver &&
+                               (this.props.wishlist &&
+                               this.props.wishlist.wishlistdata &&
+                               this.props.wishlist.wishlistdata.nodes &&
+                               this.props.wishlist.wishlistdata.nodes.length >
+                                 0
+                                 ?  <Badge
+                                 className={`${
+                                   isSilver && classes.badgeColorsilver
+                                 }`}
+                                 badgeContent={
+                                    this.props.wishlist &&
+                                       this.props.wishlist.wishlistdata &&
+                                       this.props.wishlist.wishlistdata.nodes &&
+                                       this.props.wishlist.wishlistdata.nodes
+                                         .length
+                                 }
+                                 color="secondary"
+                               >
+                                 <i
+                                   className={classes.iconFafaheart}
+                                   onClick={() => {
+                                     if (user_id.length > 0) {
+                                       window.location.href = `/account${"-wishlist"}`;
+                                     } else {
+                                       window.location.href = "/login";
+                                     }
+                                   }}
+                                 >
+                                   <img src={heart} alt="icon" loading="lazy" />
+                                 </i>
+                               </Badge>
+                                 : <div>
+                                   <i
+                                   className={classes.iconFafaheart}
+                                   onClick={() => {
+                                     if (user_id.length > 0) {
+                                       window.location.href = `/account${"-wishlist"}`;
+                                     } else {
+                                       window.location.href = "/login";
+                                     }
+                                   }}
+                                 >
+                                   <img src={heart} alt="icon" loading="lazy" />
+                                 </i>
+                                 </div>)
+
+                            }
+                           
+                           {
+                               !isSilver &&
+                               (  this.props.cart_count &&
                                 this.props.cart_count.data &&
                                 this.props.cart_count.data.allTransSkuLists &&
                                 this.props.cart_count.data.allTransSkuLists
                                   .nodes.length > 0
-                                  ? this.props.cart_count &&
-                                    this.props.cart_count.data &&
-                                    this.props.cart_count.data
-                                      .allTransSkuLists &&
-                                    this.props.cart_count.data.allTransSkuLists
-                                      .nodes.length
-                                  : !isSilver && "0"
-
-                                // localStorage.getItem("a__c_t") ? localStorage.getItem("a__c_t") : "0"
-                                // this.props.cart_count? this.props.cart_count.length:"0"
-                              }
-                              color="secondary"
-                            >
-                              <a href="/cart">
+                                 ?  <Badge
+                                 className={`${
+                                  isSilver && classes.badgeColorsilver
+                                }`}
+                                style={{ fontSize: "9px", marginTop: "5px" }}
+                                 badgeContent={
+                                  this.props.cart_count &&
+                                  this.props.cart_count.data &&
+                                  this.props.cart_count.data
+                                    .allTransSkuLists &&
+                                  this.props.cart_count.data.allTransSkuLists
+                                    .nodes.length
+                                 }
+                                 color="secondary"
+                               >
+                                 <a href="/cart">
                                 <i
                                   style={{
                                     fontSize: "15px !important",
@@ -1246,7 +1323,23 @@ class Header extends Component {
                                   <img src={cart} alt="icon" loading="lazy" />
                                 </i>
                               </a>
-                            </Badge>
+                               </Badge>
+                                 : <div>
+                                   <a href="/cart">
+                                <i
+                                  style={{
+                                    fontSize: "15px !important",
+                                    zIndex: 1000,
+                                  }}
+                                  className={classes.iconFafa}
+                                >
+                                  <img src={cart} alt="icon" loading="lazy" />
+                                </i>
+                              </a>
+                                 </div>)
+
+                            }
+                          
                           </div>
                         </Grid>
                       </div>
@@ -1989,7 +2082,7 @@ class Header extends Component {
                   
         </Hidden>
 
-                  <Grid
+         <Grid
                        xs={12}
                        lg={3}
                        md={3}
@@ -2030,7 +2123,8 @@ class Header extends Component {
                           />
                         )}
                       />
-                    </Grid>
+          </Grid>
+          
       </div>
     );
   }
@@ -2044,9 +2138,9 @@ export default withStyles(styles)((props) => {
   let GLobalCtx = React.useContext(GlobalContext);
 
   const isSilver =
-    GLobalCtx.Globalctx &&
-    GLobalCtx.Globalctx.pathName &&
-    GLobalCtx.Globalctx.pathName
+    GLobalCtx?.Globalctx &&
+    GLobalCtx?.Globalctx.pathName &&
+    GLobalCtx?.Globalctx.pathName
       ? GLobalCtx.Globalctx.pathName
       : false;
 

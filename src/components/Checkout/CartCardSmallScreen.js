@@ -343,7 +343,7 @@ function MediaControlCard(props) {
                 <div className={classes.controls}>
                  
                   {window.location.pathname !== "/checkout" ? (
-                            <div style={{lineHeight:3.5}}>
+                            <div>
                               <Button
                                 // className="highlighter"
                                 // className={`subhesder hov ${classes.normalfonts}`}
@@ -355,7 +355,8 @@ function MediaControlCard(props) {
                                 variant="contained"
                                 style={{
                                   color: "gray",
-                                  width: "96%",
+                                  width: "175px",
+                                  marginTop:'20px',
                                   border: "1.46px solid #919396",
                                   backgroundColor: "white",
                                   borderRadius: "0px",
@@ -387,7 +388,7 @@ function MediaControlCard(props) {
                           )}
 
                           {window.location.pathname !== "/checkout" ? (
-                            <div style={{marginTop:'-7px'}}>
+                            <div style={{marginTop:'-8px'}}>
                               <WishlistButton
                                 sku={dataval.generatedSku}
                                 productId={dataval.productId}

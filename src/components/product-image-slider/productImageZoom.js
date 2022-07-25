@@ -379,8 +379,8 @@ class ProductImageZoom extends React.Component {
 
               
                   <div
-                    class="wishListStyle"
-                    style={{ right: "660px", paddingTop: "7px" }}
+                    class="heart"
+                    
                   >
                     <Wishlist
                       sku={this.props.data[0].skuId}

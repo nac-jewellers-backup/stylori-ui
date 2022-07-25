@@ -49,7 +49,7 @@ class Allorders extends React.Component {
       this?.props?.allorderdata?.data?.allOrders?.nodes[0]?.shoppingCartByCartId
         ?.shoppingCartItemsByShoppingCartId.nodes;
 
-    TData.map((l) => {
+      TData?.length && TData.map((l) => {
       let data = {
         id: l?.transSkuListByProductSku?.generatedSku,
         name: l?.transSkuListByProductSku?.productListByProductId?.productName,
@@ -61,7 +61,7 @@ class Allorders extends React.Component {
         price: l?.transSkuListByProductSku?.markupPrice,
       };
       gData.push(data);
-      return 0;
+      return l;
     });
 
     TData && TagManager.initialize({ gtmId: "GTM-54JTMML" });
@@ -457,7 +457,7 @@ class Allorders extends React.Component {
                               style={{ color: "#ed1165", fontSize: "18px" }}
                             >
                               { CurrencyConversion(
-                                  val.shoppingCartByCartId.discountedPrice
+                                  val?.shoppingCartByCartId?.discountedPrice
                                 )
                               }
                             </span>

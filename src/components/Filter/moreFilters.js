@@ -65,6 +65,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MoreFilters(props) {
   const classes = useStyles();
+  const result = props?.filter.filter((val)=>{
+    return val !== "price" &&
+    val !== "Product Type" &&
+    val !== "Collection" &&
+    val !== "Style" &&
+    val !== "Availability" &&
+    val !== "No of Stones" &&
+    val !== "Metal Purity" &&
+    val !== "Material"
+  });
+
   return (
     <div>
       <Modal
@@ -92,13 +103,9 @@ export default function MoreFilters(props) {
               >
                 &#10005;
               </div>
-              {props?.filter?.map((val, i) => {
+              {result?.map((val, i) => {
                 if (
-                  i >= 0 &&
-                  val !== "price" &&
-                  val !== "Product Type" &&
-                  val !== "Collection" &&
-                  val !== "Style"
+                  i >= 0
                 ) {
                   return (
                     <Grid item xs={3} style={{ marginBottom: "3%" }}>

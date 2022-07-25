@@ -55,8 +55,11 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",  
     "& img": {
-      height:230,
+      height:280,
       width:"auto",
+      [theme.breakpoints.down("sm")]: {
+        width:320
+      },
     },
     "& p": {
       textAlign: "center",
@@ -102,6 +105,12 @@ const useStyles = makeStyles((theme) => ({
     pointerEvents: "all",
     color:"#fff",
   },
+  title:{
+    width:'250px',
+    [theme.breakpoints.down("sm")]: {
+      width:"auto"
+    },
+  }
 }));
 
 const SliderWithHeading = (props) => {
@@ -161,7 +170,7 @@ const SliderWithHeading = (props) => {
                onClick={() => { window.open(`/${product?.url}`)}}
                style={{ cursor:"pointer" }}
              />
-             <div style={{width:'220px'}}>
+             <div className={classes.title}>
              <Typography>{product?.title}</Typography>
              <Typography>{CurrencyConversion(product?.price)}</Typography>
            </div>

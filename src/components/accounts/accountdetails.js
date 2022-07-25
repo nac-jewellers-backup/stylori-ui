@@ -33,7 +33,7 @@ class Accountdetails extends Component {
 
     Activeaccounts = (name) => {
         this.setState({ isActive: [name] })
-        window.history.pushState(window.location.href, null, `/account${"-" + name}`);
+        window.location.href = `/account${"-" + name}`
     }
     // fun = () => {
     //     const allorder = this.props.allorderdata ? this.props.allorderdata : ""

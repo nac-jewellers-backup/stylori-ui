@@ -30,7 +30,7 @@ const LoginComponent = (props) => {
     return ( 
         <Grid container>
             <Header wishlist={wishlistdata} cartcount={cartcount}/>
-            <Grid spacing={12} container style={{ padding: "3%" }}>
+            <Grid spacing={12} container style={{ padding: "3%",marginTop:"10px" }}>
                 <Grid item xs={6} lg={6}>
                     <div >
                         <img width="100%" height="100%" src="https://assets.stylori.com/login_image.png" loading="lazy" alt="...."/>
@@ -39,50 +39,6 @@ const LoginComponent = (props) => {
 
                 <Grid item xs={6} lg={6}>
                     <Container>
-                        {/* <div className='pt-sm' style={{ width: "90%", float: "right" }}>
-                            <form action="javascript:void(0)" onSubmit={(e) => {
-                                handlers.handelSubmit(e)
-                            }}>
-                                <div className={`${classes.normalfonts}`} style={{ fontSize: "18px" }}>  Login </div>
-                                <Input
-                                    margin="normal"
-                                    variant="outlined"
-                                    type="email"
-                                    name="email"
-                                    value={values.email}
-                                    error={values.error && values.error.emerr ? true : false}
-                                    helperText={values.errortext && values.errortext.emerr}
-                                    onChange={e => handlers.handleChange('email', e.target.value)}
-                                    placeholder="Enter your email Id"
-                                />
-                                <label className='errtext'> {values.errortext && values.errortext.emerr}</label>
-                                <Input
-                                    margin="normal"
-                                    variant="outlined"
-                                    type="password"
-                                    name="password"
-                                    value={values.password}
-                                    error={values.error && values.error.passerr ? true : false}
-                                    helperText={values.errortext && values.errortext.passerr}
-                                    placeholder="Enter your password"
-                                    onChange={e => handlers.handleChange('password', e.target.value)}
-                                />
-                                <label className='errtext'> {values.errortext && values.errortext.passerr}</label>
-                                <div className='log-pas'>
-                                    <span className={` ${classes.normalfonts}`} style={{ cursor: "pointer", fontSize: "14px" }}>
-                                        <Checkbox
-                                            // checked={state.checkedB}
-                                            // onChange={handleChange('checkedB')}
-                                            value="checkedB"
-                                            color="primary"
-                                        />
-                                        Remember Me </span>
-                                    <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
-                                        <span>Sign me in using</span>
-                                        <img class="pull-left1" alt="" src="https://assets.stylori.com/images/static/icon-fb.png"></img>
-                                    </div >
-                                </div>
-                                <br /> */}
                         <Login />
                         <br />
                         <span className={` ${classes.normalfonts}`} style={{ cursor: "pointer", fontSize: "14px" }}>

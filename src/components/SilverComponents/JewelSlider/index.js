@@ -3,6 +3,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Wishlist from "components/wishlist/wishlist";
+import '../ProductCard/productCard.css'
+
 
 export default class JewelSlider extends Component {
   render() {
@@ -42,7 +44,7 @@ export default class JewelSlider extends Component {
               ) : (
                 ""
               )}
-              <div class="wishListStyle" style={{top:"12px",left:"300px"}}>
+              <div className='heart_mobile'>
                 <Wishlist
                   sku={this.props.data[0].skuId}
                   productId={this.props.data[0].productId}

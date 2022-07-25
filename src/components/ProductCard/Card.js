@@ -359,7 +359,7 @@ const useStyles = makeStyles(theme => ({
     // flex: 0.6,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-    width: "90%"
+    width: "90%",
   },
   iconColor: {
     color: theme.palette.secondary.light

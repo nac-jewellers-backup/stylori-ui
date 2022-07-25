@@ -225,6 +225,9 @@ class ProductDetail extends Component {
       clear: "",
       data: null,
       isActive: false,
+      "description":false,
+      "product details" :false,
+      "jewellery care" :false,
       Index: "",
       tooltip: false,
     };
@@ -366,28 +369,32 @@ class ProductDetail extends Component {
     var brand_card = [
       {
         title: "MURAL COLLECTION",
-        description: "",
+        description:
+          "Mural collection",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Mural.jpg",
         url: "https://www.stylori.com/silver-jewellery-mural+collection",
       },
       {
         title: "STAR STRUCK COLLECTION",
-        description: "",
+        description:
+          "Star struck collection",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Starstruck.jpg",
         url: "https://www.stylori.com/silver-jewellery-starstruck+collection",
       },
       {
         title: "ELEMENTAL COLLECTION",
-        description: "",
+        description:
+          "Elemental collection",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Elemental.jpg",
         url: "https://www.stylori.com/silver-jewellery-elemental+collection",
       },
       {
         title: "CONCENTRIC COLLECTION",
-        description: "",
+        description:
+          "Concentric collection",
         image:
           "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Concentric.jpg",
         url: "https://www.stylori.com/silver-jewellery-concentric+collection",
@@ -411,7 +418,7 @@ class ProductDetail extends Component {
             <ProductDetails
               data={this?.props?.data}
               isSilver={isSilver}
-              isActive={this.state.isActive}
+              isActive={this.state['product details']}
             />
           </div>
         ),
@@ -598,24 +605,24 @@ class ProductDetail extends Component {
                   <div className="">
                     <div className="">
                       {detail_data.map((item, index) => (
-                        <div className="accordian-item">
+                        <div className="accordian-item" style={{cursor:"pointer"}}>
                           <div
                             className="accordion-title"
                             onClick={() =>
                               this.setState({
-                                isActive: !this.state.isActive,
+                                [item.title.toLowerCase()]: !this.state[item.title.toLowerCase()],
                                 Index: index,
                               })
                             }
                           >
                             <div className="accordion-title2">{item.title}</div>
                             <div style={{ cursor: "pointer" }}>
-                              {this.state.isActive && this.state.Index === index
+                              {this.state[item.title.toLowerCase()]
                                 ? "-"
                                 : "+"}
                             </div>
                           </div>
-                          {this.state.isActive && this.state.Index === index ? (
+                          {this.state[item.title.toLowerCase()] ? (
                             <div className="" style={{ margin: 10 }}>
                               {item.data}
                             </div>
