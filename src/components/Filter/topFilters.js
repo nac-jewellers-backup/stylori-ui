@@ -55,7 +55,6 @@ export const TopFilters = (props) => {
   //   setState({ ...state, expanded: !state.expanded });
   // };
   const handleChange = (event) => {
-    alert('thisss1')
     if (FilterOptionsCtx.offset > 0) FilterOptionsCtx.setOffset(0);
     setSort({ values: event.target.value });
     setState({ ...state, expanded: false });

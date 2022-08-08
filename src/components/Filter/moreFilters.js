@@ -76,6 +76,7 @@ export default function MoreFilters(props) {
     val !== "Material"
   });
 
+
   return (
     <div>
       <Modal
