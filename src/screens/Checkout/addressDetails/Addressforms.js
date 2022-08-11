@@ -5,7 +5,6 @@ import { CheckForCod } from 'queries/productdetail';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { CartContext } from '../../../context/CartContext';
 
-// window.cache = {}    
 var obj = {}
 var delet = {}
 var addObjall = {}
@@ -82,13 +81,11 @@ const Addressforms = (changePanel) => {
     const { error: remee, loading: remlod, data: removedata, makeFetch: deleteaddress, } = useNetworkRequest('/removeaddress', {}, false);
     const { loading: codloading, error: coderror, data: CodData, makeRequestCod } = useCheckForCod(CheckForCod, () => { }, {});
     const pathnames = window.location.pathname.split("-")[0] === "/account"
-    // var stst = values.ref ? values.ref : ""
     const addressva = values && values.addressvalues && values.addressvalues.length > 0
     const update_clear = values && values.update_clear
 
     let { CartCtx: { setCartFilters } } = React.useContext(CartContext);
     useEffect(() => {
-        // var alladrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes && addresData.data.allUserAddresses.nodes[0] && addresData.data.allUserAddresses.nodes[0].firstname : ""
         if (con_gust !== true) {
             var adrs = addresData ? addresData && addresData.data && addresData.data.allUserAddresses && addresData.data.allUserAddresses.nodes : null
             if (adrs !== undefined && adrs.length > 0) {
@@ -211,12 +208,7 @@ const Addressforms = (changePanel) => {
             setValues({ ...values, values })
             return false
         }
-        // if (values && values.addressOne && values.addressOne.errortext && values.addressOne.errortext.pinerr !== "") {
-        //     return false
-        // }
-        // if (values && values.addressTwo && values.addressTwo.errortext && values.addressTwo.errortext.pinerr1 !== "") {
-        //     return false
-        // }
+
 
         if (values && values.addressOne && values.addressOne.pincode && values.addressOne.pincode.length < 4 ||
             (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr'])) {
