@@ -580,7 +580,7 @@ class Header extends Component {
 
                           <div className="tooltip">
                             {
-                               !isSilver &&
+                      
                                ( this.props.wishlist &&
                                this.props.wishlist.wishlistdata &&
                                this.props.wishlist.wishlistdata.nodes &&
@@ -637,7 +637,7 @@ class Header extends Component {
 
                           <div className="tooltip">
                           {
-                               !isSilver &&
+                             
                                ( this.props.cart_count &&
                                 this.props.cart_count.data &&
                                 this.props.cart_count.data.allTransSkuLists &&
@@ -678,7 +678,7 @@ class Header extends Component {
                                   Cart
                                 </span>
                               </a>{" "}
-                               </Badge>
+                                    </Badge>
                                 
                                  : <div>
                                     <a href="/cart" className="highlighter" style={{textDecoration:"none"}}>
@@ -933,7 +933,7 @@ class Header extends Component {
                            {/* Whishlist */}
                           <div className="tooltip">
                           {
-                               !isSilver &&
+            
                                ( this.props.wishlist &&
                                this.props.wishlist.wishlistdata &&
                                this.props.wishlist.wishlistdata.nodes &&
@@ -990,7 +990,7 @@ class Header extends Component {
                             {/* Cart */}
                           <div className="tooltip">
                           {
-                               !isSilver &&
+                             
                                ( this.props.cart_count &&
                                 this.props.cart_count.data &&
                                 this.props.cart_count.data.allTransSkuLists &&

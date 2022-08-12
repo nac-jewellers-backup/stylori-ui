@@ -333,6 +333,7 @@ class ProductImageZoom extends React.Component {
                   //     : this.props.data[0].size,
                   display: "flex",
                   alignItem: "center",
+                  position:'relative'
                 }}
               >
                 {data.map((val) => {

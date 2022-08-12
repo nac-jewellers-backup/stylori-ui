@@ -29,7 +29,7 @@ const styles = (theme) => ({
     marginTop: "40px",
     marginBottom: "40px",
     [theme.breakpoints.down("sm")]: {
-      marginBottom: "75px",
+      marginBottom: "120px",
     },
 
     button: {
@@ -47,7 +47,7 @@ const styles = (theme) => ({
   viewmoreColorSilver: {
     backgroundColor: "#06AB9F",
     color:"white",
-    width:"25%",
+    width:"80%",
     "&:hover": {
       backgroundColor: "#06AB9F",
       opacity: "0.9",
@@ -163,8 +163,8 @@ class Component extends React.Component {
                                         <Hidden smDown>
                                           <Grid container>
                                             <a style={{ width: "100%" }}  href="/#"
-                          target="_blank"
-                          el="noopener noreferrer">
+                                             target="_blank"
+                                             el="noopener noreferrer">
                                               <img
                                                 src={
                                                   this.state?.bannerData[
