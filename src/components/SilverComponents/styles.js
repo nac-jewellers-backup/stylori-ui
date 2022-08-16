@@ -276,9 +276,8 @@ export const styles = (theme) => ({
   },
   badgeColorsilver: {
     "& .MuiBadge-badge": {
-      color: "#000",
-      top: -3,
-      right: 12,
+      color: "#fff",
+      background: 'rgb(6, 171, 159)',
     },
     [theme.breakpoints.only("xs")]: {
       "& .MuiBadge-badge": {
