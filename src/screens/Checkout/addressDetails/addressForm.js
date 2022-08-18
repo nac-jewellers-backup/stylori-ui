@@ -213,9 +213,9 @@ const AddressComponent = (props) => {
                               )
                             }
                             value={values.addressOne.pincode}
-                            onKeyPress={(e) =>
-                              handle.handleKeyPress(e, "pincode")
-                            }
+                            // onKeyPress={(e) =>
+                            //   handle.handleKeyPress(e, "pincode")
+                            // }
                             // helperText="Pin Code is required"
                             // required
                           />
@@ -395,9 +395,9 @@ const AddressComponent = (props) => {
                               )
                             }
                             value={values.addressOne.pincode}
-                            onKeyPress={(e) =>
-                              handle.handleKeyPress(e, "pincode")
-                            }
+                            // onKeyPress={(e) =>
+                            //   handle.handleKeyPress(e, "pincode")
+                            // }
                             // helperText="Pin Code is required"
                             // required
                           />
@@ -654,9 +654,9 @@ const AddressComponent = (props) => {
                                   )
                                 }
                                 value={values.addressOne.pincode}
-                                onKeyPress={(e) =>
-                                  handle.handleKeyPress(e, "pincode")
-                                }
+                                // onKeyPress={(e) =>
+                                //   handle.handleKeyPress(e, "pincode")
+                                // }
                                 // helperText="Pin Code is required"
                                 // required
                               />
