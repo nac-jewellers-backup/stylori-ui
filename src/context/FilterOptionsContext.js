@@ -521,10 +521,8 @@ const Provider = (props) => {
     }
   };
 
+  // updateFilter
   useEffect(() => {
-    // alert(JSON.stringify(filters.Offers))
-    // clearSortIfFiltersIsEmpty()
-    // if(!sortFilterCombo) setSort("")
     if (filters && Object.entries(filters).length !== 0 && filters.constructor === Object) {
       if (
         Object.values(filters)?.filter((val) => {
@@ -541,38 +539,30 @@ const Provider = (props) => {
           updatefiltersSort();
       }
     }
-  }, [filters]);
-  useEffect(() => {
-    if (pricemin) {
-      updatefiltersSort();
-    }
-  }, [pricemin]);
-  useEffect(() => {
-    if (pricemax) {
-      updatefiltersSort();
-    }
-  }, [pricemax]);
-  useEffect(() => {
-    // alert("sort")
-    if (sort) {
-      updatefiltersSort();
-    }
-  }, [sort]);
+  }, [filters,offset]);
 
+  // updateFilter
   useEffect(() => {
-    // alert("offset")
-    if (offset && offset !== 0) {
+    const filters_seo_condition = () => {
+      if (sort && Object.entries(sort).length > 0 && sort.constructor === Object && pricemin !== null && pricemax !== null) {
+        return sort && `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`;
+      } else if (pricemin !== null && pricemax !== null && pricemin !== 0 && pricemax !== 0) {
+        return `startprice=${pricemin}&endprice=${pricemax}`;
+      } else if (sort && Object.entries(sort).length > 0 && sort.constructor === Object) {
+        return sort && `sort=${sort.values}`;
+      }
+    };
+    if ((sort && Object.entries(sort).length > 0 && sort.constructor === Object) || (pricemin !== null && pricemax !== null)) {
+      props.history.push({
+        pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ""}`,
+        search: filters_seo_condition() ? filters_seo_condition() : window.location.search,
+      });
+
       updatefiltersSort();
     }
-  }, [offset]);
-  // useEffect(() => {
+  }, [sort, pricemin, pricemax]);
+ 
 
-  //     //    alert("gdys")
-  //     if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
-  //         updatefiltersSort()
-  //     }
-
-  // }, [offset])
   var newObj = {};
   //create your forceUpdate hook
   function useForceUpdate() {
@@ -707,25 +697,8 @@ const Provider = (props) => {
     }
   }, [mappedFilters]);
 
-  useEffect(() => {
-    const filters_seo_condition = () => {
-      if (sort && Object.entries(sort).length > 0 && sort.constructor === Object && pricemin !== null && pricemax !== null) {
-        return sort && `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`;
-      } else if (pricemin !== null && pricemax !== null && pricemin !== 0 && pricemax !== 0) {
-        return `startprice=${pricemin}&endprice=${pricemax}`;
-      } else if (sort && Object.entries(sort).length > 0 && sort.constructor === Object) {
-        return sort && `sort=${sort.values}`;
-      }
-    };
-    if ((sort && Object.entries(sort).length > 0 && sort.constructor === Object) || (pricemin !== null && pricemax !== null)) {
-      props.history.push({
-        pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ""}`,
-        search: filters_seo_condition() ? filters_seo_condition() : window.location.search,
-      });
 
-      updatefiltersSort();
-    }
-  }, [sort, pricemin, pricemax]);
+
   useEffect(() => {
     if (paramObjects(mappedFilters.seo_url).length > 0) {
       setParamsAo(paramObjects(mappedFilters.seo_url));

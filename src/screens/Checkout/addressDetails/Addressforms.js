@@ -279,7 +279,7 @@ const Addressforms = (changePanel) => {
         }
 
 
-        if (values && values.addressOne && values.addressOne.pincode && values.addressOne.pincode.length < 6 ||
+        if (values && values.addressOne && values.addressOne.pincode && values.addressOne.pincode.length < 4 ||
             (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr'])) {
             // if (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr']) {
             values["addressOne"]['errortext']['pinerr'] = "Your pincode is Invalid!"
@@ -287,7 +287,7 @@ const Addressforms = (changePanel) => {
             // }
             return false
         }
-        if (values && values.addressTwo && values.addressTwo.pincode && values.addressTwo.pincode.length < 5 ||
+        if (values && values.addressTwo && values.addressTwo.pincode && values.addressTwo.pincode.length < 4 ||
             (values["addressTwo"] && values["addressTwo"]['errortext'] && values["addressTwo"]['errortext']['pinerr1'])) {
             // if (values["addressOne"] && values["addressOne"]['errortext'] && values["addressTwo"]['errortext']['pinerr1']) {
             values["addressTwo"]['errortext']['pinerr1'] = "Your pincode is Invalid!"
