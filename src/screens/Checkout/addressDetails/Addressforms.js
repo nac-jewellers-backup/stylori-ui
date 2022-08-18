@@ -150,7 +150,7 @@ const Addressforms = (changePanel) => {
               CodData.data.allPincodeMasters &&
               CodData.data.allPincodeMasters.nodes &&
               CodData.data.allPincodeMasters.nodes[0]
-                ? CodData.data.allPincodeMasters.nodes[0].state
+                ? CodData.data.allPincodeMasters.nodes[0].state ?? ""
                 : "";
             var res1 =
               CodData &&
@@ -158,7 +158,7 @@ const Addressforms = (changePanel) => {
               CodData.data.allPincodeMasters &&
               CodData.data.allPincodeMasters.nodes &&
               CodData.data.allPincodeMasters.nodes[0]
-                ? CodData.data.allPincodeMasters.nodes[0].country
+                ? CodData.data.allPincodeMasters.nodes[0].country ?? ""
                 : "";
             var res2 =
               CodData &&
@@ -166,7 +166,7 @@ const Addressforms = (changePanel) => {
               CodData.data.allPincodeMasters &&
               CodData.data.allPincodeMasters.nodes &&
               CodData.data.allPincodeMasters.nodes[0]
-                ? CodData.data.allPincodeMasters.nodes[0].district
+                ? CodData.data.allPincodeMasters.nodes[0].district ?? ""
                 : "";
             if (res2.length > 0) {
               if (pincods.pincod === "pincode1") {
