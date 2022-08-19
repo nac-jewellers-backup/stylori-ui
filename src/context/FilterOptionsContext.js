@@ -522,24 +522,9 @@ const Provider = (props) => {
   };
 
   // updateFilter
-  useEffect(() => {
-    if (filters && Object.entries(filters).length !== 0 && filters.constructor === Object) {
-      if (
-        Object.values(filters)?.filter((val) => {
-          if (Object.entries(val).length > 0 && val.constructor === Object) {
-            return val;
-          }
-        }).length > 0
-      ) {
-        if (
-          Object.keys(filters)?.filter((val) => {
-            if (val === "a") return val;
-          }).length === 0
-        )
-          updatefiltersSort();
-      }
-    }
-  }, [filters,offset]);
+  // useEffect(() => {
+    
+  // }, [filters,offset]);
 
   // updateFilter
   useEffect(() => {
@@ -557,10 +542,25 @@ const Provider = (props) => {
         pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ""}`,
         search: filters_seo_condition() ? filters_seo_condition() : window.location.search,
       });
-
-      updatefiltersSort();
+ 
     }
-  }, [sort, pricemin, pricemax]);
+    if (filters && Object.entries(filters).length !== 0 && filters.constructor === Object) {
+      if (
+        Object.values(filters)?.filter((val) => {
+          if (Object.entries(val).length > 0 && val.constructor === Object) {
+            return val;
+          }
+        }).length > 0
+      ) {
+        if (
+          Object.keys(filters)?.filter((val) => {
+            if (val === "a") return val;
+          }).length === 0
+        )
+          updatefiltersSort();
+      }
+    }
+  }, [sort, pricemin, pricemax,filters,offset]);
  
 
   var newObj = {};
@@ -571,9 +571,6 @@ const Provider = (props) => {
   }
   const forceUpdate = useForceUpdate();
   const updateFilters = async (filters) => {
-    // alert('update filters')
-    // clearSortIfFiltersIsEmpty()
-    // if(!sortFilterCombo) setSort("")
     setFilters(filters);
     forceUpdate();
     // setSort("");
