@@ -557,7 +557,7 @@ const Provider = (props) => {
             if (val === "a") return val;
           }).length === 0
         )
-          updatefiltersSort();
+        updatefiltersSort();
       }
     }
   }, [sort, pricemin, pricemax,filters,offset]);
