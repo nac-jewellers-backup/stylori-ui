@@ -451,7 +451,6 @@ export const menuListHeader =
         { title: 'GOLD COINS', url: "/goldcoins" },
         { title: 'COLLECTIONS', url: "/collections" },
         { title: 'READY TO SHIP', url: "/jewellery-shipping+in+1+day" },
-        // { title: 'CSK MERCHANDISE', url: "/silver-jewellery-csk+collection" },
         { title: 'STYLORISILVER', url: "/styloriSilver" }
     ];
 
@@ -499,7 +498,7 @@ export const menuLists = {
                                 "url": "/ear+jacket-earrings-jewellery",
                             },
                         ]
-                    }
+                    } 
                 },
                 {
                     value: 'pendants', title: 'Pendants', url: '/pendants-jewellery',

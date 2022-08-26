@@ -36,6 +36,7 @@ export const TopFilters = (props) => {
   const { mapped } = useDummyRequest(filterParams);
   const { setSort, FilterOptionsCtx } =
     React.useContext(FilterOptionsContext);
+    console.log(props?.filter.includes('Style','Product Type'),"?????")
 
   // const submenuDetails = (data, target) => {
   //   setState({
@@ -133,10 +134,13 @@ export const TopFilters = (props) => {
                 </Grid>
                 {props?.filter?.map((listName, i) => {
                   if (
-                    i < 6 &&
+                    i < 9 &&
                     listName !== "Material" &&
                     listName !== "Theme" &&
-                    listName !== "Occasion"
+                    listName !== "Occasion" && 
+                    listName !== "Collection" &&
+                    listName !== "Gender" && 
+                    listName !== "Metal Purity"
                   )
                     return (
                       <Grid
@@ -172,7 +176,7 @@ export const TopFilters = (props) => {
                             xs={6}
                             style={{
                               display: "flex",
-                              justifyContent: "flex-end",
+                              justifyContent: "flex-end"
                             }}
                           >
                             {state.listHoverItem === listName ? (
