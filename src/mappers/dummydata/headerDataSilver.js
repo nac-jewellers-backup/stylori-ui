@@ -3,35 +3,34 @@
 
 // MOBILE views menu - LAYER 1
 export const mainlist = [
-
-    {
-        name: "Jewellery",
-        url: "/jewellery",
-    },
-    // {
-    //     name: "Silver",
-    //     url: "/stylorisilver",
-    // },
-    {
-        name: "Gold Coins",
-        url: "/goldcoins",
-    },
-    {
-        name: "Collections",
-        url: "/collections",
-    },
-    {
-        name: "Ready to ship",
-        url: "/jewellery-shipping+in+1+day",
-    },
-    // {
-    //     name: "CSK MERCHANDISE",
-    //     url: "/silver-jewellery-csk+collection",
-    // },
-    {
-        name: "Visit Stylori Silver",
-        url: "/styloriSilver",
-    },
+  {
+    name: "Jewellery",
+    url: "/jewellery",
+  },
+  // {
+  //     name: "Silver",
+  //     url: "/stylorisilver",
+  // },
+  {
+    name: "Gold Coins",
+    url: "/goldcoins",
+  },
+  {
+    name: "Collections",
+    url: "/collections",
+  },
+  {
+    name: "Ready to ship",
+    url: "/jewellery-shipping+in+1+day",
+  },
+  // {
+  //     name: "CSK MERCHANDISE",
+  //     url: "/silver-jewellery-csk+collection",
+  // },
+  {
+    name: "Visit Stylori Silver",
+    url: "/styloriSilver",
+  },
 ];
 
 /// MOBILE views submenu - LAYER 3
@@ -320,10 +319,6 @@ export const subheader = {
       //     url: "/jewellery-from+halo+collection"
       // },
       {
-        name: "STACK",
-        url: "/jewellery-stack+collection?sort=New%20to%20Stylori&startprice=0&endprice=0",
-      },
-      {
         name: "Daisy Days",
         url: "/jewellery-from+daisy+days+collection",
       },
@@ -505,7 +500,6 @@ export const menuListHeader = [
   { title: "GOLD COINS", url: "/goldcoins" },
   { title: "COLLECTIONS", url: "/collections" },
   { title: "READY TO SHIP", url: "/jewellery-shipping+in+1+day" },
-  { title: "CSK MERCHANDISE", url: "/silver-jewellery-csk+collection" },
   { title: "STYLORISILVER", url: "/styloriSilver" },
 ];
 
@@ -914,11 +908,6 @@ export const menuLists = {
             //     "content": "Halo",
             //     "url": "/jewellery-from+halo+collection",
             // },
-            {
-              img: "https://styloribaseimages.s3.ap-south-1.amazonaws.com/banner_images/Stack-PNG.png",
-              content: "STACK",
-              url: "/jewellery-stack+collection?sort=New%20to%20Stylori&startprice=0&endprice=0",
-            },
             {
               img: "https://assets.stylori.com/images/Menu/Collections/By+Collections/Daisy+Days++Collection+Stylori+-05.png",
               content: "Daisy Days",

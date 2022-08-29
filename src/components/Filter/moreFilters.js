@@ -68,11 +68,11 @@ export default function MoreFilters(props) {
   const result = props?.filter.filter((val)=>{
     return val !== "price" &&
     val !== "Product Type" &&
-    val !== "Collection" &&
     val !== "Style" &&
     val !== "Availability" &&
     val !== "No of Stones" &&
     val !== "Metal Purity" &&
+    val !== "Finish" &&
     val !== "Material"
   });
 

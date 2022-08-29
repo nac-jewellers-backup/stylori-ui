@@ -1213,6 +1213,10 @@ export const menuListHeader = [
     url: "/silver-cocktail-jewellery",
   },
   {
+    title: "FINISH",
+    url: "/silver-jewellery-traditional+kemp",
+  },
+  {
     title: "COLLECTIONS",
     url: "/silver-jewellery-from+loops+collection",
   },
@@ -1225,10 +1229,6 @@ export const menuListHeader = [
     title: "READY TO SHIP",
     url: "/silver-jewellery-shipping+in+1+day",
   },
-  // {
-  //   title: "CSK MERCHANDISE",
-  //   url: "/silver-jewellery-csk+collection",
-  // },
   {
     title: "VISIT STYLORI.COM",
     url: "/",
@@ -2208,6 +2208,61 @@ export const menuLists = {
         //   },
         // ],
         // },
+      },
+    ],
+  },
+
+  FINISH: {
+    menuOne: [
+      {
+        value: "Gold Plated Kundan",
+        title: "Gold Plated Kundan",
+        url: "https://www.stylori.com/silver-jewellery-gold+plated+kundan",
+      },
+      {
+        value: "Gold Plated Kemp",
+        title: "Gold Plated Kemp",
+        url: " https://www.stylori.com/silver-jewellery-gold+plated+kemp",
+      },
+      {
+        value: "Nagas/Nakshi",
+        title: "Nagas/Nakshi",
+        url: " https://www.stylori.com/silver-jewellery-nagas+nakshi",
+      },
+      {
+        value: "Beads & Pearl Jewellery",
+        title: "Beads & Pearl Jewellery",
+        url: " https://www.stylori.com/silver-jewellery-beads+pearl+jewellery",
+      },
+      {
+        value: "Cubic Zircon/Swarovski Jewellery",
+        title: "Cubic Zircon/Swarovski Jewellery",
+        url: " https://www.stylori.com/silver-jewellery-cubiczircon+swarovski",
+      },
+      {
+        value: "Studded Jewellery",
+        title: "Studded Jewellery",
+        url: "https://www.stylori.com/silver-jewellery-studded+jewellery",
+      },
+      {
+        value: "Rose gold",
+        title: "Rose gold",
+        url: "https://www.stylori.com/silver-jewellery-rose+gold+finish",
+      },
+      {
+        value: "Oxidised",
+        title: "Oxidised",
+        url: "https://www.stylori.com/silver-jewellery-oxidised+finish",
+      },
+      {
+        value: "Dual Tone",
+        title: "Dual Tone",
+        url: " https://www.stylori.com/silver-jewellery-dual+tone+finish",
+      },
+      {
+        value: "Others",
+        title: "Others",
+        url: "https://www.stylori.com/silver-jewellery-finish+others",
       },
     ],
   },

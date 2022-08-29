@@ -521,10 +521,29 @@ const Provider = (props) => {
     }
   };
 
+  // updateFilter
+  // useEffect(() => {
+    
+  // }, [filters,offset]);
+
+  // updateFilter
   useEffect(() => {
-    // alert(JSON.stringify(filters.Offers))
-    // clearSortIfFiltersIsEmpty()
-    // if(!sortFilterCombo) setSort("")
+    const filters_seo_condition = () => {
+      if (sort && Object.entries(sort).length > 0 && sort.constructor === Object && pricemin !== null && pricemax !== null) {
+        return sort && `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`;
+      } else if (pricemin !== null && pricemax !== null && pricemin !== 0 && pricemax !== 0) {
+        return `startprice=${pricemin}&endprice=${pricemax}`;
+      } else if (sort && Object.entries(sort).length > 0 && sort.constructor === Object) {
+        return sort && `sort=${sort.values}`;
+      }
+    };
+    if ((sort && Object.entries(sort).length > 0 && sort.constructor === Object) || (pricemin !== null && pricemax !== null)) {
+      props.history.push({
+        pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ""}`,
+        search: filters_seo_condition() ? filters_seo_condition() : window.location.search,
+      });
+ 
+    }
     if (filters && Object.entries(filters).length !== 0 && filters.constructor === Object) {
       if (
         Object.values(filters)?.filter((val) => {
@@ -538,41 +557,12 @@ const Provider = (props) => {
             if (val === "a") return val;
           }).length === 0
         )
-          updatefiltersSort();
+        updatefiltersSort();
       }
     }
-  }, [filters]);
-  useEffect(() => {
-    if (pricemin) {
-      updatefiltersSort();
-    }
-  }, [pricemin]);
-  useEffect(() => {
-    if (pricemax) {
-      updatefiltersSort();
-    }
-  }, [pricemax]);
-  useEffect(() => {
-    // alert("sort")
-    if (sort) {
-      updatefiltersSort();
-    }
-  }, [sort]);
+  }, [sort, pricemin, pricemax,filters,offset]);
+ 
 
-  useEffect(() => {
-    // alert("offset")
-    if (offset && offset !== 0) {
-      updatefiltersSort();
-    }
-  }, [offset]);
-  // useEffect(() => {
-
-  //     //    alert("gdys")
-  //     if (filters && (Object.entries(filters).length !== 0 && filters.constructor === Object)) {
-  //         updatefiltersSort()
-  //     }
-
-  // }, [offset])
   var newObj = {};
   //create your forceUpdate hook
   function useForceUpdate() {
@@ -581,9 +571,6 @@ const Provider = (props) => {
   }
   const forceUpdate = useForceUpdate();
   const updateFilters = async (filters) => {
-    // alert('update filters')
-    // clearSortIfFiltersIsEmpty()
-    // if(!sortFilterCombo) setSort("")
     setFilters(filters);
     forceUpdate();
     // setSort("");
@@ -707,25 +694,8 @@ const Provider = (props) => {
     }
   }, [mappedFilters]);
 
-  useEffect(() => {
-    const filters_seo_condition = () => {
-      if (sort && Object.entries(sort).length > 0 && sort.constructor === Object && pricemin !== null && pricemax !== null) {
-        return sort && `sort=${sort.values}&startprice=${pricemin}&endprice=${pricemax}`;
-      } else if (pricemin !== null && pricemax !== null && pricemin !== 0 && pricemax !== 0) {
-        return `startprice=${pricemin}&endprice=${pricemax}`;
-      } else if (sort && Object.entries(sort).length > 0 && sort.constructor === Object) {
-        return sort && `sort=${sort.values}`;
-      }
-    };
-    if ((sort && Object.entries(sort).length > 0 && sort.constructor === Object) || (pricemin !== null && pricemax !== null)) {
-      props.history.push({
-        pathname: `${mappedFilters.seo_url ? `/${mappedFilters.seo_url}` : ""}`,
-        search: filters_seo_condition() ? filters_seo_condition() : window.location.search,
-      });
 
-      updatefiltersSort();
-    }
-  }, [sort, pricemin, pricemax]);
+
   useEffect(() => {
     if (paramObjects(mappedFilters.seo_url).length > 0) {
       setParamsAo(paramObjects(mappedFilters.seo_url));
