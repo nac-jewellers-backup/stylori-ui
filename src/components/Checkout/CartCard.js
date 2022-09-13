@@ -860,6 +860,15 @@ class Checkoutcard extends React.Component {
       })
       .reduce(myFunc);
 
+      const mainCard = this.props.data
+      .map((val) => {
+        return (
+          val.dataCard1[0].price *
+          JSON.parse(localStorage.getItem("quantity"))[val.generatedSku]
+        );
+      })
+      .reduce(myFunc);
+
     function myFunc(total, num) {
       var cart_price;
       if (discounted_price.length > 0) {
@@ -882,6 +891,49 @@ class Checkoutcard extends React.Component {
       .reduce(myFunc);
     // let path = window.location.pathname.split("/").pop();
     const { classes } = this.props;
+    console.log(this.props,"?propss")
+    const totalCostCal = (
+      discountAmount,
+      dataCard,
+      discountPrice,
+      shippingCharge
+    ) => {
+      if (discountAmount) {
+        if (shippingCharge) {
+          return CurrencyConversion(discountAmount + shippingCharge);
+          // new Intl.NumberFormat("en-IN", {
+          //   style: "currency",
+          //   currency: "INR",
+          //   minimumFractionDigits: 0,
+          // }).format(Math.round(discountAmount + shippingCharge));
+        } else {
+          return CurrencyConversion(discountAmount);
+          // new Intl.NumberFormat("en-IN", {
+          //   style: "currency",
+          //   currency: "INR",
+          //   minimumFractionDigits: 0,
+          // }).format(Math.round(discountAmount));
+        }
+      }
+      if (dataCard - discountPrice) {
+        if (shippingCharge) {
+          return CurrencyConversion(dataCard - discountPrice + shippingCharge);
+          //  new Intl.NumberFormat("en-IN", {
+          //   style: "currency",
+          //   currency: "INR",
+          //   minimumFractionDigits: 0,
+          // }).format(Math.round(dataCard - discountPrice + shippingCharge));
+        } else {
+          return CurrencyConversion(dataCard - discountPrice);
+
+          // new Intl.NumberFormat("en-IN", {
+          //   style: "currency",
+          //   currency: "INR",
+          //   minimumFractionDigits: 0,
+          // }).format(Math.round(dataCard - discountPrice));
+        }
+      }
+    };
 
     return (
       <div className={classes.main}>
@@ -986,9 +1038,10 @@ class Checkoutcard extends React.Component {
                   }
                   style={{lineHeight:2}}
                 >
-                  {props.cartFilters.gross_amount ?
+                 {props.cartFilters.gross_amount ?
                 CurrencyConversion(props.cartFilters.gross_amount)
-                   :  CurrencyConversion(dataCard1)
+                   :  <div style={{display: 'flex',
+                    justifyContent: 'flex-end'}}><del>{CurrencyConversion(mainCard)}</del><div style={{marginLeft:"5px"}}>{CurrencyConversion(dataCard1)}</div></div>
                   }
 
                 </Typography>
@@ -1036,7 +1089,13 @@ class Checkoutcard extends React.Component {
                     marginBottom: this.props.checkout ? '20px' : ''
                   }}
                 >
-                  {props.shipping_charge}{" "}
+                  {props?.shipping_charge
+                      ? props?.shipping_charge === 0
+                        ? CurrencyConversion(props?.shipping_charge)
+                        :
+                          CurrencyConversion(props?.shipping_charge)
+                      : 
+                        CurrencyConversion(0)}
                 </Typography>
 
                 <Typography
@@ -1053,11 +1112,16 @@ class Checkoutcard extends React.Component {
                     lineHeight:2 
                   }}
                 >
-                    
+                     {totalCostCal(
+                    props?.cartFilters?.discounted_amount,
+                    dataCard1,
+                    discounted_price,
+                    props?.shipping_charge
+                  )}
             
-                  {props.cartFilters.discounted_amount
+                  {/* {props.cartFilters.discounted_amount
                     ?  CurrencyConversion(props.cartFilters.discounted_amount)
-                    : CurrencyConversion(dataCard1 - discounted_price)}
+                    : CurrencyConversion(dataCard1 - discounted_price)} */}
                 </Typography>
               </Grid>
              {!props.checkout ? <Grid item container xs={12} style={{backgroundColor:"#E5E6E7",padding:"10px",display:"flex",alignItems:"center"}}>
@@ -1092,6 +1156,7 @@ class Checkoutcard extends React.Component {
             </Grid>
           </Grid>
           </Hidden>
+
           <Hidden smDown>
           {!props.checkout ? (
                <Grid item container className="summary" xs={12}>
@@ -1127,7 +1192,7 @@ class Checkoutcard extends React.Component {
                     }
                     style={{lineHeight:2}}
                   >
-                    {this.props.checkout ? "CART DISCOUNT" : "You Saved"}
+                    {this.props.checkout ? "YOU SAVE" : "You save"}
                   </Typography>
                 ) : null}
 
@@ -1187,7 +1252,8 @@ class Checkoutcard extends React.Component {
                 >
                   {props.cartFilters.gross_amount ?
                 CurrencyConversion(props.cartFilters.gross_amount)
-                   :  CurrencyConversion(dataCard1)
+                   :  <div style={{display: 'flex',
+                    justifyContent: 'flex-end'}}><del>{CurrencyConversion(mainCard)}</del><div style={{marginLeft:"5px"}}>{CurrencyConversion(dataCard1)}</div></div>
                   }
 
                 </Typography>
@@ -1235,7 +1301,13 @@ class Checkoutcard extends React.Component {
                     marginBottom: this.props.checkout ? '20px' : ''
                   }}
                 >
-                  {props.shipping_charge}{" "}
+                  {props?.shipping_charge
+                      ? props?.shipping_charge === 0
+                        ? CurrencyConversion(props?.shipping_charge)
+                        :
+                          CurrencyConversion(props?.shipping_charge)
+                      : 
+                        CurrencyConversion(0)}
                 </Typography>
 
                 <Typography
@@ -1252,11 +1324,17 @@ class Checkoutcard extends React.Component {
                     lineHeight:2 
                   }}
                 >
+                  {totalCostCal(
+                    props?.cartFilters?.discounted_amount,
+                    dataCard1,
+                    discounted_price,
+                    props?.shipping_charge
+                  )}
                     
             
-                  {props.cartFilters.discounted_amount
+                  {/* {props.cartFilters.discounted_amount
                     ?  CurrencyConversion(props.cartFilters.discounted_amount)
-                    : CurrencyConversion(dataCard1 - discounted_price)}
+                    : CurrencyConversion(dataCard1 - discounted_price)} */}
                 </Typography>
               </Grid>     
               {/* // )}  */}
@@ -1268,7 +1346,6 @@ class Checkoutcard extends React.Component {
               </Grid>
           </Hidden>
           
-
           <Hidden mdUp>
           {!this.props.checkout ? (
               <Grid item container  style={{margin:10,paddingTop:"20px"}}>

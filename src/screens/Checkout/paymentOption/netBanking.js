@@ -1,10 +1,13 @@
 import React from "react";
+import { useEffect } from "react";
 import { Container, Grid, Button } from "@material-ui/core";
 import "./payment.css";
 // import SimpleSelect from '../../../components/InputComponents/Select/Select';
 import { CartContext } from "context";
 import cart from "mappers/cart";
 import PaymentHiddenForm from "./paymentHiddenForm";
+import CurrencyConversion from "utils/CurrencyConversion";
+import { API_URL } from "config";
 class Netbanking extends React.Component {
   render() {
     let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : "";
@@ -33,6 +36,48 @@ class Netbanking extends React.Component {
         return cart_price;
       }
     }
+    const totalCostCal = (
+      discountAmount,
+      dataCard,
+      discountPrice,
+      shippingCharge
+    ) => {
+      if (discountAmount) {
+        if (shippingCharge) {
+          return CurrencyConversion(discountAmount + shippingCharge);
+          // new Intl.NumberFormat("en-IN", {
+          //   style: "currency",
+          //   currency: "INR",
+          //   minimumFractionDigits: 0,
+          // }).format(Math.round(discountAmount + shippingCharge));
+        } else {
+          return CurrencyConversion(discountAmount);
+          // new Intl.NumberFormat("en-IN", {
+          //   style: "currency",
+          //   currency: "INR",
+          //   minimumFractionDigits: 0,
+          // }).format(Math.round(discountAmount));
+        }
+      }
+      if (dataCard - discountPrice) {
+        if (shippingCharge) {
+          return CurrencyConversion(dataCard - discountPrice + shippingCharge);
+          //  new Intl.NumberFormat("en-IN", {
+          //   style: "currency",
+          //   currency: "INR",
+          //   minimumFractionDigits: 0,
+          // }).format(Math.round(dataCard - discountPrice + shippingCharge));
+        } else {
+          return CurrencyConversion(dataCard - discountPrice);
+
+          // new Intl.NumberFormat("en-IN", {
+          //   style: "currency",
+          //   currency: "INR",
+          //   minimumFractionDigits: 0,
+          // }).format(Math.round(dataCard - discountPrice));
+        }
+      }
+    };
     return (
       <Grid spacing={12} container lg={12} xs={12} style={{ width: "100%" }}>
         {/* <Container> */}
@@ -69,7 +114,14 @@ class Netbanking extends React.Component {
                 </Grid> */}
 
         <Grid item lg={12} xs={12}>
-        <PaymentHiddenForm data={Math.round(dataCard1 - discounted_price)} />
+        <PaymentHiddenForm   data={Math.round(
+                  dataCard1 - discounted_price + this.props.ShippingCharge
+                )}
+                data1={CurrencyConversion(
+                  this.props.ShippingCharge === "Free"
+                    ? dataCard1 - discounted_price + 0
+                    : dataCard1 - discounted_price + this.props.ShippingCharge
+                )} />
           {/* <div className="amout-pay"> Amount Payable </div>
           <div className="credit-btn-div">
             <Grid container>
@@ -109,6 +161,25 @@ const Components = (props) => {
       mapped = cart(data);
     }
   }
+  const [ShippingCharge, setShippingCharge] = React.useState(0);
+  
+  useEffect(() => {
+    fetch(`${API_URL}/getshippingcharge`, {
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: localStorage.getItem("cart_id"),
+      method: "POST",
+    })
+      .then(async (response) => response.json())
+      .then((val) => {
+        if (val) setShippingCharge(val.shipping_charge);
+      })
+      .catch((err) => {
+        console.log(error);
+      });
+  }, []);
+
   if (Object.keys(data).length === 0) {
     content = window.location.href.toLowerCase().includes("silver") ? (
       <div className="overall-loader">
@@ -119,7 +190,7 @@ const Components = (props) => {
         <div id="loading"></div>
       </div>
     );
-  } else content = <Netbanking {...props} data={mapped} cartFilters={cartFilters} setCartFilters={setCartFilters} />;
+  } else content = <Netbanking {...props} data={mapped} cartFilters={cartFilters} setCartFilters={setCartFilters}  ShippingCharge={ShippingCharge ?? 0}/>;
   return content;
 };
 export default Components;

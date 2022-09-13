@@ -287,9 +287,6 @@ const Components = (props) => {
     } else {
       fetch(`${API_URL}/graphql`, {
         method: "post",
-        // body: {query:seoUrlResult,variables:splitHiphen()}
-        // body: JSON.stringify({query:seoUrlResult}),
-
         headers: {
           "Content-Type": "application/json",
         },
@@ -366,9 +363,6 @@ const Components = (props) => {
                         return false;
                       } else {
                         setCodAvailability(false);
-                        //    this.setState({isActive:"Netbanking", disabledCOD:true})
-                        //  cart_prices = 0;
-                        //    var _number = 1
                       }
                     }
                     // myFunc()
