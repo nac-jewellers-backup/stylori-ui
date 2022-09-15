@@ -195,6 +195,16 @@ const Addressforms = (changePanel) => {
                 }
               }
             } else {
+                if (pincods.pincod === "pincode1") {
+                    values["addressOne"]["state"] = res;
+                    values["addressOne"]["country"] = res1;
+                    values["addressOne"]["city"] = res2;
+                  }
+                  if (pincods.pincod === "pincode2") {
+                    values["addressTwo"]["state"] = res;
+                    values["addressTwo"]["country"] = res1;
+                    values["addressTwo"]["city"] = res2;
+                  }
               if (pincods.pincod === "pincode1") {
                 if (
                   res2.length < 0 ||
@@ -204,18 +214,18 @@ const Addressforms = (changePanel) => {
                     values["addressOne"]["errortext"]["pinerr"])
                 ) {
                   values["addressOne"]["errortext"]["pinerr"] =
-                    "Your pincode is Invalid!";
+                    "";
                 }
               } else {
                 if (
                   res2.length < 0 ||
                   res2 === "" ||
-                  (values["addressOne"] &&
-                    values["addressOne"]["errortext"] &&
+                  (values["addressTwo"] &&
+                    values["addressTwo"]["errortext"] &&
                     values["addressTwo"]["errortext"]["pinerr1"])
                 ) {
                   values["addressTwo"]["errortext"]["pinerr1"] =
-                    "Your pincode is Invalid!";
+                    "";
                 }
               }
             }

@@ -891,7 +891,8 @@ class Checkoutcard extends React.Component {
       .reduce(myFunc);
     // let path = window.location.pathname.split("/").pop();
     const { classes } = this.props;
-    console.log(this.props,"?propss")
+
+    
     const totalCostCal = (
       discountAmount,
       dataCard,
