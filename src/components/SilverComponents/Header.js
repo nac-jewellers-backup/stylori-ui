@@ -2083,9 +2083,11 @@ class Header extends Component {
         </Hidden>
 
          <Grid
-                       xs={12}
-                       lg={3}
-                       md={3}
+                        xs={4}
+                        sm={4}
+                        lg={1}
+                        md={3}
+                        xl={2}
                       style={{
                         position: 'fixed',
                         bottom: 50,
