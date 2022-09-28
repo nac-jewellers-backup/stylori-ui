@@ -145,6 +145,8 @@ export default function PaymentHiddenForm(props) {
   useEffect(() => {
     if (hash.checksum) document.getElementById("sendtoairpay").submit();
   }, [hash]);
+
+  console.log(props.data1,"?dataa")
   // useEffect(()=>{if(hash.checksum) console.log(hash,orderId,"hashandorderid")},[hash])
 
   return (
@@ -323,9 +325,7 @@ export default function PaymentHiddenForm(props) {
           style={{ cursor: "pointer",backgroundColor:"#D32564",color:"#fff",width:'inherit' }}
           variant="contained"
         >
-          {` Pay ${ CurrencyConversion(
-                   props.data
-                  )}`}
+          {` Pay ${props.data1}`}
         </Button>
         {/* <input
           style={{ cursor: "pointer" }}

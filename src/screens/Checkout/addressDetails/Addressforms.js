@@ -195,6 +195,16 @@ const Addressforms = (changePanel) => {
                 }
               }
             } else {
+                if (pincods.pincod === "pincode1") {
+                    values["addressOne"]["state"] = res;
+                    values["addressOne"]["country"] = res1;
+                    values["addressOne"]["city"] = res2;
+                  }
+                  if (pincods.pincod === "pincode2") {
+                    values["addressTwo"]["state"] = res;
+                    values["addressTwo"]["country"] = res1;
+                    values["addressTwo"]["city"] = res2;
+                  }
               if (pincods.pincod === "pincode1") {
                 if (
                   res2.length < 0 ||
@@ -204,18 +214,18 @@ const Addressforms = (changePanel) => {
                     values["addressOne"]["errortext"]["pinerr"])
                 ) {
                   values["addressOne"]["errortext"]["pinerr"] =
-                    "Your pincode is Invalid!";
+                    "";
                 }
               } else {
                 if (
                   res2.length < 0 ||
                   res2 === "" ||
-                  (values["addressOne"] &&
-                    values["addressOne"]["errortext"] &&
+                  (values["addressTwo"] &&
+                    values["addressTwo"]["errortext"] &&
                     values["addressTwo"]["errortext"]["pinerr1"])
                 ) {
                   values["addressTwo"]["errortext"]["pinerr1"] =
-                    "Your pincode is Invalid!";
+                    "";
                 }
               }
             }
@@ -404,11 +414,8 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num, index, ship) => {
-        
-
         var obj_user = {}
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
-        let set_check = localStorage.getItem("set_check") ? localStorage.getItem("set_check") : ""
         obj_user["user_id"] = user_id
         // changePanel(3,values.selest_my_address)
         if (ship === "yes") {
@@ -436,11 +443,11 @@ const Addressforms = (changePanel) => {
                 addObjall['address'] = [adars1 && adars1[0]];
                 val_addrs["addresstype"] = num
                 makeFetchall(addObjall);
+                window.location.reload();
             }
-            // alert("your address send on successful")
+           
             if (!pathnames) {
                 changePanel(3, values.selest_my_address)
-                // window.location.reload()
             }
             return false
         }
@@ -521,20 +528,14 @@ const Addressforms = (changePanel) => {
                 // alert("your address send on successful")
                 if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                     makeFetchall(addObjall);
+                    window.location.reload();
                 }
                 if (!pathnames) {
                     changePanel(3, values.selest_my_address)
-                    // window.location.reload()
                 }
             }
-            // if (values.checkValue1 === true) {
-            // }
+           
         }
-
-        // if (!set_check.length > 0) {
-        //     localStorage.removeItem("cart_id")
-        //     setCartFilters(obj_user)
-        // }
     }
     var deletss = {}
     const Delete_address = (val_addrs, index) => {

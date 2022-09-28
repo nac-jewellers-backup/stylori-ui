@@ -158,7 +158,7 @@ const AddressComponent = (props) => {
                                 event.target.value
                               )
                             }
-                            value={values.addressOne.state}
+                            value={values?.addressOne?.state}
                             helperText="State is required"
                             InputProps={{
                               readOnly: true,
@@ -445,7 +445,7 @@ const AddressComponent = (props) => {
                                 event.target.value
                               )
                             }
-                            value={values.addressOne.state}
+                            value={values?.addressOne?.state}
                             helperText="State is required"
                             InputProps={{
                               readOnly: true,
@@ -600,7 +600,7 @@ const AddressComponent = (props) => {
                                     event.target.value
                                   )
                                 }
-                                value={values.addressOne.state}
+                                value={values?.addressOne?.state}
                                 helperText="State is required"
                                 InputProps={{
                                   readOnly: true,
