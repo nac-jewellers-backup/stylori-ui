@@ -1125,6 +1125,19 @@ class Checkoutcard extends React.Component {
                     : CurrencyConversion(dataCard1 - discounted_price)} */}
                 </Typography>
               </Grid>
+              <Typography
+                  className={
+                    this.props.checkout
+                      ? `${classes.normalfontsCheck}`
+                      : `subhesder ${classes.normalfonts}`
+                  }
+                  style={{
+                    paddingTop: this.props.checkout ? 20 : "",
+                    lineHeight:2,
+                  }}
+                >
+                  {this.props.checkout ? "" : "International shipping charges will be calculated at the checkout page"}
+                </Typography>
              {!props.checkout ? <Grid item container xs={12} style={{backgroundColor:"#E5E6E7",padding:"10px",display:"flex",alignItems:"center"}}>
                 <Grid item xs={5}>
                 <Typography
@@ -1171,6 +1184,7 @@ class Checkoutcard extends React.Component {
             xs={12}
           >
             <Grid item xs={6} />
+
             <Grid item container xs={12} spacing={12}>
               {/* {dataCard1.map(val => */}
               <Grid item xs={9} lg={8}>
@@ -1340,7 +1354,19 @@ class Checkoutcard extends React.Component {
               </Grid>     
               {/* // )}  */}
             </Grid>
-            
+             <Typography
+                  className={
+                    this.props.checkout
+                      ? `${classes.normalfontsCheck}`
+                      : `subhesder ${classes.normalfonts}`
+                  }
+                  style={{
+                    paddingTop: this.props.checkout ? 20 : "",
+                    lineHeight:2,
+                  }}
+                >
+                  {this.props.checkout ? "" : "International shipping charges will be calculated at the checkout page"}
+             </Typography>
           </Grid>
           <Grid item container xs={12}>
                 {this.checkoutbutton()}
