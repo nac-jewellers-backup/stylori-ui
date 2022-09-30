@@ -158,7 +158,7 @@ const AddressComponent = (props) => {
                                 event.target.value
                               )
                             }
-                            value={values.addressOne.state}
+                            value={values?.addressOne?.state}
                             helperText="State is required"
                             InputProps={{
                               readOnly: true,
@@ -213,9 +213,9 @@ const AddressComponent = (props) => {
                               )
                             }
                             value={values.addressOne.pincode}
-                            onKeyPress={(e) =>
-                              handle.handleKeyPress(e, "pincode")
-                            }
+                            // onKeyPress={(e) =>
+                            //   handle.handleKeyPress(e, "pincode")
+                            // }
                             // helperText="Pin Code is required"
                             // required
                           />
@@ -395,9 +395,9 @@ const AddressComponent = (props) => {
                               )
                             }
                             value={values.addressOne.pincode}
-                            onKeyPress={(e) =>
-                              handle.handleKeyPress(e, "pincode")
-                            }
+                            // onKeyPress={(e) =>
+                            //   handle.handleKeyPress(e, "pincode")
+                            // }
                             // helperText="Pin Code is required"
                             // required
                           />
@@ -446,7 +446,7 @@ const AddressComponent = (props) => {
                                 event.target.value
                               )
                             }
-                            value={values.addressOne.state}
+                            value={values?.addressOne?.state}
                             helperText="State is required"
                             InputProps={{
                               readOnly: true,
@@ -601,7 +601,7 @@ const AddressComponent = (props) => {
                                     event.target.value
                                   )
                                 }
-                                value={values.addressOne.state}
+                                value={values?.addressOne?.state}
                                 helperText="State is required"
                                 InputProps={{
                                   readOnly: true,
@@ -654,9 +654,9 @@ const AddressComponent = (props) => {
                                   )
                                 }
                                 value={values.addressOne.pincode}
-                                onKeyPress={(e) =>
-                                  handle.handleKeyPress(e, "pincode")
-                                }
+                                // onKeyPress={(e) =>
+                                //   handle.handleKeyPress(e, "pincode")
+                                // }
                                 // helperText="Pin Code is required"
                                 // required
                               />

@@ -19,7 +19,6 @@ export const styles = (theme) => ({
     '-webkit-tap-highlight-color': 'transparent',
     border: '1px solid #e8e8e8',
     border: "0px",
-    width:"50%",
     borderColor: "#fff",
     cursor:"pointer"
   },

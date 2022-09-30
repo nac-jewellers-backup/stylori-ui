@@ -860,6 +860,15 @@ class Checkoutcard extends React.Component {
       })
       .reduce(myFunc);
 
+      const mainCard = this.props.data
+      .map((val) => {
+        return (
+          val.dataCard1[0].price *
+          JSON.parse(localStorage.getItem("quantity"))[val.generatedSku]
+        );
+      })
+      .reduce(myFunc);
+
     function myFunc(total, num) {
       var cart_price;
       if (discounted_price.length > 0) {
@@ -882,6 +891,37 @@ class Checkoutcard extends React.Component {
       .reduce(myFunc);
     // let path = window.location.pathname.split("/").pop();
     const { classes } = this.props;
+
+    
+    const totalCostCal = (
+      discountAmount,
+      dataCard,
+      discountPrice,
+      shippingCharge
+    ) => {
+      if (discountAmount) { 
+        if (shippingCharge) {
+          return CurrencyConversion(discountAmount + shippingCharge);
+        } else {
+          return CurrencyConversion(discountAmount);
+        }
+      }
+      else {
+        if (shippingCharge) {
+          return CurrencyConversion(dataCard - discountPrice + shippingCharge);
+        } else {
+          return CurrencyConversion(dataCard - discountPrice);
+        }
+      }
+    };
+
+
+    console.log(
+      props?.cartFilters?.discounted_amount,
+      dataCard1,
+      discounted_price,
+      props?.shipping_charge
+    )
 
     return (
       <div className={classes.main}>
@@ -986,9 +1026,10 @@ class Checkoutcard extends React.Component {
                   }
                   style={{lineHeight:2}}
                 >
-                  {props.cartFilters.gross_amount ?
+                 {props.cartFilters.gross_amount ?
                 CurrencyConversion(props.cartFilters.gross_amount)
-                   :  CurrencyConversion(dataCard1)
+                   :  <div style={{display: 'flex',
+                    justifyContent: 'flex-end'}}><del>{CurrencyConversion(mainCard)}</del><div style={{marginLeft:"5px"}}>{CurrencyConversion(dataCard1)}</div></div>
                   }
 
                 </Typography>
@@ -1036,7 +1077,11 @@ class Checkoutcard extends React.Component {
                     marginBottom: this.props.checkout ? '20px' : ''
                   }}
                 >
-                  {props.shipping_charge}{" "}
+                  {props?.shipping_charge
+                      ? props?.shipping_charge === 0
+                        ? CurrencyConversion(0)
+                        : props?.shipping_charge === 'Free' ? CurrencyConversion(0) : CurrencyConversion(props?.shipping_charge)
+                      : CurrencyConversion(0)}
                 </Typography>
 
                 <Typography
@@ -1053,13 +1098,28 @@ class Checkoutcard extends React.Component {
                     lineHeight:2 
                   }}
                 >
-                    
-            
-                  {props.cartFilters.discounted_amount
-                    ?  CurrencyConversion(props.cartFilters.discounted_amount)
-                    : CurrencyConversion(dataCard1 - discounted_price)}
+                  {totalCostCal(
+                    props?.cartFilters?.discounted_amount,
+                    dataCard1,
+                    discounted_price === "" ? 0 : discounted_price,
+                    props?.shipping_charge === "Free" ? 0 : props?.shipping_charge
+                  )}    
+          
                 </Typography>
               </Grid>
+              <Typography
+                  className={
+                    this.props.checkout
+                      ? `${classes.normalfontsCheck}`
+                      : `subhesder ${classes.normalfonts}`
+                  }
+                  style={{
+                    paddingTop: this.props.checkout ? 20 : "",
+                    lineHeight:2,
+                  }}
+                >
+                  {this.props.checkout ? "" : "International shipping charges will be calculated at the checkout page"}
+                </Typography>
              {!props.checkout ? <Grid item container xs={12} style={{backgroundColor:"#E5E6E7",padding:"10px",display:"flex",alignItems:"center"}}>
                 <Grid item xs={5}>
                 <Typography
@@ -1092,6 +1152,7 @@ class Checkoutcard extends React.Component {
             </Grid>
           </Grid>
           </Hidden>
+
           <Hidden smDown>
           {!props.checkout ? (
                <Grid item container className="summary" xs={12}>
@@ -1105,6 +1166,7 @@ class Checkoutcard extends React.Component {
             xs={12}
           >
             <Grid item xs={6} />
+
             <Grid item container xs={12} spacing={12}>
               {/* {dataCard1.map(val => */}
               <Grid item xs={9} lg={8}>
@@ -1127,7 +1189,7 @@ class Checkoutcard extends React.Component {
                     }
                     style={{lineHeight:2}}
                   >
-                    {this.props.checkout ? "CART DISCOUNT" : "You Saved"}
+                    {this.props.checkout ? "YOU SAVE" : "You save"}
                   </Typography>
                 ) : null}
 
@@ -1187,7 +1249,8 @@ class Checkoutcard extends React.Component {
                 >
                   {props.cartFilters.gross_amount ?
                 CurrencyConversion(props.cartFilters.gross_amount)
-                   :  CurrencyConversion(dataCard1)
+                   :  <div style={{display: 'flex',
+                    justifyContent: 'flex-end'}}><del>{CurrencyConversion(mainCard)}</del><div style={{marginLeft:"5px"}}>{CurrencyConversion(dataCard1)}</div></div>
                   }
 
                 </Typography>
@@ -1235,7 +1298,11 @@ class Checkoutcard extends React.Component {
                     marginBottom: this.props.checkout ? '20px' : ''
                   }}
                 >
-                  {props.shipping_charge}{" "}
+                                    {props?.shipping_chargeshipping 
+                      ? props?.shipping_charge === 0
+                        ? CurrencyConversion(0)
+                        : props?.shipping_charge === 'Free' ? CurrencyConversion(0) : CurrencyConversion(props?.shipping_charge)
+                      : CurrencyConversion(0)}
                 </Typography>
 
                 <Typography
@@ -1252,23 +1319,39 @@ class Checkoutcard extends React.Component {
                     lineHeight:2 
                   }}
                 >
-                    
-            
-                  {props.cartFilters.discounted_amount
+
+                  {totalCostCal(
+                    props?.cartFilters?.discounted_amount,
+                    dataCard1,
+                    discounted_price === "" ? 0 : discounted_price,
+                    props?.shipping_charge === "Free" ? 0 : props?.shipping_charge
+                  )}    
+                  {/* {props.cartFilters.discounted_amount
                     ?  CurrencyConversion(props.cartFilters.discounted_amount)
-                    : CurrencyConversion(dataCard1 - discounted_price)}
+                    : CurrencyConversion(dataCard1 - discounted_price)} */}
                 </Typography>
               </Grid>     
               {/* // )}  */}
             </Grid>
-            
+             <Typography
+                  className={
+                    this.props.checkout
+                      ? `${classes.normalfontsCheck}`
+                      : `subhesder ${classes.normalfonts}`
+                  }
+                  style={{
+                    paddingTop: this.props.checkout ? 20 : "",
+                    lineHeight:2,
+                  }}
+                >
+                  {this.props.checkout ? "" : "International shipping charges will be calculated at the checkout page"}
+             </Typography>
           </Grid>
           <Grid item container xs={12}>
                 {this.checkoutbutton()}
               </Grid>
           </Hidden>
           
-
           <Hidden mdUp>
           {!this.props.checkout ? (
               <Grid item container  style={{margin:10,paddingTop:"20px"}}>

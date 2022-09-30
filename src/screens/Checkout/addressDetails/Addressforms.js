@@ -4,6 +4,7 @@ import { useCheckForCod } from 'hooks/CheckForCodHook';
 import { CheckForCod } from 'queries/productdetail';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { CartContext } from '../../../context/CartContext';
+import { API_URL } from 'config';
 
 var obj = {}
 var delet = {}
@@ -34,7 +35,7 @@ const Addressforms = (changePanel) => {
             pincode: "",
             city: "",
             state: "",
-            country: "India",
+            country: "",
             country_code: "+91",
             contactno: "",
             addresstype: 1,
@@ -51,7 +52,7 @@ const Addressforms = (changePanel) => {
             pincode: "",
             city: "",
             state: "",
-            country: "India",
+            country: "",
             country_code: "+91",
             contactno: "",
             addresstype: 2,
@@ -138,60 +139,137 @@ const Addressforms = (changePanel) => {
             window.location.reload()
         }
     }, [removedata])
-    useEffect((event) => {
-        const a = CodData.data ? CodData.data.allPincodeMasters : "";
-        // alert(JSON.stringify(CodData)) 
-        if (a) {
-            var res = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].state : ''
-            var res1 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].country : ''
-            var res2 = CodData && CodData.data && CodData.data.allPincodeMasters && CodData.data.allPincodeMasters.nodes && CodData.data.allPincodeMasters.nodes[0] ? CodData.data.allPincodeMasters.nodes[0].district : ''
+    useEffect(
+        (event) => {
+          const a = CodData.data ? CodData.data.allPincodeMasters : "";
+    
+          if (a?.nodes && a?.nodes?.length) {
+            var res =
+              CodData &&
+              CodData.data &&
+              CodData.data.allPincodeMasters &&
+              CodData.data.allPincodeMasters.nodes &&
+              CodData.data.allPincodeMasters.nodes[0]
+                ? CodData.data.allPincodeMasters.nodes[0].state ?? ""
+                : "";
+            var res1 =
+              CodData &&
+              CodData.data &&
+              CodData.data.allPincodeMasters &&
+              CodData.data.allPincodeMasters.nodes &&
+              CodData.data.allPincodeMasters.nodes[0]
+                ? CodData.data.allPincodeMasters.nodes[0].country ?? ""
+                : "";
+            var res2 =
+              CodData &&
+              CodData.data &&
+              CodData.data.allPincodeMasters &&
+              CodData.data.allPincodeMasters.nodes &&
+              CodData.data.allPincodeMasters.nodes[0]
+                ? CodData.data.allPincodeMasters.nodes[0].district ?? ""
+                : "";
             if (res2.length > 0) {
-                if (pincods.pincod === "pincode1") {
-                    values['addressOne']['state'] = res
-                    values['addressOne']['country'] = res1
-                    values['addressOne']['city'] = res2
-
-                } if (pincods.pincod === "pincode2") {
-                    values['addressTwo']['state'] = res
-                    values['addressTwo']['country'] = res1
-                    values['addressTwo']['city'] = res2
+              if (pincods.pincod === "pincode1") {
+                values["addressOne"]["state"] = res;
+                values["addressOne"]["country"] = res1;
+                values["addressOne"]["city"] = res2;
+              }
+              if (pincods.pincod === "pincode2") {
+                values["addressTwo"]["state"] = res;
+                values["addressTwo"]["country"] = res1;
+                values["addressTwo"]["city"] = res2;
+              }
+              if (pincods.pincod === "pincode1") {
+                if (
+                  res2 === "" ||
+                  (values["addressOne"] && values["addressOne"]["errortext"])
+                ) {
+                  values["addressOne"]["errortext"]["pinerr"] = "";
                 }
-                if (pincods.pincod === "pincode1") {
-                    if (res2 === "" || values["addressOne"] && values["addressOne"]['errortext']) {
-                        values["addressOne"]['errortext']['pinerr'] = ""
-                    }
-                } else {
-                    if (res2 === "" || values["addressOne"] && values["addressOne"]['errortext']) {
-                        values["addressTwo"]['errortext']['pinerr1'] = ""
-                    }
+              } else {
+                if (
+                  res2 === "" ||
+                  (values["addressOne"] && values["addressOne"]["errortext"])
+                ) {
+                  values["addressTwo"]["errortext"]["pinerr1"] = "";
                 }
+              }
             } else {
                 if (pincods.pincod === "pincode1") {
-                    if (res2.length < 0 || res2 === "" || (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr'])) {
-                        values["addressOne"]['errortext']['pinerr'] = "Your pincode is Invalid!"
-                    }
-                } else {
-                    if (res2.length < 0 || res2 === "" || (values["addressOne"] && values["addressOne"]['errortext'] && values["addressTwo"]['errortext']['pinerr1'])) {
-                        values["addressTwo"]['errortext']['pinerr1'] = "Your pincode is Invalid!"
-                    }
+                    values["addressOne"]["state"] = res;
+                    values["addressOne"]["country"] = res1;
+                    values["addressOne"]["city"] = res2;
+                  }
+                  if (pincods.pincod === "pincode2") {
+                    values["addressTwo"]["state"] = res;
+                    values["addressTwo"]["country"] = res1;
+                    values["addressTwo"]["city"] = res2;
+                  }
+              if (pincods.pincod === "pincode1") {
+                if (
+                  res2.length < 0 ||
+                  res2 === "" ||
+                  (values["addressOne"] &&
+                    values["addressOne"]["errortext"] &&
+                    values["addressOne"]["errortext"]["pinerr"])
+                ) {
+                  values["addressOne"]["errortext"]["pinerr"] =
+                    "";
                 }
+              } else {
+                if (
+                  res2.length < 0 ||
+                  res2 === "" ||
+                  (values["addressTwo"] &&
+                    values["addressTwo"]["errortext"] &&
+                    values["addressTwo"]["errortext"]["pinerr1"])
+                ) {
+                  values["addressTwo"]["errortext"]["pinerr1"] =
+                    "";
+                }
+              }
             }
-            setValues({ ...values, values })
-        }
-    }, [CodData])
+            setValues({ ...values, values });
+          } else if (a?.nodes === undefined || a?.nodes?.length == 0) {
+            if (values.addressOne.pincode || values.addressTwo.pincode) {
+              let pins = values.addressOne.pincode || values.addressTwo.pincode;
+              fetch(`${API_URL}/get_pincode_details?pincode=${pins}`, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+              })
+                .then((response) => response.json())
+                .then((response) => {
+                  if (response.status == "OK") {
+                    makeRequestCod({ pincode: pins });
+                  }
+                });
+            }
+          }
+        },
+        [CodData]
+      );
     const handleChange = (type, field, value, pincod) => {
         values[type][field] = value;
         if (field === 'pincode') {
-            values[type]['pincode'] = value;
-            const val = values.addressOne.pincode || values.addressTwo.pincode
-            var variab = {}
-            variab["pincode"] = value
-            if (value.length > 5) {
-                // alert(JSON.stringify(value))
-                if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
-                    makeRequestCod(variab);
+           
+            if(value === ''){
+                values[type]['city'] = '';
+                values[type]['country'] = '';
+                values[type]['state'] = '';
+                setValues({ ...values, values })
+            }
+            else{
+                values[type]['pincode'] = value;
+                const val = values.addressOne.pincode || values.addressTwo.pincode
+                var variab = {}
+                variab["pincode"] = value;
+                if(value.length >= 4){
+                        if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
+                            makeRequestCod(variab);
+                        }
                 }
             }
+           
         }
         pincods["pincod"] = pincod
         setpincod({ ...pincods, pincods })
@@ -211,7 +289,7 @@ const Addressforms = (changePanel) => {
         }
 
 
-        if (values && values.addressOne && values.addressOne.pincode && values.addressOne.pincode.length < 6 ||
+        if (values && values.addressOne && values.addressOne.pincode && values.addressOne.pincode.length < 4 ||
             (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr'])) {
             // if (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr']) {
             values["addressOne"]['errortext']['pinerr'] = "Your pincode is Invalid!"
@@ -219,7 +297,7 @@ const Addressforms = (changePanel) => {
             // }
             return false
         }
-        if (values && values.addressTwo && values.addressTwo.pincode && values.addressTwo.pincode.length < 5 ||
+        if (values && values.addressTwo && values.addressTwo.pincode && values.addressTwo.pincode.length < 4 ||
             (values["addressTwo"] && values["addressTwo"]['errortext'] && values["addressTwo"]['errortext']['pinerr1'])) {
             // if (values["addressOne"] && values["addressOne"]['errortext'] && values["addressTwo"]['errortext']['pinerr1']) {
             values["addressTwo"]['errortext']['pinerr1'] = "Your pincode is Invalid!"
@@ -336,11 +414,8 @@ const Addressforms = (changePanel) => {
         // window.location.reload(); 
     }
     const selectaddreses = (val_addrs, num, index, ship) => {
-        
-
         var obj_user = {}
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
-        let set_check = localStorage.getItem("set_check") ? localStorage.getItem("set_check") : ""
         obj_user["user_id"] = user_id
         // changePanel(3,values.selest_my_address)
         if (ship === "yes") {
@@ -368,11 +443,11 @@ const Addressforms = (changePanel) => {
                 addObjall['address'] = [adars1 && adars1[0]];
                 val_addrs["addresstype"] = num
                 makeFetchall(addObjall);
+                window.location.reload();
             }
-            // alert("your address send on successful")
+           
             if (!pathnames) {
                 changePanel(3, values.selest_my_address)
-                // window.location.reload()
             }
             return false
         }
@@ -453,20 +528,14 @@ const Addressforms = (changePanel) => {
                 // alert("your address send on successful")
                 if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                     makeFetchall(addObjall);
+                    window.location.reload();
                 }
                 if (!pathnames) {
                     changePanel(3, values.selest_my_address)
-                    // window.location.reload()
                 }
             }
-            // if (values.checkValue1 === true) {
-            // }
+           
         }
-
-        // if (!set_check.length > 0) {
-        //     localStorage.removeItem("cart_id")
-        //     setCartFilters(obj_user)
-        // }
     }
     var deletss = {}
     const Delete_address = (val_addrs, index) => {
