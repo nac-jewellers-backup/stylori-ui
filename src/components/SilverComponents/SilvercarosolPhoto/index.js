@@ -73,7 +73,7 @@ const SilverCarousel = (props) => {
             {state.map((val, index) => (
               <a href={`${val.url} `}>
                 <Grid container>
-                  <LazyLoadImage src={val.mobile} alt="Stylori" style={{ width: "100%", height: "100%" }} />
+                  <LazyLoadImage loading="lazy" src={val.mobile} alt="Stylori" style={{ width: "100%", height: "100%" }} />
                   {/* <img
                     loading="lazy"
                     src={val.mobileImg}

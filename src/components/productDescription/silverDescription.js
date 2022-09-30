@@ -53,11 +53,11 @@ const styles = (theme) => ({
     // textAlign: "center                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
   },
   descriptionTextLine: {
-    fontSize: "14px !important",
+    fontSize: "16px !important",
     color: "#6D6E71",
     textAlign: "center",
     [theme.breakpoints.down('md')]: {
-      fontSize: "10px !important",
+      fontSize: "14px !important",
     },
     // textAlign: "center                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
   },
