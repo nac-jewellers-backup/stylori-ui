@@ -11,14 +11,14 @@ body {
 
 
 .heart{
-    right: 660px;
+    right: 10px;
     padding-top: 7px;
     position: absolute;
     z-index: 500;
     margin: 10px; 
 }
 
-@media only screen and (min-width: 1024px) and (max-width:1060px) {
+/* @media only screen and (min-width: 1024px) and (max-width:1060px) {
     .heart{
         right: 530px;
     }
@@ -82,7 +82,7 @@ body {
     .heart{
         right: 200px;
     }
-}
+} */
 
 #modalElementSizeGuide {
     overflow: hidden;

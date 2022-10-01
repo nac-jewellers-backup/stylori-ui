@@ -39,7 +39,7 @@ const styles = (theme) => ({
     textTransform: "capitalize",
   },
   descriptionText: {
-    fontSize: "14px !important",
+    fontSize: "16px !important",
     color: "#6D6E71",
     textAlign: "center",
     overflow: "hidden",
@@ -48,16 +48,16 @@ const styles = (theme) => ({
     "-webkit-line-clamp": 3,
     "-webkit-box-orient": "vertical",
     [theme.breakpoints.down('md')]: {
-      fontSize: "10px !important",
+      fontSize: "14px !important",
     },
     // textAlign: "center                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
   },
   descriptionTextLine: {
-    fontSize: "14px !important",
+    fontSize: "16px !important",
     color: "#6D6E71",
     textAlign: "center",
     [theme.breakpoints.down('md')]: {
-      fontSize: "10px !important",
+      fontSize: "14px !important",
     },
     // textAlign: "center                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ",
   },
@@ -325,8 +325,8 @@ class ProductDescription extends Component {
                           {datadescription}         
                         </Grid>
                         <Grid item>
-                        <span onClick={this.handleReadMore} style={{cursor:"pointer"}}>
-                          {this.state.showLess ? 'Show More' : 'Show Less'}
+                        <span onClick={this.handleReadMore} style={{cursor:"pointer",fontSize:"14px"}}>
+                          {this.state.showLess ? 'Show More...' : 'Show Less'}
                         </span>
                         </Grid>
                       </Grid>

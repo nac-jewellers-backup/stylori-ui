@@ -167,7 +167,7 @@ export const TopFilters = (props) => {
                           <Grid item xs={6} className={classes.filtersLabel}>
                             <a href={listName.url}>
                               {listName === "Style"
-                                ? "PRODUCT STYLE"
+                                ? <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STYLE</p>
                                 : listName}
                             </a>
                           </Grid>

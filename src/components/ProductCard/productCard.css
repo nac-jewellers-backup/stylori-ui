@@ -275,19 +275,16 @@
 
 .imageHeight_silver {
   min-height: 144px;
-  transition: all 4s;
-    -moz-transition: all 4s;
-    -webkit-transition: all 4s;
-    -o-transition: all 4s;
-    -ms-transition: all 4s;
+}
+
+.imageHeight_silver img {
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
 }
 
 .imageHeight_silver :hover{
-  transform : scale(1.03);
-  -moz-transform : scale(1.03);
-  -webkit-transform : scale(1.03);
-  -o-transform : scale(1.03);
-  -ms-transform : scale(1.03);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 @media only screen and (max-width: 375px) and (min-width: 320px) {

@@ -224,13 +224,13 @@ const Gallery = (
           }
           title={props.data.title}
           placeholderSrc={`https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/StyloriSilver+nemonic.png`}
-          onMouseOver={() => {
-            callmouseover();
-          }}
-          onMouseOut={() => {
-            callmouseout();
-          }}
-          style={{ width: "100%" }}
+          // onMouseOver={() => {
+          //   callmouseover();
+          // }}
+          // onMouseOut={() => {
+          //   callmouseout();
+          // }}
+          style={{ width: "100%",transition:'all 0.5s' }}
           scrollPosition={scrollPosition}
 
           // If the image we are creating here has the same src than before,
@@ -444,6 +444,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cardActionsImage: {
     margin: 0,
+    overflow:'hidden',
     [theme.breakpoints.down("md")]: {
       // height: '200px !important'
     },

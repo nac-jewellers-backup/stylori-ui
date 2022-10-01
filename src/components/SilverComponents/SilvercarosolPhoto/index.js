@@ -45,7 +45,7 @@ const SilverCarousel = (props) => {
     fetchBanner();
   }, []);
   return (
-    <Grid container xs={12}>
+    <Grid container xs={12} style={{paddingTop:"20px"}}>
       <Helmet>
         <meta property="og:title" content="Stylori Silver - Silver Jewellery" />
         <meta name="description" property="og:description" content={carouselTop[0].content} />{" "}
@@ -73,7 +73,7 @@ const SilverCarousel = (props) => {
             {state.map((val, index) => (
               <a href={`${val.url} `}>
                 <Grid container>
-                  <LazyLoadImage src={val.mobile} alt="Stylori" style={{ width: "100%", height: "100%" }} />
+                  <LazyLoadImage loading="lazy" src={val.mobile} alt="Stylori" style={{ width: "100%", height: "100%" }} />
                   {/* <img
                     loading="lazy"
                     src={val.mobileImg}

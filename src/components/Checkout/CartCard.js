@@ -1077,11 +1077,13 @@ class Checkoutcard extends React.Component {
                     marginBottom: this.props.checkout ? '20px' : ''
                   }}
                 >
-                  {props?.shipping_charge
+                 {props?.shipping_charge
                       ? props?.shipping_charge === 0
-                        ? CurrencyConversion(0)
-                        : props?.shipping_charge === 'Free' ? CurrencyConversion(0) : CurrencyConversion(props?.shipping_charge)
-                      : CurrencyConversion(0)}
+                        ? CurrencyConversion(props?.shipping_charge)
+                        :
+                          CurrencyConversion(props?.shipping_charge)
+                      : 
+                        CurrencyConversion(0)}
                 </Typography>
 
                 <Typography
@@ -1298,11 +1300,13 @@ class Checkoutcard extends React.Component {
                     marginBottom: this.props.checkout ? '20px' : ''
                   }}
                 >
-                                    {props?.shipping_chargeshipping 
+                                  {props?.shipping_charge
                       ? props?.shipping_charge === 0
-                        ? CurrencyConversion(0)
-                        : props?.shipping_charge === 'Free' ? CurrencyConversion(0) : CurrencyConversion(props?.shipping_charge)
-                      : CurrencyConversion(0)}
+                        ? CurrencyConversion(props?.shipping_charge)
+                        :
+                          CurrencyConversion(props?.shipping_charge)
+                      : 
+                        CurrencyConversion(0)}
                 </Typography>
 
                 <Typography
