@@ -45,7 +45,7 @@ const SilverCarousel = (props) => {
     fetchBanner();
   }, []);
   return (
-    <Grid container xs={12}>
+    <Grid container xs={12} style={{paddingTop:"20px"}}>
       <Helmet>
         <meta property="og:title" content="Stylori Silver - Silver Jewellery" />
         <meta name="description" property="og:description" content={carouselTop[0].content} />{" "}
