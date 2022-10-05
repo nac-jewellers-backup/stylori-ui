@@ -19,9 +19,10 @@ import { makeStyles } from "@material-ui/core";
 import { SimpleSnackbar } from "../Alert";
 import { Clear } from "@material-ui/icons";
 import "index.css";
-import { GoogleLogin } from "react-google-login";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-import { API_URL, FACEBOOK_APP_ID, GOOGLE_CLIENT_ID } from "../../../config";
+import { API_URL, FACEBOOK_APP_ID } from "../../../config";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   mobile: {
@@ -239,15 +240,25 @@ function Login(props) {
     }
   };
 
-  const responseGoogle = (response) => {
+  const login = useGoogleLogin({
+    onSuccess: ({ access_token }) => {
+      axios
+        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: { Authorization: `Bearer ${access_token}` },
+        })
+        .then((res) => responseGoogle(res.data));
+    },
+  });
+
+  const responseGoogle = (response) => {    
     if (response) {
       let body = {
         type: "google",
         mediaBody: {
           id: response?.googleId,
-          ...response?.profileObj,
-          firstName: response?.profileObj?.givenName,
-          lastName: response?.profileObj?.familyName,
+          ...response,
+          firstName: response?.givenName,
+          lastName: response?.familyName,
         },
       };
       const opts = {
@@ -258,6 +269,7 @@ function Login(props) {
       fetch(`${url}/api/auth/mediasignin`, opts)
         .then((res) => res.json())
         .then((fetchValue) => {
+          debugger
           if (fetchValue.accessToken) {
             localStorage.setItem("accessToken", fetchValue.accessToken);
             localStorage.setItem("user_id", fetchValue.user.id);
@@ -331,7 +343,6 @@ function Login(props) {
     {},
     []
   );
-
 
   useEffect(() => {
     if (data?.accessToken) {
@@ -445,30 +456,30 @@ function Login(props) {
                   />
                 </Grid>
                 <Grid item xs={12} lg={6}>
-                  <GoogleLogin
+                  <Button
+                    className="button"
+                    variant="contained"
+                    fullWidth
+                    onClick={() => login()}
+                    startIcon={
+                      <img
+                        src={gmail}
+                        alt="gmail"
+                        loading="lazy"
+                        style={{ width: "60%", height: "60%" }}
+                      />
+                    }
+                  >
+                    Sign in with Google
+                  </Button>
+                  {/* <GoogleLogin
                     clientId={GOOGLE_CLIENT_ID}
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                     cookiePolicy={"single_host_origin"}
-                    render={(renderProps) => (
-                      <Button
-                        className="button"
-                        variant="contained"
-                        fullWidth
-                        onClick={renderProps.onClick}
-                        startIcon={
-                          <img
-                            src={gmail}
-                            alt="gmail"
-                            loading="lazy"
-                            style={{ width: "60%", height: "60%" }}
-                          />
-                        }
-                      >
-                        Sign in with Google
-                      </Button>
+                    render={(renderProps) => (                      
                     )}
-                  />
+                  /> */}
                 </Grid>
                 <Grid item xs={12} lg={6} className={classes.mobile}>
                   {condition.isMobile ? (

@@ -9,10 +9,13 @@ import Theme from "./Theme.js";
 import { withRouter } from "react-router-dom";
 import CacheBuster from "./components/cacheBrust";
 import ErrorBoundary from "components/errorcatching/ErrorCatching";
-
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { GOOGLE_CLIENT_ID } from "./config";
 
 let jewellery_theme = createTheme(require("./jewellery_theme.json"));
-let silver_jewellery_theme = createTheme(require("./silver_jewellery_theme.json"));
+let silver_jewellery_theme = createTheme(
+  require("./silver_jewellery_theme.json")
+);
 let jewelleryThemes = responsiveFontSizes(jewellery_theme);
 let silverThemes = responsiveFontSizes(silver_jewellery_theme);
 const RouterApp = React.lazy(() => import("router"));
@@ -50,7 +53,9 @@ class App extends React.Component {
                     {/*productId="SP1135" <ProductDetailProvider productId="SP1135">*/}
                     <Router>
                       <React.Suspense fallback={Loading}>
-                        <RouterApp />
+                        <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+                          <RouterApp />
+                        </GoogleOAuthProvider>
                       </React.Suspense>
                     </Router>
                     {/* </ProductDetailProvider> */}
