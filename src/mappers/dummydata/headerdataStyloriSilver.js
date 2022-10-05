@@ -2215,6 +2215,11 @@ export const menuLists = {
   FINISH: {
     menuOne: [
       {
+        value: "Victorian",
+        title: "Victorian",
+        url: " https://www.stylori.com/silver-jewellery-victorian",
+      },
+      {
         value: "Gold Plated Kundan",
         title: "Gold Plated Kundan",
         url: "https://www.stylori.com/silver-jewellery-gold+plated+kundan",
