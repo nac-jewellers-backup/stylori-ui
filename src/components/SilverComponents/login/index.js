@@ -226,6 +226,7 @@ function Login(props) {
             localStorage.setItem("accessToken", fetchValue.accessToken);
             localStorage.setItem("user_id", fetchValue.userprofile.id);
             localStorage.setItem("email", fetchValue.userprofile.email);
+            localStorage.setItem("true",true)
             props.handleClose();
           } else {
             if (typeof response.email === "undefined") {
@@ -277,8 +278,8 @@ function Login(props) {
             localStorage.setItem("accessToken", fetchValue.accessToken);
             localStorage.setItem("user_id", fetchValue.userprofile.id);
             localStorage.setItem("email", fetchValue.userprofile.email);
+            localStorage.setItem("true",true)
             props.handleClose();
-        
           } else {
             if (typeof response.email === "undefined") {
               setValues({
