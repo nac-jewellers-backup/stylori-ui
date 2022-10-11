@@ -81,7 +81,6 @@ class HomeStylori extends React.Component {
   }
 
   handleClose = () => {
-    console.log('Im calling....')
     this.setState({
       login: false,
     });

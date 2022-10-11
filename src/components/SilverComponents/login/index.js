@@ -226,9 +226,7 @@ function Login(props) {
             localStorage.setItem("accessToken", fetchValue.accessToken);
             localStorage.setItem("user_id", fetchValue.userprofile.id);
             localStorage.setItem("email", fetchValue.userprofile.email);
-            if(props.handleClose){
-              props.handleClose();
-            }
+            props.handleClose();
           } else {
             if (typeof response.email === "undefined") {
               setValues({
