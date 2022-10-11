@@ -37,6 +37,8 @@ function Login(props) {
   const history = useHistory();
   const classes = useStyles();
 
+  console.log(props,"?//")
+
   let url = API_URL;
   const [values, setValues] = useState({
     email: "",
@@ -152,8 +154,9 @@ function Login(props) {
             localStorage.setItem("accessToken", fetchValue.accessToken);
             localStorage.setItem("user_id", fetchValue.user.id);
             localStorage.setItem("email", fetchValue.user.email);
-            props.handleClose();
-          } else {
+            
+              props.handleClose();
+          
           }
         })
         .catch((err) => {
@@ -221,9 +224,11 @@ function Login(props) {
         .then((fetchValue) => {
           if (fetchValue.accessToken) {
             localStorage.setItem("accessToken", fetchValue.accessToken);
-            localStorage.setItem("user_id", fetchValue.user.id);
-            localStorage.setItem("email", fetchValue.user.email);
-            props.handleClose();
+            localStorage.setItem("user_id", fetchValue.userprofile.id);
+            localStorage.setItem("email", fetchValue.userprofile.email);
+            if(props.handleClose){
+              props.handleClose();
+            }
           } else {
             if (typeof response.email === "undefined") {
               setValues({
@@ -269,12 +274,13 @@ function Login(props) {
       fetch(`${url}/api/auth/mediasignin`, opts)
         .then((res) => res.json())
         .then((fetchValue) => {
-          debugger
+          
           if (fetchValue.accessToken) {
             localStorage.setItem("accessToken", fetchValue.accessToken);
-            localStorage.setItem("user_id", fetchValue.user.id);
-            localStorage.setItem("email", fetchValue.user.email);
+            localStorage.setItem("user_id", fetchValue.userprofile.id);
+            localStorage.setItem("email", fetchValue.userprofile.email);
             props.handleClose();
+        
           } else {
             if (typeof response.email === "undefined") {
               setValues({
@@ -376,7 +382,9 @@ function Login(props) {
 
   useEffect(() => {
     if (condition.cls === true) {
-      props.handleClose();
+      if(props.handleClose){
+        props.handleClose();
+      }
     }
   }, [condition.cls]);
 
