@@ -40,6 +40,7 @@ const useLogin = (changePanel, props) => {
     data: addresData,
     makeRequestCod,
   } = useCheckForCod(ADDRESSDETAILS, () => {}, {});
+
   React.useEffect(() => {
     var ms = data && data.message;
 
@@ -222,6 +223,7 @@ const useLogin = (changePanel, props) => {
     localStorage.setItem("user_id", bb);
     sessionStorage.setItem("user_id", bb);
     localStorage.setItem("accessToken", data.accessToken);
+    changePanel()
   };
   const FacebookLogin = (data) => {
     localStorage.setItem("email", data.userprofile.email);
@@ -233,6 +235,7 @@ const useLogin = (changePanel, props) => {
     localStorage.setItem("user_id", bb);
     sessionStorage.setItem("user_id", bb);
     localStorage.setItem("accessToken", data.accessToken);
+    changePanel()
   };
 
   const handlers = {

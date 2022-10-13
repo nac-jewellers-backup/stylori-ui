@@ -247,10 +247,10 @@ function Login2(props) {
       let body = {
         type: "google",
         mediaBody: {
-          id: response?.googleId,
-          ...response?.profileObj,
-          firstName: response?.profileObj?.givenName,
-          lastName: response?.profileObj?.familyName,
+          id: response?.sub,
+          ...response,
+          firstName: response?.givenName,
+          lastName: response?.familyName,
         },
       };
       const opts = {
