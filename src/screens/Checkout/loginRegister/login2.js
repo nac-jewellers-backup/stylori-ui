@@ -199,11 +199,10 @@ function Login2(props) {
         type: "facebook",
         mediaBody: {
           ...response,
-          firstName: response.first_name,
-          lastName: response.last_name,
+          firstName: response.given_name,
+          lastName: response.familyName,
         },
       };
-
       const opts = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -335,11 +334,6 @@ function Login2(props) {
     } else {
       if (data?.accessToken) {
         handlers.VerifyOTP(data);
-        // localStorage.setItem("email", data.userprofile.email);
-        // var bb = data.userprofile.id ? data.userprofile.id : "";
-        // localStorage.setItem("user_id", bb);
-        // sessionStorage.setItem("user_id", bb);
-        // localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("check_dlt", false);
         localStorage.setItem("isedit", 1);
         localStorage.setItem("true", false);
