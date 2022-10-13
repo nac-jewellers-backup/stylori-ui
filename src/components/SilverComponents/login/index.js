@@ -259,7 +259,7 @@ function Login(props) {
       let body = {
         type: "google",
         mediaBody: {
-          id: response?.googleId,
+          id: response?.sub,
           ...response,
           firstName: response?.givenName,
           lastName: response?.familyName,
