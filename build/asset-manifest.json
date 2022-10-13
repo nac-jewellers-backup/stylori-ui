@@ -14,7 +14,11 @@
     "static/js/4.js": "/static/js/4.js",
     "static/js/4.js.map": "/static/js/4.js.map",
     "index.html": "/index.html",
+<<<<<<< HEAD
     "precache-manifest.6a34951879bb8b3ada54d28b866dc182.js": "/precache-manifest.6a34951879bb8b3ada54d28b866dc182.js",
+=======
+    "precache-manifest.f5238f11c61d6ea640c50cf405624d9f.js": "/precache-manifest.f5238f11c61d6ea640c50cf405624d9f.js",
+>>>>>>> c325b1565ab5caa84b4716afa8f0232b4a517431
     "service-worker.js": "/service-worker.js",
     "static/css/2.css.map": "/static/css/2.css.map",
     "static/css/4.css.map": "/static/css/4.css.map",

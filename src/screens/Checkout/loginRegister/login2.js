@@ -16,10 +16,11 @@ import { useNetworkRequest } from "hooks/index";
 import { makeStyles } from "@material-ui/core";
 import { Clear } from "@material-ui/icons";
 import "index.css";
-import { GoogleLogin } from "react-google-login";
+import { useGoogleLogin } from "@react-oauth/google";
 import useLogin from "./useLogin";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-import { API_URL, FACEBOOK_APP_ID, GOOGLE_CLIENT_ID } from "../../../config";
+import { API_URL, FACEBOOK_APP_ID } from "../../../config";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   mobile: {
@@ -232,6 +233,16 @@ function Login2(props) {
     }
   };
 
+  const login = useGoogleLogin({
+    onSuccess: ({ access_token }) => {
+      axios
+        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: { Authorization: `Bearer ${access_token}` },
+        })
+        .then((res) => responseGoogle(res.data));
+    },
+  });
+
   const responseGoogle = (response) => {
     if (response) {
       let body = {
@@ -400,31 +411,22 @@ function Login2(props) {
               />
             </Grid>
             <Grid item xs={12} lg={6}>
-              <GoogleLogin
-                clientId={GOOGLE_CLIENT_ID}
-                render={(renderProps) => (
-                  <Button
-                    className="button"
-                    variant="contained"
-                    fullWidth
-                    onClick={renderProps.onClick}
-                    startIcon={
-                      <img
-                        src={gmail}
-                        alt="gmail"
-                        loading="lazy"
-                        style={{ width: "60%", height: "60%" }}
-                      />
-                    }
-                  >
-                    Sign in with Google
-                  </Button>
-                )}
-                buttonText="Login"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={"single_host_origin"}
-              />
+              <Button
+                className="button"
+                variant="contained"
+                fullWidth
+                onClick={() => login()}
+                startIcon={
+                  <img
+                    src={gmail}
+                    alt="gmail"
+                    loading="lazy"
+                    style={{ width: "60%", height: "60%" }}
+                  />
+                }
+              >
+                Sign in with Google
+              </Button>
             </Grid>
             <Grid item xs={12} lg={6} className={classes.mobile}>
               {condition.isMobile ? (
