@@ -32,10 +32,12 @@ const AddressComponent = (props) => {
       checked={values.checkValue}
     />
   );
+
   var isedit = localStorage.getItem("isedit");
   const aa = localStorage.getItem("m")
     ? localStorage.getItem("m")
     : values.addressOne.salutation;
+    
   return (
     <Grid>
       <div>
@@ -898,8 +900,8 @@ const AddressComponent = (props) => {
                   type="submit"
                   className="apply-b"
                   style={{
-                    background: props.isCheck ? "#d51f63" : "",
-                    border: props.isCheck ? "1px solid #d51f63" : "",
+                    background: props.isCheck ? "#d51f63 !important" : "",
+                    border: props.isCheck ? "1px solid #d51f63 !important" : "",
                   }}
                 >
                   Add
