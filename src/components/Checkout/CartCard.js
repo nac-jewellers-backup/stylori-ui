@@ -539,7 +539,7 @@ class Checkoutcard extends React.Component {
                         ))} */}
 
                           {window.location.pathname !== "/checkout" ? (
-                            <div style={{lineHeight:3.2}}>
+                            <div>
                               <Button
                                 // className="highlighter"
                                 // className={`subhesder hov ${classes.normalfonts}`}
