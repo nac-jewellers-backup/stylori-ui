@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
     color:"#fff",
   },
   title:{
-    width:'250px',
+    width:'270px',
     [theme.breakpoints.down("sm")]: {
       width:"auto"
     },
@@ -139,7 +139,6 @@ const SliderWithHeading = (props) => {
 
   const {  products = [] } = props;
 
-  console.log(products,"???")
 
   const handlePrevClick = () => {
     sliderInstance.slickPrev();

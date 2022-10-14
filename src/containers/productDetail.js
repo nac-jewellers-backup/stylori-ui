@@ -365,6 +365,7 @@ class ProductDetail extends Component {
 
     const { classes } = this.props;
     const jewelData = this.props?.data?.[0];
+ 
 
     var brand_card = [
       {
@@ -739,7 +740,7 @@ class ProductDetail extends Component {
             <div className={classes.sliderWithHeadingContainer}>
               <SliderWithHeading
                 heading="Recently Viewed"
-                products={jewelData?.fadeImageSublistRecentlyViewed.length > 0 ? jewelData?.fadeImageSublistRecentlyViewed : jewelData?.fadeImageSublist }
+                products={jewelData?.fadeImageSublistRecentlyViewed.length > 0 ? jewelData?.fadeImageSublistRecentlyViewed : [] }
               />
             </div>
           )}
@@ -933,7 +934,7 @@ class ProductDetail extends Component {
             <div className={classes.sliderWithHeadingContainer}>
               <SliderWithHeading
                 heading="Recently Viewed"
-                products={jewelData?.fadeImageSublistRecentlyViewed.length > 0 ? jewelData?.fadeImageSublistRecentlyViewed : jewelData?.fadeImageSublist }
+                products={jewelData?.fadeImageSublistRecentlyViewed.length > 0 ? jewelData?.fadeImageSublistRecentlyViewed : [] }
               />
             </div>
           )}

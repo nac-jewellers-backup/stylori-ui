@@ -613,7 +613,16 @@ class Header extends Component {
                               >
                                 <img src={heart} alt="icon" loading="lazy" />
                               </i>
-                              <span className="tooltip-w">Wishlist</span>
+                              <span
+                                  className="tooltip-s"
+                                  style={{
+                                    color: isSilver
+                                      ? "rgb(6, 171, 159)"
+                                      : "#d51f63",
+                                  }}
+                                >
+                                  Wishlist
+                                </span>
                                </Badge>
                               
                                  : <div>
@@ -630,7 +639,16 @@ class Header extends Component {
                               >
                                 <img src={heart} alt="icon" loading="lazy" />
                               </i>
-                              <span className="tooltip-w">Wishlist</span>
+                              <span
+                                  className="tooltip-s"
+                                  style={{
+                                    color: isSilver
+                                      ? "rgb(6, 171, 159)"
+                                      : "#d51f63",
+                                  }}
+                                >
+                                  Wishlist
+                                </span>
                                  </div>)
                             }
                           </div>
@@ -966,7 +984,16 @@ class Header extends Component {
                               >
                                 <img src={heart} alt="icon" loading="lazy" />
                               </i>
-                              <span className="tooltip-w">Wishlist</span>
+                              <span
+                                  className="tooltip-s"
+                                  style={{
+                                    color: isSilver
+                                      ? "rgb(6, 171, 159)"
+                                      : "#d51f63",
+                                  }}
+                                >
+                                  Wishlist
+                                </span>
                                      </Badge>
                                  : <div>
                                    <i
@@ -982,7 +1009,16 @@ class Header extends Component {
                               >
                                 <img src={heart} alt="icon" loading="lazy" />
                               </i>
-                              <span className="tooltip-w">Wishlist</span>
+                              <span
+                                  className="tooltip-s"
+                                  style={{
+                                    color: isSilver
+                                      ? "rgb(6, 171, 159)"
+                                      : "#d51f63",
+                                  }}
+                                >
+                                  Wishlist
+                                </span>
                                  </div>)
                             }
                           </div>
