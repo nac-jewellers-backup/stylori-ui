@@ -132,7 +132,6 @@ class Checkoutcard extends React.Component {
         .then(json)
         .then((val) => {
           sessionStorage.removeItem("updatedProduct");
-          alert(val.message);
           var cartId = JSON.parse(localStorage.getItem("cartDetails")).cart_id;
           var userId = JSON.parse(localStorage.getItem("cartDetails")).user_id;
           var localstorage = JSON.stringify({

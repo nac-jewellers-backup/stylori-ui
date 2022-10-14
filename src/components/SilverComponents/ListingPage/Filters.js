@@ -18,7 +18,7 @@ const Filters = (props) => {
   const [productDisplay, setProductDisplay] = React.useState(true)
   const [CardRadio, setCardRadio] = React.useState(false)
   const selectType = (came, a, b, d) => {
-    alert('thisss2')
+
     if (Object.entries(came).length !== 0 && came.constructor !== Object) {
       var hoverFilter = state.listHoverItem.replace(/\s/g, '')
       var filters_uncheck = () => {
