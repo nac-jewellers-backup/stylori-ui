@@ -2132,7 +2132,7 @@ class Header extends Component {
                       }}
                       id="currency_select"
                     >
-                      <Autocomplete
+                      {this.props.isFlag ? null :  <Autocomplete
                         id="country-select-demo"
                         size="small"
                         className={classes.flag}
@@ -2160,7 +2160,8 @@ class Header extends Component {
                             style={{color: "#000 !important"}}
                           />
                         )}
-                      />
+                      />}
+                     
           </Grid>
           
       </div>
