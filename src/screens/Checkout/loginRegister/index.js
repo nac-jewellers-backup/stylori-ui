@@ -1,6 +1,6 @@
 import React from "react";
 import "./loginRegisters.css";
-import { Grid, Button} from "@material-ui/core";
+import { Grid, Button, Hidden} from "@material-ui/core";
 import Login2 from "./login2";
 import { useDummyRequest } from "../../../hooks";
 import { checkoutloginRegs } from "../../../mappers";
@@ -32,6 +32,8 @@ class LoginRegisterIndex extends React.Component {
     let user_id = localStorage.getItem("user_id")
       ? localStorage.getItem("user_id")
       : "";
+
+
     // let set_check = localStorage.getItem("set_check")
     //   ? localStorage.getItem("set_check")
     //   : "";
@@ -42,9 +44,11 @@ class LoginRegisterIndex extends React.Component {
     //   ? localStorage.getItem("_mail_")
     //   : null;
     return (
-      <Grid container>
+      <>
+       <Hidden mdUp>
+          <Grid container style={{display:"flex",justifyContent:"center"}}>
         {localStorage.getItem("_mail_") === null && local_mail ? (
-          <div style={{ paddingLeft: "30px" }}>
+           <div style={{ paddingLeft: "40px",display:"flex",flexDirection:'column' }}>
             {" "}
             <span
               style={{
@@ -82,6 +86,8 @@ class LoginRegisterIndex extends React.Component {
               Continue
             </Button>
           </div>
+         
+         
         ) : (
           <div style={{ width: "100%" }}>
             <Login2
@@ -174,7 +180,148 @@ class LoginRegisterIndex extends React.Component {
             </div> */}
           </div>
         )}
-      </Grid>
+          </Grid>
+      </Hidden>
+      <Hidden smDown>
+      <Grid container>
+        {localStorage.getItem("_mail_") === null && local_mail ? (
+           <div style={{ paddingLeft: "40px"}}>
+            {" "}
+            <span
+              style={{
+                color: "#394578",
+                fontSize: "15px",
+                fontWeight: "700",
+              }}
+            >
+              {local_mail}
+            </span>
+            <br />
+            <Button
+              onClick={() => {
+                obj_user["user_id"] = user_id;
+                // obj_user["jewellery"] = "jewellery"
+                // if (!set_check.length > 0) {
+                //
+                //     localStorage.removeItem("cart_id")
+                //     this.props.setCartFilters(obj_user)
+                // }
+                this.props.changePanel(2);
+              }}
+              style={{
+                height: "42px",
+                color: "#fff",
+                background: "#d51f63",
+                borderLeft: "none !important",
+                border: "0px !important",
+                borderRadius: "0px",
+                fontSize: "12px",
+                textTransform: "none",
+              }}
+            >
+              {" "}
+              Continue
+            </Button>
+          </div>
+         
+         
+        ) : (
+          <div style={{ width: "100%" }}>
+            <Login2
+            changePanel={this.props.changePanel}
+            isGuest={true}
+            />
+            {/* <div
+              className="pt-sm"
+              style={{ display: this.state.show == true ? "block" : "none" }}
+            >
+              <>
+                <h5 className={`title ${classes.normalfonts}`}>
+                  {" "}
+                  Please click to choose an action
+                </h5>
+                <Grid container spacing={12}>
+                  {LogRegData.map((val) => (
+                    <Grid item xs={12} lg={4}>
+                      <Card className="form-card">
+                        <CardContent style={{ height: "70px" }}>
+                          <div>
+                            <p className={`card-reg ${classes.dis}`}>
+                              {" "}
+                              {val.title}
+                            </p>
+                            <b className={`card-reg blt ${classes.dis}`}>
+                              {val.dis}
+                            </b>
+                          </div>
+                        </CardContent>
+                        <div className="login-butn">
+                          <Button
+                            className="apply-b"
+                            onClick={() => {
+                              this.toggle(val.button);
+                            }}
+                          >
+                            {val.buttonval}
+                          </Button>
+                        </div>
+                      </Card>
+                    </Grid>
+                  ))}
+                </Grid>
+              </>
+            </div>
+            <div
+              style={{ display: this.state.Login == true ? "block" : "none" }}
+            >
+              <Login
+                changePanel={this.props.changePanel}
+                change={() => {
+                  this.setState({
+                    show: true,
+                    Login: false,
+                  });
+                }}
+              />
+            </div>
+            <div
+              style={{
+                display: this.state.Register == true ? "block" : "none",
+              }}
+            >
+              <Register
+                changePanel={this.props.changePanel}
+                change={() => {
+                  this.setState({
+                    show: true,
+                    Register: false,
+                  });
+                }}
+              />
+            </div>
+            <div
+              style={{
+                display: this.state.Continue == true ? "block" : "none",
+              }}
+            >
+              <Continues
+                changePanel={this.props.changePanel}
+                local_mail_id={local_mail_id}
+                change={() => {
+                  this.setState({
+                    show: true,
+                    Continue: false,
+                  });
+                }}
+              />
+            </div> */}
+          </div>
+        )}
+          </Grid>
+      </Hidden>
+      </>
+     
+     
     );
   }
 }

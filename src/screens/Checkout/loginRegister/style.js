@@ -2,6 +2,11 @@ export const styles = theme => ({
     normalfonts: {
         color: theme.palette.text.primary,
     },
+    liginCont:{
+       [theme.breakpoints.down('sm')]:{
+        display:'flex',justifyContent:'center'
+       }
+    },
     normalcolorback: {
         background: theme.palette.text.primary
     },
