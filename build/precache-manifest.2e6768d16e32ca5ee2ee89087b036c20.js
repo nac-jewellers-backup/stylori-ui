@@ -12,11 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/4.css"
   },
   {
-<<<<<<<< HEAD:build/precache-manifest.2e6768d16e32ca5ee2ee89087b036c20.js
     "revision": "692e1515ab9c5e09847c",
-========
-    "revision": "87a072a50c0c1b4ab679",
->>>>>>>> 29d6d48a20f0e41390545a9d9b1e7a3c62d82954:build/precache-manifest.73fcfb850fb481fc7e7babfbf9e981c4.js
     "url": "/static/css/main.css"
   },
   {
@@ -32,11 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/4.js"
   },
   {
-<<<<<<<< HEAD:build/precache-manifest.2e6768d16e32ca5ee2ee89087b036c20.js
     "revision": "692e1515ab9c5e09847c",
-========
-    "revision": "87a072a50c0c1b4ab679",
->>>>>>>> 29d6d48a20f0e41390545a9d9b1e7a3c62d82954:build/precache-manifest.73fcfb850fb481fc7e7babfbf9e981c4.js
     "url": "/static/js/main.js"
   },
   {
