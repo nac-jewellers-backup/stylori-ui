@@ -365,6 +365,7 @@ class ProductDetail extends Component {
 
     const { classes } = this.props;
     const jewelData = this.props?.data?.[0];
+ 
 
     var brand_card = [
       {
@@ -883,15 +884,8 @@ class ProductDetail extends Component {
               </JewelDetailAccordion>
 
               <div className={classes.getInTouchButtonContainer}>
-                <SilverButton
-                  variant="outlined"
-                  onClick={enquireLink}
-                  style={{ border: "3px solid rgb(166, 168, 171)" }}
-                >
-                  {Math.round(this?.props?.data?.[0]?.price) > 2000 &&
-                  Math.round(this?.props?.data?.[0]?.price) < 5000
-                    ? "Drop The Hint"
-                    : " Get in Touch"}
+                <SilverButton variant="outlined" onClick={enquireLink} style={{border:"3px solid rgb(166, 168, 171)"}}>
+                  Get in Touch
                 </SilverButton>
               </div>
             </Wrapper>

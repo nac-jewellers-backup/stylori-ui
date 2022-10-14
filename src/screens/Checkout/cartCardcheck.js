@@ -243,7 +243,7 @@ class Component extends React.Component {
     });
     return (
       <Grid>
-        <Header wishlist={this.props.wishlistdata} />
+        <Header wishlist={this.props.wishlistdata} isFlag={expanded === "panel4" ? true : false}/>
 
         <Hidden smDown>
           <Grid container style={{ height: "100vh", marginTop: "-20px",overflowX:"hidden" }}>

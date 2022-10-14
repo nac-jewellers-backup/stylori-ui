@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     border: "none",
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    padding: theme.spacing(4, 4, 3),
     width: "calc(100% - 200px)",
     height: "calc(100vh - 200px)",
     overflowY: "auto",
@@ -56,9 +56,10 @@ const useStyles = makeStyles((theme) => ({
   },
   closeIcon: {
     position: "fixed",
-    fontSize: "35px",
+    fontSize: "32px",
     color: "#606161",
-    right: 130,
+    top:110,
+    right: 115,
     cursor: "pointer",
   },
 }));
@@ -109,7 +110,7 @@ export default function MoreFilters(props) {
                   i >= 0
                 ) {
                   return (
-                    <Grid item xs={3} style={{ marginBottom: "3%" }}>
+                    <Grid item xs={2} style={{ marginBottom: "3%" }}>
                       <div
                         style={{ marginBottom: "10px", paddingLeft: "20px" }}
                       >
