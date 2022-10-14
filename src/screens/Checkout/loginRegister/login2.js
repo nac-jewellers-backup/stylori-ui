@@ -263,6 +263,7 @@ function Login2(props) {
         .then((fetchValue) => {
           if (fetchValue.accessToken) {
             handlers.VerifyOTP(fetchValue);
+            localStorage.setItem("true",true)
           }
         })
         .catch(console.error);

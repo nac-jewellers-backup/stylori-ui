@@ -98,6 +98,7 @@ const useLogin = (changePanel, props) => {
       }
     }
   }, [data]);
+
   React.useEffect(() => {
     var a = addresData ? addresData : "";
     if (JSON.stringify(a).length > 10) {
@@ -223,7 +224,6 @@ const useLogin = (changePanel, props) => {
     localStorage.setItem("user_id", bb);
     sessionStorage.setItem("user_id", bb);
     localStorage.setItem("accessToken", data.accessToken);
-    changePanel()
   };
   const FacebookLogin = (data) => {
     localStorage.setItem("email", data.userprofile.email);
@@ -235,7 +235,6 @@ const useLogin = (changePanel, props) => {
     localStorage.setItem("user_id", bb);
     sessionStorage.setItem("user_id", bb);
     localStorage.setItem("accessToken", data.accessToken);
-    changePanel()
   };
 
   const handlers = {

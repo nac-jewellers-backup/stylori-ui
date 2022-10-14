@@ -23,6 +23,8 @@ class Addressdetails extends React.Component {
         
         const { setValues, values } = props;
 
+        console.log(values,"????")
+
         const _add_data_addres = () => {
 
             if (con_gust === true) {
@@ -32,6 +34,8 @@ class Addressdetails extends React.Component {
                 return values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes
             }
         }
+
+
         // const cl = () => <input onChange={(e) => {
         //     if (_add_data_addres().length >= 0 && _add_data_addres().length <= 1) {
         //         alert("You have saved Shipping Address only")
@@ -114,12 +118,15 @@ class Addressdetails extends React.Component {
         // }
         // alert(JSON.stringify(values.selest_my_address))
 
+        console.log(_add_data_addres(),"???")
+
         return (
             <div className='pt-sm'>
                 <Grid container spacing={12}>
                     {window.location.pathname.split("-")[0] === "/account" ? "" : <h5 className='title' style={{color:"#6D6E71",marginBottom:"0px",height:"30px"}}> Choose Address</h5>}
                     {window.location.pathname.split("-")[0] === "/account" ? <>
                         {_add_data_addres() && _add_data_addres().map((val_addrs1, index) =>
+                        
                             <>
                                 {/* {localStorage.setItem("pin_cod", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].pincode))}
                                 {localStorage.setItem("co_num", JSON.stringify(values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses && values.addressvalues.data.allUserAddresses.nodes[0].contactNumber))}
@@ -185,7 +192,7 @@ class Addressdetails extends React.Component {
                                             <br />
                                             {val_addrs1.state}
                                             {val_addrs1.pincode}
-                                            <br />IN
+                                            <br />{val_addrs1.country}
                                                </p>
                                         <div className="card-foo">
                                             <span className={`shipping-phonenumber ${classes.normalfonts}`}>
@@ -261,7 +268,7 @@ class Addressdetails extends React.Component {
                                                     <br />
                                                     {val_addrs1.state}
                                                     {val_addrs1.pincode}
-                                                    <br />IN
+                                                    <br />{val_addrs1.country}
                                                </p>
                                                 <div className="card-foo">
                                                     <span className={`shipping-phonenumber ${classes.normalfonts}`}>
@@ -283,7 +290,7 @@ class Addressdetails extends React.Component {
                             })}</>}
 
                 </Grid>
-                {value.length > 4 || values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
+                {value?.length > 4 || values && values.addressvalues && values.addressvalues?.data && values.addressvalues?.data?.allUserAddresses?.nodes.length > 4 ? "" :
                     <Button onClick={() => this.props.redirectForm1()} className={`add-new-address ${classes.normalfonts}`}>
                         <div></div>  Add New Address
                    </Button>}<br />
@@ -389,7 +396,7 @@ class Addressdetails extends React.Component {
                             {value.length > 4 || values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 4 ? "" :
                                 <Button onClick={() => this.props.redirectForm1()} className={`add-new-address ${classes.normalfonts}`}>
                                     <div></div>  Add New Address
-                   </Button>}
+                             </Button>}
                         </>
                    :"" }</> : ""}
             </div>
@@ -397,6 +404,7 @@ class Addressdetails extends React.Component {
     }
     render() {
         let value = localStorage.getItem("gustaddres") ? JSON.parse(localStorage.getItem("gustaddres")).address : ""
+        
         return (
             <Container>
                 {this.Addressdetails(this.props, value)}

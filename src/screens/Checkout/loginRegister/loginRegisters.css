@@ -40,7 +40,7 @@
     text-align: center !important;
     min-width: 100px !important;
     font-size: 16px !important;
-    background: #394579;
+    background-color: #394579 !important;
     border: 1px solid #394579;
     color: #fff !important;
     text-transform: none !important;
@@ -61,7 +61,7 @@
     text-align: center !important;
     min-width: 100px !important;
     font-size: 16px !important;
-    background: #d51f63 !important;
+    background-color: #d51f63 !important;
     border: 1px solid #d51f63;
     color: #fff !important;
     text-transform: none !important;

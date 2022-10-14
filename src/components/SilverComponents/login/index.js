@@ -20,6 +20,7 @@ import { SimpleSnackbar } from "../Alert";
 import { Clear } from "@material-ui/icons";
 import "index.css";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+import useLogin from "screens/Checkout/loginRegister/useLogin";
 import { API_URL, FACEBOOK_APP_ID } from "../../../config";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
@@ -73,6 +74,9 @@ function Login(props) {
   useEffect(() => {
     setCondition({ ...condition, alert: false });
   }, []);
+
+
+  const { handlers } = useLogin(() => props.handleClose());
 
   const ValidateEmail = (email) => {
     var re =
@@ -279,7 +283,7 @@ function Login(props) {
             localStorage.setItem("user_id", fetchValue.userprofile.id);
             localStorage.setItem("email", fetchValue.userprofile.email);
             localStorage.setItem("true",true)
-            props.handleClose();
+            handlers.VerifyOTP(fetchValue)
           } else {
             if (typeof response.email === "undefined") {
               setValues({
