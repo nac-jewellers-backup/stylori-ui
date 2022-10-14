@@ -27,7 +27,7 @@ export default function WishlistButton(props) {
           return response.json();
         })
         .then(() => {
-          alert("Successfully added to Wishlist");
+          // alert("Successfully added to Wishlist");
         })
         .catch((err) => {
           console.log(err);

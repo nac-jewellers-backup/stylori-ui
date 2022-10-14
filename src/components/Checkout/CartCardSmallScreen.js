@@ -82,11 +82,11 @@ function MediaControlCard(props) {
       var _obj = { cart_id: cartId, user_id: userId, products: _products };
       if (_products.length > 0) {
         localStorage.setItem("cartDetails", JSON.stringify(_obj));
-        alert("You removed this product successfully");
+        // alert("You removed this product successfully");
         window.location.reload();
       } else {
         localStorage.removeItem("cartDetails", _products);
-        alert("You removed this product successfully");
+        // alert("You removed this product successfully");
         window.location.reload();
       }
     }

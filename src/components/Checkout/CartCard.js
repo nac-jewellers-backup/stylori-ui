@@ -165,12 +165,12 @@ class Checkoutcard extends React.Component {
         localStorage.setItem("cartDetails", JSON.stringify(_obj));
         delete _localStorageQuantity[currentValue];
         localStorage.setItem("quantity", JSON.stringify(_localStorageQuantity));
-        alert("You removed this product successfully");
+        // alert("You removed this product successfully");
         window.location.reload();
       } else {
         localStorage.removeItem("cartDetails", _products);
         localStorage.removeItem("quantity");
-        alert("You removed this product successfully");
+        // alert("You removed this product successfully");
         window.location.reload();
       }
     }

@@ -171,7 +171,7 @@ class ProductImageZoom extends React.Component {
     });
   };
   onErrorImage = async (event, largeImage) => {
-    alert("came");
+    // alert("came");
     let _url = largeImage.replace("1000X1000", "2400X2400");
     let _notFound = `${CDN_URL}product/1000X1000/productnotfound.webp`;
     return (await this.check_image_exists_in_server(_url)) ? _url : _notFound;

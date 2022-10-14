@@ -96,7 +96,7 @@ class Component extends React.Component {
   }
   handleOffset = () => {
     const offsets = this.props.offset + 24
-    alert('sadas')
+    // alert('sadas')
     this.setState({ loadingtext: true })
     this.props.setOffset(offsets)
   }
