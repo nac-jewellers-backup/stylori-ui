@@ -108,8 +108,8 @@ export const PRODUCTDETAILS = `query MyQuery($conditionfilter: TransSkuListCondi
 
 
 `;
-export const CheckForCod = `query CheckForCod($pincode:String) {
-  allPincodeMasters(first: 1, condition: {pincode:$pincode}) {
+export const CheckForCod = `query CheckForCod($pincode:String,$country:String) {
+  allPincodeMasters(first: 1, condition: {pincode:$pincode,country:$country}) {
     nodes {
       isDelivery
       maxCartvalue
