@@ -36,7 +36,7 @@ export default function PaymentHiddenForm(props) {
   let cart_id_lo = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : "";
   let cart_id =
     cartFilters && cartFilters._cart_id && Object.keys(cartFilters._cart_id).length > 0 ? cartFilters._cart_id.cart_id : "";
-  var cart_ids = cart_id.length > 0 ? cart_id : cart_id_lo;
+  var cart_ids = cart_id?.length > 0 ? cart_id : cart_id_lo;
   // var hash = null
   // var day = null
   // var currentutc = null
@@ -209,7 +209,7 @@ export default function PaymentHiddenForm(props) {
           style={{ cursor: "pointer",backgroundColor:"#D32564",color:"#fff",width:'inherit' }}
           variant="contained"
         >
-          {` Pay ${props.data1}`}
+          {` Pay ${props?.data1}`}
         </Button>
         {/* <input
           style={{ cursor: "pointer" }}

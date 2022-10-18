@@ -95,7 +95,6 @@ class Component extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.state.res_data !== prevState.res_data) {
       // in 1.6.2 there will not execute
-      alert(this.state.res_data);
     }
   }
   render() {
