@@ -11,6 +11,7 @@ import { withRouter } from "react-router-dom";
 import ProductModal from "components/SilverComponents/ProductModal";
 import MultipleSections from "components/SilverComponents/MultipleSections";
 import Footer from "components/Footer/Footer";
+import SilverFooter from "components/SilverComponents/SilverFooter";
 import CarosolTop from "components/SilverComponents/SilvercarosolPhoto";
 import { API_URL } from "config";
 import {
@@ -73,7 +74,10 @@ class HomeStylori extends React.Component {
           </Hidden>
         </Container>
         <Grid item xs={12}>
-          <Footer silver={true} />
+          <Hidden smDown>
+             <Footer silver={true}/>
+          </Hidden>
+          <Hidden mdUp> <SilverFooter/></Hidden>     
         </Grid>
 
         <>

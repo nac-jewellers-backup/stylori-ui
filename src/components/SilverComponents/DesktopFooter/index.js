@@ -51,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
     width: "fit-content",
     // margin: "40px auto 0px",
     bottom: "0px",
+    [theme.breakpoints.down('sm')]:{
+      bottom:"-35px"
+    },
     "& img": {
       width: "400px",
     },

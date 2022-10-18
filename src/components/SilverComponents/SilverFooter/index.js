@@ -2,7 +2,6 @@ import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import FooterAccordion from "../FooterAccordion";
-
 import { shopByCategory, aboutUs, customerService, contactUs } from "utils";
 
 const useStyles = makeStyles((theme) => ({
@@ -59,7 +58,9 @@ function SilverFooter() {
       <FooterAccordion title="About Us">
         <div className={classes.itemsContainer}>
           {aboutUs.map((item) => (
-            <Typography className={classes.item} align="center">
+            <Typography className={classes.item} align="center"  onClick={() => {
+              window.location.href = item?.url;
+            }}>
               {item.title}
             </Typography>
           ))}
@@ -68,7 +69,9 @@ function SilverFooter() {
       <FooterAccordion title="Customer Service">
         <div className={classes.itemsContainer}>
           {customerService.map((item) => (
-            <Typography className={classes.item} align="center">
+            <Typography className={classes.item} align="center"  onClick={() => {
+              window.location.href = item?.url;
+            }}>
               {item.title}
             </Typography>
           ))}
@@ -77,7 +80,9 @@ function SilverFooter() {
       <FooterAccordion title="Contact Us">
         <div className={classes.itemsContainer}>
           {contactUs.map((item) => (
-            <Typography className={classes.item} align="center">
+            <Typography className={classes.item} align="center"  onClick={() => {
+              window.location.href = item?.url;
+            }}>
               {item.title}
             </Typography>
           ))}
