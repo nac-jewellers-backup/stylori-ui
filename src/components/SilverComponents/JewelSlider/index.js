@@ -10,7 +10,7 @@ export default class JewelSlider extends Component {
   render() {
     const { arrOfurls } = this.props?.slides;
     const settings = {
-      //   className: "center",
+      // className: "slider",
       infinite: false,
       //   centerPadding: "60px",
       slidesToShow: 1,
@@ -24,7 +24,7 @@ export default class JewelSlider extends Component {
       <div>
         <Slider {...settings}>
           {arrOfurls.map((slide) => (
-            <div>
+            <div style={{position:"relative"}}>
               {this.props.data[0].ProductContactNum[0].isReadyToShip ? (
                 <div class={"one-day-ship_only_silver_mobile"}>
                    <i
@@ -58,7 +58,7 @@ export default class JewelSlider extends Component {
                 alt={"Product Image"}
                 loading="lazy"
                 onError={() => {}}
-                style={{ width: "100vw" }}
+                style={{ width: "100vw"}}
               />
             </div>
           ))}

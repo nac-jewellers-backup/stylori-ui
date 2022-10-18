@@ -40,7 +40,7 @@ const Addressforms = (changePanel) => {
             contactno: "",
             addresstype: 1,
             errortext: {
-                pinerr: "", pinerr1: "",
+                pinerr: "", pinerr1: "",country:""
             },
         },
         addressTwo: {
@@ -56,7 +56,7 @@ const Addressforms = (changePanel) => {
             country_code: "+91",
             contactno: "",
             addresstype: 2,
-            errortext: { pinerr: "", pinerr1: "" },
+            errortext: { pinerr: "", pinerr1: "" ,country:""},
         },
         addrs: valuegust && valuegust.length > 0 ? false : true,
         // addrs: true,
@@ -139,6 +139,7 @@ const Addressforms = (changePanel) => {
             window.location.reload()
         }
     }, [removedata])
+
     useEffect(
         (event) => {
           const a = CodData.data ? CodData.data.allPincodeMasters : "";
@@ -171,12 +172,10 @@ const Addressforms = (changePanel) => {
             if (res2.length > 0) {
               if (pincods.pincod === "pincode1") {
                 values["addressOne"]["state"] = res;
-                values["addressOne"]["country"] = res1;
                 values["addressOne"]["city"] = res2;
               }
               if (pincods.pincod === "pincode2") {
                 values["addressTwo"]["state"] = res;
-                values["addressTwo"]["country"] = res1;
                 values["addressTwo"]["city"] = res2;
               }
               if (pincods.pincod === "pincode1") {
@@ -197,12 +196,10 @@ const Addressforms = (changePanel) => {
             } else {
                 if (pincods.pincod === "pincode1") {
                     values["addressOne"]["state"] = res;
-                    values["addressOne"]["country"] = res1;
                     values["addressOne"]["city"] = res2;
                   }
                   if (pincods.pincod === "pincode2") {
                     values["addressTwo"]["state"] = res;
-                    values["addressTwo"]["country"] = res1;
                     values["addressTwo"]["city"] = res2;
                   }
               if (pincods.pincod === "pincode1") {
@@ -231,16 +228,18 @@ const Addressforms = (changePanel) => {
             }
             setValues({ ...values, values });
           } else if (a?.nodes === undefined || a?.nodes?.length == 0) {
-            if (values.addressOne.pincode || values.addressTwo.pincode) {
+            if (values.addressOne.pincode || values.addressTwo.pincode && values.addressOne.country !== '' || values.addressTwo.country !== '') {
               let pins = values.addressOne.pincode || values.addressTwo.pincode;
-              fetch(`${API_URL}/get_pincode_details?pincode=${pins}`, {
+              let country = values.addressOne.country || values.addressTwo.country
+              fetch(`${API_URL}/get_pincode_details?pincode=${pins}&country_short_code=${country}`, {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
               })
                 .then((response) => response.json())
                 .then((response) => {
                   if (response.status == "OK") {
-                    makeRequestCod({ pincode: pins });
+                    if(response.results[0].address_components[0].long_name)
+                    makeRequestCod({ pincode: pins,country:response.results[0].address_components[0].long_name});
                   }
                 });
             }
@@ -250,8 +249,7 @@ const Addressforms = (changePanel) => {
       );
     const handleChange = (type, field, value, pincod) => {
         values[type][field] = value;
-        if (field === 'pincode') {
-           
+        if (field === 'pincode' && values[type].country !== '') {       
             if(value === ''){
                 values[type]['city'] = '';
                 values[type]['country'] = '';
@@ -263,6 +261,7 @@ const Addressforms = (changePanel) => {
                 const val = values.addressOne.pincode || values.addressTwo.pincode
                 var variab = {}
                 variab["pincode"] = value;
+                variab["country"] = values[type].country
                 if(value.length >= 4){
                         if (Object.entries(variab).length !== 0 && variab.constructor === Object) {
                             makeRequestCod(variab);
@@ -275,20 +274,21 @@ const Addressforms = (changePanel) => {
         setpincod({ ...pincods, pincods })
         setValues({ ...values, values })
     }
-    // const handleChange_selsect = (e) => {
-    //     values['addressOne']['salutation'] =
-    //         setValues({ ...values, values })
-    // };
+    
 
     const handleSubmit = (e) => {
-
+          
         if (values && values.addressOne && values.addressOne.pincode === "") {
             values["addressOne"]['errortext']['pinerr'] = "Pin Code is required"
             setValues({ ...values, values })
             return false
         }
 
-
+        if (values && values.addressOne && values.addressOne.country === "") {
+            values.addressOne.errortext.country = "Country is required"
+            setValues({ ...values, values })
+            return false
+        }
         if (values && values.addressOne && values.addressOne.pincode && values.addressOne.pincode.length < 4 ||
             (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr'])) {
             // if (values["addressOne"] && values["addressOne"]['errortext'] && values["addressOne"]['errortext']['pinerr']) {
@@ -337,12 +337,12 @@ const Addressforms = (changePanel) => {
                 addObj["user_id"] = user_id
                 obj['userprofileId'] = user_id
                 if (values.checkValue === true) {
-                    if (values && values.addressOne && values.addressOne.firstname.length > 0) {
+                    if (values && values.addressOne && values.addressOne.firstname.length > 0 && values.addressOne.country !== '') {
                         makeFetch(addObj);
                     }
                 }
                 if (values.checkValue === false) {
-                    if ((values && values.addressOne && values.addressOne.firstname.length > 0) && (values && values.addressTwo && values.addressTwo.firstname.length > 0)) {
+                    if ((values && values.addressOne && values.addressOne.firstname.length > 0 && values.addressOne.country !== '') && (values && values.addressTwo && values.addressTwo.firstname.length > 0 && values.addressTwo.country !== '')) {
                         makeFetch(addObj);
                     }
                 }
@@ -413,6 +413,7 @@ const Addressforms = (changePanel) => {
         // values["edit_ref"] = true
         // window.location.reload(); 
     }
+
     const selectaddreses = (val_addrs, num, index, ship) => {
         var obj_user = {}
         let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
@@ -607,6 +608,7 @@ const Addressforms = (changePanel) => {
                 errortext: {
                     pinerr: "",
                     pinerr1: "",
+                    country:""
                 },
             },
             addressTwo: {
@@ -625,6 +627,7 @@ const Addressforms = (changePanel) => {
                 errortext: {
                     pinerr: "",
                     pinerr1: "",
+                    country: ""
                 },
             },
         }

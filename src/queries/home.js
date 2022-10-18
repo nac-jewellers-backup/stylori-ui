@@ -194,6 +194,19 @@ query MyQuery {
 }
 `;
 
+export const COUNTRIES = `
+query{
+  allMasterCountries(condition: { isActive: true }) {
+    nodes {
+      id
+      nicename
+      iso
+      iso3
+    }
+  }
+}
+`
+
 export const ERRORCATCH = `
 mutation MyMutation($message: String, $page: String, $error: String) {
   createUiErrorLog(
