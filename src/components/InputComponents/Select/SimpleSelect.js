@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
         "& .MuiOutlinedInput-input":{
            height:"35px !important"
         },
-        marginTop:6,
+        marginTop:8,
         [theme.breakpoints.down("sm")]: {
          width:"95%"
         },
@@ -46,8 +46,6 @@ export default function SimpleSelect2(props) {
         props.handleChange();
       }
 
-      console.log(props.value,"???")
-    
       const handleInvalid = e => {
         e.preventDefault();
         setInvalid(true);
@@ -60,16 +58,19 @@ export default function SimpleSelect2(props) {
                 onChange={handleChange}
                 onInvalid={handleInvalid}
                 error={invalid}
-                value={props.value}
+                // value={props.value}
                 disabled={props.disabled ? props.disabled : ""}
-                placeholder={props.placeholder}
-                input={<OutlinedInput id="outlined-age-native-simple" />}
+                placeholder={"hello2"}
+                input={<OutlinedInput id="outlined-age-native-simple" placeholder="hello"/>}
                 inputProps={{ id: "outlined-age-native-simple", "aria-required": true }}
                 MenuProps={{ "aria-required": true }}
                 className={props.short ? classes.root1 : classes.mroot }
-                variant="outlined"
+                variant='standard'
                 {...props}
             >
+               <MenuItem value="" disabled>
+                  Country
+               </MenuItem>
                 {props.selectData.map(data => (
                     <MenuItem value={data.iso}>{data.nicename}</MenuItem>
                 ))}
