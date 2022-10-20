@@ -611,8 +611,8 @@ class Header extends Component {
                               0 ? (
                               <Badge
                                 className={`${
-                                  isSilver && classes.badgeColorsilver
-                                } ${!isSilver && classes.badgeColor}`}
+                                  isSilver && classes.badgeColorsilverW
+                                } ${!isSilver && classes.badgeColorW}`}
                                 badgeContent={
                                   this.props.wishlist &&
                                   this.props.wishlist.wishlistdata &&
@@ -622,6 +622,7 @@ class Header extends Component {
                                 style={{
                                   display: "flex",
                                   flexDirection: "column",
+                                 
                                 }}
                               >
                                 <i
@@ -638,7 +639,7 @@ class Header extends Component {
                                   <img src={heart} alt="icon" loading="lazy" />
                                 </i>
                                 <span
-                                  className="tooltip-s"
+                                  className="tooltip-w"
                                   style={{
                                     color: isSilver
                                       ? "rgb(6, 171, 159)"
@@ -664,7 +665,7 @@ class Header extends Component {
                                   <img src={heart} alt="icon" loading="lazy" />
                                 </i>
                                 <span
-                                  className="tooltip-s"
+                                  className="tooltip-w"
                                   style={{
                                     color: isSilver
                                       ? "rgb(6, 171, 159)"
@@ -1010,8 +1011,8 @@ class Header extends Component {
                               0 ? (
                               <Badge
                                 className={`${
-                                  isSilver && classes.badgeColorsilver
-                                } ${!isSilver && classes.badgeColor}`}
+                                  isSilver && classes.badgeColorsilverW
+                                } ${!isSilver && classes.badgeColorW}`}
                                 badgeContent={
                                   this.props.wishlist &&
                                   this.props.wishlist.wishlistdata &&
@@ -1021,6 +1022,7 @@ class Header extends Component {
                                 style={{
                                   display: "flex",
                                   flexDirection: "column",
+                                  
                                 }}
                               >
                                 <i
@@ -1037,7 +1039,7 @@ class Header extends Component {
                                   <img src={heart} alt="icon" loading="lazy" />
                                 </i>
                                 <span
-                                  className="tooltip-s"
+                                  className="tooltip-w"
                                   style={{
                                     color: isSilver
                                       ? "rgb(6, 171, 159)"
@@ -1063,7 +1065,7 @@ class Header extends Component {
                                   <img src={heart} alt="icon" loading="lazy" />
                                 </i>
                                 <span
-                                  className="tooltip-s"
+                                  className="tooltip-w"
                                   style={{
                                     color: isSilver
                                       ? "rgb(6, 171, 159)"

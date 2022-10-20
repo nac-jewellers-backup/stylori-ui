@@ -1080,6 +1080,7 @@ const Components = (props) => {
     ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating },
   } = React.useContext(ProductDetailContext);
   const _silverArr = [];
+  
   React.useEffect(() => {
     if (data && !loading) {
       if (Object.keys(data).length > 0) {

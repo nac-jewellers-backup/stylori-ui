@@ -83,7 +83,7 @@ class ProductImageZoom extends React.Component {
               <div className='overly-img' id="overlay"
                 style={{ backgroundImage: `url(${showimage})` }} onMouseOut={event => this.zoomOut(event)}>
                 </div> */}
-              <div class="zoomreact" style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", width: "100%" }}><ReactImageZoom {...props} /></div>
+              {/* <div class="zoomreact" style={{ boxShadow: "0px 2px 4px 4px rgba(0, 0, 0, 0.1), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)", width: "100%" }}><ReactImageZoom {...props} /></div> */}
               <div>
                 <Grid container spacing={12}>
                   {/* {data[0].productsubHeaderlist.map(val => (

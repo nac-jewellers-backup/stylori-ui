@@ -538,7 +538,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
               },
               {
                 name: "Metal Type / Finish",
-                details: PD && PD?.purity + " " + PD?.metalColor,
+                details: PD && PD?.purity + " / " + PD?.metalColor,
               },
               {
                 name: "Approx Metal Weight (in gm)",

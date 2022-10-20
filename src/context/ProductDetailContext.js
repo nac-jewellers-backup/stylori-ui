@@ -67,6 +67,7 @@ export const TabsProvider = (props) => {
     pathQueries();
   }, [filters]);
   let variables;
+  
   const { loading, error, data, makeRequest } = useGraphql(
     PRODUCTDETAILS,
     () => {},

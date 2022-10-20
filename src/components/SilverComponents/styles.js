@@ -272,11 +272,42 @@ export const styles = (theme) => ({
       background: theme.palette.badgeColor.background,
       color: "white",
     },
+    "& .MuiBadge-anchorOriginTopRightRectangle":{
+      transform: 'scale(1) translate(50%, -40%) !important'
+    }
+  },
+  badgeColorW: {
+    "& .MuiBadge-badge": {
+      background: theme.palette.badgeColor.background,
+      color: "white",
+    },
+    "& .MuiBadge-anchorOriginTopRightRectangle":{
+      transform: 'scale(1) translate(60%, -80%) !important'
+    }
   },
   badgeColorsilver: {
     "& .MuiBadge-badge": {
       color: "#fff",
       background: 'rgb(6, 171, 159)',
+    },
+    "& .MuiBadge-anchorOriginTopRightRectangle":{
+      transform: 'scale(1) translate(50%, -40%) !important'
+    },
+    [theme.breakpoints.only("xs")]: {
+      "& .MuiBadge-badge": {
+        background: "#fff",
+        top: "-10px !important",
+        right: 12,
+      },
+    },
+  },
+  badgeColorsilverW: {
+    "& .MuiBadge-badge": {
+      color: "#fff",
+      background: 'rgb(6, 171, 159)',
+    },
+    "& .MuiBadge-anchorOriginTopRightRectangle":{
+      transform: 'scale(1) translate(60%, -80%) !important'
     },
     [theme.breakpoints.only("xs")]: {
       "& .MuiBadge-badge": {

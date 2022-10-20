@@ -402,25 +402,28 @@ class ProductImageZoom extends React.Component {
                     <source src={showimage} type="video/mp4" />
                   </video>
                 ) : (
-                  <GlassMagnifier
-                    imageSrc={[
-                      largeImage,
-                      showimageBig,
-                      `${CDN_URL}product/1000X1000/productnotfound.webp`,
-                    ]}
-                    imageAlt="Stylori"
-                    magnifierSize={this?.props?.isSilver ? "40%" : "50%"}
-                    largeImageSrc={[
-                      largeImage,
-                      largeImageBig,
-                      `${CDN_URL}product/2400X2400/productnotfound.webp`,
-                      `${CDN_URL}product/1000X1000/productnotfound.webp`,
-                    ]}
-                    magnifierBoxShadow="0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)"
-                    magnifierBorderColor={
-                      this?.props?.isSilver ? "rgb(58,69,120)" : "#f5003240"
-                    }
-                  />
+                  <img src={[largeImage,
+                    showimageBig,
+                    `${CDN_URL}product/1000X1000/productnotfound.webp`,]} alt="Stylori" style={{width:"inherit"}}/>
+                  // <GlassMagnifier
+                  //   imageSrc={[
+                  //     largeImage,
+                  //     showimageBig,
+                  //     `${CDN_URL}product/1000X1000/productnotfound.webp`,
+                  //   ]}
+                  //   imageAlt="Stylori"
+                  //   magnifierSize={this?.props?.isSilver ? "40%" : "50%"}
+                  //   largeImageSrc={[
+                  //     largeImage,
+                  //     largeImageBig,
+                  //     `${CDN_URL}product/2400X2400/productnotfound.webp`,
+                  //     `${CDN_URL}product/1000X1000/productnotfound.webp`,
+                  //   ]}
+                  //   magnifierBoxShadow="0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12)"
+                  //   magnifierBorderColor={
+                  //     this?.props?.isSilver ? "rgb(58,69,120)" : "#f5003240"
+                  //   }
+                  // />
                 )}
               </div>
 
