@@ -622,7 +622,14 @@ class Header extends Component {
                                 style={{
                                   display: "flex",
                                   flexDirection: "column",
-                                 
+                                  cursor:'pointer'
+                                }}
+                                onClick={() => {
+                                  if (user_id.length > 0) {
+                                    window.location.href = `/account${"-wishlist"}`;
+                                  } else {
+                                    window.location.href = "/login";
+                                  }
                                 }}
                               >
                                 <i
@@ -698,7 +705,9 @@ class Header extends Component {
                                 style={{
                                   display: "flex",
                                   flexDirection: "column",
+                                  cursor:'pointer'
                                 }}
+                                onClick={()=>window.location.href = "/cart"}
                               >
                                 <a
                                   href="/cart"
@@ -1022,7 +1031,14 @@ class Header extends Component {
                                 style={{
                                   display: "flex",
                                   flexDirection: "column",
-                                  
+                                  cursor:'pointer'
+                                }}
+                                onClick={() => {
+                                  if (user_id.length > 0) {
+                                    window.location.href = `/account${"-wishlist"}`;
+                                  } else {
+                                    window.location.href = "/login";
+                                  }
                                 }}
                               >
                                 <i
@@ -1095,6 +1111,11 @@ class Header extends Component {
                                   this.props.cart_count.data.allTransSkuLists &&
                                   this.props.cart_count.data.allTransSkuLists
                                     .nodes.length
+                                }
+                                onClick={() => 
+                                 
+                                    window.location.href = "/cart"
+                                
                                 }
                               >
                                 <a
