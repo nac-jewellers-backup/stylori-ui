@@ -293,13 +293,6 @@ export const styles = (theme) => ({
     "& .MuiBadge-anchorOriginTopRightRectangle":{
       transform: 'scale(1) translate(50%, -40%) !important'
     },
-    [theme.breakpoints.only("xs")]: {
-      "& .MuiBadge-badge": {
-        background: "#fff",
-        top: "-10px !important",
-        right: 12,
-      },
-    },
   },
   badgeColorsilverW: {
     "& .MuiBadge-badge": {
@@ -308,13 +301,6 @@ export const styles = (theme) => ({
     },
     "& .MuiBadge-anchorOriginTopRightRectangle":{
       transform: 'scale(1) translate(60%, -80%) !important'
-    },
-    [theme.breakpoints.only("xs")]: {
-      "& .MuiBadge-badge": {
-        background: "#fff",
-        top: "-10px !important",
-        right: 12,
-      },
     },
   },
 });
