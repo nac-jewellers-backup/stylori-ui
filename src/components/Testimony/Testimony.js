@@ -3,6 +3,7 @@ import "aos/dist/aos.css";
 import './Testimony.css';
 import { Grid } from '@material-ui/core';
 import Testimonycarosol from './Testimonycarosol';
+import Stories from '../../components/Stories/Index'
 import TestimonyImage from './TestimonyImage';
 import { API_URL } from '../../config'
 import { testimonials } from 'queries/home';
@@ -54,9 +55,7 @@ export default function Testimony(props) {
                 </Grid>
                 <em className="rightImage"></em>
             </Grid>
-            <div
-            //  data-aos="fade-right"
-             >
+            <div>
             <Testimonycarosol carosolData={state} dataCarousel={props.dataCarousel} />
             </div>
             <div 

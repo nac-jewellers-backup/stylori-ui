@@ -89,7 +89,7 @@ const MultipleSections = (props) => {
               data={FeaturedCarousel}  
               />
             )}
-            {title == "TESTIMONIALS" && (
+            {/* {title == "TESTIMONIALS" && (
               <>
                 <Testimonialsmodel
                   data={testimonyCarousel}
@@ -97,7 +97,7 @@ const MultipleSections = (props) => {
                   dataactual={props.customerReviews}
                 />
               </>
-            )}
+            )} */}
           </>
         );
       })}
