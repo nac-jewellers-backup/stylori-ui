@@ -1360,9 +1360,9 @@ class Header extends Component {
                               this.props.wishlist.wishlistdata.nodes.length >
                                 0 ? (
                                 <Badge
-                                  className={`${
-                                    isSilver && classes.badgeColorsilver
-                                  }`}
+                                className={`${
+                                  isSilver && classes.badgeColorsilverW
+                                } ${!isSilver && classes.badgeColorW}`}
                                   badgeContent={
                                     this.props.wishlist &&
                                     this.props.wishlist.wishlistdata &&

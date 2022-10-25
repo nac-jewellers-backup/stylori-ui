@@ -272,6 +272,7 @@ export const styles = (theme) => ({
       background: theme.palette.badgeColor.background,
       color: "white",
     },
+    
     "& .MuiBadge-anchorOriginTopRightRectangle":{
       transform: 'scale(1) translate(50%, -40%) !important'
     }
@@ -281,8 +282,15 @@ export const styles = (theme) => ({
       background: theme.palette.badgeColor.background,
       color: "white",
     },
+    [theme.breakpoints.down('sm')]:{
+      "& .MuiBadge-anchorOriginTopRightRectangle":{
+        right:8,
+        top:"0px !important"
+      }
+     },
+    
     "& .MuiBadge-anchorOriginTopRightRectangle":{
-      transform: 'scale(1) translate(60%, -80%) !important'
+      transform: 'scale(1) translate(60%, -80%) !important',
     }
   },
   badgeColorsilver: {
@@ -299,8 +307,15 @@ export const styles = (theme) => ({
       color: "#fff",
       background: 'rgb(6, 171, 159)',
     },
+    [theme.breakpoints.down('sm')]:{
+      "& .MuiBadge-anchorOriginTopRightRectangle":{
+      right:8,
+      top:"0px !important"
+      }
+     },
+    
     "& .MuiBadge-anchorOriginTopRightRectangle":{
-      transform: 'scale(1) translate(60%, -80%) !important'
+      transform: 'scale(1) translate(60%, -80%) !important',
     },
   },
 });
