@@ -249,6 +249,12 @@ const Addressforms = (changePanel) => {
       );
     const handleChange = (type, field, value, pincod) => {
         values[type][field] = value;
+        if(field === 'country'){  
+                values[type]['city'] = '';
+                values[type]['pincode'] = '';
+                values[type]['state'] = '';
+                setValues({ ...values, values })
+        }
         if (field === 'pincode' && values[type].country !== '') {       
             if(value === ''){
                 values[type]['city'] = '';
