@@ -285,12 +285,13 @@ export const styles = (theme) => ({
     [theme.breakpoints.down('sm')]:{
       "& .MuiBadge-anchorOriginTopRightRectangle":{
         right:8,
-        top:"0px !important"
+        top:"6px !important"
       }
      },
     
     "& .MuiBadge-anchorOriginTopRightRectangle":{
       transform: 'scale(1) translate(60%, -80%) !important',
+      top:"7px"
     }
   },
   badgeColorsilver: {
@@ -310,7 +311,7 @@ export const styles = (theme) => ({
     [theme.breakpoints.down('sm')]:{
       "& .MuiBadge-anchorOriginTopRightRectangle":{
       right:8,
-      top:"0px !important"
+      top:"6px !important"
       }
      },
     
