@@ -402,12 +402,17 @@ class ProductDetail extends Component {
       },
     ];
 
+
     var detail_data = [
       {
         title: "Description",
         data:
-          jewelData?.dis !== "" ? (
-            <Typography className="no-data-desc">{jewelData?.dis}</Typography>
+          jewelData?.productDescription !== "" ? (
+            <Typography className="no-data-desc">
+              {jewelData?.productDescription}
+              <br/>
+              {jewelData?.dis}
+              </Typography>
           ) : (
             <Typography className="no-data">No Data Found</Typography>
           ),
@@ -841,8 +846,10 @@ class ProductDetail extends Component {
               />
 
               <JewelDetailAccordion title="Description">
-                {jewelData?.dis !== "" ? (
+                {jewelData?.productDescription !== "" ? (
                   <Typography className="no-data-desc">
+                    {jewelData.productDescription ?? ""}
+                    <br/>
                     {jewelData.dis ?? ""}
                   </Typography>
                 ) : (

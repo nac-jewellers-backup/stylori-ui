@@ -316,6 +316,7 @@ export const styles = (theme) => ({
     
     "& .MuiBadge-anchorOriginTopRightRectangle":{
       transform: 'scale(1) translate(60%, -80%) !important',
+      top:"7px"
     },
   },
 });

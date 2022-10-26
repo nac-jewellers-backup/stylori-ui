@@ -634,7 +634,7 @@ class Header extends Component {
                               >
                                 <i
                                   style={{ fontSize: "18px" }}
-                                  className={classes.iconFafaheart}
+                                  className={classes.iconFafa}
                                   onClick={() => {
                                     if (user_id.length > 0) {
                                       window.location.href = `/account${"-wishlist"}`;
@@ -660,7 +660,7 @@ class Header extends Component {
                               <div>
                                 <i
                                   style={{ fontSize: "18px" }}
-                                  className={classes.iconFafaheart}
+                                  className={classes.iconFafa}
                                   onClick={() => {
                                     if (user_id.length > 0) {
                                       window.location.href = `/account${"-wishlist"}`;
@@ -1043,7 +1043,7 @@ class Header extends Component {
                               >
                                 <i
                                   style={{ fontSize: "18px" }}
-                                  className={classes.iconFafaheart}
+                                  className={classes.iconFafa}
                                   onClick={() => {
                                     if (user_id.length > 0) {
                                       window.location.href = `/account${"-wishlist"}`;
@@ -1069,7 +1069,7 @@ class Header extends Component {
                               <div>
                                 <i
                                   style={{ fontSize: "18px" }}
-                                  className={classes.iconFafaheart}
+                                  className={classes.iconFafa}
                                   onClick={() => {
                                     if (user_id.length > 0) {
                                       window.location.href = `/account${"-wishlist"}`;
@@ -1373,7 +1373,7 @@ class Header extends Component {
                                   color="secondary"
                                 >
                                   <i
-                                    className={classes.iconFafaheart}
+                                    className={classes.iconFafa}
                                     onClick={() => {
                                       if (user_id.length > 0) {
                                         window.location.href = `/account${"-wishlist"}`;
@@ -1392,7 +1392,7 @@ class Header extends Component {
                               ) : (
                                 <div>
                                   <i
-                                    className={classes.iconFafaheart}
+                                    className={classes.iconFafa}
                                     onClick={() => {
                                       if (user_id.length > 0) {
                                         window.location.href = `/account${"-wishlist"}`;
