@@ -2217,7 +2217,7 @@ export const menuLists = {
       {
         value: "Victorian",
         title: "Victorian",
-        url: " https://www.stylori.com/silver-jewellery-victorian",
+        url: "https://www.stylori.com/silver-jewellery-victorian?sort=Price%20High%20to%20Low&startprice=0&endprice=0",
       },
       {
         value: "Gold Plated Kundan",
