@@ -18,7 +18,7 @@ import {
   Divider,
   ListItemAvatar,
   Avatar,
-  TextField,Select
+  TextField,Select,MenuItem
 } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -2129,38 +2129,47 @@ class Header extends Component {
                         bottom: 50,
                         left: 10,
                         zIndex: 20,
+                        width:'100%'
                       }}
                       id="currency_select"
                     >
-                      {this.props.isFlag ? null :  <Autocomplete
+                      {this.props.isFlag ? null :  <Select
                         id="country-select-demo"
                         size="small"
+                        fullWidth
+                        variant="outlined"
                         className={classes.flag}
-                        options={this.state.currencyConvo}
+                        // options={this.state.currencyConvo}
                         value={this.state?.selected_currency ?? null}
-                        onChange={this.handleCurrencyConvo}
+                        onChange={(e)=>this.handleCurrencyConvo(e,e.target.value)}
                         defaultValue={selected_price ?? null}
-                        getOptionLabel={(option) =>
-                          `${countryToFlag(option.iso)}  ${
-                            option.currencyAlias
-                          }`
-                        }
-                        renderOption={(option) => (
+                        // getOptionLabel={(option) =>
+                        //   `${countryToFlag(option.iso)}  ${
+                        //     option.currencyAlias
+                        //   }`
+                        // }
+                        renderValue={(value) => (
                           <React.Fragment>
-                            {`${countryToFlag(option.iso)}  ${
-                              option.currencyAlias
+                            {`${countryToFlag(value.iso)}  ${
+                              value.currencyAlias
                             }`}
                           </React.Fragment>
                         )}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label={""}
-                            variant="outlined"
-                            style={{color: "#000 !important"}}
-                          />
-                        )}
-                      />}
+                        // renderInput={(params,inputProps) => (
+                        //   <TextField
+                        //     {...params}
+                        //     label={""}
+                        //     variant="outlined"
+                        //     style={{color: "#000 !important"}}
+                        //   />
+                        // )}
+                      >   
+                        {Array.isArray(this.state.currencyConvo) && this.state.currencyConvo.map((option)=>(
+                          <MenuItem value={option}>{`${countryToFlag(option.iso)}  ${
+                            option.currencyAlias
+                          }`}</MenuItem>
+                        ))}
+                        </Select>}
                      
           </Grid>
           
