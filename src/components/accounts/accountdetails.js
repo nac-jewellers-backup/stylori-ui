@@ -27,8 +27,15 @@ class Accountdetails extends Component {
 
     }
     handleClick = (e) => {
-
-        this.setState({ currency: e.target.value, isActive: e.target.value });
+        if(e.target.value === 'logout'){
+            this.setState({
+                modelOpen: true,
+            })
+        }
+        else{
+            this.setState({ currency: e.target.value, isActive: e.target.value });
+        }
+        
     };
 
     Activeaccounts = (name) => {
@@ -87,6 +94,10 @@ class Accountdetails extends Component {
             {
                 label: 'All Orders',
                 values: 'allorders'
+            },
+            {
+                label: 'Logout',
+                values: 'logout'
             },
 
         ];
@@ -249,6 +260,7 @@ class Accountdetails extends Component {
                                 </>
 
                             }
+                           <CommenDialog isOpen={this.state.modelOpen} content={`Are you sure you want to leave? `} handleClose={this.canceldeletechecklist} handleSuccess={this.deletechecklists} negativeBtn="No" positiveBtn="Logout" title="Logout" logout={true} />
                         </div>
                     </Grid>
 

@@ -20,6 +20,7 @@ import {
   Avatar,
   TextField,
   Select,
+  MenuItem
 } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -559,9 +560,7 @@ class Header extends Component {
                                 ></i>
                                 <span
                                   className={
-                                    isSilver
-                                      ? "tooltip-s"
-                                      : "tootip-account"
+                                    isSilver ? "tooltip-s" : "tootip-account"
                                   }
                                 >
                                   {Boolean(localStorage.getItem("user_id")) &&
@@ -589,9 +588,7 @@ class Header extends Component {
                                 ></i>
                                 <span
                                   className={
-                                    isSilver
-                                      ? "tooltip-s"
-                                      : "tootip-account"
+                                    isSilver ? "tooltip-s" : "tootip-account"
                                   }
                                 >
                                   {Boolean(localStorage.getItem("user_id")) &&
@@ -603,7 +600,8 @@ class Header extends Component {
                             </div>
                           )}
 
-                          <div className="tooltip">
+                           {/* Whislist */}
+                           {localStorage.getItem('accessToken') &&  <div className="tooltip">
                             {this.props.wishlist &&
                             this.props.wishlist.wishlistdata &&
                             this.props.wishlist.wishlistdata.nodes &&
@@ -622,7 +620,7 @@ class Header extends Component {
                                 style={{
                                   display: "flex",
                                   flexDirection: "column",
-                                  cursor:'pointer'
+                                  cursor: "pointer",
                                 }}
                                 onClick={() => {
                                   if (user_id.length > 0) {
@@ -633,7 +631,7 @@ class Header extends Component {
                                 }}
                               >
                                 <i
-                                  style={{ fontSize: "18px" }}
+                                  style={{ fontSize: "18px"}}
                                   className={classes.iconFafa}
                                   onClick={() => {
                                     if (user_id.length > 0) {
@@ -659,7 +657,7 @@ class Header extends Component {
                             ) : (
                               <div>
                                 <i
-                                  style={{ fontSize: "18px" }}
+                                  style={{ fontSize: "18px",display:'flex' }}
                                   className={classes.iconFafa}
                                   onClick={() => {
                                     if (user_id.length > 0) {
@@ -683,8 +681,10 @@ class Header extends Component {
                                 </span>
                               </div>
                             )}
-                          </div>
+                           </div>}
+                         
 
+                          {/* Cart */}
                           <div className="tooltip">
                             {this.props.cart_count &&
                             this.props.cart_count.data &&
@@ -705,9 +705,9 @@ class Header extends Component {
                                 style={{
                                   display: "flex",
                                   flexDirection: "column",
-                                  cursor:'pointer'
+                                  cursor: "pointer",
                                 }}
-                                onClick={()=>window.location.href = "/cart"}
+                                onClick={() => (window.location.href = "/cart")}
                               >
                                 <a
                                   href="/cart"
@@ -971,9 +971,7 @@ class Header extends Component {
                                 ></i>
                                 <span
                                   className={
-                                    isSilver
-                                      ? "tooltip-s"
-                                      : "tooltip-slog"
+                                    isSilver ? "tooltip-s" : "tooltip-slog"
                                   }
                                 >
                                   {Boolean(localStorage.getItem("user_id")) &&
@@ -997,9 +995,7 @@ class Header extends Component {
                                 ></i>
                                 <span
                                   className={
-                                    isSilver
-                                      ? "tooltip-s"
-                                      : "tooltip-slog"
+                                    isSilver ? "tooltip-s" : "tooltip-slog"
                                   }
                                 >
                                   {Boolean(localStorage.getItem("user_id")) &&
@@ -1012,7 +1008,7 @@ class Header extends Component {
                           )}
 
                           {/* Whishlist */}
-                          <div className="tooltip">
+                          {localStorage.getItem('accessToken') && <div className="tooltip">
                             {this.props.wishlist &&
                             this.props.wishlist.wishlistdata &&
                             this.props.wishlist.wishlistdata.nodes &&
@@ -1031,7 +1027,7 @@ class Header extends Component {
                                 style={{
                                   display: "flex",
                                   flexDirection: "column",
-                                  cursor:'pointer'
+                                  cursor: "pointer",
                                 }}
                                 onClick={() => {
                                   if (user_id.length > 0) {
@@ -1068,7 +1064,7 @@ class Header extends Component {
                             ) : (
                               <div>
                                 <i
-                                  style={{ fontSize: "18px" }}
+                                  style={{ fontSize: "18px",display:'flex' }}
                                   className={classes.iconFafa}
                                   onClick={() => {
                                     if (user_id.length > 0) {
@@ -1092,7 +1088,8 @@ class Header extends Component {
                                 </span>
                               </div>
                             )}
-                          </div>
+                          </div>}
+                          
 
                           {/* Cart */}
                           <div className="tooltip">
@@ -1112,11 +1109,7 @@ class Header extends Component {
                                   this.props.cart_count.data.allTransSkuLists
                                     .nodes.length
                                 }
-                                onClick={() => 
-                                 
-                                    window.location.href = "/cart"
-                                
-                                }
+                                onClick={() => (window.location.href = "/cart")}
                               >
                                 <a
                                   href="/cart"
@@ -1353,119 +1346,109 @@ class Header extends Component {
                             {/* </NavLink> */}
                             {/* </div>
                                                         </Popover> */}
-                            {
-                              (this.props.wishlist &&
-                              this.props.wishlist.wishlistdata &&
-                              this.props.wishlist.wishlistdata.nodes &&
-                              this.props.wishlist.wishlistdata.nodes.length >
-                                0 ? (
-                                <Badge
+
+                           {/* Wishlist */}
+                           
+                           {localStorage.getItem('accessToken') && <>
+                           {this.props.wishlist &&
+                            this.props.wishlist.wishlistdata &&
+                            this.props.wishlist.wishlistdata.nodes &&
+                            this.props.wishlist.wishlistdata.nodes.length >
+                              0 ? (
+                              <Badge
                                 className={`${
                                   isSilver && classes.badgeColorsilverW
                                 } ${!isSilver && classes.badgeColorW}`}
-                                  badgeContent={
-                                    this.props.wishlist &&
-                                    this.props.wishlist.wishlistdata &&
-                                    this.props.wishlist.wishlistdata.nodes &&
-                                    this.props.wishlist.wishlistdata.nodes
-                                      .length
-                                  }
-                                  color="secondary"
+                                badgeContent={
+                                  this.props.wishlist &&
+                                  this.props.wishlist.wishlistdata &&
+                                  this.props.wishlist.wishlistdata.nodes &&
+                                  this.props.wishlist.wishlistdata.nodes.length
+                                }
+                                color="secondary"
+                              >
+                                <i
+                                  className={classes.iconFafa}
+                                  onClick={() => {
+                                    if (user_id.length > 0) {
+                                      window.location.href = `/account${"-wishlist"}`;
+                                    } else {
+                                      window.location.href = "/login";
+                                    }
+                                  }}
                                 >
-                                  <i
-                                    className={classes.iconFafa}
-                                    onClick={() => {
-                                      if (user_id.length > 0) {
-                                        window.location.href = `/account${"-wishlist"}`;
-                                      } else {
-                                        window.location.href = "/login";
-                                      }
-                                    }}
-                                  >
-                                    <img
-                                      src={heart}
-                                      alt="icon"
-                                      loading="lazy"
-                                    />
-                                  </i>
-                                </Badge>
-                              ) : (
-                                <div>
-                                  <i
-                                    className={classes.iconFafa}
-                                    onClick={() => {
-                                      if (user_id.length > 0) {
-                                        window.location.href = `/account${"-wishlist"}`;
-                                      } else {
-                                        window.location.href = "/login";
-                                      }
-                                    }}
-                                  >
-                                    <img
-                                      src={heart}
-                                      alt="icon"
-                                      loading="lazy"
-                                    />
-                                  </i>
-                                </div>
-                              ))}
-
-                            {
-                              (this.props.cart_count &&
-                              this.props.cart_count.data &&
-                              this.props.cart_count.data.allTransSkuLists &&
-                              this.props.cart_count.data.allTransSkuLists.nodes
-                                .length > 0 ? (
-                                <Badge
-                                  className={`${
-                                    isSilver && classes.badgeColorsilver
-                                  }`}
-                                  style={{ fontSize: "9px", marginTop: "5px" }}
-                                  badgeContent={
-                                    this.props.cart_count &&
-                                    this.props.cart_count.data &&
-                                    this.props.cart_count.data
-                                      .allTransSkuLists &&
-                                    this.props.cart_count.data.allTransSkuLists
-                                      .nodes.length
-                                  }
-                                  color="secondary"
+                                  <img src={heart} alt="icon" loading="lazy" />
+                                </i>
+                              </Badge>
+                            ) : (
+                              <div>
+                                <i
+                                  className={classes.iconFafa}
+                                  style={{display:'flex'}}
+                                  onClick={() => {
+                                    if (user_id.length > 0) {
+                                      window.location.href = `/account${"-wishlist"}`;
+                                    } else {
+                                      window.location.href = "/login";
+                                    }
+                                  }}
                                 >
-                                  <a href="/cart">
-                                    <i
-                                      style={{
-                                        fontSize: "15px !important",
-                                        zIndex: 1000,
-                                      }}
-                                      className={classes.iconFafa}
-                                    >
-                                      <img
-                                        src={cart}
-                                        alt="icon"
-                                        loading="lazy"
-                                      />
-                                    </i>
-                                  </a>
-                                </Badge>
-                              ) : (
-                                <div style={{marginBottom:"-5px"}}>
-                                  <a href="/cart">
-                                    <i
-                                      style={{
-                                        fontSize: "15px !important",
-                                        zIndex: 1000,
-                                      }}
-                                      className={classes.iconFafa}
-                                    >
-                                      <img
-                                        src={cart}
-                                        alt="icon"
-                                        loading="lazy"
-                                      />
-                                    </i>
-                                  </a>
-                                </div>
-                              ))}
+                                  <img src={heart} alt="icon" loading="lazy" />
+                                </i>
+                              </div>
+                            )}
+                           
+                           </>}
+                          
+                            
+                            
+                            {/* Cart */}
+                            {this.props.cart_count &&
+                            this.props.cart_count.data &&
+                            this.props.cart_count.data.allTransSkuLists &&
+                            this.props.cart_count.data.allTransSkuLists.nodes
+                              .length > 0 ? (
+                              <Badge
+                                className={`${
+                                  isSilver && classes.badgeColorsilver
+                                }`}
+                                style={{ fontSize: "9px", marginTop: "5px" }}
+                                badgeContent={
+                                  this.props.cart_count &&
+                                  this.props.cart_count.data &&
+                                  this.props.cart_count.data.allTransSkuLists &&
+                                  this.props.cart_count.data.allTransSkuLists
+                                    .nodes.length
+                                }
+                                color="secondary"
+                              >
+                                <a href="/cart">
+                                  <i
+                                    style={{
+                                      fontSize: "15px !important",
+                                      zIndex: 1000,
+                                    }}
+                                    className={classes.iconFafa}
+                                  >
+                                    <img src={cart} alt="icon" loading="lazy" />
+                                  </i>
+                                </a>
+                              </Badge>
+                            ) : (
+                              <div style={{ marginBottom: "-5px" }}>
+                                <a href="/cart">
+                                  <i
+                                    style={{
+                                      fontSize: "15px !important",
+                                      zIndex: 1000,
+                                    }}
+                                    className={classes.iconFafa}
+                                  >
+                                    <img src={cart} alt="icon" loading="lazy" />
+                                  </i>
+                                </a>
+                              </div>
+                            )}
                           </div>
                         </Grid>
                       </div>
@@ -2210,40 +2193,46 @@ class Header extends Component {
           lg={1}
           md={3}
           xl={2}
-          style={{
-            position: "fixed",
-            bottom: 50,
-            left: 10,
-            zIndex: 20,
-          }}
+          className={classes.flagPosition}
           id="currency_select"
         >
           {this.props.isFlag ? null : (
-            <Autocomplete
+            <Select
               id="country-select-demo"
               size="small"
+              fullWidth
+              variant="outlined"
               className={classes.flag}
-              options={this.state.currencyConvo}
+              // options={this.state.currencyConvo}
               value={this.state?.selected_currency ?? null}
-              onChange={this.handleCurrencyConvo}
+              onChange={(e) => this.handleCurrencyConvo(e, e.target.value)}
               defaultValue={selected_price ?? null}
-              getOptionLabel={(option) =>
-                `${countryToFlag(option.iso)}  ${option.currencyAlias}`
-              }
-              renderOption={(option) => (
+              // getOptionLabel={(option) =>
+              //   `${countryToFlag(option.iso)}  ${
+              //     option.currencyAlias
+              //   }`
+              // }
+              renderValue={(value) => (
                 <React.Fragment>
-                  {`${countryToFlag(option.iso)}  ${option.currencyAlias}`}
+                  {`${countryToFlag(value.iso)}  ${value.currencyAlias}`}
                 </React.Fragment>
               )}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label={""}
-                  variant="outlined"
-                  style={{ color: "#000 !important" }}
-                />
-              )}
-            />
+              // renderInput={(params,inputProps) => (
+              //   <TextField
+              //     {...params}
+              //     label={""}
+              //     variant="outlined"
+              //     style={{color: "#000 !important"}}
+              //   />
+              // )}
+            >
+              {Array.isArray(this.state.currencyConvo) &&
+                this.state.currencyConvo.map((option) => (
+                  <MenuItem value={option}>{`${countryToFlag(option.iso)}  ${
+                    option.currencyAlias
+                  }`}</MenuItem>
+                ))}
+            </Select>
           )}
         </Grid>
       </div>

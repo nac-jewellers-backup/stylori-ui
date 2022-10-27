@@ -13,6 +13,16 @@ export const styles = (theme) => ({
     alignItems: "center",
     justifyContent: "flex-end",
   },
+  flagPosition:{
+    position: 'fixed',
+    bottom: 50,
+    left: 10,
+    zIndex: 20,
+    width:'100%',
+    [theme.breakpoints.down('sm')]:{
+      bottom:70
+    }
+  },
   flag:{
     color: "#000 !important",
     backgroundColor: "#FFFFFF",
