@@ -23,7 +23,7 @@ class Addressdetails extends React.Component {
         
         const { setValues, values } = props;
 
-        console.log(values,"????")
+        console.log(values,"????vals")
 
         const _add_data_addres = () => {
 

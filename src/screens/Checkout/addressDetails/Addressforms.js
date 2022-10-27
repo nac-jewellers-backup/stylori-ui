@@ -657,7 +657,6 @@ const Addressforms = (changePanel) => {
         })
     }
     const redirectForm = (val_addrs, num, isAdressOne, isAdressTwo, index) => {
-
         var add = {}
         if (con_gust !== true) {
             if (val_addrs && val_addrs.id && val_addrs.id.length > 0) {
@@ -675,7 +674,7 @@ const Addressforms = (changePanel) => {
             values["number"] = num
             values["edit_addresId"] = isAdressOne
             if (values && values["addressOne"]) {
-                values["addressOne"]["contactno"] = val_addrs && val_addrs.contactNumber && val_addrs.contactNumber
+                values["addressOne"]["contactno"] = val_addrs && val_addrs.contactno && val_addrs.contactno
                 values["addressOne"]["errortext"] = add
             }
         } if (con_gust === true) {
