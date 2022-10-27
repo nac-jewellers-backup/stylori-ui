@@ -2124,13 +2124,7 @@ class Header extends Component {
                         lg={1}
                         md={3}
                         xl={2}
-                      style={{
-                        position: 'fixed',
-                        bottom: 50,
-                        left: 10,
-                        zIndex: 20,
-                        width:'100%'
-                      }}
+                      className={classes.flagPosition}
                       id="currency_select"
                     >
                       {this.props.isFlag ? null :  <Select
