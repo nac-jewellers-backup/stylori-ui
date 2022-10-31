@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Hidden, Typography, Button } from '@material-ui/core';
 import Slideshow from '../../components/Carousel/carosul'
-import { CDN_URL } from '../../config'
+import { CDN_URL } from '../../config';
+import CurrencyConversion from 'utils/CurrencyConversion';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -296,8 +297,8 @@ export default function ImageGridList(props) {
                                                     {val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl ? <img className={classes.imgcoin} alt="" src={imageslice(val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)} /> : <img className={classes.imgcoin} src={`${CDN_URL}product/1000X1000/productnotfound.webp`} loading="lazy" alt="...."/>}
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                        <Typography style={{ color: "#394578", fontSize: "0.9rem" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
-                                                            {Math.round(val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice)}</Typography>
+                                                        <Typography style={{ color: "#394578", fontSize: "0.9rem" }}>
+                                                            {CurrencyConversion(val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice)}</Typography>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
                                                         <a style={{ textDecoration: 'none' }} href={val.transSkuListByProductSku && val.transSkuListByProductSku.skuUrl && val.transSkuListByProductSku.skuUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a>
@@ -357,8 +358,8 @@ export default function ImageGridList(props) {
 
                                                             </Grid>
                                                             <Grid>
-                                                                <Typography style={{ color: "#394578", fontSize: "12px" }}><i class="fa fa-inr" aria-hidden="true" style={{ paddingRight: "2px" }}></i>
-                                                                    {val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice}</Typography>
+                                                                <Typography style={{ color: "#394578", fontSize: "12px" }}>
+                                                                    {CurrencyConversion(val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice)}</Typography>
                                                                 <a style={{ textDecoration: 'none' }} href={val.navigateUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a></Grid>
                                                         </Grid>
                                                     </Grid>

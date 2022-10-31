@@ -49,15 +49,10 @@ let user_id = localStorage.getItem("user_id")
 let selected_price = localStorage.getItem("selected_price")
   ? JSON.parse(localStorage.getItem("selected_price"))
   : null;
-
+  
+  
 function countryToFlag(isoCode) {
-  return typeof String.fromCodePoint !== "undefined"
-    ? isoCode
-        .toUpperCase()
-        .replace(/./g, (char) =>
-          String.fromCodePoint(char.charCodeAt(0) + 127397)
-        )
-    : isoCode;
+  return <img src={`https://raw.githubusercontent.com/madebybowtie/FlagKit/master/Assets/PNG/${isoCode}.png`}/>
 }
 
 class Header extends Component {
@@ -2214,7 +2209,7 @@ class Header extends Component {
               // }
               renderValue={(value) => (
                 <React.Fragment>
-                  {`${countryToFlag(value.iso)}  ${value.currencyAlias}`}
+                  <span style={{display:'flex',alignItems:'center'}}>{countryToFlag(value.iso)} <span style={{marginLeft:3,marginTop:2}}>{value.currencyAlias}</span></span> 
                 </React.Fragment>
               )}
               // renderInput={(params,inputProps) => (
@@ -2228,9 +2223,9 @@ class Header extends Component {
             >
               {Array.isArray(this.state.currencyConvo) &&
                 this.state.currencyConvo.map((option) => (
-                  <MenuItem value={option}>{`${countryToFlag(option.iso)}  ${
-                    option.currencyAlias
-                  }`}</MenuItem>
+                  <MenuItem value={option}>
+                   <span style={{display:'flex',alignItems:'center'}}>{countryToFlag(option.iso)} <span style={{marginLeft:3,marginTop:2}}>{option.currencyAlias}</span></span> 
+                  </MenuItem>
                 ))}
             </Select>
           )}
