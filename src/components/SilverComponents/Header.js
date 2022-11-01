@@ -2183,11 +2183,11 @@ class Header extends Component {
         </Hidden>
 
         <Grid
-          xs={4}
-          sm={4}
+          xs={3}
+          sm={2}
           lg={1}
-          md={3}
-          xl={2}
+          md={1}
+          xl={1}
           className={classes.flagPosition}
           id="currency_select"
         >
