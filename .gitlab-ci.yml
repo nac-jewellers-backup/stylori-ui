@@ -33,20 +33,20 @@ build_application:
       - public/
   allow_failure: true
 
-lighthouse_report:
-  stage: report
-  variables:
-  before_script:
-    - npm i -g pm2
-    - npm i -g lighthouse
-    - npm run pm2-serve
-  scripts: 
-    - npm run generate-report
-    - npm run weblint
-  artifacts:
-    paths:
-      - ./report.html
-    expire_in: 1 week
+# lighthouse_report:
+#   stage: report
+#   variables:
+#   before_script:
+#     - npm i -g pm2
+#     - npm i -g lighthouse
+#     - npm run pm2-serve
+#   scripts: 
+#     - npm run generate-report
+#     - npm run weblint
+#   artifacts:
+#     paths:
+#       - ./report.html
+#     expire_in: 1 week
 
 sonarqube-check:
   image: 
@@ -62,5 +62,5 @@ sonarqube-check:
   script: 
     - sonar-scanner
   allow_failure: true
-  only:
-    - prodNew # or the name of your main branch
+  # only:
+  #   - stagingnew # or the name of your main branch
