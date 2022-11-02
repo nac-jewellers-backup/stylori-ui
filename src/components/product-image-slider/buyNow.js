@@ -73,7 +73,7 @@ const inputsearch = (
               }}
             />
           </Grid>
-          <Grid item xs={isSilver ? 5 : 5} lg={3} sm={5}>
+          <Grid item xs={5} lg={3} sm={5}>
             <Button
               style={{ color: "#fff", marginLeft: props.isSilver ? 8 : 0 }}
               className={
@@ -587,9 +587,9 @@ class Component extends React.Component {
                 this.state,
                 this.handleChanges,
                 this.handleCodChange,
-                this.canceldeletechecklist,
-                this.deletechecklists,
-                this.handleLocalStorage
+                // this.canceldeletechecklist,
+                // this.deletechecklists,
+                // this.handleLocalStorage
               )
             : Buydetails(
                 this.props,
@@ -609,9 +609,9 @@ class Component extends React.Component {
                 this.state,
                 this.handleChanges,
                 this.handleCodChange,
-                this.canceldeletechecklist,
-                this.deletechecklists,
-                this.handleLocalStorage
+                // this.canceldeletechecklist,
+                // this.deletechecklists,
+                // this.handleLocalStorage
               )
             : Buydetails(
                 this.props,

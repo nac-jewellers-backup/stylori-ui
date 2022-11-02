@@ -228,9 +228,6 @@ export const TabsProvider = (props) => {
           };
           if (Globalctx.pathName) {
             variableslike["filterdata"]["and"] = {
-              productMaterialsByProductSkuExist: true,
-            };
-            variableslike["filterdata"]["and"] = {
               productMaterialsByProductSku: {
                 every: {
                   materialName: {
@@ -238,6 +235,7 @@ export const TabsProvider = (props) => {
                   },
                 },
               },
+              productMaterialsByProductSkuExist: true
             };
           }
         } else {
@@ -250,9 +248,6 @@ export const TabsProvider = (props) => {
 
           if (Globalctx.pathName) {
             variableslike["filterdata"]["and"] = {
-              productMaterialsByProductSkuExist: true,
-            };
-            variableslike["filterdata"]["and"] = {
               productMaterialsByProductSku: {
                 every: {
                   materialName: {
@@ -260,6 +255,7 @@ export const TabsProvider = (props) => {
                   },
                 },
               },
+              productMaterialsByProductSkuExist: true,
             };
           }
         }
@@ -316,9 +312,6 @@ export const TabsProvider = (props) => {
 
           if (Globalctx.pathName) {
             variableslike["filterdata2"]["and"] = {
-              productMaterialsByProductSkuExist: true,
-            };
-            variableslike["filterdata2"]["and"] = {
               productMaterialsByProductSku: {
                 every: {
                   materialName: {
@@ -326,6 +319,7 @@ export const TabsProvider = (props) => {
                   },
                 },
               },
+              productMaterialsByProductSkuExist: true,
             };
           }
         } else {
@@ -338,9 +332,6 @@ export const TabsProvider = (props) => {
 
           if (Globalctx.pathName) {
             variableslike["filterdata2"]["and"] = {
-              productMaterialsByProductSkuExist: true,
-            };
-            variableslike["filterdata2"]["and"] = {
               productMaterialsByProductSku: {
                 every: {
                   materialName: {
@@ -348,6 +339,7 @@ export const TabsProvider = (props) => {
                   },
                 },
               },
+              productMaterialsByProductSkuExist: true,
             };
           }
         }

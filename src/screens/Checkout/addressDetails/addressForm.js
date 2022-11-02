@@ -76,10 +76,8 @@ const AddressComponent = (props) => {
                 <Grid
                   item
                   xs={12}
-                  lg={
-                    window.location.pathname.split("-")[0] === "/account"
-                      ? 12
-                      : 12
+                  lg={ 12
+                   
                   }
                 >
                   {window.location.pathname.split("-")[0] === "/account" ||

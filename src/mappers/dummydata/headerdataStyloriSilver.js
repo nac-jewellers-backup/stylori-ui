@@ -887,43 +887,7 @@ export const subheader = {
       // },
     ],
   },
-  "By Collections": {
-    header: "By Collections",
-    name: [
-      // {
-      //     name: 'Halo',
-      //     url: "/jewellery-from+halo+collection"
-      // },
-      {
-        name: "Daisy Days",
-        url: "/jewellery-from+daisy+days+collection",
-      },
-      {
-        name: "Monsoon",
-        url: "/jewellery-from+monsoon+collection",
-      },
-      {
-        name: "Mango",
-        url: "/jewellery-from+the+summer+collection",
-      },
-      {
-        name: "Blush",
-        url: "/jewellery-blush",
-      },
-      {
-        name: "Molecute",
-        url: "/jewellery-molecute+collection",
-      },
-      {
-        name: "Gemstone",
-        url: "/gemstone-jewellery?sort=latest",
-      },
-      {
-        name: "Butterfly",
-        url: "/jewellery-butterfly?sort=latest",
-      },
-    ],
-  },
+
   "By Theme": {
     header: "By Theme",
     name: [

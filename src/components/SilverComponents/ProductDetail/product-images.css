@@ -85,7 +85,6 @@ body {
   border: 0 !important;
   height: 1px !important;
   background: #cb356b;
-  background: -webkit-linear-gradient(to right, #ed1165, #fff) !important;
   background: linear-gradient(to right, #ed1165, #fff) !important;
   float: left !important;
   width: 100% !important;
@@ -429,7 +428,6 @@ body {
 .features-tags {
   font-size: 11px;
   padding-top: 10px !important;
-  font-size: 11px;
   margin-bottom: 0;
 }
 
@@ -480,7 +478,6 @@ body {
   line-height: 26px !important;
   padding: 0 5px !important;
   font-size: 13px;
-  line-height: 40px !important;
   color: #394578 !important;
   border: 1px solid #c3c3c3;
   border-radius: 0px;
@@ -742,7 +739,6 @@ body {
 .overlayCss {
   line-height: 20px !important;
   font-size: 12px !important;
-  text-transform: uppercase;
   padding: 0px 8px !important;
   background: #ed1165 !important;
   text-transform: uppercase;
@@ -788,7 +784,6 @@ body {
   background-color: rgb(255, 255, 255);
   z-index: 2147483647;
   opacity: 0.5;
-  cursor: crosshair;
   overflow: hidden !important;
   text-align: center !important;
   cursor: pointer !important;
@@ -812,7 +807,6 @@ body {
   /* margin-top: -30px !important; */
   position: absolute;
   background-repeat: no-repeat !important;
-  margin-left: 0px;
   cursor: pointer !important;
   margin-left: -2% !important;
 }
@@ -1222,7 +1216,6 @@ body {
   font-size: 13px !important;
   color: #394578 !important;
   width: 100% !important;
-  padding: 10px;
   line-height: 13px;
   text-transform: capitalize;
   text-align: justify;
@@ -1236,7 +1229,6 @@ body {
   width: 100% !important;
   font-weight: 600;
   text-align: center;
-  font-size: 11px !important;
 }
 
 .rings_tabsvls_active {
@@ -1277,7 +1269,6 @@ body {
     width: 100% !important;
     font-weight: 600;
     text-align: center !important;
-    font-size: 11px !important;
     padding: 5px 0px 0px 0px;
   }
 
@@ -1467,8 +1458,8 @@ body {
   margin-bottom: 10px !important;
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.06);
   padding-top: 12px !important;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px 4px,
-    rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px 4px,
+    rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px; */
 }
 
 .overall-bo {

@@ -1013,7 +1013,7 @@ class Checkoutcard extends React.Component {
                     borderTop: this.props.checkout ? '2px solid #DEDFE0' : '',
                   }}
                 >
-                  {this.props.checkout ? "TOTAL COST" : "TOTAL COST"}
+                  {"TOTAL COST"}
                 </Typography>
               </Grid>
               <Grid item xs={3} lg={4} style={{ textAlign: "end" }}>
@@ -1077,12 +1077,11 @@ class Checkoutcard extends React.Component {
                   }}
                 >
                  {props?.shipping_charge
-                      ? props?.shipping_charge === 0
-                        ? CurrencyConversion(props?.shipping_charge)
+                      && props?.shipping_charge === 0
+                        ? CurrencyConversion(0)
                         :
                           CurrencyConversion(props?.shipping_charge)
-                      : 
-                        CurrencyConversion(0)}
+                  }
                 </Typography>
 
                 <Typography
@@ -1236,7 +1235,7 @@ class Checkoutcard extends React.Component {
                     borderTop: this.props.checkout ? '2px solid #DEDFE0' : '',
                   }}
                 >
-                  {this.props.checkout ? "TOTAL COST" : "TOTAL COST"}
+                  {"TOTAL COST"}
                 </Typography>
               </Grid>
               <Grid item xs={3} lg={4} style={{ textAlign: "end" }}>
@@ -1300,12 +1299,11 @@ class Checkoutcard extends React.Component {
                   }}
                 >
                                   {props?.shipping_charge
-                      ? props?.shipping_charge === 0
-                        ? CurrencyConversion(props?.shipping_charge)
+                      && props?.shipping_charge === 0
+                        ? CurrencyConversion(0)
                         :
                           CurrencyConversion(props?.shipping_charge)
-                      : 
-                        CurrencyConversion(0)}
+                     }
                 </Typography>
 
                 <Typography

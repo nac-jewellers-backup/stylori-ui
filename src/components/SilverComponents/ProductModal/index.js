@@ -82,7 +82,7 @@ const ProductModal = (props) => {
 
     let _fun = () => {
       let _arr = [];
-      _keysCollections.map((val) => {
+      _keysCollections.forEach((val) => {
         let tempdata = data ? data[val] : false;
         if (tempdata && tempdata.nodes.length > 0) {
           let obj = {};
@@ -94,6 +94,7 @@ const ProductModal = (props) => {
             "Lorem Ipsum is simply dummy text of the printing a…rem Ipsum has been the industry's standard dummy";
           _arr.push(obj);
         }
+        return 0;
       });
       return _arr;
     };

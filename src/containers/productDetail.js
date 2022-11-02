@@ -274,8 +274,9 @@ class ProductDetail extends Component {
         { key: "og_type", value: "website_stylori" },
         { key: "og_url", value: window.location.href },
       ];
-      arr.map((val) => {
+      arr.forEach((val) => {
         document.getElementById(val.key).setAttribute("content", val?.value);
+        return 0;
       });
       document.title = this?.props?.data[0]?.title;
     }
@@ -1000,7 +1001,7 @@ const Components = (props) => {
   const _queryResultsValidator = (_result) => {
     let _keys = Object.keys(_result);
     var _obj = {};
-    _keys.map((val) => {
+    _keys.forEach((val) => {
       var a = _result[val].nodes.map((val) => {
         return val?.productListByProductSku?.productImagesByProductId?.nodes;
       });

@@ -270,7 +270,6 @@ body {
     border: 0 !important;
     height: 1px !important;
     background: #CB356B;
-    background: -webkit-linear-gradient(to right, #ed1165, #fff) !important;
     background: linear-gradient(to right, #ed1165, #fff) !important;
     float: left !important;
     width: 100% !important;

@@ -139,7 +139,7 @@ const Provider = (props) => {
 
                     // })
 
-                    Object.entries(a).map(val => {
+                    Object.entries(a).forEach(val => {
                         setSilverFilters({ ...silverFilters, a })
                         return 0;
                     })
@@ -310,7 +310,7 @@ const Provider = (props) => {
                 Object.assign(silverFilters, {})
             }
             
-            Object.keys(silverFilters).map(fk => {
+            Object.keys(silverFilters).forEach(fk => {
                 const filter = silverFilters[fk];
                 const fv = filter && Object.keys(filter);
                 if (fv && fv.length > 0) {
@@ -322,6 +322,7 @@ const Provider = (props) => {
                         qtfArr.push(qtf);
                     }
                 }
+                return 0
             })
             var k = qtfArr.map(val => Object.values(val));
             var keyy = qtfArr.map(val => Object.keys(val))
@@ -405,7 +406,7 @@ const Provider = (props) => {
         bodyvar = paramObjects();
         // else {
         try {
-            Object.keys(silverFilters).map(fk => {
+            Object.keys(silverFilters).forEach(fk => {
                 const filter = silverFilters[fk];
                 const fv = Object.keys(filter);
                 if (fv.length > 0) {
@@ -419,6 +420,7 @@ const Provider = (props) => {
                     }
 
                 }
+                return 0
             })
             const query = encodeURI(queries.join("&"));
 

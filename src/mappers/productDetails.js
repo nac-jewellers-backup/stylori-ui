@@ -205,8 +205,7 @@ const generateImgurls = (PD, val, screen_res, tabsChange) => {
 
           if (!tabsChange) {
             if (
-              imgurl?.productColor === PD.metalColor ||
-              imgurl?.productColor === PD.metalColor
+              imgurl?.productColor === PD.metalColor 
             ) {
               arrOfurls.push(
                 injectUrl_url_construct(imgurl, CDN_URL, screen_res)
@@ -988,7 +987,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                         val?.productImagesByProductId?.nodes
                       }` &&
                       injectUrl_url_construct(
-                        val?.productImagesByProductId?.nodes[0] &&
+                        val?.productImagesByProductId &&
                           val?.productImagesByProductId?.nodes[0],
                         CDN_URL,
                         colSize_like_view
@@ -1034,7 +1033,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                       val?.productImagesByProductId?.nodes
                     }`
                       ? injectUrl_url_construct(
-                          val?.productImagesByProductId?.nodes[0] &&
+                          val?.productImagesByProductId &&
                             val?.productImagesByProductId?.nodes[0],
                           CDN_URL,
                           colSize_like_view
@@ -1082,8 +1081,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                         ?.nodes
                     }` &&
                     injectUrl_url_construct(
-                      val?.productListByProductId?.productImagesByProductId
-                        ?.nodes[0] &&
+                      val?.productListByProductId?.productImagesByProductId &&
                         val?.productListByProductId?.productImagesByProductId
                           ?.nodes[0],
                       CDN_URL,

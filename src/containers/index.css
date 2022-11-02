@@ -347,7 +347,7 @@
   }
 }
 
-@media only screen and (max-width: 959x) and (min-width: 769px) {
+@media only screen and (max-width: 959px) and (min-width: 769px) {
   .skeletonHeight{
     height: 320px;
   }

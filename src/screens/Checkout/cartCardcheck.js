@@ -726,7 +726,7 @@ const Components = (props) => {
     data.data.allTransSkuLists.nodes &&
     data.data.allTransSkuLists.nodes.length === 0
   ) {
-    content = <div className="overall-loader"> {cartValueEmpty()} </div>;
+    content = <div className="overall-loader"> {cartValueEmpty} </div>;
   } else {
     content = (
       <CartCardCheck

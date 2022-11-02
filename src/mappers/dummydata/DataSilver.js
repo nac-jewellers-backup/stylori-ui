@@ -14,7 +14,6 @@ export const carouselTop = [
       dots: false,
       infinite: false,
       autoplay: true,
-      infinite: true,
       speed: 2000,
       fade: false,
       arrows: false,

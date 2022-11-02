@@ -43,7 +43,7 @@ const cacheCheck = async () => {
         if (type.indexOf("json") !== 1) {
           var obj = null;
           try{
-            obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
+            obj = await request.responseText && request.responseText !== '' && typeof request.responseText != String ? JSON.parse(request.responseText) : ''
           }catch(e){
             console.log(e)
           }
@@ -97,7 +97,7 @@ const cacheCheck = async () => {
        
   
         if (type.indexOf("json") !== 1) {
-          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText !== String ? JSON.parse(request.responseText) : ''
+          var obj = await request.responseText && request.responseText !== '' && typeof request.responseText != String ? JSON.parse(request.responseText) : ''
       
           if (obj !== '') localStorage.setItem('version', obj.version)
   

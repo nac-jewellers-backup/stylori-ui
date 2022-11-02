@@ -206,7 +206,7 @@ const Provider = (props) => {
             let splitSearchParamers = window.location.search.split("&");
             if (splitSearchParamers.length > 0) {
               if (splitSearchParamers.length > 2) {
-                splitSearchParamers.map((val) => {
+                splitSearchParamers.forEach((val) => {
                   let equalSplit = val.split("=");
                   if (equalSplit[0] === "?sort") {
                     let obj = {};
@@ -219,12 +219,13 @@ const Provider = (props) => {
                   if (equalSplit[0] === "endprice") {
                     pricemax = Number(equalSplit[1]);
                   }
+                  return 0;
                 });
                 setSort(sort);
                 setPriceMin(pricemin);
                 setPriceMax(pricemax);
               } else {
-                splitSearchParamers.map((val) => {
+                splitSearchParamers.forEach((val) => {
                   let equalSplit = val.split("=");
                   if (equalSplit[0] === "?sort") {
                     let obj = {};
@@ -237,6 +238,7 @@ const Provider = (props) => {
                   if (equalSplit[0] === "endprice") {
                     pricemax = Number(equalSplit[1]);
                   }
+                  return 0;
                 });
                 setSort(sort);
                 setPriceMin(pricemin);
@@ -247,8 +249,9 @@ const Provider = (props) => {
 
           //    ****ENDS**** setting state search parameters ....
 
-          Object.entries(a).map((val) => {
+          Object.entries(a).forEach((val) => {
             setFilters({ ...filters, a });
+            return 0;
           });
           updateFilters(filters);
           // alert(JSON.stringify(filters))
@@ -418,7 +421,7 @@ const Provider = (props) => {
       if (filters.constructor !== Object) {
         Object.assign(filters, {});
       }
-      Object.keys(filters).map((fk) => {
+      Object.keys(filters).forEach((fk) => {
         const filter = filters[fk];
         const fv = filter && Object.keys(filter)
         if (fv && fv.length > 0) {
@@ -430,6 +433,7 @@ const Provider = (props) => {
             qtfArr.push(qtf);
           }
         }
+        return 0
       });
       var k = qtfArr.map((val) => Object.values(val));
       var keyy = qtfArr.map((val) => Object.keys(val));
@@ -584,7 +588,7 @@ const Provider = (props) => {
     bodyvar = paramObjects();
     // else {
     try {
-      Object.keys(filters).map((fk) => {
+      Object.keys(filters).forEach((fk) => {
         const filter = filters[fk];
         const fv = Object.keys(filter);
         if (fv.length > 0) {
@@ -596,6 +600,7 @@ const Provider = (props) => {
             qtfArr.push(qtf);
           }
         }
+        return 0
       });
       const query = encodeURI(queries.join("&"));
 

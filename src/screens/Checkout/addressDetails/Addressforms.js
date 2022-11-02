@@ -547,9 +547,9 @@ const Addressforms = (changePanel) => {
     var deletss = {}
     const Delete_address = (val_addrs, index) => {
         if (con_gust !== true) {
-            if (check_dlt === false) {
+            if (check_dlt == false) {
                 if (values && values.addressvalues && values.addressvalues.data && values.addressvalues.data.allUserAddresses.nodes.length > 1) {
-                    deletss["address_id"] = val_addrs && val_addrs
+                    deletss["address_id"] = val_addrs !=='' && val_addrs
                     deleteaddress(deletss)
                     // window.location.reload();
                 } else {
@@ -557,7 +557,7 @@ const Addressforms = (changePanel) => {
                 }
                 return false
             } else {
-                deletss["address_id"] = val_addrs && val_addrs
+                deletss["address_id"] = val_addrs !== '' && val_addrs
                 deleteaddress(deletss)
                 // window.location.reload();
             }

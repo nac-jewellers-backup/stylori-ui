@@ -28,7 +28,6 @@ export const styles = (theme) => ({
     backgroundColor: "#FFFFFF",
     '-webkit-tap-highlight-color': 'transparent',
     border: '1px solid #e8e8e8',
-    border: "0px",
     borderColor: "#fff",
     cursor:"pointer"
   },
@@ -365,7 +364,7 @@ export const useStyles = makeStyles((theme) => ({
         props.isSilver
           ? theme.palette.secondary.main
           : theme.palette.secondary.dark,
-      color: (props) => (props.isSilver ? "white" : "white"),
+      color: "white",
     },
   },
   mouseOverPopoverfilters: {

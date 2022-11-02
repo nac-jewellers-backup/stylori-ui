@@ -28,7 +28,7 @@ export default function Pricing(props) {
       {/*  */}
       <Grid
         spacing={12}
-        style={{ padding: isSilver ? 0 : 0 }}
+        style={{ padding: 0 }}
         container
         lg={12}
       >

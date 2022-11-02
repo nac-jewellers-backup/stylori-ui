@@ -152,7 +152,7 @@ class Component extends React.Component {
       let price_two;
       let splitSearchParamers = window.location.search.split("&");
       if (splitSearchParamers.length > 0) {
-        splitSearchParamers.map((val) => {
+        splitSearchParamers.forEach((val) => {
           let equalSplit = val.split("=");
           if (splitSearchParamers.length > 2) {
             if (equalSplit[0] === "startprice") {
@@ -245,7 +245,7 @@ class Component extends React.Component {
                 return a;
               });
 
-            Object.entries(paramsfilter[0]).map((val) => {
+            Object.entries(paramsfilter[0]).forEach((val) => {
               var keys = val[0];
               var values = val[1];
               checked[keys] = values;
@@ -281,6 +281,7 @@ class Component extends React.Component {
                 }
                 chipData.push({ label: a[0], title: keys });
               }
+              return 0;
             });
            
             this.setState(chipData, selected, checked);
@@ -332,7 +333,7 @@ class Component extends React.Component {
       if (val !== undefined && val !== null) {
         const ss = val ? val[1] : "";
         valx = ss;
-        Object.values(valx).map((val1) => {
+        Object.values(valx).forEach((val1) => {
           var n = valx && Object.keys(valx)[0].length > 0;
           const s1s = val1 ? val1[0] : "";
           if (val1 !== undefined && val1 !== null && n) {
@@ -431,15 +432,17 @@ class Component extends React.Component {
     }
     let arr = [];
     let checkTitle = true;
-    chipData.map((val) => {
+    chipData.forEach((val) => {
       if (val.title === title) {
         checkTitle = false;
       }
+      return 0;
     });
-    chipData.map((val) => {
+    chipData.forEach((val) => {
       if (val.label === value) {
         checkTitle = false;
       }
+      return 0;
     });
     if (BoolName === true) {
       if (checkTitle) {
@@ -461,7 +464,7 @@ class Component extends React.Component {
   handleDelete = (value) => {
     this.handlebye();
     let { chipData, checked } = this.state;
-    Object.entries(checked).map((val) => {
+    Object.entries(checked).forEach((val) => {
       if (val && val[0] === "Category") {
         if (val && val[1] && val[1].goldcoins === true) {
           if (value === "Gold Coins") {
@@ -480,7 +483,7 @@ class Component extends React.Component {
             arr1 = this.delete_val_chips(value)?.filter((val) => {
               var dlt;
               if (val !== undefined && val !== null) {
-                dlt = Object.values(val) === -1;
+                dlt = Object.values(val) == -1;
               }
               return dlt;
             });
@@ -502,7 +505,7 @@ class Component extends React.Component {
             arr1 = this.delete_val_chips(value)?.filter((val) => {
               var dlt;
               if (val !== undefined && val !== null) {
-                dlt = Object.values(val) === -1;
+                dlt = Object.values(val) == -1;
               }
               return dlt;
             });
@@ -524,7 +527,7 @@ class Component extends React.Component {
   check_goldCoins = (values_) => {
     const Category = this.state.checked;
     var valus;
-    Object.entries(Category).map((val) => {
+    Object.entries(Category).forEach((val) => {
       if (val && val[0] === "Category") {
         if (val && val[1] && val[1].goldcoins === true) {
           if (values_ === "Gold Coins") {
@@ -1408,7 +1411,7 @@ class Component extends React.Component {
                                   onClick={() => this.filterValue(row)}
                                 >
                                   <ListItemText className="filter-mbl-font filter-mbl-fonts">
-                                    {row && row}
+                                    {row!=="" && row}
                                   </ListItemText>
                                 </ListItem>
                               )
@@ -1423,7 +1426,7 @@ class Component extends React.Component {
                                 onClick={() => this.filterValue(row)}
                               >
                                 <ListItemText className="filter-mbl-font filter-mbl-fonts">
-                                  {row && row}
+                                  {row!=="" && row}
                                 </ListItemText>
                               </ListItem>
                             )}
@@ -1442,10 +1445,10 @@ class Component extends React.Component {
                   >
                     <>
                     {subFilter[
-                        this.state.filtercheck && this.state.filtercheck
+                        this.state.filtercheck!=='' && this.state.filtercheck
                       ] !== undefined
                         ? subFilter[
-                            this.state.filtercheck && this.state.filtercheck
+                            this.state.filtercheck!=='' && this.state.filtercheck
                           ].map((row) => {
                             return (
                               <ListItem

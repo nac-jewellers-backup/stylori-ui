@@ -801,7 +801,7 @@ export default function Footer(props) {
                       {silverFooterCat.map((data) => {
                         return (
                           <>
-                            {localStorage.getItem("true") ? (
+                            
                               <Grid
                                 container
                                 style={{
@@ -815,21 +815,7 @@ export default function Footer(props) {
                               >
                                 {data.Title}
                               </Grid>
-                            ) : (
-                              <Grid
-                                container
-                                style={{
-                                  color: silver ? "#fff" : "rgb(128, 128, 128)",
-                                }}
-                                className={classes.navTitle}
-                                onClick={() => {
-                                  window.location.href = data.url;
-                                }}
-                                href="#"
-                              >
-                                {data.Title}
-                              </Grid>
-                            )}
+                          
                           </>
                         );
                       })}
@@ -915,7 +901,7 @@ export default function Footer(props) {
                         {footerData1.map((data) => {
                           return (
                             <>
-                              {localStorage.getItem("true") ? (
+                              
                                 <Grid
                                   container
                                   style={{
@@ -931,23 +917,7 @@ export default function Footer(props) {
                                 >
                                   {data.Title}
                                 </Grid>
-                              ) : (
-                                <Grid
-                                  container
-                                  style={{
-                                    color: silver
-                                      ? "#fff"
-                                      : "rgb(128, 128, 128)",
-                                  }}
-                                  className={classes.navTitle}
-                                  onClick={() => {
-                                    window.location.href = data.url;
-                                  }}
-                                  href="#"
-                                >
-                                  {data.Title}
-                                </Grid>
-                              )}
+                              
                             </>
                           );
                         })}

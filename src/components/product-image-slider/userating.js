@@ -181,7 +181,7 @@ const useRating = (props) => {
                 if (window.location.search) {
                     values['product_sku'] = props.data && props.data[0] && props.data[0].skuId
                     values['user_id'] = user_id
-                    values['username'] = values['username']
+                    // values['username'] = values['username']
                     values['product_id'] = props.data && props.data[0] && props.data[0].productId
                     if (props.data && props.data[0] && props.data[0].skuId.length > 0) {
                         variab['productSku'] = props.data && props.data[0] && props.data[0].skuId

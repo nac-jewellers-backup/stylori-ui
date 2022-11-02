@@ -160,9 +160,6 @@ export const styles = makeStyles((theme) => ({
       top: 0,
     },
   },
-  menuListCursorfiltersLabel: {
-    fontWeight: "unset !important",
-  },
   menuListCursorMoreFilters: {
     cursor: "pointer",
     fontFamily: "Roboto",

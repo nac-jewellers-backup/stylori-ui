@@ -86,7 +86,7 @@ const LoginComponent = (props) => {
                     <Container className={classes._container}>
                         <div className='pt-sm' style={{ width: "100%", float: "right" }}>
                             <form action="javascript:void(0)" onSubmit={(e) => {
-                                handelSubmit(e)
+                                handelSubmit()
                             }}>
                                 <div className={`${classes.normalfonts}`} style={{ fontSize: "18px" }}>Reset Password </div>
                                 <TextField
@@ -101,7 +101,7 @@ const LoginComponent = (props) => {
                                     onChange={e => handleChange('newpassword', e.target.value)}
                                     placeholder="Enter new password"
                                 />
-                                <label className='errtext'> {values.newPasswordHelperText && values.newPasswordHelperText}</label>
+                                <label className='errtext'> {values && values?.newPasswordHelperText}</label>
                                 <TextField
                                     margin="normal"
                                     variant="outlined"
@@ -114,7 +114,7 @@ const LoginComponent = (props) => {
                                     onChange={e => handleChange('confirmPassword', e.target.value)}
                                     placeholder="Enter confirm password"
                                 />
-                                <label className='errtext'> {values.confirmPasswordHelper && values.confirmPasswordHelper}</label>
+                                <label className='errtext'> {values && values?.confirmPasswordHelper}</label>
                                 <br></br>
                                 <div style={{ float: "right" }}>
                                     <Button className='apply-b' type="submit">Reset</Button>

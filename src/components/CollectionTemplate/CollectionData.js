@@ -67,7 +67,7 @@ const Product_url = (url) => {
   // url && url.map(val => {
   //   if (val !== undefined && val !== null) {
   // alert(url.skuUrl)
-  return url && url && url.skuUrl
+  return url && url.skuUrl
   //   }
   // })
 }
@@ -77,7 +77,7 @@ export default function (data) {
   var CollectionPageStylori;
   let mapperdata = data && data.length > 0 ? data : "";
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
-    containerImage.map((contain_img, index) => {
+    containerImage.forEach((contain_img, index) => {
       if (index_ === index) {
         data.containerImageData = [contain_img];
       }
@@ -87,7 +87,7 @@ export default function (data) {
   })
 
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
-    Product_name.map((contain_img, index) => {
+    Product_name.forEach((contain_img, index) => {
       if ((2 * index_) === index) {
         data.Product_name = contain_img
       }
@@ -96,7 +96,7 @@ export default function (data) {
     return data;
   })
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
-    Product_name.map((contain_img, index) => {
+    Product_name.forEach((contain_img, index) => {
       if ((2 * index_) + 1 === index) {
         data.Product_name1 = contain_img
       }
@@ -106,7 +106,7 @@ export default function (data) {
   })
 
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
-    primaryNavigateUrl.map((contain_img, index) => {
+    primaryNavigateUrl.forEach((contain_img, index) => {
       if ((2 * index_) === index) {
         data.primaryNavigateUrl = contain_img
       }
@@ -116,7 +116,7 @@ export default function (data) {
   })
 
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
-    primaryNavigateUrl.map((contain_img, index) => {
+    primaryNavigateUrl.forEach((contain_img, index) => {
       if ((2 * index_) + 1 === index) {
         data.primaryNavigateUrl_sec = contain_img
       }
@@ -128,7 +128,7 @@ export default function (data) {
 
 
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
-    primaryImage.map((contain_img, index) => {
+    primaryImage.forEach((contain_img, index) => {
       if ((2 * index_) === index) {
         data.primaryImage = contain_img
       }
@@ -137,7 +137,7 @@ export default function (data) {
     return data;
   })
   mapperdata = mapperdata && mapperdata.map((data, index_) => {
-    primaryImage.map((contain_img, index) => {
+    primaryImage.forEach((contain_img, index) => {
       if ((2 * index_) + 1 === index) {
         data.secondaryImage = contain_img
       }
