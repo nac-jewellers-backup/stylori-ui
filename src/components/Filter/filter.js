@@ -355,7 +355,7 @@ class Component extends React.Component {
     var showSortFilter = false;
 
     if (window.location.search) {
-      Object.keys(this.state.checked).map((fk) => {
+      Object.keys(this.state.checked).forEach((fk) => {
         const filter = this?.state?.checked[fk];
         const fv = Object.keys(filter);
         if (fk !== "Category" && fk !== "category" && fk !== "filters") {
