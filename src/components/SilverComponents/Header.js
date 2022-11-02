@@ -52,7 +52,7 @@ let selected_price = localStorage.getItem("selected_price")
   
   
 function countryToFlag(isoCode) {
-  return <img src={`https://raw.githubusercontent.com/madebybowtie/FlagKit/master/Assets/PNG/${isoCode}.png`}/>
+  return <img src={`https://raw.githubusercontent.com/madebybowtie/FlagKit/master/Assets/PNG/${isoCode}.png`} alt={isoCode}/>
 }
 
 class Header extends Component {

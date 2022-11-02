@@ -29,7 +29,10 @@ export const styles = (theme) => ({
     '-webkit-tap-highlight-color': 'transparent',
     border: '1px solid #e8e8e8',
     borderColor: "#fff",
-    cursor:"pointer"
+    cursor:"pointer",
+    "& .MuiSelect-selectMenu":{
+      display:'flex'
+    }
   },
   searchcontainer: {
     padding: "3px 2px 2px 2px",
