@@ -855,7 +855,7 @@ body {
 .stars-outer {
     display: inline-block;
     position: relative;
-    font-family: 'FontAwesome','sans-serif';
+    font-family: 'FontAwesome',sans-serif;
 }
 
 .stars-outer::before {
@@ -1433,7 +1433,7 @@ body {
 }
 
 .side-arrow-symbol {
-    font-family: "FontAwesome",'sans-serif' !important;
+    font-family: "FontAwesome",sans-serif !important;
     font-size: 15px !important;
     line-height: 1;
     color: #394578 !important;

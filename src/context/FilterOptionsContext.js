@@ -602,7 +602,7 @@ const Provider = (props) => {
         }
         return 0
       });
-      const query = encodeURI(queries.join("&"));
+      const query = encodeURI(queries.length > 0 && queries.join("&"));
 
       // bodyvar = paramObjects();
     } catch (error) {
