@@ -191,7 +191,7 @@ body {
 .tabs-contants {
   font-size: 11px !important;
   margin: auto !important;
-  font-family: "Roboto" !important;
+  font-family: "Roboto",'sans-serif' !important;
   text-align: center !important;
 }
 
