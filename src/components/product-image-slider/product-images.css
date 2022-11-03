@@ -91,7 +91,7 @@ body {
 .MuiTab-root,
 .MuiButton-root,
 .MuiInputBase-input {
-    font-family: 'Roboto','sans-serif' !important;
+    font-family: 'Roboto',sans-serif !important;
 }
 
 /* product hovering price*/
@@ -250,7 +250,7 @@ body {
     cursor: pointer;
     margin-top: 5px;
     color: #ccc;
-    font-family: "Roboto-Black",'sans-serif' !important;
+    font-family: "Roboto-Black",sans-serif !important;
     /* margin-left: 27% !important;  */
 }
 
@@ -258,7 +258,7 @@ body {
     cursor: pointer;
     margin-top: 5px;
     color: rgba(109, 110, 112, 1);
-    font-family: "Roboto-Black",'sans-serif' !important;
+    font-family: "Roboto-Black",sans-serif !important;
     /* margin-left: 27% !important;  */
 }
 
@@ -379,14 +379,14 @@ body {
 .tabs-contants {
     font-size: 11px !important;
     margin: auto !important;
-    font-family: 'Roboto','sans-serif' !important;
+    font-family: 'Roboto',sans-serif !important;
     text-align: center !important;
 }
 
 .tabs-cont {
     font-size: 9px !important;
     margin: auto !important;
-    font-family: 'Roboto','sans-serif' !important;
+    font-family: 'Roboto',sans-serif !important;
     text-align: center !important;
 }
 
@@ -834,7 +834,7 @@ body {
     min-width: 100px;
     font-size: 13px !important;
     padding: 10px 17px !important;
-    font-family: "Roboto",'sans-serif'
+    font-family: "Roboto",sans-serif
 }
 
 .form-reviews-mob:hover {
@@ -1271,7 +1271,7 @@ body {
     justify-content: center !important;
     align-items: center !important;
     position: relative;
-    font-family: 'Roboto','sans-serif' !important;
+    font-family: 'Roboto',sans-serif !important;
     font-size: 14px;
     transform: translatey(-100px);
     transition: all .2s ease-in-out;
@@ -1865,7 +1865,7 @@ body {
     color: #394578 !important;
     font-size: 14px !important;
     text-transform: capitalize;
-    font-family: 'Roboto','sans-serif';
+    font-family: 'Roboto',sans-serif;
     font-weight: 500;
 }
 
@@ -1873,7 +1873,7 @@ body {
     color: #6e6d72 !important;
     font-size: 12px !important;
     text-transform: capitalize;
-    font-family: 'Roboto','sans-serif';
+    font-family: 'Roboto',sans-serif;
     font-weight: 400;
 }
 
