@@ -34,7 +34,7 @@ export default class JewelSlider extends Component {
             fontFamily: 'FontAwesome !important',
             position: 'absolute',
             zIndex: 500,
-            left: '10px',
+            left: '46px',
             margin: '10px',
             color:"#111",
             paddingTop: '12px'

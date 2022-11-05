@@ -353,7 +353,7 @@ class ProductImageZoom extends React.Component {
                           fontFamily: "FontAwesome !important",
                           position: "absolute",
                           zIndex: 500,
-                          left: "10px",
+                          left: "46px",
                           margin: "10px",
                           color: "#111",
                           paddingTop: "7px",
@@ -402,9 +402,10 @@ class ProductImageZoom extends React.Component {
                     <source src={showimage} type="video/mp4" />
                   </video>
                 ) : (
-                  // <img src={[largeImage,
-                  //   showimageBig,
-                  //   `${CDN_URL}product/1000X1000/productnotfound.webp`,]} alt="Stylori" style={{width:"inherit"}}/>
+                  this.props.isSilver ?
+                  <img src={[largeImage,
+                    showimageBig,
+                    `${CDN_URL}product/1000X1000/productnotfound.webp`,]} alt="Stylori" style={{width:"inherit"}}/> :
                   <GlassMagnifier
                     imageSrc={[
                       largeImage,

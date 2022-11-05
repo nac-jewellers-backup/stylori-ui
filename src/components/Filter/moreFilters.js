@@ -74,7 +74,8 @@ export default function MoreFilters(props) {
     val !== "No of Stones" &&
     val !== "Metal Purity" &&
     val !== "Finish" &&
-    val !== "Material"
+    val !== "Material" &&
+    val !== "Offers"
   });
 
 
