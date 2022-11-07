@@ -605,7 +605,7 @@ class Header extends Component {
                                   isSilver && classes.badgeColorsilverW
                                 } ${!isSilver && classes.badgeColorW}`}
                                 badgeContent={
-                                  this.props.wishlist_count
+                                  wishlist?.wishlistdata?.nodes?.length
                                 }
                                 style={{
                                   display: "flex",
@@ -1006,7 +1006,7 @@ class Header extends Component {
                                   isSilver && classes.badgeColorsilverW
                                 } ${!isSilver && classes.badgeColorW}`}
                                 badgeContent={
-                                  this.props.wishlist_count
+                                  wishlist?.wishlistdata?.nodes?.length
                                 }
                                 style={{
                                   display: "flex",
@@ -1341,7 +1341,7 @@ class Header extends Component {
                                   isSilver && classes.badgeColorsilverW
                                 } ${!isSilver && classes.badgeColorW}`}
                                 badgeContent={
-                                  this.props.wishlist_count
+                                  wishlist?.wishlistdata?.nodes?.length
                                 }
                                 color="secondary"
                               >
