@@ -228,14 +228,15 @@ class Header extends Component {
 
   render() {
     const { mainlist, Jewellery, subheader, menuListHeader, menuLists } =
-      this.props.data;
+      this.props.data;  
     // debugger;
     let { selected, selected1 } = this.state;
-    const { classes } = this.props;
+    const { classes,wishlist } = this.props;
     const { anchorEl } = this.state;
     const openPopover = anchorEl;
     var a = window.location.pathname;
     var b = a.split("/");
+
 
     const isSilver =
       this.props.globalContext &&
@@ -597,20 +598,14 @@ class Header extends Component {
 
                            {/* Whislist */}
                            {localStorage.getItem('accessToken') &&  <div className="tooltip">
-                            {this.props.wishlist &&
-                            this.props.wishlist.wishlistdata &&
-                            this.props.wishlist.wishlistdata.nodes &&
-                            this.props.wishlist.wishlistdata.nodes.length >
+                            {wishlist?.wishlistdata?.nodes?.length  >
                               0 ? (
                               <Badge
                                 className={`${
                                   isSilver && classes.badgeColorsilverW
                                 } ${!isSilver && classes.badgeColorW}`}
                                 badgeContent={
-                                  this.props.wishlist &&
-                                  this.props.wishlist.wishlistdata &&
-                                  this.props.wishlist.wishlistdata.nodes &&
-                                  this.props.wishlist.wishlistdata.nodes.length
+                                  this.props.wishlist_count
                                 }
                                 style={{
                                   display: "flex",
@@ -1004,20 +999,14 @@ class Header extends Component {
 
                           {/* Whishlist */}
                           {localStorage.getItem('accessToken') && <div className="tooltip">
-                            {this.props.wishlist &&
-                            this.props.wishlist.wishlistdata &&
-                            this.props.wishlist.wishlistdata.nodes &&
-                            this.props.wishlist.wishlistdata.nodes.length >
+                            {wishlist?.wishlistdata?.nodes?.length >
                               0 ? (
                               <Badge
                                 className={`${
                                   isSilver && classes.badgeColorsilverW
                                 } ${!isSilver && classes.badgeColorW}`}
                                 badgeContent={
-                                  this.props.wishlist &&
-                                  this.props.wishlist.wishlistdata &&
-                                  this.props.wishlist.wishlistdata.nodes &&
-                                  this.props.wishlist.wishlistdata.nodes.length
+                                  this.props.wishlist_count
                                 }
                                 style={{
                                   display: "flex",
@@ -1345,20 +1334,14 @@ class Header extends Component {
                            {/* Wishlist */}
                            
                            {localStorage.getItem('accessToken') && <>
-                           {this.props.wishlist &&
-                            this.props.wishlist.wishlistdata &&
-                            this.props.wishlist.wishlistdata.nodes &&
-                            this.props.wishlist.wishlistdata.nodes.length >
+                           {wishlist?.wishlistdata?.nodes?.length >
                               0 ? (
                               <Badge
                                 className={`${
                                   isSilver && classes.badgeColorsilverW
                                 } ${!isSilver && classes.badgeColorW}`}
                                 badgeContent={
-                                  this.props.wishlist &&
-                                  this.props.wishlist.wishlistdata &&
-                                  this.props.wishlist.wishlistdata.nodes &&
-                                  this.props.wishlist.wishlistdata.nodes.length
+                                  this.props.wishlist_count
                                 }
                                 color="secondary"
                               >
