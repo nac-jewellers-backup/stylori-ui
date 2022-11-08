@@ -94,7 +94,7 @@ class HomeStylori extends React.Component {
       infinite: true,
       fade: false,
       dots: false,
-      autoplaySpeed: 5000,
+      autoplaySpeed: 10000,
       arrows: false,
     };
     const productsubHead = [
