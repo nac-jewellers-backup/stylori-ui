@@ -124,7 +124,9 @@ class Accountdetails extends Component {
                                     >Address Book </p>
                                     <p className={this?.state?.isActive === 'shoppingcart' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('shoppingcart')}
-                                    >Shopping Bag ({this.props.data.length ? this.props.data.length : "0"}) </p>
+                                    >Shopping Bag 
+                                    {/* ({this.props.data.length ? this.props.data.length : "0"})  */}
+                                    </p>
                                     <p className={this?.state?.isActive === 'wishlist' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('wishlist')}
                                     >
