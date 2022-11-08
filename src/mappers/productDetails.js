@@ -1065,6 +1065,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                 })
               : []
             : [],
+            
         fadeImageSublistRecentlyViewed:
           viewedddatas &&
           viewedddatas.data &&
