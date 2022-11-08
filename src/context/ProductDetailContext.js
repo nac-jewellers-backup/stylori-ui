@@ -194,14 +194,12 @@ export const TabsProvider = (props) => {
         variablesviewed["filtersku"] = {
           skuId: {
             in: sessionStorage.getItem("skuId").split(","),
-            notEqualTo: filters.skuId,
           },
         };
       } else {
         variablesviewed["filtersku"] = {
           skuId: {
             in: [sessionStorage.getItem("skuId")],
-            notEqualTo: filters.skuId,
           },
         };
       }
