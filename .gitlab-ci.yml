@@ -1,37 +1,37 @@
-image: markhobson/node-chrome
+# image: markhobson/node-chrome
 
-stages:
-  - install
-  - test
-  - build
-  - report
+# stages:
+#   - install
+#   - test
+#   - build
+#   - report
 
-cache:
-  paths:
-    - node_modules/
+# cache:
+#   paths:
+#     - node_modules/
 
-install_dependencies:
-  stage: install
-  script:
-    - npm install
-  artifacts:
-    paths:
-      - node_modules/
+# install_dependencies:
+#   stage: install
+#   script:
+#     - npm install
+#   artifacts:
+#     paths:
+#       - node_modules/
 
-linting_application:
-  stage: test
-  script:
-    - npm run lint
-  allow_failure: true
+# linting_application:
+#   stage: test
+#   script:
+#     - npm run lint
+#   allow_failure: true
 
-build_application:
-  stage: build
-  script:
-    - npm run public
-  artifacts:
-    paths:
-      - public/
-  allow_failure: true
+# build_application:
+#   stage: build
+#   script:
+#     - npm run public
+#   artifacts:
+#     paths:
+#       - public/
+#   allow_failure: true
 
 # lighthouse_report:
 #   stage: report
@@ -53,14 +53,16 @@ sonarqube-check:
     name: sonarsource/sonar-scanner-cli:latest
     entrypoint: [""]
   variables:
-    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+    SONAR_TOKEN: "sqp_03f76ce58d40ba3dd9c4dbe5a578857ec03d8651"
+    SONAR_HOST_URL: "https://scanner.automatly.io"
+    # SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
     GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
   cache:
     key: "${CI_JOB_NAME}"
     paths:
       - .sonar/cache
   script: 
-    - sonar-scanner
+    - sonar-scanner -Dsonar.qualitygate.wait=true
   allow_failure: true
-  # only:
-  #   - stagingnew # or the name of your main branch
+  only:
+    - stagingnew # or the name of your main branch
