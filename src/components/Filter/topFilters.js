@@ -138,7 +138,7 @@ export const TopFilters = (props) => {
                     listName !== "Material" &&
                     listName !== "Theme" &&
                     listName !== "Occasion" && 
-                    listName !== "Collection" &&
+                    listName !== "Style" &&
                     listName !== "Gender" && 
                     listName !== "Metal Purity"
                   )
@@ -166,8 +166,8 @@ export const TopFilters = (props) => {
                         >
                           <Grid item xs={6} className={classes.filtersLabel}>
                             <a href={listName.url}>
-                              {listName === "Style"
-                                ? <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STYLE</p>
+                              {listName === "Collection"
+                                ? <p>PRODUCT STYLE</p>
                                 : listName}
                             </a>
                           </Grid>

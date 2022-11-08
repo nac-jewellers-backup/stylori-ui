@@ -156,12 +156,14 @@ const Provider = (props) => {
     data: allordersuccesful,
     makeRequest: allordermakeRequestSuccessful,
   } = useGraphql(ORDERSUCCESSFUL, () => {}, {}, false);
+
   const {
     loading: wishlistloading,
     error: wishlisterror,
     data: wishlistDATA,
     makeRequest: wishlistmakeRequest,
   } = useGraphql(ALLUSERWISHLISTS, () => {}, {}, false);
+
   const { loading, error, data, makeRequest } = useGraphql(CART, () => {}, {});
   // const prices = cartFilters.price ? cartFilters.price : ''
   const discounted_price = cartFilters.discounted_price
@@ -183,7 +185,9 @@ const Provider = (props) => {
   let gut_lg = localStorage.getItem("gut_lg")
     ? JSON.parse(localStorage.getItem("gut_lg"))
     : {};
-  React.useEffect(() => {
+
+
+  useEffect(() => {
     if (localvalues_check === true) {
       if (con_gust === true) {
         if (!myStorage) {
@@ -194,17 +198,7 @@ const Provider = (props) => {
     }
   }, []);
 
-  // React.useEffect(() => {
-  //     var a = window.location.pathname
-  //     var b = a.split("/")
-  //     if (b[1] === "paymentsuccess") {
-  //         localStorage.removeItem("panel")
-  //         localStorage.removeItem("cartDetails")
-  //         localStorage.removeItem("ship_isactive")
-  //         localStorage.removeItem("bil_isactive")
-  //     }
-  // }, [])
-  React.useEffect(() => {
+  useEffect(() => {
     var obj = {};
     var products = [];
     var _cartDetails = {};
@@ -236,6 +230,7 @@ const Provider = (props) => {
       }
     }
   }, [loading, error, data]);
+
   useEffect(() => {
     // alert("cart")
     if (jewellery && jewellery === "jewellery") {
@@ -263,6 +258,7 @@ const Provider = (props) => {
 
     // localStorage.setItem('cart_id', JSON.stringify(crtdata))
   }, [crtdata]);
+  
   useEffect(() => {
     const orderall = allorder
       ? allorder &&
@@ -277,16 +273,6 @@ const Provider = (props) => {
     }
   }, [allorder, allorderdata]);
 
-  // useEffect(() => {
-
-  //     const allordersucces = allordersuccesful ? allordersuccesful && allordersuccesful.data && allordersuccesful.data.allOrders && allordersuccesful.data.allOrders.nodes : ""
-  //  alert(JSON.stringify(allordersucces))
-  //  if (allordersucces !== undefined && allordersucces !== null && allordersucces.length > 0) {
-  //             objallorder["allorderdata"] = allordersucces&&allordersucces.data&&allordersucces.data.allOrders.nodes
-  //         setallorderdata(objallorder)
-  //     }
-  // }, [ allordersuccesful])
-
   useEffect(() => {
     var obj_aishlist_count = {};
     const wishlistdatas = allorder
@@ -297,9 +283,9 @@ const Provider = (props) => {
       : "";
     if (
       wishlistdatas &&
-      (wishlistdatas.length === 0 || wishlistdatas.length > 0)
+      (wishlistdatas.length > 0)
     ) {
-      objwishlist["wishlistdata"] = wishlistDATA.data.allUserWhislists;
+      objwishlist["wishlistdata"] = wishlistDATA?.data?.allUserWhislists;
       setTimeout(() => {
         setLoadingWishlist(false);
       }, 2000);
@@ -316,7 +302,8 @@ const Provider = (props) => {
     // else {
     //     localStorage.setItem("a__w_l", 0)
     // }
-  }, [wishlistDATA, wishlistdata]);
+  }, [wishlistDATA]);
+
   useEffect(() => {
     orderobj["userProfileId"] = userIds;
     orderobj1["userprofileId"] = userIds;
@@ -331,7 +318,10 @@ const Provider = (props) => {
       Object.values(orderobj).length > 0
     )
       allordermakeRequest(orderobj);
+
+      console.log("changing")
   }, [wishlistdata]);
+
   const ordersuccessful = async () => {
     var _obj = {};
     _obj["orderId"] = { id: props.match.params.id };
