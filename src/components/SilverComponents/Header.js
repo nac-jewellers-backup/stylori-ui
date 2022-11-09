@@ -597,7 +597,7 @@ class Header extends Component {
                           )}
 
                            {/* Whislist */}
-                           {localStorage.getItem('accessToken') &&  <div className="tooltip">
+                            {localStorage.getItem('accessToken') &&  <div className="tooltip">
                             {wishlist?.wishlistdata?.nodes?.length  >
                               0 ? (
                               <Badge
@@ -671,7 +671,7 @@ class Header extends Component {
                                 </span>
                               </div>
                             )}
-                           </div>}
+                           </div>} 
                          
 
                           {/* Cart */}
@@ -997,9 +997,9 @@ class Header extends Component {
                             </div>
                           )}
 
-                          {/* Whishlist */}
-                          {localStorage.getItem('accessToken') && <div className="tooltip">
-                            {wishlist?.wishlistdata?.nodes?.length >
+                          {/* Whislist */}
+                          {localStorage.getItem('accessToken') &&  <div className="tooltip">
+                            {wishlist?.wishlistdata?.nodes?.length  >
                               0 ? (
                               <Badge
                                 className={`${
@@ -1022,7 +1022,7 @@ class Header extends Component {
                                 }}
                               >
                                 <i
-                                  style={{ fontSize: "18px" }}
+                                  style={{ fontSize: "18px"}}
                                   className={classes.iconFafa}
                                   onClick={() => {
                                     if (user_id.length > 0) {
@@ -1072,7 +1072,7 @@ class Header extends Component {
                                 </span>
                               </div>
                             )}
-                          </div>}
+                           </div>} 
                           
 
                           {/* Cart */}
@@ -1333,7 +1333,7 @@ class Header extends Component {
 
                            {/* Wishlist */}
                            
-                           {localStorage.getItem('accessToken') && <>
+                            {localStorage.getItem('accessToken') && <>
                            {wishlist?.wishlistdata?.nodes?.length >
                               0 ? (
                               <Badge

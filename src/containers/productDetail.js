@@ -528,7 +528,7 @@ class ProductDetail extends Component {
             </Hidden>
           </>
 
-          <Header paymentSucces={true} />
+          <Header paymentSucces={true} wishlist={this?.props?.wishlistdata}/>
           {/* Main Container for Product image and Details */}
           <div
             className="pricing-imgzom-media"
@@ -1125,7 +1125,7 @@ const Components = (props) => {
       Globalctx?.tabsChange
     );
   }
-  console.log(mapped, "???????");
+  console.log(mapped,wishlistdata, "???????");
 
   if (Object.keys(mapped).length === 0) {
     if (window.location.href.toLowerCase().includes("silver")) {
