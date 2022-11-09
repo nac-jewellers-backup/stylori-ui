@@ -142,7 +142,7 @@ export default function PaymentHiddenForm(props) {
     if (hash.checksum) document.getElementById("sendtoairpay").submit();
   }, [hash]);
 
-  console.log(props.data1,"?dataa")
+  
   // useEffect(()=>{if(hash.checksum) console.log(hash,orderId,"hashandorderid")},[hash])
 
   return (

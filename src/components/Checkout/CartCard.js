@@ -915,12 +915,6 @@ class Checkoutcard extends React.Component {
     };
 
 
-    console.log(
-      props?.cartFilters?.discounted_amount,
-      dataCard1,
-      discounted_price,
-      props?.shipping_charge
-    )
 
     return (
       <div className={classes.main}>

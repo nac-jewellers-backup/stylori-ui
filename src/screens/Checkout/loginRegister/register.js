@@ -21,7 +21,7 @@ const RegisterComponent = (props) => {
     const salutation = localStorage.getItem("m") ? localStorage.getItem("m") : '';
     let user_ids = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
 
-    // console.log("Profile_DATAS",JSON.stringify())
+   
     return (
         <div className='pt-sm'>
             <form

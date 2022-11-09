@@ -52,7 +52,7 @@ class Stylori extends React.Component {
       .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
       .join(" ");
 
-      console.log(wishlistdata?.wishlistdata?.nodes?.length,"2")
+    
 
     return (
       <>

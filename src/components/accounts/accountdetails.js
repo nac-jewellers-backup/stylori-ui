@@ -77,7 +77,6 @@ class Accountdetails extends Component {
     render() {
         
         // let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
-        // console.log(this.props)
         // const { wishlistdata } = this.props.wishlistdata;
         const currencies = [
             {

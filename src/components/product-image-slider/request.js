@@ -143,7 +143,7 @@ class Request extends React.Component {
                     this.setState((state) => ({ names: "", mailId: "", mobileNo: "", request: "", messageData: data.message, open: true }))
                 })
                 .catch((error) => {
-                    // console.log('Error:', error);
+                    
                 });
         }
     }

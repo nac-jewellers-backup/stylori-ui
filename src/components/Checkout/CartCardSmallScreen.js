@@ -22,8 +22,6 @@ function MediaControlCard(props) {
     var local_storage = JSON.parse(localStorage.getItem("cartDetails"));
     var currentValue =
       e.target.id && e.target.id.length > 0 ? e.target.id : e.currentTarget.id;
-    // console.clear()
-    // console.log("e-clear",e.target.id)
     var a = local_storage?.products?.filter((val) => {
       if (currentValue !== val.sku_id) {
         return val;

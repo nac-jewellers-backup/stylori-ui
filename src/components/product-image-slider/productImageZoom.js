@@ -177,7 +177,7 @@ class ProductImageZoom extends React.Component {
   };
 
   productImageZoom = (_isSilver) => {
-    // console.log(this.props.data)
+    
     const { classes, data, customLimit } = this.props;
     this.props.data[0] == null && window.location.reload();
     const limit = customLimit ? customLimit : 4;

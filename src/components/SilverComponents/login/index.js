@@ -38,7 +38,6 @@ function Login(props) {
   const history = useHistory();
   const classes = useStyles();
 
-  console.log(props,"?//")
 
   let url = API_URL;
   const [values, setValues] = useState({

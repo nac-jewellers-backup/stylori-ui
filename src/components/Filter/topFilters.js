@@ -36,7 +36,6 @@ export const TopFilters = (props) => {
   const { mapped } = useDummyRequest(filterParams);
   const { setSort, FilterOptionsCtx } =
     React.useContext(FilterOptionsContext);
-    console.log(props?.filter.includes('Style','Product Type'),"?????")
 
   // const submenuDetails = (data, target) => {
   //   setState({

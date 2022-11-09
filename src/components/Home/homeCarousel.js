@@ -10,7 +10,7 @@ const fadeProperties = {
   indicators: false,
   arrows: false,
   onChange: (oldIndex, newIndex) => {
-    // console.log(`fade transition from ${oldIndex} to ${newIndex}`);
+    
   }
 }
 

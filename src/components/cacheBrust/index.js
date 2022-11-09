@@ -19,8 +19,7 @@ export default class CacheBuster extends React.Component {
       loading: true,
       isLatestVersion: false,
       refreshCacheAndReload: () => {
-        console.log("Clearing cache and hard reloading...");
-
+       
         if (caches) {
           // Service worker cache should be cleared with caches.delete()
           caches.keys().then(function (names) {

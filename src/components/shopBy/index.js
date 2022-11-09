@@ -37,7 +37,6 @@ let settingSilver = {
 // };
 
 // const _queryResultsValidator = (_result) => { 
-//   console.log(_result, "_result");
 //   let _keys = Object.keys(_result);
 //   var _obj = {};
 //   _keys.map((val) => {
@@ -53,7 +52,6 @@ let settingSilver = {
 //     });
 //     _obj[val] ={label:val,images:_arr};
 //   });
-//   console.log(_obj, "aaa");
 //   _shopsProductss(_obj)
 // };
 

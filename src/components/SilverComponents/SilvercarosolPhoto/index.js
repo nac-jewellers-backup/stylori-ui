@@ -20,8 +20,6 @@ const SilverCarousel = (props) => {
   const { carouselTop } = props.data;
   const [state, setState] = React.useState([]);
   const classes = useStyles();
-  // debugger;
-  // console.log(props);
   useEffect(async () => {
     function fetchBanner() {
       fetch(`${API_URL}/graphql`, {

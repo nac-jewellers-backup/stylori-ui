@@ -121,7 +121,7 @@ const ProductModal = (props) => {
     //   }
   };
 
-  // console.log(collectionsData, collectionsData.constructor === Array,"TTTTTT")
+
   let collectionData = collectionsData
     ? collectionsData.constructor === Object &&
       Object.keys(collectionsData).length > 0
@@ -138,8 +138,7 @@ const ProductModal = (props) => {
     : fadeImagessublist;
   let _data = _mapper ? _mapper : [];
   const classes = useStyles();
-  // alert(JSON.stringify(props.collectionsData))
-  // console.log(props.allSeo,"props.allSeoprops.allSeoprops.allSeoprops.allSeo")
+ 
 
   const paginationtoggle = () => {
     if (state.pagination < collectionData.length) {

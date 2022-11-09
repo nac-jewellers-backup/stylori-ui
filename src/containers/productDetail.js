@@ -1125,7 +1125,7 @@ const Components = (props) => {
       Globalctx?.tabsChange
     );
   }
-  console.log(mapped,wishlistdata, "???????");
+  
 
   if (Object.keys(mapped).length === 0) {
     if (window.location.href.toLowerCase().includes("silver")) {

@@ -88,7 +88,7 @@ class ProductDetails extends React.Component {
         ? [_mapper[0]]
         : _mapper
       : _mapper;
-      console.log(_mapperChooser,"??")
+     
 
     return (
       <div>

@@ -172,7 +172,6 @@ export default (props) => {
   ];
   React.useState(() => {
     setState({ ...state, testimonyCarousel });
-    // console.log(state.data,"vada mapala")
   }, [state.data]);
 
   const { mapped } = useDummyRequest(HomedataSilver);

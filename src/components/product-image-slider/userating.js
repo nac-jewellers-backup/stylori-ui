@@ -6,7 +6,7 @@ import { CUSTOMERREVIEWS, USERPROFILES } from 'queries/productdetail';
 import { ProductDetailContext } from 'context/ProductDetailContext';
 
 const useRating = (props) => {
-    // console.log(props.data)
+
     const { setrating,setratingcounts } = React.useContext(ProductDetailContext);
     const [values, setValues] = React.useState({
         user_id: "",
@@ -118,7 +118,6 @@ const useRating = (props) => {
         //     let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
         //     let mapUrlParamsSplitEqual = urlSplitparamsEqual();
         //     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
-        //     // console.log('starsSelectedstarsSelected',props.starsSelected)
         //     mapUrlParamsSplitEqual.map(val => {
         values['product_sku'] = props.data && props.data[0] && props.data[0].skuId
         if (props.data && props.data[0] && props.data[0].skuId.length > 0) {

@@ -153,7 +153,6 @@ const Components = (props) => {
           return 0;
         });
 
-        // console.log('@reviews', data)
       });
     return _arrData;
   };

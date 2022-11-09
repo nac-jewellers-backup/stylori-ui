@@ -65,7 +65,7 @@ const LoginComponent = (props) => {
         props.change()
     }
     const responseFacebook = response => {
-        // console.log(response, 'facebook');
+        
         // alert(JSON.stringify(response))
         if (response.accessToken) {
             let body = {
@@ -139,7 +139,7 @@ const LoginComponent = (props) => {
                 })
                 .catch(console.error)
 
-            // console.log(response,"facebook")
+            
             // props.history.push('/')
         }
     }

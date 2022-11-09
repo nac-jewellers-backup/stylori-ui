@@ -64,7 +64,6 @@ const Provider = (props) => {
   // useEffect(() => {
   //   const updateCart = () => {
   //     //
-  //     console.log(API_URL);
   //     let cartId = JSON.parse(localStorage.getItem("cart_id")) ?? "";
 
   //     try {
@@ -107,7 +106,6 @@ const Provider = (props) => {
   // };
 
   // const updatecartresponse = useNetworkRequest("/updatecart_latestprice", { user_ids_Obj });
-  // console.log(updatecartresponse);
   // const {
   //   loading: crtloading,
   //   error: crterror,
@@ -318,8 +316,6 @@ const Provider = (props) => {
       Object.values(orderobj).length > 0
     )
       allordermakeRequest(orderobj);
-
-      console.log("changing")
   }, [wishlistdata]);
 
   const ordersuccessful = async () => {
