@@ -1026,6 +1026,11 @@ export const Jewellery = {
       url: "/silver-jewellery-for+men",
       icon: "",
     },
+    Idols: {
+      name: "IDOL's",
+      url: "https://www.stylori.com/idols-silver-jewellery",
+      icon: "",
+    },
     BestSellers: {
       name: "BEST SELLERS",
       url: "/silver-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
@@ -1468,6 +1473,31 @@ export const menuLists = {
         value: "mensCollection",
         title: `MEN'S COLLECTION`,
         url: "/silver-jewellery-for+men",
+        // imgContainer: {
+
+        //     "imageContainer": [
+        //         {
+        //             "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bangle+stylori+-02.png",
+        //             "content": "Bangles",
+        //             "url": "/bangles-jewellery",
+        //         },
+        //         {
+        //             "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Bracelet+stylori+Bracelets-01.png",
+        //             "content": "Bracelets",
+        //             "url": "/bracelets-jewellery",
+        //         },
+        //         {
+        //             "img": "https://assets.stylori.com/images/Menu/Jewellery/Bangles+and+Bracelets/Oval+Bracelet+stylori+-03.png",
+        //             "content": "Oval Bracelets",
+        //             "url": "/oval+bracelets-jewellery",
+        //         },
+        //     ]
+        // }
+      },
+      {
+        value: "idol's",
+        title: `IDOL'S`,
+        url: "https://www.stylori.com/idols-silver-jewellery",
         // imgContainer: {
 
         //     "imageContainer": [
