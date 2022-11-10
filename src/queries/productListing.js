@@ -65,7 +65,77 @@ export const seoUrlResult = `query CheckForSeo($seofilter: SeoUrlPriorityFilter 
   }
 }
 `
-
+export const PRODUCTRECENTLIST =`
+query fetchProductDetails(
+  $filter: ProductListFilter
+  $offsetvar: Int
+  $firstvar: Int
+  $orderbyvar: [ProductListsOrderBy!]
+  $conditionImage: ProductImageCondition
+  $filterTransSku: TransSkuListFilter
+) {
+  recently_added_products: allProductLists(
+    filter: $filter
+    orderBy: $orderbyvar
+    offset: $offsetvar
+    first: $firstvar
+    condition: { isactive: true }
+  ) {
+    totalCount
+    nodes {
+      productName
+      productId
+      defaultSize
+      sizeVarient
+      productType
+      productDiamondsByProductSku {
+        nodes {
+          diamondClarity
+          diamondColour
+          diamondType
+          stoneWeight
+          diamondShape
+          diamondSettings
+          stoneCount
+        }
+      }
+      transSkuListsByProductId(filter: $filterTransSku) {
+        nodes {
+          skuSize
+          skuUrl
+          purity
+          diamondType
+          metalColor
+          markupPrice
+          sellingPrice
+          discountPrice
+          generatedSku
+          productListByProductId {
+            productImagesByProductId(
+              condition: $conditionImage
+              orderBy: IMAGE_POSITION_ASC
+            ) {
+              nodes {
+                ishover
+                imageUrl
+                imagePosition
+                isdefault
+              }
+            }
+          }
+          isReadyToShip
+          vendorDeliveryTime
+        }
+      }
+      productMaterialsByProductSku {
+        nodes {
+          materialName
+        }
+      }
+    }
+  }
+}
+`
 
 export const filterProductMatrix = (type, value, filter) => {
 

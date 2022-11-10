@@ -354,13 +354,14 @@ const handle_mapper = (val) => {
     return null;
   }
 };
-export default function (data, like_data, viewedddatas, rating, tabsChange) {
+export default function (data, like_data, viewedddatas, rating, tabsChange,listData) {
   let mapperdata = [];
   try {
     mapperdata = data.data.allTransSkuLists.nodes;
   } catch (error) {
     mapperdata = [];
   }
+  console.log(listData,"????")
   const _format = mapperdata.map((PD) => {
     let _d;
     try {
@@ -1094,7 +1095,36 @@ export default function (data, like_data, viewedddatas, rating, tabsChange) {
                 };
               })
             : [],
+
+          fadeImageSublistRecentlyViewedLatest:
+            listData &&
+            listData.data &&
+            Object.entries(listData?.data).length > 0 &&
+            listData?.data?.recently_added_products?.nodes.length > 0
+              ? listData?.data?.recently_added_products?.nodes?.map((val) => {
+                  return {
+                    img:
+                      `${CDN_URL}${
+                        val &&
+                        val?.transSkuListsByProductId &&
+                        val?.transSkuListsByProductId.nodes[0]?.productListByProductId?.productImagesByProductId
+                          ?.nodes
+                      }` &&
+                      injectUrl_url_construct(
+                        val?.transSkuListsByProductId &&
+                        val?.transSkuListsByProductId.nodes[0]?.productListByProductId?.productImagesByProductId
+                          ?.nodes[0],
+                        CDN_URL,
+                        colSize_like_view
+                      ),
+                    title: val?.productName,
+                    price: Math.round(val?.transSkuListsByProductId?.nodes[0]?.discountPrice),
+                    url: val && val?.transSkuListsByProductId?.nodes[0]?.skuUrl ? val?.transSkuListsByProductId?.nodes[0]?.skuUrl : "",
+                  };
+                })
+              : [],
       };
+      
     } catch (e) {}
 
     return _d;

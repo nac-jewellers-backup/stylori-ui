@@ -14,6 +14,7 @@ import CustomerReviews from "components/product-image-slider/customer-reviews";
 import Footer from "components/Footer/Footer";
 import "components/product-image-slider/product-images.css";
 import { withRouter } from "react-router-dom";
+import { PRODUCTRECENTLIST } from "queries/productListing";
 import productDetails from "mappers/productDetails";
 import MainCard from "components/SilverComponents/mainSlider";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
@@ -27,7 +28,7 @@ import { Helmet } from "react-helmet";
 import { CartContext } from "context";
 import { GlobalContext } from "context";
 import SilverProductPrice from "components/product-image-slider/silverProductPrice";
-
+import { useGraphql } from 'hooks/GraphqlHook';
 import { shopByStyloriSilver, allSeoPriorities } from "queries/productdetail";
 
 import { Diversestyles } from "../components/product-image-slider/Gagetstylori/Diversestyles-pink";
@@ -366,6 +367,8 @@ class ProductDetail extends Component {
 
     const { classes } = this.props;
     const jewelData = this.props?.data?.[0];
+
+    console.log(jewelData,"??????????")
  
 
     var brand_card = [
@@ -746,7 +749,7 @@ class ProductDetail extends Component {
             <div className={classes.sliderWithHeadingContainer}>
               <SliderWithHeading
                 heading="Recently Viewed"
-                products={jewelData?.fadeImageSublistRecentlyViewed.length > 0 ? jewelData?.fadeImageSublistRecentlyViewed : [] }
+                products={jewelData?.fadeImageSublistRecentlyViewed.length > 1 ? jewelData?.fadeImageSublistRecentlyViewed : jewelData?.fadeImageSublistRecentlyViewedLatest }
               />
             </div>
           )}
@@ -1077,8 +1080,16 @@ const Components = (props) => {
       });
   };
 
+  const { loading:listloading, error:listerror, data:listData, makeRequest } = useGraphql(PRODUCTRECENTLIST, () => { }, {});
+
   React.useEffect(() => {
     _fetchProducts();
+    makeRequest({
+      "firstvar": 15,
+      "orderbyvar": ["CREATED_AT_DESC"],
+      "conditionImage": {"imagePosition": 1},
+      "filterTransSku": {"isdefault": {"equalTo": true}}
+    })
   }, []);
 
   //
@@ -1114,6 +1125,7 @@ const Components = (props) => {
     }
   }, [data]);
 
+
   const datas = data;
   let mapped = datas;
   if (!loading && !error) {
@@ -1122,7 +1134,8 @@ const Components = (props) => {
       likedatas,
       viewedddatas,
       rating,
-      Globalctx?.tabsChange
+      Globalctx?.tabsChange,
+      listData
     );
   }
   
