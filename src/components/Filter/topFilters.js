@@ -157,6 +157,7 @@ export const TopFilters = (props) => {
                           });
                         }}
                       >
+                      
                         <Grid
                           container
                           item
@@ -166,7 +167,7 @@ export const TopFilters = (props) => {
                           <Grid item xs={6} className={classes.filtersLabel}>
                             <a href={listName.url}>
                               {listName === "Collection"
-                                ? <p>PRODUCT STYLE</p>
+                                ? <p style={{marginRight:'-2px'}}>STYLE</p>
                                 : listName}
                             </a>
                           </Grid>
@@ -191,7 +192,6 @@ export const TopFilters = (props) => {
                     return null;
                   }
                 })}
-
                 <Grid
                   item
                   xs={2}
@@ -226,7 +226,6 @@ export const TopFilters = (props) => {
                           </Grid>
                   </Grid>
                 </Grid>
-                {/* </nav> */}
               </Grid>
               {state.Menuopen && props.subFilter[state.listHoverItem] ? (
                 <HeaderHoverMenuItem

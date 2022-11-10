@@ -116,7 +116,9 @@ export default function MoreFilters(props) {
                         style={{ marginBottom: "10px", paddingLeft: "20px" }}
                       >
                         <span style={{ color: "#6D6E71", fontWeight: "bold" }}>
-                          {val}
+                        {val === "Style"
+                                ? <p style={{marginTop:'-0.2px'}}>Product Style</p>
+                                : val}
                         </span>
                       </div>
                       <FormGroup row>
