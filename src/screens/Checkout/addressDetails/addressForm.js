@@ -322,7 +322,7 @@ const AddressComponent = (props) => {
                   ) : (
                     <div>
                       <Grid container spacing={12}>
-                        <Grid item xs={4} lg={4}>
+                        <Grid item xs={4} lg={2}>
                           {/* <FormControl variant="outlined" className={classes.formControl}>
                                                 <Select
                                                   labelId="demo-simple-select-outlined-label"
@@ -340,12 +340,16 @@ const AddressComponent = (props) => {
                                                       </Select> */}
                           {/* </FormControl> */}
                           <SimpleSelect
-                            // val={'1'}
+                            val={'1'}
                             name={aa ? [aa] : ["Select"]}
-                            selectData={["Mr", "Mrs", "Ms"]}
+                            selectData={[
+                              {label:"Mr",value:"Mr"},
+                              {label:"Mrs",value:"Mrs"},
+                              {label:"Ms",value:"Ms"}
+                            ]}
                           />
                         </Grid>
-                        <Grid item xs={4} lg={4}>
+                        <Grid item xs={4} lg={5} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
                             name="firstname"
                             // className="text-f"
@@ -363,7 +367,7 @@ const AddressComponent = (props) => {
                             helperText="First name is required"
                           />
                         </Grid>
-                        <Grid item xs={4} lg={4}>
+                        <Grid item xs={4} lg={5} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
                             // className="text-f"
                             type="text"
@@ -394,7 +398,7 @@ const AddressComponent = (props) => {
                             disabled={"disabled"}
                           />
                         </Grid>
-                        <Grid item xs={6} lg={6}>
+                        <Grid item xs={6} lg={6} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
                             // className="text-f"
                             type="tel"
@@ -469,7 +473,7 @@ const AddressComponent = (props) => {
                             required
                           />
                         </Grid>
-                        <Grid item xs={6} lg={6}>
+                        <Grid item xs={6} lg={6} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
                             className="text-f"
                             type="text"
@@ -513,7 +517,7 @@ const AddressComponent = (props) => {
                                                 required
                                             /> */}
                         </Grid>
-                        <Grid item xs={9} lg={9}>
+                        <Grid item xs={9} lg={9} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
                             className="text-f"
                             type="tel"
