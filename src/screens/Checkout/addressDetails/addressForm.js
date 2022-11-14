@@ -13,6 +13,9 @@ import SimpleSelect from "../../../components/InputComponents/Select/Select";
 import SimpleSelect2 from "../../../components/InputComponents/Select/SimpleSelect"
 import Addressdetails from "./addressDetails";
 import Addressforms from "./Addressforms";
+import axios from "axios";
+import { COUNTRIES } from "queries/home";
+import { API_URL } from "config";
 
 const Addressform = (props) => {
   return <AddressComponent {...props} />;
@@ -42,6 +45,31 @@ const AddressComponent = (props) => {
   const aa = localStorage.getItem("m")
     ? localStorage.getItem("m")
     : values.addressOne.salutation;
+
+    const [countryCode, setCountryCode] = React.useState([]);
+
+    React.useEffect(()=>{
+      axios
+      .post(
+        `${API_URL}/graphql`,
+        JSON.stringify({
+          query: COUNTRIES
+        }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        let main = res?.data?.data?.allMasterCountries?.nodes;
+        if(main.length > 0){
+        setCountryCode(main)
+        }
+       
+      })
+      .catch((err) => console.log(err));
+    },[])
 
     
   return (
@@ -317,39 +345,11 @@ const AddressComponent = (props) => {
                       </Grid>
                     </Grid>
 
-                    </div>
-                   
+                    </div>           
                   ) : (
                     <div>
-                      <Grid container spacing={12}>
-                        <Grid item xs={4} lg={2}>
-                          {/* <FormControl variant="outlined" className={classes.formControl}>
-                                                <Select
-                                                  labelId="demo-simple-select-outlined-label"
-                                                    id="demo-simple-select-outlined"
-                                                       value={values.addressOne.salutation}
-                                                     onChange={(e)=>handle.handleChange_selsect(e)}
-                                                       //   labelWidth={labelWidth}
-                                                  >
-                                                     <MenuItem value="">
-                                                        <em>None</em>
-                                                         </MenuItem>
-                                                      <MenuItem value={10}>Ten</MenuItem>
-                                                      <MenuItem value={20}>Twenty</MenuItem>
-                                                      <MenuItem value={30}>Thirty</MenuItem>
-                                                      </Select> */}
-                          {/* </FormControl> */}
-                          <SimpleSelect
-                            val={'1'}
-                            name={aa ? [aa] : ["Select"]}
-                            selectData={[
-                              {label:"Mr",value:"Mr"},
-                              {label:"Mrs",value:"Mrs"},
-                              {label:"Ms",value:"Ms"}
-                            ]}
-                          />
-                        </Grid>
-                        <Grid item xs={4} lg={5} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
+                      <Grid container spacing={2}>
+                        <Grid item xs={4} lg={6} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
                             name="firstname"
                             // className="text-f"
@@ -367,14 +367,13 @@ const AddressComponent = (props) => {
                             helperText="First name is required"
                           />
                         </Grid>
-                        <Grid item xs={4} lg={5} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
+                        <Grid item xs={4} lg={6} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
                             // className="text-f"
                             type="text"
                             name="lastname"
                             value={values.addressOne.lastname}
                             placeholder="Last name"
-                            required
                             onChange={(event) =>
                               handle.handleChange(
                                 "addressOne",
@@ -386,17 +385,26 @@ const AddressComponent = (props) => {
                           />
                         </Grid>
                       </Grid>
-                      <Grid container spacing={12}>
-                        <Grid item xs={6} lg={6}>
-                          <SimpleSelect
-                            name={
-                              values.addressOne.country
-                                ? values.addressOne.country
-                                : ""
-                            }
-                            selectData={["India"]}
-                            disabled={"disabled"}
-                          />
+                      <Grid container spacing={2}>
+                        <Grid item xs={6} lg={6} style={{marginTop:10}}>
+                        <SimpleSelect2 
+                            selectData={countryCode} 
+                            name="country"
+                            placeholder="Country"
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "country",
+                                event.target.value
+                              )
+                            } 
+                            value={values.addressOne.country}
+                            helperText="Country is required"
+                            InputProps={{
+                              readOnly: true,
+                            }}
+                            required 
+                            />
                         </Grid>
                         <Grid item xs={6} lg={6} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
@@ -428,7 +436,7 @@ const AddressComponent = (props) => {
                           </label>
                         </Grid>
                       </Grid>
-                      <Grid container spacing={12}>
+                      <Grid container spacing={2}>
                         <Grid item xs={12} lg={12}>
                           <Input
                             type="text"
@@ -447,7 +455,7 @@ const AddressComponent = (props) => {
                           />
                         </Grid>
                       </Grid>
-                      <Grid container spacing={12}>
+                      <Grid container spacing={2}>
                         <Grid item xs={6} lg={6}>
                           <Input
                             style={{
@@ -496,28 +504,8 @@ const AddressComponent = (props) => {
                           />
                         </Grid>
                       </Grid>
-                      <Grid container spacing={12}>
-                        <Grid item xs={3} lg={3}>
-                          <SimpleSelect
-                            name={["+91"]}
-                            selectData={["+91"]}
-                            disabled={"disabled"}
-                            value={values.addressOne.country_code}
-                          />
-                          {/* <Input
-                                                className='text-f'
-                                                type="text"
-                                                name="country_code"
-                                                value={values.addressOne.country_code}
-                                                onChange={(event) => handle.handleChange(event, "country_code")}
-                                                onKeyPress={(e) => handle.handleKeyPress(e, "country_code")}
-                                                placeholder="+ 91"
-                                                maxLength={2}
-                                                minLength={2}
-                                                required
-                                            /> */}
-                        </Grid>
-                        <Grid item xs={9} lg={9} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
+                      <Grid container spacing={2}>
+                        <Grid item xs={12} lg={12} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
                             className="text-f"
                             type="tel"

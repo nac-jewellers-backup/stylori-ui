@@ -60,12 +60,9 @@ export default function SimpleSelect2(props) {
                 error={invalid}
                 // value={props.value}
                 disabled={props.disabled ? props.disabled : ""}
-                placeholder={"hello2"}
-                input={<OutlinedInput id="outlined-age-native-simple" placeholder="hello"/>}
                 inputProps={{ id: "outlined-age-native-simple", "aria-required": true }}
                 MenuProps={{ "aria-required": true }}
                 className={props.short ? classes.root1 : classes.mroot }
-                variant='standard'
                 {...props}
             >
                <MenuItem value="" disabled>
