@@ -2255,6 +2255,11 @@ export const menuLists = {
         url: "https://www.stylori.com/silver-jewellery-gold+plated+kundan",
       },
       {
+        value: "Deep Nagas & Kundan",
+        title: "Deep Nagas & Kundan",
+        url: " https://www.stylori.com/silver-jewellery-deep+nagas+kundan",
+      },
+      {
         value: "Gold Plated Kemp",
         title: "Gold Plated Kemp",
         url: " https://www.stylori.com/silver-jewellery-gold+plated+kemp",
