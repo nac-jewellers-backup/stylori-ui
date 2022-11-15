@@ -80,11 +80,11 @@ const RegisterComponent = (props) => {
                                 </h5>}
                             <Grid container spacing={12}>
                                 {paths && <Grid item lg={2} xs={4}>
-                                    <SimpleSelect val={'1'} name={salutation && salutation.length > 0 ? salutation : valuesadrees.salutation}  selectData={[
+                                    <SimpleSelect value={valuesadrees.salutation} name={salutation && salutation.length > 0 ? salutation : valuesadrees.salutation}  selectData={[
                         {label:"Mr",value:"Mr"},
                         {label:"Mrs",value:"Mrs"},
                         {label:"Ms",value:"Ms"}
-                      ]}/>
+                      ]}   onChange={e => handlers.handlesetvaluesadrees('salutation', e.target.value)}/>
                                 </Grid>}
                                 {paths && <>
                                     <Grid item lg={5} xs={6} style={{display:'flex',justifyContent:'center',alignItems:'end',marginTop:10}}>
