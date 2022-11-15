@@ -51,11 +51,11 @@ export default function SimpleSelect(props) {
           values[props.name]
             ? values[props.name]
             : props.name
-            ? props.name
+            ? props.value
             : "Select"
         }
-        onChange={(e) => props.onChange ? props.onChange : handleChange(e)}
-        value={values[props.name]}
+        onChange={(e) => props.onChange ? props.onChange(e) : handleChange(e)}
+        value={props.value ? props.value : values[props.name]}
         disabled={props.disabled ? props.disabled : ""}
         name={props.name ? props.name : "select"}
         inputProps={{ id: "outlined-age-native-simple", "aria-required": true }}

@@ -20,6 +20,10 @@ export const mainlist = [
     url: "/silver-jewellery-from+loops+collection",
   },
   {
+    name: "FINISH",
+    url: "/silver-jewellery-traditional+kemp",
+  },
+  {
     name: "GIFTS",
     url: "#",
   },
@@ -1090,6 +1094,70 @@ export const Jewellery = {
       icon: "",
     },
   },
+
+  FINISH: {
+      Victorian: {
+        name: "Victorian",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-victorian",
+      },
+      "Gold Plated Kundan": {
+        name: "Gold Plated Kundan",
+        icon: "",
+        url: "https://www.stylori.com/silver-jewellery-gold+plated+kundan",
+      },
+      "Gold Plated Kemp": {
+        name: "Gold Plated Kemp",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-gold+plated+kemp",
+      },
+      "Deep Nagas & Kundan": {
+        name: "Deep Nagas & Kundan",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-deep+nagas+kundan",
+      },
+      "Nagas/Nakshi": {
+        name: "Nagas/Nakshi",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-nagas+nakshi",
+      },
+      "Beads & Pearl Jewellery": {
+        name: "Beads & Pearl Jewellery",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-beads+pearl+jewellery",
+      },
+      "Cubic Zircon/Swarovski Jewellery": {
+        name: "Cubic Zircon/Swarovski Jewellery",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-cubiczircon+swarovski",
+      },
+      "Studded Jewellery": {
+        name: "Studded Jewellery",
+        icon: "",
+        url: "https://www.stylori.com/silver-jewellery-studded+jewellery",
+      },
+      "Rose gold": {
+        name: "Rose gold",
+        icon: "",
+        url: "https://www.stylori.com/silver-jewellery-rose+gold+finish",
+      },
+      "Oxidised":{
+        name: "Oxidised",
+        icon: "",
+        url: "https://www.stylori.com/silver-jewellery-oxidised+finish",
+      },
+      "Dual Tone":{
+        name: "Dual Tone",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-dual+tone+finish",
+      },
+      "Others": {
+        name: "Others",
+        icon: "",
+        url: "https://www.stylori.com/silver-jewellery-finish+others",
+      },
+  },
+
 
   STYLE: {
     Traditional: {

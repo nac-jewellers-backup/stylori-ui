@@ -24,6 +24,7 @@ const RegisterComponent = (props) => {
     let user_ids = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
 
     const [countryCode, setCountryCode] = React.useState();
+    const [countryNum,setCountryNum] = React.useState();
 
   React.useEffect(()=>{
     axios
@@ -40,14 +41,20 @@ const RegisterComponent = (props) => {
     )
     .then((res) => {
       let main = res?.data?.data;
-           let countries=[]
+           let countries=[];
+           let country_code =[]
            main.allMasterCountries.nodes.map(_ =>{
              let obj={}
+             let obj2={}
              obj.label = _.nicename
-             obj.value = _.iso
+             obj.value = _.nicename
+             obj2.label =  `${"+"}${_.phonecode}`
+             obj2.value = `${"+"}${_.phonecode}`
              countries.push(obj)
+             country_code.push(obj2)
            })
            setCountryCode(countries)
+           setCountryNum(country_code)
      
     })
     .catch((err) => console.log(err));
@@ -73,11 +80,11 @@ const RegisterComponent = (props) => {
                                 </h5>}
                             <Grid container spacing={12}>
                                 {paths && <Grid item lg={2} xs={4}>
-                                    <SimpleSelect val={'1'} name={salutation && salutation.length > 0 ? salutation : valuesadrees.salutation}  selectData={[
+                                    <SimpleSelect value={valuesadrees.salutation} name={salutation && salutation.length > 0 ? salutation : valuesadrees.salutation}  selectData={[
                         {label:"Mr",value:"Mr"},
                         {label:"Mrs",value:"Mrs"},
                         {label:"Ms",value:"Ms"}
-                      ]}/>
+                      ]}   onChange={e => handlers.handlesetvaluesadrees('salutation', e.target.value)}/>
                                 </Grid>}
                                 {paths && <>
                                     <Grid item lg={5} xs={6} style={{display:'flex',justifyContent:'center',alignItems:'end',marginTop:10}}>
@@ -224,8 +231,12 @@ const RegisterComponent = (props) => {
                                     <Grid container spacing={12}>
                                         <Grid item xs={6} lg={6}>
                                         <SimpleSelect
-                                           name={"India"}
-                                           selectData={countryCode ?? []}
+                                          name='country'
+                                          selectData={countryCode ?? []}    
+                                          onChange={(event) =>
+                                            handlers.handlesetvaluesadrees('country', event.target.value)
+                                          }
+                                          value={valuesadrees.country ?? ''}
                                          />
                                         </Grid>
                                         <Grid item xs={6} lg={6} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
@@ -245,8 +256,14 @@ const RegisterComponent = (props) => {
                                     </Grid>
                                     <Grid container spacing={12}>
                                         <Grid item xs={3} lg={3}>
-                                            <SimpleSelect name={['+91']} selectData={['+91']}
-                                                disabled={'disabled'} />
+                                            <SimpleSelect
+                                             name={'country_code'}
+                                             selectData={countryNum ?? []}
+                                             onChange={(event) =>
+                                                handlers.handlesetvaluesadrees('country_code', event.target.value)
+                                              }
+                                             value={valuesadrees.country_code}  
+                                             />
                                         </Grid>
                                         <Grid item xs={9} lg={9} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                                             <Input

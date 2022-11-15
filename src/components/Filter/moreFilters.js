@@ -117,7 +117,7 @@ export default function MoreFilters(props) {
                       >
                         <span style={{ color: "#6D6E71", fontWeight: "bold" }}>
                         {val === "Style"
-                                ? <p style={{marginTop:'-0.2px'}}>Product Style</p>
+                                ? <span>Product Style</span>
                                 : val}
                         </span>
                       </div>
