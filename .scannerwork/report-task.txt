@@ -1,0 +1,6 @@
+projectKey=NAC-jewellers-Stylori-UI
+serverUrl=https://scanner.automatly.io
+serverVersion=9.5.0.56709
+dashboardUrl=https://scanner.automatly.io/dashboard?id=NAC-jewellers-Stylori-UI
+ceTaskId=AYRcVkYuMHQvds_GzeoL
+ceTaskUrl=https://scanner.automatly.io/api/ce/task?id=AYRcVkYuMHQvds_GzeoL
