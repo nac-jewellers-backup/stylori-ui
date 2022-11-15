@@ -78,6 +78,8 @@ const useRegister = (changePanel, props) => {
             valuesadrees["contactno"] = Profile_Data?.data?.userProfileById && Profile_Data.data.userProfileById.mobile
             valuesadrees["pincode"] = Profile_Data?.data?.userProfileById && Profile_Data.data.userProfileById.pincode
             valuesadrees["salutation"] = Profile_Data?.data?.userProfileById && Profile_Data.data.userProfileById.salutation
+            valuesadrees["country"] = Profile_Data?.data?.userProfileById && Profile_Data.data.userProfileById.country
+            valuesadrees["country_code"] = Profile_Data?.data?.userProfileById && Profile_Data.data.userProfileById.countryCode
             setvaluesadrees({
                 ...valuesadrees,
                 valuesadrees
@@ -110,9 +112,9 @@ const useRegister = (changePanel, props) => {
         // props.change()
     }
     useEffect(() => {
-
         if (reg_update_data && reg_update_data === "Profile Updated Successfully") {
             alert("Profile Updated Successfully")
+            window.location.reload()
         }
     }, [reg_update_data])
 
@@ -209,7 +211,6 @@ const useRegister = (changePanel, props) => {
             ...valuesadrees,
             [type]: value,
         })
-        // makeFetch(values)
     }
     const user = data.user_profile_id ? data.user_profile_id : ""
 
@@ -296,11 +297,6 @@ const useRegister = (changePanel, props) => {
             // reset();
             return false
         } else {
-            // localStorage.setItem("namesOf_first", JSON.stringify(valuesadrees.firstname))
-            // localStorage.setItem("namesOf_last", JSON.stringify(valuesadrees.lastname))
-            // localStorage.setItem("pin_cod", JSON.stringify(valuesadrees.pincode))
-            // localStorage.setItem("co_num", JSON.stringify(valuesadrees.contactno))
-            // makeFetchedit();
             makeFetcheditAddress(valuesadrees);
         }
     }
