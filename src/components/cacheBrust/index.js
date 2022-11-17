@@ -23,9 +23,7 @@ export default class CacheBuster extends React.Component {
           caches.keys().then(function (names) {
             for (let name of names) caches.delete(name);
           });
-        }        
-        //Clearing Old Caches
-        window.localStorage.clear();
+        }                
         // delete browser cache and hard reload
         window.location.reload(true);
       },
