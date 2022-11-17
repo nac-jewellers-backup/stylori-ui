@@ -5,7 +5,6 @@ import React from "react";
 // version from `meta.json` - first param
 // version in bundle file - second param
 const semverGreaterThan = (versionA, versionB) => {
-  ;
   if (Number(versionA) !== Number(versionB)) {
     localStorage.setItem("version", versionA);
     return true;
@@ -19,7 +18,6 @@ export default class CacheBuster extends React.Component {
       loading: true,
       isLatestVersion: false,
       refreshCacheAndReload: () => {
-       
         if (caches) {
           // Service worker cache should be cleared with caches.delete()
           caches.keys().then(function (names) {
@@ -52,10 +50,11 @@ export default class CacheBuster extends React.Component {
         );
 
         if (shouldForceRefresh) {
-          ;
           console.log(
             `We have a new version - ${latestVersion}. Should force refresh`
           );
+          //Clearing Old Caches
+          localStorage.clear();
           this.setState({ loading: false, isLatestVersion: false });
         } else {
           console.log(
