@@ -403,14 +403,14 @@ class Checkoutcard extends React.Component {
                         </h3>
                       )}
                       <Grid container>
-                        <Grid item xs={8} lg={7}>
+                        <Grid item xs={8} lg={6}>
                           <Typography
                             className={
                               this.props.checkout
                                 ? `${classes.normalfontsCheck}`
                                 : `title-cart ${classes.normalfonts}`
                             }
-                            style={{lineHeight:0.5}}
+                            style={{lineHeight:1}}
                           >
                             {val.namedetail[0].details}
                           </Typography>
@@ -450,7 +450,7 @@ class Checkoutcard extends React.Component {
                                       : `subhesder ${classes.normalfonts}`
                                   }
                                   style={{
-                                    lineHeight:this.props.checkout ? 1.5 : 0.5,
+                                    lineHeight:this.props.checkout ? 1.5 : 1.2,
                                      marginTop:this.props.checkout ? '0px' : '13px'
                                   }}
                                 >
@@ -506,7 +506,7 @@ class Checkoutcard extends React.Component {
                           })} */}
                         </Grid>
 
-                        <Grid item xs={4} lg={5} style={{marginTop:"27px"}}>
+                        <Grid item xs={4} lg={6} style={{marginTop:"27px"}}>
                           {/* <Typography
                           style={{ marginTop: "8px" }}
                           className={`subhesder ${classes.normalfonts}`}
