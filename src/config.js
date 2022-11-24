@@ -12,5 +12,5 @@ export const CDN_URL = "https://assets.stylori.com/";
 //   "https://styloriimages-staging.s3.ap-south-1.amazonaws.com/";
 
 export const GOOGLE_CLIENT_ID =
-  "727432939388-60p5phl6mulqnv1ja8lfks6dhav7026h.apps.googleusercontent.com";
+  "727432939388-qmtkseqsijuge2nsarbtups82o1vslvi.apps.googleusercontent.com";
 export const FACEBOOK_APP_ID = "238023071773183";
