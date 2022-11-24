@@ -74,7 +74,8 @@ export default function MoreFilters(props) {
     val !== "No of Stones" &&
     val !== "Metal Purity" &&
     val !== "Finish" &&
-    val !== "Material"
+    val !== "Material" &&
+    val !== "Offers"
   });
 
 
@@ -95,8 +96,8 @@ export default function MoreFilters(props) {
         }}
       >
         <Fade in={props.open}>
-          <div className={classes.paper}>
-            <Grid container item xs={12}>
+          <Grid container className={classes.paper}> 
+            <Grid container item xs={6}>
               <div
                 className={classes.closeIcon}
                 onClick={() => {
@@ -105,12 +106,120 @@ export default function MoreFilters(props) {
               >
                 &#10005;
               </div>
-              {result?.map((val, i) => {
+              {result.slice(0,2)?.map((val, i) => {
                 if (
                   i >= 0
                 ) {
                   return (
-                    <Grid item xs={2} style={{ marginBottom: "3%" }}>
+                    <Grid item xs={6} style={{ marginBottom: "3%" }}>
+                      <div
+                        style={{ marginBottom: "10px", paddingLeft: "20px" }}
+                      >
+                        <span style={{ color: "#6D6E71", fontWeight: "bold" }}>
+                        {val === "Style"
+                                ? <span>Product Style</span>
+                                : val}
+                        </span>
+                      </div>
+                      <FormGroup row>
+                        {props.subFilter[val].map((valsub) => {
+                          if (val && val !== "price") {
+                            return (
+                              <Grid
+                                item
+                                xs={12}
+                                className={classes.checkboxlabel}
+                              >
+                                <FormControlLabel
+                                  control={
+                                    <Checkbox
+                                      className={classes.checkboxgrid}
+                                      checked={
+                                        props.checked[val.replace(/\s/g, "")] &&
+                                        props.checked[val.replace(/\s/g, "")][
+                                          valsub
+                                        ] !== undefined
+                                          ? props.checked[
+                                              val.replace(/\s/g, "")
+                                            ] &&
+                                            props.checked[
+                                              val.replace(/\s/g, "")
+                                            ][valsub]
+                                          : false
+                                      }
+                                      onChange={(e) => {
+                                        props.handleClose();
+                                        props.onchoosetype(
+                                          valsub,
+                                          props.checked[
+                                            val && val.replace(/\s/g, "")
+                                          ][valsub] !== undefined
+                                            ? !props.checked[
+                                                val && val.replace(/\s/g, "")
+                                              ][valsub]
+                                            : true,
+                                          e,
+                                          null,
+                                          undefined,
+                                          props.state,
+                                          val ? val.replace(/\s/g, "") : ""
+                                        );
+                                      }}
+                                      name={val.replace(/\s/g, "")}
+                                      color={"secondary"}
+                                    />
+                                  }
+                                  style={{ color: "#6D6E71" }}
+                                  label={valsub}
+                                />
+                                <span
+                                  className={classes.tickIcon}
+                                  style={{
+                                    color: "#2F348B",
+                                    fontSize: "12px",
+                                    fill: "#06AA9E !important",
+                                  }}
+                                >
+                                  {props.checked[val.replace(/\s/g, "")] &&
+                                  props.checked[val.replace(/\s/g, "")][
+                                    valsub
+                                  ] !== undefined ? (
+                                    props.checked[val.replace(/\s/g, "")] &&
+                                    props.checked[val.replace(/\s/g, "")][
+                                      valsub
+                                    ] ? (
+                                      <CheckIcon
+                                        className={classes.ticks}
+                                        style={{ fill: "#06AA9E !important" }}
+                                      />
+                                    ) : (
+                                      ""
+                                    )
+                                  ) : (
+                                    false
+                                  )}
+                                </span>
+                              </Grid>
+                            );
+                          } else {
+                            return null;
+                          }
+                        })}
+                      </FormGroup>
+                    </Grid>
+                  );
+                }
+                return 0;
+              })}
+              
+            </Grid>
+            <Grid container item xs={6}>
+            {result.slice(2)?.map((val, i) => {
+                if (
+                  i >= 0
+                ) {
+                  return (
+                    <Grid item xs={4} style={{ marginBottom: "3%" }}>
                       <div
                         style={{ marginBottom: "10px", paddingLeft: "20px" }}
                       >
@@ -211,8 +320,8 @@ export default function MoreFilters(props) {
                 }
                 return 0;
               })}
-            </Grid>
-          </div>
+            </Grid>        
+          </Grid>
         </Fade>
       </Modal>
     </div>

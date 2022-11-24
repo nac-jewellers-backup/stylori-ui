@@ -89,7 +89,7 @@ const MultipleSections = (props) => {
               data={FeaturedCarousel}  
               />
             )}
-            {title == "TESTIMONIALS" && (
+            {/* {title == "TESTIMONIALS" && (
               <>
                 <Testimonialsmodel
                   data={testimonyCarousel}
@@ -97,7 +97,7 @@ const MultipleSections = (props) => {
                   dataactual={props.customerReviews}
                 />
               </>
-            )}
+            )} */}
           </>
         );
       })}
@@ -172,7 +172,6 @@ export default (props) => {
   ];
   React.useState(() => {
     setState({ ...state, testimonyCarousel });
-    // console.log(state.data,"vada mapala")
   }, [state.data]);
 
   const { mapped } = useDummyRequest(HomedataSilver);

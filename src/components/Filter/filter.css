@@ -79,7 +79,6 @@
 .main-filter {
   height: 58px !important;
   background-color: #fff !important;
-  box-shadow: none;
   z-index: 5;
   border: 1px solid #e3e3e3;
   margin-top: -2px;
@@ -365,7 +364,6 @@
 
 .inTurnFadingTextG{
 	color:rgb(237,17,101);
-	font-family:Arial;
 	font-size:23px;
 	text-decoration:none;
 	font-weight:normal;

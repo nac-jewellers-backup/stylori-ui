@@ -115,7 +115,7 @@ export default function CollectionItem(props) {
           //     Collectionz[attrName] = attrVal;
           //     Collectionz["offset"] = 0;
           //   });
-          resolve(await promiseDta(Collectionz, img_url));
+          resolve(await promiseDta(Collectionz));
         })
         .catch(function (error) {
           reject(false);

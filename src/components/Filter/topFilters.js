@@ -36,7 +36,6 @@ export const TopFilters = (props) => {
   const { mapped } = useDummyRequest(filterParams);
   const { setSort, FilterOptionsCtx } =
     React.useContext(FilterOptionsContext);
-    console.log(props?.filter.includes('Style','Product Type'),"?????")
 
   // const submenuDetails = (data, target) => {
   //   setState({
@@ -158,6 +157,7 @@ export const TopFilters = (props) => {
                           });
                         }}
                       >
+                      
                         <Grid
                           container
                           item
@@ -192,7 +192,6 @@ export const TopFilters = (props) => {
                     return null;
                   }
                 })}
-
                 <Grid
                   item
                   xs={2}
@@ -227,7 +226,6 @@ export const TopFilters = (props) => {
                           </Grid>
                   </Grid>
                 </Grid>
-                {/* </nav> */}
               </Grid>
               {state.Menuopen && props.subFilter[state.listHoverItem] ? (
                 <HeaderHoverMenuItem

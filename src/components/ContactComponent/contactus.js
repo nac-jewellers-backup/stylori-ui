@@ -157,7 +157,7 @@ export default function CustomizedInputs() {
                                 error={values.errorName ? true : false}
                                 onChange={e => handleChange('name', e.target.value)}
                             />
-                            <label className='errtext'> {values.errorName && values.errorName}</label>
+                            <label className='errtext'> {values && values?.errorName}</label>
                             <Input
                                 margin="normal"
                                 variant="outlined"
@@ -169,7 +169,7 @@ export default function CustomizedInputs() {
                                 onChange={e => handleChange('email', e.target.value)}
                                 placeholder="Enter your email address"
                             />
-                            <label className='errtext'> {values.emailError && values.emailError}</label>
+                            <label className='errtext'> {values && values?.emailError}</label>
                             <Input
                                 margin="normal"
                                 variant="outlined"
@@ -182,7 +182,7 @@ export default function CustomizedInputs() {
                                 onChange={e => handleChange('Phone', e.target.value)}
                                 placeholder="Enter your mobile number"
                             />
-                            <label className='errtext'> {values.phoneError && values.phoneError}</label>
+                            <label className='errtext'> {values && values?.phoneError}</label>
                             <Input
                                 variant="outlined"
                                 type="text"
@@ -196,9 +196,9 @@ export default function CustomizedInputs() {
                                 rowsMax={5}
                                 row={3}
                                 onChange={e => handleChange('message', e.target.value)}
-                                error={values.errorMessage && values.errorMessage ? true : false}
+                                error={values && values?.errorMessage ? true : false}
                             />
-                            <label className='errtext'> {values.errorMessage && values.errorMessage}</label>
+                            <label className='errtext'> {values && values?.errorMessage}</label>
                             <Button onClick={() => handleSubmit()} className={classes.Button}>Send Message to Support</Button>
                         </Grid>
                         <SnackBar handleClose={handleClose} anchorOrigin={{

@@ -96,7 +96,6 @@ class Component extends React.Component {
   }
   handleOffset = () => {
     const offsets = this.props.offset + 24
-    // alert('sadas')
     this.setState({ loadingtext: true })
     this.props.setOffset(offsets)
   }
@@ -105,7 +104,6 @@ class Component extends React.Component {
     // const { disabledstate } = this.state;
     // const _height = (data && data.imageResolution) ? `${data.imageResolution.img_res + 120}px` : `350px`
     // const disabledstate = this.props.data.length < 24 ? 'disabled=true' : ''
-    // console.log(dataCard)
     // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
     return (
       <div className={`productLayoutRoot `} style={this.props.styles}>

@@ -52,7 +52,7 @@ export default class CacheBuster extends React.Component {
         if (shouldForceRefresh) {
           console.log(
             `We have a new version - ${latestVersion}. Should force refresh`
-          );          
+          );                
           this.setState({ loading: false, isLatestVersion: false });
         } else {
           console.log(

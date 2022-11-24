@@ -43,11 +43,6 @@ const useStyles = makeStyles(theme => ({
   },
 
 }));
-const handleClick = (name) => {
-  if (name === 'truck') {
-  }
-
-}
 
 
 export default function ProductCards(props) {
@@ -65,7 +60,7 @@ export default function ProductCards(props) {
         className={`${props.data.image? '' : 'shine imgDiv'} classes.header`}
         avatar={
           <IconButton aria-label="Settings" className={classes.avatar}>
-            <i style={{ fontSize: "18px", }} className={`fa ${classes.colorLight}`} onClick={handleClick('truck')}>
+            <i style={{ fontSize: "18px", }} className={`fa ${classes.colorLight}`}>
               &#xf0d1;
             </i>
           </IconButton>

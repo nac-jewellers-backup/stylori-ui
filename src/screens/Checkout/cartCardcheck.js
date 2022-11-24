@@ -29,6 +29,9 @@ import { withRouter } from "react-router-dom";
 import ReactPixel from "react-facebook-pixel";
 import TagManager from "react-gtm-module";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
+import axios from "axios";
+import { API_URL } from "config";
+import { COUNTRIES } from "queries/home";
 
 var adres = {};
 var variab = {};
@@ -40,6 +43,31 @@ const CartCardCheck = (props) => {
   let {
     CartCtx: { setCartFilters },
   } = React.useContext(CartContext);
+  const [countries,setCountries] = React.useState([])
+
+  React.useEffect(()=>{
+    axios
+    .post(
+      `${API_URL}/graphql`,
+      JSON.stringify({
+        query: COUNTRIES
+      }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    .then((res) => {
+      let main = res?.data?.data?.allMasterCountries?.nodes;
+      if(main.length > 0){
+        setCountries(main)
+      }
+     
+    })
+    .catch((err) => console.log(err));
+  },[])
+
   return (
     <Component
       {...props}
@@ -47,6 +75,7 @@ const CartCardCheck = (props) => {
       makeRequestCod={makeRequestCod}
       setCartFilters={setCartFilters}
       isdatafromstate={props.isdatafromstate}
+      countries={countries}
     />
   );
 };
@@ -338,6 +367,7 @@ class Component extends React.Component {
                           <Addressform
                             changePanel={this.changePanel}
                             isCheck={true}
+                            countries={this.props.countries}
                           />
                         </div>
                       ) : null}
@@ -372,6 +402,7 @@ class Component extends React.Component {
                             <Addressform
                               changePanel={this.changePanel}
                               isCheck={true}
+                              countries={this.props.countries}
                             />
                           </div>
                         </div>
@@ -570,6 +601,7 @@ class Component extends React.Component {
                           <Addressform
                             changePanel={this.changePanel}
                             isCheck={true}
+                            countries={this.props.countries}
                           />
                         </div>
                       ) : null}
@@ -587,6 +619,7 @@ class Component extends React.Component {
                             <Addressform
                               changePanel={this.changePanel}
                               isCheck={true}
+                              countries={this.props.countries}
                             />
                           </div>
                         </div>
@@ -694,7 +727,7 @@ const Components = (props) => {
     data.data.allTransSkuLists.nodes &&
     data.data.allTransSkuLists.nodes.length === 0
   ) {
-    content = <div className="overall-loader"> {cartValueEmpty()} </div>;
+    content = <div className="overall-loader"> {cartValueEmpty} </div>;
   } else {
     content = (
       <CartCardCheck

@@ -88,6 +88,7 @@ class ProductDetails extends React.Component {
         ? [_mapper[0]]
         : _mapper
       : _mapper;
+     
 
     return (
       <div>
@@ -757,9 +758,9 @@ class ProductDetails extends React.Component {
           {_mapperChooser.map((val) => {
             return val.namedetail.length === 0
               ? false
-              : _isSilver
-              ? this.withExpandCollapse(val)
-              : this.withExpandCollapse(val);
+              : 
+              this.withExpandCollapse(val)
+              ;
           })}
 
           {!_isSilver &&

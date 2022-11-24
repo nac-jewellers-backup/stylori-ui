@@ -218,8 +218,7 @@ export default function ChildCollectionItemTwo(props) {
     const previous5 = () => {
         slider5.current.slickPrev();
     }
-    // console.log(props.CollectionPageStylori.Testimony.carousel.data)
-    // 
+    
     return (
         <>
             {

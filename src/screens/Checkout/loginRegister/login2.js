@@ -263,7 +263,8 @@ function Login2(props) {
         .then((fetchValue) => {
           if (fetchValue.accessToken) {
             handlers.VerifyOTP(fetchValue);
-            localStorage.setItem("true",true)
+            localStorage.setItem("check_dlt", false);
+            localStorage.setItem("true", false);
           }
         })
         .catch(console.error);

@@ -28,9 +28,11 @@ export const styles = (theme) => ({
     backgroundColor: "#FFFFFF",
     '-webkit-tap-highlight-color': 'transparent',
     border: '1px solid #e8e8e8',
-    border: "0px",
     borderColor: "#fff",
-    cursor:"pointer"
+    cursor:"pointer",
+    "& .MuiSelect-selectMenu":{
+      display:'flex'
+    }
   },
   searchcontainer: {
     padding: "3px 2px 2px 2px",
@@ -282,18 +284,52 @@ export const styles = (theme) => ({
       background: theme.palette.badgeColor.background,
       color: "white",
     },
+    
+    "& .MuiBadge-anchorOriginTopRightRectangle":{
+      transform: 'scale(1) translate(50%, -40%) !important'
+    }
+  },
+  badgeColorW: {
+    "& .MuiBadge-badge": {
+      background: theme.palette.badgeColor.background,
+      color: "white",
+    },
+    [theme.breakpoints.down('sm')]:{
+      "& .MuiBadge-anchorOriginTopRightRectangle":{
+        right:8,
+        top:"6px !important"
+      }
+     },
+    
+    "& .MuiBadge-anchorOriginTopRightRectangle":{
+      transform: 'scale(1) translate(60%, -80%) !important',
+      top:"7px"
+    }
   },
   badgeColorsilver: {
     "& .MuiBadge-badge": {
       color: "#fff",
       background: 'rgb(6, 171, 159)',
     },
-    [theme.breakpoints.only("xs")]: {
-      "& .MuiBadge-badge": {
-        background: "#fff",
-        top: "-10px !important",
-        right: 12,
-      },
+    "& .MuiBadge-anchorOriginTopRightRectangle":{
+      transform: 'scale(1) translate(50%, -40%) !important'
+    },
+  },
+  badgeColorsilverW: {
+    "& .MuiBadge-badge": {
+      color: "#fff",
+      background: 'rgb(6, 171, 159)',
+    },
+    [theme.breakpoints.down('sm')]:{
+      "& .MuiBadge-anchorOriginTopRightRectangle":{
+      right:8,
+      top:"6px !important"
+      }
+     },
+    
+    "& .MuiBadge-anchorOriginTopRightRectangle":{
+      transform: 'scale(1) translate(60%, -80%) !important',
+      top:"7px"
     },
   },
 });
@@ -331,7 +367,7 @@ export const useStyles = makeStyles((theme) => ({
         props.isSilver
           ? theme.palette.secondary.main
           : theme.palette.secondary.dark,
-      color: (props) => (props.isSilver ? "white" : "white"),
+      color: "white",
     },
   },
   mouseOverPopoverfilters: {

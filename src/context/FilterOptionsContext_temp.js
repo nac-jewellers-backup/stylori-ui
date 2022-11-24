@@ -29,7 +29,7 @@ const Provider = (props) => {
     const pathQueries = () => {
 
         // var queries = []
-        Object.keys(filters).map(fk => {
+        Object.keys(filters).forEach(fk => {
             const filter = filters[fk];
             const fv = Object.keys(filter);
             if (fv.length > 0) {

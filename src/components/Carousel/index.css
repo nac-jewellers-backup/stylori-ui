@@ -26,7 +26,6 @@
   overflow: hidden;
   position: relative;
   text-align: center;
-  cursor: default;
   border: 1px solid #ccc !important;
   cursor: pointer;
 }

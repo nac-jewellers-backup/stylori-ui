@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const favicon = require("serve-favicon");
 const fs = require("fs");
+const helmet = require("helmet");
+
 
 const PORT = process.env.PORT || 5000;
 
@@ -11,6 +13,9 @@ const { networkcall } = require("./seo/networkcall");
 dotenv.config();
 
 const app = express();
+
+app.use(helmet.hidePoweredBy());
+app.use(helmet.expectCt());
 
 app.use(favicon(path.join(__dirname, "./build", "favicon.ico")));
 app.use(express.static("./build"));

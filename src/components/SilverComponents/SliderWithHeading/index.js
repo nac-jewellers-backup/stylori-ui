@@ -123,7 +123,7 @@ const SliderWithHeading = (props) => {
 
   var settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     slidesToShow: 4,
     slidesToScroll: 2,
     adaptiveHeight: false,
@@ -137,7 +137,7 @@ const SliderWithHeading = (props) => {
     afterChange: (index) => setCurrentIndex(index),
   };
 
-  const {  products = [] } = props;
+  const {  products } = props;
 
 
 
@@ -164,7 +164,7 @@ const SliderWithHeading = (props) => {
            >       
            <div>
              <img
-               src={product?.img.slice(0,9) === "undefined" ? 'https://styloriimages-staging.s3.ap-south-1.amazonaws.com/product/SP3517/275X275/SP3517-1Y.webp?_=1653487514503' : product?.img}
+               src={product?.img}
                alt={"Product Image"}
                loading="lazy" 
                onClick={() => { window.open(`/${product?.url}`)}}

@@ -67,6 +67,7 @@ export const TabsProvider = (props) => {
     pathQueries();
   }, [filters]);
   let variables;
+  
   const { loading, error, data, makeRequest } = useGraphql(
     PRODUCTDETAILS,
     () => {},
@@ -193,14 +194,12 @@ export const TabsProvider = (props) => {
         variablesviewed["filtersku"] = {
           skuId: {
             in: sessionStorage.getItem("skuId").split(","),
-            notEqualTo: filters.skuId,
           },
         };
       } else {
         variablesviewed["filtersku"] = {
           skuId: {
             in: [sessionStorage.getItem("skuId")],
-            notEqualTo: filters.skuId,
           },
         };
       }
@@ -227,9 +226,6 @@ export const TabsProvider = (props) => {
           };
           if (Globalctx.pathName) {
             variableslike["filterdata"]["and"] = {
-              productMaterialsByProductSkuExist: true,
-            };
-            variableslike["filterdata"]["and"] = {
               productMaterialsByProductSku: {
                 every: {
                   materialName: {
@@ -237,6 +233,7 @@ export const TabsProvider = (props) => {
                   },
                 },
               },
+              productMaterialsByProductSkuExist: true
             };
           }
         } else {
@@ -249,9 +246,6 @@ export const TabsProvider = (props) => {
 
           if (Globalctx.pathName) {
             variableslike["filterdata"]["and"] = {
-              productMaterialsByProductSkuExist: true,
-            };
-            variableslike["filterdata"]["and"] = {
               productMaterialsByProductSku: {
                 every: {
                   materialName: {
@@ -259,6 +253,7 @@ export const TabsProvider = (props) => {
                   },
                 },
               },
+              productMaterialsByProductSkuExist: true,
             };
           }
         }
@@ -315,9 +310,6 @@ export const TabsProvider = (props) => {
 
           if (Globalctx.pathName) {
             variableslike["filterdata2"]["and"] = {
-              productMaterialsByProductSkuExist: true,
-            };
-            variableslike["filterdata2"]["and"] = {
               productMaterialsByProductSku: {
                 every: {
                   materialName: {
@@ -325,6 +317,7 @@ export const TabsProvider = (props) => {
                   },
                 },
               },
+              productMaterialsByProductSkuExist: true,
             };
           }
         } else {
@@ -337,9 +330,6 @@ export const TabsProvider = (props) => {
 
           if (Globalctx.pathName) {
             variableslike["filterdata2"]["and"] = {
-              productMaterialsByProductSkuExist: true,
-            };
-            variableslike["filterdata2"]["and"] = {
               productMaterialsByProductSku: {
                 every: {
                   materialName: {
@@ -347,6 +337,7 @@ export const TabsProvider = (props) => {
                   },
                 },
               },
+              productMaterialsByProductSkuExist: true,
             };
           }
         }

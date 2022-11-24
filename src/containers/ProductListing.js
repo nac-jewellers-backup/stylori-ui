@@ -43,7 +43,7 @@ class Stylori extends React.Component {
     // alert(JSON.stringify(this.props.wishlist))
     const context = this.context;
 
-    const { data, dataFilter, loading } = this.props;
+    const { data, dataFilter, loading,wishlistdata } = this.props;
     let locs = window.location.pathname.slice(1);
     let replaceValue = locs.replace(/[-\+]/gi, " ");
     replaceValue = replaceValue
@@ -51,6 +51,8 @@ class Stylori extends React.Component {
       .split(" ")
       .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
       .join(" ");
+
+    
 
     return (
       <>
@@ -92,8 +94,8 @@ class Stylori extends React.Component {
           <Header
             data={data}
             cartcount={this.props.cartcount}
-            wishlist={this.props.wishlistdata}
-            wishlist_count={this.props.wishlist_count}
+            wishlist={wishlistdata}
+            wishlist_count={wishlistdata?.wishlistdata?.nodes?.length}
           />
 
           <Grid item xs={12}>
@@ -168,10 +170,12 @@ const Components = (props) => {
   } = React.useContext(FilterOptionsContext);
   let content,
     mapped = [];
-  // alert(JSON.stringify(cartcount))
+   
+
   var arrFilters = Array(mappedFilters);
   let mappedFiltersList = arrFilters.length > 0 ? filterData(arrFilters) : [];
-  // let mappedFilter = filterData(mappedFilters)
+  
+
   if (!loading && !error) {
     if (Object.keys(data).length !== 0) {
       mapped = async () => await productList(data, CDN_URL);
@@ -187,6 +191,7 @@ const Components = (props) => {
         <div id="loading"></div>
       </div>
     );
+   
   else
     content = (
       <Stylori

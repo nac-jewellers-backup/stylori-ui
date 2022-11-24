@@ -35,356 +35,271 @@ export const mainlist = [
 
 /// MOBILE views submenu - LAYER 3
 export const subheader = {
-  Earrings: {
-    header: "Earrings",
-    name: [
-      {
-        name: "Studs",
-        url: "/studs-earrings-jewellery",
-      },
-      {
-        name: "Drop",
-        url: "/drops-earrings-jewellery",
-      },
-      {
-        name: "Ear Cuffs",
-        url: "/ear+cuffs-earrings-jewellery",
-      },
-      {
-        name: "Huggies",
-        url: "/huggies-earrings-jewellery",
-      },
-      {
-        name: "Jhumkas",
-        url: "/jhumkas+online-earrings-jewellery",
-      },
-      {
-        name: "Ear Jacket",
-        url: "/ear+jacket-earrings-jewellery",
-      },
-    ],
-  },
-  Pendants: {
-    header: "Pendants",
-    name: [
-      {
-        name: "Classic",
-        url: "/classic-pendants-jewellery",
-      },
-      {
-        name: "Casual",
-        url: "/casual-pendants-jewellery",
-      },
-      {
-        name: "Fashion",
-        url: "/fashion-pendants-jewellery",
-      },
-      {
-        name: "Religious",
-        url: "/religious-pendants-jewellery",
-      },
-      {
-        name: "Tanmaniya",
-        url: "/tanmaniya-pendants-jewellery",
-      },
-    ],
-  },
-  Rings: {
-    header: "Rings",
-    name: [
-      {
-        name: "Classic",
-        url: "/classic-rings-jewellery",
-      },
-      {
-        name: "Casual",
-        url: "/casual-rings-jewellery",
-      },
-      {
-        name: "Cocktail",
-        url: "/cocktail-rings-jewellery",
-      },
-      {
-        name: "Engagement",
-        url: "/rings-jewellery-for+engagement",
-      },
-      {
-        name: "Fashion",
-        url: "/fashion-rings-jewellery",
-      },
-      {
-        name: "Men's Ring",
-        url: "/rings-jewellery-for+men",
-      },
-    ],
-  },
-  "Nose Pins": {
-    header: "Nose Pins",
-    name: [
-      {
-        name: "Classic",
-        url: "/classic-nose+pin+online-jewellery",
-      },
-      {
-        name: "Fashion",
-        url: "/fashion-nose+pin+online-jewellery",
-      },
-      {
-        name: "Stud Nose Pin",
-        url: "/nose+studs+online-jewellery",
-      },
-    ],
-  },
-  "Bangles & Bracelets": {
-    header: "Bangles Bracelets",
-    name: [
-      {
-        name: "Bangles",
-        url: "/bangles-jewellery",
-      },
-      {
-        name: "Bracelets",
-        url: "/bracelets-jewellery",
-      },
-      {
-        name: "Oval Bracelets",
-        url: "/oval+bracelets-jewellery",
-      },
-    ],
-  },
-  "By Price": {
-    header: "By Price",
-    name: [
-      {
-        name: "Under Rs 5000",
-        url: "/jewellery?startprice=1000&endprice=5000",
-      },
-      {
-        name: "Rs 5000 - Rs 10000",
-        url: "/jewellery?startprice=5000&endprice=10000",
-      },
-      {
-        name: "Rs 10000 - Rs 20000",
-        url: "/jewellery?startprice=10000&endprice=20000",
-      },
-      {
-        name: "Above Rs 20000",
-        url: "/jewellery?startprice=10000&endprice=20000",
-      },
-    ],
-  },
-  "By Collections": {
-    header: "By Collections",
-    name: [
-      {
-        name: "Carve",
-        url: "/jewellery-from+the+carve+collection?sort=latest",
-      },
-      {
-        name: "Blush",
-        url: "/jewellery-blush",
-      },
-      {
-        name: "Molecute",
-        url: "/jewellery-molecute+collection",
-      },
-      {
-        name: "Gemstone",
-        url: "/gemstone-jewellery?sort=latest",
-      },
-      {
-        name: "Mistletoe",
-        url: "/jewellery-from+mistletoe+collection",
-      },
-      {
-        name: "The Renaissance",
-        url: "/jewellery-from+the+renaissance+collection",
-      },
-      {
-        name: "Monsoon",
-        url: "/jewellery-from+monsoon+collection",
-      },
-      {
-        name: "Summer",
-        url: "/jewellery-from+the+summer+collection",
-      },
-    ],
-  },
-  "By Material": {
-    header: "By Material",
-    name: [
-      {
-        name: "Diamond",
-        url: "/diamond-jewellery",
-      },
-      {
-        name: "Gemstone",
-        url: "/gemstone-jewellery",
-      },
-      {
-        name: "Solitaire",
-        url: "/solitaire-jewellery",
-      },
-    ],
-  },
-  "Silver Jewellery": {
-    header: "Silver Jewellery",
-    name: [
-      {
-        name: "Earrings",
-        url: "stylori.net/silver-earrings-jewellery",
-      },
-      {
-        name: "Rings",
-        url: "stylori.net/silver-rings-jewellery",
-      },
-      {
-        name: "Pendants",
-        url: "stylori.net/silver-pendants-jewellery",
-      },
-    ],
-  },
-  "By design": {
-    header: "By design",
-    name: [
-      {
-        name: "Plain",
-        url: "/plain-goldcoins",
-      },
-      {
-        name: "Lakshmi",
-        url: "/lakshmi-goldcoins",
-      },
-      {
-        name: "Jesus",
-        url: "/jesus-goldcoins",
-      },
-      {
-        name: "Ganesh",
-        url: "/ganesha-goldcoins",
-      },
-      {
-        name: "Balaji ",
-        url: "/balaji-goldcoins",
-      },
-    ],
-  },
-  "By Weight": {
-    header: "By Weight",
-    name: [
-      {
-        name: "1 Gram",
-        url: "/1gm-goldcoins",
-      },
-      {
-        name: "4 Grams",
-        url: "/4gms-goldcoins",
-      },
-      {
-        name: "8 Grams",
-        url: "/8gms-goldcoins",
-      },
-      {
-        name: "10 Grams",
-        url: "/10gms-goldcoins",
-      },
-      {
-        name: "20 Grams",
-        url: "/20gms-goldcoins",
-      },
-      {
-        name: "50 Grams",
-        url: "/50gms-goldcoins",
-      },
-    ],
-  },
-  "By Purity": {
-    header: "By Purity",
-    name: [
-      {
-        name: "24 KT",
-        url: "/24kt-goldcoins",
-      },
-      // {
-      //     name: '22 KT',
-      //     url: "/22kt-goldcoins"
-      // },
-    ],
-  },
-  "By Collections": {
-    header: "By Collections",
-    name: [
-      // {
-      //     name: 'Halo',
-      //     url: "/jewellery-from+halo+collection"
-      // },
-      {
-        name: "Daisy Days",
-        url: "/jewellery-from+daisy+days+collection",
-      },
-      {
-        name: "Monsoon",
-        url: "/jewellery-from+monsoon+collection",
-      },
-      {
-        name: "Mango",
-        url: "/jewellery-from+the+summer+collection",
-      },
-      {
-        name: "Blush",
-        url: "/jewellery-blush",
-      },
-      {
-        name: "Molecute",
-        url: "/jewellery-molecute+collection",
-      },
-      {
-        name: "Gemstone",
-        url: "/gemstone-jewellery?sort=latest",
-      },
-      {
-        name: "Butterfly",
-        url: "/jewellery-butterfly?sort=latest",
-      },
-    ],
-  },
-  "By Theme": {
-    header: "By Theme",
-    name: [
-      {
-        name: "Carve",
-        url: "/jewellery-from+the+carve+collection?sort=latest",
-      },
-      {
-        name: "Cluster",
-        url: "/cluster-jewellery",
-      },
-      {
-        name: "Droplets",
-        url: "/droplets-jewellery",
-      },
-      {
-        name: "Waves",
-        url: "/waves-jewellery",
-      },
-      {
-        name: "Floral",
-        url: "/floral-jewellery",
-      },
-      {
-        name: "Hearts",
-        url: "/hearts-jewellery",
-      },
-      {
-        name: "Tiara",
-        url: "/tiara-jewellery",
-      },
-      {
-        name: "Hoops",
-        url: "/hoops-jewellery",
-      },
-    ],
-  },
+    "Earrings": {
+        header: 'Earrings',
+        name: [
+            {
+                name: 'Studs',
+                url: "/studs-earrings-jewellery"
+            }, {
+                name: 'Drop',
+                url: "/drops-earrings-jewellery"
+            }, {
+                name: 'Ear Cuffs',
+                url: "/ear+cuffs-earrings-jewellery"
+            }, {
+                name: 'Huggies',
+                url: "/huggies-earrings-jewellery"
+            }, {
+                name: 'Jhumkas',
+                url: "/jhumkas+online-earrings-jewellery"
+            }, {
+                name: 'Ear Jacket',
+                url: "/ear+jacket-earrings-jewellery"
+            }
+        ]
+    },
+    "Pendants": {
+        header: 'Pendants',
+        name: [
+            {
+                name: 'Classic',
+                url: "/classic-pendants-jewellery"
+            }, {
+                name: 'Casual',
+                url: "/casual-pendants-jewellery"
+            }, {
+                name: 'Fashion',
+                url: "/fashion-pendants-jewellery"
+            }, {
+                name: 'Religious',
+                url: "/religious-pendants-jewellery"
+            }, {
+                name: 'Tanmaniya',
+                url: "/tanmaniya-pendants-jewellery"
+            },
+        ]
+    },
+    "Rings": {
+        header: 'Rings',
+        name: [
+            {
+                name: 'Classic',
+                url: "/classic-rings-jewellery"
+            }, {
+                name: 'Casual',
+                url: "/casual-rings-jewellery"
+            }, {
+                name: 'Cocktail',
+                url: "/cocktail-rings-jewellery"
+            }, {
+                name: 'Engagement',
+                url: "/rings-jewellery-for+engagement"
+            }, {
+                name: 'Fashion',
+                url: "/fashion-rings-jewellery"
+            }, {
+                name: 'Men\'s Ring',
+                url: "/rings-jewellery-for+men"
+            },
+        ]
+    },
+    "Nose Pins": {
+        header: 'Nose Pins',
+        name: [
+            {
+                name: 'Classic',
+                url: "/classic-nose+pin+online-jewellery"
+            }, {
+                name: 'Fashion',
+                url: "/fashion-nose+pin+online-jewellery"
+            }, {
+                name: 'Stud Nose Pin',
+                url: "/nose+studs+online-jewellery"
+            },
+        ]
+    },
+    'Bangles & Bracelets': {
+        header: 'Bangles Bracelets',
+        name: [
+            {
+                name: 'Bangles',
+                url: "/bangles-jewellery"
+            }, {
+                name: 'Bracelets',
+                url: "/bracelets-jewellery"
+            }, {
+                name: 'Oval Bracelets',
+                url: "/oval+bracelets-jewellery"
+            },
+        ]
+    },
+    'By Price': {
+        header: 'By Price',
+        name: [
+            {
+                name: 'Under Rs 5000',
+                url: "/jewellery?startprice=1000&endprice=5000"
+            }, {
+                name: 'Rs 5000 - Rs 10000',
+                url: "/jewellery?startprice=5000&endprice=10000"
+            }, {
+                name: 'Rs 10000 - Rs 20000',
+                url: "/jewellery?startprice=10000&endprice=20000"
+            }, {
+                name: 'Above Rs 20000',
+                url: "/jewellery?startprice=10000&endprice=20000"
+            },
+        ]
+    },
+    'By Collections': {
+        header: 'By Collections',
+        name: [
+            {
+                name: 'Carve',
+                url: "/jewellery-from+the+carve+collection?sort=latest"
+            }, {
+                name: 'Blush',
+                url: "/jewellery-blush"
+            }, {
+                name: 'Molecute',
+                url: "/jewellery-molecute+collection"
+            }, {
+                name: 'Gemstone',
+                url: "/gemstone-jewellery?sort=latest"
+            }, {
+                name: 'Mistletoe',
+                url: "/jewellery-from+mistletoe+collection"
+            }, {
+                name: 'The Renaissance',
+                url: "/jewellery-from+the+renaissance+collection"
+            }, {
+                name: 'Monsoon',
+                url: "/jewellery-from+monsoon+collection"
+            }, {
+                name: 'Summer',
+                url: "/jewellery-from+the+summer+collection"
+            },
+        ]
+    },
+    'By Material': {
+        header: 'By Material',
+        name: [
+            {
+                name: 'Diamond',
+                url: "/diamond-jewellery"
+            }, {
+                name: 'Gemstone',
+                url: "/gemstone-jewellery"
+            }, {
+                name: 'Solitaire',
+                url: "/solitaire-jewellery"
+            },
+        ]
+    },
+    'Silver Jewellery': {
+        header: 'Silver Jewellery',
+        name: [
+            {
+                name: 'Earrings',
+                url: "stylori.net/silver-earrings-jewellery"
+            }, {
+                name: 'Rings',
+                url: "stylori.net/silver-rings-jewellery"
+            }, {
+                name: 'Pendants',
+                url: "stylori.net/silver-pendants-jewellery"
+            },
+        ]
+    },
+    "By design": {
+        header: 'By design',
+        name: [
+            {
+                name: 'Plain',
+                url: "/plain-goldcoins"
+            }, {
+                name: 'Lakshmi',
+                url: "/lakshmi-goldcoins"
+            }, {
+                name: 'Jesus',
+                url: "/jesus-goldcoins"
+            }, {
+                name: 'Ganesh',
+                url: "/ganesha-goldcoins"
+            }, {
+                name: 'Balaji ',
+                url: "/balaji-goldcoins"
+            },
+        ]
+    },
+    "By Weight": {
+        header: 'By Weight',
+        name: [
+            {
+                name: '1 Gram',
+                url: "/1gm-goldcoins"
+            }, {
+                name: '4 Grams',
+                url: "/4gms-goldcoins"
+            }, {
+                name: '8 Grams',
+                url: "/8gms-goldcoins"
+            }, {
+                name: '10 Grams',
+                url: "/10gms-goldcoins"
+            }, {
+                name: '20 Grams',
+                url: "/20gms-goldcoins"
+            }, {
+                name: '50 Grams',
+                url: "/50gms-goldcoins"
+            },
+        ]
+    },
+    'By Purity': {
+        header: 'By Purity',
+        name: [
+            {
+                name: '24 KT',
+                url: "/24kt-goldcoins"
+            }, 
+            // {
+            //     name: '22 KT',
+            //     url: "/22kt-goldcoins"
+            // },
+        ]
+    },
+    'By Theme': {
+        header: 'By Theme',
+        name: [
+            {
+                name: 'Carve',
+                url: "/jewellery-from+the+carve+collection?sort=latest"
+            }, {
+                name: 'Cluster',
+                url: "/cluster-jewellery"
+            }, {
+                name: 'Droplets',
+                url: "/droplets-jewellery"
+            }, {
+                name: 'Waves',
+                url: "/waves-jewellery"
+            }, {
+                name: 'Floral',
+                url: "/floral-jewellery"
+            }, {
+                name: 'Hearts',
+                url: "/hearts-jewellery"
+            }, {
+                name: 'Tiara',
+                url: "/tiara-jewellery"
+            }, {
+                name: 'Hoops',
+                url: "/hoops-jewellery"
+            },
+        ]
+    },
 };
 
 //layer 2 named jewellery MOBILE

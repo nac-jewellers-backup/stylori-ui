@@ -99,14 +99,14 @@ class Component extends React.Component {
         // const ringSize = event.target.name;
     }
     // handleClickMetal = (event) => {
-    //     console.log(event.target.id)
+    
     //     const metalColor = event.target.id;
     //     this.setState({
     //         metalColor,
     //     }, () => this.props.setFilters('metalColor=' + metalColor));
     // }
     // handleClickDiamond = (event) => {
-    //     console.log(event.target.id)
+    
     //     const diamondType = event.target.id
     //      this.props.setFilters('diamondType=' + diamondType))
     // }

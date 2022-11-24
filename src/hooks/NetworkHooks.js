@@ -30,7 +30,7 @@ export const useNetworkRequest = (
   urlSignin: string,
   body: string | object | null = null,
   initRequest = true,
-  mapper: ({}) => Promise<{}> = null
+  mapper: () => Promise<{}> = null
 ) => {
   const {
     NetworkCtx: { apiUrl },

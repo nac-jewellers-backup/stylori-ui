@@ -14,6 +14,7 @@ import CustomerReviews from "components/product-image-slider/customer-reviews";
 import Footer from "components/Footer/Footer";
 import "components/product-image-slider/product-images.css";
 import { withRouter } from "react-router-dom";
+import { PRODUCTRECENTLIST } from "queries/productListing";
 import productDetails from "mappers/productDetails";
 import MainCard from "components/SilverComponents/mainSlider";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
@@ -27,7 +28,7 @@ import { Helmet } from "react-helmet";
 import { CartContext } from "context";
 import { GlobalContext } from "context";
 import SilverProductPrice from "components/product-image-slider/silverProductPrice";
-
+import { useGraphql } from 'hooks/GraphqlHook';
 import { shopByStyloriSilver, allSeoPriorities } from "queries/productdetail";
 
 import { Diversestyles } from "../components/product-image-slider/Gagetstylori/Diversestyles-pink";
@@ -274,8 +275,9 @@ class ProductDetail extends Component {
         { key: "og_type", value: "website_stylori" },
         { key: "og_url", value: window.location.href },
       ];
-      arr.map((val) => {
+      arr.forEach((val) => {
         document.getElementById(val.key).setAttribute("content", val?.value);
+        return 0;
       });
       document.title = this?.props?.data[0]?.title;
     }
@@ -365,6 +367,8 @@ class ProductDetail extends Component {
 
     const { classes } = this.props;
     const jewelData = this.props?.data?.[0];
+
+    console.log(jewelData,"??????????")
  
 
     var brand_card = [
@@ -398,12 +402,17 @@ class ProductDetail extends Component {
       },
     ];
 
+
     var detail_data = [
       {
         title: "Description",
         data:
-          jewelData?.dis !== "" ? (
-            <Typography className="no-data-desc">{jewelData?.dis}</Typography>
+          jewelData?.productDescription !== "" ? (
+            <Typography className="no-data-desc">
+              {jewelData?.productDescription}
+              <br/>
+              {jewelData?.dis}
+              </Typography>
           ) : (
             <Typography className="no-data">No Data Found</Typography>
           ),
@@ -518,7 +527,7 @@ class ProductDetail extends Component {
             </Hidden>
           </>
 
-          <Header paymentSucces={true} />
+          <Header paymentSucces={true} wishlist={this?.props?.wishlistdata}/>
           {/* Main Container for Product image and Details */}
           <div
             className="pricing-imgzom-media"
@@ -745,11 +754,7 @@ class ProductDetail extends Component {
             <div className={classes.sliderWithHeadingContainer}>
               <SliderWithHeading
                 heading="Recently Viewed"
-                products={
-                  jewelData?.fadeImageSublistRecentlyViewed.length > 0
-                    ? jewelData?.fadeImageSublistRecentlyViewed
-                    : jewelData?.fadeImageSublist
-                }
+                products={jewelData?.fadeImageSublistRecentlyViewed.length > 1 ? jewelData?.fadeImageSublistRecentlyViewed : jewelData?.fadeImageSublistRecentlyViewedLatest }
               />
             </div>
           )}
@@ -850,8 +855,10 @@ class ProductDetail extends Component {
               />
 
               <JewelDetailAccordion title="Description">
-                {jewelData?.dis !== "" ? (
+                {jewelData?.productDescription !== "" ? (
                   <Typography className="no-data-desc">
+                    {jewelData.productDescription ?? ""}
+                    <br/>
                     {jewelData.dis ?? ""}
                   </Typography>
                 ) : (
@@ -1003,7 +1010,7 @@ const Components = (props) => {
   const _queryResultsValidator = (_result) => {
     let _keys = Object.keys(_result);
     var _obj = {};
-    _keys.map((val) => {
+    _keys.forEach((val) => {
       var a = _result[val].nodes.map((val) => {
         return val?.productListByProductSku?.productImagesByProductId?.nodes;
       });
@@ -1079,8 +1086,16 @@ const Components = (props) => {
       });
   };
 
+  const { loading:listloading, error:listerror, data:listData, makeRequest } = useGraphql(PRODUCTRECENTLIST, () => { }, {});
+
   React.useEffect(() => {
     _fetchProducts();
+    makeRequest({
+      "firstvar": 15,
+      "orderbyvar": ["CREATED_AT_DESC"],
+      "conditionImage": {"imagePosition": 1},
+      "filterTransSku": {"isdefault": {"equalTo": true}}
+    })
   }, []);
 
   //
@@ -1090,6 +1105,7 @@ const Components = (props) => {
     ProductDetailCtx: { data, loading, error, likedatas, viewedddatas, rating },
   } = React.useContext(ProductDetailContext);
   const _silverArr = [];
+  
   React.useEffect(() => {
     if (data && !loading) {
       if (Object.keys(data).length > 0) {
@@ -1115,6 +1131,7 @@ const Components = (props) => {
     }
   }, [data]);
 
+
   const datas = data;
   let mapped = datas;
   if (!loading && !error) {
@@ -1123,9 +1140,11 @@ const Components = (props) => {
       likedatas,
       viewedddatas,
       rating,
-      Globalctx?.tabsChange
+      Globalctx?.tabsChange,
+      listData
     );
   }
+  
 
   if (Object.keys(mapped).length === 0) {
     if (window.location.href.toLowerCase().includes("silver")) {

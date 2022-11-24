@@ -427,7 +427,7 @@ class Component extends React.Component {
     var vals;
     valus_locl &&
       valus_locl.map((val) => {
-        const vlx = valueId && valueId;
+        const vlx = valueId !=="" && valueId;
         if (vlx === val.sku_id) {
           vals = 1;
           return false;

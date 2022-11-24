@@ -91,7 +91,7 @@ const useRating = (props) => {
             let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
             let mapUrlParamsSplitEqual = urlSplitparamsEqual();
             let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
-            mapUrlParamsSplitEqual.map(val => {
+            mapUrlParamsSplitEqual.forEach(val => {
                 values['product_sku'] = val[1]
                 if (val[1].length > 0) {
                     variab['productSku'] = val[1]
@@ -107,6 +107,7 @@ const useRating = (props) => {
                     ...values,
                     values
                 })
+                return 0;
             })
         }
     }, [])
@@ -146,7 +147,7 @@ const useRating = (props) => {
                     let urlSplitparamsEqual = () => urlSearchparamsSplitAmpersand.map(val => { return val.split('=') })
                     let mapUrlParamsSplitEqual = urlSplitparamsEqual();
                     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : '';
-                    mapUrlParamsSplitEqual.map(val => {
+                    mapUrlParamsSplitEqual.forEach(val => {
                         values['product_sku'] = val[1]
                         if (val[1].length > 0) {
                             variab['productSku'] = val[1]
@@ -172,6 +173,7 @@ const useRating = (props) => {
                             ...values,
                             values
                         })
+                        return 0;
                     })
                 }
                 // window.location.href = "/login"

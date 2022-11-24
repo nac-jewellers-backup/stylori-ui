@@ -5,7 +5,9 @@ import { Input } from '../../../components/InputComponents/TextField/Input'
 import SimpleSelect from '../../../components/InputComponents/Select/Select';
 import useRegister from './useregister';
 import { NavLink } from 'react-router-dom';
-
+import axios from 'axios';
+import { API_URL } from 'config';
+import { COUNTRIES } from 'queries/home';
 const Register = (props) => {
     return <RegisterComponent  {...props} />
 }
@@ -20,8 +22,7 @@ const RegisterComponent = (props) => {
     const pathreg = window.location.pathname === "/registers"
     const salutation = localStorage.getItem("m") ? localStorage.getItem("m") : '';
     let user_ids = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
-
-    // console.log("Profile_DATAS",JSON.stringify())
+ 
     return (
         <div className='pt-sm'>
             <form
@@ -40,11 +41,15 @@ const RegisterComponent = (props) => {
                                         {window.location.pathname === "/registers" ? "Register" : "New user registration"}</>}
                                 </h5>}
                             <Grid container spacing={12}>
-                                {paths && <Grid item lg={4} xs={4}>
-                                    <SimpleSelect val={'1'} name={salutation && salutation.length > 0 ? salutation : valuesadrees.salutation} selectData={['Mr', 'Mrs', 'Ms']} />
+                                {paths && <Grid item lg={2} xs={4}>
+                                    <SimpleSelect  name={salutation && salutation.length > 0 ? salutation : valuesadrees.salutation}  selectData={[
+                        {label:"Mr",value:"Mr"},
+                        {label:"Mrs",value:"Mrs"},
+                        {label:"Ms",value:"Ms"}
+                      ]}   onChange={e => handlers.handlesetvaluesadrees('salutation', e.target.value)}/>
                                 </Grid>}
                                 {paths && <>
-                                    <Grid item lg={4} xs={4}>
+                                    <Grid item lg={5} xs={6} style={{display:'flex',justifyContent:'center',alignItems:'end',marginTop:10}}>
                                         <Input
                                             margin="normal"
                                             // variant="outlined"
@@ -57,18 +62,18 @@ const RegisterComponent = (props) => {
                                             helperText="First name is required"
                                             required />
                                     </Grid>
-                                    <Grid item lg={4} xs={4}>
+                                    <Grid item lg={5} xs={6} style={{display:'flex',justifyContent:'center',alignItems:'end',marginTop:10}}>
                                         <Input
                                             margin="normal"
                                             // variant="outlined"
                                             type="text"
                                             name="lastname"
                                             value={valuesadrees.lastname}
-                                            placeholder="Last name*"
+                                            placeholder="Last name"
                                             onChange={e => handlers.handlesetvaluesadrees('lastname', e.target.value)}
                                             className='text-f'
                                             helperText="Last name is required"
-                                            required />
+                                            />
                                     </Grid></>}
                             </Grid>
                             {/* <h5>Personal Information</h5> */}
@@ -112,9 +117,9 @@ const RegisterComponent = (props) => {
                                                 readOnly: true,
                                             }}
                                         /> </Grid>
-                                    <Grid item lg={3} class="leftPad" style={{ textAlign: "center", lineHeight: "66px", color: "#337ab7" }}>
+                                    <Grid item lg={3} class="leftPad" style={{ textAlign: "center", color: "#337ab7",display:'flex',justifyContent:"center",alignItems:'center',marginLeft:10 }}>
                                         <NavLink to="/changepassword">  Change password </NavLink> </Grid>
-                                </Grid> : <>
+                                     </Grid> : <>
                                     <Input
                                         margin="normal"
                                         // variant="outlined"
@@ -187,10 +192,10 @@ const RegisterComponent = (props) => {
                                 <Grid item xs={12} lg={12}>
                                     <Grid container spacing={12}>
                                         <Grid item xs={6} lg={6}>
-                                            <SimpleSelect name={"India"} selectData={['India']}
-                                                disabled={'disabled'} />
+                                        <SimpleSelect name={"India"} value='India' selectData={[{label:'India',value:'India'}]}
+                                            disabled={'disabled'} />
                                         </Grid>
-                                        <Grid item xs={6} lg={6}>
+                                        <Grid item xs={6} lg={6} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                                             <Input
 
                                                 className='text-f'
@@ -207,10 +212,10 @@ const RegisterComponent = (props) => {
                                     </Grid>
                                     <Grid container spacing={12}>
                                         <Grid item xs={3} lg={3}>
-                                            <SimpleSelect name={['+91']} selectData={['+91']}
+                                        <SimpleSelect value='+91' name={['+91']} selectData={[{label:'+91',value:'+91'}]}
                                                 disabled={'disabled'} />
                                         </Grid>
-                                        <Grid item xs={9} lg={9}>
+                                        <Grid item xs={9} lg={9} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                                             <Input
                                                 className='text-f'
                                                 type="tel"

@@ -142,7 +142,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, loadAndSaveError
       <div class="wishListStyle" >
         <Wishlist sku={props.data.skuId} productId={props.data.productId} wishlist={props.wishlist} />
       </div>
-      <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} target="_blank" onClick={handleProductDetatiContext(props)}>
+      <Link to={{ pathname: props.data.skuUrl }} style={{ textDecoration: 'none' }} target="_blank" >
         <LazyLoadImage
           alt={'props.data.title'}
           effect="blur"

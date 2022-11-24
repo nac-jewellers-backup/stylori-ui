@@ -20,6 +20,10 @@ export const mainlist = [
     url: "/silver-jewellery-from+loops+collection",
   },
   {
+    name: "FINISH",
+    url: "/silver-jewellery-traditional+kemp",
+  },
+  {
     name: "GIFTS",
     url: "#",
   },
@@ -887,43 +891,7 @@ export const subheader = {
       // },
     ],
   },
-  "By Collections": {
-    header: "By Collections",
-    name: [
-      // {
-      //     name: 'Halo',
-      //     url: "/jewellery-from+halo+collection"
-      // },
-      {
-        name: "Daisy Days",
-        url: "/jewellery-from+daisy+days+collection",
-      },
-      {
-        name: "Monsoon",
-        url: "/jewellery-from+monsoon+collection",
-      },
-      {
-        name: "Mango",
-        url: "/jewellery-from+the+summer+collection",
-      },
-      {
-        name: "Blush",
-        url: "/jewellery-blush",
-      },
-      {
-        name: "Molecute",
-        url: "/jewellery-molecute+collection",
-      },
-      {
-        name: "Gemstone",
-        url: "/gemstone-jewellery?sort=latest",
-      },
-      {
-        name: "Butterfly",
-        url: "/jewellery-butterfly?sort=latest",
-      },
-    ],
-  },
+
   "By Theme": {
     header: "By Theme",
     name: [
@@ -1063,7 +1031,7 @@ export const Jewellery = {
       icon: "",
     },
     Idols: {
-      name: "IDOL'S",
+      name: "IDOL's",
       url: "https://www.stylori.com/idols-silver-jewellery",
       icon: "",
     },
@@ -1126,6 +1094,70 @@ export const Jewellery = {
       icon: "",
     },
   },
+
+  FINISH: {
+      Victorian: {
+        name: "Victorian",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-victorian",
+      },
+      "Gold Plated Kundan": {
+        name: "Gold Plated Kundan",
+        icon: "",
+        url: "https://www.stylori.com/silver-jewellery-gold+plated+kundan",
+      },
+      "Gold Plated Kemp": {
+        name: "Gold Plated Kemp",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-gold+plated+kemp",
+      },
+      "Deep Nagas & Kundan": {
+        name: "Deep Nagas & Kundan",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-deep+nagas+kundan",
+      },
+      "Nagas/Nakshi": {
+        name: "Nagas/Nakshi",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-nagas+nakshi",
+      },
+      "Beads & Pearl Jewellery": {
+        name: "Beads & Pearl Jewellery",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-beads+pearl+jewellery",
+      },
+      "Cubic Zircon/Swarovski Jewellery": {
+        name: "Cubic Zircon/Swarovski Jewellery",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-cubiczircon+swarovski",
+      },
+      "Studded Jewellery": {
+        name: "Studded Jewellery",
+        icon: "",
+        url: "https://www.stylori.com/silver-jewellery-studded+jewellery",
+      },
+      "Rose gold": {
+        name: "Rose gold",
+        icon: "",
+        url: "https://www.stylori.com/silver-jewellery-rose+gold+finish",
+      },
+      "Oxidised":{
+        name: "Oxidised",
+        icon: "",
+        url: "https://www.stylori.com/silver-jewellery-oxidised+finish",
+      },
+      "Dual Tone":{
+        name: "Dual Tone",
+        icon: "",
+        url: " https://www.stylori.com/silver-jewellery-dual+tone+finish",
+      },
+      "Others": {
+        name: "Others",
+        icon: "",
+        url: "https://www.stylori.com/silver-jewellery-finish+others",
+      },
+  },
+
 
   STYLE: {
     Traditional: {
@@ -2263,6 +2295,11 @@ export const menuLists = {
         value: "Gold Plated Kemp",
         title: "Gold Plated Kemp",
         url: " https://www.stylori.com/silver-jewellery-gold+plated+kemp",
+      },
+      {
+        value: "Deep Nagas & Kundan",
+        title: "Deep Nagas & Kundan",
+        url: " https://www.stylori.com/silver-jewellery-deep+nagas+kundan",
       },
       {
         value: "Nagas/Nakshi",

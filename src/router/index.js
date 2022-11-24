@@ -53,7 +53,7 @@ export const RouterApp = (props) => {
     return val;
   });
   // condition()
-  // console.log('window.location.pathnamewindow.location.pathname', window.location.pathname, props.location.pathname)
+ 
   return (
     <>
       <Switch history={browserHistory}>

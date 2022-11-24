@@ -196,7 +196,7 @@ const Gallery = (
         to={{ pathname: props.data.skuUrl }}
         style={{ textDecoration: "none" }}
         target="_blank"
-        onClick={handleProductDetatiContext(props)}
+        // onClick={handleProductDetatiContext(props)}
       >
         <LazyLoadImage
           alt={"props.data.title"}

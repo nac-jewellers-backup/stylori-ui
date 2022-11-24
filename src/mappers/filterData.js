@@ -22,7 +22,7 @@ export default function (data) {
 
     const getSubFilters = (data) => {
       if (data && data.length > 0) {
-        Object.keys(data[0]).map((val) => {
+        Object.keys(data[0]).forEach((val) => {
           if (
             val !== "master_category" &&
             val !== "seo_url" &&

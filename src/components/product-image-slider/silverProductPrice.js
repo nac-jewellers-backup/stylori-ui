@@ -683,7 +683,7 @@ class Component extends React.Component {
             this.handleLocalStorage,
             this.canceldeletechecklistCancel,
             this.deletechecklists,
-            this.handletest
+            // this.handletest
           )}
         </Hidden>
 
@@ -699,7 +699,7 @@ class Component extends React.Component {
               this.handleLocalStorage,
               this.canceldeletechecklistCancel,
               this.deletechecklists,
-              this.handletest
+              // this.handletest
             )}
     
         </Hidden>

@@ -55,7 +55,7 @@ function HeaderHoverMenuItem(props) {
               </Grid> */}
                 <Grid container item xs={isSilver ? 8 : 12}>
                   {props.data.imageContainer.map((val, index) => (
-                    <Grid item xs={isSilver ? 4 : 4}>
+                    <Grid item xs={4}>
                       <Grid
                         container
                         className={classes.imgcont}

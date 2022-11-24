@@ -31,8 +31,13 @@ class Accountdetails extends Component {
     };
 
     Activeaccounts = (name) => {
-        this.setState({ isActive: [name] })
-        window.history.pushState(window.location.href, null, `/account${"-" + name}`);
+        if(name === 'shopping-cart'){
+          return (window.location.href = '/cart')
+        }else{
+            this.setState({ isActive: [name] })
+            window.history.pushState(window.location.href, null, `/account${"-" + name}`);
+        }
+        
     }
     // fun = () => {
     //     const allorder = this.props.allorderdata ? this.props.allorderdata : ""
@@ -113,12 +118,13 @@ class Accountdetails extends Component {
                                         {
                                             this?.state?.isActive == 'addresses' && <Addressform />
                                         }
-                                        {
-                                            this?.state?.isActive == 'shopping-cart' && <>
+                                        {/* {
+                                             this?.state?.isActive == 'shopping-cart' &&
+                                             <>
 
-                                                {this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
-                                                    <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
-                                        }
+                                                 {this.props.data.length > 0 ? <CartCard data={this.props.data} /> :
+                                                     <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
+                                        } */}
                                         {
                                             this?.state?.isActive == 'wishlist' && <>
                                                 <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />

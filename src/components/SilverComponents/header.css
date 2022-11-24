@@ -89,7 +89,6 @@
 .header-navbar-list1 a {
   white-space: nowrap;
   width: 100%;
-  font-size: 14px;
   letter-spacing: 3px;
   text-transform: capitalize;
   font-size: 13px !important;
@@ -330,11 +329,11 @@ i {
 .tooltip-w {
   display: none;
   top: 20px;
-  left: 10px;
+  left: 18px;
 }
 
 .tooltip:hover .tooltip-w {
-  display: block;
+    display: block;
     font-size: 14px;
     text-align: center;
     margin-left: 10px;

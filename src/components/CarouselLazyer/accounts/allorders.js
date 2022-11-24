@@ -79,7 +79,7 @@ class Allorders extends React.Component {
                                     square
                                     expanded={expanded === index}
                                     onChange={this.handleChange(index)}
-                                    style={{ boxShadow: "none", boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px" }}
+                                    style={{boxShadow: "rgb(242, 242, 242) 4px 10px 20px 5px" }}
                                     key={index}
                                 >
                                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon className='arrow-chek' />} className='ckcut-main-body'>

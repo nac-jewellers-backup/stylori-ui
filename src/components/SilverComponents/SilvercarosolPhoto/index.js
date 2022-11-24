@@ -20,8 +20,6 @@ const SilverCarousel = (props) => {
   const { carouselTop } = props.data;
   const [state, setState] = React.useState([]);
   const classes = useStyles();
-  // debugger;
-  // console.log(props);
   useEffect(async () => {
     function fetchBanner() {
       fetch(`${API_URL}/graphql`, {
@@ -45,7 +43,7 @@ const SilverCarousel = (props) => {
     fetchBanner();
   }, []);
   return (
-    <Grid container xs={12} style={{paddingTop:"20px"}}>
+    <Grid container xs={12} style={{paddingTop:"13px"}}>
       <Helmet>
         <meta property="og:title" content="Stylori Silver - Silver Jewellery" />
         <meta name="description" property="og:description" content={carouselTop[0].content} />{" "}

@@ -171,14 +171,13 @@ class ProductImageZoom extends React.Component {
     });
   };
   onErrorImage = async (event, largeImage) => {
-    // alert("came");
     let _url = largeImage.replace("1000X1000", "2400X2400");
     let _notFound = `${CDN_URL}product/1000X1000/productnotfound.webp`;
     return (await this.check_image_exists_in_server(_url)) ? _url : _notFound;
   };
 
   productImageZoom = (_isSilver) => {
-    // console.log(this.props.data)
+    
     const { classes, data, customLimit } = this.props;
     this.props.data[0] == null && window.location.reload();
     const limit = customLimit ? customLimit : 4;
@@ -205,7 +204,7 @@ class ProductImageZoom extends React.Component {
     //   zoomStyle: "z-index:2",
     // };
 
-    var a = showimage && showimage;
+    var a = showimage !=='' && showimage;
     // alert(JSON.stringify(this.props.data[0]))
     var b = a.length > 0 && a.split("/");
     // var c = a.replace(b[5], data[0].image_resolution_two + 'X' + data[0].image_resolution_two)
@@ -354,7 +353,7 @@ class ProductImageZoom extends React.Component {
                           fontFamily: "FontAwesome !important",
                           position: "absolute",
                           zIndex: 500,
-                          left: "10px",
+                          left: "46px",
                           margin: "10px",
                           color: "#111",
                           paddingTop: "7px",
@@ -403,6 +402,10 @@ class ProductImageZoom extends React.Component {
                     <source src={showimage} type="video/mp4" />
                   </video>
                 ) : (
+                  this.props.isSilver ?
+                  <img src={[largeImage,
+                    showimageBig,
+                    `${CDN_URL}product/1000X1000/productnotfound.webp`,]} alt="Stylori" style={{width:"inherit"}}/> :
                   <GlassMagnifier
                     imageSrc={[
                       largeImage,

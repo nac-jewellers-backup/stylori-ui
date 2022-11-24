@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Hidden, Typography, Button } from '@material-ui/core';
 import Slideshow from '../../components/Carousel/carosul'
-import { CDN_URL } from '../../config'
+import { CDN_URL } from '../../config';
+import CurrencyConversion from 'utils/CurrencyConversion';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -269,7 +270,7 @@ export default function ImageGridList(props) {
     }
     const imageslice = (image) => {
         let val = image.split('/')
-        return (`${CDN_URL}${val[0]}/${val[1]}/275X275/${val[2]}`)
+        return `${CDN_URL}${val[0]}/${val[1]}/275X275/${val[2]}`
     }
 
 
@@ -284,22 +285,20 @@ export default function ImageGridList(props) {
                         </Grid>
                         <Grid item md={10} lg={10} sm={10} xs={10}  >
                             <Grid container>
-                                <Grid item  xs={12} style={{display:"flex",alignItems:"center"}}>
+                                <Grid item  xs={12}>
                                     <Slideshow dataCarousel={props.dataCarousel} sliderRef={slider}>
                                         {Array.isArray(carosolData) && carosolData.map((val, index) => <>
                                             <Grid container>
-                                                <Grid item md={3} lg={3} sm={6} xs={12} className={classes.testimonialRight}>
+                                                <Grid item md={3} lg={3} sm={12} xs={12} className={classes.testimonialRight}>
                                                     <Typography className={classes.testimonyTitle}>
                                                         {val.title}
                                                     </Typography>
-                                                    <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                        <Slideshow>
-                                                            {val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl ? <img className={classes.imgcoin} alt="" src={imageslice(val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)} /> : <img className={classes.imgcoin} src={`${CDN_URL}product/1000X1000/productnotfound.webp`} loading="lazy" alt="...."/>}
-                                                        </Slideshow>
+                                                    <Grid item>
+                                                    {val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl ? <img className={classes.imgcoin} alt="" src={imageslice(val?.productListByProductId?.productImagesByProductId?.nodes[0]?.imageUrl)} /> : <img className={classes.imgcoin} src={`${CDN_URL}product/1000X1000/productnotfound.webp`} loading="lazy" alt="...."/>}
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px " }}>
-                                                        <Typography style={{ color: "#394578", fontSize: "0.9rem" }}><i class="fa fa-inr" aria-hidden="true" style={{ fontSize: "14px", paddingRight: "2px" }}></i>
-                                                            {Math.round(val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice)}</Typography>
+                                                        <Typography style={{ color: "#394578", fontSize: "0.9rem" }}>
+                                                            {CurrencyConversion(val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice)}</Typography>
                                                     </Grid>
                                                     <Grid item style={{ textAlign: 'center', padding: "0px 15px 10px 15px" }}>
                                                         <a style={{ textDecoration: 'none' }} href={val.transSkuListByProductSku && val.transSkuListByProductSku.skuUrl && val.transSkuListByProductSku.skuUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a>
@@ -307,7 +306,7 @@ export default function ImageGridList(props) {
 
                                                 </Grid>
                                                 <span className={classes.exclIcon} ></span>
-                                                <Grid item md={7} lg={7} sm={12} xs={12} className={classes.testimonialInner}>
+                                                <Grid item md={7} lg={7} sm={6} xs={12} className={classes.testimonialInner}>
                                                     <Typography className={classes.textInner}>{val.message}
                                                     </Typography>
                                                     <Grid className={classes.textInner}>
@@ -359,8 +358,8 @@ export default function ImageGridList(props) {
 
                                                             </Grid>
                                                             <Grid>
-                                                                <Typography style={{ color: "#394578", fontSize: "12px" }}><i class="fa fa-inr" aria-hidden="true" style={{ paddingRight: "2px" }}></i>
-                                                                    {val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice}</Typography>
+                                                                <Typography style={{ color: "#394578", fontSize: "12px" }}>
+                                                                    {CurrencyConversion(val.transSkuListByProductSku && val.transSkuListByProductSku.markupPrice && val.transSkuListByProductSku.markupPrice)}</Typography>
                                                                 <a style={{ textDecoration: 'none' }} href={val.navigateUrl}><Button type="button" className={classes.Button}>Shop Now</Button></a></Grid>
                                                         </Grid>
                                                     </Grid>

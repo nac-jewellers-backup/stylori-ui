@@ -65,7 +65,7 @@ const LoginComponent = (props) => {
         props.change()
     }
     const responseFacebook = response => {
-        // console.log(response, 'facebook');
+        
         // alert(JSON.stringify(response))
         if (response.accessToken) {
             let body = {
@@ -139,7 +139,7 @@ const LoginComponent = (props) => {
                 })
                 .catch(console.error)
 
-            // console.log(response,"facebook")
+            
             // props.history.push('/')
         }
     }
@@ -320,7 +320,7 @@ const LoginComponent = (props) => {
                         </div>
                         <div className='login-butn'>
                             {window.location.pathname === "/login" ? "" : <Button className='back-b' onClick={() => clear()} >Back</Button>}
-                            <Button className='login' variant='contained' type="submit"> {window.location.pathname === "/login" ? "Login" : "Login"}</Button>
+                            <Button className='login' variant='contained' type="submit"> {"Login"}</Button>
                         </div>
                     </Grid>
                 </form>

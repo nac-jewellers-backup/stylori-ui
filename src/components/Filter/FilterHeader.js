@@ -62,7 +62,6 @@ class Component extends React.Component {
     }
     handleChange = (event) => {
         if (this.props.offset > 0) this.props.setOffset(0)
-        // console.log(this.props.offset)
         this.props.setSort({ values: event.target.value })
         this.setState({ expanded: false })
         window.scrollTo(0, 0);
@@ -92,9 +91,7 @@ class Component extends React.Component {
 
                                 <Grid item onClick={this.props.handleChangeDrawer} style={{ display: 'flex', alignItems: 'center', position: 'absolute', top: '29%', left: '5%', cursor: 'pointer' }}>
                                     {
-                                        this.props.check ? <i style={{ fontSize: '22px', paddingRight: '15px' }} className={`fa ${classes.colorMain}`}>&#xf0b0;</i>
-                                            :
-                                            // <ChevronLeftIcon className={`${classes.colorMain}`} />
+                                       
                                             <i style={{ fontSize: '22px', paddingRight: '15px' }} className={`fa ${classes.colorMain}`}>&#xf0b0;</i>
                                     }
                                     <Typography color="inherit"

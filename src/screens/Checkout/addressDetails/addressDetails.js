@@ -23,7 +23,6 @@ class Addressdetails extends React.Component {
         
         const { setValues, values } = props;
 
-        console.log(values,"????")
 
         const _add_data_addres = () => {
 
@@ -118,7 +117,6 @@ class Addressdetails extends React.Component {
         // }
         // alert(JSON.stringify(values.selest_my_address))
 
-        console.log(_add_data_addres(),"???")
 
         return (
             <div className='pt-sm'>

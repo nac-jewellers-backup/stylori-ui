@@ -80,17 +80,17 @@ const LoginComponent = (props) => {
         <Grid container>
             <Header />
             <Grid spacing={12} container style={{ padding: "3%" }}>
-                <Grid item xs={6} lg={6} xs={12}>
+                <Grid item xs={6} lg={6}>
                     <div >
                         <img  loading="lazy" alt="...." width="100%" height="100%" src="https://assets.stylori.com/login_image.png" />
                     </div>
                 </Grid>
 
-                <Grid item xs={6} lg={6} xs={12}>
+                <Grid item xs={6} lg={6}>
                     <Container className={classes._container}>
                         <div className='pt-sm' style={{ width: "100%", float: "right" }}>
                             <form action="javascript:void(0)" onSubmit={(e) => {
-                                handelSubmit(e)
+                                handelSubmit()
                             }}>
                                 <div className={`${classes.normalfonts}`} style={{ fontSize: "18px" }}>Reset Password </div>
                                 <TextField
@@ -105,7 +105,7 @@ const LoginComponent = (props) => {
                                     onChange={e => handleChange('oldpassword', e.target.value)}
                                     placeholder="Enter old password"
                                 />
-                                <label className='errtext'> {values.oldpasswordText && values.oldpasswordText}</label>
+                                <label className='errtext'> {values && values.oldpasswordText}</label>
                                 <TextField
                                     autoComplete='off'
                                     margin="normal"
@@ -118,7 +118,7 @@ const LoginComponent = (props) => {
                                     onChange={e => handleChange('newpassword', e.target.value)}
                                     placeholder="Enter new password"
                                 />
-                                <label className='errtext'> {values.newPasswordHelperText && values.newPasswordHelperText}</label>
+                                <label className='errtext'> {values && values.newPasswordHelperText}</label>
                                 <TextField
                                     autoComplete='off'
                                     margin="normal"
@@ -131,7 +131,7 @@ const LoginComponent = (props) => {
                                     onChange={e => handleChange('confirmPassword', e.target.value)}
                                     placeholder="Enter confirm password"
                                 />
-                                <label className='errtext'> {values.confirmPasswordHelper && values.confirmPasswordHelper}</label>
+                                <label className='errtext'> {values && values.confirmPasswordHelper}</label>
                                 <br></br>
                                 <div style={{ float: "right" }}>
                                     <Button className='apply-b' type="submit">Change</Button>

@@ -52,7 +52,7 @@ class Buynowbutton extends React.Component {
       }
     };
     return (
-      <div className={this.props.isCart ? "" :""}>
+      <div>
         <Button
           className={this.props.class}
           style={{ borderRadius: "5px", ...this.props.style }}

@@ -26,7 +26,6 @@ class Accountdetails extends Component {
         };
 
     }
-
     handleClick = (e) => {
         if(e.target.value === 'logout'){
             this.setState({
@@ -73,7 +72,6 @@ class Accountdetails extends Component {
     render() {
         
         // let c_k_l = localStorage.getItem("c_k_l") ? localStorage.getItem("c_k_l") : {}
-        // console.log(this.props)
         // const { wishlistdata } = this.props.wishlistdata;
         const currencies = [
             {
@@ -120,7 +118,9 @@ class Accountdetails extends Component {
                                     >Address Book </p>
                                     <p className={this?.state?.isActive === 'shoppingcart' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('shoppingcart')}
-                                    >Shopping Bag ({this.props.data.length ? this.props.data.length : "0"}) </p>
+                                    >Shopping Bag 
+                                    {/* ({this.props.data.length ? this.props.data.length : "0"})  */}
+                                    </p>
                                     <p className={this?.state?.isActive === 'wishlist' ? "backgrund" : ""}
                                         onClick={() => this.Activeaccounts('wishlist')}
                                     >
@@ -261,7 +261,7 @@ class Accountdetails extends Component {
                                 </>
 
                             }
-                            <CommenDialog isOpen={this.state.modelOpen} content={`Are you sure you want to leave? `} handleClose={this.canceldeletechecklist} handleSuccess={this.deletechecklists} negativeBtn="No" positiveBtn="Logout" title="Logout" logout={true} />
+                           <CommenDialog isOpen={this.state.modelOpen} content={`Are you sure you want to leave? `} handleClose={this.canceldeletechecklist} handleSuccess={this.deletechecklists} negativeBtn="No" positiveBtn="Logout" title="Logout" logout={true} />
                         </div>
                     </Grid>
 

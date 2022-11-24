@@ -81,7 +81,7 @@ const LoginComponent = (props) => {
                     <Container className={classes._container}>
                         <div className='pt-sm' style={{ width: "100%", float: "right" }}>
                             <form action="javascript:void(0)" onSubmit={(e) => {
-                                handelSubmit(e)
+                                handelSubmit()
                             }}>
                                 <div className={`${classes.normalfonts}`} style={{ fontSize: "18px" }}>  Forgot Password </div>
                                 <Input
@@ -95,7 +95,7 @@ const LoginComponent = (props) => {
                                     onChange={e => handleChange('email', e.target.value)}
                                     placeholder="Enter your email Id"
                                 />
-                                <label className='errtext'> {values.errorText && values.errorText}</label>
+                                <label className='errtext'> {values && values?.errorText}</label>
                                 <br></br>
                                 <div style={{ float: "right" }}>
                                     <Button className='apply-b' type="submit">Reset</Button>
