@@ -411,6 +411,7 @@ const AddressComponent = (props) => {
                         </Grid>
                         <Grid item xs={6} lg={6} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
+                            // className="text-f"
                             type="tel"
                             name="pincode"
                             maxLength="6"

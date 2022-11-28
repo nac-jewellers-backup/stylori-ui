@@ -239,7 +239,7 @@ const Addressforms = (changePanel) => {
                 .then((response) => {
                   if (response.status == "OK") {
                     if(response.results[0].address_components[0].long_name)
-                    makeRequestCod({ pincode: pins,country:response.results[0].address_components[0].long_name});
+                    makeRequestCod({ pincode: pins,country:response.results[0].address_components[4].long_name});
                   }
                 });
             }
