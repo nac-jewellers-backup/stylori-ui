@@ -124,6 +124,7 @@ export const CheckForCod = `query CheckForCod($pincode:String,$country:String) {
 }
 `;
 
+
 export const CUSTOMERREVIEWS = `query MyQuery($productSku: String) {
   allCustomerReviews(condition: {productSku: $productSku, isPublish: true}, last: 5) {
     nodes {

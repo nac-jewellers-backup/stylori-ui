@@ -5,6 +5,7 @@ import { CheckForCod } from 'queries/productdetail';
 import { ADDRESSDETAILS } from 'queries/productdetail';
 import { CartContext } from '../../../context/CartContext';
 import { API_URL } from 'config';
+import { countries } from './countries';
 
 var obj = {}
 var delet = {}
@@ -36,6 +37,7 @@ const Addressforms = (changePanel) => {
             city: "",
             state: "",
             country: "",
+            country_main: "",
             country_code: "+91",
             contactno: "",
             addresstype: 1,
@@ -53,6 +55,7 @@ const Addressforms = (changePanel) => {
             city: "",
             state: "",
             country: "",
+            country_main:"",
             country_code: "+91",
             contactno: "",
             addresstype: 2,
@@ -77,6 +80,9 @@ const Addressforms = (changePanel) => {
     var addObj = {};
 
     var addObjgust = {};
+    const compare=(country)=>{
+      return countries[country]
+    }
     addObjall["isguestlogin"] = cont ? false : true
     const { data, error, loading, makeFetch: makeFetchall, mapped, status } = useNetworkRequest('/addaddress', {}, false);
     const { error: remee, loading: remlod, data: removedata, makeFetch: deleteaddress, } = useNetworkRequest('/removeaddress', {}, false);
@@ -238,8 +244,10 @@ const Addressforms = (changePanel) => {
                 .then((response) => response.json())
                 .then((response) => {
                   if (response.status == "OK") {
-                    if(response.results[0].address_components[0].long_name)
-                    makeRequestCod({ pincode: pins,country:response.results[0].address_components[4].long_name});
+                    let countryCode = compare(values.addressOne.country || values.addressTwo.country);
+                    makeRequestCod({ pincode: pins,country: countryCode});
+                    values['addressOne']['country_main'] = countryCode;
+                    setValues({...values,values})    
                   }
                 });
             }
@@ -444,9 +452,10 @@ const Addressforms = (changePanel) => {
             addObjall["user_id"] = user_id
             addObjall["cart_id"] = cart_id
             if (val_addrs && val_addrs.firstname.length > 0) {
-                
+                let main_addrs = {...val_addrs}
+                main_addrs.country = compare(val_addrs.country)
                 adars1 = []
-                adars1.push(val_addrs)
+                adars1.push(main_addrs)   
                 addObjall['address'] = [adars1 && adars1[0]];
                 val_addrs["addresstype"] = num
                 makeFetchall(addObjall);
@@ -465,8 +474,10 @@ const Addressforms = (changePanel) => {
                 values["Id"] = JSON.stringify(index)
                 localStorage.setItem("bil_isactive", index)
                 if (val_addrs && val_addrs.firstname.length > 0) {
+                    let main_addrs = {...val_addrs}
+                    main_addrs.country = compare(val_addrs.country)
                     adars2 = []
-                    adars2.push(val_addrs)
+                    adars2.push(main_addrs)
                     val_addrs["addresstype"] = num
                 }
                 setValues({
@@ -480,8 +491,10 @@ const Addressforms = (changePanel) => {
                     values["Id"] = JSON.stringify(index)
                     localStorage.setItem("bil_isactive", index)
                     if (val_addrs && val_addrs.firstname.length > 0) {
+                        let main_addrs = {...val_addrs}
+                        main_addrs.country = compare(val_addrs.country)
                         adars2 = []
-                        adars2.push(val_addrs)
+                        adars2.push(main_addrs)
                         val_addrs["addresstype"] = num
                     }
                     setValues({
@@ -498,8 +511,10 @@ const Addressforms = (changePanel) => {
                     localStorage.setItem("ship_isactive", index)
                     if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                         // alert("vada1")
+                        let main_addrs = {...val_addrs}
+                        main_addrs.country = compare(val_addrs.country)
                         adars1 = []
-                        adars1.push(val_addrs)
+                        adars1.push(main_addrs)
                         val_addrs["addresstype"] = num
                     }
                     setValues({
@@ -514,8 +529,10 @@ const Addressforms = (changePanel) => {
                         localStorage.setItem("ship_isactive", index)
                         if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                             // alert("vada1")
+                            let main_addrs = {...val_addrs}
+                            main_addrs.country = compare(val_addrs.country)
                             adars1 = []
-                            adars1.push(val_addrs)
+                            adars1.push(main_addrs)
                             val_addrs["addresstype"] = num
                         }
                         setValues({
