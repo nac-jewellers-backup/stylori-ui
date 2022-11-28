@@ -453,7 +453,7 @@ const Addressforms = (changePanel) => {
             addObjall["cart_id"] = cart_id
             if (val_addrs && val_addrs.firstname.length > 0) {
                 let main_addrs = {...val_addrs}
-                main_addrs.country = compare(val_addrs.country)
+                main_addrs.country = compare(val_addrs.country).toLowerCase()
                 adars1 = []
                 adars1.push(main_addrs)   
                 addObjall['address'] = [adars1 && adars1[0]];
@@ -475,7 +475,7 @@ const Addressforms = (changePanel) => {
                 localStorage.setItem("bil_isactive", index)
                 if (val_addrs && val_addrs.firstname.length > 0) {
                     let main_addrs = {...val_addrs}
-                    main_addrs.country = compare(val_addrs.country)
+                    main_addrs.country = compare(val_addrs.country).toLowerCase()
                     adars2 = []
                     adars2.push(main_addrs)
                     val_addrs["addresstype"] = num
@@ -492,7 +492,7 @@ const Addressforms = (changePanel) => {
                     localStorage.setItem("bil_isactive", index)
                     if (val_addrs && val_addrs.firstname.length > 0) {
                         let main_addrs = {...val_addrs}
-                        main_addrs.country = compare(val_addrs.country)
+                        main_addrs.country = compare(val_addrs.country).toLowerCase()
                         adars2 = []
                         adars2.push(main_addrs)
                         val_addrs["addresstype"] = num
@@ -512,7 +512,7 @@ const Addressforms = (changePanel) => {
                     if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                         // alert("vada1")
                         let main_addrs = {...val_addrs}
-                        main_addrs.country = compare(val_addrs.country)
+                        main_addrs.country = compare(val_addrs.country).toLowerCase()
                         adars1 = []
                         adars1.push(main_addrs)
                         val_addrs["addresstype"] = num
@@ -530,7 +530,7 @@ const Addressforms = (changePanel) => {
                         if (val_addrs && val_addrs.firstname && val_addrs.firstname.length > 0) {
                             // alert("vada1")
                             let main_addrs = {...val_addrs}
-                            main_addrs.country = compare(val_addrs.country)
+                            main_addrs.country = compare(val_addrs.country).toLowerCase()
                             adars1 = []
                             adars1.push(main_addrs)
                             val_addrs["addresstype"] = num
