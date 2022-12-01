@@ -12,9 +12,9 @@ export const carouselTop = [
   {
     settings: {
       dots: false,
-      infinite: false,
+      infinite: true,
       autoplay: true,
-      speed: 2000,
+      speed: 5000,
       fade: false,
       arrows: false,
       arrowsImg: false,
