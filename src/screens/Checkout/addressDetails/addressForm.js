@@ -349,18 +349,7 @@ const AddressComponent = (props) => {
                   ) : (
                     <div>
                       <Grid container spacing={2}>
-                      <Grid item xs={4} lg={2}>
-                          <SimpleSelect
-                            val={'1'}
-                            name={aa ? [aa] : ["Select"]}
-                            selectData={[
-                              {label:"Mr",value:"Mr"},
-                              {label:"Mrs",value:"Mrs"},
-                              {label:"Ms",value:"Ms"}
-                            ]}
-                          />
-                        </Grid>
-                        <Grid item xs={4} lg={5} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
+                        <Grid item xs={4} lg={6} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
                             name="firstname"
                             // className="text-f"
@@ -378,7 +367,7 @@ const AddressComponent = (props) => {
                             helperText="First name is required"
                           />
                         </Grid>
-                        <Grid item xs={4} lg={5} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
+                        <Grid item xs={4} lg={6} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
                             // className="text-f"
                             type="text"
@@ -396,18 +385,26 @@ const AddressComponent = (props) => {
                           />
                         </Grid>
                       </Grid>
-                      <Grid container spacing={12}>
-                        <Grid item xs={6} lg={6}>
-                          <SimpleSelect
-                            name={
-                              values.addressOne.country
-                                ? values.addressOne.country
-                                : ""
-                            }
-                            value='India'
-                            selectData={[{label:"India",value:'India'}]}
-                            disabled={"disabled"}
-                          />
+                      <Grid container spacing={2}>
+                        <Grid item xs={6} lg={6} style={{marginTop:10}}>
+                        <SimpleSelect2 
+                            selectData={countryCode} 
+                            name="country"
+                            placeholder="Country"
+                            onChange={(event) =>
+                              handle.handleChange(
+                                "addressOne",
+                                "country",
+                                event.target.value
+                              )
+                            } 
+                            value={values.addressOne.country}
+                            helperText="Country is required"
+                            InputProps={{
+                              readOnly: true,
+                            }}
+                            required 
+                            />
                         </Grid>
                         <Grid item xs={6} lg={6} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
@@ -439,7 +436,7 @@ const AddressComponent = (props) => {
                           </label>
                         </Grid>
                       </Grid>
-                      <Grid container spacing={12}>
+                      <Grid container spacing={2}>
                         <Grid item xs={12} lg={12}>
                           <Input
                             type="text"
@@ -507,16 +504,8 @@ const AddressComponent = (props) => {
                           />
                         </Grid>
                       </Grid>
-                      <Grid container spacing={12}>
-                      <Grid item xs={3} lg={3}>
-                          <SimpleSelect
-                            name={["+91"]}
-                            selectData={[{label:"+91",value:"+91"}]}
-                            disabled={"disabled"}
-                            value={values.addressOne.country_code ?? '+91'}
-                          />
-                        </Grid>
-                        <Grid item xs={9} lg={9} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
+                      <Grid container spacing={2}>
+                        <Grid item xs={12} lg={12} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                           <Input
                             className="text-f"
                             type="tel"

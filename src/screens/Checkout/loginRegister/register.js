@@ -22,7 +22,45 @@ const RegisterComponent = (props) => {
     const pathreg = window.location.pathname === "/registers"
     const salutation = localStorage.getItem("m") ? localStorage.getItem("m") : '';
     let user_ids = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : ""
- 
+
+    const [countryCode, setCountryCode] = React.useState();
+    const [countryNum,setCountryNum] = React.useState();
+
+  React.useEffect(()=>{
+    axios
+    .post(
+      `${API_URL}/graphql`,
+      JSON.stringify({
+        query: COUNTRIES
+      }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    .then((res) => {
+      let main = res?.data?.data;
+           let countries=[];
+           let country_code =[]
+           main.allMasterCountries.nodes.map(_ =>{
+             let obj={}
+             let obj2={}
+             obj.label = _.nicename
+             obj.value = _.nicename
+             obj2.label =  `${"+"}${_.phonecode}`
+             obj2.value = `${"+"}${_.phonecode}`
+             countries.push(obj)
+             country_code.push(obj2)
+           })
+           setCountryCode(countries)
+           setCountryNum(country_code)
+     
+    })
+    .catch((err) => console.log(err));
+  },[])
+
+   
     return (
         <div className='pt-sm'>
             <form
@@ -42,7 +80,7 @@ const RegisterComponent = (props) => {
                                 </h5>}
                             <Grid container spacing={12}>
                                 {paths && <Grid item lg={2} xs={4}>
-                                    <SimpleSelect  name={salutation && salutation.length > 0 ? salutation : valuesadrees.salutation}  selectData={[
+                                    <SimpleSelect value={valuesadrees.salutation} name={salutation && salutation.length > 0 ? salutation : valuesadrees.salutation}  selectData={[
                         {label:"Mr",value:"Mr"},
                         {label:"Mrs",value:"Mrs"},
                         {label:"Ms",value:"Ms"}
@@ -192,8 +230,14 @@ const RegisterComponent = (props) => {
                                 <Grid item xs={12} lg={12}>
                                     <Grid container spacing={12}>
                                         <Grid item xs={6} lg={6}>
-                                        <SimpleSelect name={"India"} value='India' selectData={[{label:'India',value:'India'}]}
-                                            disabled={'disabled'} />
+                                        <SimpleSelect
+                                          name='country'
+                                          selectData={countryCode ?? []}    
+                                          onChange={(event) =>
+                                            handlers.handlesetvaluesadrees('country', event.target.value)
+                                          }
+                                          value={valuesadrees.country ?? ''}
+                                         />
                                         </Grid>
                                         <Grid item xs={6} lg={6} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                                             <Input
@@ -212,8 +256,14 @@ const RegisterComponent = (props) => {
                                     </Grid>
                                     <Grid container spacing={12}>
                                         <Grid item xs={3} lg={3}>
-                                        <SimpleSelect value='+91' name={['+91']} selectData={[{label:'+91',value:'+91'}]}
-                                                disabled={'disabled'} />
+                                            <SimpleSelect
+                                             name={'country_code'}
+                                             selectData={countryNum ?? []}
+                                             onChange={(event) =>
+                                                handlers.handlesetvaluesadrees('country_code', event.target.value)
+                                              }
+                                             value={valuesadrees.country_code}  
+                                             />
                                         </Grid>
                                         <Grid item xs={9} lg={9} style={{display:'flex',justifyContent:'center',alignItems:'end'}}>
                                             <Input
