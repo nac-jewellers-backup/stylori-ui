@@ -352,7 +352,7 @@ export const TopFilters = (props) => {
                 }}
                 deleteIcon={false}
                 onClick={() => {
-                  props.history.push("/jewellery");
+                  props.history.push("/silver-jewellery");
                   window.location.reload();
                 }}
               />
