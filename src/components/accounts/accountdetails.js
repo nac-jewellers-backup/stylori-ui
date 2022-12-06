@@ -39,8 +39,13 @@ class Accountdetails extends Component {
     };
 
     Activeaccounts = (name) => {
-        this.setState({ isActive: [name] })
+        if(name === 'shoppingcart'){
+            return window.location.href = '/cart'
+        }else{
+            this.setState({ isActive: [name] })
         window.location.href = `/account${"-" + name}`
+        }
+       
     }
     // fun = () => {
     //     const allorder = this.props.allorderdata ? this.props.allorderdata : ""
@@ -165,12 +170,12 @@ class Accountdetails extends Component {
                                     {
                                         this?.state?.isActive === 'addresses' && <Addressform />
                                     }
-                                    {
+                                    {/* {
                                         this?.state?.isActive === 'shoppingcart' && <>
 
                                             {this.props.data.length > 0 ? <CartCard data={this.props.data} isStateFilterContextQty={this.props.isdatafromstate}/> :
                                                 <div style={{ textAlign: "center", color: "#394578" }}>Your shopping bag is empty</div>}</>
-                                    }
+                                    } */}
                                     {
                                         this?.state?.isActive === 'wishlist' && < Grid >
                                             <Wishlists wishlistdata={this.props.wishlistdata} data={this.props.data} />
