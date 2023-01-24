@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useNetworkRequest } from 'hooks/index';
-import { CartContext } from 'context'
+import { CartContext, VoucherContext } from 'context'
 
 const usePromo = (props) => {
-    
+
     let { CartCtx: { setCartFilters, cartFilters } } = React.useContext(CartContext);
+    const {Voucherctx, setVoucherCtx} = React.useContext(VoucherContext);
     // const { setCartFilters } = React.useContext(CartContext);
     let user_profile_id = cartFilters && cartFilters.cartFilters && cartFilters.cartFilters.user_id && cartFilters.cartFilters.user_id && cartFilters.cartFilters.user_id.length > 0 ? cartFilters.cartFilters.user_id : localStorage.getItem("user_id")
     // alert(JSON.stringify(cartFilters).cartFilters&&cartFilters._cart_id&&cartFilters._cart_id.cart_id)
@@ -22,7 +23,6 @@ const usePromo = (props) => {
     const { data, error, loading, status, makeFetch } = useNetworkRequest('/applyvoucher', {}, false);
     useEffect(() => {
         if (data && Object.entries(data).length > 0 && data.constructor === Object) {
-            debugger
             if (data.status === "200") {
                 setCartFilters({
                     discounted_price: data.price_response.discount,
@@ -31,6 +31,9 @@ const usePromo = (props) => {
                     gross_amount:data.price_response.gross_amount,
                     discounted_amount:data.price_response.discounted_price,
                     vouchercode:values.vouchercode
+                })
+                setVoucherCtx({
+                    ...Voucherctx,value:data.price_response.discount,type:data.coupon_type,
                 })
             }
             // alert(data.message)

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Container, Grid, Button } from "@material-ui/core";
 import "./payment.css";
 // import SimpleSelect from '../../../components/InputComponents/Select/Select';
-import { CartContext } from "context";
+import { CartContext, VoucherContext } from "context";
 import cart from "mappers/cart";
 import PaymentHiddenForm from "./paymentHiddenForm";
 import CurrencyConversion from "utils/CurrencyConversion";
@@ -13,7 +13,7 @@ class Netbanking extends React.Component {
     let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : "";
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : "";
     const data = this.props.data ? this.props.data : "";
-    var discounted_price = this.props.cartFilters.discounted_price ? this.props.cartFilters.discounted_price : "";
+    var discounted_price =  this.props.Voucherctx?.value ?  this.props.Voucherctx?.value : "";
 
     // var { data:coddata, error, loading, makeFetch} = useNetworkRequest('/api/auth/signin', {}, false);
     var dataCard1;
@@ -154,7 +154,7 @@ const Components = (props) => {
   let {
     CartCtx: { setCartFilters, cartFilters, data, loading, error },
   } = React.useContext(CartContext);
-
+  let {Voucherctx} = React.useContext(VoucherContext);
   let content, mapped;
   if (!loading && !error) {
     if (Object.keys(data).length !== 0) {
@@ -190,7 +190,7 @@ const Components = (props) => {
         <div id="loading"></div>
       </div>
     );
-  } else content = <Netbanking {...props} data={mapped} cartFilters={cartFilters} setCartFilters={setCartFilters}  ShippingCharge={ShippingCharge ?? 0}/>;
+  } else content = <Netbanking {...props} data={mapped} cartFilters={cartFilters} setCartFilters={setCartFilters} Voucherctx={Voucherctx}  ShippingCharge={ShippingCharge ?? 0}/>;
   return content;
 };
 export default Components;

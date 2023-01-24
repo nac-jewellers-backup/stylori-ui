@@ -20,8 +20,8 @@ import CardSmallScreen from "./CartCardSmallScreen.js";
 import WishlistButton from "./Wishlistadd";
 import Pricing from "../Pricing/index";
 import styles from "./style";
-import { NavLink } from "react-router-dom";
-import { CartContext } from "context";
+import { NavLink, withRouter } from "react-router-dom";
+import { CartContext, VoucherContext } from "context";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import Promo from "screens/Checkout/orderSummary/promocode";
@@ -40,6 +40,14 @@ class Checkoutcard extends React.Component {
     };
   }
 
+  handleRoute = () => {
+    localStorage.removeItem("bil_isactive");
+    localStorage.removeItem("ship_isactive");
+    localStorage.setItem("panel", 1);
+    localStorage.removeItem("select_addres");
+    localStorage.setItem("voucher", this.props.cartFilters?.discounted_price ? this.props.cartFilters?.discounted_price : 0)
+    this.props.history.push("/checkout");
+  }
   async componentDidMount() {
     let skuId_arr = this.props?.data;
     let shipby_arr_object = [];
@@ -192,7 +200,6 @@ class Checkoutcard extends React.Component {
     return alert(JSON.stringify(redirect_url));
   };
   row = (props) => {
-    debugger
     const dataCarousel = {
       slidesToShow: 1,
       arrows: false,
@@ -254,9 +261,9 @@ class Checkoutcard extends React.Component {
       if (_data.indexOf("silver") > -1) return false;
       else return true;
     };
-    var discounted_price = this.props.cartFilters.discounted_price
-      ? this.props.cartFilters.discounted_price
-      : 500;
+    var discounted_price = this.props.Voucherctx.value
+      ? this.props.Voucherctx.value
+      : "";
     const dataCard1 = this.props.data
       .map((val) => {
         return (
@@ -716,11 +723,7 @@ class Checkoutcard extends React.Component {
             onClick={() => {
               debugger
               if (productIsActive) {
-                localStorage.removeItem("bil_isactive");
-                localStorage.removeItem("ship_isactive");
-                localStorage.setItem("panel", 1);
-                localStorage.removeItem("select_addres");
-                window.location.href = "/checkout";
+                this.handleRoute()
               }
             }}
           >
@@ -849,8 +852,8 @@ class Checkoutcard extends React.Component {
     );
   };
   subtotals = (props) => {
-    var discounted_price = this.props.cartFilters.discounted_price
-      ? this.props.cartFilters.discounted_price
+    var discounted_price = this.props.Voucherctx.value
+      ? this.props.Voucherctx.value
       : "";
     const dataCard1 = this.props.data
       .map((val) => {
@@ -967,7 +970,7 @@ class Checkoutcard extends React.Component {
                   </Typography>
                 ) : null}
 
-                {props.cartFilters.tax_price ? (
+                {this.props.Voucherctx.value ? (
                   <Typography
                     className={
                       this.props.checkout
@@ -976,7 +979,7 @@ class Checkoutcard extends React.Component {
                     }
                     style={{lineHeight:2}}
                   >
-                    {props.cartFilters.coupon_type}
+                    {this.props.Voucherctx.value}
                   </Typography>
                 ) : (
                   ""
@@ -1028,7 +1031,7 @@ class Checkoutcard extends React.Component {
                   }
 
                 </Typography>
-                {yousave !== 0 || props.cartFilters.tax_price ? (
+                {yousave !== 0 || this.props.Voucherctx.value ? (
                   <Typography
                     className={
                       this.props.checkout
@@ -1039,8 +1042,8 @@ class Checkoutcard extends React.Component {
                   >
 
                 
-                    {props.cartFilters.tax_price
-                      ? `- ${CurrencyConversion(yousave + props.cartFilters.tax_price)}`
+                    {this.props.Voucherctx.value
+                      ? `- ${CurrencyConversion(yousave + this.props.Voucherctx.value)}`
                       :  `- ${CurrencyConversion(yousave)}`}
 
                   </Typography>
@@ -1049,7 +1052,7 @@ class Checkoutcard extends React.Component {
                   // yousave !== 0  ? <Typography className={`subhesder ${classes.normalfonts}`}>{Math.round(yousave) + props.cartFilters.tax_price}</Typography> : null
                 }
 
-                {props.cartFilters.tax_price ? (
+                {this.props.Voucherctx.value ? (
                   <Typography
                     className={
                       this.props.checkout
@@ -1058,7 +1061,7 @@ class Checkoutcard extends React.Component {
                     }
                     style={{lineHeight:2}}
                   >
-                    {props.cartFilters.tax_price}
+                    {this.props.Voucherctx.value}
                   </Typography>
                 ) : null}
 
@@ -1189,7 +1192,7 @@ class Checkoutcard extends React.Component {
                   </Typography>
                 ) : null}
 
-                {props.cartFilters.tax_price ? (
+                {this.props.Voucherctx.type ? (
                   <Typography
                     className={
                       this.props.checkout
@@ -1198,7 +1201,7 @@ class Checkoutcard extends React.Component {
                     }
                     style={{lineHeight:2}}
                   >
-                    {props.cartFilters.coupon_type}
+                    {this.props.Voucherctx.type }
                   </Typography>
                 ) : (
                   ""
@@ -1271,7 +1274,7 @@ class Checkoutcard extends React.Component {
                   // yousave !== 0  ? <Typography className={`subhesder ${classes.normalfonts}`}>{Math.round(yousave) + props.cartFilters.tax_price}</Typography> : null
                 }
 
-                {props.cartFilters.tax_price ? (
+                {this.props.Voucherctx.value ? (
                   <Typography
                     className={
                       this.props.checkout
@@ -1280,7 +1283,7 @@ class Checkoutcard extends React.Component {
                     }
                     style={{lineHeight:2}}
                   >
-                    {props.cartFilters.tax_price}
+                    {this.props.Voucherctx.value}
                   </Typography>
                 ) : null}
 
@@ -1457,16 +1460,18 @@ const Components = (props) => {
   let {
     CartCtx: { cartFilters },
   } = React.useContext(CartContext);
+  let {Voucherctx,setVoucherCtx} = React.useContext(VoucherContext);
   let content;
-
   content = (
     <Checkoutcard
       {...props}
       cartFilters={cartFilters}
+      Voucherctx={Voucherctx}
+      setVoucherCtx={setVoucherCtx}
       shipping_charge={ShippingCharge}
       isdatafromstate={props.isStateFilterContextQty}
     />
   );
   return content;
 };
-export default withStyles(styles)(Components);
+export default withRouter(withStyles(styles)(Components));

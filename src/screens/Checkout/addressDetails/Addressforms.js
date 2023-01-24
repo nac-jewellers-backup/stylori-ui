@@ -461,7 +461,7 @@ const Addressforms = (changePanel) => {
                 addObjall['address'] = [adars1 && adars1[0]];
                 val_addrs["addresstype"] = num
                 makeFetchall(addObjall);
-                window.location.reload();
+                // window.location.reload();
             }
            
             if (!pathnames) {

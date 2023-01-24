@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { NetworkProvider, GlobalProvider } from "context";
+import { NetworkProvider, GlobalProvider, VoucherProvider } from "context";
 import "./index.css";
 import Loading from "screens/Loading";
 import { createTheme, responsiveFontSizes } from "@material-ui/core/styles";
@@ -49,6 +49,7 @@ class App extends React.Component {
             <ErrorBoundary>
               <GlobalProvider>
                 <Theme>
+                <VoucherProvider>
                   <NetworkProvider>
                     {/*productId="SP1135" <ProductDetailProvider productId="SP1135">*/}
                     <Router>
@@ -60,6 +61,7 @@ class App extends React.Component {
                     </Router>
                     {/* </ProductDetailProvider> */}
                   </NetworkProvider>
+                  </VoucherProvider>
                 </Theme>
               </GlobalProvider>
             </ErrorBoundary>

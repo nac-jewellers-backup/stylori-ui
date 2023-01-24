@@ -1,13 +1,14 @@
 import React from 'react';
 import CheackCart from './cartCardcheck';
-import {CartProvider, ProductDetailProvider} from '../../context'
+import {CartProvider, ProductDetailProvider, VoucherProvider} from '../../context'
 
 class Cart extends React.Component {
     render() {
         return (
             <CartProvider>
                 <ProductDetailProvider>
-                <CheackCart />
+                    
+                        <CheackCart />
                 </ProductDetailProvider>
             </CartProvider>
 
