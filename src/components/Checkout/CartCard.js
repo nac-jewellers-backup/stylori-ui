@@ -192,6 +192,7 @@ class Checkoutcard extends React.Component {
     return alert(JSON.stringify(redirect_url));
   };
   row = (props) => {
+    debugger
     const dataCarousel = {
       slidesToShow: 1,
       arrows: false,
@@ -255,7 +256,7 @@ class Checkoutcard extends React.Component {
     };
     var discounted_price = this.props.cartFilters.discounted_price
       ? this.props.cartFilters.discounted_price
-      : "";
+      : 500;
     const dataCard1 = this.props.data
       .map((val) => {
         return (
@@ -713,6 +714,7 @@ class Checkoutcard extends React.Component {
         ) : (
           <div
             onClick={() => {
+              debugger
               if (productIsActive) {
                 localStorage.removeItem("bil_isactive");
                 localStorage.removeItem("ship_isactive");

@@ -22,7 +22,7 @@ const usePromo = (props) => {
     const { data, error, loading, status, makeFetch } = useNetworkRequest('/applyvoucher', {}, false);
     useEffect(() => {
         if (data && Object.entries(data).length > 0 && data.constructor === Object) {
-            
+            debugger
             if (data.status === "200") {
                 setCartFilters({
                     discounted_price: data.price_response.discount,
@@ -50,6 +50,7 @@ const usePromo = (props) => {
         })
     }
     const handleSubmit = (e) => {
+        debugger
         
         // let { CartCtx: { setCartFilters, cartFilters } } = React.useContext(CartContext);
     // const { setCartFilters } = React.useContext(CartContext);

@@ -44,7 +44,6 @@ const CartCardCheck = (props) => {
     CartCtx: { setCartFilters },
   } = React.useContext(CartContext);
   const [countries,setCountries] = React.useState([])
-
   React.useEffect(()=>{
     axios
     .post(
@@ -67,6 +66,9 @@ const CartCardCheck = (props) => {
     })
     .catch((err) => console.log(err));
   },[])
+
+  
+  console.log("CartCtxxxxxxx",React.useContext(CartContext));
 
   return (
     <Component
