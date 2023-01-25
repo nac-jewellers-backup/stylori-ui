@@ -33,7 +33,7 @@ const usePromo = (props) => {
                     vouchercode:values.vouchercode
                 })
                 setVoucherCtx({
-                    ...Voucherctx,value:data.price_response.discount,type:data.coupon_type,
+                    ...Voucherctx,value:data.price_response.discount,type:data.coupon_type,vouchercode:values.vouchercode
                 })
             }
             // alert(data.message)

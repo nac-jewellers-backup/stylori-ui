@@ -4,7 +4,8 @@ import { withRouter } from 'react-router-dom';
 const initialCtx = {
     VoucherCtx: {
         value:'',
-        type:''
+        type:'',
+        vouchercode:''
     },
 
     setVoucherCtx: () => null

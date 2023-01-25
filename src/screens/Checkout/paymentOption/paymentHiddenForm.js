@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { API_URL } from "../../../../src/config";
 import "./payment.css";
 import { Button, Grid } from "@material-ui/core";
-import { CartContext } from "context";
+import { CartContext, VoucherContext } from "context";
 import CurrencyConversion from "utils/CurrencyConversion";
 
 export default function PaymentHiddenForm(props) {
   let {
     CartCtx: {cartFilters },
   } = React.useContext(CartContext);
+  let {Voucherctx} = React.useContext(VoucherContext);
   const [hash, sethash] = useState({
     hashvalue: "",
     timedate: "",
@@ -47,7 +48,7 @@ export default function PaymentHiddenForm(props) {
   obj["payment_mode"] = "Prepaid";
   obj["user_id"] = user_id;
   obj["cart_id"] = cart_ids;
-  obj["voucher_code"] = cartFilters.vouchercode;
+  obj["voucher_code"] = Voucherctx.vouchercode;
   const hitPaymentGateWayAPI = async (orderId) => {
     await fetch(`${API_URL}/sendtoairpay`, {
       method: "POST",
