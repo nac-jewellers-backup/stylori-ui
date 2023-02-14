@@ -106,7 +106,7 @@
     "generate-build-version": "node generate-build-version",
     "start": "node scripts/start",
     "build": "npm run generate-build-version &&  node scripts/build",
-    "postbuild": "cd /home/crayond/workspace/stylori-ui/build/static/js && gzip *.js && cd /home/crayond/workspace/stylori-ui/build/static/css &&  gzip *.css",
+    "postbuild": "gzip ./build/static/js/*.js && gzip ./build/static/js/*.css",
     "test": "node scripts/test",
     "deploy_staging": "npm run build && git add . && git commit -m `Updated to the latest version` && git push origin stagingnew && git push aws stagingnew",
     "deploy_samirChanges_staging": "npm run build && git add . && git commit -m `Updated from branch samirChanges` && git push origin stagingnew && git push aws stagingnew",

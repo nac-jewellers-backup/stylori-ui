@@ -1,11 +1,7 @@
 import React from "react";
 import Header from "components/SilverComponents/Header";
 import Aos from "aos";
-import {
-  Grid,
-  Hidden,
-  Typography,
-} from "@material-ui/core";
+import { Grid, Hidden, Typography } from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton";
 import Footer from "components/Footer/Footer";
 import { withRouter } from "react-router";
@@ -25,8 +21,8 @@ import { ALLSTYLORILANDINGBANNERS } from "queries/home";
 import "aos/dist/aos.css";
 import ReactPixel from "react-facebook-pixel";
 import Login from "components/SilverComponents/login";
-import { CartContext } from 'context'
-import { FilterOptionsContext } from 'context'
+import { CartContext } from "context";
+import { FilterOptionsContext } from "context";
 
 class HomeStylori extends React.Component {
   constructor(props) {
@@ -56,7 +52,6 @@ class HomeStylori extends React.Component {
   componentDidMount() {
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: true });
     ReactPixel.pageView();
-
 
     fetch(`${API_URL}/graphql`, {
       method: "post",
@@ -181,12 +176,15 @@ class HomeStylori extends React.Component {
               id="twitter_imageUrl"
               content="https://assets.stylori.com/stylori-logo.svg"
             />
-            {/* <meta name="google-site-verification" content="6I1mw4ayVxUxw1AZYP_BK73mXUaajhhhYyYl3Qv0E60" /> */}
+            <meta
+              name="google-site-verification"
+              content="IESxo4pcZChK4D_EmiAbncGjB7LXFOIF0EyVGnYDEGk"
+            />
           </MetaTags>
         </div>
-        <Header 
-         cartcount={this.props.cartcount}
-         wishlist={this.props.wishlistdata}
+        <Header
+          cartcount={this.props.cartcount}
+          wishlist={this.props.wishlistdata}
         />
         {this.state.starting ? (
           <Grid item xs={12} style={{ backgroundColor: "#ebebeb" }}>
@@ -254,7 +252,8 @@ class HomeStylori extends React.Component {
                             this.state.imageLoading ? "visible" : "hidden"
                           }`}
                           onLoad={this.imageLoader}
-                          loading="lazy" alt="...."
+                          loading="lazy"
+                          alt="...."
                         />
                       </a>
                     </Grid>
@@ -277,7 +276,11 @@ class HomeStylori extends React.Component {
             <Grid
               item
               xs={12}
-              style={{ paddingTop: "6px",display:"flex",alignItems:"center" }}
+              style={{
+                paddingTop: "6px",
+                display: "flex",
+                alignItems: "center",
+              }}
             >
               <Typography style={{ width: "100%", textAlign: "center" }}>
                 <Slideshow dataCarousel={dataCarousel}>
@@ -285,7 +288,6 @@ class HomeStylori extends React.Component {
                     <>
                       <Grid
                         container
-                        
                         style={{
                           display: "flex !important",
                         }}
@@ -302,7 +304,12 @@ class HomeStylori extends React.Component {
                             display: "flex",
                           }}
                         >
-                          <img style={{ width: "18%" }} src={val.icon} loading="lazy" alt="...."/>
+                          <img
+                            style={{ width: "18%" }}
+                            src={val.icon}
+                            loading="lazy"
+                            alt="...."
+                          />
                         </Grid>
                       </Grid>
                     </>
@@ -365,7 +372,7 @@ class HomeStylori extends React.Component {
           carosolData={storyData.storiesData}
         />
 
-        <Grid item xs={12} style={{ marginTop: 20,width:'100%' }}>
+        <Grid item xs={12} style={{ marginTop: 20, width: "100%" }}>
           <Footer />
         </Grid>
         <>
@@ -394,32 +401,38 @@ class HomeStylori extends React.Component {
             </div>
           </Hidden>
         </>
-        {localStorage.getItem("accessToken") ?  
-           null
-          :  <Login 
-          open={this.state.login}
-          handleClose={this.handleClose}
-          /> 
-        }
-       
+        {localStorage.getItem("accessToken") ? null : (
+          <Login open={this.state.login} handleClose={this.handleClose} />
+        )}
       </Grid>
     );
   }
 }
 
 const Components = () => {
-  
   let {
     CartCtx: { allorderdata, wishlistdata },
   } = React.useContext(CartContext);
   let {
-    FilterOptionsCtx: { data, loading, error, dataArr, mappedFilters, cartcount, loadingfilters},
+    FilterOptionsCtx: {
+      data,
+      loading,
+      error,
+      dataArr,
+      mappedFilters,
+      cartcount,
+      loadingfilters,
+    },
     setloadingfilters,
   } = React.useContext(FilterOptionsContext);
 
-  let content = <HomeStylori allorderdata={allorderdata}
-  wishlistdata={wishlistdata}
-  cartcount={cartcount} />;
+  let content = (
+    <HomeStylori
+      allorderdata={allorderdata}
+      wishlistdata={wishlistdata}
+      cartcount={cartcount}
+    />
+  );
   return content;
 };
 
