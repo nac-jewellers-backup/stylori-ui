@@ -1093,6 +1093,11 @@ export const Jewellery = {
       url: "https://www.stylori.com/silver-jewellery-baroque+whites+collection",
       icon: "",
     },
+    "Paavai Collection": {
+      name: "Paavai Collection",
+      url: "https://www.stylori.com/silver-paavai-jewellery",
+      icon: "",
+    },
   },
 
   FINISH: {
@@ -2270,6 +2275,11 @@ export const menuLists = {
         //   },
         // ],
         // },
+      },
+      {
+        value: "Paavai Collection",
+        title:"Paavai Collection",
+        url: "https://www.stylori.com/silver-paavai-jewellery",
       },
     ],
   },

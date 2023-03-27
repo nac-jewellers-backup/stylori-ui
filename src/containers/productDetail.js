@@ -407,11 +407,11 @@ class ProductDetail extends Component {
       {
         title: "Description",
         data:
-          jewelData?.productDescription !== "" ? (
+          (jewelData?.productDescription !== "" || jewelData?.productDescription !== null) || jewelData?.dis !== ""   ? (
             <Typography className="no-data-desc">
               {jewelData?.productDescription}
-              <br/>
-              {jewelData?.dis}
+              {jewelData?.productDescription === "" ? 
+              jewelData?.dis : null}
               </Typography>
           ) : (
             <Typography className="no-data">No Data Found</Typography>

@@ -4,31 +4,31 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "350e32b43d81be749150",
+    "revision": "9d58b99873ba647436d6",
     "url": "/static/css/2.css"
   },
   {
-    "revision": "b1157521639540f111a6",
+    "revision": "0de1716bfda97d584e2c",
     "url": "/static/css/4.css"
   },
   {
-    "revision": "6b20a91e97255c52a943",
+    "revision": "52c9c3ab37281991934e",
     "url": "/static/css/main.css"
   },
   {
-    "revision": "350e32b43d81be749150",
+    "revision": "9d58b99873ba647436d6",
     "url": "/static/js/2.js"
   },
   {
-    "revision": "117d03657393a61b38a3",
+    "revision": "8eeb6cd75e2f991aab73",
     "url": "/static/js/3.js"
   },
   {
-    "revision": "b1157521639540f111a6",
+    "revision": "0de1716bfda97d584e2c",
     "url": "/static/js/4.js"
   },
   {
-    "revision": "6b20a91e97255c52a943",
+    "revision": "52c9c3ab37281991934e",
     "url": "/static/js/main.js"
   },
   {
@@ -40,15 +40,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/Stylori-NAC-View.jpg"
   },
   {
-    "revision": "271780ce712885f13b93200ae25f1288",
+    "revision": "04639ae8969c77110a53303b92b57712",
     "url": "/static/media/Stylorilogo.svg"
   },
   {
-    "revision": "6b86cbd34f394490947d73306194fe13",
+    "revision": "599a979d7346e2fb672204304e3efbde",
     "url": "/static/media/cartGrey.svg"
   },
   {
-    "revision": "2b3d63f761a61e5c65a4773359c4eb40",
+    "revision": "7996bd6992d473ba217275885f52812f",
     "url": "/static/media/close.svg"
   },
   {
@@ -84,23 +84,23 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/img4ProductModal.jpg"
   },
   {
-    "revision": "6e25bad6f003be8fe1ddf1c68d2b4dd9",
+    "revision": "51fc5370cb4d7e537c06ea117f090ba2",
     "url": "/static/media/logout.svg"
   },
   {
-    "revision": "1157596233d3beac7f872fe4d1d5fe7c",
+    "revision": "f67911d2ff84fcce62033f3f3f52d654",
     "url": "/static/media/loveGrey.svg"
   },
   {
-    "revision": "66395175df56f8182530893dd3a10cd2",
+    "revision": "16dba06dc926d09764463dadfbb4c54e",
     "url": "/static/media/percentage.svg"
   },
   {
-    "revision": "ff833fca6e3534382b2ef37e592c3efe",
+    "revision": "51ade057f1c084a5ac5034d3ed31722b",
     "url": "/static/media/searchGrey.svg"
   },
   {
-    "revision": "57b56bb10faf3b9dbb17bc91e6be7baf",
+    "revision": "b0c24c44cdbcd2228f0f6fef2740195f",
     "url": "/static/media/shopping.svg"
   },
   {
@@ -124,11 +124,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/slick.woff"
   },
   {
-    "revision": "556ec2b95dbf875acfb9740523d0e472",
+    "revision": "18d70bcc35a56cea676c4ced2fbb3d09",
     "url": "/static/media/stylori_silver_logo.svg"
   },
   {
-    "revision": "26f4adaec0fa060fe6ef92c4c4f7c485",
+    "revision": "5a712650392a83e01a75498ebc83837b",
     "url": "/static/media/telephone.svg"
   },
   {
@@ -144,7 +144,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/topPicksTwo.jpg"
   },
   {
-    "revision": "bcc776345852aa9836e64bcc3e000864",
+    "revision": "c7359aa61314bf6d37f83ccc97dd0694",
     "url": "/static/media/user-shape.svg"
   }
 ]);

@@ -158,7 +158,7 @@ class ProductDetails extends React.Component {
                             marginTop: "0px",
                           }}
                         >
-                          {this?.props?.data[0]?.productDescription}
+                          {/* {this?.props?.data[0]?.productDescription} */}
                         </p>
                       ) : (
                         ""
