@@ -2144,6 +2144,11 @@ export const menuLists = {
   COLLECTIONS: {
     menuOne: [
       {
+        value: "Paavai Collection",
+        title:"Paavai Collection",
+        url: "https://www.stylori.com/silver-paavai-jewellery",
+      },
+      {
         value: "Concentric Collection",
         title: "Concentric Collection",
         url: "https://www.stylori.com/silver-jewellery-concentric+collection",
@@ -2275,11 +2280,6 @@ export const menuLists = {
         //   },
         // ],
         // },
-      },
-      {
-        value: "Paavai Collection",
-        title:"Paavai Collection",
-        url: "https://www.stylori.com/silver-paavai-jewellery",
       },
     ],
   },
