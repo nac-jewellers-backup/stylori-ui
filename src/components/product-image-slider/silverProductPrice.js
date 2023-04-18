@@ -24,6 +24,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import PriceBuynow from "components/product-image-slider/buyNow"
+import NewBuyNow from "components/NewBuyNow/newBuyNow";
 
 const dataCarousel = {
   dots: true,
@@ -124,7 +125,19 @@ const Productprice = (
   var wishlist = props.wishlist;
   const isSilver = globalContext?.Globalctx?.pathName ? true : false;
   const isactive = props?.data[0]?.isactive ?? "";
-
+  const enquireLink = () =>{
+    if (props?.productURL) {
+      window.open(
+        `https://wa.me/919952625252?text=Hi - ${
+          window.location.hostname + "/" + props.productURL ?? ""
+        }`
+      );
+    } else {
+      window.open(
+        `https://wa.me/919952625252?text=Hi - ${window.location.href}`
+      );
+    }
+  }
 
   return (
     <div>
@@ -207,7 +220,7 @@ const Productprice = (
 
                              <PriceBuynow data={props?.data} isSilver={isSilver} isRequired={true}/>
 
-                              <div onClick={isactive ? deletechecklists : ""} style={{marginTop:10}}>
+                              {/* <div onClick={isactive ? deletechecklists : ""} style={{marginTop:10}}>
                                {isactive ? (
                                    <>
                                     {" "}
@@ -252,7 +265,42 @@ const Productprice = (
                                  isactive ? handleLocalStorage.bind(this) : ""
                                }
                              />
-                             </div>        
+                             </div>         */}
+                             {props.buttonName !== "Enquire Now" && 
+                            <Grid item style={{marginTop:"10px"}}>
+                              <div onClick={isactive ? deletechecklists : ""}>
+                                <NewBuyNow
+                                  sku={data[0].skuId}
+                                  style={{
+                                    borderColor: "#06A296",
+                                    color: "#06A296",
+                                    padding: 10,
+                                  }}
+                                  addtoCart={true}
+                                  onClick={
+                                    isactive
+                                      ? handleLocalStorage.bind(this)
+                                      : ""
+                                  }
+                                />
+                              </div>
+                            </Grid>                         
+                          }
+                          <Grid
+                            item
+                          >
+                            <div onClick={(isactive && (props.buttonName !== "Enquire Now")) ? deletechecklists : ""} style={{marginTop:"10px"}}>
+                            <NewBuyNow
+                              sku={data[0].skuId}
+                              style={{
+                                backgroundColor: "#06A296",
+                                color: "#fff",
+                                padding: 10,
+                              }}
+                              buttonName={props.buttonName}
+                            />
+                            </div>
+                          </Grid>       
                           </div>
                             
                         </Hidden>
@@ -337,7 +385,44 @@ const Productprice = (
                           xs={12}
                           style={{ padding: "20px 0px 20px 0px",display:"flex"}}
                         >
-                          {isactive ?
+                          {props.buttonName !== "Enquire Now" && 
+                            <Grid item xs={3} sm={4} md={4} lg={6}>
+                              <div onClick={isactive ? deletechecklists : ""}>
+                                <NewBuyNow
+                                  sku={data[0].skuId}
+                                  style={{
+                                    borderColor: "#06A296",
+                                    color: "#06A296",
+                                    padding: 10,
+                                  }}
+                                  addtoCart={true}
+                                  onClick={
+                                    isactive
+                                      ? handleLocalStorage.bind(this)
+                                      : ""
+                                  }
+                                />
+                              </div>
+                            </Grid>                         
+                          }
+                          <Grid
+                            item
+                            style={{ marginLeft: "10px" }}
+                            xs={3} sm={4} md={4} lg={6}
+                          >
+                            <div onClick={(isactive && (props.buttonName !== "Enquire Now")) ? deletechecklists : ""}>
+                            <NewBuyNow
+                              sku={data[0].skuId}
+                              style={{
+                                backgroundColor: "#06A296",
+                                color: "#fff",
+                                padding: 10,
+                              }}
+                              buttonName={props.buttonName}
+                            />
+                            </div>
+                          </Grid>                          
+                          {/* {isactive ?
                            <Grid item xs={3} sm={4} md={4} lg={6}>   
                            <div onClick={isactive ? deletechecklists : ""}>
                              {isactive ? (
@@ -422,7 +507,7 @@ const Productprice = (
                            </div>
                             </Grid>
                             : null
-                          }
+                          } */}
                          
                         </Grid>
                       )}

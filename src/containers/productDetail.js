@@ -56,6 +56,7 @@ import SilverFooter from "components/SilverComponents/SilverFooter";
 import { CustomSeparator } from "components/SilverComponents/v2";
 import NACSection from "components/HouseOfNac";
 import DesktopFooter from "components/SilverComponents/DesktopFooter";
+import axios from "axios";
 
 const styles = (theme) => ({
   font: {
@@ -234,11 +235,27 @@ class ProductDetail extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount () {
     // Facebook Pixel Code
     ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: false });
     ReactPixel.track("PageView");
-
+    //shipping date and button
+    let sku_id = this.props?.data[0]?.ProductSkuID;
+    let params = {
+      sku_id: sku_id,
+      current_datetime: new Date(),
+    };
+    await axios
+      .post(`${API_URL}/getshippingdate`, params)
+      .then((res) => {
+        this.setState({
+          productShipBy: res?.data?.shipping_date,
+          buttonName : res?.data?.status
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     // Google Tag Manager
     const tagManagerArgs = {
       gtmId: "GTM-54JTMML",
@@ -584,6 +601,7 @@ class ProductDetail extends Component {
                     <SilverProductPrice
                       data={this?.props?.data}
                       wishlist={this?.props?.wishlistdata}
+                      buttonName = {this?.state?.buttonName}
                     />
                   </div>
                 ) : (
@@ -827,6 +845,7 @@ class ProductDetail extends Component {
               <SilverProductPrice
                 data={this?.props?.data}
                 wishlist={this?.props?.wishlistdata}
+                buttonName = {this?.state?.buttonName}
               />
 
               <Typography className={classes.bestSellerText}>
