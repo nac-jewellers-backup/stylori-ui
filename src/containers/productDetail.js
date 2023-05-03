@@ -249,7 +249,7 @@ class ProductDetail extends Component {
       .post(`${API_URL}/getshippingdate`, params)
       .then((res) => {
         this.setState({
-          productShipBy: res?.data?.shipping_date,
+          productShipBy: res?.data?.shipping_date ? res?.data?.shipping_date : res?.data?.shipping_days,
           buttonName : res?.data?.status
         });
       })
@@ -602,6 +602,7 @@ class ProductDetail extends Component {
                       data={this?.props?.data}
                       wishlist={this?.props?.wishlistdata}
                       buttonName = {this?.state?.buttonName}
+                      productShipBy = {this?.state?.productShipBy}
                     />
                   </div>
                 ) : (
@@ -846,10 +847,11 @@ class ProductDetail extends Component {
                 data={this?.props?.data}
                 wishlist={this?.props?.wishlistdata}
                 buttonName = {this?.state?.buttonName}
+                productShipBy = {this?.state?.productShipBy}
               />
 
               <Typography className={classes.bestSellerText}>
-                Shipping Calculated at Checkout
+              {this?.state?.buttonName === "Make an Order" ? `Good choice, you have picked our best seller. We will be able to make it for you in 45-${this?.state?.productShipBy} business days once the order is placed` : "Shipping Calculated at Checkout"}
               </Typography>
 
               <Grid container alignItems="center" justifyContent="center">

@@ -47,7 +47,7 @@ function NewBuyNow(props) {
         {props?.buttonName
           ? state.vals === 1
             ? "In Bag"
-            : props?.buttonName
+            : props?.buttonName === "Make an Order" ? `Add to Cart - ${props?.buttonName}` : props?.buttonName
           : state.vals === 1
           ? "In Cart"
           : "Add to Cart"}

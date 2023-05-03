@@ -125,20 +125,6 @@ const Productprice = (
   var wishlist = props.wishlist;
   const isSilver = globalContext?.Globalctx?.pathName ? true : false;
   const isactive = props?.data[0]?.isactive ?? "";
-  const enquireLink = () =>{
-    if (props?.productURL) {
-      window.open(
-        `https://wa.me/919952625252?text=Hi - ${
-          window.location.hostname + "/" + props.productURL ?? ""
-        }`
-      );
-    } else {
-      window.open(
-        `https://wa.me/919952625252?text=Hi - ${window.location.href}`
-      );
-    }
-  }
-
   return (
     <div>
       {data.map((val) => (
@@ -266,7 +252,7 @@ const Productprice = (
                                }
                              />
                              </div>         */}
-                             {props.buttonName !== "Enquire Now" && 
+                             {props.buttonName === "Buy Now" && 
                             <Grid item style={{marginTop:"10px"}}>
                               <div onClick={isactive ? deletechecklists : ""}>
                                 <NewBuyNow
@@ -383,9 +369,9 @@ const Productprice = (
                         <Grid
                           item
                           xs={12}
-                          style={{ padding: "20px 0px 20px 0px",display:"flex"}}
+                          style={{ padding: "20px 0px 20px 0px",display:"flex",justifyContent:props.buttonName === "Make an Order"? "center" : "left"  }}
                         >
-                          {props.buttonName !== "Enquire Now" && 
+                          {props.buttonName === "Buy Now" && 
                             <Grid item xs={3} sm={4} md={4} lg={6}>
                               <div onClick={isactive ? deletechecklists : ""}>
                                 <NewBuyNow
@@ -407,8 +393,8 @@ const Productprice = (
                           }
                           <Grid
                             item
-                            style={{ marginLeft: "10px" }}
-                            xs={3} sm={4} md={4} lg={6}
+                            style={{ marginLeft: "10px"}}
+                            xs={3} sm={4} md={4} lg={props.buttonName === "Make an Order"? 10 :6}
                           >
                             <div onClick={(isactive && (props.buttonName !== "Enquire Now")) ? deletechecklists : ""}>
                             <NewBuyNow
@@ -516,9 +502,10 @@ const Productprice = (
                       <Grid container item xs={12}>
                         <Typography
                         style={{
-                          color:"#06A296"
+                          color:"#06A296",
+                          textAlign:props.buttonName === "Make an Order" ? "center" : "left"
                         }}
-                        >Shipping Calculated at Checkout</Typography>
+                        >{props.buttonName === "Make an Order" ? `Good choice, you have picked our best seller. We will be able to make it for you in 45-${props?.productShipBy} business days once the order is placed` : "Shipping Calculated at Checkout"}</Typography>
                         {/* <Grid
                           container
                           item
