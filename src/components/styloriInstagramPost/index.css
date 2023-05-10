@@ -1,0 +1,8 @@
+.instagram-media{
+    min-width: 200px !important;
+    max-width: 350px !important;
+    width:calc(100% - 41px) !important;
+    border: none !important;
+    margin:34px 20px !important;
+    border:1px solid #eee !important
+}

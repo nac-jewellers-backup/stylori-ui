@@ -42,6 +42,11 @@ import { CartContext, GlobalContext } from "context";
 import silverOpenLinkImage from "../../assets/silverOpenLink.png";
 import { GOLD_PRICE_AND_CURRENCY_CONVO } from "../../queries/home";
 import { API_URL } from "../../config";
+import { Navbar } from "screens/silverHomePage/navbar";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import { CMS_PAGES } from "queries/cms";
 
 let user_id = localStorage.getItem("user_id")
   ? localStorage.getItem("user_id")
@@ -82,6 +87,7 @@ class Header extends Component {
       livePrice: null,
       anchorEl: false,
       opened: false,
+      notificationData:[]
     };
     this.topZero = React.createRef();
     this.handleCurrencyConvo = this.handleCurrencyConvo.bind(this);
@@ -89,6 +95,7 @@ class Header extends Component {
   componentDidMount() {
     var _pathname = window.location.pathname.split("/");
     this.getGoldPrice();
+    this.getNotification();
     if (
       window.location.pathname === "/cart" ||
       window.location.pathname === "/checkout" ||
@@ -108,6 +115,30 @@ class Header extends Component {
         return true;
       }
     }
+  }
+
+  getNotification = () => {
+    fetch(`${API_URL}/graphql`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: CMS_PAGES("styloriSilver"),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if(data.data.cdnByPage){
+        console.log("cdnData1", JSON.parse(data?.data?.cdnByPage?.data));
+        const dataRecieved = JSON.parse(data.data.cdnByPage.data);
+        const notificationData = dataRecieved.filter((val) => val.component === "HomeNotifiaction");
+        if(notificationData){
+          this.setState({
+            ...this.state,notificationData:notificationData[0].props.cardContent
+          })
+        }}
+      });
   }
 
   getGoldPrice = () => {

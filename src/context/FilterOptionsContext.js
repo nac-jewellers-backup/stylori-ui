@@ -174,10 +174,14 @@ const Provider = (props) => {
         .then(json)
         .then(async function (data) {
           // ------------ REDIRECTION ----------
-
+          const isCms = localStorage.getItem("isCdnPage")
           if (data.data.allSeoUrlPriorities.nodes.length === 0) {
             // alert
-            window.location.pathname = "/";
+            if(!JSON.parse(isCms)){
+              window.location.pathname = "/";
+            }else{
+
+            }
           }
           //   window.location.pathname="/gemstone-pendants-jewellery-for+women-from+gemstone+collection"
           var a = {};

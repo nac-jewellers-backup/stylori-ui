@@ -2,9 +2,38 @@ import React, { Component } from 'react';
 import {FilterOptionsProvider} from 'context'
 import ProductListing from 'containers/ProductListing'
 import { CartProvider } from 'context'
-
+import CMSPages from 'screens/CMSPages';
+import { API_URL } from 'config';
+import { ALLCDNPAGES } from 'queries/cms';
 export default class Stylori extends Component {
- 
+  constructor(props) {
+    super(props);
+    this.state = {
+      cmspage: false,
+    };
+  }
+  componentDidMount() {
+    fetch(`${API_URL}/graphql`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: ALLCDNPAGES,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const dataRecieved = data.data.allCdns.nodes;
+        const pages = dataRecieved?.map((val) => val.page);
+        const isCdnPage = pages.includes(window.location.pathname.split("/")[1]);
+        localStorage.setItem("isCdnPage", isCdnPage)
+        this.setState({
+          ...this.state,
+          cmspage: isCdnPage,
+        });
+      });
+  }
   render() {
     // const fadeImages = [
     //   'https://assets-cdn.stylori.com/120x120/images/product/SR0986/SR0986-1Y.jpg',
@@ -20,7 +49,9 @@ export default class Stylori extends Component {
     //   fade: true,
     //   arrows: false
     // }
-    return (
+    return this.state.cmspage ? (
+      <CMSPages {...this.props} />
+    ) : (
       <FilterOptionsProvider >
           <CartProvider>
      <ProductListing /> 

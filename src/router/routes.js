@@ -27,7 +27,8 @@ export const routes = {
     Education: '/education',
     ContactUs: '/contactus',
     Careers: "/careers",
-    styloriSilverCollections:"/silverCollections" 
+    styloriSilverCollections:"/silverCollections",
+    cmsRoutes: `/static${"-" + window.location.pathname.split("-")[1]}`,
 
 }
 

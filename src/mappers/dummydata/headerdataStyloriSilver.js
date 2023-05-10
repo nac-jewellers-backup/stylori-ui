@@ -1,3 +1,9 @@
+import priceImgFive from "../../assets/silverStylori/_x35_Bj5gv_6_.png";
+import priceImgThree from "../../assets/silverStylori/_x35_Bj5gv_12_.png";
+import priceImgFour from "../../assets/silverStylori/Group 23670.png";
+import priceImgOne from "../../assets/silverStylori/uRk3vu_3_.png";
+import priceImgTwo from "../../assets/silverStylori/VAuFXM_3_.png";
+
 // ************
 // HEADER DATA FOR STYLORI SILVER
 
@@ -2441,3 +2447,609 @@ export const menuLists = {
 };
 
 // *************
+
+// new navbar for stylori Silver
+export const menuListHeaderNew = [
+  {
+    title: "JEWELLERY",
+    key: "1",
+    url: "/silver-jewellery",
+    JEWELLERY: [
+      {
+        value: "newarrivals",
+        title: "New Arrivals",
+        url: "/silver-jewellery?sort=New%20to%20Stylori&startprice=0&endprice=0",
+        newarrivals: []
+      },
+      {
+        value: "necklace",
+        title: "NECKLACE",
+        url: "/silver-necklaces-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
+        bigImage: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu-Dropdown-Images---Necklace.jpg",
+        content: "CHOKERS",
+        necklace: [
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Chokers.webp",
+            content: "CHOKER",
+            url: "/silver-chokers-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Statement.webp",
+            content: "STATEMENT",
+            url: "/silver-statement+necklaces-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Layered.webp",
+            content: "LAYERED ",
+            url: "/silver-layered+necklaces-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Pendant-Neckace.webp",
+            content: "PENDANT",
+            url: "/silver-pendant+necklaces-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Gutta-pusalu.webp",
+            content: "GUTTU PUSALU",
+            url: "/silver-guttapusalu+necklace-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Single-line-necklace.webp",
+            content: "SINGLE LINE NECKLACE",
+            url: "/silver-guttapusalu+necklace-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
+          },
+        ],
+      },
+      {
+        value: "earrings",
+        title: "Earrings",
+        bigImage:"https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu-Dropdown-Images---Earrings.jpg",
+        content: "CHOKERS",
+        url: "/earrings-silver-jewellery",
+        earrings:[
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Stud.webp",
+            content: "STUDS",
+            url: "/silver-studs-earrings-jewellery",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Jhumkas.webp",
+            content: "JHUMKAS",
+            url: "/silver-jhumkas+online-earrings-jewellery",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Danglers-and-Drops.webp",
+            content: "DANGLERS & DROPS",
+            url: "/earrings-silver-danglers+drops-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Hooks-and-Hoops.webp",
+            content: "HOOKS & HOOPS",
+            url: "/earrings-silver-danglers+drops-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/ear-cuffs.webp",
+            content: "EAR CUFFS",
+            url: "/earrings-silver-ear+cuffs-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Chandbali.webp",
+            content: "CHANDBALI",
+            url: "/earrings-silver-chandbali-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
+          },
+        ]
+      },
+      {
+        value: "rings",
+        title: "Rings",
+        url: "/rings-silver-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
+      },
+      {
+        value: "bangle",  
+        title: "BANGLE & BRACELETS",
+        url: "/silver-wristwear-jewellery",
+        bigImage: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu-Dropdown-Images---Bracelets.jpg",
+        content: "CHOKERS",
+        bangle:[
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Bangle55.webp",
+            content: "BANGLE",
+            url: "/bangles-silver-jewellery",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Bracelet55.webp",
+            content: "BRACELET",
+            url: "/bracelets-silver-jewellery",
+          },
+        ]
+      },
+      {
+        value: "bridalAccessories",
+        title: "BRIDAL",
+        url: "/bridal+accessories-silver-jewellery",
+        bigImage: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu-Dropdown-Images---Bridal.jpg",
+        content: "CHOKERS",
+        bridalAccessories:[
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Maang-Tikka.webp",
+            content: "MAANG TIKKA",
+            url: "/bridal+accessories-silver-maang+tikka-jewellery",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Oodiyanam.webp",
+            content: "OODIYANAM",
+            url: "/bridal+accessories-silver-oddiyanam-jewellery",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Armlet.webp",
+            content: "ARMLET",
+            url: "/bridal+accessories-silver-armlet-jewellery",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Hair-ornaments.webp",
+            content: "HAIR ORNAMENTS",
+            url: "/bridal+accessories-silver-hair+ornaments-jewellery",
+          },
+        ]
+      },
+
+      {
+        value: "Others",
+        title: "OTHERS",
+        url: "/nose+pin+online-silver-jewellery",
+        content: "CHOKERS",
+        Others:[
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Idols-and-articles.webp",
+            content: "IDOLS & ARTICLES",
+            url: "/silver-antique+idols-jewellery",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Anklets.webp",
+            content: "ANKLETS",
+            url: "/anklet-silver-jewellery",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Nosepin.webp",
+            content: "NOSE PIN",
+            url: "/nose+pin+online-silver-jewellery",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Other-Accessories.webp",
+            content: "OTHER ACCESSORIES",
+            url: "/silver-other+accessories-jewellery",
+          },
+        ]
+      },
+      {
+        value: "Price",
+        title: "By Price",
+        img: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu-Dropdown-Images---Necklace.jpg",
+        content: "CHOKERS",
+        url: "/",
+        Price: [
+          {
+            img: priceImgOne,
+            content: "UNDER 1500",
+            url: "/silver-jewellery?sort=Price%20High%20to%20Low&startprice=0&endprice=1500",
+          },
+          {
+            img: priceImgTwo,
+            content: "1500-3000",
+            url: "/silver-jewellery?sort=Best%20Seller&startprice=1500&endprice=3000",
+          },
+          {
+            img: priceImgThree,
+            content: "3000-5000",
+            url: "/silver-jewellery?sort=New%20to%20Stylori&startprice=3000&endprice=5000",
+          },
+          {
+            img: priceImgFour,
+            content: "5000-7000",
+            url: "/silver-jewellery?sort=New%20to%20Stylori&startprice=5000&endprice=7000",
+          },
+          {
+            img: priceImgFive,
+            content: "ABOVE 7000",
+            url: "/silver-jewellery?sort=Best%20Seller&startprice=7000&endprice=500000",
+          },
+        ],
+      },
+
+
+    ],
+    expand: true
+  },
+
+  {
+    title: "STYLE",
+    key: "2",
+    url: "/silver-cocktail-jewellery",
+    STYLE: [
+      {
+        value: "traditional",
+        title: "Traditional",
+        bigImage: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---traditional.jpg",
+        content: "CHOKERS",
+        url: "/silver-jewellery-traditional",
+        traditional: [
+          {
+            img: "https://assets.stylori.com/banners/web/Bangle.webp",
+            content: "Bangles",
+            url: "/bangles-silver-jewellery-traditional",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Bracelets.webp",
+            content: "Bracelets",
+            url: "/bracelets-silver-jewellery-traditional",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Bridal-Accessories.webp",
+            content: "Bridal Accessories",
+            url: "/bridal+accessories-silver-jewellery-traditional",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Earrings.webp",
+            content: "Earrings",
+            url: "/earrings-silver-jewellery-traditional",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Long-Necklace.webp",
+            content: "Long Necklace",
+            url: "/long+necklace-silver-jewellery-traditional",
+          },
+          {
+            img: "https://assets.stylori.com/banners/web/Nosepin.webp",
+            content: "Nosepin",
+            url: "/nose+pin+online-silver-jewellery-traditional",
+          },
+          {
+            img: "https://assets.stylori.com/banners/web/Pendant.webp",
+            content: "Pendant",
+            url: "/pendants-silver-jewellery-traditional",
+          },
+          {
+            img: "https://assets.stylori.com/banners/web/Ring.webp",
+            content: "Rings",
+            url: "/rings-silver-jewellery-traditional",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Short-Necklace.webp",
+            content: "Short Necklace",
+            url: "/short+necklace-silver-jewellery-traditional",
+          },
+        ],
+      },
+      {
+        value: "folklore",
+        title: "Folklore",
+        url: "/silver-jewellery-folklore",
+        bigImage: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---folklore.jpg",
+        content: "CHOKERS",
+        folklore: [
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Bangle11.webp",
+            content: "Bangles",
+            url: "/bangles-silver-jewellery-folklore",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Bracelet11.webp",
+            content: "Bracelet",
+            url: "/bracelets-silver-jewellery-folklore",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Bridal-accessories.webp",
+            content: "Bridal Accessories",
+            url: "/bridal+accessories-silver-jewellery-folklore",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Earrings11.webp",
+            content: "Earrings",
+            url: "/earrings-silver-jewellery-folklore",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Long-Necklace11.webp",
+            content: "Long Necklace",
+            url: "/long+necklace-silver-jewellery-folklore",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Nosepin11.webp",
+            content: "Nosepin",
+            url: "/nose+pin+online-silver-jewellery-folklore",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Pendant11.webp",
+            content: "Pendant",
+            url: "/pendants-silver-jewellery-folklore",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Ring11.webp",
+            content: "Rings",
+            url: "/rings-silver-jewellery-folklore",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Short-Necklace11.webp",
+            content: "Short Necklace",
+            url: "/short+necklace-silver-jewellery-folklore",
+          },
+        ],
+      },
+      {
+        value: "contemporary",
+        title: "Contemporary",
+        bigImage: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---contemporary.jpg",
+        content: "CHOKERS",
+        url: "/silver-jewellery-contemporary",
+        contemporary: [
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Bangles22.webp",
+            content: "Bangles",
+            url: "/bangles-silver-jewellery-contemporary",
+          },
+
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Bracelet22.webp",
+            content: "Bracelets",
+            url: "/bracelets-silver-jewellery-contemporary",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Earrings22.webp",
+            content: "Earrings",
+            url: "/earrings-silver-jewellery-contemporary",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Long-Necklace22.webp",
+            content: "Long Necklace",
+            url: "/long+necklace-silver-jewellery-contemporary",
+          },
+
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Short-Necklace22.webp",
+            content: "Short Necklace",
+            url: "/short+necklace-silver-jewellery-contemporary",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Pendant22.webp",
+            content: "Pendants",
+            url: "/pendants-silver-jewellery-contemporary",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Ring22.webp",
+            content: "Rings",
+            url: "/rings-silver-jewellery-contemporary",
+          },
+        ],
+      },
+      {
+        value: "everyday",
+        title: "Everyday",
+        url: "/silver-jewellery-everyday",
+        bigImage: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---everyday.jpg",
+        content: "CHOKERS",
+        everyday: [
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/SHort-necklace.webp",
+            content: "Short Necklace",
+            url: "/short+necklace-silver-jewellery-everyday",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Long-Necklace33.webp",
+            content: "Long Necklace",
+            url: "long+necklace-silver-jewellery-everyday",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Earings.webp",
+            content: "Earring",
+            url: "/earrings-silver-jewellery-everyday",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Ring.webp",
+            content: "Rings",
+            url: "/rings-silver-jewellery-everyday",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Pendant.webp",
+            content: "Pendants",
+            url: "/pendants-silver-jewellery-everyday",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Bracelet.webp",
+            content: "Bracelets",
+            url: "/bracelets-silver-jewellery-everyday",
+          },
+        ],
+      },
+
+      {
+        value: "mudra",
+        title: "Mudra",
+        url: "/silver-jewellery-dmudra",
+        bigImage: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---mudra.jpg",
+        content: "CHOKERS",
+        mudra: [
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Earrings.webp",
+            content: "Earrings",
+            url: "/earrings-silver-jewellery-dmudra",
+          },
+
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Long-Necklace.webp",
+            content: "Long Necklace",
+            url: "/long+necklace-silver-jewellery-dmudra",
+          },
+
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Short-Necklace.webp",
+            content: "Short Necklace",
+            url: "/short+necklace-silver-jewellery-dmudra",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Anklets.webp",
+            content: "Anklets",
+            url: "/anklet-silver-jewellery-dmudra",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Bridal-accessories.webp",
+            content: "Bridal Accessories",
+            url: "/bridal+accessories-silver-jewellery-dmudra",
+          },
+          {
+            img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Bangle.webp",
+            content: "Bangles",
+            url: "/bangles-silver-jewellery-dmudra",
+          },
+        ],
+      },
+
+
+    ],
+    expand: true
+  },
+  {
+    title: "FINISH",
+    key: "3",
+    url: "/silver-jewellery?sort=Best%20Seller&startprice=0&endprice=0",
+    bigImage: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Menu-Dropdown-Images---Earrings.jpg",
+    FINISH: [
+      {
+        value: "Oxidised",
+        title: "Oxidised",
+        img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Group-23876%402x.webp",
+        url: "/silver-jewellery-oxidised+finish",
+      },
+      {
+        value: "roseGold",
+        title: "Rose Gold",
+        img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Group-23880%402x.webp",
+        url: "/silver-jewellery-rose+gold+finish",
+      },
+      {
+        value: "GoldplatedKemp",
+        title: "Gold Plated Kemp",
+        img:"https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Gold-plated-kemp.webp",
+        url: "/silver-jewellery-gold+plated+kemp",
+      },
+      {
+        value: "GoldplatedKundan",
+        title: "Gold Plated Kundan",
+        img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Gold-Plated-Kundan.webp",
+        url: "/silver-jewellery-gold+plated+kundan",
+      },
+      {
+        value: "deepnagas&kundan",
+        title: "Deep Nagas & Kundan",
+        img:"https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Deep-Nagas-Kundan.webp",
+        url: "/silver-jewellery-deep+nagas+kundan",
+      },
+      {
+        value: "nagasNaksho",
+        title: "Nagas & Nakshi",
+        img:"https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Nagas--Nakshi.webp",
+        url: "/silver-jewellery-nagas+nakshi",
+      },
+      {
+        value: "DualTone",
+        title: "Dual Tone",
+        img:"https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Dual-tone.webp",
+        url: "/silver-jewellery-dual+tone+finish",
+      },
+      {
+        value: "beads&pearljewellery",
+        title: "Beads & Pearl",
+        img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Beads-and-pearls.webp",
+        url: "/silver-jewellery-beads+pearl+jewellery",
+      },
+      {
+        value: "victorian",
+        title: "Victorian",
+        img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Victorian.webp",
+        url: "/silver-jewellery-victorian?sort=Price%20High%20to%20Low&startprice=0&endprice=0",
+      },
+      {
+        value: "studded",
+        title: "Studded",
+        img:"https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Studded-Jewellery.webp",
+        url: "/silver-jewellery-studded+jewellery",
+      },
+      {
+        value: "cubicZircon/swarovski",
+        title: "Cubic Zircon/Swarovski",
+        img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/CZ-Swarovski.webp",
+        url: "/silver-jewellery-cubiczircon+swarovski",
+      },
+      {
+        value: "others",
+        title: "Others",
+        img:"https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Others.webp",
+        url: "/silver-jewellery-finish+others",
+      },
+    ],
+    expand: true
+  },
+  {
+    title: "COLLECTIONS",
+    key: "4",
+    url: "/silver-jewellery",
+    bigImage: "https://styloriimages.s3.ap-south-1.amazonaws.com/Banners/Stylori+Silver/Style-Dropdown---everyday.jpg",
+    COLLECTIONS: [
+      {
+        value: "MURAL",
+        title: "MURAL",
+        img:"https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Mural.webp",
+        url: "/silver-jewellery-mural+collection",
+      },
+      {
+        value: "STARSTUCK",
+        title: "STARSTUCK",
+        img:"https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Starstruck.webp",
+        url: "/silver-jewellery-starstruck+collection",
+      },
+      {
+        value: "CONCENTRIC",
+        title: "CONCENTRIC",
+        img:"https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Concentric.webp",
+        url: "/silver-jewellery-concentric+collection",
+      },
+      {
+        value: "INLOVE",
+        title: "IN LOVE",
+        img: "https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Inlove.webp",
+        url: "/silver-jewellery-inlovecollection",
+      },
+      {
+        value: "ELEMENTAL",
+        title: "ELEMENTAL",
+        img:"https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Elemental.webp",
+        url: "/silver-jewellery-elemental+collection",
+      },
+      {
+        value: "BAROQUEWHITES",
+        title: "BAROQUE WHITES",
+        img:"https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Baroque-Whites.webp",
+        url: "/silver-jewellery-baroque+whites+collection",
+      },
+      {
+        value: "AKRUTI",
+        title: "AKRUTI",
+        img:"https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Akruti.webp",
+        url: "/silver-jewellery-akruti+collection",
+      }
+    ],
+    expand: true
+
+  },
+  {
+    title: "READY TO SHIP",
+    key: "5",
+
+    url: "/silver-jewellery-shipping+in+1+day",
+    expand: false
+  },
+  {
+    title: "STYLORI",
+    key: "6",
+    url: "/",
+    expand: false
+  },
+];

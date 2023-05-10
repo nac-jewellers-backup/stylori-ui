@@ -33,6 +33,7 @@ import ReactPixel from "react-facebook-pixel";
 import Silver from "screens/SilverStylori";
 import SilverProductDetail from "screens/SilverStylori/productDetail";
 import ChangePassword from "screens/Checkout/loginRegister/ChangePassword";
+import CMSPages from "screens/CMSPages";
 
 // SILVER SCREENS ENDS
 
@@ -66,7 +67,7 @@ export const RouterApp = (props) => {
         />
         <Route key="Silver" component={Silver} exact path={routes.Silver} />
         {/* <Route key="SilverCollection" component={SilverCollection} exact path={routes.styloriSilverCollections} /> */}
-        <Route key="Faqs" component={Faqs} exact path={routes.Faqs} />
+        {/* <Route key="Faqs" component={Faqs} exact path={routes.Faqs} /> */}
         <Route
           key="ProductCare"
           component={Faqs}
@@ -74,7 +75,7 @@ export const RouterApp = (props) => {
           path={routes.ProductCare}
         />
         <Route key="Shipping" component={Faqs} exact path={routes.Shipping} />
-        <Route
+        {/* <Route
           key="PrivacyPolicy"
           component={Faqs}
           exact
@@ -85,7 +86,7 @@ export const RouterApp = (props) => {
           component={Faqs}
           exact
           path={routes.TermsConditions}
-        />
+        /> */}
         <Route
           key="Checkout"
           component={Checkout}
@@ -104,7 +105,7 @@ export const RouterApp = (props) => {
           exact
           path={routes.ContactUs}
         />
-        <Route key="Careers" component={Careers} exact path={routes.Careers} />
+        {/* <Route key="Careers" component={Careers} exact path={routes.Careers} /> */}
         <Route
           key="forgotpassword"
           component={ForgotPassword}
@@ -149,13 +150,13 @@ export const RouterApp = (props) => {
             props.location.pathname !== "/login" &&
             props.location.pathname !== "/checkout" &&
             props.location.pathname !== "/forgotpassword" &&
-            props.location.pathname !== "/careers" &&
+            // props.location.pathname !== "/careers" &&
             props.location.pathname !== "/resetpassword/:id" &&
             props.location.pathname !== "/changepassword" &&
-            props.location.pathname !== "/collections" &&
+            // props.location.pathname !== "/collections" &&
             props.location.pathname !== "/education" &&
             props.location.pathname !== "/stories" &&
-            props.location.pathname !== "/styloriSilver" &&
+            // props.location.pathname !== "/styloriSilver" &&
             props.location.pathname !== "/paymentfail" &&
             props.location.pathname !== "/paymentsuccess/:id" &&
             props.location.pathname !== "/contactus" && (
@@ -188,13 +189,13 @@ export const RouterApp = (props) => {
           props.location.pathname !== "/registers" &&
           props.location.pathname !== "/login" &&
           props.location.pathname !== "/checkout" &&
-          props.location.pathname !== "/careers" &&
+          // props.location.pathname !== "/careers" &&
           props.location.pathname !== "/forgotpassword" &&
           props.location.pathname !== "/resetpassword/:id" &&
           props.location.pathname !== "/changepassword" &&
           props.location.pathname !== "/paymentfail" &&
           props.location.pathname !== "/contactus" &&
-          props.location.pathname !== "/styloriSilver" &&
+          // props.location.pathname !== "/styloriSilver" &&
           props.location.pathname !== "/paymentsuccess/:id" && (
             <Route exact={true} component={Stylori} path={"/:listingpage"} />
           )}
@@ -247,6 +248,12 @@ export const RouterApp = (props) => {
           component={UserRegister}
           exact
           path={routes.UserRegister}
+        />
+        <Route
+          key="static"
+          component={CMSPages}
+          exact
+          path={routes.cmsRoutes}
         />
       </Switch>
     </>
