@@ -31,7 +31,7 @@ class FaqsTitle extends React.Component {
                     </NavLink >
                 </Grid>
                 <Grid item xs={12} className="main">
-                    <NavLink to={"/privacypolicy"} activeClassName={'active'} style={{ color: '#394578', textDecoration: "none" }} >
+                    <NavLink to={"/privacyPolicy"} activeClassName={'active'} style={{ color: '#394578', textDecoration: "none" }} >
                         <Grid className="router">
                             Privacy & Cookie Policy
                    </Grid>

@@ -144,7 +144,7 @@ export default function Footer(props) {
       Title: "Product Care",
     },
     {
-      url: "/privacypolicy",
+      url: "/privacyPolicy",
       Title: "Privacy & Cookie Policy",
     },
     {
@@ -214,7 +214,7 @@ export default function Footer(props) {
       Title: "Shipping & Returns",
     },
     {
-      url: "/privacypolicy",
+      url: "/privacyPolicy",
       Title: "Privacy & Cookie Policy",
     },
   ];

@@ -14,8 +14,8 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                {/* <HomePageStylori /> */}
-                <CMSPages />
+                <HomePageStylori />
+                {/* <CMSPages /> */}
             </div>
         )
     }

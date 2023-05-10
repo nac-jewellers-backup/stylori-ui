@@ -213,7 +213,7 @@ const footerData = [
     Title: "Product Care",
   },
   {
-    url: "/privacypolicy",
+    url: "/privacyPolicy",
     Title: "Privacy & Cookie Policy",
   },
   {
@@ -283,7 +283,7 @@ const footerData2 = [
     Title: "Shipping & Returns",
   },
   {
-    url: "/privacypolicy",
+    url: "/privacyPolicy",
     Title: "Privacy & Cookie Policy",
   },
 ];
@@ -399,7 +399,7 @@ export const aboutUs = [
     title: "Stylori",
   },
   {
-    url: "/privacypolicy",
+    url: "/privacyPolicy",
     title: "Press & Media",
   },
 ];

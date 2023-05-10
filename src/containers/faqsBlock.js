@@ -25,7 +25,7 @@ function FaqsBlock(props) {
         else if (props.titleUrl === '/productcare') {
             return ProductCare
         }
-        else if (props.titleUrl === '/privacypolicy') {
+        else if (props.titleUrl === '/privacyPolicy') {
             return privacypolicy
         }
         else if (props.titleUrl === '/termsconditions') {
