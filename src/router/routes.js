@@ -29,7 +29,7 @@ export const routes = {
     Careers: "/careers",
     styloriSilverCollections:"/silverCollections",
     cmsRoutes: `/static${"-" + window.location.pathname.split("-")[1]}`,
-
+    styloriBlog:"/styloriBlog"
 }
 
 export default routes;

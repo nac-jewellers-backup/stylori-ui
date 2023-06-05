@@ -27,13 +27,14 @@ import Careers from "../screens/Stylori/careers";
 import ReactPixel from "react-facebook-pixel";
 // const Tacos = ({ props }) => {
 //     if (window.location.search !== null) {
-
+ 
 // SILVER SCREENS
 
 import Silver from "screens/SilverStylori";
 import SilverProductDetail from "screens/SilverStylori/productDetail";
 import ChangePassword from "screens/Checkout/loginRegister/ChangePassword";
 import CMSPages from "screens/CMSPages";
+import { ReadMore } from "components/BlogImageCard/readMore";
 
 // SILVER SCREENS ENDS
 
@@ -65,7 +66,7 @@ export const RouterApp = (props) => {
           exact
           path={routes.HomePageStylori}
         />
-        <Route key="Silver" component={Silver} exact path={routes.Silver} />
+        {/* <Route key="Silver" component={Silver} exact path={routes.Silver} /> */}
         {/* <Route key="SilverCollection" component={SilverCollection} exact path={routes.styloriSilverCollections} /> */}
         {/* <Route key="Faqs" component={Faqs} exact path={routes.Faqs} /> */}
         <Route
@@ -149,6 +150,7 @@ export const RouterApp = (props) => {
             props.location.pathname !== "/registers" &&
             props.location.pathname !== "/login" &&
             props.location.pathname !== "/checkout" &&
+            props.location.pathname !== "/styloriBlog" &&
             props.location.pathname !== "/forgotpassword" &&
             // props.location.pathname !== "/careers" &&
             props.location.pathname !== "/resetpassword/:id" &&
@@ -189,6 +191,7 @@ export const RouterApp = (props) => {
           props.location.pathname !== "/registers" &&
           props.location.pathname !== "/login" &&
           props.location.pathname !== "/checkout" &&
+          props.location.pathname !== "/styloriBlog" &&
           // props.location.pathname !== "/careers" &&
           props.location.pathname !== "/forgotpassword" &&
           props.location.pathname !== "/resetpassword/:id" &&
@@ -254,6 +257,12 @@ export const RouterApp = (props) => {
           component={CMSPages}
           exact
           path={routes.cmsRoutes}
+        />
+        <Route
+          key="static"
+          component={ReadMore}
+          exact
+          path={routes.styloriBlog}
         />
       </Switch>
     </>

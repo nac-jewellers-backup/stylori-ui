@@ -28,6 +28,7 @@ import CMSfaqs from "components/CMSfaqs";
 import CMSfaqss from "components/faqss";
 import { BlogImageCard } from "components/BlogImageCard";
 import { Title } from "containers/title";
+import StyloriYarnsCMS from "components/CMSyarns";
 
 const iconsSettings = {
   slidesToShow: 1,
@@ -136,10 +137,12 @@ const CMSPages = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("cdnData", JSON.parse(data?.data?.cdnByPage?.data));
-        const dataRecieved = JSON.parse(data.data.cdnByPage.data);
-        if (data.data.cdnByPage.isActive) {
-          setState(dataRecieved);
+        if (data.data.cdnByPage.data) {
+          const dataRecieved = JSON.parse(data.data.cdnByPage.data);
+          console.log("dataRecieved",dataRecieved);
+          if (data.data.cdnByPage.isActive) {
+            setState(dataRecieved);
+          }
         }
       });
   }, [window.location.pathname]);
@@ -237,10 +240,11 @@ const CMSPages = (props) => {
 
       case "blogPageCard": {
         return (
-          <BlogImageCard
-            value={val?.props?.cardContent}
-            handleShow={showTitle}
-          />
+          // <BlogImageCard
+          //   value={val?.props?.cardContent}
+          //   handleShow={showTitle}
+          // />
+          <StyloriYarnsCMS value={val?.props?.cardContent} />
         );
       }
 

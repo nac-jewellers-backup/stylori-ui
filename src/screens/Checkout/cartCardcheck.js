@@ -32,6 +32,7 @@ import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import axios from "axios";
 import { API_URL } from "config";
 import { COUNTRIES } from "queries/home";
+import { TotalAmountCheckout } from "queries/cart";
 
 var adres = {};
 var variab = {};
@@ -44,7 +45,9 @@ const CartCardCheck = (props) => {
     CartCtx: { setCartFilters },
   } = React.useContext(CartContext);
   const [countries,setCountries] = React.useState([])
+  const [total,setTotal] = React.useState(0)
   React.useEffect(()=>{
+    const cartId = localStorage.getItem("cart_id")
     axios
     .post(
       `${API_URL}/graphql`,
@@ -64,11 +67,39 @@ const CartCardCheck = (props) => {
       }
      
     })
-    .catch((err) => console.log(err));
-  },[])
+    .catch((err) => {});
+    // calling the totalAmount
+    if(cartId){
+      const cart_id = JSON.parse(cartId)?.cart_id;
+      var _conditionfetch = {
+        CartId: {
+          shoppingCartId: cart_id
+          // isComboOffer:false
+        },
+      };
 
+      axios
+      .post(
+        `${API_URL}/graphql`,
+        JSON.stringify({
+          query: TotalAmountCheckout,
+          variables: {..._conditionfetch}
+        }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        const totalData = res?.data?.data?.allShoppingCartItems?.nodes?.[0]?.shoppingCartByShoppingCartId?.discountedPrice
+        setTotal(totalData)
+      })
+      .catch((err) => {});
+    }
   
-  console.log("CartCtxxxxxxx",React.useContext(CartContext));
+
+  },[])
 
   return (
     <Component
@@ -78,6 +109,7 @@ const CartCardCheck = (props) => {
       setCartFilters={setCartFilters}
       isdatafromstate={props.isdatafromstate}
       countries={countries}
+      total={total}
     />
   );
 };
@@ -115,7 +147,7 @@ class Component extends React.Component {
       return 0;
     });
     const tagManagerArgs = {
-      gtmId: "GTM-54JTMML",
+      gtmId: "GTM-PW3ZXSF",
       event: "addToCart",
       dataLayer: {
         ecommerce: {
@@ -240,10 +272,6 @@ class Component extends React.Component {
   render() {
     const { expanded } = this.state;
     const { data } = this.props;
-    // const { breadcrumsdata, cartsubdata } = this.props.data;
-    // let email = localStorage.getItem("email")
-    //   ? localStorage.getItem("email")
-    //   : "";
     variab["pincode"] = adres.value && adres.value.pincode;
 
     adres["value"] = localStorage.getItem("select_addres")
@@ -396,8 +424,9 @@ class Component extends React.Component {
                       </div>
                       {expanded === "panel4" ? (
                         <div className="" style={{ margin: 10 }}>
-                          <PaymentIndex
+                          <PaymentIndex 
                             data={data}
+                            total={this.props?.total}
                             CodData={this.props.CodData}
                           />
                           <div style={{ marginTop: 10, marginLeft: "-20px" }}>
@@ -616,6 +645,7 @@ class Component extends React.Component {
                           <PaymentIndex
                             data={data}
                             CodData={this.props.CodData}
+                            total={this.props?.total}
                           />
                           <div style={{ marginTop: 10, marginLeft: "-20px" }}>
                             <Addressform

@@ -10,7 +10,8 @@ import {
   Divider,
   Accordion,
   AccordionSummary,
-  AccordionDetails
+  AccordionDetails,
+  Box
 } from "@material-ui/core";
 import percentage from "../../assets/percentage.svg";
 import Slideshow from "../Carousel/carosul";
@@ -29,7 +30,10 @@ import { API_URL, CDN_URL } from "config";
 import Quantity from "../quantity/index";
 import axios from "axios";
 import CurrencyConversion from "utils/CurrencyConversion";
+import { ComboCart } from "queries/cart";
 
+let gobalData=[];
+let comboTotal=0;
 class Checkoutcard extends React.Component {
   constructor(props) {
     super(props);
@@ -37,6 +41,8 @@ class Checkoutcard extends React.Component {
       cart: true,
       shipby_arr: [],
       expanded: false,
+      nonComboItems:[],
+      comboProd:[]
     };
   }
 
@@ -81,6 +87,86 @@ class Checkoutcard extends React.Component {
         shipby_arr: shipby_arr_object,
       });
     }
+    const comboSaved = localStorage.getItem("comboProducts");
+    const comboProductstoApi = localStorage.getItem("comboProductstoApi");
+    const mappingData = this.props.data;
+    let comboData =this.props.cartFilters.comboProducts ? this.props.cartFilters.comboProducts : [];
+    if(comboSaved && comboProductstoApi && comboData.length === 0){
+      const params = JSON.parse(comboProductstoApi);
+        await fetch(`${API_URL}/fetch_cart_details`, {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(params),
+        })
+          .then(response => response.json())
+          .then(function (data) {
+            const toCartFilter = data?.filter((val) => val?.isComboOffer === true)
+            comboData = toCartFilter
+        });
+    }
+    let comboMainItems = [];
+    const comboItems = [];
+    let nonComboItems = [];
+      comboData.forEach((val) => {
+        if(comboMainItems.includes(val?.comboMainProduct)){
+        }else{
+          comboMainItems.push(val?.comboMainProduct)
+        }
+      })
+      const fieldValueSet = (comboData.map(obj => obj["productSku"]));
+      for (let item of mappingData) {
+        if (fieldValueSet.includes(item["generatedSku"])) {
+          let mainItem = ""
+          comboData.forEach((value)=>{
+            if(value?.productSku === item["generatedSku"]){
+              mainItem = value?.comboMainProduct
+            }
+          })
+          item["mainItem"] = mainItem
+          comboItems.push(item);
+        }else{
+          nonComboItems.push(item)
+        }
+      }
+      this.setState({
+        ...this.state,nonComboItems:nonComboItems
+      })
+      const discountType = async(id) => {
+        var _conditionfetch = {
+          mainProduct: id,
+        };
+        return await axios.post(`${API_URL}/graphql`, 
+          JSON.stringify({
+            query: ComboCart,
+            variables: { ..._conditionfetch },
+          }),
+          {headers: {
+            "Content-Type": "application/json",
+          }
+        })
+        .then((val) => {
+            return val?.data?.data?.productComboOfferByMainProduct
+        })  
+      }
+      const comboDis = []
+      comboMainItems.forEach((id) => {
+        comboDis.push(discountType(id))
+      })
+      
+      Promise.all(comboDis).then((data)=>{
+        let mapps = [];
+        data.forEach((id) => {
+          const seperatedMains = comboItems?.filter((val) => val?.mainItem === id?.mainProduct);
+          seperatedMains.forEach((item) => item["discountCombo"] = id);
+          mapps.push(seperatedMains)
+        });
+        this.setState({
+          ...this.state,comboProd:mapps
+        })
+      })
+      
   }
   handleCartQuantity = (skuId) => {
     const filters =
@@ -200,6 +286,7 @@ class Checkoutcard extends React.Component {
     return alert(JSON.stringify(redirect_url));
   };
   row = (props) => {
+
     const dataCarousel = {
       slidesToShow: 1,
       arrows: false,
@@ -264,14 +351,14 @@ class Checkoutcard extends React.Component {
     var discounted_price = this.props.Voucherctx.value
       ? this.props.Voucherctx.value
       : "";
-    const dataCard1 = this.props.data
+    const dataCard1 =this.state?.nonComboItems?.length > 0 ? this.state?.nonComboItems 
       .map((val) => {
         return (
           val.dataCard1[0].offerPrice *
           JSON.parse(localStorage.getItem("quantity"))[val.generatedSku]
         );
       })
-      .reduce(myFunc);
+      .reduce(myFunc) : 0;
 
     function myFunc(total, num) {
       var cart_price;
@@ -284,7 +371,133 @@ class Checkoutcard extends React.Component {
       return cart_price;
     }
 
-    return (
+    const getTotal = (discount,dicountVal,item) => {
+      let total = 0;
+      let amount = 0;
+      item.forEach((val) => {
+        total += val?.dataCard1?.[0]?.offerPrice
+      });
+      if(discount === "PERCENTAGE"){
+         amount = ((100 - dicountVal) * total)/100;
+        return amount
+      }else if(discount === "FLAT"){
+         amount = total - dicountVal 
+         return amount
+      }else{
+        return total
+      }
+    }
+
+    const getImage = (image) => {
+      const productId = image?.[0]?.imageUrl?.split("/");
+      return `${CDN_URL}${productId?.[0]}/${productId?.[1]}/1000X1000/${productId?.[2]}`
+    }
+
+    const handleRemoveCombo = (prod)=> {
+      if(localStorage.getItem("user_id")){
+        let cart_id = JSON.parse(localStorage.getItem("cart_id")).cart_id;
+        function status(response) {
+          if (response.status >= 200 && response.status < 300) {
+            return Promise.resolve(response);
+          } else {
+            return Promise.reject(new Error(response.statusText));
+          }
+        }
+        function json(response) {
+          return response.json();
+        }
+        const comboProducts = prod?.filter((val) => val?.mainItem !== val?.productId);
+        const localRemoveQuantity = prod?.map((val) => val?.generatedSku)
+        const localStorageQty = JSON.parse(localStorage.getItem("quantity"));
+        localRemoveQuantity.forEach((item) => delete localStorageQty[item]);
+        let removeCombo = {
+          cart_id: cart_id,
+          product_id: [],
+          combo_products:{
+            main_product: prod?.[0]?.mainItem,
+            comboProducts:comboProducts?.map((val) => {
+              return {
+                product_id: val?.productId
+              }
+            })
+          }
+        }
+        
+        const getCart = JSON.parse(localStorage.getItem("cartDetails"));
+        const removeProductsSku = prod?.map((val) => val?.generatedSku);
+        let newProdcart = []
+        for (let item of getCart.products){ 
+          if(removeProductsSku.includes(item["sku_id"])){
+          }else{
+            newProdcart.push(item)
+          }
+        }
+        getCart["products"] = newProdcart;
+            
+        fetch(`${API_URL}/removecartitem`, {
+          method: "post",
+
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...removeCombo,
+          }),
+        })
+        .then(status)
+          .then(json)
+          .then((val) => {
+            localStorage.setItem("quantity",JSON.stringify(localRemoveQuantity));
+            localStorage.setItem("cartDetails",JSON.stringify(getCart))
+            window.location.reload();
+          })   
+      }else{
+        const localCombo = JSON.parse(localStorage.getItem("comboProducts"));
+        const cartDetails = JSON.parse(localStorage.getItem("cartDetails")).products;
+        const comboProductstoApi = JSON.parse(localStorage.getItem("comboProductstoApi"));
+        const guestComboCheckOut = JSON.parse(localStorage.getItem("guestComboCheckOut"));
+
+        const removedguestComboCheckOut = guestComboCheckOut.filter((val) => val?.main_product !== prod?.[0]?.mainItem)
+
+        const mainProd = prod?.[0]?.mainItem;
+        delete comboProductstoApi.combo_products[mainProd]
+        const cartSku = cartDetails?.map((val) => {
+          return val.sku_id
+        })
+        prod.forEach((val) => {
+          if(localCombo.includes(val?.generatedSku) ){
+            const getIndex = localCombo.indexOf(val?.generatedSku);
+            localCombo.splice(getIndex,1)
+          }
+          if(cartSku.includes(val?.generatedSku) ){
+            const getIndexsku = cartSku.indexOf(val?.generatedSku);
+            cartSku.splice(getIndexsku,1)
+            cartDetails.splice(getIndexsku,1)
+          }          
+        })
+        
+        const removedCart = {
+          cart_id:'',
+          userId:'',
+          products:cartDetails
+        }
+        localStorage.setItem("cartDetails",JSON.stringify(removedCart))
+        localStorage.setItem("comboProducts",JSON.stringify(localCombo))
+        localStorage.setItem("comboProductstoApi",JSON.stringify(comboProductstoApi))
+        localStorage.setItem("guestComboCheckOut",JSON.stringify(removedguestComboCheckOut))
+        window.location.reload();
+      }
+    }
+
+    const comboTotalFunc = () => {
+      let num=0
+      this.state.comboProd.forEach((prod) => {
+        return num=num+ getTotal(prod?.[0]?.discountCombo?.discountType,prod?.[0]?.discountCombo?.discountValue,prod)
+      })
+      return num
+    }
+
+     return (
       <div style={{ marginTop: this.props?.checkout ? "" : "50px" }}>
           <Grid
           container
@@ -301,12 +514,98 @@ class Checkoutcard extends React.Component {
                 } items) :   ${ CurrencyConversion(
                     props.cartFilters.discounted_amount
                       ? Math.round(props.cartFilters.discounted_amount)
-                      : Math.round(dataCard1 - discounted_price)
+                      : Math.round(dataCard1  - discounted_price + comboTotalFunc())
                   )
                 }`}</Typography>
               </Grid>
             ) :null}
-            {this.props.data.map((dataval) =>
+            {
+              this.state?.comboProd?.length > 0 && (
+                this.state?.comboProd?.map((prod) => ( 
+                  <Grid container 
+                    style={{
+                      backgroundColor: this.props.checkout ? "" : "#fff",
+                    }}
+                    className={classes.comboBox}
+                  >
+                    <Grid item xs={8} lg={window.location.pathname === "/checkout" ? 8 : 7}>
+                      <div style={{display:"flex",alignItems:"center"}}>
+                        {prod?.map((val,index,arr) => (
+                          <div> 
+                            <div className={classes.alignItems}>
+                              <img src={getImage(val?.fadeImages)} alt="" class= {window.location.pathname === "/checkout" ? "imageComboCheckout" : "imageCombo"} />
+                              {val?.fadeImages?.[0]?.imageUrl.length > 2 && index !== arr.length - 1 && (
+                                <Box className={classes.plusSx}>+</Box>
+                              )}
+                            </div>
+                            <div>
+                              <Typography className={classes.comboText}>{val?.productId}</Typography>
+                            </div>
+                            <div className={classes.alignItems} style={{gap:"6px"}}>
+                                {val?.discountCombo?.discountType === "PERCENTAGE" &&
+                                  <Typography 
+                                    className={classes.comboText} 
+                                    style={{color:"#454f7a",fontWeight:600}}
+                                  > 
+                                    {CurrencyConversion(((100 - val?.discountCombo?.discountValue) * val?.dataCard1?.[0]?.price)/100)}
+                                  </Typography>
+                                }
+                                <Typography className={classes.comboText} style={{textDecoration: val?.discountCombo?.discountType === "PERCENTAGE"? "line-through" : "none"}}>
+                                  {val?.discountCombo?.discountType === "PERCENTAGE" ? CurrencyConversion(val?.dataCard1?.[0]?.price) : CurrencyConversion(val?.dataCard1?.[0]?.offerPrice)}
+                                </Typography>
+                            </div>
+                            {val?.discountCombo?.discountType === "PERCENTAGE" &&
+                              <Typography className={classes.comboText}>{`(${val?.discountCombo?.discountValue}% off)`}</Typography>
+                            }
+                          </div>
+                        ))}
+                      </div>
+                    </Grid>
+                    <Grid xs={4} lg={window.location.pathname === "/checkout" ? 4 : 5} style={{padding:"0% 1% 0% 3%"}}>
+                      <Typography className={classes.comboText}> 
+                        {`(Get ${prod?.[0]?.discountCombo?.discountType === "PERCENTAGE" ? "" : "FLAT"} ${prod?.[0]?.discountCombo?.discountType === "PERCENTAGE" ? `${prod?.[0]?.discountCombo?.discountValue} %`: CurrencyConversion(prod?.[0]?.discountCombo?.discountValue)} off on Combo)`}
+                      </Typography>
+                      <div className={classes.alignItems} style={{gap:"8px"}}>
+                        <Typography 
+                          style={{color:"#454f7a",fontWeight:600,fontSize:"18px"}}
+                        >
+                          {CurrencyConversion(getTotal(prod?.[0]?.discountCombo?.discountType,prod?.[0]?.discountCombo?.discountValue,prod))} 
+                        </Typography>
+                        <Typography 
+                          style={{color:"#454f7a",fontWeight:600,fontSize:"14px",textDecoration:"line-through"}}
+                        >
+                          {CurrencyConversion(getTotal("","",prod))}
+                        </Typography>
+                      </div>
+                      {window.location.pathname !== "/checkout" &&
+                        <>
+                        <Button
+                          onClick={()=>handleRemoveCombo(prod)}
+                          fullWidth
+                          variant="contained"
+                          className={classes.comboButtons}
+                          style={{
+                            fontSize:"14px",
+                            marginBottom:"8px"
+                          }}
+                        >           
+                          &nbsp;Remove
+                        </Button>
+                        <Button
+                          fullWidth
+                          variant="contained"
+                          className={classes.comboButtons}
+                        >           
+                          &nbsp;Move to Wishlist
+                        </Button>    
+                        </>
+                      }                                                  
+                    </Grid>
+                  </Grid>
+                ))
+              )
+            }
+            {this.state?.nonComboItems?.map((dataval) =>
               dataval.productsDetails.map((val) => {
                 return (
                   <Grid
@@ -383,7 +682,7 @@ class Checkoutcard extends React.Component {
                       </Card>
                     </Grid>
 
-                    <Grid item xs={5} sm={7} lg={9} style={{ padding: "13px" }}>
+                    <Grid item sm={9} lg={9} style={{ padding: "13px" }}>
                       {window.location.pathname !== "/checkout" ? (
                         <NavLink
                           to={dataval.skuUrl}
@@ -411,7 +710,7 @@ class Checkoutcard extends React.Component {
                         </h3>
                       )}
                       <Grid container>
-                        <Grid item xs={8} lg={6}>
+                        <Grid item xs={7} lg={6}>
                           <Typography
                             className={
                               this.props.checkout
@@ -438,7 +737,7 @@ class Checkoutcard extends React.Component {
                             !Boolean(dataval?.[0]?.maxOrderQty) ||
                             dataval?.[0]?.maxOrderQty < 2 ? (
                               `Quantity : ${
-                                this.props.isdatafromstate[dataval.generatedSku]
+                                JSON.parse(localStorage.getItem("quantity"))?.[dataval.generatedSku]
                               }`
                             ) : (
                               <Quantity data={[dataval]} cart={true} />
@@ -514,7 +813,7 @@ class Checkoutcard extends React.Component {
                           })} */}
                         </Grid>
 
-                        <Grid item xs={4} lg={6} style={{marginTop:"27px"}}>
+                        <Grid item xs={5} lg={6} style={{marginTop:"27px"}}>
                           {/* <Typography
                           style={{ marginTop: "8px" }}
                           className={`subhesder ${classes.normalfonts}`}
@@ -694,7 +993,7 @@ class Checkoutcard extends React.Component {
         : null}
 
           <Grid item xs={this.props?.checkout ? 12 : 4}>
-            {this.subtotals(props)}
+            {this.subtotals({...props})}
           </Grid>
           </Grid>
       </div>
@@ -721,7 +1020,6 @@ class Checkoutcard extends React.Component {
         ) : (
           <div
             onClick={() => {
-              debugger
               if (productIsActive) {
                 this.handleRoute()
               }
@@ -855,20 +1153,23 @@ class Checkoutcard extends React.Component {
     var discounted_price = this.props.Voucherctx.value
       ? this.props.Voucherctx.value
       : "";
-    const dataCard1 = this.props.data
+    const dataCard1 = this.state?.nonComboItems?.length > 0 ? this.state?.nonComboItems
       .map((val) => {
         return (
           val.dataCard1[0].offerPrice *
           JSON.parse(localStorage.getItem("quantity"))[val.generatedSku]
         );
       })
-      .reduce(myFunc);
+      .reduce(myFunc) : 0;
 
       const mainCard = this.props.data
       .map((val) => {
+        const quantity = (localStorage.getItem("quantity")) ? 
+        
+        JSON.parse(localStorage.getItem("quantity"))[val.generatedSku] ? JSON.parse(localStorage.getItem("quantity"))[val.generatedSku] :1 : 1
         return (
           val.dataCard1[0].price *
-          JSON.parse(localStorage.getItem("quantity"))[val.generatedSku]
+          quantity
         );
       })
       .reduce(myFunc);
@@ -885,11 +1186,13 @@ class Checkoutcard extends React.Component {
     }
     var yousave = this.props.data
       .map((_data) => {
+        const quantity = (localStorage.getItem("quantity")) ? 
+        JSON.parse(localStorage.getItem("quantity"))[_data.generatedSku] ? JSON.parse(localStorage.getItem("quantity"))[_data.generatedSku] : 1 : 1
         return (
           _data.dataCard1[0].price *
-            JSON.parse(localStorage.getItem("quantity"))[_data.generatedSku] -
+          quantity -
           _data.dataCard1[0].offerPrice *
-            JSON.parse(localStorage.getItem("quantity"))[_data.generatedSku]
+          quantity
         );
       })
       .reduce(myFunc);
@@ -905,22 +1208,44 @@ class Checkoutcard extends React.Component {
     ) => {
       if (discountAmount) { 
         if (shippingCharge) {
-          return CurrencyConversion(discountAmount + shippingCharge);
+          return CurrencyConversion(discountAmount + shippingCharge + comboTotalFunc());
         } else {
-          return CurrencyConversion(discountAmount);
+          return CurrencyConversion(discountAmount + comboTotalFunc());
         }
       }
       else {
         if (shippingCharge) {
-          return CurrencyConversion(dataCard - discountPrice + shippingCharge);
+          return CurrencyConversion(dataCard - discountPrice + shippingCharge + comboTotalFunc());
         } else {
-          return CurrencyConversion(dataCard - discountPrice);
+          return CurrencyConversion(dataCard - discountPrice + comboTotalFunc());
         }
       }
     };
 
+    const getTotal = (discount,dicountVal,item) => {
+      let total = 0;
+      let amount = 0;
+      item.forEach((val) => {
+        total += val?.dataCard1?.[0]?.offerPrice
+      });
+      if(discount === "PERCENTAGE"){
+         amount = ((100 - dicountVal) * total)/100;
+        return amount
+      }else if(discount === "FLAT"){
+         amount = total - dicountVal 
+         return amount
+      }else{
+        return total
+      }
+    }
 
-
+    const comboTotalFunc = () => {
+      let num=0
+      this.state.comboProd.forEach((prod) => {
+        num=num+ getTotal(prod?.[0]?.discountCombo?.discountType,prod?.[0]?.discountCombo?.discountValue,prod)
+      })
+      return num
+    }
     return (
       <div className={classes.main}>
         <Grid container xs={12} lg={12}>
@@ -957,7 +1282,7 @@ class Checkoutcard extends React.Component {
                 >
                   {this.props.checkout ? "SUBTOTAL" : "Subtotal"}
                 </Typography>
-                {yousave !== 0 || props.cartFilters.tax_price ? (
+                {(mainCard - (dataCard1 + comboTotalFunc())) !== 0 || props.cartFilters.tax_price ? (
                   <Typography
                     className={
                       this.props.checkout
@@ -1027,11 +1352,11 @@ class Checkoutcard extends React.Component {
                  {props.cartFilters.gross_amount ?
                 CurrencyConversion(props.cartFilters.gross_amount)
                    :  <div style={{display: 'flex',
-                    justifyContent: 'flex-end'}}><del>{CurrencyConversion(mainCard)}</del><div style={{marginLeft:"5px"}}>{CurrencyConversion(dataCard1)}</div></div>
+                    justifyContent: 'flex-end'}}><del>{CurrencyConversion(mainCard)}</del><div style={{marginLeft:"5px"}}>{CurrencyConversion(dataCard1 + comboTotalFunc())}</div></div>
                   }
 
                 </Typography>
-                {yousave !== 0 || this.props.Voucherctx.value ? (
+                {(mainCard - (dataCard1 + comboTotalFunc())) !== 0 || this.props.Voucherctx.value ? (
                   <Typography
                     className={
                       this.props.checkout
@@ -1043,8 +1368,8 @@ class Checkoutcard extends React.Component {
 
                 
                     {this.props.Voucherctx.value
-                      ? `- ${CurrencyConversion(yousave + this.props.Voucherctx.value)}`
-                      :  `- ${CurrencyConversion(yousave)}`}
+                      ? `- ${CurrencyConversion((mainCard - (dataCard1 + comboTotalFunc())) + this.props.Voucherctx.value)}`
+                      :  `- ${CurrencyConversion(mainCard - (dataCard1 + comboTotalFunc()))}`}
 
                   </Typography>
                 ) : null}
@@ -1179,7 +1504,7 @@ class Checkoutcard extends React.Component {
                 >
                   {this.props.checkout ? "SUBTOTAL" : "Subtotal"}
                 </Typography>
-                {yousave !== 0 || props.cartFilters.tax_price ? (
+                {(mainCard - (dataCard1 + comboTotalFunc())) !== 0 || props.cartFilters.tax_price ? (
                   <Typography
                     className={
                       this.props.checkout
@@ -1249,11 +1574,11 @@ class Checkoutcard extends React.Component {
                   {props.cartFilters.gross_amount ?
                 CurrencyConversion(props.cartFilters.gross_amount)
                    :  <div style={{display: 'flex',
-                    justifyContent: 'flex-end'}}><del>{CurrencyConversion(mainCard)}</del><div style={{marginLeft:"5px"}}>{CurrencyConversion(dataCard1)}</div></div>
+                    justifyContent: 'flex-end'}}><del>{CurrencyConversion(mainCard)}</del><div style={{marginLeft:"5px"}}>{CurrencyConversion(dataCard1 + comboTotalFunc())}</div></div>
                   }
 
                 </Typography>
-                {yousave !== 0 || props.cartFilters.tax_price ? (
+                {(mainCard - (dataCard1 + comboTotalFunc())) !== 0 || props.cartFilters.tax_price ? (
                   <Typography
                     className={
                       this.props.checkout
@@ -1265,8 +1590,8 @@ class Checkoutcard extends React.Component {
 
                 
                     {props.cartFilters.tax_price
-                      ? `- ${CurrencyConversion(yousave + props.cartFilters.tax_price)}`
-                      :  `- ${CurrencyConversion(yousave)}`}
+                      ? `- ${CurrencyConversion(mainCard - (dataCard1 + comboTotalFunc()) + props.cartFilters.tax_price)}`
+                      :  `- ${CurrencyConversion(mainCard - (dataCard1 + comboTotalFunc()))}`}
 
                   </Typography>
                 ) : null}
@@ -1408,10 +1733,8 @@ class Checkoutcard extends React.Component {
       </div>
     );
   };
-
+  
   render() {
-    // alert(discounted_price)
-
     return (
       <Grid style={{marginLeft:"-16px",marginRight:"-16px"}}>
          <Hidden smDown>
@@ -1431,6 +1754,7 @@ class Checkoutcard extends React.Component {
             handleDeleteLocalStorage={(event) =>
               this.handleDeleteLocalStorage(event)
             }
+            parentState={this.state}
             //  subtotals={Math.round(dataCard1)}
             checkoutbutton={this.checkoutbutton()}
           />

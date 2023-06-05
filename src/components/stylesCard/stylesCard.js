@@ -57,7 +57,11 @@ export default function StylesCard(props) {
       },
     ],
   };
-
+  const handleClick = (url) => {
+    if(url){
+      window.open(url,'_blank')
+    }
+  } 
   return (
     <div className={classes.content}>
       {props?.type === "styles" ? (
@@ -66,9 +70,9 @@ export default function StylesCard(props) {
         <Slider {...sliderSettings}>
           {props?.data?.map((card, index) => {
             return (
-              <div>
+              <div onClick={() =>handleClick(card?.url)}>
                 <div className={classes.sliderImage} key={index}>
-                  <img alt={card.text} src={card.image} />
+                  <img alt={card.text} src={card.image} style={{cursor:"pointer"}} />
                 </div>
                 <div className={classes.imageText}>
                   <Typography>{card?.text}</Typography>
@@ -82,7 +86,7 @@ export default function StylesCard(props) {
         {props?.data?.map((card, index) => {
             return (
               <div style={{position:"relative",textAlign:"center"}}>
-                <div className={classes.sliderImage} style={{width:"90%",margin:"auto"}} key={index}>
+                <div className={classes.sliderImage} style={{width:"90%",margin:"auto"}} onClick={() =>handleClick(card?.url)} key={index}>
                   <img alt={card.text} src={card.image} />
                 </div>
                 <div className={classes.imageText} style={{position:"absolute"}}>

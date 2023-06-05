@@ -1,0 +1,11 @@
+.imageSmall{
+    width: 100%;
+    max-width: 92px;
+    height: 92px;
+}
+
+@media only screen and (max-width: 320px) {
+    .imageSmall {
+        height: 75px;
+    }
+  }

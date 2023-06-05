@@ -129,15 +129,13 @@ class Header extends Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        if(data.data.cdnByPage){
-        console.log("cdnData1", JSON.parse(data?.data?.cdnByPage?.data));
         const dataRecieved = JSON.parse(data.data.cdnByPage.data);
         const notificationData = dataRecieved.filter((val) => val.component === "HomeNotifiaction");
         if(notificationData){
           this.setState({
             ...this.state,notificationData:notificationData[0].props.cardContent
           })
-        }}
+        }
       });
   }
 
@@ -277,7 +275,13 @@ class Header extends Component {
         ? this.props.globalContext.Globalctx.pathName
         : false;
     // const id = open ? true : undefined;
-
+    const settings = {
+      infinite: true, 
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay:true
+    };
     return (
       <div
         style={{ top: "0", zIndex: "1000", width: "100%" }}
@@ -303,7 +307,7 @@ class Header extends Component {
               id="topNav"
               style={{ transition: "height 0.2s" }}
             >
-              <Container
+              {/* <Container
                 maxWidth="lg"
                 id="searchcontainer"
                 style={{
@@ -337,7 +341,7 @@ class Header extends Component {
                       10 % OFF
                     </Typography>
                   ) : null}
-                  {/* <Grid
+                  <Grid
                     container
                     item
                     xs={12}
@@ -376,9 +380,20 @@ class Header extends Component {
                     ) : (
                       ""
                     )}
-                  </Grid> */}
+                  </Grid>
                 </Grid>
-              </Container>
+              </Container> */}
+              {isSilver ?
+              <div  style={{backgroundColor:"#606161"}}>
+                <Slider {...settings} className="notiificationSlider">
+                  {this.state.notificationData.map((val) => (
+                    <Typography>
+                      {val.text}
+                    </Typography>
+                  ))}   
+                </Slider>
+              </div> : null }
+
               {window.location.pathname === "/cart" ||
               window.location.pathname === "/checkout" ||
               b[1] === "paymentsuccess" ||
@@ -561,6 +576,8 @@ class Header extends Component {
                                   src={searchIcon}
                                   alt="icon"
                                   loading="lazy"
+                                  width='auto'
+                                  height='auto'
                                 />
                                 {/* <Seach className={"searchsvg"} /> */}
                               </div>
@@ -662,7 +679,8 @@ class Header extends Component {
                                     }
                                   }}
                                 >
-                                  <img src={heart} alt="icon" loading="lazy" />
+                                  <img src={heart} alt="icon" loading="lazy" width='auto'
+                                  height='auto'/>
                                 </i>
                                 <span
                                   className="tooltip-w"
@@ -688,7 +706,8 @@ class Header extends Component {
                                     }
                                   }}
                                 >
-                                  <img src={heart} alt="icon" loading="lazy" />
+                                  <img src={heart} alt="icon" loading="lazy" width='auto'
+                                  height='auto'/>
                                 </i>
                                 <span
                                   className="tooltip-w"
@@ -739,7 +758,8 @@ class Header extends Component {
                                     style={{ fontSize: "20px" }}
                                     className={classes.iconFafa}
                                   >
-                                    <img src={cart} alt="icon" />
+                                    <img src={cart} alt="icon" width='auto'
+                                  height='auto'/>
                                   </i>
 
                                   <span
@@ -765,7 +785,8 @@ class Header extends Component {
                                     style={{ fontSize: "20px" }}
                                     className={classes.iconFafa}
                                   >
-                                    <img src={cart} alt="icon" />
+                                    <img src={cart} alt="icon" width='auto'
+                                  height='auto'/>
                                   </i>
 
                                   <span
@@ -789,14 +810,14 @@ class Header extends Component {
                 </Grid>
               ) : (
                 <Grid container id="headerContainer">
-                  <Container maxWidth="lg">
+                  <Container maxWidth="lg" className={isSilver ? "isSilverTotalNav" : "isStyloriTotalNav"}>
                     <Grid
                       container
                       spacing={12}
                       id="fullcontainer"
                       className="setHeight"
                     >
-                      <Grid item xs={2} className="logoImgHeader1">
+                      <Grid item xs={2} className="logoImgHeader1" style={{backgroundColor: isSilver ? "#fff" : "transparent",justifyContent:isSilver ? "end" : ""}}>
                         <div
                           id="logoDiv1"
                           className="logoDiv1"
@@ -805,12 +826,12 @@ class Header extends Component {
                               ? "/styloriSilver"
                               : "/";
                           }}
-                          style={{ cursor: "pointer" }}
+                          style={{ cursor: "pointer"}}
                         >
-                          <img
+                          {!isSilver && <img
                             id="logoImage"
                             className={`${isSilver && "silverlogo"} ${"imges"}`}
-                            src={isSilver ? stylorisilverlogo : styloriLogo}
+                            src={styloriLogo}
                             onLoad={() => this.setState({ load: true })}
                             onLoadedData={() => this.setState({ load: false })}
                             loading="lazy"
@@ -818,9 +839,21 @@ class Header extends Component {
                             style={{
                               transition: "height 0.2s",
                             }}
-                          />
+                          />}
+                          {isSilver && 
+                            <img 
+                              // id="logoImage"
+                              // className={`${isSilver && "silverlogo"} ${"imges"}`}
+                              src={stylorisilverlogo} alt="...."  
+                              style={{transition: "height 0.2s",height:"65px"}}
+                              onLoad={() => this.setState({ load: true })}
+                              onLoadedData={() => this.setState({ load: false })}
+                              loading="lazy"
+                            />
+                          }
                         </div>
                       </Grid>
+                      {isSilver ? <Navbar /> :
                       <Grid
                         container
                         item
@@ -941,8 +974,9 @@ class Header extends Component {
                           )}
                         </Grid>
                       </Grid>
-                      <Grid item xs={2}>
-                        <div className={`head-icons1 ${classes.headIcons}`}>
+                      }
+                      <Grid item xs={2} style={{backgroundColor: isSilver ? "#fff" : "transparent"}}>
+                        <div className={`head-icons1 ${classes.headIcons}`} style={{justifyContent: isSilver ? "flex-start" : "flex-end"}}>
                           {/* <i class={`fa fa-phone  ${classes.iconFafa}`}></i>
                         <Typography className={classes.callerNum}>
                           1800 102 0330
@@ -1063,7 +1097,8 @@ class Header extends Component {
                                     }
                                   }}
                                 >
-                                  <img src={heart} alt="icon" loading="lazy" />
+                                  <img src={heart} alt="icon" loading="lazy" width='auto'
+                                  height='auto'/>
                                 </i>
                                 <span
                                   className="tooltip-w"
@@ -1089,7 +1124,8 @@ class Header extends Component {
                                     }
                                   }}
                                 >
-                                  <img src={heart} alt="icon" loading="lazy" />
+                                  <img src={heart} alt="icon" loading="lazy" width='auto'
+                                  height='auto'/>
                                 </i>
                                 <span
                                   className="tooltip-w"
@@ -1135,7 +1171,8 @@ class Header extends Component {
                                     style={{ fontSize: "20px" }}
                                     className={classes.iconFafa}
                                   >
-                                    <img src={cart} alt="icon" />
+                                    <img src={cart} alt="icon" width='auto'
+                                  height='auto'/>
                                   </i>
 
                                   <span
@@ -1161,7 +1198,8 @@ class Header extends Component {
                                     style={{ fontSize: "20px" }}
                                     className={classes.iconFafa}
                                   >
-                                    <img src={cart} alt="icon" />
+                                    <img src={cart} alt="icon" width='auto'
+                                  height='auto'/>
                                   </i>
 
                                   <span
@@ -1386,7 +1424,8 @@ class Header extends Component {
                                     }
                                   }}
                                 >
-                                  <img src={heart} alt="icon" loading="lazy" />
+                                  <img src={heart} alt="icon" loading="lazy" width='auto'
+                                  height='auto'/>
                                 </i>
                               </Badge>
                             ) : (
@@ -1402,7 +1441,8 @@ class Header extends Component {
                                     }
                                   }}
                                 >
-                                  <img src={heart} alt="icon" loading="lazy" />
+                                  <img src={heart} alt="icon" loading="lazy" width='auto'
+                                  height='auto'/>
                                 </i>
                               </div>
                             )}
@@ -1439,7 +1479,8 @@ class Header extends Component {
                                     }}
                                     className={classes.iconFafa}
                                   >
-                                    <img src={cart} alt="icon" loading="lazy" />
+                                    <img src={cart} alt="icon" loading="lazy" width='auto'
+                                  height='auto'/>
                                   </i>
                                 </a>
                               </Badge>
@@ -1453,7 +1494,8 @@ class Header extends Component {
                                     }}
                                     className={classes.iconFafa}
                                   >
-                                    <img src={cart} alt="icon" loading="lazy" />
+                                    <img src={cart} alt="icon" loading="lazy" width='auto'
+                                  height='auto'/>
                                   </i>
                                 </a>
                               </div>

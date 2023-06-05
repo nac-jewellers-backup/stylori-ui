@@ -1,23 +1,27 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import { Box, Button, Divider } from "@material-ui/core";
+import { Box, Button, Divider, Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-// import { productsDetails } from '../product-image-slider/producthoverData';
-// import { dataCard1 } from '../ProductCard/ProductData';
 import Pricing from "../Pricing/index";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./style";
 import { NavLink } from "react-router-dom";
 import "./Cart.css";
-import {CDN_URL,API_URL } from "config";
+import { CDN_URL, API_URL } from "config";
 import Quantity from "../quantity/index";
 import { Slideshow } from "components";
 import WishlistButton from "./Wishlistadd";
+import CurrencyConversion from "utils/CurrencyConversion";
 
 function MediaControlCard(props) {
+  console.log("propsss",props);
   const { classes } = props;
-
+  const getImage = (image) => {
+    const productId = image?.[0]?.imageUrl?.split("/");
+    return `${CDN_URL}${productId?.[0]}/${productId?.[1]}/1000X1000/${productId?.[2]}`
+  }
+  
   const handleDeleteLocalStorage = (e, val) => {
     var local_storage = JSON.parse(localStorage.getItem("cartDetails"));
     var currentValue =
@@ -45,8 +49,7 @@ function MediaControlCard(props) {
       };
       fetch(`${API_URL}/removecartitem`, {
         method: "post",
-        // body: {query:seoUrlResult,variables:splitHiphen()}
-        // body: JSON.stringify({query:seoUrlResult}),
+
         headers: {
           "Content-Type": "application/json",
         },
@@ -80,11 +83,11 @@ function MediaControlCard(props) {
       var _obj = { cart_id: cartId, user_id: userId, products: _products };
       if (_products.length > 0) {
         localStorage.setItem("cartDetails", JSON.stringify(_obj));
-        // alert("You removed this product successfully");
+        alert("You removed this product successfully");
         window.location.reload();
       } else {
         localStorage.removeItem("cartDetails", _products);
-        // alert("You removed this product successfully");
+        alert("You removed this product successfully");
         window.location.reload();
       }
     }
@@ -94,16 +97,11 @@ function MediaControlCard(props) {
     var image_urls;
     const width = window.innerWidth;
     if (imges__val?.imageUrl && imges__val?.imageUrl.length > 0) {
-      // this.props.data.map(dataval => {
-      //     if (dataval !== undefined && dataval !== null) {
-      //         dataval.productsDetails.map(val => {
-      // if (val !== undefined && val !== null) {
-      // val.namedetail !== undefined && val.namedetail.map(val___ => {
       if (name && name === "Metal") {
         var valu = details.split(" ");
         var valu1 = valu[1];
         var valu2 = valu1[0];
-        //  imges__val && imges__val.map(img => {
+
         var cnt = imges__val && imges__val?.imageUrl.split("/");
         var cnt_b = cnt[2].split("-");
         var cnt_c = cnt_b[1];
@@ -129,16 +127,6 @@ function MediaControlCard(props) {
         }
         // })
       }
-      // return url
-      // })
-      // }
-      // return image
-      // })
-      // }
-      // return detail
-      // })
-      // }
-      // alert(JSON.stringify( [image_urls]))
     }
   };
   const checkMaterial = (material) => {
@@ -150,7 +138,82 @@ function MediaControlCard(props) {
     slidesToShow: 1,
     arrows: false,
   };
+  const handleRemoveCombo = (prod)=> {
+    let cart_id = JSON.parse(localStorage.getItem("cart_id")).cart_id;
+    function status(response) {
+      if (response.status >= 200 && response.status < 300) {
+        return Promise.resolve(response);
+      } else {
+        return Promise.reject(new Error(response.statusText));
+      }
+    }
+    function json(response) {
+      return response.json();
+    }
+    const comboProducts = prod?.filter((val) => val?.mainItem !== val?.productId);
+    const localRemoveQuantity = prod?.map((val) => val?.generatedSku)
+    const localStorageQty = JSON.parse(localStorage.getItem("quantity"));
+    localRemoveQuantity.forEach((item) => delete localStorageQty[item]);
+    let removeCombo = {
+      cart_id: cart_id,
+      product_id: [],
+      combo_products:{
+        main_product: prod?.[0]?.mainItem,
+        comboProducts:comboProducts?.map((val) => {
+          return {
+            product_id: val?.productId
+          }
+        })
+      }
+    }
+    
+    const getCart = JSON.parse(localStorage.getItem("cartDetails"));
+    const removeProductsSku = prod?.map((val) => val?.generatedSku);
+    let newProdcart = []
+    for (let item of getCart.products){ 
+      if(removeProductsSku.includes(item["sku_id"])){
+      }else{
+        newProdcart.push(item)
+      }
+    }
+    getCart["products"] = newProdcart;
+        
+    fetch(`${API_URL}/removecartitem`, {
+      method: "post",
 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...removeCombo,
+      }),
+    })
+    .then(status)
+      .then(json)
+      .then((val) => {
+        localStorage.setItem("quantity",JSON.stringify(localRemoveQuantity));
+        localStorage.setItem("cartDetails",JSON.stringify(getCart))
+        window.location.reload();
+      })
+  }
+
+  const getTotal = (discount,dicountVal,item) => {
+    debugger;
+    let total = 0;
+    let amount = 0;
+    item.forEach((val) => {
+      total += val?.dataCard1?.[0]?.offerPrice
+    });
+    if(discount === "PERCENTAGE"){
+       amount = ((100 - dicountVal) * total)/100;
+      return amount
+    }else if(discount === "FLAT"){
+       amount = total - dicountVal 
+       return amount
+    }else{
+      return total
+    }
+  }
   return (
     <div style={{ paddingTop: "10px" }}>
       {/* <Grid container>
@@ -162,16 +225,97 @@ function MediaControlCard(props) {
         </div>
       )}
 
-      {/* <div> <span style={{ color: "#394578", fontSize: "14px", fontWeight: "bold" }}>Item:</span> ({props.data.length})</div><br /> */}
-      {/* </Grid>
-        <Grid xs={6}  >
-          jh</Grid>
-      </Grid><br /> */}
-      {/* {props.checkoutbutton} */}
       <br />
       <br />
       <br />
-      {props.data.map((dataval) =>
+{
+               (
+                <>
+                {props?.parentState?.comboProd?.length > 0 &&
+                 props?.parentState?.comboProd?.map((prod) => (
+                 
+                <Grid container 
+                  style={{
+                    backgroundColor:"#fff",
+                    height:"100%",
+                    padding:"20px 20px"
+                  }}
+                  className={classes.comboBox}
+                >
+                  <Grid item xs={12}>
+                    <div  style={{marginBottom:"15px",display:"flex",alignItems:"center"}}>
+                      {prod?.map((val,index,arr) => (
+                        <div> 
+                          <div className={classes.alignItems}>
+                              <img src={getImage(val?.fadeImages)} alt="" class= {window.location.pathname === "/checkout" ? "imageComboCheckout" : "imageCombo"} />
+                              {val?.fadeImages?.[0]?.imageUrl.length > 2 && index !== arr.length - 1 && ( 
+                                <Box className={classes.plusSx}>+</Box>
+                              )}
+                          </div>
+                          <div>
+                            <Typography className={classes.comboText}>{val?.productId}</Typography>
+                          </div>
+                          <div className={classes.alignItems} style={{gap:"6px"}}>
+                              <Typography 
+                                className={classes.comboText} 
+                                style={{color:"#454f7a",fontWeight:600}}
+                              >
+                               {val?.discountCombo?.discountType === "PERCENTAGE" ? CurrencyConversion(val?.dataCard1?.[0]?.price) : CurrencyConversion(val?.dataCard1?.[0]?.offerPrice)}    
+                              </Typography>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <Typography className={classes.comboText}>
+                      {`(Get ${prod?.[0]?.discountCombo?.discountType === "PERCENTAGE" ? "" : "FLAT"} ${prod?.[0]?.discountCombo?.discountType === "PERCENTAGE" ? `${prod?.[0]?.discountCombo?.discountValue} %`: CurrencyConversion(prod?.[0]?.discountCombo?.discountValue)} off on Combo)`}
+                    </Typography>
+                      <div className={classes.alignItems} style={{gap:"8px"}}>
+                        <Typography 
+                          style={{color:"#454f7a",fontWeight:600,fontSize:"18px"}}
+                        >
+                          {CurrencyConversion(getTotal(prod?.[0]?.discountCombo?.discountType,prod?.[0]?.discountCombo?.discountValue,prod))} 
+
+                        </Typography>
+                        <Typography 
+                          style={{color:"#454f7a",fontWeight:600,fontSize:"14px",textDecoration:"line-through"}}
+                        >
+                          {CurrencyConversion(getTotal("","",prod))}
+                        </Typography>
+                      </div>
+                  </Grid>
+                  {window.location.pathname !== "/checkout" && 
+                  <Grid container style={{margin:"20px 0px 0px"}}>
+                    <Grid xs={6}>
+                      <Button
+                        onClick={()=>handleRemoveCombo(prod)}
+                        fullWidth
+                        variant="contained"
+                        className={classes.comboButtons}
+                        style={{
+                          fontSize:"14px",
+                          marginBottom:"8px"
+                        }}
+                      >           
+                        &nbsp;Remove
+                      </Button>
+                    </Grid>
+                    <Grid xs={6}>
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        className={classes.comboButtons}
+                      >           
+                        &nbsp;Move to Wishlist
+                      </Button>     
+                    </Grid>
+                  </Grid>}
+                </Grid>
+                 ))
+                }
+                </>
+              )
+            }
+      {props?.parentState?.nonComboItems?.map((dataval) =>
         dataval.productsDetails.map((val) => {
           return (
             <Box className={classes.card}>
@@ -186,12 +330,6 @@ function MediaControlCard(props) {
                           to={dataval.skuUrl}
                           style={{ textDecoration: "none" }}
                         >
-                          {/* <img
-                        src={filter_image(val_imgUrl,val.name, val.details)}
-                        width="100%"
-                        height="100%"
-                        alt=""
-                      /> */}
                           <Slideshow
                             className="image"
                             fadeImages={filter_image(
@@ -205,12 +343,6 @@ function MediaControlCard(props) {
                       </div>
                     ) : (
                       <div style={{ width: "195px" }}>
-                        {/* <img
-                      src={filter_image(val_imgUrl,val.name, val.details)}
-                      width="100%"
-                      height="100%"
-                      alt=""
-                    /> */}
                         <Slideshow
                           className="image"
                           fadeImages={filter_image(
@@ -310,108 +442,78 @@ function MediaControlCard(props) {
                           dataval.generatedSku
                         ]
                       }
-                    >
-                      {/* <label className={classes.labelPrice}>
-                        <Typography
-                          variant="subtitle1"
-                          color="textSecondary"
-                          className={classes.labelPriceDel}
-                        >
-                          <del>{val.offerPrice }</del>
-                        </Typography>
-                        &nbsp;
-                        <Typography
-                          variant="subtitle1"
-                          style={{ color: "#ED1165" }}
-                          className={classes.labelPriceOff}
-                        >
-                          {val.price}
-                        </Typography>
-                        <Typography
-                          variant="subtitle1"
-                          color="textSecondary"
-                          className={classes.labelPriceDel}
-                        >
-                          <del>{val.offerPrice}</del>
-                        </Typography>
-                      </label> */}
-                    </Pricing>
+                    ></Pricing>
                   ))}
                 </CardContent>
                 <div className={classes.controls}>
-                 
                   {window.location.pathname !== "/checkout" ? (
-                            <div>
-                              <Button
-                                // className="highlighter"
-                                // className={`subhesder hov ${classes.normalfonts}`}
-                                id={dataval.generatedSku}
-                                onClick={(event) =>
-                                  handleDeleteLocalStorage(event)
-                                }
-                                fullWidth
-                                variant="contained"
-                                style={{
-                                  color: "gray",
-                                  width: "175px",
-                                  marginTop:'20px',
-                                  border: "1.46px solid #919396",
-                                  backgroundColor: "white",
-                                  borderRadius: "0px",
-                                  boxShadow: "none",
-                                  padding:"5px 40px 5px 40px"
-                                }}
-                              >
-                                &nbsp;Remove
-                              </Button>
-                              <span>&nbsp;</span>
-                              {!dataval?.isActive ? (
-                                <span
-                                  style={{
-                                    backgroundColor: "red",
-                                    fontSize: "10px",
-                                    color: "white",
-                                    padding: "2px 4px",
-                                    borderRadius: "2px",
-                                  }}
-                                >
-                                  Sold Out
-                                </span>
-                              ) : (
-                                ""
-                              )}
-                            </div>
-                          ) : (
-                            ""
-                          )}
+                    <div>
+                      <Button
+                        id={dataval.generatedSku}
+                        onClick={(event) => handleDeleteLocalStorage(event)}
+                        fullWidth
+                        variant="contained"
+                        style={{
+                          color: "gray",
+                          width: "175px",
+                          marginTop: "20px",
+                          border: "1.46px solid #919396",
+                          backgroundColor: "white",
+                          borderRadius: "0px",
+                          boxShadow: "none",
+                          padding: "5px 40px 5px 40px",
+                        }}
+                      >
+                        &nbsp;Remove
+                      </Button>
+                      <span>&nbsp;</span>
+                      {!dataval?.isActive ? (
+                        <span
+                          style={{
+                            backgroundColor: "red",
+                            fontSize: "10px",
+                            color: "white",
+                            padding: "2px 4px",
+                            borderRadius: "2px",
+                          }}
+                        >
+                          Sold Out
+                        </span>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  ) : (
+                    ""
+                  )}
 
-                          {window.location.pathname !== "/checkout" ? (
-                            <div style={{marginTop:'-8px'}}>
-                              <WishlistButton
-                                sku={dataval.generatedSku}
-                                productId={dataval.productId}
-                                style={{marginTop:0}}
-                              />
+                  {window.location.pathname !== "/checkout" ? (
+                    <div style={{ marginTop: "-8px" }}>
+                      <WishlistButton
+                        sku={dataval.generatedSku}
+                        productId={dataval.productId}
+                        style={{ marginTop: 0 }}
+                      />
 
-                              {!dataval.isActive ? (
-                                <span
-                                  style={{
-                                    backgroundColor: "red",
-                                    fontSize: "10px",
-                                    color: "white",
-                                    padding: "2px 4px",
-                                    borderRadius: "2px",
-                                  }}
-                                >
-                                  Sold Out
-                                </span>
-                              ) : (
-                                ""
-                              )}
-                            </div>
-                          ) : (
-                            ""
-                          )}
+                      {!dataval.isActive ? (
+                        <span
+                          style={{
+                            backgroundColor: "red",
+                            fontSize: "10px",
+                            color: "white",
+                            padding: "2px 4px",
+                            borderRadius: "2px",
+                          }}
+                        >
+                          Sold Out
+                        </span>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   {/* {window.location.pathname !== "/checkout" ? (
                     <div
                       variant="contained"
@@ -452,7 +554,6 @@ function MediaControlCard(props) {
                   ) : (
                     ""
                   )}{" "} */}
-
                 </div>
               </div>
             </Box>
@@ -463,3 +564,4 @@ function MediaControlCard(props) {
   );
 }
 export default withStyles(styles)(MediaControlCard);
+ 

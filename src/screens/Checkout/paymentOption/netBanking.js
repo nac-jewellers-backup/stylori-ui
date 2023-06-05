@@ -12,17 +12,20 @@ class Netbanking extends React.Component {
   render() {
     let cart_id = localStorage.getItem("cart_id") ? JSON.parse(localStorage.getItem("cart_id")).cart_id : "";
     let user_id = localStorage.getItem("user_id") ? localStorage.getItem("user_id") : "";
-    const data = this.props.data ? this.props.data : "";
+    const data = this.props.data ? this.props.data : ""; 
     var discounted_price =  this.props.Voucherctx?.value ?  this.props.Voucherctx?.value : "";
 
     // var { data:coddata, error, loading, makeFetch} = useNetworkRequest('/api/auth/signin', {}, false);
     var dataCard1;
     if (data.length > 0 && data !== undefined && data !== null) {
+      
       dataCard1 =
         this.props.data &&
         this.props.data
           .map((val) => {
-            return val.dataCard1[0].offerPrice * JSON.parse(localStorage.getItem("quantity"))[val.generatedSku];
+            const quantity = localStorage.getItem("quantity") ? 
+              JSON.parse(localStorage.getItem("quantity"))[val.generatedSku] ? JSON.parse(localStorage.getItem("quantity"))[val.generatedSku] : 1 : 1;
+            return val.dataCard1[0].offerPrice * quantity;
           })
           .reduce(myFunc);
       function myFunc(total, num) {
@@ -121,7 +124,9 @@ class Netbanking extends React.Component {
                   this.props.ShippingCharge === "Free"
                     ? dataCard1 - discounted_price + 0
                     : dataCard1 - discounted_price + this.props.ShippingCharge
-                )} />
+                )}
+                  total={CurrencyConversion(this.props?.total)}
+                />
           {/* <div className="amout-pay"> Amount Payable </div>
           <div className="credit-btn-div">
             <Grid container>

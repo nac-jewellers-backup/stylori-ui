@@ -308,6 +308,8 @@ export const FetchCartId = `query FetchCartId($UserId: ShoppingCartCondition) {
           qty
           productSku
           price
+          isComboOffer
+          comboMainProduct
         }
       }
     }
@@ -328,6 +330,31 @@ export const USERPROFILE = `query MyQuery($id: UUID!) {
     mobile
     id
     pincode
+  }
+}
+
+`
+
+export const ComboCart = `query MyQuery($mainProduct: String!) {
+  productComboOfferByMainProduct(mainProduct: $mainProduct) {
+    discountType
+    discountValue
+    offeredProducts
+    mainProduct
+  }
+}
+
+`
+export const TotalAmountCheckout = `query MyQuery($CartId:ShoppingCartItemCondition) {
+  allShoppingCartItems(condition: $CartId) {
+    nodes {
+      isComboOffer
+      productSku
+      shoppingCartByShoppingCartId {
+        discount
+        discountedPrice
+      }
+    }
   }
 }
 

@@ -176,7 +176,7 @@ class PaymentIndex extends React.Component {
                 // className="pay-index-subhed_datas "
               >
 
-             <Netbanking />
+             <Netbanking total={this.props?.total}/>
                 {/* {this?.state?.isActive == "Creditform" && <Netbanking />}
                 {this?.state?.isActive == "Debitform" && <Netbanking />}
                 {this?.state?.isActive == "Netbanking" && <Netbanking />}

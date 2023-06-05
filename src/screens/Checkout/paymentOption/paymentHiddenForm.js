@@ -322,7 +322,7 @@ export default function PaymentHiddenForm(props) {
           style={{ cursor: "pointer",backgroundColor:"#D32564",color:"#fff",width:'inherit' }}
           variant="contained"
         >
-          {` Pay ${props?.data1}`}
+          {` Pay ${props?.total}`}
         </Button>
         {/* <input
           style={{ cursor: "pointer" }}

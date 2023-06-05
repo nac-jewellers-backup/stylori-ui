@@ -57,6 +57,7 @@ import { CustomSeparator } from "components/SilverComponents/v2";
 import NACSection from "components/HouseOfNac";
 import DesktopFooter from "components/SilverComponents/DesktopFooter";
 import axios from "axios";
+import { FrequentlyBrought } from "components/FrequebtlyBrought";
 
 const styles = (theme) => ({
   font: {
@@ -747,6 +748,7 @@ class ProductDetail extends Component {
           ) : (
             <CustomerReviews rating={this?.props?.rating} isSilver={isSilver} />
           )}
+          {isSilver && <FrequentlyBrought productId={this.props?.data?.[0]?.productId} data={this?.props?.data} />}
 
           {/* HouseOfNac */}
           {isSilver && (
@@ -928,6 +930,8 @@ class ProductDetail extends Component {
               <Request data={this?.props?.data} />
             </div>
           )}
+
+          {isSilver && < FrequentlyBrought productId={this.props?.data?.[0]?.productId}/>}
 
           {/* House of NAC Section */}
           {isSilver && (

@@ -504,4 +504,15 @@ export const useStyles = makeStyles((theme) => ({
   drawer: {
     backgroundColor: "#394578",
   },
+  inrTxt: {
+    fontSize: "20px",
+    color: "rgb(109, 110, 113)",
+    display: "flex",
+    alignItems: "center",
+    "& svg": {
+        fontSize: "20px",
+        color: "rgb(109, 110, 113)",
+        marginLeft: "7px"
+    }
+},
 }));

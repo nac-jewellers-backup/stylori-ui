@@ -58,19 +58,25 @@ export default function StylesCardPrice(props) {
     ],
   };
 
+  const handleClick = (url) => {
+    if(url){
+      window.open(url,'_blank')
+    }
+  } 
+
   return (
     <div className={classes.content}>
       <Slider {...sliderSettings}>
         {props?.data?.map((card, index) => {
           return (
-            <div>
-              <div className={classes.sliderImage} key={index}>
+            <div onClick={() => handleClick(card?.url)}>
+              <div style={{cursor:"pointer"}} className={classes.sliderImage} key={index}>
                 <img alt={card.text} src={card.image} />
               </div>
               <div className={classes.imageText}>
                 <Typography>{card?.text}</Typography>
               </div>
-              <div className={classes.imageBottom}>
+              <div style={{cursor:"pointer"}} onClick={() => handleClick(card?.url)} className={classes.imageBottom}>
                 <div className={classes.bottomText}>
                   <Typography>{card.bottomText}</Typography>
                 </div>

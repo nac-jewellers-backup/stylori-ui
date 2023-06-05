@@ -8,8 +8,6 @@ import { withRouter } from "react-router-dom";
 import { useNetworkRequest } from "hooks/NetworkHooks";
 import { API_URL } from "config";
 import axios from "axios";
-// import { productsPendants } from 'mappers/dummydata';
-// import { object } from 'prop-types';
 var orderobj = {};
 var orderobj1 = {};
 var objallorder = {};
@@ -28,6 +26,8 @@ const initialCtx = {
       jewellery: "",
       _cart_id: {},
       vouchercode: null,
+      comboProducts:[],
+      comboFetched:[]
     },
     loading: false,
     error: false,
@@ -61,20 +61,6 @@ const Provider = (props) => {
   const [loadingWishlist, setLoadingWishlist] = React.useState(false);
   // const [_cart_id, setCartId] = React.useState([])
 
-  // useEffect(() => {
-  //   const updateCart = () => {
-  //     //
-  //     let cartId = JSON.parse(localStorage.getItem("cart_id")) ?? "";
-
-  //     try {
-  //       const response = axios.post(`${API_URL}/updatecart_latestprice`, cartId);
-  //       console.log(response);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   // updateCart();
-  // }, []);
   useEffect(() => {
     let user_ids = localStorage.getItem("user_id") ?? "";
     let user_ids_Obj = {
@@ -95,23 +81,11 @@ const Provider = (props) => {
       })
         .then((res) => res.json())
         .then((data) => {})
-        .catch((err) => console.log(err));
+        .catch((err) => {});
     };
     user_ids.length > 0 && updateCart(user_ids_Obj);
   }, []);
 
-  // let user_ids = localStorage.getItem("user_id") ?? "";
-  // let user_ids_Obj = {
-  //   user_id: user_ids,
-  // };
-
-  // const updatecartresponse = useNetworkRequest("/updatecart_latestprice", { user_ids_Obj });
-  // const {
-  //   loading: crtloading,
-  //   error: crterror,
-  //   data: crtdata,
-  //   makeFetch: addtocart,
-  // } = useNetworkRequest("/updatecart_latestprice", { user_id, products }, false);
   var products = localStorage.getItem("cartDetails")
     ? JSON.parse(localStorage.getItem("cartDetails")).products
     : [];
@@ -130,9 +104,11 @@ const Provider = (props) => {
     JSON.parse(localStorage.getItem("cartDetails")) &&
     JSON.parse(localStorage.getItem("cartDetails")).products.length > 0 &&
     Object.keys(
-      JSON.parse(localStorage.getItem("cartDetails"))?.products?.filter((val) => {
-        if (Object.keys(val).length > 0) return val;
-      })
+      JSON.parse(localStorage.getItem("cartDetails"))?.products?.filter(
+        (val) => {
+          if (Object.keys(val).length > 0) return val;
+        }
+      )
     ).length > 0
       ? JSON.parse(localStorage.getItem("cartDetails"))?.products?.filter(
           (val) => {
@@ -140,7 +116,7 @@ const Provider = (props) => {
           }
         )[0].sku_id
       : {};
-  // JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : []
+
   const guestlogId = cartFilters.user_id ? cartFilters.user_id : "";
   const {
     loading: allorderloading,
@@ -169,8 +145,7 @@ const Provider = (props) => {
     : "";
   const reload = cartFilters.reload ? cartFilters.reload : "";
   const jewellery = cartFilters.jewellery ? cartFilters.jewellery : "";
-  // const { setwishlist_count } = React.useContext(FilterOptionsContext);
-  // alert(JSON.stringify(wishlist_count,wishlistdata))
+
   var con_gust = localStorage.getItem("gut_lg")
     ? JSON.parse(localStorage.getItem("gut_lg"))
     : "";
@@ -184,7 +159,6 @@ const Provider = (props) => {
     ? JSON.parse(localStorage.getItem("gut_lg"))
     : {};
 
-
   useEffect(() => {
     if (localvalues_check === true) {
       if (con_gust === true) {
@@ -197,7 +171,7 @@ const Provider = (props) => {
   }, []);
 
   useEffect(() => {
-    var obj = {};
+    
     var products = [];
     var _cartDetails = {};
     if (!loading && !error) {
@@ -209,12 +183,13 @@ const Provider = (props) => {
         data.data.allTransSkuLists.nodes.length > 0
       ) {
         data.data.allTransSkuLists.nodes.map((val) => {
+          var obj = {};
           obj["sku_id"] = val.generatedSku;
           obj["qty"] = 1;
           obj["price"] = val.markupPrice;
           products.push(obj);
         });
-        // { "cart_id": '', "user_id": userId, "products": products_sku_list() }
+
         _cartDetails["cart_id"] = "";
         _cartDetails["userId"] = "";
         _cartDetails["products"] = products;
@@ -223,14 +198,13 @@ const Provider = (props) => {
           localStorage.removeItem("ship_isactive");
           localStorage.removeItem("select_addres");
           // window.location.reload()
-          localStorage.setItem("cartDetails", JSON.stringify(_cartDetails));
         }
+        localStorage.setItem("cartDetails", JSON.stringify(_cartDetails));
       }
     }
   }, [loading, error, data]);
 
   useEffect(() => {
-    // alert("cart")
     if (jewellery && jewellery === "jewellery") {
       localStorage.removeItem("panel");
       localStorage.removeItem("cartDetails");
@@ -256,7 +230,7 @@ const Provider = (props) => {
 
     // localStorage.setItem('cart_id', JSON.stringify(crtdata))
   }, [crtdata]);
-  
+
   useEffect(() => {
     const orderall = allorder
       ? allorder &&
@@ -279,27 +253,14 @@ const Provider = (props) => {
         wishlistDATA.data.allUserWhislists &&
         wishlistDATA.data.allUserWhislists.nodes
       : "";
-    if (
-      wishlistdatas &&
-      (wishlistdatas.length > 0)
-    ) {
+    if (wishlistdatas && wishlistdatas.length > 0) {
       objwishlist["wishlistdata"] = wishlistDATA?.data?.allUserWhislists;
       setTimeout(() => {
         setLoadingWishlist(false);
       }, 2000);
 
-      // localStorage.setItem("allorder", allorder.data.allOrders)
-      // obj_aishlist_count["wishlist_count"] = wishlistdatas && wishlistdatas.length
-      // localStorage.setItem("a__w_l", wishlistdatas && wishlistdatas.length)
-
       setwishlistdata(objwishlist);
-
-      // setwishlist_count(obj_aishlist_count)
-      // alert(JSON.stringify(obj_aishlist_count))
     }
-    // else {
-    //     localStorage.setItem("a__w_l", 0)
-    // }
   }, [wishlistDATA]);
 
   useEffect(() => {
@@ -323,16 +284,7 @@ const Provider = (props) => {
     _obj["orderId"] = { id: props.match.params.id };
     if (props.match.params.id) await allordermakeRequestSuccessful(_obj);
   };
-  // useEffect(() => {
-  //     // orderobj["userProfileId"] = userIds
-  //     // {
-  //     //     "orderId":{"id":"69ec1b00-36d0-11ea-b9b0-a977a389bd8d"}
-  //     //   }
 
-  //     // var props.computedMatch.params.id
-  //     ordersuccessful()
-
-  // }, [wishlistdata])
   const handleAddToCart = () => {
     if (guestlogId.length > 0) {
       //
@@ -340,11 +292,25 @@ const Provider = (props) => {
       localStorage.setItem("user_id", cartFilters.user_id);
 
       if (JSON.stringify(cartdetails).length > 0) {
-        var products = localStorage.getItem("cartDetails")
+        let products = [];
+        products = localStorage.getItem("cartDetails")
           ? JSON.parse(localStorage.getItem("cartDetails")).products
           : "";
+        const comboProducts = localStorage.getItem("comboProducts")
+        if(comboProducts){
+          const combo_ = JSON.parse(comboProducts);
+          const nonComboProducts = products?.filter(item => !combo_.includes(item.sku_id));
+          products = nonComboProducts
+        }
         const user_id = cartFilters.user_id;
-        var addcart = { products, user_id };
+        let combo_products = []
+        const comboProdSession = localStorage.getItem("guestComboCheckOut")
+        if(comboProdSession){
+          const combo = JSON.parse(localStorage.getItem("guestComboCheckOut"));
+          combo_products = combo
+        }
+        var addcart = { products, user_id, combo_products };
+        
         // alert("hgdhfdhg")
         if (
           JSON.parse(localStorage.getItem("cartDetails"))?.products?.filter(
@@ -353,11 +319,15 @@ const Provider = (props) => {
             }
           ).length > 0
         ) {
-          user_id &&
+          if(user_id &&
             products &&
             products.length &&
-            products[0] != null &&
-            addtocart(addcart);
+            products[0] != null
+            ){
+              addtocart(addcart)
+          }else if(user_id && combo_products?.length > 0){
+            addtocart(addcart)
+          }
         }
         orderobj["userProfileId"] = user_id;
         sessionStorage.setItem("user_id", user_id);
@@ -371,8 +341,6 @@ const Provider = (props) => {
           Object.values(orderobj).length > 0
         )
           allordermakeRequest(orderobj);
-        // allordermakeRequest(orderobj); // CHANGED
-        // wishlistmakeRequest(orderobj1)
       }
     } else {
       var local_storage = JSON.parse(localStorage.getItem("cartDetails"));
@@ -415,32 +383,18 @@ const Provider = (props) => {
         user_id: userId,
         products: products_sku_list(),
       };
-      // if (userIds.length > 0 && gut_lg !== true) {
-      //     var products = productszz;
-      //     const user_id = cartFilters.user_id
-      //     var addcart = ({ products, user_id })
-      //     addtocart(addcart)
-      // }
-      // alert("1")
       if (skuId) localStorage.setItem("cartDetails", JSON.stringify(skuObj));
 
       // window.location.reload()
     }
   };
   useEffect(() => {
-    // if (userIds.length > 0) {
-    //     if (cartdetails !== null && cartdetails !== undefined && JSON.stringify(cartdetails).length > 0) {
-    // const user_id = userIds
-    // makeFetch({--login---})
-    //     }
-    // }
     handleAddToCart();
+    
   }, [user_id, price, cartFilters]);
 
   var skus;
-  // const pathQueries = () => {
-  //     skus = localStorage.getItem("cartDetails") ? JSON.parse(localStorage.getItem("cartDetails")).products[0].sku_id : ''
-  // }
+
   skus =
     localStorage.getItem("cartDetails") &&
     JSON.parse(localStorage.getItem("cartDetails")).products.length > 0
@@ -495,7 +449,6 @@ const Provider = (props) => {
       };
 
       //  alert(JSON.stringify(this.state.checked))
-
       await axios
         .post(
           `${API_URL}/graphql`,
@@ -509,26 +462,16 @@ const Provider = (props) => {
             },
           }
         )
-        // fetch(`${API_URL}/graphql`, {
-        //   method: "post",
-        //   // body: {query:seoUrlResult,variables:splitHiphen()}
-        //   // body: JSON.stringify({query:seoUrlResult}),
 
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify({
-        //     query: FetchCartId,
-        //     variables: { ..._conditionfetchCartId },
-        //   }),
-        // })
-        // .then(status)
-        // .then(json)
         .then(async (val) => {
           val = val.data;
+          const comboItems = val?.data?.allShoppingCarts?.nodes?.[0]?.shoppingCartItemsByShoppingCartId?.nodes?.filter((item) => item?.isComboOffer === true);
+          setCartFilters({
+            ...cartFilters,comboProducts:comboItems
+          })
+          // JSON.parse(localStorage.setItem("quantity",comboQty))
           let cartItems = Boolean(
-            val.data.allShoppingCarts.nodes?.length >
-              0?.[0]?.shoppingCartItemsByShoppingCartId?.nodes
+            val.data.allShoppingCarts.nodes?.[0]?.shoppingCartItemsByShoppingCartId?.nodes?.length > 0
           )
             ? val.data.allShoppingCarts.nodes[0]
                 .shoppingCartItemsByShoppingCartId.nodes
@@ -562,7 +505,6 @@ const Provider = (props) => {
                     if (valProducts.sku_id === valresult.productSku) {
                       localStorageCartDetails.products[i].qty = valresult.qty;
                       localStorageQty[valresult.productSku] = valresult.qty;
-
                       localStorage.setItem(
                         "quantity",
                         JSON.stringify({ ...localStorageQty })
@@ -588,7 +530,6 @@ const Provider = (props) => {
                       localStorageCartDetails["products"].push({
                         ..._newProduct,
                       });
-
                       localStorage.setItem(
                         "quantity",
                         JSON.stringify({ ...localStorageQty })
@@ -601,17 +542,11 @@ const Provider = (props) => {
                   } else {
                     let _newProductQty = {};
                     _newProductQty[valresult.productSku] = valresult.qty;
-
                     localStorage.setItem(
                       "quantity",
                       JSON.stringify({ ..._newProductQty })
                     );
                   }
-
-                  // else if(valProducts.sku_id !== valresult.productSku){
-                  //     localStorageCartDetails.products[i].qty = valresult.qty
-                  //   localStorageQty[valresult.productSku]   = valresult.qty
-                  // }
                 });
               } else {
                 let _newProductQty = {};
@@ -637,7 +572,6 @@ const Provider = (props) => {
 
               skuObj["products"].push({ ..._newProduct });
             });
-
             localStorage.setItem(
               "quantity",
               JSON.stringify({ ..._newProductQty })
@@ -653,9 +587,6 @@ const Provider = (props) => {
             val.data.allShoppingCarts.nodes.length > 0 &&
             val.data.allShoppingCarts.nodes[0].status !== "pending"
           ) {
-            // alert(val.data.allShoppingCarts.nodes[0].status)
-            // var _get_cart_id = JSON.parse(localStorage.getItem('cart_id')).cart_id
-            // var _cart_id = { cart_id: _get_cart_id }
             var _user_id = { user_id: localStorage.getItem("user_id") };
             var session_storage = JSON.parse(
               sessionStorage.getItem("updatedProduct")
@@ -668,8 +599,6 @@ const Provider = (props) => {
               _products.products[0] !== null &&
               fetch(`${API_URL}/addtocart`, {
                 method: "post",
-                // body: {query:seoUrlResult,variables:splitHiphen()}
-                // body: JSON.stringify({query:seoUrlResult}),
 
                 headers: {
                   "Content-Type": "application/json",
@@ -712,8 +641,6 @@ const Provider = (props) => {
               _data && makeRequest(variables);
             }
           } else {
-            // alert(JSON.stringify(val.data.allShoppingCarts.nodes.length>0))
-            // if(val.data.allShoppingCarts.nodes.length>0){
             if (
               val &&
               val.data &&
@@ -732,13 +659,12 @@ const Provider = (props) => {
               var _conditionfetch = {
                 CartId: {
                   shoppingCartId: val.data.allShoppingCarts.nodes[0].id,
+                  // isComboOffer:false
                 },
               };
 
               fetch(`${API_URL}/graphql`, {
                 method: "post",
-                // body: {query:seoUrlResult,variables:splitHiphen()}
-                // body: JSON.stringify({query:seoUrlResult}),
 
                 headers: {
                   "Content-Type": "application/json",
@@ -763,7 +689,6 @@ const Provider = (props) => {
                   makeRequest(variables);
                 });
             } else {
-              // JSON.parse(sessionStorage.getItem("updatedProduct"))
               if (sessionStorage.getItem("updatedProduct")) {
                 _user_id = { user_id: localStorage.getItem("user_id") };
 
@@ -779,8 +704,6 @@ const Provider = (props) => {
                   _products.products[0] !== null &&
                   fetch(`${API_URL}/addtocart`, {
                     method: "post",
-                    // body: {query:seoUrlResult,variables:splitHiphen()}
-                    // body: JSON.stringify({query:seoUrlResult}),
 
                     headers: {
                       "Content-Type": "application/json",
@@ -824,27 +747,42 @@ const Provider = (props) => {
             // }
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+        });
     } else {
       // alert("Came as guest user")
-
-      variables = { productList: skus };
-
-      makeRequest(variables);
+      const comboSaved = localStorage.getItem("comboProducts");
+      let comboProducts_ = []
+      if(comboSaved){
+        comboProducts_ = JSON.parse(localStorage.getItem("comboProducts"));
+      }
+      variables = { productList: [...skus,...comboProducts_] };
+      // if(comboSaved && comboProductstoApi){
+      //   const params = JSON.parse(comboProductstoApi);
+      //   await fetch(`${API_URL}/fetch_cart_details`, {
+      //     method: "post",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify(params),
+      //   })
+      //     .then(response => response.json())
+      //     .then(function (data) {
+      //       const toCartFilter = data?.data?.filter((val) => val?.isComboOffer === true)
+      //       setCartFilters({
+      //         ...cartFilters,comboProducts:toCartFilter
+      //       })
+      //       makeRequest(variables);
+      //     });
+      // }else{
+        makeRequest(variables);
+      // }
+      
     }
   };
-  // useEffect(() => {
-  //     // pathQueries();
-  //     setCartFilters(skus)
-
-  //     updateProductList();
-  // }, [])
 
   const handleAddToCartDidMount = () => {
     if (localStorage.getItem("cart_id") === null) {
-      //
-      // alert(JSON.stringify(guestlogId))
-      // localStorage.setItem("user_id", cartFilters.user_id)
       if (JSON.stringify(cartdetails).length > 0) {
         var products = localStorage.getItem("cartDetails")
           ? JSON.parse(localStorage.getItem("cartDetails")).products
@@ -877,8 +815,6 @@ const Provider = (props) => {
           Object.values(orderobj).length > 0
         )
           allordermakeRequest(orderobj);
-        // allordermakeRequest(orderobj); // CHANGED
-        // wishlistmakeRequest(orderobj1)
       }
     } else {
       var local_storage = JSON.parse(localStorage.getItem("cartDetails"));
@@ -925,10 +861,7 @@ const Provider = (props) => {
         user_id: userId,
         products: _products_array,
       };
-      // if (userIds.length > 0 && gut_lg !== true) {
-      //     var products = productszz;
-      //     const user_id = cartFilters.user_id
-      //     var addcart = ({ products, user_id })
+
       var session_storage = JSON.parse(
         sessionStorage.getItem("updatedProduct")
       );
@@ -965,7 +898,6 @@ const Provider = (props) => {
       if (Boolean(localStorage.getItem("user_id"))) {
         // if(localStorage.getItem("cart_id") === null){
         if (Boolean(localStorage.getItem("cartDetails"))) {
-          // alert("ya came inn.")
           handleAddToCartDidMount();
         }
 

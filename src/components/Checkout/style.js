@@ -96,6 +96,42 @@ const styles = theme => ({
        color:"#6D6E71",
        fontSize:"14px"
     },
+    plusSx: {
+        fontSize: "18px",
+        width:"100%",
+        display:"flex",
+        justifyContent:"center",
+        padding:"12px"
+    },
+    alignItems:{
+        display: "flex",
+        alignItems: "center"
+    },
+    comboImg:{
+        width: "100%",
+        maxWidth: "129px",
+        maxHeight:"129px",
+        height:"100%"
+    },
+    comboText:{
+        color:"#6D6E71",
+        fontSize:"13px"
+    },
+    comboButtons:{
+        width: "96%",
+        border: "1.46px solid #919396",
+        backgroundColor: "white",
+        borderRadius: "0px",
+        boxShadow: "none",
+        paddingRight: "10px",
+        paddingLeft: "10px",
+        color: "gray",
+    },
+    comboBox:{
+        outline: "none",
+        marginBottom: "25px",
+        padding: "10px",
+    },
     backgsecondary: {
         background: theme.palette.secondary.dark,
     },
