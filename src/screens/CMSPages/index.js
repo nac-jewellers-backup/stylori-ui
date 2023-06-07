@@ -29,6 +29,9 @@ import CMSfaqss from "components/faqss";
 import { BlogImageCard } from "components/BlogImageCard";
 import { Title } from "containers/title";
 import StyloriYarnsCMS from "components/CMSyarns";
+import { INSTA_ID } from "config";
+import { INSTA_TOKEN } from "config";
+
 
 const iconsSettings = {
   slidesToShow: 1,
@@ -74,22 +77,6 @@ const storiesSettings = {
   swipe: false,
 };
 
-// const collectionSetting = {
-//   "slidesToShow": 1,
-//   "slidesToScroll": 1,
-//   "autoplay": true,
-//   "fade": false,
-//   "autoplaySpeed": 6000,
-//   "arrows": false,
-//   "accessibility": true,
-//   "centerMode": false,
-//   "focusOnSelect": false,
-//   "pauseOnHover": false,
-//   "pauseOnDotsHover": false,
-//   "pauseOnFocus": true,
-//   "swipe": true
-// }
-
 const CMSPages = (props) => {
   const [state, setState] = useState([]);
   const [login, setLogin] = useState(true);
@@ -109,14 +96,11 @@ const CMSPages = (props) => {
       ? props.globalContext.Globalctx.pathName
       : false;
 
-  console.log("isSilver", isSilver);
-
   const handleCloseLogin = () => {
     setLogin(false);
   };
 
   const getUrl = () => {
-    debugger;
     if (window.location.pathname === "/") {
       return "home";
     } else {
@@ -124,7 +108,17 @@ const CMSPages = (props) => {
     }
   };
 
+  const getInsta = async() => {
+    await fetch(`https://graph.instagram.com/v16.0/${INSTA_ID}/media?fields=id,caption,media_type,media_url,permalink&access_token=${INSTA_TOKEN}}`)
+    .then((response) => response.json())
+    .then((json) => {
+        const recievedImages = json?.data?.filter((val) => val?.media_type === "IMAGE").slice(0,6);
+        localStorage.setItem("instapost",JSON.stringify(recievedImages))
+    });
+  }
+
   useEffect(() => {
+    getInsta();
     const url = getUrl();
     fetch(`${API_URL}/graphql`, {
       method: "post",

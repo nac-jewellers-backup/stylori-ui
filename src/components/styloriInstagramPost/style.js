@@ -66,7 +66,7 @@ const StyloriInstaStyles = makeStyles((theme) => ({
 
   instaPost: {
     backgroundImage:
-      "url('https://s3.ap-southeast-1.amazonaws.com/media.nacjewellers.com/banners/web/Group-23504.webp')",
+      "url('https://assets.stylori.com/banners/web/phone_14_01-[Converted]-copy.webp')",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     display: "flex",

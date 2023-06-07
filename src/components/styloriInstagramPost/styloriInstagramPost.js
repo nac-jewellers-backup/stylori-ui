@@ -17,12 +17,18 @@ export default function StyloriInstagramPost(props) {
   const [imageIndex, setImageIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isTab, setIsTab] = useState(false);
-  console.log("imageIndex", imageIndex);
+  let post = [];
+  if(localStorage.getItem("instapost")){
+    post = JSON.parse(localStorage.getItem("instapost"))
+  }
+
+  const [selected,setSelected] = useState(2);
   useEffect(() => {
     // window.screen.width <= 760 ? setIsMobile(true) : setIsMobile(false);
-    if (window.innerWidth <= 770 && window.innerWidth >= 426) {
+    if (window.innerWidth <= 870 && window.innerWidth >= 426) {
       setIsTab(true);
       setIsMobile(false);
+      setSelected(1)
     } else if (window.innerWidth <= 425) {
       setIsTab(false);
       setIsMobile(true);
@@ -34,7 +40,7 @@ export default function StyloriInstagramPost(props) {
 
   function detectWindowSize() {
     // window.innerWidth <= 760 ? setIsMobile(true) : setIsMobile(false);
-    if (window.innerWidth <= 770 && window.innerWidth >= 426) {
+    if (window.innerWidth <= 870 && window.innerWidth >= 426) {
       setIsTab(true);
       setIsMobile(false);
     } else if (window.innerWidth <= 425) {
@@ -48,9 +54,7 @@ export default function StyloriInstagramPost(props) {
 
   window.onresize = detectWindowSize;
 
-  console.log(isMobile);
-
-  const sliderSettings = {
+   const sliderSettings = {
     dots: false,
     arrows: true,
     infinite: true,
@@ -60,7 +64,15 @@ export default function StyloriInstagramPost(props) {
     initialSlide: 0,
     prevArrow: <LeftArrow />,
     nextArrow: <RightArrow />,
-    beforeChange: (current, next) => setImageIndex(next),
+    beforeChange: (current, next) => {
+      if(next == post.length - 1){
+        setSelected(1)
+      }else if(next === post.length - 2){
+        setSelected(0)
+      }else{
+        setSelected(next + 2)
+      } 
+    },
     responsive: [
       {
         breakpoint: 1024,
@@ -72,7 +84,15 @@ export default function StyloriInstagramPost(props) {
           arrows: true,
           prevArrow: <LeftArrow />,
           nextArrow: <RightArrow />,
-          beforeChange: (current, next) => setImageIndex(next),
+          beforeChange: (current, next) => {
+            if(next == post.length - 1){
+              setSelected(1)
+            }else if(next === post.length - 2){
+              setSelected(0)
+            }else{
+              setSelected(next + 2)
+            } 
+          },
         },
       },
       {
@@ -84,7 +104,13 @@ export default function StyloriInstagramPost(props) {
           arrows: true,
           prevArrow: <LeftArrow />,
           nextArrow: <RightArrow />,
-          beforeChange: (current, next) => setImageIndex(next),
+          beforeChange: (current, next) => {
+            if(next === post.length - 1){
+              setSelected(0)
+            }else{
+              setSelected(next + 1)
+            }
+          },
         },
       },
       {
@@ -108,12 +134,12 @@ export default function StyloriInstagramPost(props) {
         <script async src="//www.instagram.com/embed.js"></script>
       </Helmet>
       <Slider {...sliderSettings}>
-        {props?.data?.map((card, index) => {
+        {post.map((card, index) => {
           return (
             <div key={index}>
               <div
                 className={
-                  index === imageIndex + (isTab ? 1 : 2)
+                  index === selected
                     ? classes.instaPost
                     : classes.post
                 }
@@ -123,7 +149,7 @@ export default function StyloriInstagramPost(props) {
                   <blockquote
                     className="instagram-media"
                     title="........"
-                    data-instgrm-permalink={card.url}
+                    data-instgrm-permalink={card.permalink}
                     data-instgrm-version={13}
                     style={{
                       background: "#FFF",
