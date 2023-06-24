@@ -1,4 +1,5 @@
-export const API_URL = "https://api.stylori.com";
+export const API_URL = "http://styloriapi-env-1.eba-wvg7uw3t.ap-south-1.elasticbeanstalk.com";//"https://api.stylori.com";
+
 // https://api-alpha.stylori.net
 
 //http://192.168.0.106:8000
