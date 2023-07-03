@@ -1,5 +1,5 @@
-export const API_URL = "http://styloriapi-env-1.eba-wvg7uw3t.ap-south-1.elasticbeanstalk.com";//"https://api.stylori.com";
-
+export const API_URL = "https://api.stylori.com";
+//"http://styloriapi-env-1.eba-wvg7uw3t.ap-south-1.elasticbeanstalk.com";//"https://api.stylori.com";
 // https://api-alpha.stylori.net
 
 //http://192.168.0.106:8000
@@ -7,7 +7,7 @@ export const API_URL = "http://styloriapi-env-1.eba-wvg7uw3t.ap-south-1.elasticb
 export const HOME_PAGE_URL = "";
 export const CDN_URL = "https://assets.stylori.com/";
 // export const CDN_URL =
-//   "https://styloriimages-staging.s3.ap-south-1.amazonaws.com/";
+// "https://styloriimages-staging.s3.ap-south-1.amazonaws.com/";
 // export const CDN_URL = "https://assets.stylori.com/"
 // export const CDN_URL =
 //   "https://styloriimages-staging.s3.ap-south-1.amazonaws.com/";
