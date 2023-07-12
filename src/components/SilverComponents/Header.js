@@ -821,11 +821,15 @@ class Header extends Component {
                         <div
                           id="logoDiv1"
                           className="logoDiv1"
-                          onClick={() => {
-                            window.location.href = isSilver
-                              ? "/styloriSilver"
-                              : "/";
-                          }}
+                          // bof :: code change ----------
+                          onClick={() => window.history.go()}
+
+                          // onClick={() => {
+                          //   window.location.href = isSilver
+                          //     ? "/styloriSilver"
+                          //     : "/";
+                          // }}
+                          // eof :: code change -----------
                           style={{ cursor: "pointer"}}
                         >
                           {!isSilver && <img
