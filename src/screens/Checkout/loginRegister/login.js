@@ -298,7 +298,7 @@ const LoginComponent = (props) => {
                         />
                         <label className='errtext'> {values.error.passerr && values.errortext.passerr}</label>
                         <div className='log-pas'>
-                            <span onClick={() => { window.location.href = '/forgotPassword' }} className={`pas-fr ${classes.normalfonts}`} style={{ cursor: "pointer" }}>Forgot Password ?</span>
+                            <span onClick={() => { window.location.href = '/forgotPassword' }} className={`pas-fr ${classes.normalfonts}`} style={{ cursor: "pointer",marginTop:'10px'}}>Forgot Password ?</span>
                             <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>
                                 <FacebookLogin
                                     appId="183747199380935"

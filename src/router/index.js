@@ -30,7 +30,7 @@ import ReactPixel from "react-facebook-pixel";
  
 // SILVER SCREENS
 
-import Silver from "screens/SilverStylori";
+import Silver from "screens/silverHomePage/silverHomePage";
 import SilverProductDetail from "screens/SilverStylori/productDetail";
 import ChangePassword from "screens/Checkout/loginRegister/ChangePassword";
 import CMSPages from "screens/CMSPages";
@@ -46,6 +46,7 @@ browserHistory.listen(() => {
   ReactPixel.init("1464338023867789", {}, { debug: true, autoConfig: true });
   ReactPixel.pageView();
 });
+
 export const RouterApp = (props) => {
   const { Globalctx } = React.useContext(GlobalContext);
  
@@ -63,6 +64,7 @@ export const RouterApp = (props) => {
         <Route
           key="HomePageStylori"
           component={HomePageStylori}
+
           exact
           path={routes.HomePageStylori}
         />

@@ -106,6 +106,7 @@ class Header extends Component {
     let { selected, selected1 } = this.state;
     const { classes } = this.props;
     let path = window.location.pathname.split("/").pop();
+    console.log(path,"pathpathpath")
     const { anchorEl } = this.state;
     const openPopover = anchorEl;
   

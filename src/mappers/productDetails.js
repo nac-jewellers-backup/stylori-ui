@@ -475,7 +475,7 @@ export default function (data, like_data, viewedddatas, rating, tabsChange,listD
             icon: "https://img.icons8.com/wired/64/000000/diamond.png",
           },
         ],
-
+        
         productTabs: [
           {
             tab1: {
@@ -954,14 +954,14 @@ export default function (data, like_data, viewedddatas, rating, tabsChange,listD
             name: [
               "#EveryDay",
               "#Female",
-              "#THree Stone",
+              "#Three Stone",
               "#Spots",
               "#Special Occasion",
               "#Designer",
               "#Essentails",
               "#EveryDay",
               "#Female",
-              "#THree Stone",
+              "#Three Stone",
               "#Spots",
               "#Special Occasion",
               "#Designer",

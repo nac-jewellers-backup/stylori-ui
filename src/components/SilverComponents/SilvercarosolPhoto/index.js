@@ -20,9 +20,9 @@ const SilverCarousel = (props) => {
   const { carouselTop } = props.data;
   const [state, setState] = React.useState([]);
   const classes = useStyles();
-  useEffect(async () => {
-    function fetchBanner() {
-      fetch(`${API_URL}/graphql`, {
+  useEffect(() => {
+    async function fetchBanner() {
+      await fetch(`${API_URL}/graphql`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -35,13 +35,14 @@ const SilverCarousel = (props) => {
         .then((res) => res.json())
         .then((data) => {
           let datas = data.data.allStyloriSilverBanners.nodes;
-
           datas.sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
+          console.log(datas,"cricket")
           return setState(datas);
         });
     }
     fetchBanner();
   }, []);
+ 
   return (
     <Grid container xs={12} style={{paddingTop:"13px"}}>
       <Helmet>
@@ -70,6 +71,7 @@ const SilverCarousel = (props) => {
           <Slideshow dataCarousel={carouselTop[0].settings}>
             {state.map((val, index) => (
               <a href={`${val.url} `}>
+                {console.log(href,"href")}
                 <Grid container>
                   <LazyLoadImage loading="lazy" src={val.mobile} alt="Stylori" style={{ width: "100%", height: "100%" }} />
                   {/* <img

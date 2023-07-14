@@ -344,6 +344,7 @@ export const ProductCare = {
         {
           basicTitle: "Bring Back The Shine In Your Silver Jewellery",
           Questions: "Silver",
+          img: "https://assets.stylori.com/images/static/gold-part.png",
           rightImg: "https://assets.stylori.com/images/static/sliver-make-img.png",
           Answers:
             "Clean silver ornaments that are starting to discolor with a soft cloth dipped in a mix of mild dish detergent and warm water. Rinse with cool water and buff with a cloth until dry.<br><br/>For heavier tarnish, mix a paste of three parts baking soda to one part water. Wet the silver and apply the paste with a soft cloth. Rinse with cool water and buff with a cloth until dry. Do not soak silver as this speeds up the tarnishing process.<br><br/>Prompt cleaning is important when your silver jewellery has been exposed to certain foods containing sulfur or those which are acidic or salty. Food such as salt, eggs, onions, mayonnaise, and vinegar are harmful to silver.",
@@ -352,6 +353,7 @@ export const ProductCare = {
           basicTitle: "How To Clean Platinum Jewellery",
           Questions: "Platinum",
           align: "center",
+          img: "https://assets.stylori.com/images/static/gold-part.png",
           rightImg: "https://assets.stylori.com/images/static/platinum-product-care.jpg",
           Answers:
             "The best way to clean platinum is to use a mild solution of soap and warm water and gently rub your platinum jewellery with a soft cloth. Rinse with warm water and allow it to dry.",
@@ -360,6 +362,7 @@ export const ProductCare = {
           basicTitle: "Cleaning Diamonds and other precious stones",
           Questions: "Diamond",
           align: "center",
+          img: "https://assets.stylori.com/images/static/gold-part.png",
           rightImg: "https://assets.stylori.com/images/static/diamond-product-care.jpg",
           Answers:
             "For cleaning diamonds and other precious stones, mix a solution of warm, soapy water. Use a soft cloth to gently clean the stone with the water. Rinse off using warm water and pat dry with a soft, clean cloth.",

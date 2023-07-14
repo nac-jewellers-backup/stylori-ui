@@ -16,9 +16,11 @@ import styles from './style'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { API_URL } from '../../config'
 import { SnackBar } from "components/snackbarAlert/SnackBar"
-
+const email_regex =
+        /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 class Request extends React.Component {
     constructor(props) {
+        
         super(props);
         this.state = {
             expanded: null,
@@ -38,27 +40,39 @@ class Request extends React.Component {
                 request: false
             },
             errorMessage: {
-                mailId: "Name is required",
-                names: "Email is required",
+                mailId: "Email is required",
+                names: "Name is required",
                 mobileNo: "Mobile number is required",
                 request: "Content is required"
             },
+            err_msg :{
+                mailId:"Email id is invalid"
+            }
         };
     }
     // const { loading: ntx, error: ntxerr, data: ntxdata, makeFetch } = useNetworkRequest('/addquestion', {}, false, {})
     handleChange = (event) => {
         let name = event.target.name;
-        let value = event.target.value;
+        let value = event.target.value.trim();
         event.preventDefault();
         // let errors = this.state.errors;
         // let errorMessage = this.state.errorMessage;
         // if (name === "" && this.state['errors'] && this.state['errorMessage']) {
         let { errors } = this.state;
-        errors = {
-            ...errors,
-            [name]: true,
+        if (value === '')
+        {
+            errors = {
+                ...errors,
+                [name]: true,
+            }
+            this.setState({ errors })
+        } else {
+            errors = {
+                ...errors,
+                [name]: false,
+            }
+            this.setState({ errors })
         }
-        this.setState({ errors })
         this.setState((state) => ({ state, [name]: value }))
         // }
         // this.setState({ [name]: value }, () => {
@@ -83,44 +97,64 @@ class Request extends React.Component {
     json = (response) => {
         return response.json()
     }
-    handleSubmit = async (e) => {
-        if (this.state.names === "" && this.state['errors'] && this.state['errorMessage']) {
-            let { errors } = this.state;
+
+    
+
+    handleSubmit = async (e) => {        
+        var check = true;
+        let { errors } = this.state;
+        if (this.state.names.trim() === "" && this.state['errors'] && this.state['errorMessage']) {            
             errors = {
                 ...errors,
                 names: true,
             }
             this.setState({ errors })
             this.setState((state) => ({ state }))
+            check = false;
         }
-        if (this.state.mailId === "" && this.state['errors'] && this.state['errorMessage']) {
-            let { errors } = this.state;
+        if (this.state.mailId.trim() === "" && this.state['errors'] && this.state['errorMessage']) {
+            
             errors = {
                 ...errors,
                 mailId: true,
             }
             this.setState({ errors })
             this.setState((state) => ({ state }))
+            check = false;
         }
-        if (this.state.mobileNo === "" && this.state['errors'] && this.state['errorMessage']) {
-            let { errors } = this.state;
+        //  if (this.state.mailId.match(email_regex) && this.state['err_msg']) {
+        //     errors = {
+        //         ...errors,
+        //         mailId: true,
+        //     }
+        //     this.setState({ errors })
+        //     this.setState((state) => ({ state }))
+        //     check = false;
+        // }
+
+        
+
+          
+
+        if (this.state.mobileNo === "" && this.state['errors'] && this.state['errorMessage']) {            
             errors = {
                 ...errors,
                 mobileNo: true,
             }
             this.setState({ errors })
             this.setState((state) => ({ state }))
+            check = false;
         }
-        if (this.state.request === "" && this.state['errors'] && this.state['errorMessage']) {
-            let { errors } = this.state;
+        if (this.state.request.trim() === "" && this.state['errors'] && this.state['errorMessage']) {            
             errors = {
                 ...errors,
                 request: true,
             }
             this.setState({ errors })
             this.setState((state) => ({ state }))
-        }
-        else {
+            check = false;
+        }                
+        if (check){
             fetch(`${API_URL}/asktoexport`, {
                 method: 'POST',
                 headers: {
@@ -185,7 +219,7 @@ class Request extends React.Component {
                                         helperText={errors.names ? errorMessage.names : ''}
                                         placeholder="Enter your name"
                                         className="request-text"
-                                        onChange={event => handleChange(event, 'names')}
+                                        onChange={event => handleChange(event,'names')}
                                     />
                                     <label className='errtextFeild'> {errors.names && this.state.errorMessage.names && this.state.errorMessage.names}</label>
                                 </Grid>
@@ -201,7 +235,7 @@ class Request extends React.Component {
                                         helperText={errors.mailId ? errorMessage.mailId : ''}
                                         placeholder="Enter your email address"
                                         className="request-text"
-                                        onChange={event => handleChange(event, 'mailId')}
+                                        onChange={event => handleChange(event,'mailId')}
                                     />
                                     <label className='errtextFeild'> {errors.mailId && this.state.errorMessage.mailId && this.state.errorMessage.mailId}</label>
                                 </Grid>

@@ -24,7 +24,7 @@ export default function (data) {
             "Above 8000",
           ],
           Availability: [
-            { title: "1 Day Shipping", value: "1 Day Shipping" },
+            { title: "1 Day Shippi11ng", value: "1 Day Shipping" },
             { title: "5 Day Shipping", value: "5 Day Shipping" },
             { title: "7 Day Shipping", value: "7 Day Shipping" },
             { title: "10 Day Shipping", value: "10 Day Shipping" },

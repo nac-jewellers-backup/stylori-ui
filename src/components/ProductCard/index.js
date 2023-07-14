@@ -4,6 +4,7 @@ import {SilverImgMediaCard} from "./silverCard";
 import {GlobalContext } from 'context'
 // import  {ProductCard}  from "./ProductCard";
 function Card(props) {
+  // console.log(props,"propssssss")
   const { Globalctx } = React.useContext(GlobalContext)
   // const { loading, errro, data, mappedData } = useGraphql(productlistquery,productlistmapper);
   // 

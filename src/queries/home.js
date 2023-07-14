@@ -162,6 +162,7 @@ query MyQuery {
 }
 `;
 
+
 export const ALLSPECIFICLISTINGPAGE = `
 query MyQuery {
   allStyloriSilverBanners

@@ -206,6 +206,7 @@ export default function ImageGridList(props) {
     useEffect(()=>{
     // Aos.init({duration:2000});
      },[])
+     var tu = ''
     return (
         <Grid container className={classes.root}>
             <Hidden smDown>
@@ -236,7 +237,7 @@ export default function ImageGridList(props) {
                                                 <Grid item style={{ width: "75%" }} className={classes.testimonialInner}>
                                                     <Grid item >
                                                         <Typography className={classes.textInner}>
-                                                            {val.cardContent}
+                                                        {val.cardContent?val.cardContent:val.title}
                                                         </Typography>
                                                         {/* <a href={val.navigateUrl} style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a> */}
                                                     </Grid>
@@ -279,7 +280,7 @@ export default function ImageGridList(props) {
                                                     <Grid item >
                                                         <Grid>
                                                             <Typography style={{ fontSize: "12px", color: "rgb(102, 102, 102)", marginTop: "10px", height: "70px", overflow: "hidden" }}>
-                                                                {val.cardContent}
+                                                            {val.cardContent?val.cardContent:val.title}
                                                             </Typography>
                                                         </Grid>
                                                         {/* <a href={val.navigateUrl} style={{ fontSize: "12px", color: '#a77e6c' }} href="">Read more</a> */}

@@ -83,6 +83,7 @@ function Login(props) {
     return re.test(email);
   };
 
+
   // Send OTP
   const SendOTP = () => {
     window.scrollTo(0, 0);
@@ -376,7 +377,7 @@ function Login(props) {
       setCondition({
         ...condition,
         alert: true,
-        alertMsg: data.message,
+        alertMsg: "Enter a valid email and password!",
         alertSev: "error",
       });
     }
@@ -551,11 +552,12 @@ function Login(props) {
                       <Grid item xs={12}>
                         <TextField
                           placeholder="Enter OTP"
-                          type="number"
+                          type="tel"
                           value={number.otp}
                           onChange={(e) =>
-                            handleMobileChange(e.target.value, "otp")
+                            handleMobileChange(e.target.value.replace(/\D/g,""), "otp")
                           }
+                          
                           fullWidth
                         />
                         {number.error.otp !== "" && (
@@ -592,11 +594,12 @@ function Login(props) {
                       <Grid item xs={12}>
                         <TextField
                           placeholder="Mobile Number"
-                          type="number"
+                          type="tel"
                           value={number.mobile}
                           onChange={(e) =>
-                            handleMobileChange(e.target.value, "mobile")
+                            handleMobileChange(e.target.value.replace(/\D/g,""),"mobile")
                           }
+                          pattern="[0-9]*"
                           fullWidth
                         />
                         {number.error.mobile !== "" && (
@@ -664,7 +667,7 @@ function Login(props) {
                       fullWidth
                     />
                     <span className="forgotPassword">
-                      <Typography onClick={() => onRegister()}>
+                      <Typography onClick={() => { window.location.href = '/forgotPassword' }}>
                         Forget password?
                       </Typography>
                     </span>

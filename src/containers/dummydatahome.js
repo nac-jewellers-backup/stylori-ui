@@ -20,7 +20,7 @@ export const homePageStylori = {
       pauseOnDotsHover: false,
       pauseOnFocus: true,
       swipe: true,
-    },
+    }, 
     settingSilver: {
       dots: false,
       infinite: true,

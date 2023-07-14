@@ -59,7 +59,7 @@ export const productsPendants = [
     {
         header: "Pendants set in 18 Kt Gold 1.46 gm with Diamonds (0.04 ct, IJ - SI ) ",
         name: [
-            '#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails', '#EveryDay', '#Female', '#THree Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails',]
+            '#EveryDay', '#Female', '#Three Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails', '#EveryDay', '#Female', '#Three Stone', '#Spots', '#Special Occasion', '#Designer', '#Essentails',]
     }
 ];
 

@@ -88,7 +88,8 @@ class ProductDescription extends Component {
                 <div className="DescriptionContent">
                   {this.state.showLess === true ? (
                     <>
-                      {datadescription.slice(0, 350)}
+                     {datadescription.trim() !== ''?datadescription && datadescription.slice(0, 350):"No description"}
+                      
                       <span id="moreDots" style={{ display: "inline" }}>
                         ...
                       </span>
@@ -105,7 +106,7 @@ class ProductDescription extends Component {
                     </>
                   ) : (
                     <>
-                      {datadescription}
+                      {datadescription.trim() !== ''?datadescription :"No description"}
                       <p
                         onClick={this.handleReadMore}
                         className={`know-txt ${classes.colorLight}`}

@@ -33,7 +33,7 @@ class Request extends React.Component {
             errorMessage: {
                 mailId: "Please filled out your email Id",
                 names: "Please filled out name",
-                mobileNo: "Please enter yout 10 digit mobile number",
+                mobileNo: "Please enter your 10 digit mobile number",
             },
         };
     }
@@ -69,6 +69,7 @@ class Request extends React.Component {
         errors = {
             ...errors,
             [e.target.name]: true,
+            
         }
         this.setState({ errors })
     }
@@ -207,6 +208,7 @@ class Request extends React.Component {
                                     <span style={{ fontSize: "12px" }}>
                                         <Form children={this.Requestform} />
                                     </span>
+                                    
                                 </Grid>
                             </Grid>
                         </ExpansionPanel><br />

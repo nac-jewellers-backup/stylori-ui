@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid} from '@material-ui/core'
 
 import { useStyles } from './style'
-const ProductTitle = (props) => { 
+const ProductTitle = (props) => {    
     const classes = useStyles();
     const isSilver = props.isSilver ? true : false
     return ( 

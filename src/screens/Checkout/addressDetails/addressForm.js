@@ -246,7 +246,7 @@ const AddressComponent = (props) => {
                               )
                             } 
                             value={values.addressOne.country}
-                            helperText="Country is required"
+                            helperText="Country is required1"
                             InputProps={{
                               readOnly: true,
                             }}
@@ -279,7 +279,7 @@ const AddressComponent = (props) => {
                               handle.handleChange(
                                 "addressOne",
                                 "pincode",
-                                event.target.value,
+                                event.target.value.replace(/\D/g, ""),
                                 "pincode1"
                               )
                             }
@@ -385,10 +385,10 @@ const AddressComponent = (props) => {
                           />
                         </Grid>
                       </Grid>
-                      <Grid container spacing={2}>
+                      -<Grid container spacing={2}>
                         <Grid item xs={6} lg={6} style={{marginTop:10}}>
                         <SimpleSelect2 
-                            selectData={countryCode} 
+                            selectData={countryCode } 
                             name="country"
                             placeholder="Country"
                             onChange={(event) =>
@@ -417,7 +417,7 @@ const AddressComponent = (props) => {
                               handle.handleChange(
                                 "addressOne",
                                 "pincode",
-                                event.target.value,
+                                event.target.value.replace(/\D/g, ""),
                                 "pincode1"
                               )
                             }
@@ -651,12 +651,12 @@ const AddressComponent = (props) => {
                                 type="tel"
                                 name="pincode"
                                 maxLength="6"
-                                placeholder="Pin code/Zip code"
+                                placeholder="Pin code/Zip cod3e"
                                 onChange={(event) =>
                                   handle.handleChange(
                                     "addressOne",
                                     "pincode",
-                                    event.target.value,
+                                    event.target.value.replace(/\D/g, ""),
                                     "pincode1"
                                   )
                                 }

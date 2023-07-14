@@ -248,7 +248,7 @@ class Sublistcarousel extends React.Component {
                       item
                       xs={6}
                       className={`${"recenetly-like-page"} ${
-                        this.state.dataToShow === "YouRecentlyViewed" ? "recenetly-like-page-active" : ""
+                        this.state.dataToShow === "YouRecentlyViewed" ? "recenetly-like-page-active" : "" 
                       }`}
                     >
                       <span onClick={() => this.setState({ dataToShow: "YouRecentlyViewed" })}>You recently viewed</span>
@@ -399,7 +399,7 @@ class Sublistcarousel extends React.Component {
                           onClick={() => this.next()}
                           className={"icon-rightcaro"}
                         /> */}
-                          <ArrowRightIcon onClick={() => this.next()} className={`${classes.carouselCustomArrow}`} />,
+                          <ArrowRightIcon onClick={() => this.next()} className={`${classes.carouselCustomArrow}`} />
                         </Grid>
                       </Grid>
                     )}

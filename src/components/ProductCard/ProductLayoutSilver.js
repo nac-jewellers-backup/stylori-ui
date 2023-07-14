@@ -247,9 +247,9 @@ class Component extends React.Component {
                       );
                     })}
                   </GridList>
-
                   <div className={`${classes.gridlistmainviewmore}`}>
                     {this.state.loadingtext ? (
+                      
                       <div style={{ textAlign: "center" }}>Loading...</div>
                     ) : (
                       <>
@@ -276,6 +276,7 @@ class Component extends React.Component {
                                     ? data[0].totalCount - data.length
                                     : ""
                                 } More Products`}
+                                
                               {data &&
                                 data.length > 0 &&
                                 data.length < 24 &&
@@ -283,7 +284,7 @@ class Component extends React.Component {
                                   data && data.length > 0 && data[0]
                                     ? data[0].totalCount - data.length
                                     : ""
-                                } products avalilable`}
+                                } products available`}
                             </Button>
                           )
                         ) : (

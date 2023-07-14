@@ -65,12 +65,15 @@ const useRegister = (changePanel, props) => {
     const pathnamelog = window.location.pathname === "/registers"
 
     const { data: Profile_Data, makeRequestCod: propfile_fetch } = useCheckForCod(USERPROFILE, () => { }, {});
+    
+    
     React.useEffect(() => {
         if (user_ids && user_ids.length > 0) {
             obj_profile["id"] = user_ids
             propfile_fetch(obj_profile)
         }
     }, [])
+    
     React.useEffect(() => {
         if (Profile_Data && Profile_Data.data && Profile_Data.data.userProfileById && Profile_Data.data.userProfileById.firstName && Profile_Data.data.userProfileById.firstName.length > 0) {
             valuesadrees["firstname"] = Profile_Data?.data?.userProfileById && Profile_Data.data.userProfileById.firstName
@@ -86,6 +89,7 @@ const useRegister = (changePanel, props) => {
             })
         }
     }, [Profile_Data])
+    console.log(Profile_Data,"Profile_Data")
     const clear = () => {
         setValues({
             email: "",
@@ -268,7 +272,20 @@ const useRegister = (changePanel, props) => {
                 })
                 return false
             }
+            var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
             if (!pathnames) {
+                if (!regularExpression.test(values.password)) {
+                    console.log("loaslaosd");
+                    values["error"]["emerr"] = true;
+                    values["errortext"]["passerr"] =
+                      "Length of password should be between range 6 to 14 It should be alphanumeric ";
+                    setValues({
+                      ...values,
+                      values,
+                    });
+                    return false;
+                }
+
                 if (values.password !== values.confirmpassword && values['error'] && values['errortext']) {
                     // values['error']['passerr'] = true
                     values['error']['cnfpasserr'] = true

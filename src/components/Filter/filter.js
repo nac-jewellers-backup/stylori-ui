@@ -51,7 +51,7 @@ const PersistentDrawerLeft = (props) => {
   } = React.useContext(FilterOptionsContext);
 
   const { NetworkCtx } = React.useContext(NetworkContext);
-  const { Globalctx } = React.useContext(GlobalContext);
+  const { Globalctx } = React.useContext(GlobalContext);  
 
   return (
     <Component
@@ -126,6 +126,7 @@ class Component extends React.Component {
       Price_button_click: false,
       chipData: [],
       errorPriceMessage: false,
+      errMsg_Price:""      
     };
   }
   componentDidMount() {
@@ -653,8 +654,13 @@ class Component extends React.Component {
 
       if (pricemin > pricemax) {
         this.setState({ errorPriceMessage: true });
+        this.setState({errMsg_Price:"Max Price should be greater!!"})
       } else if (pricemin === 0 && pricemax === 0) {
-        return false;
+        this.setState({ errorPriceMessage: true });
+        // var errMsg_Price="Enter Min and max price";
+        this.setState({errMsg_Price:"Enter Min and max price!!"})
+        // seterrMsg_Price("Enter Min and max price")
+        // return false;
       } else {
         this.setState(checked);
         this.setState({ numOne: price_min, numTwo: price_max }, () => {
@@ -682,6 +688,7 @@ class Component extends React.Component {
       .find((element) => element === "/goldcoins" || element === "goldcoins");
     const { classes } = this.props;
     const { filter, subFilter, sortOptions } = this.props.data[0];
+    console.log(this.props.data);
 
     let { selected, check } = this.state;
     const { open, openMobile } = this.state;
@@ -815,7 +822,7 @@ class Component extends React.Component {
                           </Grid>
                           {this.state.errorPriceMessage ? (
                             <label className={`${classes.priceError}`}>
-                              Max price should be greater
+                              {this.state.errMsg_Price}
                             </label>
                           ) : null}
                         </div>
@@ -1270,7 +1277,8 @@ class Component extends React.Component {
                 </Slide>
               </div>
             </Hidden>
-          )}
+          )
+          }
           {this.state.productDisplay && (
             <div
               className={`${
@@ -1295,7 +1303,8 @@ class Component extends React.Component {
                   style={{ backgroundColor: "whitesmoke" }}
                   ref={this.myRef}
                 />
-              )}
+              )
+              }
             </div>
           )}
         </div>
@@ -1692,7 +1701,7 @@ class Component extends React.Component {
             </AppBar>
           </div>
           {this.state.CardRadio ? (
-            <div style={{ position: "fixed", bottom: "42px" }}>
+            <div style={{ position: "fixed", bottom: "45px" }}>
               <CardRadioButton
                 cardWidth="cardSortSmallScreen"
                 data={sortOptions}

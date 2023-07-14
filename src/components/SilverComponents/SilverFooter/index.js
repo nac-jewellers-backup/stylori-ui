@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
+console.log("asdadad")
 function SilverFooter() {
   const classes = useStyles();
   return (

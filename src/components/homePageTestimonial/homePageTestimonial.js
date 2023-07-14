@@ -14,7 +14,8 @@ export default function HomePageTestimonial(props) {
       <Grid item className="selectionHead">
         <em className="LeftImage"></em>
         <Grid className="headerTestimony">
-          <span className="Typograpytestimony">Testimonial</span>
+          <span className="Typograpytestimony">Testimonial
+          </span>
         </Grid>
         <em className="rightImage"></em>
       </Grid>

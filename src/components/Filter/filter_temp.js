@@ -218,7 +218,7 @@ class PersistentDrawerLeft extends React.Component {
                     <List className="fil-main-list">
                       <div style={{ margin: "5px" }}>
                         <Typography className="fil-list-items">
-                          Price
+                          Price1
                         </Typography>
                         <Grid
                           container

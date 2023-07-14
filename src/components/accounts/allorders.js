@@ -1492,7 +1492,7 @@ class Allorders extends React.Component {
                                     cursor: "pointer",
                                   }}
                                   onClick={() =>
-                                    window.location.replace("/stylori")
+                                    window.location.replace("/styloriz")
                                   }
                                 >
                                   Stylori

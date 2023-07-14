@@ -69,8 +69,7 @@ class ProductDescription extends Component {
 
     fadeImages.sort((a, b) => 0.5 - Math.random());
     // const title = this.props.title;
-    const datadescription =
-      this.props.data && this.props.data[0] && this.props.data[0].seoText;
+    const datadescription = this.props.data && this.props.data[0] && this.props.data[0].seoText;
     const renderTitle = () => {
       // var pathname_split_hyphen = path[1].split("-");
       var a = window.location.pathname.split("/");
@@ -163,9 +162,11 @@ class ProductDescription extends Component {
               >
                 <p>
                   <div className="DescriptionContent">
+                    
                     {this.state.showLess === true ? (
                       <>
-                        {datadescription && datadescription.slice(0, 160)}
+                        {console.log(datadescription.trim().length,"datadescription.length")}
+                        {datadescription.trim() !== ''?datadescription.trim() && datadescription.slice(0, 160):"No description"}
                         <span id="moreDots" style={{ display: "inline" }}>
                           ...
                         </span>
@@ -182,7 +183,7 @@ class ProductDescription extends Component {
                       </>
                     ) : (
                       <>
-                        {datadescription}
+                         {datadescription.trim() !== ''?datadescription :"No description"}
                         <p
                           onClick={this.handleReadMore}
                           className={`know-txt ${classes.colorLight}`}

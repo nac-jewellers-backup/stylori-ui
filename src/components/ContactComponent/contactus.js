@@ -90,13 +90,25 @@ export default function CustomizedInputs() {
         emailError: "",
         errorMessage: "",
         phoneError: "",
-        open: false
+        open: false,
+        error: {
+            email: false,
+            first_name: false,
+            last_name: false
+        },
     });
     const classes = useStyles();
+    const email_regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     const { data: ntxdata, makeFetch } = useNetworkRequest('/addquestion', {}, false, {})
     const handleChange = (name, value) => {
         setValues({ ...values, [name]: value, errorName: "", emailError: "", errorMessage: "", phoneError: "" })
     }
+
+    // const handleEmailBlur = () => {
+    //     const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    //     setIsValidEmail(emailRegex.test(email));
+    // };
+
     const handleClose = () => {
         setValues({ ...values, open: false })
     }
@@ -106,6 +118,17 @@ export default function CustomizedInputs() {
         }
         else if (!values.email) {
             setValues({ ...values, emailError: "Email is required" })
+        }
+        else if (values.email && !values.email.match(email_regex)) {
+            let error = values.error;
+            error.email = true;
+            values['emailError'] = "Email Id is invalid"
+            setValues({
+                ...values,
+                values,
+                error
+
+            })
         }
         else if (!values.phone) {
             setValues({ ...values, phoneError: "Phone is required" })
@@ -155,7 +178,7 @@ export default function CustomizedInputs() {
                                 placeholder="Enter your name"
                                 value={values.name}
                                 error={values.errorName ? true : false}
-                                onChange={e => handleChange('name', e.target.value)}
+                                onChange={e => handleChange('name', e.target.value.replace(/^\s*$/,""))}
                             />
                             <label className='errtext'> {values && values?.errorName}</label>
                             <Input
@@ -175,11 +198,11 @@ export default function CustomizedInputs() {
                                 variant="outlined"
                                 type="tel"
                                 autoComplete='off'
-                                name="Phone"
+                                name="phone"
                                 maxLength={10}
                                 value={values.phone}
                                 error={values.phoneError ? true : false}
-                                onChange={e => handleChange('Phone', e.target.value)}
+                                onChange={e => handleChange('phone', e.target.value.replace(/\D/g, ""))}
                                 placeholder="Enter your mobile number"
                             />
                             <label className='errtext'> {values && values?.phoneError}</label>
@@ -195,7 +218,7 @@ export default function CustomizedInputs() {
                                 multiline={true}
                                 rowsMax={5}
                                 row={3}
-                                onChange={e => handleChange('message', e.target.value)}
+                                onChange={e => handleChange('message', e.target.value.replace(/^\s*$/,""))}
                                 error={values && values?.errorMessage ? true : false}
                             />
                             <label className='errtext'> {values && values?.errorMessage}</label>

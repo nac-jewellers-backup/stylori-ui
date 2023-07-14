@@ -164,6 +164,7 @@ export const TopFilters = (props) => {
                           xs={12}
                           className={classes.spacingfilterdiv}
                         >
+                          {console.log(listName.url,"listName.url")}
                           <Grid item xs={6} className={classes.filtersLabel}>
                             <a href={listName.url}>
                               {listName === "Collection"

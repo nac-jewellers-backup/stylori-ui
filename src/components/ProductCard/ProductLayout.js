@@ -40,8 +40,15 @@ const styles = theme => ({
 
 });
 const ProductLayout = (props) => {
+  console.log(props,"sont")
   const { setOffset, setFirst, FilterOptionsCtx } = React.useContext(FilterOptionsContext);
-  return <Component offset={FilterOptionsCtx.offset} setOffset={setOffset} setFirst={setFirst} loadingFilterCtx={FilterOptionsCtx.loadingfilters} {...props} />
+  return(props.data.length>0?
+    <Component offset={FilterOptionsCtx.offset} setOffset={setOffset} setFirst={setFirst} loadingFilterCtx={FilterOptionsCtx.loadingfilters} {...props} />:<h1 style={{textAlign: 'center'}}>No Products Found</h1>
+  )
+  
+
+  
+  
 }
 
 class Component extends React.Component {
@@ -131,6 +138,7 @@ class Component extends React.Component {
               </GridList>
 
               <div className={`${classes.gridlistmainviewmore}`}>
+              
                 {this.state.loadingtext
                   ?
                   <div style={{ textAlign: 'center' }}>Loading...</div>
@@ -138,14 +146,27 @@ class Component extends React.Component {
                   <>
                   {
                     data && data.length !== 0 ?
-                  data[0] && data[0].totalCount && (data[0].totalCount - data.length === 0 ||  data[0].totalCount - data.length < 0) ?
+                  data[0] && data[0].totalCount && (data[0].totalCount - data.length <= 0 ) ?
                     ''
                     :
                     <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data && data.length < 24} >
                       {data && data.length === 0 && `No products found`}
-                      {data && data.length >= 24 && ` View ${data && data.length > 0 && data[0] ? data[0].totalCount - data.length : ''} More Products`}
-                      {(data && data.length > 0 && data.length < 24)
-                        && `Only ${data && data.length > 0 && data[0]? data[0].totalCount - data.length : ''} products avalilable`}
+                      
+                      {data &&
+                                data.length >= 24 &&
+                                ` View ${
+                                  data && data.length > 0 && data[0]
+                                    ? data[0].totalCount - data.length
+                                    : ""
+                                } More Products`}
+                              {data &&
+                                data.length > 0 &&
+                                data.length < 24 &&
+                                `Only ${
+                                  data && data.length > 0 && data[0]
+                                    ? data[0].totalCount - data.length
+                                    : ""
+                                } products available`}
                     </Button>
                     :
                         <>

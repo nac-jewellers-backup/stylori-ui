@@ -143,7 +143,7 @@ const RatingComponent = (props) => {
                         maxLength={60}
                         placeholder="Title"
                         className="rating-form-text"
-                        onChange={e => handlers.handleChange('title', e.target.value)}
+                        onChange={e => handlers.handleChange('title', e.target.value.replace(/^\s*$/,""))}
                         // helperText="please Enter review title"
                         error={values.error && values.error.ratetitle ? true : false}
                     // required
@@ -161,11 +161,11 @@ const RatingComponent = (props) => {
                             fullWidth
                             placeholder={isSilver ? 'Type your review here' : 'Write your review here'}
                             className="rating-form-text"
-                            maxLength={250}
+                            inputProps={{ maxLength: 250 }}
                             value={values.message}
                             multiline={true}
                             rowsMax={4}
-                            onChange={e => handlers.handleChange('message', e.target.value)}
+                            onChange={e => handlers.handleChange('message', e.target.value.replace(/^\s*$/,""))}
                             error={values.error && values.error.ratemsg ? true : false}
                         />
                     </div>

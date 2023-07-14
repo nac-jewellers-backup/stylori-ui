@@ -519,7 +519,7 @@ function Login2(props) {
                   <Grid item xs={12}>
                     <TextField
                       placeholder="Mobile Number"
-                      type="number"
+                      type="tel"
                       value={number.mobile}
                       onChange={(e) =>
                         handleMobileChange(e.target.value, "mobile")
@@ -570,6 +570,7 @@ function Login2(props) {
                   value={values.email}
                   onChange={(e) => handleChange(e.target.value, "email")}
                   fullWidth
+                  required
                 />
                 {values.error.email !== "" && (
                   <Typography style={{ fontSize: "10px", color: "red" }}>
@@ -592,7 +593,7 @@ function Login2(props) {
                   </Typography>
                 )}
                 <span className="forgotPassword">
-                  <Typography onClick={() => onRegister()}>
+                  <Typography onClick={() => { window.location.href = '/forgotPassword' }}>
                     Forget password?
                   </Typography>
                 </span>
