@@ -26,8 +26,12 @@ export default class Stylori extends Component {
       .then((data) => {
         const dataRecieved = data.data.allCdns.nodes;
         const pages = dataRecieved?.map((val) => val.page);
+        console.log(pages,"kkk")
         const isCdnPage = pages.includes(window.location.pathname.split("/")[1]);
-        localStorage.setItem("isCdnPage", isCdnPage)
+        if(window.location.pathname.includes("silver")){
+          localStorage.setItem("isCdnPage", "true")
+        }
+        // localStorage.setItem("isCdnPage", isCdnPage)
         this.setState({
           ...this.state,
           cmspage: isCdnPage,

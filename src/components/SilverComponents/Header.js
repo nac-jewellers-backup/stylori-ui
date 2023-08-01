@@ -22,6 +22,7 @@ import {
   Select,
   MenuItem
 } from "@material-ui/core";
+import { withRouter } from 'react-router-dom';
 import { Autocomplete } from "@material-ui/lab";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Hidden } from "@material-ui/core";
@@ -138,6 +139,14 @@ class Header extends Component {
         }
       });
   }
+
+  handleClick1 = () => {
+    // Perform some actions or logic if needed
+
+    // Use the history object to navigate to a new route
+    console.log("vic")
+    this.props.history.push('/');
+  };
 
   getGoldPrice = () => {
     fetch(`${API_URL}/graphql`, {
@@ -822,13 +831,22 @@ class Header extends Component {
                           id="logoDiv1"
                           className="logoDiv1"
                           // bof :: code change ----------
-                          onClick={() => window.history.go()}
+                          // onClick={() => window.history.go()}
 
-                          // onClick={() => {
-                          //   window.location.href = isSilver
-                          //     ? "/styloriSilver"
-                          //     : "/";
-                          // }}
+
+
+                          onClick={() => {
+                            var silverI = localStorage.getItem("isCdnPage");
+                            // var destination = silverI ? "/styloriSilver" : "/";
+                            if(silverI){
+                              window.location.href = "/styloriSilver";
+                            }
+                            else{
+                              window.location.href = "/";
+                            }
+                            // Now use the 'destination' variable as needed, for example:
+                            // window.location.href = destination;
+                        }}
                           // eof :: code change -----------
                           style={{ cursor: "pointer"}}
                         >
