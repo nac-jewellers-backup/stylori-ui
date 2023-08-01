@@ -56,12 +56,20 @@ export const RouterApp = (props) => {
     return val;
   });
   // condition()
-  if(window.location.pathname.includes("silver")) {
-    localStorage.setItem("isCdnPage", "true")        
+  const p1 = window.location.pathname
+  const regex = /silver/i;
+  const hasSubstring = regex.test(p1);
+  var in_Path=(window.location.pathname.includes("Silver")||window.location.pathname.includes("silver"))
+
+
+  if(hasSubstring) {
+    localStorage.setItem("isCdnPage", "true")    
+   
   }
-  else{
-    localStorage.setItem("isCdnPage", "")   
-  }
+  // else{
+  //   localStorage.setItem("isCdnPage", "")   
+  //   console.log("pathvicky")
+  // }
   return (
     <>
       <Switch history={browserHistory}>

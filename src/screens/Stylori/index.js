@@ -25,18 +25,27 @@ export default class Stylori extends Component {
       .then((res) => res.json())
       .then((data) => {
         const dataRecieved = data.data.allCdns.nodes;
-        const pages = dataRecieved?.map((val) => val.page);        
-        const isCdnPage = pages.includes(window.location.pathname.split("/")[1]);        
-        var in_Path=window.location.pathname.includes("silver")
+        const pages = dataRecieved?.map((val) => val.page);
+        console.log(pages,"kkk")
+        const isCdnPage = pages.includes(window.location.pathname.split("/")[1]);
+        console.log(isCdnPage,"jj")
+        const p1 = window.location.pathname
+        const regex = /silver/i;
+        const hasSubstring = regex.test(p1);
+        var in_Path=(window.location.pathname.includes("Silver")||window.location.pathname.includes("silver"))
+        console.log(in_Path,"in_Path")
+        console.log(hasSubstring,"hasSubstring1")
         // if(window.location.pathname.split("/")[1].includes("silver")){
         //   localStorage.setItem("isCdnPage", "true")
         // }
-        if(isCdnPage || in_Path){
+        if(isCdnPage || hasSubstring){
           localStorage.setItem("isCdnPage", "true")
-        } 
-        else{
-          localStorage.setItem("isCdnPage", "")          
-        }       
+        }
+        // else{
+        //   localStorage.setItem("isCdnPage", "")
+        // }
+
+        
         this.setState({
           ...this.state,
           cmspage: isCdnPage,

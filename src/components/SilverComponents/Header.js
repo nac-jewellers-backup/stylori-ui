@@ -426,6 +426,7 @@ class Header extends Component {
                           }}
                           style={{ cursor: "pointer" }}
                         >
+                          
                           <img
                             id="logoImage"
                             className={`${isSilver && "silverlogo"} ${"imges"}`}
@@ -837,7 +838,7 @@ class Header extends Component {
 
                           onClick={() => {
                             var silverI = localStorage.getItem("isCdnPage");                            
-                            if(silverI){
+                            if(isSilver){
                               window.location.href = "/styloriSilver";
                             }
                             else{
@@ -846,6 +847,7 @@ class Header extends Component {
                             // Now use the 'destination' variable as needed, for example:
                             // window.location.href = destination;
                         }}
+                        
                           // eof :: code change -----------
                           style={{ cursor: "pointer"}}
                         >
@@ -859,8 +861,10 @@ class Header extends Component {
                             alt="...."
                             style={{
                               transition: "height 0.2s",
+                              
                             }}
                           />}
+                          
                           {isSilver && 
                             <img 
                               // id="logoImage"
@@ -870,6 +874,7 @@ class Header extends Component {
                               onLoad={() => this.setState({ load: true })}
                               onLoadedData={() => this.setState({ load: false })}
                               loading="lazy"
+                              
                             />
                           }
                         </div>
@@ -1295,6 +1300,7 @@ class Header extends Component {
                         }}
                         style={{ cursor: "pointer" }}
                       >
+                        
                         <img
                           className={`imgsilver`}
                           src={isSilver ? stylorisilverlogo : styloriLogo}
