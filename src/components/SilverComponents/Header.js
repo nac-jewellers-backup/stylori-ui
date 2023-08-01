@@ -836,8 +836,7 @@ class Header extends Component {
 
 
                           onClick={() => {
-                            var silverI = localStorage.getItem("isCdnPage");
-                            // var destination = silverI ? "/styloriSilver" : "/";
+                            var silverI = localStorage.getItem("isCdnPage");                            
                             if(silverI){
                               window.location.href = "/styloriSilver";
                             }

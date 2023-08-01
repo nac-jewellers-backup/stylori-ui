@@ -56,7 +56,12 @@ export const RouterApp = (props) => {
     return val;
   });
   // condition()
- 
+  if(window.location.pathname.includes("silver")) {
+    localStorage.setItem("isCdnPage", "true")        
+  }
+  else{
+    localStorage.setItem("isCdnPage", "")   
+  }
   return (
     <>
       <Switch history={browserHistory}>
