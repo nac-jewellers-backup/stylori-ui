@@ -1967,9 +1967,12 @@ body {
 }
 
 .bigText textarea {
-    height: 80px !important
+    height: 80px !important;
+    padding: 25px;
 }
-
+.MuiOutlinedInput-multiline{
+    padding: 25px !important;
+}
 .errtextFeild {
     color: #B94A48 !important;
     font-size: 13px !important;

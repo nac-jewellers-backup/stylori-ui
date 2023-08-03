@@ -231,6 +231,7 @@ const ContactStylori = () => {
             email: email,
           }),
         })
+        
           .then(status)
           .then(json)
           .then(async (val) => {
@@ -238,12 +239,23 @@ const ContactStylori = () => {
             setOpen(true);
           });
       }
-      else{
-        status(409)
-        setOpen(true)
-        setMessage('Email is Invalid')
+      else {
+        if (email.trim() === "") {
+          status(409)
+          setMessage("Email cannot be empty");
+        } 
+        else {
+          status(409)
+          setMessage("Invalid Email");
+        }
+        setOpen(true);
       }
-    
+      // else{
+      //   
+      //   setMessage("Email is Invalid")
+      //   setOpen(true)
+      // }
+      
     
   };
 

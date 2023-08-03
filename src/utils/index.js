@@ -391,7 +391,7 @@ export const shopByCategory = [
 
 export const aboutUs = [
   {
-    url: "/aboutus",
+    url: "https://www.nacjewellers.com/aboutus",
     title: "NAC Jewellers",
   },
   {

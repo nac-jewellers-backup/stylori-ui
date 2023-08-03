@@ -11,26 +11,21 @@ class faqsHelp extends React.Component {
                     <Typography style={{ fontSize: "17px", fontWeight: "600" }} gutterBottom>We're Here To Help</Typography>
                 </Grid>}
                 <Grid item xs={12} container alignItems="center">
-                    <span item xs={3} className="phone" >
-                    </span>
+                <i className="iTags fa">&#xf095;</i>
                     <a href="tel:18001020330" style={{ color: '#394578', fontSize: "13px", paddingLeft: "6px", textDecoration: "none" }}>1800 102 0330</a>
 
                 </Grid>
                 <Grid item xs={12} container alignItems="center">
-                    <span item xs={3} className="whatsapp">
-
-                    </span>
+                <i className="iTags fa">&#xf232;</i>
                     <p style={{ color: "#394578", fontSize: "13px" }}><span style={{ paddingLeft: "6px", paddingTop: "14px" }}>+91 99526 25252</span></p>
                 </Grid>
                 <Grid item xs={12} container alignItems="center">
-                    <span item xs={3} className="mail">
-
-                    </span>
+                    <i className="iTags fa">&#xf003;</i>
                     <a href="mailto:hello@stylori.com" style={{ color: "#394578 ", fontSize: "13px", paddingLeft: "6px", textDecoration: "none" }}>hello@stylori.com</a>
                 </Grid>
                 <Grid item xs={12} container alignItems="center" style={{ padding: "6px 0px 0px 2px" }}>
-                    <span item xs={3} class="chat">
-                    </span>
+                <i className="iTags fa">&#xf0e6;</i>
+                   
                     <a  href="/#"
                           target="_blank"
                           el="noopener noreferrer" style={{ color: "#394578", fontSize: "13px", paddingLeft: "6px", textDecoration: "none" }}>Start live chat </a>
