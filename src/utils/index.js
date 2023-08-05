@@ -365,7 +365,7 @@ const silverFooterService = [
     Title: "FAQ's",
   },
 ];
-
+// vicky url changes the collection aug 5 
 export const shopByCategory = [
   {
     url: "/silver-jewellery",
@@ -376,7 +376,8 @@ export const shopByCategory = [
     title: "Style",
   },
   {
-    url: "/silver-jewellery-from+loops+collection",
+    // url: "/silver-jewellery-from+loops+collection",
+    url: "/silver-jewellery",
     title: "Collections",
   },
   {
@@ -388,7 +389,7 @@ export const shopByCategory = [
     title: "Ready to ship",
   },
 ];
-
+// done changes aug 5 vicky collection url 
 export const aboutUs = [
   {
     url: "https://www.nacjewellers.com/aboutus",

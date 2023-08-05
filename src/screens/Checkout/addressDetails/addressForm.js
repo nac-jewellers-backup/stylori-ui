@@ -274,7 +274,7 @@ const AddressComponent = (props) => {
                             name="pincode"
                             short
                             maxLength="6"
-                            placeholder="Pin code/Zip code"
+                            placeholder="Pin code/Zip code1"
                             onChange={(event) =>
                               handle.handleChange(
                                 "addressOne",
@@ -446,7 +446,7 @@ const AddressComponent = (props) => {
                               handle.handleChange(
                                 "addressOne",
                                 "addressline1",
-                                event.target.value
+                                event.target.value.replace(/^\s*$/,"")
                               )
                             }
                             value={values.addressOne.addressline1}
@@ -651,7 +651,7 @@ const AddressComponent = (props) => {
                                 type="tel"
                                 name="pincode"
                                 maxLength="6"
-                                placeholder="Pin code/Zip cod3e"
+                                placeholder="Pin code/Zip code"
                                 onChange={(event) =>
                                   handle.handleChange(
                                     "addressOne",

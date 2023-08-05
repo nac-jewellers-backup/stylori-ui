@@ -201,17 +201,20 @@ class Component extends React.Component {
     const previous = () => {
       slider.current.slickPrev();
     };
+    // change sthe order of clarity aug 5 
     const dimondclarity = (val) => {
       if (val) {
         if (val.length === 4) {
-          return val[0] + val[1] + "-" + val[2] + val[3];
+          return val[2] + val[3] + "-" + val[0] + val[1];
         } else if (val.length === 5) {
-          return val[0] + val[1] + val[2] + "-" + val[3] + val[4];
+          // return val[0] + val[1] + val[2] + "-" + val[3] + val[4];
+          return val[3] + val[4] + "-" + val[0] + val[1] + val[3];
         } else {
           return val;
         }
       }
     };
+    // change the order of clarity 
     const handle_extension = (_url) => {
       if (_url) {
         var url_extension = _url

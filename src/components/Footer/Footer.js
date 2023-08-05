@@ -423,7 +423,7 @@ export default function Footer(props) {
                             <input
                               value={state}
                               id="_input"
-                              style={{ width: "300px" }}
+                              style={{ width: "300px" ,height:"36px"}}
                               type="email"
                               onInvalid={(e) => {
                                 e.preventDefault();

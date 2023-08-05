@@ -116,9 +116,12 @@ export default function NeedHelp(props) {
                   xs={12}
                   sm={4}
                   style={{ padding: "5px 0px", margin: "auto" }}
+                  onClick={() => {
+                    window.location.href = "mailto: hello@stylori.com";
+                  }}
                 >
                   {/* <a href="https://direct.lc.chat/5807571/" target="_blank"> */}
-                  <ChatIcon onClick={() => window.LC_API.open_chat_window()} />
+                  <ChatIcon />
                   {/* </a> */}
                 </Grid>
                 <Grid

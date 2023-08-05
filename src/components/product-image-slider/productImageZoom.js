@@ -390,7 +390,7 @@ class ProductImageZoom extends React.Component {
                     />
                   </div>
                
-
+                  {/* vicky changes cursor aug 5  */}
                 {this.handleVideoCheck(showimage) ? (
                   <video
                     preload="auto"
@@ -413,6 +413,7 @@ class ProductImageZoom extends React.Component {
                       `${CDN_URL}product/1000X1000/productnotfound.webp`,
                     ]}
                     imageAlt="Stylori"
+                    cursorStyle='auto'
                     magnifierSize={this?.props?.isSilver ? "40%" : "50%"}
                     largeImageSrc={[
                       largeImage,
@@ -427,7 +428,7 @@ class ProductImageZoom extends React.Component {
                   />
                 )}
               </div>
-
+                    {/* eol changes cursor vicky aug 5  */}
               <div></div>
             </div>
             <Grid container>
