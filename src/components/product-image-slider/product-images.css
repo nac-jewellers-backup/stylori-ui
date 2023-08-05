@@ -1965,7 +1965,9 @@ body {
     padding: 1px
         /* width: 45px; */
 }
-
+.makeStyles-popper-152{
+    z-index: 99 !important;
+}
 .bigText textarea {
     height: 80px !important;
     padding: 25px;

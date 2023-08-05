@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     // minWidth: "200px",
     minWidth: 60,
     marginBottom: 5,
-    zIndex: 10,
     [theme.breakpoints.down("sm")]: {
       minWidth: 0,
     },

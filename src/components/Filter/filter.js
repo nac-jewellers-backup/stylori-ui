@@ -651,7 +651,7 @@ class Component extends React.Component {
           : price_max.indexOf(" ") > -1
           ? Number(price_max.substr(2))
           : Number(price_max.substr(1));
-
+      console.log(pricemax,"pricemax")
       if (pricemin > pricemax) {
         this.setState({ errorPriceMessage: true });
         this.setState({errMsg_Price:"Max Price should be greater!!"})

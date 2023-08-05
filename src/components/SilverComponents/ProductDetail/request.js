@@ -33,7 +33,7 @@ class Request extends React.Component {
             errorMessage: {
                 mailId: "Please filled out your email Id",
                 names: "Please filled out name",
-                mobileNo: "Please enter your 10 digit mobile number",
+                mobileNo: "Please enter your mobile number",
             },
         };
     }

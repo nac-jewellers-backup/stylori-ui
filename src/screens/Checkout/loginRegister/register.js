@@ -508,7 +508,7 @@ const RegisterComponent = (props) => {;
                         // onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
                         placeholder="Phone*"
                         value={valuesadrees.contactno}
-                        helperText="Enter your 10 digit mobile number"
+                        helperText="Enter your validmobile number"
                         isNumber
                         maxLength={10}
                         minLength={10}

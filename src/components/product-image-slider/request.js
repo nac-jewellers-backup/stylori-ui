@@ -219,7 +219,7 @@ class Request extends React.Component {
                                         helperText={errors.names ? errorMessage.names : ''}
                                         placeholder="Enter your name"
                                         className="request-text"
-                                        onChange={event => handleChange(event,'names')}
+                                        onChange={event => handleChange(event.target.value.replace(/[^a-z]/gi, ""),'names')}
                                     />
                                     <label className='errtextFeild'> {errors.names && this.state.errorMessage.names && this.state.errorMessage.names}</label>
                                 </Grid>

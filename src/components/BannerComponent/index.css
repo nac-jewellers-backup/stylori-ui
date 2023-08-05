@@ -354,7 +354,7 @@
 
 .slickdevStatic {
   position: absolute;
-  bottom: 10px;
+  bottom: 0px;
   left: 50%;
   z-index: 15;
   width: 60%;

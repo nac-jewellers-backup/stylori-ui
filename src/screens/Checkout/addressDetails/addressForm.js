@@ -152,7 +152,7 @@ const AddressComponent = (props) => {
                               handle.handleChange(
                                 "addressOne",
                                 "firstname",
-                                event.target.value
+                                event.target.value.replace(/[^a-z]/gi, "")
                               )
                             }
                             helperText="First name is required"
@@ -172,7 +172,7 @@ const AddressComponent = (props) => {
                               handle.handleChange(
                                 "addressOne",
                                 "lastname",
-                                event.target.value
+                                event.target.value.replace(/[^a-z]/gi, "")
                               )
                             }
                             helperText="Last name is required"
@@ -361,7 +361,7 @@ const AddressComponent = (props) => {
                               handle.handleChange(
                                 "addressOne",
                                 "firstname",
-                                event.target.value
+                                event.target.value.replace(/[^a-z]/gi, "")
                               )
                             }
                             helperText="First name is required"
@@ -378,14 +378,14 @@ const AddressComponent = (props) => {
                               handle.handleChange(
                                 "addressOne",
                                 "lastname",
-                                event.target.value
+                                event.target.value.replace(/[^a-z]/gi, "")
                               )
                             }
                             helperText="Last name is required"
                           />
                         </Grid>
                       </Grid>
-                      -<Grid container spacing={2}>
+                      <Grid container spacing={2}>
                         <Grid item xs={6} lg={6} style={{marginTop:10}}>
                         <SimpleSelect2 
                             selectData={countryCode } 
@@ -571,7 +571,7 @@ const AddressComponent = (props) => {
                                   handle.handleChange(
                                     "addressOne",
                                     "firstname",
-                                    event.target.value
+                                    event.target.value.replace(/[^a-z]/gi, "")
                                   )
                                 }
                                 helperText="First name is required"
@@ -590,7 +590,7 @@ const AddressComponent = (props) => {
                                   handle.handleChange(
                                     "addressOne",
                                     "lastname",
-                                    event.target.value
+                                    event.target.value.replace(/[^a-z]/gi, "")
                                   )
                                 }
                                 helperText="Last name is required"
