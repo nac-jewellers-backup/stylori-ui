@@ -44,15 +44,15 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     fontSize: 12,
     opacity: 0.9,
-    cursor:"pointer"
+    cursor: "pointer",
   },
   paymentModeContainer: {
     position: "absolute",
     width: "fit-content",
     // margin: "40px auto 0px",
     bottom: "0px",
-    [theme.breakpoints.down('sm')]:{
-      bottom:"-35px"
+    [theme.breakpoints.down("sm")]: {
+      bottom: "-35px",
     },
     "& img": {
       width: "400px",
@@ -79,12 +79,13 @@ function DesktopFooter() {
           </Typography>
           <div className={classes.categoryItemContainer}>
             {shopByCategory.map((item) => (
-              <Typography className={classes.categoryItem}
-              onClick={() => {
-                window.location.href = item?.url;
-              }}
-              href="#"
-               >
+              <Typography
+                className={classes.categoryItem}
+                onClick={() => {
+                  window.location.href = item?.url;
+                }}
+                href="#"
+              >
                 {item.title}
               </Typography>
             ))}
@@ -94,11 +95,12 @@ function DesktopFooter() {
           <Typography className={classes.categoryTitle}>About Us</Typography>
           <div className={classes.categoryItemContainer}>
             {aboutUs.map((item) => (
-              <Typography className={classes.categoryItem}
-              onClick={() => {
-                window.location.href = item?.url;
-              }}
-              href="#"
+              <Typography
+                className={classes.categoryItem}
+                onClick={() => {
+                  window.location.href = item?.url;
+                }}
+                href="#"
               >
                 {item.title}
               </Typography>
@@ -111,12 +113,13 @@ function DesktopFooter() {
           </Typography>
           <div className={classes.categoryItemContainer}>
             {customerService.map((item) => (
-              <Typography className={classes.categoryItem}
-              
-              onClick={() => {
-                window.location.href = item?.url;
-              }}
-              href="#">
+              <Typography
+                className={classes.categoryItem}
+                onClick={() => {
+                  window.location.href = item?.url;
+                }}
+                href="#"
+              >
                 {item.title}
               </Typography>
             ))}
@@ -126,11 +129,13 @@ function DesktopFooter() {
           <Typography className={classes.categoryTitle}>Contact Us</Typography>
           <div className={classes.categoryItemContainer}>
             {contactUs.map((item) => (
-              <Typography className={classes.categoryItem}
-              onClick={() => {
-                window.location.href = item?.url;
-              }}
-              href="#">
+              <Typography
+                className={classes.categoryItem}
+                onClick={() => {
+                  window.location.href = item?.url;
+                }}
+                href="#"
+              >
                 {item.title}
               </Typography>
             ))}
@@ -217,46 +222,41 @@ const ContactStylori = () => {
   const handleEmail = () => {
     var emailvld =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; //eslint-disable-line
-    
-      if(email.match(emailvld)){
-        fetch(`${API_URL}/addemailsubscription`, {
-          method: "post",
-          // body: {query:seoUrlResult,variables:splitHiphen()}
-          // body: JSON.stringify({query:seoUrlResult}),
-  
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email,
-          }),
-        })
-        
-          .then(status)
-          .then(json)
-          .then(async (val) => {
-            setMessage(val.message);
-            setOpen(true);
-          });
+
+    if (email.match(emailvld)) {
+      fetch(`${API_URL}/addemailsubscription`, {
+        method: "post",
+        // body: {query:seoUrlResult,variables:splitHiphen()}
+        // body: JSON.stringify({query:seoUrlResult}),
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      })
+        .then(status)
+        .then(json)
+        .then(async (val) => {
+          setMessage(val.message);
+          setOpen(true);
+        });
+    } else {
+      if (email.trim() === "") {
+        status(409);
+        setMessage("Email cannot be empty");
+      } else {
+        status(409);
+        setMessage("Invalid Email");
       }
-      else {
-        if (email.trim() === "") {
-          status(409)
-          setMessage("Email cannot be empty");
-        } 
-        else {
-          status(409)
-          setMessage("Invalid Email");
-        }
-        setOpen(true);
-      }
-      // else{
-      //   
-      //   setMessage("Email is Invalid")
-      //   setOpen(true)
-      // }
-      
-    
+      setOpen(open);
+    }
+    // else{
+    //
+    //   setMessage("Email is Invalid")
+    //   setOpen(true)
+    // }
   };
 
   return (
@@ -270,7 +270,7 @@ const ContactStylori = () => {
           placeholder="Enter Email"
           endAdornment={
             <InputAdornment position="end">
-              <MailOutlineRoundedIcon onClick={()=>handleEmail()}/>
+              <MailOutlineRoundedIcon onClick={() => handleEmail()} />
             </InputAdornment>
           }
           className={classes.input}
@@ -285,18 +285,16 @@ const ContactStylori = () => {
       </ThemeProvider>
 
       <SnackBar
-            handleClose={handleClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "right",
-            }}
-            classNameCloseIcon={"closeIcon"}
-            classNames={stateClassname}
-            message={message}
-            open={open}
-          />
-
-      <div></div>
+        handleClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
+        }}
+        classNameCloseIcon={"closeIcon"}
+        classNames={stateClassname}
+        message={message}
+        open={open}
+      />
     </div>
   );
 };

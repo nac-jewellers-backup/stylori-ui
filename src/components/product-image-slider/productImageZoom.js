@@ -332,7 +332,7 @@ class ProductImageZoom extends React.Component {
                   //     : this.props.data[0].size,
                   display: "flex",
                   alignItem: "center",
-                  position:'relative'
+                  position:'relative',
                 }}
               >
                 {data.map((val) => {
@@ -390,7 +390,7 @@ class ProductImageZoom extends React.Component {
                     />
                   </div>
                
-                  {/* vicky changes cursor aug 5  */}
+
                 {this.handleVideoCheck(showimage) ? (
                   <video
                     preload="auto"
@@ -428,7 +428,7 @@ class ProductImageZoom extends React.Component {
                   />
                 )}
               </div>
-                    {/* eol changes cursor vicky aug 5  */}
+
               <div></div>
             </div>
             <Grid container>
@@ -438,6 +438,7 @@ class ProductImageZoom extends React.Component {
                   width: "100%",
                   padding: "0px 15px",
                   marginTop: "10px",
+
                 }}
               >
                 <Gagetstylori isSilver={this.props.isSilver} />

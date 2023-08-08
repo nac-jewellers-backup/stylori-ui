@@ -272,13 +272,14 @@ const useRegister = (changePanel, props) => {
                 })
                 return false
             }
-            var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+            
+            // var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
+            var regularExpression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
             if (!pathnames) {
                 if (!regularExpression.test(values.password)) {
-                    console.log("loaslaosd");
                     values["error"]["emerr"] = true;
                     values["errortext"]["passerr"] =
-                      "Length of password should be between range 6 to 14 It should be alphanumeric ";
+                      "The password to have at least one uppercase letter, one lowercase letter, one digit, and one special character, while also meeting the length criteria of 8 to 20 characters"
                     setValues({
                       ...values,
                       values,

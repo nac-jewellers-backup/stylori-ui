@@ -138,11 +138,14 @@ const Gallery = (
             class="fa fa-truck"
             style={{ 
             fontSize: "20px",
+            cursor:"default",
             fontFamily: 'FontAwesome !important',
             position: 'absolute',
             zIndex: 500,
             left: '16px',
-            color:"#111"
+            color:"#111", pointerEvents: "none",
+            cursor: 'none'
+            
             }}
           ></i>
           <span className={`one-day-ship-listing-page-label`}>

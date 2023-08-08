@@ -16,6 +16,21 @@
     /* font-family: Roboto !important; */
 
 }
+/* vicky changes aug 7  */
+.fa fa-truck{
+  cursor: default !important;
+}
+
+.overall-icons {
+  font-size: 18px !important;
+  cursor: auto;
+  color:#3b4579
+}
+
+.makeStyles-selectEmpty-54 {
+  margin-top: 16px !important;
+}
+/*  */
   body {
     margin: 0;
     font-family: Roboto;

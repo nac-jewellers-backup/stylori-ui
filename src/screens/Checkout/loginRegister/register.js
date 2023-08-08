@@ -8,11 +8,14 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "config";
 import { COUNTRIES } from "queries/home";
+import { Select } from "@material-ui/core";
+import MenuItem from "@material-ui/core/MenuItem";
+
 const Register = (props) => {
   return <RegisterComponent {...props} />;
 };
 
-const RegisterComponent = (props) => {;
+const RegisterComponent = (props) => {
   let email = localStorage.getItem("email")
     ? localStorage.getItem("email")
     : "";
@@ -20,7 +23,6 @@ const RegisterComponent = (props) => {;
     props.changePanel(2)
   );
 
-  
   // var cc = localStorage.getItem('user_id') ? localStorage.getItem('user_id') : ""
   // var ccc = data.message ? data.message : ""
   const paths = window.location.pathname.split("-")[0] === "/account";
@@ -124,7 +126,8 @@ const RegisterComponent = (props) => {;
                     </>
                   )}
                 </h5>
-              )}
+              )}    
+              {console.log(valuesadrees.salutation,"valuesadrees.salutation")}          
               <Grid container spacing={12}>
                 {paths && (
                   <Grid item lg={2} xs={4}>
@@ -341,9 +344,10 @@ const RegisterComponent = (props) => {;
               )}
               <Grid container spacing={12}>
                 {!paths && (
-                  <Grid item lg={4} xs={4}>
+                  <Grid item lg={4} xs={4}>                                  
                     <SimpleSelect
-                      val={"1"}
+                      style={{ marginTop: "17.4px !important" }}
+                      value={valuesadrees.salutation}
                       name={["Select"]}
                       selectData={[
                         { label: "Mr", value: "Mr" },
@@ -395,7 +399,7 @@ const RegisterComponent = (props) => {;
                         margin="normal"
                         // variant="outlined"
                         type="text"
-                        name="lastname" 
+                        name="lastname"
                         value={values.lastname}
                         error={
                           values.error && values.error.lastname ? true : false
@@ -424,6 +428,7 @@ const RegisterComponent = (props) => {;
                     <Grid item xs={6} lg={6}>
                       <SimpleSelect
                         name="country"
+                        required
                         placeholder="Select your country"
                         selectData={countryCode ?? []}
                         onChange={(event) =>
@@ -432,10 +437,8 @@ const RegisterComponent = (props) => {;
                             event.target.value
                           )
                         }
-                        
                         helperText="Country is required"
                         value={valuesadrees.country ?? ""}
-                        required
                       />
                     </Grid>
                     <Grid
@@ -508,7 +511,7 @@ const RegisterComponent = (props) => {;
                         // onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
                         placeholder="Phone*"
                         value={valuesadrees.contactno}
-                        helperText="Enter your validmobile number"
+                        helperText="Enter valid mobile number"
                         isNumber
                         maxLength={10}
                         minLength={10}

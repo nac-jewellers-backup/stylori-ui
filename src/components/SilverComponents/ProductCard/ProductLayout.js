@@ -139,7 +139,7 @@ class Component extends React.Component {
                   <>
                     <Button variant="contained" className={`${classes.button}  ${classes.viewmoreColor}`} onClick={() => { this.handleOffset() }} disabled={data.length < 24} >
                       {data.length === 0 && `No products found`}
-                      {data.length >= 24 && ` View ${data.length > 0 ? data[0].totalCount - data.length : ''} More Products`}
+                      {data.length >= 24 && ` View ${data.length > 0 ? data[0].totalCount - data.length : ''} More Prod11ucts`}
                       {(data.length > 0 && data.length < 24)
                         && `Only ${data.length > 0 ? data[0].totalCount - data.length : ''} products avalilable`}
                     </Button>

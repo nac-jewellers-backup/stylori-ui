@@ -103,7 +103,7 @@ const Gallery = (props, callmouseover, callmouseout, cardstate, loadAndSaveError
     <div className="imageHeight">
       {props.data.oneDayShipping ? <div className={`${ Math.round(props.data.offerPrice) === Math.round(props.data.price) ? "one-day-ship-listing-page-withoutTop" : "one-day-ship-listing-page"} ${props.classes.colorTheme}`} style={{ zIndex: 2 }}>
         <i class="fa fa-truck" style={{ fontSize: "20px" }}></i>
-        <span className={`one-day-ship-listing-page-label ${props.classes.colorTheme}`}>1 day s1hipping</span>
+        <span className={`one-day-ship-listing-page-label ${props.classes.colorTheme}`}>1 day shipping</span>
 
       </div> : ''}
       {

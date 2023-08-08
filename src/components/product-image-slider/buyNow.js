@@ -219,11 +219,23 @@ const Buydetails = (
                 </Grid>
               </Grid>
               <Grid container>
+                
                 <Grid item className={`buy-subheaders ${classes.normalfonts}`}>
-                  <Typography>
+                  
+                    {/* // vicky changes july 19 */}
+                   {/* 
                     <i class="fa fa-phone overall-icons" aria-hidden="true"></i>
-                    &nbsp;
+                     &nbsp; */}
+                  <Typography>
+                       <a
+                    href="tel:1800-102-0330"
+                    style={{ textDecoration: "none" }}
+                  >
+                   <i class="fa fa-phone overall-icons" aria-hidden="true"></i>
+                  </a>
                   </Typography>
+                  
+                   
                   <Typography className={classes.TypoListed}>
                     {val?.telephone}
                   </Typography>
@@ -231,10 +243,16 @@ const Buydetails = (
 
                 <Grid item className={`buy-subheaders ${classes.normalfonts}`}>
                   <Typography>
+                    
+                       <a
+                    href="https://wa.me/919952625252?text=Hi"
+                    style={{ textDecoration: "none" }}
+                  >
                     <i
                       class="fa fa-whatsapp overall-icons"
                       aria-hidden="true"
                     ></i>
+                  </a>
                     &nbsp;
                   </Typography>
                   <Typography className={classes.TypoListed}>

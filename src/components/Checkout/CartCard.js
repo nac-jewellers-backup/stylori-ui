@@ -1537,8 +1537,8 @@ class Checkoutcard extends React.Component {
                       ? `${classes.normalfontsCheck}`
                       : `subhesder ${classes.normalfonts}`
                   }
-                  style={{lineHeight:0,
-                    marginBottom: this.props.checkout ? '28px' : ''
+                  style={{lineHeight:2,
+                    marginBottom: this.props.checkout ? '20px' : ''
                   }}
                 >
                   {this.props.checkout
