@@ -19,9 +19,9 @@ export default function StyloriInstagramPost(props) {
   const [isTab, setIsTab] = useState(false);
   let post = [];
   // if(localStorage.getItem("instapost")){
-    if(localStorage.getItem(("instapost") !== 'undefined')&&(localStorage.getItem(("instapost")))){
-      post = JSON.parse(localStorage.getItem("instapost"))
-      }
+  if((localStorage.getItem("instapost") !== 'undefined')&&(localStorage.getItem("instapost"))){
+  post = JSON.parse(localStorage.getItem("instapost"))
+  }
 
   const [selected,setSelected] = useState(2);
   useEffect(() => {
