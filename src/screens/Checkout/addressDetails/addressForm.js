@@ -430,7 +430,7 @@ const AddressComponent = (props) => {
                             required
                             name="pincode"
                             maxLength="6"
-                            placeholder="Pin code/Zip code11"
+                            placeholder="Pin code/Zip code"
                             onChange={(event) =>
                               handle.handleChange(
                                 "addressOne",

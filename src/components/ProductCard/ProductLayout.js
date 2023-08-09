@@ -158,7 +158,7 @@ class Component extends React.Component {
                                   data && data.length > 0 && data[0]
                                     ? data[0].totalCount - data.length
                                     : ""
-                                } More Products`}
+                                } More Products11`}
                               {data &&
                                 data.length > 0 &&
                                 data.length < 24 &&

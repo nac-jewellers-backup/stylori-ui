@@ -91,7 +91,7 @@ class Component extends React.Component {
       }),
     })
       .then((res) => res.json())
-      .then((data) => {
+      .then((data) => {        
         let bannerFullData = data.data.allStyloriSilverBanners.nodes;
         this.setState({ bannerData: bannerFullData });
       });
@@ -124,7 +124,8 @@ class Component extends React.Component {
     this.props.setOffset(offsets);
   };
   render() {
-    const { classes, data } = this.props;
+    const { classes, data } = this.props;   
+    
 
     return (
       <Container maxWidth="lg" disableGutters>
@@ -246,10 +247,10 @@ class Component extends React.Component {
                         ""
                       );
                     })}
-                  </GridList>
+                  </GridList>                  
+                  {console.log(data, 'DATA')}
                   <div className={`${classes.gridlistmainviewmore}`}>
-                    {this.state.loadingtext ? (
-                      
+                    {this.state.loadingtext ? (                      
                       <div style={{ textAlign: "center" }}>Loading...</div>
                     ) : (
                       <>
@@ -265,10 +266,9 @@ class Component extends React.Component {
                               className={`${classes.button}  ${classes.viewmoreColor} ${classes.viewmoreColorSilver}`}
                               onClick={() => {
                                 this.handleOffset();
-                              }}
-                              disabled={data && data.length < 24}
+                              }}                              
                             >
-                              {data && data.length === 0 && `No products found`}
+                              {data && (data[0].totalCount - data.length === 0) && `No products found`}
                               {data &&
                                 data.length >= 24 &&
                                 ` View ${

@@ -141,8 +141,7 @@ const Gallery = (
             cursor:"default",
             fontFamily: 'FontAwesome !important',
             position: 'absolute',
-            zIndex: 500,
-            left: '16px',
+            zIndex: 500,            
             color:"#111", pointerEvents: "none",
             cursor: 'none'
             

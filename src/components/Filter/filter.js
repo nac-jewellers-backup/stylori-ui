@@ -51,7 +51,7 @@ const PersistentDrawerLeft = (props) => {
   } = React.useContext(FilterOptionsContext);
 
   const { NetworkCtx } = React.useContext(NetworkContext);
-  const { Globalctx } = React.useContext(GlobalContext);  
+  const { Globalctx } = React.useContext(GlobalContext);
 
   return (
     <Component
@@ -93,7 +93,7 @@ class Component extends React.Component {
         Occasion: {},
         NoOfStones: {},
         Gender: {},
-        Finish:{},
+        Finish: {},
         StoneColor: {},
         StoneShape: {},
         category: {},
@@ -111,7 +111,7 @@ class Component extends React.Component {
         Occasion: {},
         NoOfStones: {},
         Gender: {},
-        Finish:{},
+        Finish: {},
         StoneColor: {},
         StoneShape: {},
         category: {},
@@ -126,11 +126,11 @@ class Component extends React.Component {
       Price_button_click: false,
       chipData: [],
       errorPriceMessage: false,
-      errMsg_Price:""      
+      errMsg_Price: "",
     };
   }
   componentDidMount() {
-    var { checked, chipData, selected,numOne,numTwo } = this.state;
+    var { checked, chipData, selected, numOne, numTwo } = this.state;
     if (
       this.props.data &&
       this.props.data.length > 0 &&
@@ -140,7 +140,7 @@ class Component extends React.Component {
       var price_min = Number(this.props.data[0].subFilter["Price Range"].min);
       var price_max = Number(this.props.data[0].subFilter["Price Range"].max);
       var _price_min = CurrencyConversion(price_min);
-      var _price_max = CurrencyConversion (price_max);
+      var _price_max = CurrencyConversion(price_max);
 
       this.setState(checked);
       this.setState({ numOne: _price_min, numTwo: _price_max });
@@ -187,7 +187,7 @@ class Component extends React.Component {
 
     var paramsfilter;
 
-    const filters_checked = () => { 
+    const filters_checked = () => {
       const { checked } = this.state;
       if (window.location.pathname.split("/")[1] !== "jewellery") {
         function status(response) {
@@ -284,7 +284,7 @@ class Component extends React.Component {
               }
               return 0;
             });
-           
+
             this.setState(chipData, selected, checked);
           })
           .catch(function (error) {});
@@ -377,14 +377,7 @@ class Component extends React.Component {
     }
   };
 
-  handleChange = (
-    value,
-    BoolName,
-    e,
-    title,
-    TargetName,
-    selectedfiltertop
-  ) => {
+  handleChange = (value, BoolName, e, title, TargetName, selectedfiltertop) => {
     let mystate = this.state;
     let { chipData } = this.state;
     // let { filterData } = this.state;
@@ -632,7 +625,7 @@ class Component extends React.Component {
           document.getElementById("num2").value.replace(/,/g, "")
         );
       }
-      var price_min = CurrencyConversion( _price_min);
+      var price_min = CurrencyConversion(_price_min);
       var price_max = CurrencyConversion(_price_max);
 
       var pricemin =
@@ -651,22 +644,47 @@ class Component extends React.Component {
           : price_max.indexOf(" ") > -1
           ? Number(price_max.substr(2))
           : Number(price_max.substr(1));
-      console.log(pricemax,"pricemax")
-      if (pricemin > pricemax) {
+      console.log(pricemax, "pricemax");
+      // ... (existing code)
+      // ... (existing code)
+
+      const num1Value = document.getElementById("num1").value;
+      const num2Value = document.getElementById("num2").value;
+
+      if (!num1Value) {
+        // Min price input is empty
         this.setState({ errorPriceMessage: true });
-        this.setState({errMsg_Price:"Max Price should be greater!!"})
-      } else if (pricemin === 0 && pricemax === 0) {
+        this.setState({ errMsg_Price: "Enter Min price!!" });
+      } else if (!num2Value) {
+        // Max price input is empty
         this.setState({ errorPriceMessage: true });
-        // var errMsg_Price="Enter Min and max price";
-        this.setState({errMsg_Price:"Enter Min and max price!!"})
-        // seterrMsg_Price("Enter Min and max price")
-        // return false;
+        this.setState({ errMsg_Price: "Enter Max price!!" });
       } else {
-        this.setState(checked);
-        this.setState({ numOne: price_min, numTwo: price_max }, () => {
-          this.props.setPriceMax(pricemax);
-          this.props.setPriceMin(pricemin);
-        });
+        const _price_min = isNaN(Number(num1Value.charAt(0)))
+          ? Number(num1Value.substr(1).replace(/,/g, ""))
+          : Number(num1Value.replace(/,/g, ""));
+
+        const _price_max = isNaN(Number(num2Value.charAt(0)))
+          ? Number(num2Value.substr(1).replace(/,/g, ""))
+          : Number(num2Value.replace(/,/g, ""));
+
+        // Rest of the logic to calculate pricemin and pricemax
+
+        if (pricemin > pricemax) {
+          this.setState({ errorPriceMessage: true });
+          this.setState({ errMsg_Price: "Max Price should be greater!!" });
+        } else if (pricemin === pricemax) {
+          this.setState({ errorPriceMessage: true });
+          this.setState({
+            errMsg_Price: "Min and Max prices cannot be the same!!",
+          });
+        } else {
+          this.setState(checked);
+          this.setState({ numOne: price_min, numTwo: price_max }, () => {
+            this.props.setPriceMax(pricemax);
+            this.props.setPriceMin(pricemin);
+          });
+        }
       }
     }
   };
@@ -1277,8 +1295,7 @@ class Component extends React.Component {
                 </Slide>
               </div>
             </Hidden>
-          )
-          }
+          )}
           {this.state.productDisplay && (
             <div
               className={`${
@@ -1303,8 +1320,7 @@ class Component extends React.Component {
                   style={{ backgroundColor: "whitesmoke" }}
                   ref={this.myRef}
                 />
-              )
-              }
+              )}
             </div>
           )}
         </div>
@@ -1325,7 +1341,7 @@ class Component extends React.Component {
                 display: openMobile ? "none" : "block",
                 position: "sticky",
                 top: "0px",
-                marginTop: "15px"
+                marginTop: "15px",
               }}
               className={`${classes.colorMain}`}
             >
@@ -1339,8 +1355,7 @@ class Component extends React.Component {
                   padding: "6px 8px",
                 }}
               >
-                <i className={`fa fa-times ${classes.cross}`}></i>&nbsp;
-                Filter
+                <i className={`fa fa-times ${classes.cross}`}></i>&nbsp; Filter
               </button>
               <Button
                 onClick={this.handleClearAllData}
@@ -1355,35 +1370,39 @@ class Component extends React.Component {
                 Clear All
               </Button>
               {this.state.chipData.length > 0 ? (
-                    
-                    <div>
-                      {this.state.chipData.map((data) =>{
-                        return data.label === "Silver" ? null :(
+                <div>
+                  {this.state.chipData.map((data) => {
+                    return data.label === "Silver" ? null : (
                       <Chip
-                      size="small"
-                      variant="outlined"
-                      label={data.label}
-                      style={{
-                        padding: "14px",
-                        marginRight: 14,
-                        borderRadius: "0px",
-                        color: "#6D6E71",
-                        borderColor: "#777878",
-                        fontSize: "14px",
-                      }} 
-                      onDelete={()=> this.handleDelete(data.label)}
-                      deleteIcon={
-                        data.label ? (
-                          <i
-                            className="search-choice-close"
-                            class="fa fa-times"
-                          ></i>
-                        ) : (
-                          ""
-                        )
-                      } />
-                    )})}
-                    </div>) : (<div>No Filter Applied</div>) }
+                        size="small"
+                        variant="outlined"
+                        label={data.label}
+                        style={{
+                          padding: "14px",
+                          marginRight: 14,
+                          borderRadius: "0px",
+                          color: "#6D6E71",
+                          borderColor: "#777878",
+                          fontSize: "14px",
+                        }}
+                        onDelete={() => this.handleDelete(data.label)}
+                        deleteIcon={
+                          data.label ? (
+                            <i
+                              className="search-choice-close"
+                              class="fa fa-times"
+                            ></i>
+                          ) : (
+                            ""
+                          )
+                        }
+                      />
+                    );
+                  })}
+                </div>
+              ) : (
+                <div>No Filter Applied</div>
+              )}
             </div>
             <Grid
               container
@@ -1420,7 +1439,7 @@ class Component extends React.Component {
                                   onClick={() => this.filterValue(row)}
                                 >
                                   <ListItemText className="filter-mbl-font filter-mbl-fonts">
-                                    {row!=="" && row}
+                                    {row !== "" && row}
                                   </ListItemText>
                                 </ListItem>
                               )
@@ -1435,7 +1454,7 @@ class Component extends React.Component {
                                 onClick={() => this.filterValue(row)}
                               >
                                 <ListItemText className="filter-mbl-font filter-mbl-fonts">
-                                  {row!=="" && row}
+                                  {row !== "" && row}
                                 </ListItemText>
                               </ListItem>
                             )}
@@ -1450,14 +1469,19 @@ class Component extends React.Component {
                   <Grid
                     item
                     xs={6}
-                    style={{ overflow: "scroll", height: "73vh",backgroundColor:"#E5E6E7" }}
+                    style={{
+                      overflow: "scroll",
+                      height: "73vh",
+                      backgroundColor: "#E5E6E7",
+                    }}
                   >
                     <>
-                    {subFilter[
-                        this.state.filtercheck!=='' && this.state.filtercheck
+                      {subFilter[
+                        this.state.filtercheck !== "" && this.state.filtercheck
                       ] !== undefined
                         ? subFilter[
-                            this.state.filtercheck!=='' && this.state.filtercheck
+                            this.state.filtercheck !== "" &&
+                              this.state.filtercheck
                           ].map((row) => {
                             return (
                               <ListItem

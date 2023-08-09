@@ -1115,14 +1115,12 @@ body {
 }
 
 .one-day-ship_only_silver {
-    z-index: 999 !important;
-    width: 152px !important;
-    height: 60px ! important;
+    z-index: 999 !important;    
     background-position: 3px -29px !important;
     position: absolute;
     background-repeat: no-repeat !important;
     /* margin-left: 0px; */
-    cursor: pointer !important;
+    cursor: default !important;
     margin-left: -36.1px !important;
 }
 
