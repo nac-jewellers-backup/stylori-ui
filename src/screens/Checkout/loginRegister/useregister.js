@@ -56,6 +56,7 @@ const useRegister = (changePanel, props) => {
 
 
     const pathnames = window.location.pathname.split("-")[0] === "/account"
+  
     // const [invalids, setInvalids] = React.useState({ username: false, confirmpassword: false, });
     // const { makeFetch: makeFetchedit } = useNetworkRequest('/api/auth/signup', {}, false);
     const { data: reg_update_data, makeFetch: makeFetcheditAddress } = useNetworkRequest('/api/updateuserprofile', {}, false);
@@ -193,7 +194,7 @@ const useRegister = (changePanel, props) => {
             values['error']['passerr'] = false
             values['errortext']['passerr'] = ""
 
-        } if (values.firstname !== "" && values['error'] && values['errortext']) {
+        } if (values.firstname.trim() !== "" && values['error'] && values['errortext']) {
             values['error']['firstname'] = false
             values['errortext']['firstname'] = ""
         } if (values.confirmpassword !== "" && values['error'] && values['errortext']) {
@@ -217,107 +218,177 @@ const useRegister = (changePanel, props) => {
         })
     }
     const user = data.user_profile_id ? data.user_profile_id : ""
-
     const handleSubmit = (e) => {
-
+       
+        // Define a function to update errors and error texts
+        const setError = (errorKey, errorText) => {
+            setValues({
+                ...values,
+                error: {
+                    ...values.error,
+                    [errorKey]: true,
+                },
+                errortext: {
+                    ...values.errortext,
+                    [errorKey]: errorText,
+                },
+            });
+        };
+    
         if (!pathnames) {
-            if (values.email === "" && values['error'] && values['errortext']) {
-                values['error']['emerr'] = true
-                values['errortext']['emerr'] = 'Email is required'
-                setValues({
-                    ...values,
-                    values,
-                })
+            if (values.firstname.trim() === "") {
+                setError('firstname', 'First Name is required');
+                return false;
             }
 
-            if (values.password === "" && values['error'] && values['errortext']) {
-                values['error']['passerr'] = true
-                values['errortext']['passerr'] = 'Password is required'
-                setValues({
-                    ...values,
-                    values,
-                })
+            if (values.email === "") {
+                setError('emerr', 'Email is required');
+                return false;
             }
-            if (values.confirmpassword === "" && values['error'] && values['errortext']) {
-                values['error']['cnfpasserr'] = true
-                values['errortext']['cnfpasserr'] = 'Confirm password is required'
-                setValues({
-                    ...values,
-                    values,
-                })
+    
+            if (values.password === "") {
+                setError('passerr', 'Password is required');
+                return false;
             }
-            if (values.firstname === "" && values['error'] && values['errortext']) {
-                values['error']['firstname'] = true
-                values['errortext']['firstname'] = 'First Name is required'
-                setValues({
-                    ...values,
-                    values,
-                })
+    
+            if (values.confirmpassword === "") {
+                setError('cnfpasserr', 'Confirm password is required');
+                return false;
             }
-            if (values.lastname === "" && values['error'] && values['errortext']) {
-                values['error']['lastname'] = true
-                values['errortext']['lastname'] = 'Last Name is required'
-                setValues({
-                    ...values,
-                    values,
-                })
-                return false
-            }
-            if (values.email === "" && values['error'] && values['errortext']) {
-                values['error']['emerr'] = true
-                values['errortext']['emerr'] = 'Email is required'
-                setValues({
-                    ...values,
-                    values,
-                })
-                return false
-            }
+    
             
-            // var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
-            var regularExpression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
-            if (!pathnames) {
-                if (!regularExpression.test(values.password)) {
-                    values["error"]["emerr"] = true;
-                    values["errortext"]["passerr"] =
-                      "The password to have at least one uppercase letter, one lowercase letter, one digit, and one special character, while also meeting the length criteria of 8 to 20 characters"
-                    setValues({
-                      ...values,
-                      values,
-                    });
-                    return false;
-                }
-
-                if (values.password !== values.confirmpassword && values['error'] && values['errortext']) {
-                    // values['error']['passerr'] = true
-                    values['error']['cnfpasserr'] = true
-                    // values['errortext']['passerr'] = "password doesn't match"
-                    values['errortext']['cnfpasserr'] = "Password doesn't match"
-                    setValues({
-                        ...values,
-                        values,
-                    })
-                    return false
-                }
+    
+            if (values.lastname === "") {
+                setError('lastname', 'Last Name is required');
+                return false;
             }
+    
+            var regularExpression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
+            if (!regularExpression.test(values.password)) {
+                setError('passerr', 'The password must have at least one uppercase letter, one lowercase letter, one digit, and one special character, while also meeting the length criteria of 8 to 20 characters');
+                return false;
+            }
+    
+            if (values.password !== values.confirmpassword) {
+                setError('cnfpasserr', "Password doesn't match");
+                return false;
+            }
+    
             var emailvld = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             if (!emailvld.test(values.email)) {
-                values['error']['emerr'] = true
-                values['errortext']['emerr'] = 'An email address must contain a single @/.'
-                setValues({
-                    ...values,
-                    values,
-                })
-                return false
+                setError('emerr', 'Invalid email address format');
+                return false;
             }
-            // localStorage.setItem("namesOf_first", JSON.stringify(values.firstname))
-            // localStorage.setItem("namesOf_last", JSON.stringify(values.lastname))
+    
+            // If all validations pass, proceed with fetch or other actions
             makeFetch(values);
-            // reset();
-            return false
+            return false;
         } else {
             makeFetcheditAddress(valuesadrees);
         }
     }
+    
+
+    // const handleSubmit = (e) => {
+
+    //     if (!pathnames) {
+    //         if (values.email === "" && values['error'] && values['errortext']) {
+    //             values['error']['emerr'] = true
+    //             values['errortext']['emerr'] = 'Email is required'
+    //             setValues({
+    //                 ...values,
+    //                 values,
+    //             })
+    //         }
+
+    //         if (values.password === "" && values['error'] && values['errortext']) {
+    //             values['error']['passerr'] = true
+    //             values['errortext']['passerr'] = 'Password is required'
+    //             setValues({
+    //                 ...values,
+    //                 values,
+    //             })
+    //         }
+    //         if (values.confirmpassword === "" && values['error'] && values['errortext']) {
+    //             values['error']['cnfpasserr'] = true
+    //             values['errortext']['cnfpasserr'] = 'Confirm password is required'
+    //             setValues({
+    //                 ...values,
+    //                 values,
+    //             })
+    //         }
+    //         if (values.firstname.trim() === "" && values['error'] && values['errortext']) {
+    //             values['error']['firstname'] = true
+    //             values['errortext']['firstname'] = 'First Name is required'
+    //             setValues({
+    //                 ...values,
+    //                 values,
+    //             })
+    //         }
+    //         if (values.lastname === "" && values['error'] && values['errortext']) {
+    //             values['error']['lastname'] = true
+    //             values['errortext']['lastname'] = 'Last Name is required'
+    //             setValues({
+    //                 ...values,
+    //                 values,
+    //             })
+    //             return false
+    //         }
+    //         if (values.email === "" && values['error'] && values['errortext']) {
+    //             values['error']['emerr'] = true
+    //             values['errortext']['emerr'] = 'Email is required'
+    //             setValues({
+    //                 ...values,
+    //                 values,
+    //             })
+    //             return false
+    //         }
+            
+    //         // var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
+    //         var regularExpression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
+    //         if (!pathnames) {
+    //             if (!regularExpression.test(values.password)) {
+    //                 values["error"]["emerr"] = true;
+    //                 values["errortext"]["passerr"] =
+    //                   "The password to have at least one uppercase letter, one lowercase letter, one digit, and one special character, while also meeting the length criteria of 8 to 20 characters"
+    //                 setValues({
+    //                   ...values,
+    //                   values,
+    //                 });
+    //                 return false;
+    //             }
+
+    //             if (values.password !== values.confirmpassword && values['error'] && values['errortext']) {
+    //                 // values['error']['passerr'] = true
+    //                 values['error']['cnfpasserr'] = true
+    //                 // values['errortext']['passerr'] = "password doesn't match"
+    //                 values['errortext']['cnfpasserr'] = "Password doesn't match"
+    //                 setValues({
+    //                     ...values,
+    //                     values,
+    //                 })
+    //                 return false
+    //             }
+    //         }
+    //         var emailvld = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    //         if (!emailvld.test(values.email)) {
+    //             values['error']['emerr'] = true
+    //             values['errortext']['emerr'] = 'An email address must contain a single @/.'
+    //             setValues({
+    //                 ...values,
+    //                 values,
+    //             })
+    //             return false
+    //         }
+    //         // localStorage.setItem("namesOf_first", JSON.stringify(values.firstname))
+    //         // localStorage.setItem("namesOf_last", JSON.stringify(values.lastname))
+    //         makeFetch(values);
+    //         // reset();
+    //         return false
+    //     } else {
+    //         makeFetcheditAddress(valuesadrees);
+    //     }
+    // }
     const handlers = { handleSubmit, handleChange, handlesetvaluesadrees, clear };
 
     return { values, setValues, handlers, data, valuesadrees }

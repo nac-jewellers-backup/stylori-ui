@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './loginRegisters.css';
 import { withRouter } from 'react-router-dom';
 import { Grid, Button, TextField } from '@material-ui/core';
@@ -11,7 +11,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import EyeIcon from "./EyeIcon";
 const Login = (props) => {
     return <LoginComponent  {...props} />
 }
@@ -149,6 +149,21 @@ const LoginComponent = (props) => {
             [type]: e.target.value
         })
     }
+    const handleChange = (name, value) => {
+        setValues({ ...values, [name]: value, oldpassworderror: false, oldpasswordText: "", newPasswordError: false, confirmPasswordError: false, newPasswordHelperText: "", confirmPasswordHelper: "" })
+    }
+    const [passwordVisibility, setPasswordVisibility] = useState({
+        oldPassword: false,
+        newPassword: false,
+        confirmPassword: false,
+      });
+      const togglePasswordVisibility = (field) => {
+        setPasswordVisibility((prevVisibility) => ({
+          ...prevVisibility,
+          [field]: !prevVisibility[field],
+        }));
+      };
+
     function handleButton(type) {
         if (type === 'save') {
             if (loginInfo.email === "") {
@@ -286,6 +301,29 @@ const LoginComponent = (props) => {
                         />
                         <label className='errtext'> {values.error.emerr && values.errortext.emerr}</label>
                         <Input
+                                    autoComplete='off'
+                                    margin="normal"
+                                    // variant="outlined"
+                                    type={passwordVisibility.oldPassword ? 'text' : 'password'}
+                                    fullWidth
+                                    name="password"
+                                    value={values.password}
+                                    error={values.error && values.error.passerr ? true : false}
+                                    helperText={values.errortext && values.errortext.passerr}
+                                    placeholder="Enter your password"
+                                    onChange={e => handlers.handleChange('password', e.target.value)}
+                                    InputProps={{
+                                        endAdornment: (
+                                          <EyeIcon
+                                            isVisible={passwordVisibility.oldPassword}
+                                            toggleVisibility={() => togglePasswordVisibility('oldPassword')}
+                                          />
+                                        ),
+                                      }}
+                                />
+                                {/* <label className='errtext'> {values.oldpasswordText && values.oldpasswordText}</label>
+
+                        <Input
                             margin="normal"
                             // variant="outlined"
                             type="password"
@@ -295,8 +333,8 @@ const LoginComponent = (props) => {
                             helperText={values.errortext && values.errortext.passerr}
                             placeholder="Enter your password"
                             onChange={e => handlers.handleChange('password', e.target.value)}
-                        />
-                        <label className='errtext'> {values.error.passerr && values.errortext.passerr}</label>
+                        /> */}
+                        {/* <label className='errtext'> {values.error.passerr && values.errortext.passerr}</label> */}
                         <div className='log-pas'>
                             <span onClick={() => { window.location.href = '/forgotPassword' }} className={`pas-fr ${classes.normalfonts}`} style={{ cursor: "pointer",marginTop:'10px'}}>Forgot Password ?</span>
                             <div className={`pas-fb ${classes.normalfonts}`} style={{ cursor: "pointer" }}>

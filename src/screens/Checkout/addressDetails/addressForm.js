@@ -195,9 +195,8 @@ const AddressComponent = (props) => {
                               }
                               placeholder="Mobile number"
                               value={values.addressOne.contactno}
-                              helperText="Please enter yout 10 digit mobile number"
-                              maxLength={10}
-                              minLength={10}
+                              helperText="Please enter your  mobile number"
+                              minLength={4}
                               required
                             />
                             {/* </Grid> */}
@@ -431,6 +430,7 @@ const AddressComponent = (props) => {
                             name="pincode"
                             maxLength="6"
                             placeholder="Pin code/Zip code"
+                            helperText="Pin Code is required"
                             onChange={(event) =>
                               handle.handleChange(
                                 "addressOne",
@@ -454,7 +454,35 @@ const AddressComponent = (props) => {
                           </label>
                         </Grid>
                       </Grid>
+
                       <Grid container spacing={2}>
+                        <Grid item xs={12} lg={12}>
+                          <Input
+                            type="text"
+                            placeholder="Address"
+                            name="addressline1"
+                            onChange={(event) => {
+                              const inputValue = event.target.value.trim(); // Remove leading and trailing spaces
+                              const hasAlphanumeric = /[a-zA-Z0-9]/.test(
+                                inputValue
+                              ); // Check for at least one alphanumeric
+
+                              if (hasAlphanumeric || inputValue === "") {
+                                handle.handleChange(
+                                  "addressOne",
+                                  "addressline1",
+                                  inputValue
+                                );
+                              }
+                            }}
+                            value={values.addressOne.addressline1}
+                            helperText="Address is required"
+                            required
+                          />
+                        </Grid>
+                      </Grid>
+
+                      {/* <Grid container spacing={2}>
                         <Grid item xs={12} lg={12}>
                           <Input
                             type="text"
@@ -472,7 +500,7 @@ const AddressComponent = (props) => {
                             required
                           />
                         </Grid>
-                      </Grid>
+                      </Grid> */}
                       <Grid container spacing={2}>
                         <Grid item xs={6} lg={6}>
                           <Input
@@ -543,6 +571,7 @@ const AddressComponent = (props) => {
                           }}
                         >
                           <Input
+                            // style={{ fontSize: "10px", paddingLeft: "16px" }}
                             className="text-f"
                             type="tel"
                             name="contactno"
@@ -558,9 +587,9 @@ const AddressComponent = (props) => {
                             }
                             placeholder="Mobile number"
                             value={values.addressOne.contactno}
-                            helperText="Please enter yout 10 digit mobile number"
-                            maxLength={10}
-                            minLength={10}
+                            helperText="Please enter your mobile number"
+                            // maxLength={10}
+                            minLength={4}
                             required
                           />
                         </Grid>
@@ -751,9 +780,9 @@ const AddressComponent = (props) => {
                                 }
                                 placeholder="Mobile number"
                                 value={values.addressOne.contactno}
-                                helperText="Please enter yout 10 digit mobile number"
-                                maxLength={10}
-                                minLength={10}
+                                helperText="Please enter your mobile number"
+                                // maxLength={10}
+                                minLength={4}
                                 required
                               />
                               {/* </Grid> */}

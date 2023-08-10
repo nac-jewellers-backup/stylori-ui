@@ -299,36 +299,55 @@ function Login(props) {
         .catch(console.error);
     }
   };
-
   const isIamValideToLogin = () => {
     let isValid = true;
-    let error = values.error;
-
+    let error = { ...values.error }; // Make a copy of the error object
+    console.log(values,"values");
     if (values.email === "") {
       isValid = false;
       error.email = "Enter Email Id";
-    }
-
-    if (values.email && !values.email.match(email_regex)) {
+    } else if (!values.email.match(email_regex)) {
       isValid = false;
       error.email = "Email Id is invalid";
     }
-
-    if (values.password === "") {
+    else if (values.password === "") {
       isValid = false;
       error.password = "Enter Password";
-    }
+    }   
 
-    if (values.email !== "" && values.password !== "") {
-      isValid = true;
-    }
-
-    setValues({ ...values, error });
+    setValues({ ...values, error }); // Update the error messages
     return isValid;
   };
 
+  // const isIamValideToLogin = () => {
+  //   let isValid = true;
+  //   let error = values.error;
+
+  //   if (values.email === "") {
+  //     isValid = false;
+  //     error.email = "Enter Email Id";
+  //   }
+
+  //   if (values.email && !values.email.match(email_regex)) {
+  //     isValid = false;
+  //     error.email = "Email Id is invalid";
+  //   }
+
+  //   if (values.password === "") {
+  //     isValid = false;
+  //     error.password = "Enter Password";
+  //   }
+
+  //   if (values.email !== "" && values.password !== "") {
+  //     isValid = true;
+  //   }
+
+  //   setValues({ ...values, error });
+  //   return isValid;
+  // };
+
   const onSubmit = () => {
-    if (isIamValideToLogin) {
+    if (isIamValideToLogin()) {
       let obj_values = {};
       let _password = values.password;
       let _email = values.email;
@@ -377,7 +396,7 @@ function Login(props) {
       setCondition({
         ...condition,
         alert: true,
-        alertMsg: "Enter a valid email and password!",
+        alertMsg: data.message,
         alertSev: "error",
       });
     }
@@ -643,7 +662,7 @@ function Login(props) {
                 </div>
               ) : (
                 <Grid container spacing={4}>
-                  <Grid item xs={12}>
+                   <Grid item xs={12}>
                     <TextField
                       id="standard-start-adornment"
                       placeholder="Email address"
@@ -656,9 +675,12 @@ function Login(props) {
                         {values.error.email}
                       </Typography>
                     )}
-                  </Grid>
+
+                    
+                     </Grid>
+                 
                   <Grid item xs={12}>
-                    <TextField
+                  <TextField
                       id="standard-start-adornment"
                       placeholder="Password"
                       type="password"
@@ -666,6 +688,11 @@ function Login(props) {
                       onChange={(e) => handleChange(e.target.value, "password")}
                       fullWidth
                     />
+                    {values.error.password !== "" && (
+                      <Typography style={{ fontSize: "10px", color: "red" }}>
+                        {values.error.password}
+                      </Typography>
+                    )}
                     <span className="forgotPassword">
                       <Typography onClick={() => { window.location.href = '/forgotPassword' }}>
                         Forget password?
@@ -712,3 +739,5 @@ function Login(props) {
 }
 
 export default Login;
+
+

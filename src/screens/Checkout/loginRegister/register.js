@@ -1,5 +1,5 @@
 import { Grid, Button } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import "./loginRegisters.css";
 import { Input } from "../../../components/InputComponents/TextField/Input";
 import SimpleSelect from "../../../components/InputComponents/Select/Select";
@@ -10,6 +10,7 @@ import { API_URL } from "config";
 import { COUNTRIES } from "queries/home";
 import { Select } from "@material-ui/core";
 import MenuItem from "@material-ui/core/MenuItem";
+import EyeIcon from "./EyeIcon";
 
 const Register = (props) => {
   return <RegisterComponent {...props} />;
@@ -65,7 +66,29 @@ const RegisterComponent = (props) => {
       console.log(mobile);
     }
   };
-
+  const handleChange = (name, value) => {
+    setValues({
+      ...values,
+      [name]: value,
+      oldpassworderror: false,
+      oldpasswordText: "",
+      passwordError: false,
+      confirmpasswordError: false,
+      passwordHelperText: "",
+      confirmpasswordHelper: "",
+    });
+  };
+  const [passwordVisibility, setPasswordVisibility] = useState({
+    oldPassword: false,
+    password: false,
+    confirmpassword: false,
+  });
+  const togglePasswordVisibility = (field) => {
+    setPasswordVisibility((prevVisibility) => ({
+      ...prevVisibility,
+      [field]: !prevVisibility[field],
+    }));
+  };
   React.useEffect(() => {
     axios
       .post(
@@ -126,8 +149,8 @@ const RegisterComponent = (props) => {
                     </>
                   )}
                 </h5>
-              )}    
-              {console.log(valuesadrees.salutation,"valuesadrees.salutation")}          
+              )}
+              {console.log(valuesadrees.salutation, "valuesadrees.salutation")}
               <Grid container spacing={12}>
                 {paths && (
                   <Grid item lg={2} xs={4}>
@@ -174,12 +197,34 @@ const RegisterComponent = (props) => {
                         name="firstname"
                         value={valuesadrees.firstname}
                         placeholder="First name*"
-                        onChange={(e) =>
+                        // onChange={(e) =>
+                        //   handlers.handlesetvaluesadrees(
+                        //     "firstname",
+                        //     e.target.value.replace(/[^a-z]/gi, "")
+                        //   )
+                        // }
+
+                        onChange={(e) => {
+                          const inputValue = e.target.value;
+                          let processedValue = inputValue.replace(
+                            /[^a-z ]/gi,
+                            ""
+                          ); // Allow space along with alphabetic characters
+
+                          if (inputValue.trim().length === 0) {
+                            processedValue = ""; // Empty the value if the input is empty
+                          } else if (
+                            inputValue.trim().length === 1 &&
+                            inputValue.trim() === " "
+                          ) {
+                            processedValue = " "; // Allow only a space as the first character
+                          }
+
                           handlers.handlesetvaluesadrees(
                             "firstname",
-                            e.target.value.replace(/[^a-z]/gi, "")
-                          )
-                        }
+                            processedValue
+                          );
+                        }}
                         className="text-f"
                         helperText="First name is required"
                         required
@@ -203,12 +248,27 @@ const RegisterComponent = (props) => {
                         name="lastname"
                         value={valuesadrees.lastname}
                         placeholder="Last name"
-                        onChange={(e) =>
+                        onChange={(e) => {
+                          const inputValue = e.target.value;
+                          let processedValue = inputValue.replace(
+                            /[^a-z ]/gi,
+                            ""
+                          ); // Allow space along with alphabetic characters
+
+                          if (inputValue.trim().length === 0) {
+                            processedValue = ""; // Empty the value if the input is empty
+                          } else if (
+                            inputValue.trim().length === 1 &&
+                            inputValue.trim() === " "
+                          ) {
+                            processedValue = " "; // Allow only a space as the first character
+                          }
+
                           handlers.handlesetvaluesadrees(
                             "lastname",
-                            e.target.value.replace(/[^a-z]/gi, "")
-                          )
-                        }
+                            processedValue
+                          );
+                        }}
                         className="text-f"
                         helperText="Last name is required"
                         required
@@ -294,6 +354,35 @@ const RegisterComponent = (props) => {
               ) : (
                 <>
                   <Input
+                    autoComplete="off"
+                    margin="normal"
+                    // variant="outlined"
+                    // type="password"
+                    type={passwordVisibility.password ? "text" : "password"}
+                    fullWidth
+                    name="email"
+                    value={values.password}
+                    error={values.error && values.error.passerr ? true : false}
+                    onChange={(e) => handleChange("password", e.target.value)}
+                    placeholder="Enter your password"
+                    helperText="Password is required"
+                    required
+                    InputProps={{
+                      endAdornment: (
+                        <EyeIcon
+                          isVisible={passwordVisibility.password}
+                          toggleVisibility={() =>
+                            togglePasswordVisibility("password")
+                          }
+                        />
+                      ),
+                    }}
+                  />
+                  <label className="errtext">
+                    {" "}
+                    {values.errortext && values.errortext.passerr}
+                  </label>
+                  {/* <Input
                     margin="normal"
                     // variant="outlined"
                     type="password"
@@ -312,7 +401,7 @@ const RegisterComponent = (props) => {
                   <label className="errtext">
                     {" "}
                     {values.errortext && values.errortext.passerr}
-                  </label>
+                  </label> */}
                 </>
               )}
               {paths ? (
@@ -320,6 +409,39 @@ const RegisterComponent = (props) => {
               ) : (
                 <>
                   <Input
+                    autoComplete="off"
+                    margin="normal"
+                    // variant="outlined"
+                    type={
+                      passwordVisibility.confirmpassword ? "text" : "password"
+                    }
+                    // type="password"
+                    fullWidth
+                    name="confirmpassword"
+                    value={values.confirmpassword}
+                    error={values.confirmpasswordError ? true : false}
+                    onChange={(e) =>
+                      handleChange("confirmpassword", e.target.value)
+                    }
+                    placeholder="Enter confirm password"
+                    helperText="Confirm password is required"
+                    InputProps={{
+                      endAdornment: (
+                        <EyeIcon
+                          isVisible={passwordVisibility.confirmpassword}
+                          toggleVisibility={() =>
+                            togglePasswordVisibility("confirmpassword")
+                          }
+                        />
+                      ),
+                    }}
+                  />
+                  <label className="errtext">
+                    {" "}
+                    {values.errortext && values.errortext.cnfpasserr}
+                  </label>
+
+                  {/* <Input
                     margin="normal"
                     // variant="outlined"
                     type="password"
@@ -329,7 +451,7 @@ const RegisterComponent = (props) => {
                       values.error && values.error.cnfpasserr ? true : false
                     }
                     // helperText={values.errortext && values.errortext.cnfpasserr}
-                    placeholder="Enter your confirm password"
+                    placeholder="Enter your confirm password1"
                     onChange={(e) =>
                       handlers.handleChange("confirmpassword", e.target.value)
                     }
@@ -339,12 +461,12 @@ const RegisterComponent = (props) => {
                   <label className="errtext">
                     {" "}
                     {values.errortext && values.errortext.cnfpasserr}
-                  </label>
+                  </label> */}
                 </>
               )}
               <Grid container spacing={12}>
                 {!paths && (
-                  <Grid item lg={4} xs={4}>                                  
+                  <Grid item lg={4} xs={4}>
                     <SimpleSelect
                       style={{ marginTop: "17.4px !important" }}
                       value={valuesadrees.salutation}
@@ -511,10 +633,9 @@ const RegisterComponent = (props) => {
                         // onKeyPress={(e) => handle.handleKeyPress(e, "contactno")}
                         placeholder="Phone*"
                         value={valuesadrees.contactno}
-                        helperText="Enter valid mobile number"
+                        helperText="Enter your valid mobile number"
                         isNumber
-                        maxLength={10}
-                        minLength={10}
+                        minLength={4}
                         required
                       />
                     </Grid>

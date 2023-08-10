@@ -44,7 +44,7 @@ class Request extends React.Component {
         mailId: "Email is required",
         mailCheck: "Email id is invalid",
         names: "Name is required",
-        mobileNo: "Mobile number is required",
+        mobileNo: "Enter valid mobile number",
         request: "Content is required",
       },
     };
@@ -114,7 +114,7 @@ class Request extends React.Component {
       check = false;
     }
     if (
-      this.state.mailId.trim() === "" &&
+      (this.state.mailId.trim() === "" || !isValidEmail)&&
       this.state["errors"] &&
       this.state["errorMessage"]
     ) {
@@ -122,10 +122,12 @@ class Request extends React.Component {
       this.setState({ errors });
       this.setState((state) => ({ state }));
       check = false;
-    }else{
+    }
+    else{
       errors = { ...errors, mailCheck: false };
       this.setState({ errors });
     }
+    
 
     if (!isValidEmail) {
       errors = { ...errors, mailCheck: true };
@@ -136,7 +138,7 @@ class Request extends React.Component {
 
 
     if (
-      this.state.mobileNo === "" &&
+      this.state.mobileNo === "" || this.state.mobileNo.length < 4  && 
       this.state["errors"] &&
       this.state["errorMessage"]
     ) {
@@ -253,7 +255,7 @@ class Request extends React.Component {
             <div className="overall-bo">
               <Hidden smDown>
                 <span className={`product-details ${classes.normalfonts}`}>
-                  Ask Our Expert
+                  Ask Our Expert1
                 </span>
                 <hr class="bottom-line"></hr>
               </Hidden>
@@ -311,8 +313,8 @@ class Request extends React.Component {
                     margin="normal"
                     variant="outlined"
                     isNumber
-                    maxLength={10}
-                    minLength={10}
+                    maxLength={20}
+                    minLength={4}
                     name="mobileNo"
                     value={this.state.mobileNo}
                     onInvalid={(e) => handleError(e)}

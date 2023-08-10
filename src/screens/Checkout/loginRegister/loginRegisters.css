@@ -17,6 +17,7 @@
 .errtext {
     color: #B94A48 !important;
     font-size: 13px !important;
+    /* padding-left:8px */
 }
 
 .login-butn {
@@ -50,7 +51,8 @@
     text-align: center !important;
     min-width: 100px !important;
     font-size: 16px !important;
-    background: #00008B !important;
+    /* background: #00008B !important; */
+    background: #061452 !important;
     border: 1px solid #394579;
     color: #fff !important;
     text-transform: none !important;

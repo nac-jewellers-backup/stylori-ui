@@ -1968,7 +1968,8 @@ body {
 }
 .bigText textarea {
     height: 80px !important;
-    padding: 25px;
+    /* padding: 25px; */
+    font-size: 14px;
 }
 .MuiOutlinedInput-multiline{
     padding: 25px !important;

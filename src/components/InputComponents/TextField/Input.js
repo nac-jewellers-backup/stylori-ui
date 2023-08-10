@@ -81,8 +81,7 @@ export const Input = props => {
   }
 
   return (
-    <Grid item xs={12}>
-    
+    <Grid item xs={12}>    
         <TextField
           autoComplete={props && props.autoComplete && props.autoComplete}
           inputProps={{ pattern, maxLength, minLength }}
@@ -98,7 +97,7 @@ export const Input = props => {
           {...rest}
         />
         {invalid &&
-        <Typography style={{fontSize:"10px",color:"red"}}>{helperText}</Typography>
+        <Typography style={{fontSize:"10px",color:"red",paddingLeft:'10px'}}>{helperText}</Typography>
         }
       {/* <TextField
         autoComplete={props && props.autoComplete && props.autoComplete}

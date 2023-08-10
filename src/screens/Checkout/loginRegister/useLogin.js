@@ -137,9 +137,12 @@ const useLogin = (changePanel, props) => {
       values["error"]["passerr"] = false;
       values["errortext"]["passerr"] = "";
     }
+    // setValues({ ...values, [name]: value, oldpassworderror: false, oldpasswordText: "", newPasswordError: false, confirmPasswordError: false, newPasswordHelperText: "", confirmPasswordHelper: "" })
     setValues({
       ...values,
       [type]: value,
+      oldpasswordText: ""
+
     });
   };
 

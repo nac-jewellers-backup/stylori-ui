@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 // import './product-image-slider/loginRegisters.css'
 import { Grid, Button, Container, TextField } from '@material-ui/core';
 import Header from 'components/SilverComponents/Header'
@@ -9,6 +9,7 @@ import { withRouter } from "react-router";
 import { Link } from 'react-router-dom'
 import { useNetworkRequest } from 'hooks/NetworkHooks'
 import CommenDialog from 'components/Common/Dialogmodel'
+import EyeIcon from "./EyeIcon";
 
 
 const LoginComponent = (props) => {
@@ -34,19 +35,25 @@ const LoginComponent = (props) => {
         props.history.push('/account-profile')
     }
     const { classes } = props;
+    const regularExpression = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
     const handelSubmit = async () => {
+        
         if (values.oldpassword === "") {
             setValues({ ...values, oldpassworderror: true, oldpasswordText: "Field can't be empty!" })
         }
-        else if (values.newpassword === "") {
+        else if (values.newpassword.trim() === "") {
             setValues({ ...values, newPasswordError: true, newPasswordHelperText: "Field can't be empty!" })
         }
         else if (values.confirmPassword === "") {
             setValues({ ...values, confirmPasswordError: true, confirmPasswordHelper: "Field can't be empty!" })
         }
-        else if (values.newpassword.length < 8) {
-            setValues({ ...values, newPasswordError: true, newPasswordHelperText: "Password must be at least 8 characters!" })
-        }
+       
+        else if (!regularExpression.test(values.newpassword)) {
+                setValues({ ...values, newPasswordError: true, newPasswordHelperText: "The password must have at least one uppercase letter, one lowercase letter, one digit, and one special character, while also meeting the length criteria of 8 to 20 characters !" })
+            }
+        // else if (values.newpassword.length < 8) {
+        //     setValues({ ...values, newPasswordError: true, newPasswordHelperText: "Password must be at least 8 characters!" })
+        // }
         else if (values.newpassword !== values.confirmPassword) {
             setValues({ ...values, confirmPasswordError: true, confirmPasswordHelper: "New password and Confirm password does not match!" })
         }
@@ -60,6 +67,19 @@ const LoginComponent = (props) => {
         setValues({ ...values, [name]: value, oldpassworderror: false, oldpasswordText: "", newPasswordError: false, confirmPasswordError: false, newPasswordHelperText: "", confirmPasswordHelper: "" })
     }
 
+ 
+
+    const [passwordVisibility, setPasswordVisibility] = useState({
+        oldPassword: false,
+        newPassword: false,
+        confirmPassword: false,
+      });
+      const togglePasswordVisibility = (field) => {
+        setPasswordVisibility((prevVisibility) => ({
+          ...prevVisibility,
+          [field]: !prevVisibility[field],
+        }));
+      };
     React.useEffect(() => {
         if (data && Object.entries(data).length > 0 && data.constructor === Object) {
             try {
@@ -97,6 +117,47 @@ const LoginComponent = (props) => {
                                     autoComplete='off'
                                     margin="normal"
                                     // variant="outlined"
+                                    type={passwordVisibility.oldPassword ? 'text' : 'password'}
+                                    fullWidth
+                                    name="email"
+                                    value={values.oldpassword}
+                                    error={values.oldpassworderror ? true : false}
+                                    onChange={(e) => handleChange('oldpassword', e.target.value)}
+                                    placeholder="Enter old password"
+                                    InputProps={{
+                                        endAdornment: (
+                                          <EyeIcon
+                                            isVisible={passwordVisibility.oldPassword}
+                                            toggleVisibility={() => togglePasswordVisibility('oldPassword')}
+                                          />
+                                        ),
+                                      }}
+                                />
+                                <label className='errtext'> {values.oldpasswordText && values.oldpasswordText}</label>
+                                <TextField
+                                    autoComplete='off'
+                                    margin="normal"
+                                    // variant="outlined"
+                                    type={passwordVisibility.newPassword ? 'text' : 'password'}
+                                    fullWidth
+                                    name="email"
+                                    value={values.newpassword}
+                                    error={values.newPasswordError ? true : false}
+                                    onChange={e => handleChange('newpassword', e.target.value)}
+                                    placeholder="Enter new password"
+                                    InputProps={{
+                                        endAdornment: (
+                                          <EyeIcon
+                                            isVisible={passwordVisibility.newPassword}
+                                            toggleVisibility={() => togglePasswordVisibility('newPassword')}
+                                          />
+                                        ),
+                                      }}
+                                />
+                                {/* <TextField
+                                    autoComplete='off'
+                                    margin="normal"
+                                    // variant="outlined"
                                     type="password"
                                     fullWidth
                                     name="email"
@@ -105,8 +166,8 @@ const LoginComponent = (props) => {
                                     onChange={e => handleChange('oldpassword', e.target.value)}
                                     placeholder="Enter old password"
                                 />
-                                <label className='errtext'> {values && values.oldpasswordText}</label>
-                                <TextField
+                                <label className='errtext'> {values && values.oldpasswordText}</label> */}
+                                {/* <TextField
                                     autoComplete='off'
                                     margin="normal"
                                     // variant="outlined"
@@ -117,9 +178,30 @@ const LoginComponent = (props) => {
                                     error={values.newPasswordError ? true : false}
                                     onChange={e => handleChange('newpassword', e.target.value)}
                                     placeholder="Enter new password"
-                                />
+                                /> */}
                                 <label className='errtext'> {values && values.newPasswordHelperText}</label>
                                 <TextField
+                                    autoComplete='off'
+                                    margin="normal"
+                                    // variant="outlined"
+                                    type={passwordVisibility.confirmPassword ? 'text' : 'password'}
+                                    // type="password"
+                                    fullWidth
+                                    name="confirmPassword"
+                                    value={values.confirmPassword}
+                                    error={values.confirmPasswordError ? true : false}
+                                    onChange={e => handleChange('confirmPassword', e.target.value)}
+                                    placeholder="Enter confirm password"
+                                    InputProps={{
+                                        endAdornment: (
+                                          <EyeIcon
+                                            isVisible={passwordVisibility.confirmPassword}
+                                            toggleVisibility={() => togglePasswordVisibility('confirmPassword')}
+                                          />
+                                        ),
+                                      }}
+                                />
+                                {/* <TextField
                                     autoComplete='off'
                                     margin="normal"
                                     // variant="outlined"
@@ -130,7 +212,7 @@ const LoginComponent = (props) => {
                                     error={values.confirmPasswordError ? true : false}
                                     onChange={e => handleChange('confirmPassword', e.target.value)}
                                     placeholder="Enter confirm password"
-                                />
+                                /> */}
                                 <label className='errtext'> {values && values.confirmPasswordHelper}</label>
                                 <br></br>
                                 <div style={{ float: "right" }}>
